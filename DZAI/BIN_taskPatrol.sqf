@@ -1,6 +1,6 @@
 /*
 =======================================================================================================================
-Script: BIN_taskPatrol.sqf v1.4
+Script: BIN_taskPatrol.sqf v1.3
 Author(s): Binesi
 Partly based on original code by BIS
 
@@ -27,27 +27,29 @@ If anyone is interested, I've made some additions to Binesi's BIN_taskPatrol scr
 Random initial patrol direction - I noticed every patrol started off in the same direction, so I've randomised it.
 Fixed the 2D position / findSafePos errors
 Added building positions as possible patrol locations using Random Building Position Script v1.0 by Tophe of Östgöta Ops
-Added check that BIS Functions has been initialised
-Only perform the house patrols if the squad leader is a man
+Added check that BIS Functions has been initialized
 
 ArmaIIholic 
--- added part of JTD direction normalization function
+-- added JTD direction normalization function
 -- changed numbers for waypoints to match previous waypoints
+-- randomized initial direction - Wolffy.au added only the offset
+-- fixed error with building position format
 -- randomized initial direction -- Wolffy.au added only the offset which had to be reduced to 180 
            - however this script is making full circle from wherever it starts
-		   
------------------------------------------------------------------------------------------------------------------------
-Slightly modified for DZAI Package
+
 =======================================================================================================================
 */
 
+if (isServer) then
+{
+	waitUntil {!isNil "bis_fnc_init"};
+	
 	_grp = _this select 0;
 	_pos = _this select 1;
 	_max_dist = _this select 2;
 	_debug = if ((count _this) > 3) then {_this select 3} else {0};
 	_blacklist = if ((count _this) > 4) then {_blacklist = _this select 4} else {[]};
 
-	waitUntil {!isNil "bis_fnc_init"}; 
 	_mode = ["YELLOW", "RED"] call BIS_fnc_selectRandom;
 	_formation = ["STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "DIAMOND"] call BIS_fnc_selectRandom;
 	_dzai_behavior = ["AWARE","COMBAT"] call BIS_fnc_selectRandom;
@@ -66,7 +68,7 @@ Slightly modified for DZAI Package
 	_wp_count = 4 + (floor random 3) + (floor (_max_dist / 100 ));
 	_angle = (360 / (_wp_count -1));
 
-	_new_angle = 0;
+	_newangle = 0;
 	_wp_array = [];
 	_slack = _max_dist / 5.5;
 	if ( _slack < 20 ) then { _slack = 20 };
@@ -76,7 +78,7 @@ Slightly modified for DZAI Package
 	_angle_offset = random 180;
 	while {count _wp_array < _wp_count} do 
 	{
-		private ["_x1","_y1","_wp_pos", "_prepos","_bldgpos","_bldgs"];
+		private ["_x1","_y1","_wp_pos", "_prepos","_bldgpos","_bldgs","_a","_b"];
 		
 		_newangle = (count _wp_array * _angle) + _angle_offset;
 		
@@ -103,31 +105,32 @@ Slightly modified for DZAI Package
 			_prepos = [_x1, _y1];
 		};
 
-		_wp_pos = [_prepos, 0, _slack, 6, 0, 50 * (pi / 180), 0, _blacklist] call BIS_fnc_findSafePos;
-
-	if (leader _grp isKindOf "Man") then {		
-		//////////////////////////////////////////////////////////////////
-		// The following code is an extract from Random Building Position Script v1.0 by Tophe of Östgöta Ops
-		//////////////////////////////////////////////////////////////////
-		_bldgpos = [];
-		_bldgs = nearestObjects [_wp_pos, ["Building"], 50];
-		{
-		  private["_i","_y"];
-			_i = 0;
-			_y = _x buildingPos _i;
-			while {format["%1", _y] != "[0,0,0]"} do {
-				_bldgpos = _bldgpos + [_y];
-				_i = _i + 1;
-				_y = _x buildingPos _i;
-			};
-		} forEach _bldgs;
+		_wp_pos = [_prepos, 0, _slack, 6, 0, 50 * (pi / 180), 0, _blacklist,[_prepos]] call BIS_fnc_findSafePos;
 		
-		if(count _bldgpos != 0) then {_wp_pos = _bldgpos call BIS_fnc_selectRandom;};
-		_wp_array = _wp_array + [_wp_pos];
+		_a = 0 + (_wp_pos select 0);
+		_b = 0 + (_wp_pos select 1);
+		
+			//////////////////////////////////////////////////////////////////
+			// The following code is an extract from Random Building Position Script v1.0 by Tophe of Östgöta Ops
+			//////////////////////////////////////////////////////////////////
+			_bldgpos = [];
+			_bldgs = nearestObjects [[_a,_b,0], ["Building"], 50];
+			{
+			  private["_i","_y"];
+				_i = 0;
+				_y = _x buildingPos _i;
+				while {format["%1", _y] != "[0,0,0]"} do {
+					_bldgpos = _bldgpos + [_y];
+					_i = _i + 1;
+					_y = _x buildingPos _i;
+				};
+			} forEach _bldgs;
+			
+			if(count _bldgpos != 0) then {_wp_pos = _bldgpos call BIS_fnc_selectRandom;};
+			_wp_array = _wp_array + [_wp_pos];
 
-		sleep 0.5;
+			sleep 0.5;
 	};
-};
 
 	sleep 1;
 
@@ -140,7 +143,7 @@ Slightly modified for DZAI Package
 		_cur_pos = (_wp_array select _i);
 
 		// Create waypoints based on array of positions
-		/* The index i is changed so it matches the FSM - j+i */
+		/* The index i is changed so it matches previous waypoints - j+i */
 		
 		_wp = _grp addWaypoint [_cur_pos, 0];
 		_wp setWaypointType "MOVE";
@@ -153,7 +156,10 @@ Slightly modified for DZAI Package
 			_marker_name = str(_wp_array select _i);
 			_marker = createMarker[_marker_name,[_cur_pos select 0,_cur_pos select 1]];
 			_marker setMarkerShape "ICON";
-			_marker_name setMarkerType "DOT";
+			//_marker_name setMarkerType "DOT";
+			_marker_name setMarkerType "WAYPOINT";
+			_marker_name setMarkerBrush "SOLID";
+			_marker_name setMarkerColor "ColorRed";
 		};
 
 		sleep 0.5;
@@ -171,3 +177,4 @@ Slightly modified for DZAI Package
 	_wp2 setWaypointCompletionRadius 100;
 
 	true
+};

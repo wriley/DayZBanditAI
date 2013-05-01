@@ -1,13 +1,12 @@
-//unitSelectRifle version 0.03
+//unitSelectRifle version 0.05
 /*
 	Usage: [_unit, _weapongrade] call fnc_unitSelectRifle;
 */
 	private ["_unit","_rifle","_rifles","_rnd","_i","_chance","_weapongrade","_magazine"];
 	_unit = _this select 0;
 	_weapongrade = _this select 1;
-	//_weapongrade = call fnc_selectRandomGrade;
 	
-	_nmags = (floor (random DZAI_maxRifleMags)) + 1;						// Number of mags to generate for selected weapon.
+	//_nmags = (floor (random DZAI_maxRifleMags)) + 1;						// Number of mags to generate for selected weapon.
     
 	switch (_weapongrade) do {
 	  case 0: {		//Farm / Residential / Supermarket
@@ -30,10 +29,11 @@
 	_rnd = floor random (count _rifles);
 	_rifle = _rifles select _rnd;
 	_magazine = getArray (configFile >> "CfgWeapons" >> _rifle >> "magazines") select 0;
-	for [{_i=1},{_i<=_nmags},{_i=_i+1}] do {
+	_unit addMagazine _magazine;
+	/*for [{_i=1},{_i<=_nmags},{_i=_i+1}] do {
 			_unit addMagazine _magazine;
 		};
-	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Rifle: %1 with %2 magazines for AI.",_rifle,_nmags];};
+	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Rifle: %1 with %2 magazines for AI.",_rifle,_nmags];};*/
 	
 	_unit addWeapon _rifle;
 	_unit selectweapon _rifle;

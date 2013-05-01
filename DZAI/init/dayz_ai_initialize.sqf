@@ -1,21 +1,17 @@
-//DayZ AI Bandit Module Version 0.03
+//DZAI Initialize Version 0.05
 
-if (!isDedicated) then { //Handle client-side zombie spawns
-zombie_generate = compile preprocessFileLineNumbers "DZAI\compile\zombie_generate.sqf";
-wild_spawnZombies = compile preprocessFileLineNumbers "DZAI\compile\wild_spawnZombies.sqf";
-};
-call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_variables.sqf";
-if (!isServer) exitWith {};
-call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_functions.sqf";
-call compile preprocessFileLineNumbers "DZAI\mission\mission_functions.sqf";
-createcenter east;
+createcenter east;											//Create centers for all sides
 createcenter west;
 createcenter resistance;
-resistance setFriend [east, 0];
-resistance setFriend [west, 0];
-EAST setFriend [WEST, 0];
-EAST setFriend [resistance, 0];
-WEST setFriend [EAST, 0];
-WEST setFriend [resistance, 0];
+
+call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_variables.sqf";
+if (!isDedicated && !DZAI_zombiesEnabled) then { //If client and zombies are disabled, replace zombie spawn scripts with dummy scripts.
+	zombie_generate = compile preprocessFile "DZAI\compile\zombie_generate.sqf";
+	wild_spawnZombies = compile preprocessFile "DZAI\compile\wild_spawnZombies.sqf";
+};
+if (!isServer) exitWith {}; //End of client-sided work
+call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_functions.sqf";
+call compile preprocessFileLineNumbers "DZAI\mission\mission_functions.sqf";
 waituntil {!isnil "DZAI_initialized"};
-_nul = [DZAI_spawnRandom,'center', 4500] spawn fnc_spawnBandits_random;
+0 = [DZAI_spawnRandom,'center',450,4000] spawn fnc_spawnBandits_random;
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Loading Complete."];};

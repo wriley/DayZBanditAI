@@ -1,27 +1,44 @@
-//DZAI Variables Version 0.04
+//DZAI Variables Version 0.05
 private["_worldname"];
 
 
-//Enable/Disable Zombies
-if (!isDedicated) then { 
-	DZAI_zombiesDisabled = false;							//Disable zombie spawns (0: Zombies, 1: No Zombies) 
-};
+//Enable/Disable Zombies, Zombie Hostility
+DZAI_zombieEnemy = true;									//Enable or disable AI hostility to zombies. If enabled, AI will attack zombies. (default: true)
+DZAI_zombiesEnabled = true;								//Enable or disable zombie spawns (default: true)
 if (!isServer) exitWith {};									//End of client-sided work.
+
+//Internal Use Variables: DO NOT EDIT THESE
+DZAI_numAIUnits = 0;										//Counter variable used to keep track of currently live AI units.
 
 //DZAI Settings
 DZAI_debugLevel = 1;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 1)
 DZAI_debugMarkers = 0;										//Enable or disable debug markers for AI patrol. (Default: 0)
-DZAI_modName = "default";									//Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017). If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default".
+DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017). 
 
-//AI Variables
-DZAI_weaponNoise = 1.0;										//AI weapon noise for zombie aggro purposes. (Default: 1.0)
-DZAI_numAIUnits = 0;										//DO NOT EDIT - Used to keep track of live AI units.
-DZAI_maxAIUnits = 65535;									//Global maximum number of spawned AI bandits (0: Disables AI spawning)
-DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. (Default: 0)
-DZAI_spawnRandom = 15;										//Number of randomly-placed AI to spawn on server start. These AI are randomly placed on the map in the same way as Heli Crashes. (Default: 15)
+//AI Variables						
+DZAI_weaponNoise = 0.00;									//AI weapon noise for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
+DZAI_maxAIUnits = 65535;									//Limit of total AI spawned by DZAI (0: Disables AI spawning completely)
+DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
+DZAI_spawnRandom = 0;										//Number of randomly-placed AI to spawn on server start. These AI are randomly placed on the map in the same way as Heli Crashes. (Default: 0)
 DZAI_spawnRandomDelay = 60;									//Time to wait between each AI spawn at server start (seconds). (Default: 60)
-DZAI_respawnTime1 = 120;									//Minimum wait time for AI respawn timer (seconds). (Default: 120)
-DZAI_respawnTime2 = 180;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 180)
+DZAI_respawnTime1 = 180;									//Minimum wait time for AI respawn timer (seconds). (Default: 180)
+DZAI_respawnTime2 = 120;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 120)
+DZAI_dmgFactors1 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for bullet-type damage done to different body parts: Structural, Head, Body, Hands, Legs. Example: to make AI take 50% reduced damage to a body part, set the appropriate value to 0.50.
+DZAI_dmgFactors2 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for non-bullet-type (ie: explosions, collisions) damage done to different body parts: Structural, Head, Body, Hands, Legs.
+DZAI_refreshRate = 15;										//Amount of time in seconds between AI ammo and zombie check. (Default: 15)
+DZAI_zDetectRange = 200;									//Maximum distance for AI to detect zombies. (Default: 200)
+DZAI_allowFleeing = false;									//Enable/disable AI fleeing (Default: false)
+DZAI_minFleeChance = 0.05;									//Minimum chance that AI will flee. (Default: 0.05)
+DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee. (Default: 0.05)
+DZAI_despawnWait = 120;										//Time to allow AI to remain before being removed when all players have left a trigger area.
+
+//Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI)
+resistance setFriend [east, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
+resistance setFriend [west, 0];
+EAST setFriend [WEST, 0];									//East (AI) is hostile to West (Player), but friendly to Resistance (AI).
+EAST setFriend [resistance, 1];
+WEST setFriend [EAST, 0];									//West (Player side) is hostile to all.
+WEST setFriend [resistance, 0];
 
 //AI Loadout Configuration									(Edible and Medical items, Miscellaneous items, Skin packs)
 DZAI_invmedicals = 1; 										//Number of selections of medical items (Inventory)
@@ -34,47 +51,24 @@ DZAI_bpedibles = 1;											//Number of selections of edible items (Backpack)
 DZAI_nbpedibles = 1;										//Maximum amount of each edible item, minimum of zero (Backpack)
 DZAI_numMiscItemS = 3;										//Maximum number of items to select from DZAI_DefaultMiscItemS table.
 DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_DefaultMiscItemL table.
-DZAI_chanceMiscItemS = 0.50;								//Chance to add random item from DZAI_DefaultMiscItemS table
-DZAI_chanceMiscItemL = 0.25;								//Chance to add random item from DZAI_DefaultMiscItemL table
+DZAI_chanceMiscItemS = 0.66;								//Chance to add random item from DZAI_DefaultMiscItemS table.
+DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_DefaultMiscItemL table.
 DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_DefaultSkinLoot table.
-DZAI_maxPistolMags = 1;										//Maximum number of pistol magazines to generate (Note: AI may loot additional magazines from dead bodies or loot piles they find)
-DZAI_maxRifleMags = 2;										//Maximum number of rifle  magazines to generate (Note: AI may loot additional magazines from dead bodies or loot piles they find)
-DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a 4-tiered classification of gear. 0: Residential, 1: Military, 2: MilitarySpecial, 3: Heli Crash. (MUST change DZAI_weaponGrades and DZAI_gradeChances together to avoid issues!)
-DZAI_gradeChances = [0.25,0.50,0.20,0.05]; 					//Probabilities for generating each weapon grade. (Values should add up to 1.00)
-DZAI_toolChances = [1.00,0.90,0.85,0.80,0.65,0.60,0.25,0.25,0.10,0.05,0.03,0.03]; 	//Probabilities for generating each tool item. (Flashlight, Watch, Knife, Hatchet, Compass, Map, Toolbox, Matchbox (or Flint for DayZ2017), Military Flashlight, Rangefinder, GPS, NV Goggles.
+DZAI_maxPistolMags = 2;										//Maximum number of pistol magazines to generate as loot upon death.
+DZAI_maxRifleMags = 1;										//Maximum number of rifle  magazines to generate. (Unused variable)
+DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Residential, 1: Military, 2: MilitarySpecial, 3: Heli Crash. (MUST change DZAI_weaponGrades and DZAI_gradeChances  together if removing/adding weapon grades to avoid issues!)
+DZAI_gradeChances = [0.30,0.50,0.15,0.05]; 					//Probabilities for generating each weapon grade. (Values should add up to 1.00)
+DZAI_toolChances = [1.00,0.90,0.85,0.80,0.60,0.50,0.20,0.20,0.10,0.05,0.03]; 	//Probabilities for generating each tool item upon unit death. (Flashlight, Watch, Knife, Hatchet, Compass, Map, Toolbox, Matchbox, Military Flashlight, Rangefinder, GPS).
+DZAI_gadgetChances = [0.50,0.03];								//Probabilities of generating each gadget item upon unit spawn (Binoculars, NVGoggles).
 DZAI_betterBackPack = 0.90;									//Chance of assigning a better backpack than the default one. (Default: 0.90)
 
-/*Default AI Loot Tables. EDIT WITH CARE - these tables affect ALL DayZ mods globally. 
-To make changes for a specific DayZ mod, edit the appropriate config file in configs folder. 
-Rule of thumb: If it doesn't belong in the original DayZ mod, it doesn't belong here. Edit the mod-specific config file instead.
-*/
-DZAI_BanditTypesDefault = ["Survivor2_DZ", "SurvivorW2_DZ", "Bandit1_DZ", "BanditW1_DZ", "Camo1_DZ", "Sniper1_DZ"]; //List of skins for AI units to use
-DZAI_PistolsDefault0 = ["Colt1911", "revolver_EP1", "Makarov"]; //Common pistols that can be found in areas such as Apartments and Farms.
-DZAI_PistolsDefault1 = ["M9", "glock17_EP1", "Colt1911", "UZI_EP1", "M9SD", "revolver_EP1"]; //DZAI_PistolsDefault1-3: Uncommon/rare pistols that can be found in Military areas (ie: Firestations, Deer Stands, Barracks)
-DZAI_PistolsDefault2 = ["M9", "glock17_EP1", "Colt1911", "UZI_EP1", "M9SD"]; //+["MakarovSD"]; For DayZ 1.7.7. 
-DZAI_PistolsDefault3 = ["M9", "glock17_EP1", "UZI_EP1", "M9SD"]; //+["MakarovSD"]; For DayZ 1.7.7 
-/*
-DZAI_RiflesDefault0 = Rifles found in Residential areas. (ie: Apartments, Farms)
-DZAI_RiflesDefault1 = Rifles found in Military areas. (ie: Firestations, Deer Stands)
-DZAI_RiflesDefault2 = Rifles found in MilitarySpecial areas. (ie: Barracks)
-DZAI_RiflesDefault3 = Rifles found in HeliCrash areas.
-*/
-DZAI_RiflesDefault0 = ["Winchester1866", "LeeEnfield", "huntingrifle","M1014","MR43"];
-DZAI_RiflesDefault1 = ["M16A2","M16A2GL","AK_74","M4A1_Aim","AKS_74_kobra","AKS_74_U","AK_47_M","M24","M1014","DMR","M4A1","M14_EP1","Remington870_lamp","MP5A5","MP5SD","M4A3_CCO_EP1","Sa58P_EP1","Sa58V_EP1","BAF_L85A2_RIS_Holo"];
-DZAI_RiflesDefault2 = ["M16A2","M16A2GL","M249_DZ","AK_74","M4A1_Aim","AKS_74_kobra","AKS_74_U","AK_47_M","M24","SVD_CAMO","M1014","M107_DZ","DMR","M4A1","M14_EP1","Remington870_lamp","M240_DZ","M4A1_AIM_SD_camo","M16A4_ACG","M4A1_HWS_GL_camo","Mk_48_DZ","M4A3_CCO_EP1"];
-DZAI_RiflesDefault3 = ["FN_FAL","bizon_silenced","M14_EP1","FN_FAL_ANPVS4","M107_DZ","BAF_AS50_scoped","Mk_48_DZ","M249_DZ","DMR","G36C","G36C_camo","G36A_camo","G36K_camo","BAF_L85A2_RIS_SUSAT"]; //+ ["RPK_74"]; For DayZ 1.7.7
-DZAI_DefaultStartPack = "DZ_Patrol_Pack_EP1"; //Class name of default starting backpack
-DZAI_DefaultBackpacks = ["CZ_VestPouch_EP1","DZ_Patrol_Pack_EP1", "DZ_Assault_Pack_EP1", "DZ_CivilBackpack_EP1", "DZ_ALICE_Pack_EP1", "DZ_Backpack_EP1", "DZ_British_ACU", "DZ_TK_Assault_Pack_EP1"]; //List of all available backpacks
-DZAI_DefaultEdibles = ["ItemSodaCoke", "ItemSodaPepsi", "ItemWaterbottle", "FoodCanSardines", "FoodCanBakedBeans", "FoodCanFrankBeans", "FoodCanPasta", "ItemWaterbottleUnfilled","ItemWaterbottleBoiled","FoodmuttonCooked","FoodchickenCooked","FoodBaconCooked","FoodRabbitCooked","FoodbaconRaw","FoodchickenRaw","FoodmuttonRaw","foodrabbitRaw","FoodCanUnlabeled","FoodPistachio","FoodNutmix","FoodMRE"]; //List of all edible items
-DZAI_DefaultMedicals1 = ["ItemBandage", "ItemBandage", "ItemPainkiller"]; //List of common medical items
-DZAI_DefaultMedicals2 = ["ItemPainkiller", "ItemMorphine", "ItemBandage", "ItemBloodbag", "ItemAntibiotic","ItemEpinephrine"]; //List of all medical items
-DZAI_DefaultMiscItemS = ["ItemTankTrap", "ItemSandbag", "ItemWire", "ItemHeatpack", "HandRoadFlare", "HandChemBlue", "HandChemRed", "HandChemGreen","SmokeShell","SmokeShellGreen","SmokeShellGreen","PipeBomb","HandGrenade_West","FlareGreen_M203","FlareWhite_M203","1Rnd_HE_M203","1Rnd_Smoke_M203","HandGrenade_West","FlareGreen_M203","FlareWhite_M203","1Rnd_HE_M203","1Rnd_Smoke_M203"]; //List of random miscellaneous items (1 inventory space)
-DZAI_DefaultMiscItemL = ["ItemTent", "ItemJerrycan", "PartWheel", "PartEngine", "PartFueltank", "PartGlass", "PartVRotor","PartWoodPile"]; //List of random miscellaneous items (>1 inventory space)
-DZAI_DefaultSkinLoot = ["Skin_Camo1_DZ", "Skin_Sniper1_DZ"]; //List of all skin packs
-DZAI_DefaultTools = ["ItemFlashlight","ItemWatch","ItemKnife","ItemHatchet","ItemCompass","ItemMap","ItemToolbox","ItemMatchbox","ItemFlashlightRed","binocular_vector","ItemGPS","NVGoggles"]; //List of all tools and gadgets. NOTE: Every entry into the DZAI_DefaultTools table must have corresponding chance added to DZAI_toolChances!
+//Load default DZAI loot tables. These tables include weapons and other items that can be added to an AI unit's inventory.
+//Do not delete this file, as it is required for DZAI to work.
+#include "configs\default_config.sqf"
 
-//Load mod-specific configuration file. Config files contain trigger information, addition and removal of items/skins, and/or other variable customizations.
-_worldname=format["%1",worldName];
+//Load mod-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
+//To reduce the size of your mission file, you may delete the configuration files for maps that you are not using.
+_worldname=toLower format ["%1",worldName];
 
 switch (_worldname) do {
 	case "chernarus":
@@ -122,3 +116,5 @@ switch (_worldname) do {
 		#include "configs\panthera2_config.sqf"
     };
 };
+
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded."];};

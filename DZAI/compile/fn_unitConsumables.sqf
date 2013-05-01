@@ -1,4 +1,4 @@
-//unitConsumables Version 0.04
+//unitConsumables Version 0.05
 /*
 	Usage: [_unit] call fnc_unitConsumables;
 */
@@ -33,28 +33,28 @@
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Skin Item: %1 for AI.",_skinItem];};
 	};
 	
-	//Backpack Medicals
+	//Add medical items to backpack
 	for "_i" from 1 to DZAI_bpmedicals do {
 		_bpmedical = DZAI_DefaultMedicals2 call BIS_fnc_selectRandom;
 		(unitBackpack _unit) addMagazineCargoGlobal [_bpmedical, (floor random (DZAI_nbpmedicals + 1))];
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Backpack Medical Item: %1 for AI.",_bpmedical];};
 	};
 
-	//Backpack Edibles
+	//Add edible items to backpack
 	for "_i" from 1 to DZAI_bpedibles do {
 		_bpedible = DZAI_DefaultEdibles call BIS_fnc_selectRandom;
 		(unitBackpack _unit) addMagazineCargoGlobal [_bpedible, (floor random (DZAI_nbpedibles + 1))];
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Backpack Edible Item: %1 for AI.",_bpedible];};
 	};
 	
-	//Inventory Medicals
+	//Add medical items to inventory
 	for "_i" from 1 to DZAI_invmedicals do {
 		_invmedical = DZAI_DefaultMedicals1 call BIS_fnc_selectRandom;
 		_unit addMagazine [_invmedical, (floor random (DZAI_ninmedicals + 1))];
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Inventory Medical Item: %1 for AI.",_invmedical];};
 	};
 	
-	//Inventory Edibles
+	//Add edible items to inventory
 	for "_i" from 1 to DZAI_invedibles do {
 		_invedible = DZAI_DefaultEdibles call BIS_fnc_selectRandom;
 		_unit addMagazine [_invedible, (floor random (DZAI_ninedibles + 1))];

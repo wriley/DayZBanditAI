@@ -27,16 +27,18 @@ class _trigger_0
 	class Arguments
 	{
 		POSITION="[3376.7136, 4402.3555, 0]";
-		A="325";
-		B="325";
+		A="500";
+		B="500";
 		ACTIVATION_BY="ANY";
+		REPEATING="true";
 		TIMEOUT_MIN="30";
 		TIMEOUT_MID="60";
 		TIMEOUT_MAX="90";
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,300,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
 class _trigger_2
@@ -45,16 +47,18 @@ class _trigger_2
 	class Arguments
 	{
 		POSITION="[3561.8384, 3708.8481]";
-		A="325";
-		B="325";
+		A="500";
+		B="500";
 		ACTIVATION_BY="ANY";
+		REPEATING="true";
 		TIMEOUT_MIN="30";
 		TIMEOUT_MID="60";
 		TIMEOUT_MAX="90";
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,300,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
 class _trigger_4
@@ -63,16 +67,18 @@ class _trigger_4
 	class Arguments
 	{
 		POSITION="[3855.0464, 3373.2051]";
-		A="325";
-		B="325";
+		A="500";
+		B="500";
 		ACTIVATION_BY="ANY";
+		REPEATING="true";
 		TIMEOUT_MIN="30";
 		TIMEOUT_MID="60";
 		TIMEOUT_MAX="90";
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,300,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
 class _trigger_6
@@ -81,16 +87,18 @@ class _trigger_6
 	class Arguments
 	{
 		POSITION="[4354.2373, 3207.3979, 0.34515762]";
-		A="325";
-		B="325";
+		A="500";
+		B="500";
 		ACTIVATION_BY="ANY";
+		REPEATING="true";
 		TIMEOUT_MIN="30";
 		TIMEOUT_MID="60";
 		TIMEOUT_MAX="90";
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,300,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
 class _unit_1

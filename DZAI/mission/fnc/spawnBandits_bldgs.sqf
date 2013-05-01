@@ -1,56 +1,52 @@
-//spawnBandits_bldgs Version 0.04
 /*
-	Usage: [_minAI, _addAI, _maxspawnd, _trigger] call spawnBandits_bldgs
+	spawnBandits_bldgs version 0.05
+	
+	Usage: [_minAI, _addAI, _patrolDist, _trigger, _numGroups (optional)] call spawnBandits_bldgs;
+	Description: Called through (mapname)_config.sqf. Spawns a specified number groups of AI units some distance from a trigger used as a reference location.
+	
 */
-
-private ["_totalAI","_minAI","_addAI","_maxspawnd","_patrold","_weapongrade","_bldgpos","_nearbldgs","_trigger","_triggerpos"];
+private ["_totalAI","_minAI","_addAI","_patrolDist","_buildingPositions","_nearbldgs","_trigger","_triggerPos","_numGroups","_posVariance","_grpArray","_unit"];
 if (!isServer) exitWith {};
 	
-	//Check if there are too many AI units in the game.
-	if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];};
+//Check if there are too many AI units in the game.
+if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];};
 	
-	//Editables and default values
-	_patrold = 100;												//Maximum distance between patrol waypoints. 
-	_minAI = 0;													
-	_addAI = 0;
-	_maxspawnd = 400;
-	
-	if(count _this > 0) then {_minAI = _this select 0;};		//Mandatory minimum number of AI units to spawn
-	if(count _this > 1) then {_addAI = _this select 1;};		//Maximum number of additional AI units to spawn
-	if(count _this > 2) then {_maxspawnd = _this select 2;};	//Maximum distance from trigger location to generate spawn positions
-	if(count _this > 3) then {_trigger = _this select 3;};		//The trigger responsible for calling this script.
-		
-	_totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));
-	if (_totalAI == 0) exitWith {};	// Only run script if there is at least one bandit to spawn
-	_triggerpos = getpos _trigger;	
-	DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
-	
-	_nearbldgs = nearestObjects [_triggerpos, ["Building"], _maxspawnd];
-	_bldgpos = [_nearbldgs] call getBuildingPosition;
-				
-	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %1 new AI spawns triggered using Building location as spawn point.",_totalAI];};
+//Editables and default values
+_posVariance = 60;											//Maximum variance in generated position.
+
+_minAI = _this select 0;									//Mandatory minimum number of AI units to spawn
+_addAI = _this select 1;									//Maximum number of additional AI units to spawn
+_patrolDist = _this select 2;
+_trigger = _this select 3;									//The trigger calling this script.
+_numGroups = if ((count _this) > 4) then {_this select 4} else {1};		//(Optional) Number of groups of x number of units each to spawn
+
+_grpArray = _trigger getVariable ["GroupArray",[]];			//Retrieve groups created by the trigger, or create an empty group array if none found.
+if (count _grpArray > 0) exitWith {diag_log "Active groups found. Exiting spawn script (spawnBandits_bldgs)";};						//Exit script if active groups still exist.
+
+if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];}; //Check if there are too many AI units in the game.
+
+_totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));	//Calculate total number of units to spawn per group.
+if (_totalAI == 0) exitWith {};								//Exit script if there are no units to spawn
+
+_triggerPos = getpos _trigger;								//Position to spawn AI unit. Also used as the respawn position.
+DZAI_numAIUnits = _numGroups*(DZAI_numAIUnits + _totalAI);	//Update the number of currently live AI units.
+
+_nearbldgs = nearestObjects [_triggerPos, ["Building"], 300];	//Find all buildings within a specified radius of the trigger.
+_buildingPositions = [_nearbldgs] call fnc_getBuildingPositions;		//Find all usable building positions of the found buildings.
+
+if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawning %1 new AI groups of %2 units each (spawnBandits_bldgs).",_numGroups,_totalAI];};
+for "_j" from 1 to _numGroups do {
+	private ["_unitGroup"];
+	_unitGroup = createGroup resistance;						//All units spawned from the same trigger will be part of the same group.
+	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %1 new AI spawns triggered (spawnBandits_bldgs).",_totalAI];};
 	for "_i" from 1 to _totalAI do {
-		private ["_banditGrp","_p","_pos","_type","_unit"];
-		_banditGrp = createGroup resistance;
-		_p = _bldgpos call BIS_fnc_selectRandom;
-		_pos = [_p, 30, 80, 0, 0, 20, 0] call BIS_fnc_findSafePos;
-		_type = DZAI_BanditTypesDefault call BIS_fnc_selectRandom;
-		_unit = _banditGrp createUnit [_type, _pos, [], 0, "FORM"];						// Spawn the AI bandit unit
-		
-		_unit addEventHandler ["Fired", {_this call ai_fired;}];						// Unit firing catches zombies attention, like player
-		_unit addEventHandler ["Fired", {(_this select 0) setvehicleammo 1}];			// AI bandit has unlimited ammunition
-		_unit addEventHandler ["HandleDamage",{_this call local_zombieDamage;}];		// AI bandit handles damage
-		_unit addEventHandler ["Killed",{[_this,"banditKills"] call local_eventKill;}]; // Credit player for killing the AI bandit
-		_unit addEventHandler ["Killed",{_this call fnc_spawn_deathFlies;}];			// Spawn flies for AI bandit corpse
-		_unit addEventHandler ["Killed",{_this call fnc_banditAIKilled;}];				// Update current AI count
-		_unit addEventHandler ["Killed",{_this spawn fnc_banditAIRespawn2;}];			// Respawn AI near nearby buildings
-		_unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];				
-		
-		_weapongrade = [DZAI_weaponGrades,DZAI_gradeChances] call fnc_selectRandomWeighted;	
-		[_unit] call fnc_setBehaviour;													// Set AI behavior
-		[_unit] call fnc_setSkills;														// Set AI skill
-		[_unit] call fnc_unitBackpack;													// Add backpack and chance of binoculars
-		[_unit, _weapongrade] call fnc_unitSelectRifle;									// Add rifle
-		null = [_banditGrp,_pos,_patrold,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";
-		if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned AI Type %1 %2 of %3 with weapongrade %4. (Building)",_type,_i, _totalAI,_weapongrade];};
+		private ["_p","_pos"];
+		_p = _buildingPositions call BIS_fnc_selectRandom;		//Each unit will be spawned at/near a random building position.
+		_pos = [_p,0,_posVariance,5,0,2000,0] call BIS_fnc_findSafePos;
+		//_pos = [_p,_posVariance,[0,360],true] call SHK_pos;
+		_unit = [_unitGroup,_pos,_patrolDist,_trigger,_triggerPos,2] call fnc_createAI;	//Create and equip the unit
+		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
 	};
+	_grpArray = _grpArray + [_unitGroup];							//Add the new group to the trigger's group array.
+};
+_trigger setVariable["GroupArray",_grpArray,false];

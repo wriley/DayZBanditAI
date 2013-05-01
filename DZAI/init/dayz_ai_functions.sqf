@@ -1,4 +1,4 @@
-//DayZ AI Bandit Module Version 0.04
+//DayZ AI Bandit Module Version 0.05
 /*
 	if ((Player getVariable "SpareTime") > 0) then {...
 	Usage: call compile preprocessFileLineNumbers "dayz_ai_functions.sqf";
@@ -14,16 +14,17 @@
 	fnc_unitTools = compile preprocessFileLineNumbers "DZAI\compile\fn_unitTools.sqf";
 	fnc_unitSelectRifle = compile preprocessFileLineNumbers "DZAI\compile\fn_unitSelectRifle.sqf";
 	fnc_unitSelectPistol = compile preprocessFileLineNumbers "DZAI\compile\fn_unitSelectPistol.sqf";
-	ai_fired = compile preprocessFileLineNumbers "DZAI\compile\ai_fired.sqf";
-	ai_alertzombies = compile preprocessFileLineNumbers "DZAI\compile\ai_alertzombies.sqf";
-	getBuildingPosition = compile preprocessFileLineNumbers "DZAI\compile\fn_getBuildingPosition.sqf";
+	if (DZAI_zombieEnemy && DZAI_zombiesEnabled && (DZAI_weaponNoise!=0)) then { // Optional AI-to-Z hostility
+		ai_fired = compile preprocessFileLineNumbers "DZAI\compile\ai_fired.sqf";	//Calculates weapon noise of AI unit
+		ai_alertzombies = compile preprocessFileLineNumbers "DZAI\compile\ai_alertzombies.sqf"; //AI weapon noise attracts zombie attention
+	};
+	fnc_getBuildingPositions = compile preprocessFileLineNumbers "DZAI\compile\fn_getBuildingPositions.sqf";
 	fnc_banditAIKilled = compile preprocessFileLineNumbers "DZAI\compile\fn_banditAIKilled.sqf";
 	fnc_banditAIRespawn = compile preprocessFileLineNumbers "DZAI\compile\fn_banditAIRespawn.sqf";
-	fnc_banditAIRespawn2 = compile preprocessFileLineNumbers "DZAI\compile\fn_banditAIRespawn2.sqf";
-	fnc_randomPos = compile preprocessFileLineNumbers "DZAI\compile\fn_randomPos.sqf";
-	//fnc_selectRandomGrade = compile preprocessFileLineNumbers "DZAI\compile\fn_selectRandomGrade.sqf";
 	fnc_selectRandomWeighted = compile preprocessFileLineNumbers "DZAI\compile\fn_selectRandomWeighted.sqf";
+	fnc_createAI = compile preprocessFileLineNumbers "DZAI\compile\fn_createAI.sqf";
+	fnc_damageAI = compile preprocessFileLineNumbers "DZAI\compile\fn_damageHandlerAI.sqf";
 	
 initialized = true;
 DZAI_initialized = true;
-if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: DZAI Functions loaded."];};
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Functions loaded."];};
