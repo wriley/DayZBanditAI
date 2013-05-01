@@ -24,21 +24,23 @@ May 1, 2013 - 0.05 Update:
 - Note: A few scripts have been adapted from Sarge AI. Credit has been given in the comments section of relevant script files.
 - Reminder: Due to the large size of the config folder, you may delete all config files that are not related to the map you will be playing on. However, you will need to comment out the switch-case block in dayz_ai_variables.sqf and add in #include "configs\(mapname)_config.sqf". An example is provided in the variables file.
 - Unresolved issue: On certain maps (ie: Namalsk), randomly-spawned units sometimes fail to spawn ingame.
+- Unresolved issue: Despawn script sometimes seems to delete units/groups spawned by other unrelated triggers. Further testing is needed.
 - [NEW] Bandit AI now works together in organized groups instead of being hostile to each other. After respawning, individual AI units will regroup with their team and continue patrolling.
 - [NEW] AI units will now respawn into the same group. Previously, a new group was created for every AI unit spawned, which quickly lead to the 144 group/side limit being reached.
 - [NEW] AI spawn points can now be added using markers using the function fnc_spawnBandits_markers. Useful for placing precise spawn locations or spawning AI in locations where there are too few or no buildings to use as spawn points.
 - [NEW] Syntax for fnc_spawnBandits_markers: [minimum AI,max. additional AI,distance between waypoints,thisTrigger,[array of markers],optional: number of AI groups] call fnc_spawnBandits_markers;
 - [NEW] Several variables are now attached to each AI unit for respawning purposes: respawn type, respawn location, group, trigger of origin, patrol distance.
 - [NEW] A single fn_banditAIRespawn.sqf script now handles AI respawning, instead of one per respawn type.
-- [NEW] aiBrain.sqf background script for each AI unit. Automatically adds a new magazine to AI when depleted, and sets hostility to nearby zombies. (Adapted from SARGE AI).
+- [NEW] aiBrain.sqf background script for each AI unit. Automatically adds a new magazine to AI when depleted, and sets hostility to nearby zombies. (Credits: Sarge of SARGE AI).
 - [NEW]	despawnBandits.sqf to handle despawning AI when all players have left a trigger area. By default, AI are deleted from a trigger area after 120 seconds of no player presence. (Adapted from SARGE AI).
 - [NEW] Markers to track AI positions can be enabled by setting debug level to 2 (extended debug mode). Positions are updated every 15 seconds by default.
 - [NEW] Zombie-to-AI aggro is now optional (disable by reducing DZAI_weaponNoise to 0.00 in dayz_ai_variables.sqf). By default, zombies do not aggro to AI.
 - [NEW] AI-to-Zombie aggro is now optional (enable/disable by modifying the DZAI_zombieEnemy variable in dayz_ai_variables.sqf). By default, AI are hostile to nearby zombies. Hostility distance is configurable by modifying the DZAI_zDetectRange variable)
-- [NEW] Adjustable health system implemented for AI units. AI durability to bullet/non-bullet damage is now configurable in dayz_ai_variables.sqf.
+- [NEW] Adjustable health system implemented for AI units. AI durability to bullet/non-bullet damage is now configurable in dayz_ai_variables.sqf. (Credits: Celery, Nullkigan)
 - [NEW] Side relations between AI and players are now configurable. East: Randomly-spawned AI, Resistance: Building/Marker-spawned AI. By default, all AI are friendly to each other, and hostile to players.
 - [NEW] createAI.sqf script to handle individual AI unit spawns and respawns. Initalizes several AI variables, sets up unit loadout, adds eventhandlers, etc.
 - [NEW] Modified several AI spawns from default settings for the following maps: Panthera, Takistan, Zargabad. (Note: Military loot areas tend to have much higher AI spawns)
+- [NEW] Added AI spawn locations at NWAF, Balota Tents.
 - [FIXED] Replaced patrol script (BIN_taskPatrol v1.4) with BIN_taskPatrol v1.3 (last edited by ArmaIIholic) to fix an issue where AI units would randomly travel far beyond their intended patrol area.
 - [MODIFIED] Trigger radius increased from 325m to 500m to prevent excessive cycling of AI spawn/despawns from passing players.
 - [MODIFIED] Triggers have been changed to Repeating type with the introduction of the AI despawn system. (Note: The number of total AI with each spawn cycle may vary).
@@ -63,7 +65,8 @@ May 1, 2013 - 0.05 Update:
 - [MODIFIED] Increased minimum respawn time to 180 seconds and reduced maximum additional respawn time to 120 seconds. (180 seconds minimum, 300 seconds maximum). These values may need further rebalancing due the introduction of grouped AI.
 - [MODIFIED] Decreased probability of generating MilitarySpecial weapons from 20% to 15% (Probabilities for Namalsk and Utes remain unchanged)
 - [MODIFIED] Increased probability of generating Farm/Residential weapons from 25% to 30% (Probabilities for Namalsk and Utes remain unchanged)
-- [MODIFIED] AI units may now spawn with NVGoggles instead of having them added as loot after death.
+- [MODIFIED] AI units may now spawn with NVGoggles instead of having them added as loot after death. 
+- [MODIFIED] NVGoggles and Binoculars are now classified as Gadgets, have their own loot table with configurable chances.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
