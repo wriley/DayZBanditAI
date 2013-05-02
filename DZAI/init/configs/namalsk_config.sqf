@@ -417,7 +417,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Object A2";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,thisTrigger,['ObjectA2_1','ObjectA2_2','ObjectA2_3','ObjectA2_4','ObjectA2_5','ObjectA2_6','ObjectA2_7','ObjectA2_8','ObjectA2_9'],2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,thisTrigger,['ObjectA2_1','ObjectA2_2','ObjectA2_3','ObjectA2_4','ObjectA2_5','ObjectA2_6','ObjectA2_7','ObjectA2_8','ObjectA2_9'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_6 = _this;
 
 _this = createTrigger ["EmptyDetector", [4845.8853, 6201.1484, 0]];
