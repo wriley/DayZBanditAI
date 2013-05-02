@@ -12,7 +12,7 @@ if (!isServer) exitWith {};
 if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];};	
 	
 //Editables and default values
-_posVariance = 60;						//Maximum variance in generated position.
+_posVariance = 100;						//Maximum variance in generated position.
 
 _unitGroup = _this select 0;
 _respawnLoc = _this select 1;			//Position to spawn AI unit. Also used as the respawn position.
@@ -28,7 +28,7 @@ _nearbldgs = nearestObjects [_respawnLoc, ["Building"], 300];
 _buildingPositions = [_nearbldgs] call fnc_getBuildingPositions;
 	
 _p = _buildingPositions call BIS_fnc_selectRandom;
-_pos = [_p, 0, _posVariance, 5, 0, 2000, 0] call BIS_fnc_findSafePos;
+_pos = [_p, 2, _posVariance, 5, 0, 2000, 0] call BIS_fnc_findSafePos;
 _unit = [_unitGroup,_pos,_patrolDist,_trigger,_respawnLoc,2] call fnc_createAI;
 if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_respawnLoc,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: 1 AI unit respawned (respawnBandits_bldgs)."];};

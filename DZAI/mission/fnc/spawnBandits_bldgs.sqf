@@ -12,7 +12,7 @@ if (!isServer) exitWith {};
 if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];};
 	
 //Editables and default values
-_posVariance = 60;											//Maximum variance in generated position.
+_posVariance = 100;											//Maximum variance in generated position.
 
 _minAI = _this select 0;									//Mandatory minimum number of AI units to spawn
 _addAI = _this select 1;									//Maximum number of additional AI units to spawn
@@ -42,7 +42,7 @@ for "_j" from 1 to _numGroups do {
 	for "_i" from 1 to _totalAI do {
 		private ["_p","_pos"];
 		_p = _buildingPositions call BIS_fnc_selectRandom;		//Each unit will be spawned at/near a random building position.
-		_pos = [_p,0,_posVariance,5,0,2000,0] call BIS_fnc_findSafePos;
+		_pos = [_p,2,_posVariance,5,0,2000,0] call BIS_fnc_findSafePos;
 		//_pos = [_p,_posVariance,[0,360],true] call SHK_pos;
 		_unit = [_unitGroup,_pos,_patrolDist,_trigger,_triggerPos,2] call fnc_createAI;	//Create and equip the unit
 		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
