@@ -85,6 +85,7 @@ May 2, 2003 - 0.05 Patch 2 Update:
 - [MODIFIED] In a previous update, marker-spawned groups now all spawn at the same location. Previously, each group member was spawned at separate locations.
 - [MODIFIED] Increased minimum and maximum distance from building positions for building-spawned AI in an attempt to solve an issue where AI were being spawned at the map center due to a lack of clear space to spawn.
 - [MODIFIED] Added author credits to several scripts were credit was previously missing.
+- [MODIFIED] Celle: Shifted Celle city AI trigger to include the east firestation. Added a new AI trigger to the buildings west of Celle city.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
