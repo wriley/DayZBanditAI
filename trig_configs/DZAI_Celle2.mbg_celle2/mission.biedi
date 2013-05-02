@@ -199,7 +199,7 @@ class _trigger_25
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6712.2695, 7970.4697, 0]";
+		POSITION="[6723.4248, 7989.394]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -579,7 +579,7 @@ class _trigger_73
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[8825.5107, 2116.3542]";
+		POSITION="[9004.8682, 2113.5718]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -590,7 +590,7 @@ class _trigger_73
 		INTERRUPTABLE="true";
 		TEXT="Celle";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [4,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [3,2,175,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -871,6 +871,26 @@ class _trigger_111
 		TEXT="SmallFarm";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
 		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
+	};
+};
+class _trigger_113
+{
+	objectType="trigger";
+	class Arguments
+	{
+		POSITION="[8536.8584, 2151.9001, 0]";
+		A="500";
+		B="500";
+		ACTIVATION_BY="ANY";
+		REPEATING="true";
+		TIMEOUT_MIN="30";
+		TIMEOUT_MID="60";
+		TIMEOUT_MAX="90";
+		INTERRUPTABLE="true";
+		TEXT="Celle West";
+		EXP_COND="{isPlayer _x} count thisList > 0;";
+		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
