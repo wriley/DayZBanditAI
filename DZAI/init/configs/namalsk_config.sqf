@@ -35,7 +35,7 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_0 = _this;
 
-_this = createMarker ["ObjectA2_3", [4942.7451, 6709.4336, -5.7220459e-005]];
+_this = createMarker ["ObjectA2_3", [5049.21, 6527.749, -5.7220459e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_2 = _this;
@@ -45,35 +45,15 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_3 = _this;
 
-_this = createMarker ["ObjectA2_4", [4911.6162, 6714.3911, -0.00012969971]];
+_this = createMarker ["ObjectA2_4", [4989.4429, 6524.6143, -0.00012969971]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_6 = _this;
 
-_this = createMarker ["ObjectA2_5", [4886.1289, 6676.7725, 3.8146973e-005]];
+_this = createMarker ["ObjectA2_5", [4887.9893, 6678.5127, 3.8146973e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_7 = _this;
-
-_this = createMarker ["ObjectA2_6", [5005.5269, 6544.4731, 0]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_172 = _this;
-
-_this = createMarker ["ObjectA2_7", [5046.2041, 6542.0225, 0]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_173 = _this;
-
-_this = createMarker ["ObjectA2_8", [5059.6689, 6557.0952, 0]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_174 = _this;
-
-_this = createMarker ["ObjectA2_9", [5041.2334, 6556.5566, 0]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_175 = _this;
 
 _this = createMarker ["CrashedC1301", [3184.2917, 7462.0552, 0.0001373291]];
 _this setMarkerType "Empty";
