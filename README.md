@@ -75,6 +75,17 @@ May 1, 2003 - 0.05 Patch 1 Update:
 - [MODIFIED] More AI skill parameter tweaks. In general, minimum skill parameters have been decreased slightly while maximum skill parameters have been increased. (Wider range of AI skill levels)
 - [REMOVED] Satchel Charges have been removed from AI loot tables.
 
+May 2, 2003 - 0.05 Patch 2 Update:
+
+- [FIXED] Panthera, Lingor: Fixed a couple of typos in trigger activation fields that would have prevented AI from properly spawning.
+- [FIXED] Namalsk: Trigger for Object A2 AI spawns was calling the wrong AI spawn script.
+- [MODIFIED] Lingor: Repositioned several spawn markers for Prison and Palace locations
+- [MODIFIED] Taviana: Increased AI spawns in several areas, with a focus on areas that spawn Military-grade loot.
+- [MODIFIED] Namalsk: Reduced the number of spawn positions for Object A2 from 9 to 5
+- [MODIFIED] In a previous update, marker-spawned groups now all spawn at the same location. Previously, each group member was spawned at separate locations.
+- [MODIFIED] Increased minimum and maximum distance from building positions for building-spawned AI in an attempt to solve an issue where AI were being spawned at the map center due to a lack of clear space to spawn.
+- [MODIFIED] Added author credits to several scripts were credit was previously missing.
+
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
 - Copy the entire DZAI folder into the extracted mission folder.
