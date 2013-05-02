@@ -1144,7 +1144,6 @@ class _trigger_124
 		B="500";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
-		REPEATING="true";
 		TIMEOUT_MIN="30";
 		TIMEOUT_MID="60";
 		TIMEOUT_MAX="90";
@@ -1260,7 +1259,7 @@ class _marker_0
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[3044.0842, 8027.1206, 9.5367432e-007]";
+		POSITION="[3041.4229, 8104.5732, 9.5367432e-007]";
 		NAME="Prison1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1271,7 +1270,7 @@ class _marker_1
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[3021.0703, 8020.5352, 5.7220459e-006]";
+		POSITION="[3012.8645, 8033.4976, 5.7220459e-006]";
 		NAME="Prison2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1282,7 +1281,7 @@ class _marker_2
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[3081.5078, 8075.5679]";
+		POSITION="[3035.1382, 8016.5195]";
 		NAME="Prison3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1293,7 +1292,7 @@ class _marker_3
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[3033.9185, 8100.9946, -1.9073486e-005]";
+		POSITION="[3093.5872, 8095.0024, -1.9073486e-005]";
 		NAME="Prison4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1304,7 +1303,7 @@ class _marker_4
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[3038.1118, 8078.5923, 3.8146973e-006]";
+		POSITION="[3036.9922, 8078.4106, 3.8146973e-006]";
 		NAME="Prison5";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1335,7 +1334,7 @@ class _marker_11
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6907.9849, 6394.2915, -1.9073486e-006]";
+		POSITION="[6906.1479, 6376.4399, -1.9073486e-006]";
 		NAME="Palace1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1346,7 +1345,7 @@ class _marker_12
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6921.8325, 6371.1201, -3.0517578e-005]";
+		POSITION="[6906.2803, 6452.3936, -3.0517578e-005]";
 		NAME="Palace2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1357,7 +1356,7 @@ class _marker_13
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6825.7979, 6424.4912, -2.2888184e-005]";
+		POSITION="[6848.0981, 6436.7783, -2.2888184e-005]";
 		NAME="Palace3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1368,7 +1367,7 @@ class _marker_14
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6935.8389, 6443.4063, -4.7683716e-006]";
+		POSITION="[6848.4053, 6453.4707, -4.7683716e-006]";
 		NAME="Palace4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1379,7 +1378,7 @@ class _marker_15
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6958.4497, 6428.2026, -1.9073486e-006]";
+		POSITION="[6905.2676, 6436.5586, -1.9073486e-006]";
 		NAME="Palace5";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1390,7 +1389,7 @@ class _marker_22
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4180.4858, 1712.2965, 1.9073486e-006]";
+		POSITION="[4255.5874, 1715.239, 1.9073486e-006]";
 		NAME="Sargento1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1401,7 +1400,7 @@ class _marker_23
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4104.3042, 1736.6934]";
+		POSITION="[4248.5918, 1450.2981]";
 		NAME="Sargento2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1412,7 +1411,7 @@ class _marker_24
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4163.2661, 1580.5493, 3.8146973e-006]";
+		POSITION="[4186.4541, 1479.3805, 3.8146973e-006]";
 		NAME="Sargento3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1423,7 +1422,7 @@ class _marker_25
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4177.5708, 1650.7692, -1.335144e-005]";
+		POSITION="[4255.2549, 1594.6809, -1.335144e-005]";
 		NAME="Sargento4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1434,7 +1433,7 @@ class _marker_26
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4132.5835, 1693.3188, 1.9073486e-005]";
+		POSITION="[4162.0854, 1648.361, 1.9073486e-005]";
 		NAME="Sargento5";
 		TYPE="Empty";
 		FILL="Solid";
