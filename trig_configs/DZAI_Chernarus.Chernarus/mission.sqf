@@ -75,7 +75,7 @@ _this setTriggerText "Elektro1";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,100,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_16 = _this;
 
-_this = createTrigger ["EmptyDetector", [10554.065, 2359.9666, 9.6632004]];
+_this = createTrigger ["EmptyDetector", [10580.122, 2350.5413, 9.6632004]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
@@ -531,27 +531,27 @@ _this setTriggerText "Pass Sosnovy";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_154 = _this;
 
-_this = createMarker ["Elektro1", [10342.12, 2246.8992, 0.00033473969]];
+_this = createMarker ["Elektro1", [10473.108, 2370.1606, 0.00033473969]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_1 = _this;
 
-_this = createMarker ["Elektro2", [10447.819, 2237.8718, 6.3896179e-005]];
+_this = createMarker ["Elektro2", [10573.546, 2303.2808, 6.3896179e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_3 = _this;
 
-_this = createMarker ["Elektro3", [10408.988, 2393.2014, 9.5367432e-007]];
+_this = createMarker ["Elektro3", [10443.581, 2247.1091, 9.5367432e-007]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_5 = _this;
 
-_this = createMarker ["Elektro4", [10534.154, 2294.4058, 1.335144e-005]];
+_this = createMarker ["Elektro4", [10308.546, 2251.9531, 1.335144e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_6 = _this;
 
-_this = createMarker ["Elektro5", [10468.504, 2365.906, 2.8610229e-006]];
+_this = createMarker ["Elektro5", [10327.987, 2273.0586, 2.8610229e-006]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_7 = _this;
@@ -564,27 +564,27 @@ _this setTriggerText "Elektro (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,100,['Elektro1','Elektro2','Elektro3','Elektro4','Elektro5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_156 = _this;
 
-_this = createMarker ["Cherno1", [6778.8955, 2762.5176, 3.3378601e-006]];
+_this = createMarker ["Cherno1", [6615.7598, 2630.5085, 3.3378601e-006]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_15 = _this;
 
-_this = createMarker ["Cherno2", [6553.8018, 2418.6995, 2.2411346e-005]];
+_this = createMarker ["Cherno2", [6716.1152, 2679.6223, 2.2411346e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_16 = _this;
 
-_this = createMarker ["Cherno3", [6520.7842, 2549.2322, 2.3841858e-005]];
+_this = createMarker ["Cherno3", [6621.665, 2535.2522, 2.3841858e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_17 = _this;
 
-_this = createMarker ["Cherno4", [6829.6245, 2690.5095, 4.8160553e-005]];
+_this = createMarker ["Cherno4", [6734.6431, 2635.6458, 4.8160553e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_18 = _this;
 
-_this = createMarker ["Cherno5", [6879.1484, 2531.7637, 1.5258789e-005]];
+_this = createMarker ["Cherno5", [6582.647, 2488.5442, 1.5258789e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_19 = _this;
@@ -680,22 +680,22 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_57 = _this;
 
-_this = createMarker ["Balota1", [4683.9238, 2514.052, 4.7683716e-006]];
+_this = createMarker ["Balota1", [4704.0776, 2541.5471, 4.7683716e-006]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_64 = _this;
 
-_this = createMarker ["Balota2", [4717.1489, 2580.3352, 1.7166138e-005]];
+_this = createMarker ["Balota2", [4728.9268, 2505.4431, 1.7166138e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_65 = _this;
 
-_this = createMarker ["Balota3", [4664.2339, 2579.7776, -9.5367432e-007]];
+_this = createMarker ["Balota3", [4684.6494, 2504.3618, -9.5367432e-007]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_66 = _this;
 
-_this = createMarker ["Balota4", [4791.8979, 2528.9302, -1.9073486e-006]];
+_this = createMarker ["Balota4", [4766.772, 2508.2437, -1.9073486e-006]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_67 = _this;
@@ -713,7 +713,7 @@ _this setTriggerText "Balota Tents (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,['BalotaT1','BalotaT2','BalotaT3','BalotaT4','BalotaT5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_167 = _this;
 
-_this = createMarker ["BalotaT1", [4988.9287, 2250.6604, -7.6293945e-006]];
+_this = createMarker ["BalotaT1", [4855.1558, 2279.4783, -7.6293945e-006]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_69 = _this;
@@ -746,27 +746,27 @@ _this setTriggerText "NWAF4 (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,100,thisTrigger,['NWAF4_1','NWAF4_2','NWAF4_3','NWAF4_4','NWAF4_5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_171 = _this;
 
-_this = createMarker ["NWAF4_1", [4463.8276, 10908.011, -6.1035156e-005]];
+_this = createMarker ["NWAF4_1", [4509.9038, 10818.242, -6.1035156e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_74 = _this;
 
-_this = createMarker ["NWAF4_2", [4463.7378, 10913.453, 0]];
+_this = createMarker ["NWAF4_2", [4555.0425, 10762.921]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_75 = _this;
 
-_this = createMarker ["NWAF4_3", [4469.2969, 10911.204, 6.1035156e-005]];
+_this = createMarker ["NWAF4_3", [4042.3215, 10821.761, 6.1035156e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_76 = _this;
 
-_this = createMarker ["NWAF4_4", [4466.8984, 10916.493, 0]];
+_this = createMarker ["NWAF4_4", [4440.2842, 10858.174]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_77 = _this;
 
-_this = createMarker ["NWAF4_5", [4474.5596, 10923.615, 3.0517578e-005]];
+_this = createMarker ["NWAF4_5", [4331.481, 10963.648, 3.0517578e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_78 = _this;

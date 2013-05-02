@@ -21,7 +21,7 @@ _trigger = _this select 3;				//Trigger that spawned the AI unit.
 
 //if (!triggerActivated _trigger) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: No players present in trigger area. Cancelling respawn script. (respawnBandits_bldgs)";};};			//Exit script if trigger has been reactivated since _waitTime seconds has passed.
 _grpArray = _trigger getVariable "GroupArray";
-if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Unit's group no longer exists. Cancelling unit respawn. (respawnBandits_bldgs)";};};
+if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: No players present in trigger area. Cancelling respawn script. (respawnBandits_bldgs)";};};
 DZAI_numAIUnits = (DZAI_numAIUnits + 1);
 
 _nearbldgs = nearestObjects [_respawnLoc, ["Building"], 300];

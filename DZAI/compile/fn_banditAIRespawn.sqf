@@ -14,8 +14,6 @@ _unitGroup = _victim getVariable "unitGroup";
 _trigger = _victim getVariable "trigger";
 _patrolDist = _victim getVariable "patrolDist";
 
-//diag_log format ["DEBUG: Group is %1 (fn_banditAIRespawn 1)",_unitGroup];
-
 if (count (units _unitGroup) < 2) then {
 	_dummy = _unitGroup createUnit ["Survivor2_DZ",[0,0,0],[],0,"FORM"];
 	[_dummy] joinSilent _unitGroup;
@@ -32,8 +30,6 @@ _sleepTime = (DZAI_respawnTime1 + random(DZAI_respawnTime2));
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI killed, respawning in %1 seconds. Respawn Type %2 (fn_banditAIRespawn).",_sleepTime,_respawnType];};
 sleep _sleepTime;
 
-//diag_log format ["DEBUG: Group is %1 (fn_banditAIRespawn 2)",_unitGroup];
-
 switch (_respawnType) do {
 	case 1: {
 		0 = [_unitGroup,_respawnLoc,_patrolDist,_trigger] call fnc_respawnBandits_random;	//Respawn AI at 'center' marker
@@ -48,4 +44,4 @@ switch (_respawnType) do {
 
 sleep 10;
 deleteVehicle _victim;
-deleteVehicle _dummy; //diag_log "DEBUG: Dummy unit deleted!";
+deleteVehicle _dummy;

@@ -6,8 +6,6 @@
 	_unit = _this select 0;
 	_weapongrade = _this select 1;
 	
-	//_nmags = (floor (random DZAI_maxRifleMags)) + 1;						// Number of mags to generate for selected weapon.
-    
 	switch (_weapongrade) do {
 	  case 0: {		//Farm / Residential / Supermarket
 		_rifles = DZAI_RiflesDefault0;
@@ -30,10 +28,5 @@
 	_rifle = _rifles select _rnd;
 	_magazine = getArray (configFile >> "CfgWeapons" >> _rifle >> "magazines") select 0;
 	_unit addMagazine _magazine;
-	/*for [{_i=1},{_i<=_nmags},{_i=_i+1}] do {
-			_unit addMagazine _magazine;
-		};
-	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Rifle: %1 with %2 magazines for AI.",_rifle,_nmags];};*/
-	
 	_unit addWeapon _rifle;
 	_unit selectweapon _rifle;
