@@ -36,14 +36,12 @@ _buildingPositions = [_nearbldgs] call fnc_getBuildingPositions;		//Find all usa
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawning %1 new AI groups of %2 units each (spawnBandits_bldgs).",_numGroups,_totalAI];};
 for "_j" from 1 to _numGroups do {
-	private ["_unitGroup"];
+	private ["_unitGroup","_p","_pos"];
 	_unitGroup = createGroup resistance;						//All units spawned from the same trigger will be part of the same group.
+	_p = _buildingPositions call BIS_fnc_selectRandom;		//Each unit will be spawned at/near a random building position.
+	_pos = [_p,2,_posVariance,5,0,2000,0] call BIS_fnc_findSafePos;
 	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %1 new AI spawns triggered (spawnBandits_bldgs).",_totalAI];};
 	for "_i" from 1 to _totalAI do {
-		private ["_p","_pos"];
-		_p = _buildingPositions call BIS_fnc_selectRandom;		//Each unit will be spawned at/near a random building position.
-		_pos = [_p,2,_posVariance,5,0,2000,0] call BIS_fnc_findSafePos;
-		//_pos = [_p,_posVariance,[0,360],true] call SHK_pos;
 		_unit = [_unitGroup,_pos,_patrolDist,_trigger,_triggerPos,2] call fnc_createAI;	//Create and equip the unit
 		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
 	};
