@@ -21,10 +21,8 @@ This new package is MP-compatible and works out of the box with any supported Da
 May 1, 2013 - 0.05 Update:
 - Note: As 0.05 is a huge update for DZAI, there may be bugs that have not been found or fixed. Feel free to open an Issue on GitHub or message me on the OpenDayZ forums to report issues (username: Buttface)
 - Note: Due to the large number of changes that have happened from 0.04 to 0.05, it is not recommended to reuse any 0.04 files in 0.05. Delete your old DZAI folder and replace with the 0.05 version.
-- Note: A few scripts have been adapted from Sarge AI. Credit has been given in the comments section of relevant script files.
+- Note: A few scripts have been adapted from Sarge AI and other sources. Credit has been given in the comments section of relevant script files.
 - Reminder: Due to the large size of the config folder, you may delete all config files that are not related to the map you will be playing on. However, you will need to comment out the switch-case block in dayz_ai_variables.sqf and add in #include "configs\(mapname)_config.sqf". An example is provided in the variables file.
-- Unresolved issue: On certain maps (ie: Namalsk), randomly-spawned units sometimes fail to spawn ingame.
-- Unresolved issue: Despawn script sometimes seems to delete units/groups spawned by other unrelated triggers. Further testing is needed.
 - [NEW] Bandit AI now works together in organized groups instead of being hostile to each other. After respawning, individual AI units will regroup with their team and continue patrolling.
 - [NEW] AI units will now respawn into the same group. Previously, a new group was created for every AI unit spawned, which quickly lead to the 144 group/side limit being reached.
 - [NEW] AI spawn points can now be added using markers using the function fnc_spawnBandits_markers. Useful for placing precise spawn locations or spawning AI in locations where there are too few or no buildings to use as spawn points.

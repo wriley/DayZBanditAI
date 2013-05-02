@@ -19,10 +19,10 @@ DZAI_modName = "default";									//If using a non-standard version of a DayZ mo
 DZAI_weaponNoise = 0.00;									//AI weapon noise for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
 DZAI_maxAIUnits = 65535;									//Limit of total AI spawned by DZAI (0: Disables AI spawning completely)
 DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
+DZAI_spawnRandom = 0;										//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: 0)
+DZAI_spawnRandomDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
 DZAI_randMinAI = 3;											//Minimum number of randomly-spawned AI to create.
 DZAI_randAddAI = 2;											//Maximum number of bonus randomly-spawned AI to create.
-DZAI_spawnRandom = 0;										//Number of randomly-placed AI to spawn on server start. These AI are randomly placed on the map in the same way as Heli Crashes. (Default: 0)
-DZAI_spawnRandomDelay = 60;									//Time to wait between each AI spawn at server start (seconds). (Default: 60)
 DZAI_respawnTime1 = 180;									//Minimum wait time for AI respawn timer (seconds). (Default: 180)
 DZAI_respawnTime2 = 120;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 120)
 DZAI_dmgFactors1 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for bullet-type damage done to different body parts: Structural, Head, Body, Hands, Legs. Example: to make AI take 50% reduced damage to a body part, set the appropriate value to 0.50.
