@@ -12,13 +12,15 @@ DZAI_numAIUnits = 0;										//Counter variable used to keep track of currently
 
 //DZAI Settings
 DZAI_debugLevel = 1;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 1)
-DZAI_debugMarkers = 0;										//Enable or disable debug markers for AI patrol. (Default: 0)
+DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI position, locate waypoints, locate randomly-placed triggers. (Default: 0)
 DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017). 
 
 //AI Variables						
 DZAI_weaponNoise = 0.00;									//AI weapon noise for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
 DZAI_maxAIUnits = 65535;									//Limit of total AI spawned by DZAI (0: Disables AI spawning completely)
 DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
+DZAI_randMinAI = 3;											//Minimum number of randomly-spawned AI to create.
+DZAI_randAddAI = 2;											//Maximum number of bonus randomly-spawned AI to create.
 DZAI_spawnRandom = 0;										//Number of randomly-placed AI to spawn on server start. These AI are randomly placed on the map in the same way as Heli Crashes. (Default: 0)
 DZAI_spawnRandomDelay = 60;									//Time to wait between each AI spawn at server start (seconds). (Default: 60)
 DZAI_respawnTime1 = 180;									//Minimum wait time for AI respawn timer (seconds). (Default: 180)
@@ -66,8 +68,12 @@ DZAI_betterBackPack = 0.90;									//Chance of assigning a better backpack than
 //Do not delete this file, as it is required for DZAI to work.
 #include "configs\default_config.sqf"
 
-//Load mod-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
-//To reduce the size of your mission file, you may delete the configuration files for maps that you are not using.
+/*Load mod-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
+To reduce the size of your mission file, you may delete the configuration files for maps that you are not using. You will also need to comment out the switch-case block below.
+Underneath the commented switch-case block, include a line like this: #include "configs\(mapname)_config.sqf", where 'mapname' is the name of the map you will be using.
+
+*/
+
 _worldname=toLower format ["%1",worldName];
 
 switch (_worldname) do {

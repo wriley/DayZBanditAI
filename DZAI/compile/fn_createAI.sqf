@@ -25,6 +25,7 @@ _respawnType = _this select 5;
 _type = DZAI_BanditTypesDefault call BIS_fnc_selectRandom;							// Select skin of AI unit
 _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 [_unit] joinSilent _unitGroup;														// Add AI unit to group
+//diag_log format ["DEBUG: Group is %1 (fn_createAI)",_unitGroup];
 
 _unit setVariable["unitGroup",_unitGroup,false];									// Set the unit's group. The unit will respawn into the same group.
 _unit setVariable["respawnLoc",_respawnLoc,false];									// Set position of the trigger/marker the AI was spawned from
@@ -33,10 +34,10 @@ _unit setVariable["respawnType",_respawnType,false];								// Set the method us
 _unit setVariable["patrolDist",_patrolDist,false];									// Record the unit's patrol behavior (distance between waypoints)
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 
-if (DZAI_debugLevel < 2) then {
-	_unit setVehicleInit "0 = [this] execVM 'DZAI\scripts\aiBrain.sqf';";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
+if (DZAI_debugMarkers < 1) then {
+	_unit setVehicleInit "[this] execVM 'DZAI\scripts\aiBrain.sqf';";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
 	} else {
-	_unit setVehicleInit "0 = [this] execVM 'DZAI\scripts\aiBrain_debug.sqf';";		// Same script as aiBrain, but displays AI unit's current position. (delay = DZAI_refreshRate)
+	_unit setVehicleInit "[this] execVM 'DZAI\scripts\aiBrain_debug.sqf';";		// Same script as aiBrain, but displays AI unit's current position. (delay = DZAI_refreshRate)
 };
 processInitCommands;
 if (DZAI_zombieEnemy && DZAI_zombiesEnabled && (DZAI_weaponNoise!=0)) then {

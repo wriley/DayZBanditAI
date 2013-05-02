@@ -68,6 +68,15 @@ May 1, 2013 - 0.05 Update:
 - [MODIFIED] AI units may now spawn with NVGoggles instead of having them added as loot after death. 
 - [MODIFIED] NVGoggles and Binoculars are now classified as Gadgets, have their own loot table with configurable chances.
 
+May 1, 2003 - 0.05 Patch 1 Update:
+
+- [NEW] Debug markers for AI patrol waypoints, AI positions, and randomly placed triggers (more info below) can be enabled/disabled by modifying DZAI_debugMarkers in dayz_ai_variables.sqf
+- [NEW] Reworked random AI spawn system. Instead of spawning individual AI units at server start, triggers are randomly placed around the map through spawnTriggers_random. These triggers have a radius of 400m and spawn a group of 3-5 AI units per spawn. You will have to manually set the number of triggers to create.
+- [FIXED] Fixed a bug that affected the AI respawn scripts when the last unit of a group is killed. Now, a temporary dummy unit is created when the last unit of a group is killed to prevent the group from becoming empty and deleted.
+- [MODIFIED] Reworked spawnBandits_random/respawnBandits_random scripts to generate random patrol waypoints around a central trigger position instead of using markers. spawnBandits_random may be called directly, or called indirectly through spawnTriggers_random
+- [MODIFIED] More AI skill parameter tweaks. In general, minimum skill parameters have been decreased slightly while maximum skill parameters have been increased. (Wider range of AI skill levels)
+- [REMOVED] Satchel Charges have been removed from AI loot tables.
+
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
 - Copy the entire DZAI folder into the extracted mission folder.

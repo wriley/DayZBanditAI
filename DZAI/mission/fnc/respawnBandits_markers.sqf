@@ -2,7 +2,7 @@
 	respawnBandits_markers version 0.05
 	
 	Usage: [_unitGroup,_markerArray,_patrolDist,_trigger] call fn_respawnBandits_markers;
-	Description: Called internally by fn_banditAIRespawn.sqf. Calls fn_createAI to respawn a unit near a randomly selected marker from a stored array of reference markers.
+	Description: Called internally by fn_banditAIRespawn.sqf. Calls fn_createAI to respawn a unit at a randomly selected marker.
 */
 private ["_markerArray","_marker","_pos","_patrolDist","_unitGroup","_unit","_trigger","_grpArray","_respawnLoc","_markerPos","_triggerPos"];
 if (!isServer) exitWith {};
@@ -15,7 +15,9 @@ _markerArray = _this select 1;
 _patrolDist = _this select 2;
 _trigger = _this select 3;							//Trigger that spawned the AI unit.
 
-if (!triggerActivated _trigger) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: No players present in trigger area. Cancelling respawn script. (respawnBandits_markers)";};};			//Exit script if trigger has been reactivated since _waitTime seconds has passed.
+//if (!triggerActivated _trigger) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: No players present in trigger area. Cancelling respawn script. (respawnBandits_markers)";};};			//Exit script if trigger has been reactivated since _waitTime seconds has passed.
+_grpArray = _trigger getVariable "GroupArray";
+if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Unit's group no longer exists. Cancelling unit respawn. (respawnBandits_markers)";};};
 DZAI_numAIUnits = (DZAI_numAIUnits + 1);
 
 _marker = _markerArray call BIS_fnc_selectRandom;

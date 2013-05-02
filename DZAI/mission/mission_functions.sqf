@@ -13,6 +13,7 @@
 	fnc_respawnBandits_bldgs = compile preprocessFileLineNumbers "DZAI\mission\fnc\respawnBandits_bldgs.sqf";
 	fnc_spawnBandits_markers = compile preprocessFileLineNumbers "DZAI\mission\fnc\spawnBandits_markers.sqf";
 	fnc_respawnBandits_markers = compile preprocessFileLineNumbers "DZAI\mission\fnc\respawnBandits_markers.sqf";
+	fnc_spawnTriggers_random = compile preprocessFileLineNumbers "DZAI\mission\fnc\spawnTriggers_random.sqf";
 	fnc_despawnBandits = compile preprocessFileLineNumbers "DZAI\mission\fnc\despawnBandits.sqf";
 	
 	initialized = true;
