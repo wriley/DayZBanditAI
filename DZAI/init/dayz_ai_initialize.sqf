@@ -14,5 +14,5 @@ call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_functions.sqf";
 call compile preprocessFileLineNumbers "DZAI\mission\mission_functions.sqf";
 waituntil {!isnil "DZAI_initialized"};
 //0 = [DZAI_spawnRandom,'center',450,4000] spawn fnc_spawnBandits_random;
-0 = [DZAI_spawnRandom,'center',400,4000] spawn fnc_spawnTriggers_random;
+0 = [DZAI_spawnRandom,'center',300,4000] spawn fnc_spawnTriggers_random;
 if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Loading Complete."];};

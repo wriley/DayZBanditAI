@@ -36,7 +36,7 @@ for "_i" from 1 to _numTriggers do {
 		_marker setMarkerColor "ColorYellow";
 	};
 	_trigger = createTrigger ["EmptyDetector",_trigPos];
-	_trigger setTriggerArea [400, 400, 0, false];
+	_trigger setTriggerArea [500, 500, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
 	_trigger setTriggerTimeout [10, 15, 20, true];
 	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigOnAct, "[thisTrigger] spawn fnc_despawnBandits;"];
