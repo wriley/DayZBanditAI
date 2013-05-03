@@ -242,17 +242,17 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_81 = _this;
 
-_this = createMarker ["CastleZub2", [6548.9277, 5584.604, 6.1035156e-005]];
+_this = createMarker ["CastleZub2", [6477.1846, 5558.3892, 6.1035156e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_82 = _this;
 
-_this = createMarker ["DevilsCastle2", [6900.5376, 11368.025, -9.1552734e-005]];
+_this = createMarker ["DevilsCastle2", [6866.8057, 11549.996, -9.1552734e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_84 = _this;
 
-_this = createMarker ["CastleRog2", [11241.465, 4298.0698, 6.1035156e-005]];
+_this = createMarker ["CastleRog2", [11278.462, 4223.6455, 6.1035156e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_85 = _this;
