@@ -66,7 +66,7 @@ May 1, 2013 - 0.05 Update:
 - [MODIFIED] AI units may now spawn with NVGoggles instead of having them added as loot after death. 
 - [MODIFIED] NVGoggles and Binoculars are now classified as Gadgets, have their own loot table with configurable chances.
 
-May 1, 2003 - 0.05 Patch 1 Update:
+May 1, 2013 - 0.05 Patch 1 Update:
 
 - [NEW] Debug markers for AI patrol waypoints, AI positions, and randomly placed triggers (more info below) can be enabled/disabled by modifying DZAI_debugMarkers in dayz_ai_variables.sqf
 - [NEW] Reworked random AI spawn system. Instead of spawning individual AI units at server start, triggers are randomly placed around the map through spawnTriggers_random. These triggers have a radius of 400m and spawn a group of 3-5 AI units per spawn. You will have to manually set the number of triggers to create.
@@ -75,7 +75,7 @@ May 1, 2003 - 0.05 Patch 1 Update:
 - [MODIFIED] More AI skill parameter tweaks. In general, minimum skill parameters have been decreased slightly while maximum skill parameters have been increased. (Wider range of AI skill levels)
 - [REMOVED] Satchel Charges have been removed from AI loot tables.
 
-May 2, 2003 - 0.05 Patch 2 Update:
+May 2, 2013 - 0.05 Patch 2 Update:
 
 - [FIXED] Panthera, Lingor: Fixed a couple of typos in trigger activation fields that would have prevented AI from properly spawning.
 - [FIXED] Namalsk: Trigger for Object A2 AI spawns was calling the wrong AI spawn script.
@@ -86,6 +86,11 @@ May 2, 2003 - 0.05 Patch 2 Update:
 - [MODIFIED] Increased minimum and maximum distance from building positions for building-spawned AI in an attempt to solve an issue where AI were being spawned at the map center due to a lack of clear space to spawn.
 - [MODIFIED] Added author credits to several scripts were credit was previously missing.
 - [MODIFIED] Celle: Shifted Celle city AI trigger to include the east firestation. Added a new AI trigger to the buildings west of Celle city.
+
+May 3, 2013 - 0.05 Patch 3 Update:
+
+- [MODIFIED] Weapongrade value is now also used to determine type of backpack added to AI (For example, Coyote backpack should be rarer than a Patrol Backpack)
+- [MODIFIED] Increased chance of generating Military-grade weapon from 50% to 55, decreased chance of generating MilitarySpecial-grade weapon from 15% to 12%, decreased chance of generating HeliCrash-grade weapon from 5% to 3%.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)

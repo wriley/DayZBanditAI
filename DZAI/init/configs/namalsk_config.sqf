@@ -22,6 +22,8 @@ if ((dayzNam_buildingLoot == "CfgBuildingLootNamalsk") || (dayzNam_buildingLoot 
 	DZAI_RiflesDefault2 = DZAI_RiflesDefault2 - ["M24","SVD_CAMO","M107_DZ","DMR","M16A4_ACG"] + ["Saiga12K_DZN","AKS_74_UN_kobra_DZN","AK_107_GL_pso_DZN","G36_C_SD_eotech_DZN","PK_DZN","RPK_74_DZN","MG36_DZN"];
 	DZAI_RiflesDefault3 = DZAI_RiflesDefault3 - ["G36K","G36a","FN_FAL_ANPVS4","M107_DZ","BAF_AS50_scoped","DMR","BAF_L85A2_RIS_SUSAT"] + ["PK_DZN", "Pecheneg_DZN", "AKS_GOLD_DZN"];
 };
+DZAI_Backpacks1 = DZAI_Backpacks1 + ["BAF_AssaultPack_DZN"];
+DZAI_Backpacks2 = DZAI_Backpacks2 + ["BAF_AssaultPack_DZN"];
 DZAI_DefaultBackpacks = DZAI_DefaultBackpacks + ["BAF_AssaultPack_DZN"];	
 DZAI_toolChances set [9,0.005];
 DZAI_toolChances set [10,0.005];

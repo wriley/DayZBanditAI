@@ -53,7 +53,7 @@ _unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];					// "People
 
 _weapongrade = [DZAI_weaponGrades,DZAI_gradeChances] call fnc_selectRandomWeighted;	// Select quality of weapon to add to AI.
 [_unit, _weapongrade] call fnc_unitSelectRifle;										// Add rifle
-[_unit] call fnc_unitBackpack;														// Add backpack and chance of binoculars
+[_unit, _weapongrade] call fnc_unitBackpack;														// Add backpack and chance of binoculars
 [_unit] call fnc_setBehaviour;														// Set AI behavior
 [_unit] call fnc_setSkills;															// Set AI skill
 

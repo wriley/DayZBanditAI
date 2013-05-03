@@ -42,6 +42,6 @@ switch (_respawnType) do {
 	};
 };
 
+deleteVehicle _dummy;
 sleep 10;
 deleteVehicle _victim;
-deleteVehicle _dummy;
