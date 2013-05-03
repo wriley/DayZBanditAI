@@ -781,12 +781,12 @@ _this setTriggerText "NWAF4 (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,100,thisTrigger,['NWAF4_1','NWAF4_2','NWAF4_3','NWAF4_4','NWAF4_5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_171 = _this;
 
-_this = createTrigger ["EmptyDetector", [12269.287, 9610.7227, 9.5367432e-007]];
+_this = createTrigger ["EmptyDetector", [12327.898, 9663.9824, 9.5367432e-007]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Berezino4";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,150,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_177 = _this;
 
 //triggers end
