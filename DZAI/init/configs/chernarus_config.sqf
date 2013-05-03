@@ -226,7 +226,37 @@ _this = createMarker ["NWAF4_5", [4474.5596, 10923.615, 3.0517578e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_78 = _this;
-//End of markers
+
+_this = createMarker ["CastleRog", [11280.589, 4297.4292, -0.00012207031]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_79 = _this;
+
+_this = createMarker ["DevilsCastle", [6886.5234, 11494.024, -3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_80 = _this;
+
+_this = createMarker ["CastleZub", [6516.1924, 5603.2427, -3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_81 = _this;
+
+_this = createMarker ["CastleZub2", [6548.9277, 5584.604, 6.1035156e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_82 = _this;
+
+_this = createMarker ["DevilsCastle2", [6900.5376, 11368.025, -9.1552734e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_84 = _this;
+
+_this = createMarker ["CastleRog2", [11241.465, 4298.0698, 6.1035156e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_85 = _this;
+//End markers
 
 //Begin triggers
 _this = createTrigger ["EmptyDetector", [1859.0376, 2232.7817, 0]];
@@ -677,12 +707,12 @@ _this setTriggerText "Skalisty Island (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,0,100,thisTrigger,['Skalisty1','Skalisty2','Skalisty3','Skalisty4','Skalisty5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_132 = _this;
 
-_this = createTrigger ["EmptyDetector", [11254.965, 4291.9492, 0]];
+_this = createTrigger ["EmptyDetector", [11250.809, 4274.082]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Rog";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,thisTrigger,['CastleRog','CastleRog2']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_134 = _this;
 
 _this = createTrigger ["EmptyDetector", [13256.356, 5432.5425, 4.7683716e-006]];
@@ -693,20 +723,20 @@ _this setTriggerText "Three Valleys";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_136 = _this;
 
-_this = createTrigger ["EmptyDetector", [6899.4214, 11429.627, 0]];
+_this = createTrigger ["EmptyDetector", [6894.6455, 11438.785]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Devil's Castle";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,thisTrigger,['DevilsCastle','DevilsCastle2']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_138 = _this;
 
-_this = createTrigger ["EmptyDetector", [6582.1694, 5563.1553]];
+_this = createTrigger ["EmptyDetector", [6551.4741, 5595.6704]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
-_this setTriggerText "DZAI Trigger";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerText "Zub";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,thisTrigger,['CastleZub','CastleZub2']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_140 = _this;
 
 _this = createTrigger ["EmptyDetector", [11458.502, 7483.2754, 12.369965]];
