@@ -32,7 +32,7 @@ DZAI_zDetectRange = 200;									//Maximum distance for AI to detect zombies. (D
 DZAI_allowFleeing = false;									//Enable/disable AI fleeing (Default: false)
 DZAI_minFleeChance = 0.05;									//Minimum chance that AI will flee. (Default: 0.05)
 DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee. (Default: 0.05)
-DZAI_despawnWait = 120;										//Time to allow AI to remain before being removed when all players have left a trigger area.
+DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
 
 //Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI)
 resistance setFriend [east, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
@@ -73,7 +73,6 @@ To reduce the size of your mission file, you may delete the configuration files 
 Underneath the commented switch-case block, include a line like this: #include "configs\(mapname)_config.sqf", where 'mapname' is the name of the map you will be using.
 
 */
-
 _worldname=toLower format ["%1",worldName];
 
 switch (_worldname) do {

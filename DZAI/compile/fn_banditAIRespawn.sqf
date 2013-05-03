@@ -5,7 +5,7 @@
 	Description: Called internally by an AI's Killed eventhandler. Retrieves a dead AI unit's respawn type, reference location for spawning, their previous group, and uses this information to respawn the unit after a delay. After the delay, the AI unit corpse is deleted.
 */
 
-private ["_victim","_sleepTime","_respawnType","_respawnLoc","_unitGroup","_patrolDist","_trigger","_dummy"];
+private ["_victim","_sleepTime","_respawnType","_respawnLoc","_unitGroup","_patrolDist","_trigger","_dummy","_newLeader","_unitsAlive","_dummyExists"];
 _victim = _this select 0;
 
 _respawnType = _victim getVariable "respawnType";
@@ -14,7 +14,11 @@ _unitGroup = _victim getVariable "unitGroup";
 _trigger = _victim getVariable "trigger";
 _patrolDist = _victim getVariable "patrolDist";
 
-if (count (units _unitGroup) < 2) then {
+_dummyExists = 0;
+_unitsAlive = {alive _x} count (units _unitGroup);
+//diag_log format ["%1 units alive in group.",_unitsAlive];
+
+if (_unitsAlive < 1) then {
 	_dummy = _unitGroup createUnit ["Survivor2_DZ",[0,0,0],[],0,"FORM"];
 	[_dummy] joinSilent _unitGroup;
 	_dummy setVehicleInit "this hideObject true;this allowDamage false;"; processInitCommands;
@@ -23,6 +27,7 @@ if (count (units _unitGroup) < 2) then {
 	_dummy disableAI "MOVE";
     _dummy disableAI "TARGET";
     _dummy disableAI "AUTOTARGET";
+	_dummyExists = 1;
 	//diag_log "DEBUG: Dummy unit created!";
 };
 
@@ -42,6 +47,10 @@ switch (_respawnType) do {
 	};
 };
 
-deleteVehicle _dummy;
+if (_dummyExists == 1) then {
+	[_dummy] joinSilent grpNull;
+	deleteVehicle _dummy;
+	//diag_log "DEBUG: Dummy Deleted!";
+};
 sleep 10;
 deleteVehicle _victim;

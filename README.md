@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.05)
+DZAI - DayZ AI Addon (Current version: 0.05 Patch 4)
 ============
 
 
@@ -92,6 +92,14 @@ May 3, 2013 - 0.05 Patch 3 Update:
 - [MODIFIED] Weapongrade value is now also used to determine type of backpack added to AI (For example, Coyote backpack should be rarer than a Patrol Backpack)
 - [MODIFIED] Increased chance of generating Military-grade weapon from 50% to 55, decreased chance of generating MilitarySpecial-grade weapon from 15% to 12%, decreased chance of generating HeliCrash-grade weapon from 5% to 3%.
 - [MODIFIED] Chernarus: Updated several AI spawn triggers for Berezino. Spawn areas now encompass the city center and military tents.
+
+May 3, 2013 - 0.05 Patch 4 Update:
+
+- [NEW] Added a conditional check to ensure that groups always have patrol waypoints.
+- [FIXED] Temporary dummy unit is now created when there are no units alive in a group. Previous script was only called when the number of total units decreased below 2.
+- [FIXED] Added loot tables for AI backpacks that were supposed to be added in Patch 3.
+- [MODIFIED] The last respawned unit is now set as group leader. Should fix the issue where group members would stand inactive until the dummy unit is deleted.
+- [MODIFIED] Added conditional checks to delete a dummy unit only if one exists.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)

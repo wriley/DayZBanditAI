@@ -19,7 +19,6 @@ _respawnLoc = _this select 1;			//Position to spawn AI unit. Also used as the re
 _patrolDist = _this select 2;
 _trigger = _this select 3;				//Trigger that spawned the AI unit.
 
-//if (!triggerActivated _trigger) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: No players present in trigger area. Cancelling respawn script. (respawnBandits_bldgs)";};};			//Exit script if trigger has been reactivated since _waitTime seconds has passed.
 _grpArray = _trigger getVariable "GroupArray";
 if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: No players present in trigger area. Cancelling respawn script. (respawnBandits_bldgs)";};};
 DZAI_numAIUnits = (DZAI_numAIUnits + 1);
@@ -30,7 +29,8 @@ _buildingPositions = [_nearbldgs] call fnc_getBuildingPositions;
 _p = _buildingPositions call BIS_fnc_selectRandom;
 _pos = [_p, 2, _posVariance, 5, 0, 2000, 0] call BIS_fnc_findSafePos;
 _unit = [_unitGroup,_pos,_patrolDist,_trigger,_respawnLoc,2] call fnc_createAI;
-if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_respawnLoc,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
+_unitGroup selectLeader _unit;
+if ((count (waypoints _unitGroup)) < 2) then {_nul = [_unitGroup,_respawnLoc,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: 1 AI unit respawned (respawnBandits_bldgs)."];};
 
 true

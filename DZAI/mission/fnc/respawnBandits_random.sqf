@@ -22,7 +22,7 @@ DZAI_numAIUnits = (DZAI_numAIUnits + 1);
 _spawnRadius = 50 + random(350);
 _pos = [_respawnLoc,0,_spawnRadius,5,0,2000,0] call BIS_fnc_findSafePos;
 
-_unit = [_unitGroup,_pos,_patrolDist,_trigger,_respawnLoc,1] call fnc_createAI;
-//diag_log format ["DEBUG: %1, %2, %3, %4, %5",_unitGroup,_pos,_patrolDist,_trigger,_respawnLoc];
-if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_respawnLoc,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";};
+_unit = [_unitGroup,_pos,_patrolDist,_trigger,_respawnLoc,1] call fnc_createAI;		
+_unitGroup selectLeader _unit;
+if ((count (waypoints _unitGroup)) < 2) then {_nul = [_unitGroup,_respawnLoc,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";};
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: 1 AI unit respawned at %3(respawnBandits_random).",_pos];};
