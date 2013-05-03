@@ -101,6 +101,7 @@ May 3, 2013 - 0.05 Patch 4 Update:
 - [FIXED] Chernarus: AI spawns for Castle Rog, Devil's Castle, and Castle Zub.
 - [MODIFIED] The last respawned unit is now set as group leader. Should fix the issue where group members would stand inactive until the dummy unit is deleted.
 - [MODIFIED] Added conditional checks to delete a dummy unit only if one exists.
+- [MODIFIED] Increased trigger radius for random AI spawns from 400 to 500m. Decreased random AI spawn patrol distances from 400m to 300m/WP.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
