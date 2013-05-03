@@ -359,7 +359,7 @@ class _trigger_38
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[12032.526, 9090.5469]";
+		POSITION="[11940.036, 9078.8213]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -370,7 +370,7 @@ class _trigger_38
 		INTERRUPTABLE="true";
 		TEXT="Berezino1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -379,7 +379,7 @@ class _trigger_42
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[12531.641, 9581.7217, -2.6702881e-005]";
+		POSITION="[12711.64, 9508.8379, -2.6702881e-005]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -390,7 +390,7 @@ class _trigger_42
 		INTERRUPTABLE="true";
 		TEXT="Berezino2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -399,7 +399,7 @@ class _trigger_46
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[12966.711, 10139.247, 11.137758]";
+		POSITION="[12882.636, 10052.391, 11.137758]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -410,7 +410,7 @@ class _trigger_46
 		INTERRUPTABLE="true";
 		TEXT="Berezeno3";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1852,6 +1852,26 @@ class _marker_78
 		NAME="NWAF4_5";
 		TYPE="Empty";
 		FILL="Solid";
+	};
+};
+class _trigger_177
+{
+	objectType="trigger";
+	class Arguments
+	{
+		POSITION="[12327.898, 9663.9824, 9.5367432e-007]";
+		A="500";
+		B="500";
+		ACTIVATION_BY="ANY";
+		REPEATING="true";
+		TIMEOUT_MIN="30";
+		TIMEOUT_MID="60";
+		TIMEOUT_MAX="90";
+		INTERRUPTABLE="true";
+		TEXT="Berezino4";
+		EXP_COND="{isPlayer _x} count thisList > 0;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
 class _postfix_0

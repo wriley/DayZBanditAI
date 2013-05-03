@@ -590,7 +590,7 @@ class _trigger_73
 		INTERRUPTABLE="true";
 		TEXT="Celle";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,175,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [3,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
