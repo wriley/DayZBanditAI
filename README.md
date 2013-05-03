@@ -98,6 +98,7 @@ May 3, 2013 - 0.05 Patch 4 Update:
 - [NEW] Added a conditional check to ensure that groups always have patrol waypoints.
 - [FIXED] Temporary dummy unit is now created when there are no units alive in a group. Previous script was only called when the number of total units decreased below 2.
 - [FIXED] Added loot tables for AI backpacks that were supposed to be added in Patch 3.
+- [FIXED] Chernarus: AI spawns for Castle Rog, Devil's Castle, and Castle Zub.
 - [MODIFIED] The last respawned unit is now set as group leader. Should fix the issue where group members would stand inactive until the dummy unit is deleted.
 - [MODIFIED] Added conditional checks to delete a dummy unit only if one exists.
 
