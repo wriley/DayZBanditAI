@@ -8,4 +8,3 @@ _audible = getNumber (configFile >> "CfgAmmo" >> _ammo >> "audibleFire");
 _caliber = getNumber (configFile >> "CfgAmmo" >> _ammo >> "caliber");
 _distance = round(_audible * 10 * _caliber * DZAI_weaponNoise);
 _id = [_unit,_distance,true,(getPosATL _unit)] call ai_alertzombies;
-

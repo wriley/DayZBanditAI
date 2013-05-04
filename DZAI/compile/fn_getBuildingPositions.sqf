@@ -1,4 +1,5 @@
 //Returns an array of possible building positions
+//This code has been taken from Random Building Position Script v1.0 by Tophe of Östgöta Ops
 private ["_bldgpos","_i","_j","_nearbldgs"];
 
 _nearbldgs = _this select 0;

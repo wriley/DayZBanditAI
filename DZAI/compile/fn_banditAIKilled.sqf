@@ -9,7 +9,7 @@ if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed. 
 
 if (!isPlayer _killer) exitWith {};
 _weapongrade = [DZAI_weaponGrades,DZAI_gradeChances] call fnc_selectRandomWeighted;
-if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI killed by player. Generating loot with weapongrade %1.",_weapongrade];};
+if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed by player. Generating loot with weapongrade %1 (fn_banditAIKilled).",_weapongrade];};
 [_victim, _weapongrade] call fnc_unitSelectPistol;				// Add sidearm
 [_victim] call fnc_unitConsumables;								// Add food, medical, misc, skin
 [_victim] call fnc_unitTools;									// Add tools and gadget

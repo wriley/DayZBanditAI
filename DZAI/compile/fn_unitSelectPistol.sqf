@@ -1,15 +1,12 @@
-//unitSelectPistol version 0.04
+//unitSelectPistol version 0.05
 /*
 	Usage: [_unit, _weapongrade] call fnc_unitSelectPistol;
 */
-	private ["_unit","_pistol","_pistols","_rnd","_i","_weapongrade","_magazine"];
+	private ["_unit","_pistol","_pistols","_rnd","_i","_weapongrade","_magazine","_nmags"];
 	_unit = _this select 0;
 	_weapongrade = _this select 1;
-	//_weapongrade = call fnc_selectRandomGrade;
 	
-	//sleep 10;
-	
-	_nmags = (floor (random DZAI_maxPistolMags)) + 1;						// Number of mags to generate for selected weapon.
+	_nmags = floor (random (DZAI_maxPistolMags + 1));						// Number of mags to generate for selected weapon, with a minimum of zero.
 	
 	switch (_weapongrade) do {
 	  case 0: {		//Farm / Residential / Supermarket
