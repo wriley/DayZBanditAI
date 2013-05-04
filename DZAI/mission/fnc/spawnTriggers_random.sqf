@@ -38,7 +38,7 @@ for "_i" from 1 to _numTriggers do {
 	_trigger = createTrigger ["EmptyDetector",_trigPos];
 	_trigger setTriggerArea [500, 500, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
-	_trigger setTriggerTimeout [10, 15, 20, true];
+	_trigger setTriggerTimeout [20, 30, 40, true];
 	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigOnAct, "[thisTrigger] spawn fnc_despawnBandits;"];
 	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Trigger %1 of %2 spawned at %3 (spawnTriggers_random).",_i,_numTriggers,_trigPos];};
 };
