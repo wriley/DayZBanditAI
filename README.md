@@ -103,6 +103,11 @@ May 3, 2013 - 0.05 Patch 4 Update:
 - [MODIFIED] Added conditional checks to delete a dummy unit only if one exists.
 - [MODIFIED] Increased trigger radius for random AI spawns from 400 to 500m. Decreased random AI spawn patrol distances from 400m to 350m/WP.
 - [MODIFIED] Changed activation delays for random AI spawn triggers from 10/15/20 seconds to 20/30/40 seconds (min/med/max).
+- [MODIFIED] Chernarus: Repositioned two AI spawn points for Balota Military Tents further away from the road.
+- [MODIFIED] Chernarus: Respositioned all Balota Airfield spawn points for more variability.
+- [MODIFIED] Chernarus: Repositioned western Cherno building AI spawn trigger, so that AI threat is distributed more towards the Firestation and Supermarket than the Apartment area.
+- [MODIFIED] Chernarus: Repositioned eastern Elektro spawn marker so that the enterable house east of the hospital is less of a death trap.
+- [MODIFIED] Chernarus: Decreased number of spawn markers for Skalisty Island from 5 to 3, repositioned the remaining 3 triggers for more variability.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)

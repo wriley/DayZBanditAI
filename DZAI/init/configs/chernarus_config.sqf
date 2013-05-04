@@ -32,7 +32,7 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_1 = _this;
 
-_this = createMarker ["Elektro2", [10573.546, 2303.2808, 6.3896179e-005]];
+_this = createMarker ["Elektro2", [10519.655, 2393.217, 6.3896179e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_3 = _this;
@@ -127,30 +127,20 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_44 = _this;
 
-_this = createMarker ["Skalisty1", [13432.805, 2839.6096, -4.7683716e-007]];
+_this = createMarker ["Skalisty1", [13336.705, 2798.8804, -4.7683716e-007]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_51 = _this;
 
-_this = createMarker ["Skalisty2", [13390.011, 2793.8569, 7.4863434e-005]];
+_this = createMarker ["Skalisty2", [13372.376, 2706.6409, 7.4863434e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_53 = _this;
 
-_this = createMarker ["Skalisty3", [13468.003, 2788.2966, 0.00012779236]];
+_this = createMarker ["Skalisty3", [13701.626, 2938.5356, 0.00012779236]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_54 = _this;
-
-_this = createMarker ["Skalisty4", [13342.991, 2805.5308, -0.00018882751]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_56 = _this;
-
-_this = createMarker ["Skalisty5", [13390.983, 2729.7642, -8.0108643e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_57 = _this;
 
 _this = createMarker ["Balota1", [4683.9238, 2514.052, 4.7683716e-006]];
 _this setMarkerType "Empty";
@@ -187,15 +177,15 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_70 = _this;
 
-_this = createMarker ["BalotaT3", [4932.2764, 2254.6138, -3.8146973e-006]];
+_this = createMarker ["BalotaT3", [4779.2231, 2187.0378, -3.8146973e-006]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
-_marker_71 = _this;
+_marker_70 = _this;
 
-_this = createMarker ["BalotaT4", [5023.1489, 2223.3647, 2.4318695e-005]];
+_this = createMarker ["BalotaT4", [4940.3008, 2058.5845, 2.4318695e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
-_marker_72 = _this;
+_marker_73 = _this;
 
 _this = createMarker ["BalotaT5", [4983.2534, 2123.833, -1.001358e-005]];
 _this setMarkerType "Empty";
@@ -299,7 +289,7 @@ _this setTriggerText "Cherno3";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_10 = _this;
 
-_this = createTrigger ["EmptyDetector", [6444.1558, 2495.0361]];
+_this = createTrigger ["EmptyDetector", [6566.5137, 2412.969]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
@@ -699,12 +689,12 @@ _this setTriggerText "Shakhovka";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_130 = _this;
 
-_this = createTrigger ["EmptyDetector", [13522.005, 2890.6816]];
+_this = createTrigger ["EmptyDetector", [13422.189, 2800.8008]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Skalisty Island (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,0,100,thisTrigger,['Skalisty1','Skalisty2','Skalisty3','Skalisty4','Skalisty5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,0,100,thisTrigger,['Skalisty1','Skalisty2','Skalisty3']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_132 = _this;
 
 _this = createTrigger ["EmptyDetector", [11250.809, 4274.082]];
