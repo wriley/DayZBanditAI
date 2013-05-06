@@ -1,10 +1,10 @@
 /*
-	spawnBandits_markers version 0.05
+	spawnBandits_markers version 0.06
 	
 	Usage: [_minAI, _addAI, _patrolDist, _trigger, _markerArray, _numGroups (optional)] call fnc_spawnBandits_markers;
 	Description: Called through (mapname)_config.sqf. Spawns a specified number groups of AI units at a randomly selected marker.
 */
-private ["_minAI","_addAI","_totalAI","_markerArray","_patrolDist","_numGroups","_grpArray","_trigger","_triggerPos"];
+private ["_minAI","_addAI","_totalAI","_markerArray","_patrolDist","_numGroups","_grpArray","_trigger","_triggerPos","_equipType"];
 if (!isServer) exitWith {};
 
 _minAI = _this select 0;							//Mandatory minimum number of AI units to spawn
@@ -12,7 +12,8 @@ _addAI = _this select 1;							//Maximum number of additional AI units to spawn
 _patrolDist = _this select 2;
 _trigger = _this select 3;
 _markerArray = _this select 4;						//Array of markers to select spawn points/reference point for patrolling. These markers should be placed within 100m (approx) of each other.
-_numGroups = if ((count _this) > 5) then {_this select 5} else {1};		//(Optional) Number of groups of x number of units each to spawn
+_equipType = if ((count _this) > 5) then {_this select 5} else {1};
+_numGroups = if ((count _this) > 6) then {_this select 6} else {1};		//(Optional) Number of groups of x number of units each to spawn
 
 if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];}; //Check if there are too many AI units in the game.
 

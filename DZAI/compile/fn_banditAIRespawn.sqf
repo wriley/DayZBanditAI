@@ -5,7 +5,7 @@
 	Description: Called internally by an AI's Killed eventhandler. Retrieves a dead AI unit's respawn type, reference location for spawning, their previous group, and uses this information to respawn the unit after a delay. After the delay, the AI unit corpse is deleted.
 */
 
-private ["_victim","_sleepTime","_respawnType","_respawnLoc","_unitGroup","_patrolDist","_trigger","_dummy","_newLeader","_unitsAlive","_dummyExists"];
+private ["_victim","_sleepTime","_respawnType","_respawnLoc","_unitGroup","_patrolDist","_trigger","_dummy","_newLeader","_unitsAlive","_dummyExists","_equipType"];
 _victim = _this select 0;
 
 _respawnType = _victim getVariable "respawnType";
@@ -13,6 +13,7 @@ _respawnLoc = _victim getVariable "respawnLoc";
 _unitGroup = _victim getVariable "unitGroup";
 _trigger = _victim getVariable "trigger";
 _patrolDist = _victim getVariable "patrolDist";
+_equipType = _victim getVariable "equipType";
 
 _dummyExists = 0;
 _unitsAlive = {alive _x} count (units _unitGroup);
@@ -37,13 +38,13 @@ sleep _sleepTime;
 
 switch (_respawnType) do {
 	case 1: {
-		0 = [_unitGroup,_respawnLoc,_patrolDist,_trigger] call fnc_respawnBandits_random;	//Respawn AI at 'center' marker
+		0 = [_unitGroup,_respawnLoc,_patrolDist,_trigger,_equipType] call fnc_respawnBandits_random;	//Respawn AI at 'center' marker
 	};
 	case 2: {
-		0 = [_unitGroup,_respawnLoc,_patrolDist,_trigger] call fnc_respawnBandits_bldgs;		//Respawn AI at specified distance of a trigger
+		0 = [_unitGroup,_respawnLoc,_patrolDist,_trigger,_equipType] call fnc_respawnBandits_bldgs;		//Respawn AI at specified distance of a trigger
 	};
 	case 3: {
-		0 = [_unitGroup,_respawnLoc,_patrolDist,_trigger] call fnc_respawnBandits_markers;	//Respawn AI at a specified distance of one of a set of markers
+		0 = [_unitGroup,_respawnLoc,_patrolDist,_trigger,_equipType] call fnc_respawnBandits_markers;	//Respawn AI at a specified distance of one of a set of markers
 	};
 };
 

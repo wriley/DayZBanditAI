@@ -16,6 +16,10 @@
 	fnc_spawnTriggers_random = compile preprocessFileLineNumbers "DZAI\mission\fnc\spawnTriggers_random.sqf";
 	fnc_despawnBandits = compile preprocessFileLineNumbers "DZAI\mission\fnc\despawnBandits.sqf";
 	
+	//Non-respawn spawn scripts
+	fnc_spawnTriggers_random_NR = compile preprocessFileLineNumbers "DZAI\mission\fnc\spawnTriggers_random_NR.sqf";
+	fnc_despawnBandits_NR = compile preprocessFileLineNumbers "DZAI\mission\fnc\despawnBandits_NR.sqf";
+	
 	initialized = true;
 
 	if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Spawn Functions loaded."];};

@@ -39,7 +39,7 @@ class _trigger_0
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[1859.0376, 2232.7817, 0]";
+		POSITION="[1946.3398, 2250.978]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -50,7 +50,7 @@ class _trigger_0
 		INTERRUPTABLE="true";
 		TEXT="Kamenka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,150,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -70,7 +70,7 @@ class _trigger_2
 		INTERRUPTABLE="true";
 		TEXT="Komarovo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,150,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -90,7 +90,7 @@ class _trigger_4
 		INTERRUPTABLE="true";
 		TEXT="Balota";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,150,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -110,7 +110,7 @@ class _trigger_6
 		INTERRUPTABLE="true";
 		TEXT="Balota AF (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,['Balota1','Balota2','Balota3','Balota4','Balota5']] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,['Balota1','Balota2','Balota3','Balota4','Balota5'],1] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -130,7 +130,7 @@ class _trigger_10
 		INTERRUPTABLE="true";
 		TEXT="Cherno3";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,2,150,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -139,7 +139,7 @@ class _trigger_12
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6444.1558, 2495.0361]";
+		POSITION="[6566.5137, 2412.969]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -150,7 +150,7 @@ class _trigger_12
 		INTERRUPTABLE="true";
 		TEXT="Cherno1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,2,150,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -170,7 +170,7 @@ class _trigger_16
 		INTERRUPTABLE="true";
 		TEXT="Elektro1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -190,7 +190,7 @@ class _trigger_18
 		INTERRUPTABLE="true";
 		TEXT="Elektro2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,2,150,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -210,7 +210,7 @@ class _trigger_20
 		INTERRUPTABLE="true";
 		TEXT="Pusta";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -230,7 +230,7 @@ class _trigger_24
 		INTERRUPTABLE="true";
 		TEXT="Kamyshovo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -250,7 +250,7 @@ class _trigger_26
 		INTERRUPTABLE="true";
 		TEXT="Tulga";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -270,7 +270,7 @@ class _trigger_28
 		INTERRUPTABLE="true";
 		TEXT="Msta";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -290,7 +290,7 @@ class _trigger_30
 		INTERRUPTABLE="true";
 		TEXT="Solnichniy";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -310,7 +310,7 @@ class _trigger_32
 		INTERRUPTABLE="true";
 		TEXT="Solnichniy Factory";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -330,7 +330,7 @@ class _trigger_34
 		INTERRUPTABLE="true";
 		TEXT="Orlovets";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -350,7 +350,7 @@ class _trigger_36
 		INTERRUPTABLE="true";
 		TEXT="Nizhnoye";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -370,7 +370,7 @@ class _trigger_38
 		INTERRUPTABLE="true";
 		TEXT="Berezino1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,150,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,150,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -390,7 +390,7 @@ class _trigger_42
 		INTERRUPTABLE="true";
 		TEXT="Berezino2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -430,7 +430,7 @@ class _trigger_50
 		INTERRUPTABLE="true";
 		TEXT="Khelm";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -450,7 +450,7 @@ class _trigger_56
 		INTERRUPTABLE="true";
 		TEXT="NEAF (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5']] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [1,2,125,thisTrigger,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5']] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -470,7 +470,7 @@ class _trigger_58
 		INTERRUPTABLE="true";
 		TEXT="Krasnostav";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,3,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -479,7 +479,7 @@ class _trigger_62
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[8649.4463, 11824.347, -3.0517578e-005]";
+		POSITION="[8710.1924, 11791.018, -3.0517578e-005]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -490,7 +490,7 @@ class _trigger_62
 		INTERRUPTABLE="true";
 		TEXT="Gvozdno";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -510,7 +510,7 @@ class _trigger_64
 		INTERRUPTABLE="true";
 		TEXT="Grishino";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,3,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -530,7 +530,7 @@ class _trigger_66
 		INTERRUPTABLE="true";
 		TEXT="NWAF1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [4,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [4,2,200,thisTrigger,2] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -539,7 +539,7 @@ class _trigger_68
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[4916.751, 10088.944, 0.080749512]";
+		POSITION="[4757.7285, 10060.253, 0.080749512]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -550,7 +550,7 @@ class _trigger_68
 		INTERRUPTABLE="true";
 		TEXT="NWAF2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [3,2,200,thisTrigger,2] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -570,7 +570,7 @@ class _trigger_70
 		INTERRUPTABLE="true";
 		TEXT="NWAF3";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [4,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [4,2,150,thisTrigger,2] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -579,7 +579,7 @@ class _trigger_72
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[2740.4656, 9935.0078]";
+		POSITION="[2743.1543, 9997.4131]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -590,7 +590,7 @@ class _trigger_72
 		INTERRUPTABLE="true";
 		TEXT="Lopatino";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -599,7 +599,7 @@ class _trigger_74
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[3869.1367, 8895.5381, 8.6271362]";
+		POSITION="[3826.7798, 8926.0244, 8.6271362]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -610,7 +610,7 @@ class _trigger_74
 		INTERRUPTABLE="true";
 		TEXT="Vybor";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -630,7 +630,7 @@ class _trigger_76
 		INTERRUPTABLE="true";
 		TEXT="Kabanino";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -639,7 +639,7 @@ class _trigger_78
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6136.0845, 7764.416]";
+		POSITION="[6032.6763, 7775.7192]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -650,7 +650,7 @@ class _trigger_78
 		INTERRUPTABLE="true";
 		TEXT="Stary Sobor";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -670,7 +670,7 @@ class _trigger_80
 		INTERRUPTABLE="true";
 		TEXT="Novy Sobor";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -690,7 +690,7 @@ class _trigger_82
 		INTERRUPTABLE="true";
 		TEXT="Gulglovo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -699,7 +699,7 @@ class _trigger_84
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6572.5303, 6068.4565, 0]";
+		POSITION="[6543.8091, 6106.0352]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -710,7 +710,7 @@ class _trigger_84
 		INTERRUPTABLE="true";
 		TEXT="Vyshnoye";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -730,7 +730,7 @@ class _trigger_86
 		INTERRUPTABLE="true";
 		TEXT="Mogilevka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,200,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -750,7 +750,7 @@ class _trigger_88
 		INTERRUPTABLE="true";
 		TEXT="Staroye";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -770,7 +770,7 @@ class _trigger_90
 		INTERRUPTABLE="true";
 		TEXT="Kozlovka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -779,7 +779,7 @@ class _trigger_92
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[5872.0024, 4704.8511, 0]";
+		POSITION="[5848.8809, 4707.165]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -790,7 +790,7 @@ class _trigger_92
 		INTERRUPTABLE="true";
 		TEXT="Nadezhdino";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -810,7 +810,7 @@ class _trigger_94
 		INTERRUPTABLE="true";
 		TEXT="Pulkovo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -830,7 +830,7 @@ class _trigger_96
 		INTERRUPTABLE="true";
 		TEXT="Pogorevka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -839,7 +839,7 @@ class _trigger_98
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[4760.8384, 6827.3374, 0]";
+		POSITION="[4781.4141, 6797.9297]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -850,7 +850,7 @@ class _trigger_98
 		INTERRUPTABLE="true";
 		TEXT="Rogovo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -870,7 +870,7 @@ class _trigger_100
 		INTERRUPTABLE="true";
 		TEXT="Pustoshka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -890,7 +890,7 @@ class _trigger_102
 		INTERRUPTABLE="true";
 		TEXT="Myshkino";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -899,7 +899,7 @@ class _trigger_104
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[2545.3606, 6363.9614]";
+		POSITION="[2529.2295, 6347.8228]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -910,7 +910,7 @@ class _trigger_104
 		INTERRUPTABLE="true";
 		TEXT="Sosnovka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -930,7 +930,7 @@ class _trigger_108
 		INTERRUPTABLE="true";
 		TEXT="Zelenogorsk";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,200,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -939,7 +939,7 @@ class _trigger_110
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[1699.3744, 3839.5432, 0]";
+		POSITION="[1699.3744, 3839.5432]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -950,7 +950,7 @@ class _trigger_110
 		INTERRUPTABLE="true";
 		TEXT="Pavlovo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -970,7 +970,7 @@ class _trigger_112
 		INTERRUPTABLE="true";
 		TEXT="Bor";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -990,7 +990,7 @@ class _trigger_114
 		INTERRUPTABLE="true";
 		TEXT="Drozhino";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1010,7 +1010,7 @@ class _trigger_116
 		INTERRUPTABLE="true";
 		TEXT="Green Mountain";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,3,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1030,7 +1030,7 @@ class _trigger_118
 		INTERRUPTABLE="true";
 		TEXT="Gorka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1050,7 +1050,7 @@ class _trigger_120
 		INTERRUPTABLE="true";
 		TEXT="Dubrovka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1070,7 +1070,7 @@ class _trigger_122
 		INTERRUPTABLE="true";
 		TEXT="Dubrovka NW";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1090,7 +1090,7 @@ class _trigger_126
 		INTERRUPTABLE="true";
 		TEXT="Polana";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1110,7 +1110,7 @@ class _trigger_128
 		INTERRUPTABLE="true";
 		TEXT="Dolina";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1130,7 +1130,7 @@ class _trigger_130
 		INTERRUPTABLE="true";
 		TEXT="Shakhovka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1139,7 +1139,7 @@ class _trigger_132
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[13522.005, 2890.6816]";
+		POSITION="[13422.189, 2800.8008]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -1150,7 +1150,7 @@ class _trigger_132
 		INTERRUPTABLE="true";
 		TEXT="Skalisty Island (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,0,100,['Skalisty1','Skalisty2','Skalisty3','Skalisty4','Skalisty5']] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,0,125,thisTrigger,['Skalisty1','Skalisty2','Skalisty3'],1] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1159,7 +1159,7 @@ class _trigger_134
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[11254.965, 4291.9492, 0]";
+		POSITION="[11250.809, 4274.082]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -1170,7 +1170,7 @@ class _trigger_134
 		INTERRUPTABLE="true";
 		TEXT="Rog";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,125,thisTrigger,['CastleRog','CastleRog2']] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1190,7 +1190,7 @@ class _trigger_136
 		INTERRUPTABLE="true";
 		TEXT="Three Valleys";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1199,7 +1199,7 @@ class _trigger_138
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6899.4214, 11429.627, 0]";
+		POSITION="[6894.6455, 11438.785]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -1210,7 +1210,7 @@ class _trigger_138
 		INTERRUPTABLE="true";
 		TEXT="Devil's Castle";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,125,thisTrigger,['DevilsCastle','DevilsCastle2']] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1219,7 +1219,7 @@ class _trigger_140
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6582.1694, 5563.1553]";
+		POSITION="[6551.4741, 5595.6704]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -1228,9 +1228,9 @@ class _trigger_140
 		TIMEOUT_MID="60";
 		TIMEOUT_MAX="90";
 		INTERRUPTABLE="true";
-		TEXT="DZAI Trigger";
+		TEXT="Zub";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,125,thisTrigger,['CastleZub','CastleZub2']] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1250,7 +1250,7 @@ class _trigger_142
 		INTERRUPTABLE="true";
 		TEXT="Orlovets Factory";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1270,7 +1270,7 @@ class _trigger_144
 		INTERRUPTABLE="true";
 		TEXT="Dolina-Solnichniy";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1290,27 +1290,7 @@ class _trigger_146
 		INTERRUPTABLE="true";
 		TEXT="Cherno2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,100,thisTrigger] call fnc_spawnBandits_bldgs;";
-		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
-	};
-};
-class _trigger_154
-{
-	objectType="trigger";
-	class Arguments
-	{
-		POSITION="[2995.7029, 6741.1094, 7.2034607]";
-		A="500";
-		B="500";
-		ACTIVATION_BY="ANY";
-		REPEATING="true";
-		TIMEOUT_MIN="30";
-		TIMEOUT_MID="60";
-		TIMEOUT_MAX="90";
-		INTERRUPTABLE="true";
-		TEXT="Pass Sosnovy";
-		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1319,7 +1299,7 @@ class _marker_1
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[10473.108, 2370.1606, 0.00033473969]";
+		POSITION="[10557.953, 2469.0283, 0.00033473969]";
 		NAME="Elektro1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1330,7 +1310,7 @@ class _marker_3
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[10573.546, 2303.2808, 6.3896179e-005]";
+		POSITION="[10715.897, 2226.1077, 6.3896179e-005]";
 		NAME="Elektro2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1341,7 +1321,7 @@ class _marker_5
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[10443.581, 2247.1091, 9.5367432e-007]";
+		POSITION="[10477.38, 2251.7627, 9.5367432e-007]";
 		NAME="Elektro3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1352,7 +1332,7 @@ class _marker_6
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[10308.546, 2251.9531, 1.335144e-005]";
+		POSITION="[10142.232, 2200.677, 1.335144e-005]";
 		NAME="Elektro4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1363,7 +1343,7 @@ class _marker_7
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[10327.987, 2273.0586, 2.8610229e-006]";
+		POSITION="[10248.711, 2316.2119, 2.8610229e-006]";
 		NAME="Elektro5";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1385,7 +1365,7 @@ class _trigger_156
 		INTERRUPTABLE="true";
 		TEXT="Elektro (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,100,['Elektro1','Elektro2','Elektro3','Elektro4','Elektro5']] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,2,150,thisTrigger,['Elektro1','Elektro2','Elektro3','Elektro4','Elektro5'],1] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1405,7 +1385,7 @@ class _marker_16
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6716.1152, 2679.6223, 2.2411346e-005]";
+		POSITION="[6786.3315, 2936.3113, 2.2411346e-005]";
 		NAME="Cherno2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1416,7 +1396,7 @@ class _marker_17
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6621.665, 2535.2522, 2.3841858e-005]";
+		POSITION="[6179.6978, 2486.1204, 2.3841858e-005]";
 		NAME="Cherno3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1427,7 +1407,7 @@ class _marker_18
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6734.6431, 2635.6458, 4.8160553e-005]";
+		POSITION="[6776.9277, 3181.4263, 4.8160553e-005]";
 		NAME="Cherno4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1438,7 +1418,7 @@ class _marker_19
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6582.647, 2488.5442, 1.5258789e-005]";
+		POSITION="[6571.4468, 2971.314, 1.5258789e-005]";
 		NAME="Cherno5";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1460,7 +1440,7 @@ class _trigger_160
 		INTERRUPTABLE="true";
 		TEXT="Cherno (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,100,['Cherno1','Cherno2','Cherno3','Cherno4','Cherno5']] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [3,2,150,thisTrigger,['Cherno1','Cherno2','Cherno3','Cherno4','Cherno5'],1] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1469,7 +1449,7 @@ class _marker_27
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[12101.022, 12589.354, 3.0517578e-005]";
+		POSITION="[12379.233, 12716.56, 3.0517578e-005]";
 		NAME="NEAF1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1480,7 +1460,7 @@ class _marker_28
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[12205.291, 12610.61]";
+		POSITION="[12484.185, 12497.768]";
 		NAME="NEAF2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1491,7 +1471,7 @@ class _marker_29
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[12045.95, 12591.738, 3.0517578e-005]";
+		POSITION="[11793.034, 12826.318, 3.0517578e-005]";
 		NAME="NEAF3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1502,7 +1482,7 @@ class _marker_30
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[12116.373, 12663.884, -3.0517578e-005]";
+		POSITION="[11917.456, 12861.53, -3.0517578e-005]";
 		NAME="NEAF4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1513,7 +1493,7 @@ class _marker_31
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[11999.706, 12606.885, -4.5776367e-005]";
+		POSITION="[12154.875, 12781.28, -4.5776367e-005]";
 		NAME="NEAF5";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1535,7 +1515,7 @@ class _trigger_163
 		INTERRUPTABLE="true";
 		TEXT="Stary Sobor (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,['StaryS1','StaryS2','StaryS3','StaryS4','StaryS5']] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [1,3,125,thisTrigger,['StaryS1','StaryS2','StaryS3','StaryS4','StaryS5']] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1599,7 +1579,7 @@ class _marker_51
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[13432.805, 2839.6096, -4.7683716e-007]";
+		POSITION="[13336.705, 2798.8804, -4.7683716e-007]";
 		NAME="Skalisty1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1610,7 +1590,7 @@ class _marker_53
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[13390.011, 2793.8569, 7.4863434e-005]";
+		POSITION="[13372.376, 2706.6409, 7.4863434e-005]";
 		NAME="Skalisty2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1621,30 +1601,8 @@ class _marker_54
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[13468.003, 2788.2966, 0.00012779236]";
+		POSITION="[13701.626, 2938.5356, 0.00012779236]";
 		NAME="Skalisty3";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_56
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[13342.991, 2805.5308, -0.00018882751]";
-		NAME="Skalisty4";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_57
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[13390.983, 2729.7642, -8.0108643e-005]";
-		NAME="Skalisty5";
 		TYPE="Empty";
 		FILL="Solid";
 	};
@@ -1654,7 +1612,7 @@ class _marker_64
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4704.0776, 2541.5471, 4.7683716e-006]";
+		POSITION="[4642.1001, 2586.9666, 4.7683716e-006]";
 		NAME="Balota1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1665,7 +1623,7 @@ class _marker_65
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4728.9268, 2505.4431, 1.7166138e-005]";
+		POSITION="[5178.4346, 2342.916, 1.7166138e-005]";
 		NAME="Balota2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1676,7 +1634,7 @@ class _marker_66
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4684.6494, 2504.3618, -9.5367432e-007]";
+		POSITION="[4949.3154, 2515.5669, -9.5367432e-007]";
 		NAME="Balota3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1687,7 +1645,7 @@ class _marker_67
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4766.772, 2508.2437, -1.9073486e-006]";
+		POSITION="[4513.353, 2645.3254, -1.9073486e-006]";
 		NAME="Balota4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1698,7 +1656,7 @@ class _marker_68
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4748.4795, 2472.7681]";
+		POSITION="[4933.9966, 2602.5732]";
 		NAME="Balota5";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1720,7 +1678,7 @@ class _trigger_167
 		INTERRUPTABLE="true";
 		TEXT="Balota Tents (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,['BalotaT1','BalotaT2','BalotaT3','BalotaT4','BalotaT5']] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,['BalotaT1','BalotaT2','BalotaT3','BalotaT4','BalotaT5']] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1740,7 +1698,7 @@ class _marker_70
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4932.2764, 2254.6138, -3.8146973e-006]";
+		POSITION="[4660.9507, 2256.6995, -3.8146973e-006]";
 		NAME="BalotaT3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1773,7 +1731,7 @@ class _marker_73
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[5023.1489, 2223.3647, 2.4318695e-005]";
+		POSITION="[4993.4189, 2011.345, 2.4318695e-005]";
 		NAME="BalotaT4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1795,7 +1753,7 @@ class _trigger_171
 		INTERRUPTABLE="true";
 		TEXT="NWAF4 (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,100,thisTrigger,['NWAF4_1','NWAF4_2','NWAF4_3','NWAF4_4','NWAF4_5']] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [3,2,300,thisTrigger,['NWAF4_1','NWAF4_2','NWAF4_3','NWAF4_4','NWAF4_5'],2] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1804,7 +1762,7 @@ class _marker_74
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4509.9038, 10818.242, -6.1035156e-005]";
+		POSITION="[4151.8853, 10982.557, -6.1035156e-005]";
 		NAME="NWAF4_1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1870,8 +1828,74 @@ class _trigger_177
 		INTERRUPTABLE="true";
 		TEXT="Berezino4";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,150,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
+	};
+};
+class _marker_79
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[11280.589, 4297.4292, -0.00012207031]";
+		NAME="CastleRog";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_80
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[6886.5234, 11494.024, -3.0517578e-005]";
+		NAME="DevilsCastle";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_81
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[6516.1924, 5603.2427, -3.0517578e-005]";
+		NAME="CastleZub";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_82
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[6477.1846, 5558.3892, 6.1035156e-005]";
+		NAME="CastleZub2";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_84
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[6866.8057, 11549.996, -9.1552734e-005]";
+		NAME="DevilsCastle2";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_85
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[11278.462, 4223.6455, 6.1035156e-005]";
+		NAME="CastleRog2";
+		TYPE="Empty";
+		FILL="Solid";
 	};
 };
 class _postfix_0

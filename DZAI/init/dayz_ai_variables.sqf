@@ -1,4 +1,4 @@
-//DZAI Variables Version 0.05
+//DZAI Variables Version 0.06
 private["_worldname"];
 
 
@@ -60,6 +60,9 @@ DZAI_maxPistolMags = 2;										//Maximum number of pistol magazines to generat
 DZAI_maxRifleMags = 1;										//Maximum number of rifle  magazines to generate. (Unused variable)
 DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Residential, 1: Military, 2: MilitarySpecial, 3: Heli Crash. (MUST change DZAI_weaponGrades and DZAI_gradeChances  together if removing/adding weapon grades to avoid issues!)
 DZAI_gradeChances = [0.30,0.55,0.12,0.03]; 					//Probabilities for generating each weapon grade. (Values should add up to 1.00)
+DZAI_gradeChances0 = [0.75,0.22,0.03,0.00];					//Weapongrade probabilities for small town areas.
+DZAI_gradeChances1 = [0.30,0.55,0.12,0.03];					//Weapongrade probabilities for large cities, or places with Military-grade loot.
+DZAI_gradeChances2 = [0.10,0.65,0.20,0.05];					//Weapongrade probabilities for areas with MilitarySpecial loot.
 DZAI_toolChances = [1.00,0.90,0.85,0.80,0.60,0.50,0.20,0.20,0.10,0.05,0.03]; 	//Probabilities for generating each tool item upon unit death. (Flashlight, Watch, Knife, Hatchet, Compass, Map, Toolbox, Matchbox, Military Flashlight, Rangefinder, GPS).
 DZAI_gadgetChances = [0.50,0.03];								//Probabilities of generating each gadget item upon unit spawn (Binoculars, NVGoggles).
 DZAI_betterBackPack = 0.90;									//Chance of assigning a better backpack than the default one. (Default: 0.90)

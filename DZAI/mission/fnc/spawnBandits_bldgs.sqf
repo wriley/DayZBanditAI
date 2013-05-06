@@ -1,11 +1,11 @@
 /*
-	spawnBandits_bldgs version 0.05
+	spawnBandits_bldgs version 0.06
 	
 	Usage: [_minAI, _addAI, _patrolDist, _trigger, _numGroups (optional)] call spawnBandits_bldgs;
 	Description: Called through (mapname)_config.sqf. Spawns a specified number groups of AI units some distance from a trigger used as a reference location.
 	
 */
-private ["_totalAI","_minAI","_addAI","_patrolDist","_buildingPositions","_nearbldgs","_trigger","_triggerPos","_numGroups","_posVariance","_grpArray","_unit"];
+private ["_totalAI","_minAI","_addAI","_patrolDist","_buildingPositions","_nearbldgs","_trigger","_triggerPos","_numGroups","_posVariance","_grpArray","_unit","_equipType"];
 if (!isServer) exitWith {};
 	
 //Check if there are too many AI units in the game.
@@ -18,7 +18,8 @@ _minAI = _this select 0;									//Mandatory minimum number of AI units to spawn
 _addAI = _this select 1;									//Maximum number of additional AI units to spawn
 _patrolDist = _this select 2;
 _trigger = _this select 3;									//The trigger calling this script.
-_numGroups = if ((count _this) > 4) then {_this select 4} else {1};		//(Optional) Number of groups of x number of units each to spawn
+_equipType = if ((count _this) > 4) then {_this select 4} else {1};
+_numGroups = if ((count _this) > 5) then {_this select 5} else {1};		//(Optional) Number of groups of x number of units each to spawn
 
 _grpArray = _trigger getVariable ["GroupArray",[]];			//Retrieve groups created by the trigger, or create an empty group array if none found.
 if (count _grpArray > 0) exitWith {diag_log "Active groups found. Exiting spawn script (spawnBandits_bldgs)";};						//Exit script if active groups still exist.

@@ -23,6 +23,7 @@
 	fnc_banditAIRespawn = compile preprocessFileLineNumbers "DZAI\compile\fn_banditAIRespawn.sqf";
 	fnc_selectRandomWeighted = compile preprocessFileLineNumbers "DZAI\compile\fn_selectRandomWeighted.sqf";
 	fnc_createAI = compile preprocessFileLineNumbers "DZAI\compile\fn_createAI.sqf";
+	fnc_createAI_NR = compile preprocessFileLineNumbers "DZAI\compile\fn_createAI_NR.sqf";
 	fnc_damageAI = compile preprocessFileLineNumbers "DZAI\compile\fn_damageHandlerAI.sqf";
 	
 initialized = true;
