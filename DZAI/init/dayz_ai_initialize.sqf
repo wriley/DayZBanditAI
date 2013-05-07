@@ -1,4 +1,4 @@
-//DZAI Initialize Version 0.05
+//DZAI Initialize Version 0.06
 
 createcenter east;											//Create centers for all sides
 createcenter west;
@@ -13,5 +13,5 @@ if (!isServer) exitWith {}; //End of client-sided work
 call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_functions.sqf";
 call compile preprocessFileLineNumbers "DZAI\mission\mission_functions.sqf";
 waituntil {!isnil "DZAI_initialized"};
-0 = [DZAI_spawnRandom,'center',350,4000,2] spawn fnc_spawnTriggers_random_NR;
+0 = [DZAI_spawnRandom,'center',350,4000,2] spawn fnc_spawnTriggers_random;
 if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Loading Complete."];};

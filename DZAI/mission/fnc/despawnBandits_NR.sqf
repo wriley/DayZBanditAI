@@ -1,7 +1,7 @@
 /*
-	despawnBandits_NR version 0.06
+	despawnBandits_NR version 0.06 (No respawn version)
 	Usage: [thisTrigger] call despawnBandits_NR;
-	Deletes all AI units spawned by a trigger once all players leave the trigger area. Adapted from Sarge AI.
+	Deletes all AI units spawned by a trigger once all players leave the trigger area, then creates a new trigger elsewhere while deleting the previous one. Adapted from Sarge AI.
 	
 */
 private ["_grpArray","_trigger"];
@@ -18,7 +18,7 @@ sleep DZAI_despawnWait;									//Wait some time before deleting units. (amount 
 if (triggerActivated _trigger) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: A player has entered the trigger area. Cancelling despawn script.";};};			//Exit script if trigger has been reactivated since _waitTime seconds has passed.
 
 _grpArray = _trigger getVariable["GroupArray",[]];	//Find the groups spawned by the trigger. Or set an empty group array if none are found.
-if (count _grpArray == 0) exitWith {};				//Exit script if the array has spawned no groups.
+if (count _grpArray == 0) exitWith {};				//Exit script if the array has spawned no groups, or the trigger has already been reset.
 	
 {
 	{deleteVehicle _x} forEach (units _x);			//Delete all units of each group.
@@ -29,9 +29,8 @@ if (count _grpArray == 0) exitWith {};				//Exit script if the array has spawned
 if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Despawned AI in trigger area. Resetting trigger's group array.";};
 _trigger setVariable["GroupArray",[],false];		//Reset trigger's group array.
 
-0 = [1,'center',350,4000] spawn fnc_spawnTriggers_random; 	//Spawn a new trigger elsewhere on the map.
-if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Created a new trigger. Deleting the previous trigger...";};
+0 = [1,'center',350,4000,1] spawn fnc_spawnTriggers_random; 	//Spawn a new trigger elsewhere on the map.
+if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Created a new trigger. Deleting the previous trigger.";};
 deleteVehicle _trigger;										//Remove the old trigger.
-if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: The previous trigger has been deleted.";};
 
 true

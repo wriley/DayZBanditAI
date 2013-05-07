@@ -17,7 +17,7 @@
 	fnc_despawnBandits = compile preprocessFileLineNumbers "DZAI\mission\fnc\despawnBandits.sqf";
 	
 	//Non-respawn spawn scripts
-	fnc_spawnTriggers_random_NR = compile preprocessFileLineNumbers "DZAI\mission\fnc\spawnTriggers_random_NR.sqf";
+	fnc_spawnBandits_random_NR = compile preprocessFileLineNumbers "DZAI\mission\fnc\spawnBandits_random_NR.sqf";
 	fnc_despawnBandits_NR = compile preprocessFileLineNumbers "DZAI\mission\fnc\despawnBandits_NR.sqf";
 	
 	initialized = true;

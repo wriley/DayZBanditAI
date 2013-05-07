@@ -1,8 +1,8 @@
-//Taviana Configuration 0.05
+//Taviana Configuration 0.06
 
 //DZAI_RiflesDefault0 = DZAI_RiflesDefault0 - [];
 DZAI_RiflesDefault1 = DZAI_RiflesDefault1 - ["Sa58P_EP1","Sa58V_EP1","BAF_L85A2_RIS_Holo"];
-//DZAI_RiflesDefault2 = DZAI_RiflesDefault2 - [];
+DZAI_RiflesDefault2 = DZAI_RiflesDefault2 - ["Sa58V_RCO_EP1","Sa58V_CCO_EP1","M40A3"];
 DZAI_RiflesDefault3 = DZAI_RiflesDefault3 - ["G36C_camo","G36A_camo","G36K_camo","BAF_L85A2_RIS_SUSAT"];
 //DZAI_RiflesDefault4	= [];
 DZAI_DefaultBackpacks = DZAI_DefaultBackpacks - ["DZ_British_ACU", "DZ_TK_Assault_Pack_EP1"];

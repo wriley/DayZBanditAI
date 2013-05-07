@@ -479,7 +479,7 @@ class _trigger_61
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[9019.5146, 3903.8013, 0.16929245]";
+		POSITION="[9039.5107, 3903.8013, 0.16929245]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -490,7 +490,7 @@ class _trigger_61
 		INTERRUPTABLE="true";
 		TEXT="Scheuen";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,1] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,200,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -510,7 +510,7 @@ class _trigger_63
 		INTERRUPTABLE="true";
 		TEXT="Gross Hehlen";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,1] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -530,7 +530,7 @@ class _trigger_65
 		INTERRUPTABLE="true";
 		TEXT="Vorwerk";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,1] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -550,7 +550,7 @@ class _trigger_69
 		INTERRUPTABLE="true";
 		TEXT="Hehlentor";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -690,7 +690,7 @@ class _trigger_89
 		INTERRUPTABLE="true";
 		TEXT="Winsen(Aller)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,1] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,1,175,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };

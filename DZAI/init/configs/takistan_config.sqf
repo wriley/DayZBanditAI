@@ -1,4 +1,4 @@
-//Takistan Configuration 0.05
+//Takistan Configuration 0.06
 
 _this = createTrigger ["EmptyDetector", [2025.0662, 348.04688, 0.68896484]];
 _this setTriggerArea [500, 500, 0, false];

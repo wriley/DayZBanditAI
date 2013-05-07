@@ -1,4 +1,4 @@
-//Reconfiguration for Namalsk Version 0.05
+//Reconfiguration for Namalsk Version 0.06
 
 DZAI_invmedicals = 1; 	//Number of selections of medical items (Inventory)
 DZAI_ninmedicals = 1;	//Maximum amount of each medical item, minimum of zero (Inventory)
@@ -9,26 +9,28 @@ DZAI_nbpmedicals = 1;	//Maximum amount of each medical item, minimum of zero (Ba
 DZAI_bpedibles = 0;		//Number of selections of edible items (Backpack)
 DZAI_nbpedibles = 0;	//Maximum amount of each edible item, minimum of zero (Backpack)
 
-DZAI_gradeChances = [0.15,0.55,0.25,0.05]; 					//Probabilities for generating each weapon grade. (Values should add up to 1.00)
+DZAI_gradeChances0 = [0.65,0.32,0.03,0.00];					//Weapongrade probabilities for small towns near beginner areas.
+DZAI_gradeChances1 = [0.20,0.60,0.15,0.05];					//Weapongrade probabilities for large cities, or places with Military-grade loot. (Identical to 0.05 grade chances)
+DZAI_gradeChances2 = [0.00,0.60,0.30,0.10];					//Weapongrade probabilities for areas with MilitarySpecial loot.
 DZAI_BanditTypesDefault = DZAI_BanditTypesDefault + ["CamoWinterW_DZN", "CamoWinter_DZN", "Sniper1W_DZN"];
 DZAI_PistolsDefault0 = DZAI_PistolsDefault0 + ["MakarovSD_DZN"];
 if ((dayzNam_buildingLoot == "CfgBuildingLootNamalsk") || (dayzNam_buildingLoot == "CfgBuildingLootNamalskNOER7")) then {
-	DZAI_RiflesDefault1 = DZAI_RiflesDefault1 + ["Saiga12K_DZN", "AKS_74_UN_kobra_DZN","RPK_74_DZN"];
-	DZAI_RiflesDefault2 = DZAI_RiflesDefault2 + ["Saiga12K_DZN","AKS_74_UN_kobra_DZN","AK_107_GL_pso_DZN","G36_C_SD_eotech_DZN","PK_DZN","RPK_74_DZN","VSS_vintorez_DZN","MG36_DZN"];
-	DZAI_RiflesDefault3 = DZAI_RiflesDefault3 - ["G36K","G36a"] + ["PK_DZN", "Pecheneg_DZN", "KSVK_DZN", "AKS_GOLD_DZN","BAF_L85A2_UGL_ACOG_DZN"];
-	} else {
+	DZAI_RiflesDefault1 = DZAI_RiflesDefault1 + ["Saiga12K_DZN", "AKS_74_UN_kobra_DZN","RPK_74_DZN","AK_47_S","AK_74_GL","AK_107_kobra","AK_107_GL_kobra"];
+	DZAI_RiflesDefault2 = DZAI_RiflesDefault2 + ["Saiga12K_DZN","AKS_74_UN_kobra_DZN","AK_107_GL_pso_DZN","G36_C_SD_eotech_DZN","PK_DZN","RPK_74_DZN","VSS_vintorez_DZN","MG36_DZN","AKS_74_pso","AK_74_GL","AK_107_kobra","AK_107_pso","AKS_GOLD_DZN","AK_47_S"];
+	DZAI_RiflesDefault3 = DZAI_RiflesDefault3 + ["PK_DZN", "Pecheneg_DZN", "KSVK_DZN", "AKS_GOLD_DZN","BAF_L85A2_UGL_ACOG_DZN","Bizon"];
+	} else { //No-sniper setting
 	DZAI_RiflesDefault0 = DZAI_RiflesDefault0 - ["huntingrifle"];
-	DZAI_RiflesDefault1 = DZAI_RiflesDefault1 - ["M24","DMR"] + ["Saiga12K_DZN", "AKS_74_UN_kobra_DZN","RPK_74_DZN"];
-	DZAI_RiflesDefault2 = DZAI_RiflesDefault2 - ["M24","SVD_CAMO","M107_DZ","DMR","M16A4_ACG"] + ["Saiga12K_DZN","AKS_74_UN_kobra_DZN","AK_107_GL_pso_DZN","G36_C_SD_eotech_DZN","PK_DZN","RPK_74_DZN","MG36_DZN"];
-	DZAI_RiflesDefault3 = DZAI_RiflesDefault3 - ["G36K","G36a","FN_FAL_ANPVS4","M107_DZ","BAF_AS50_scoped","DMR","BAF_L85A2_RIS_SUSAT"] + ["PK_DZN", "Pecheneg_DZN", "AKS_GOLD_DZN"];
+	DZAI_RiflesDefault1 = DZAI_RiflesDefault1 - ["M24","DMR"] + ["Saiga12K_DZN", "AKS_74_UN_kobra_DZN","RPK_74_DZN","AK_47_S","AK_74_GL","AK_107_kobra","AK_107_GL_kobra"];
+	DZAI_RiflesDefault2 = DZAI_RiflesDefault2 - ["M24","SVD_CAMO","M107_DZ","DMR","M16A4_ACG"] + ["Saiga12K_DZN","AKS_74_UN_kobra_DZN","AK_107_GL_pso_DZN","G36_C_SD_eotech_DZN","PK_DZN","RPK_74_DZN","MG36_DZN","AKS_74_pso","AK_74_GL","AK_107_kobra","AK_107_pso","AK_107_GL_kobra","AK_47_S"];
+	DZAI_RiflesDefault3 = DZAI_RiflesDefault3 - ["FN_FAL_ANPVS4","M107_DZ","BAF_AS50_scoped","DMR","BAF_L85A2_RIS_SUSAT"] + ["PK_DZN", "Pecheneg_DZN", "AKS_GOLD_DZN","Bizon"];
 };
 DZAI_Backpacks1 = DZAI_Backpacks1 + ["BAF_AssaultPack_DZN"];
 DZAI_Backpacks2 = DZAI_Backpacks2 + ["BAF_AssaultPack_DZN"];
 DZAI_DefaultBackpacks = DZAI_DefaultBackpacks + ["BAF_AssaultPack_DZN"];	
-DZAI_toolChances set [9,0.005];
+DZAI_DefaultGadgets set [1,0.005];
 DZAI_toolChances set [10,0.005];
 DZAI_DefaultTools = DZAI_DefaultTools + ["BrokenItemGPS","BrokenNVGoggles","BrokenItemRadio","ItemSolder","APSI"];
-DZAI_toolChances = DZAI_toolChances + [0.04,0.04,0.05,0.100,0.01];
+DZAI_toolChances = DZAI_toolChances + [0.04,0.04,0.02,0.01,0.01];
 DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_Sniper1W_DZN","Skin_CamoWinter_DZN","Skin_CamoWinterW_DZN"];
 
 //Begin Markers

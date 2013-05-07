@@ -1,4 +1,4 @@
-//Reconfiguration for Oring 1.0.8
+//Reconfiguration for Oring Version 0.06
 //To do: Ensure pistols and rifles are assigned to correct loot table
 
 DZAI_BanditTypesDefault = DZAI_BanditTypesDefault + ["BW1_DZ","Civilian2_DZ","Civilian3_DZ","Civilian4_DZ","Civilian5_DZ","SurvivorW2_DZ","Survivor2_DZ","Sniper1_DZ","Soldier1_DZ","Camo1_DZ","BanditW1_DZ","Bandit1_DZ","SurvivorW2_DZ"];

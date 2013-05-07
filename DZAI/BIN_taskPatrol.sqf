@@ -52,11 +52,11 @@ if (isServer) then
 
 	_mode = ["YELLOW", "RED"] call BIS_fnc_selectRandom;
 	_formation = ["STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "DIAMOND"] call BIS_fnc_selectRandom;
-	//_dzai_behavior = ["AWARE","COMBAT"] call BIS_fnc_selectRandom;
+	_dzai_behavior = ["AWARE","COMBAT"] call BIS_fnc_selectRandom;
 	_dzai_speedmode =  ["LIMITED","NORMAL"] call BIS_fnc_selectRandom;
 	
-	//_grp setBehaviour _dzai_behavior;
-	_grp setBehaviour "AWARE";
+	_grp setBehaviour _dzai_behavior;
+	//_grp setBehaviour "AWARE";
 	_grp setSpeedMode _dzai_speedmode;
 	_grp setCombatMode _mode;
 	_grp setFormation _formation;

@@ -1,4 +1,4 @@
-//Panthera Configuration 0.05
+//Panthera Configuration 0.06
 
 _this = createTrigger ["EmptyDetector", [5976.8677, 898.83728]];
 _this setTriggerArea [500, 500, 0, false];

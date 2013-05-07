@@ -730,7 +730,7 @@ class _trigger_86
 		INTERRUPTABLE="true";
 		TEXT="Mogilevka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,200,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,175,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -810,7 +810,7 @@ class _trigger_94
 		INTERRUPTABLE="true";
 		TEXT="Pulkovo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1130,7 +1130,7 @@ class _trigger_130
 		INTERRUPTABLE="true";
 		TEXT="Shakhovka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };

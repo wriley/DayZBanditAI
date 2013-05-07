@@ -4,7 +4,7 @@
 	Usage: [_minAI, _addAI, _patrolDist, _trigger, _markerArray, _numGroups (optional)] call fnc_spawnBandits_markers;
 	Description: Called through (mapname)_config.sqf. Spawns a specified number groups of AI units at a randomly selected marker.
 */
-private ["_minAI","_addAI","_totalAI","_markerArray","_patrolDist","_numGroups","_grpArray","_trigger","_triggerPos","_equipType"];
+private ["_minAI","_addAI","_totalAI","_markerArray","_patrolDist","_numGroups","_grpArray","_trigger","_triggerPos","_equipType","_gradeChances"];
 if (!isServer) exitWith {};
 
 _minAI = _this select 0;							//Mandatory minimum number of AI units to spawn
@@ -17,9 +17,17 @@ _numGroups = if ((count _this) > 6) then {_this select 6} else {1};		//(Optional
 
 if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];}; //Check if there are too many AI units in the game.
 
-_triggerPos = getpos _trigger;
+//Get/set trigger variables
 _grpArray = _trigger getVariable ["GroupArray",[]];			//Retrieve groups created by the trigger, or create an empty group array if none found.
 if (count _grpArray > 0) exitWith {diag_log "Active groups found. Exiting spawn script (spawnBandits_markers)";};						//Exit script if active groups still exist.
+_triggerPos = getpos _trigger;
+switch (_equipType) do {
+	case 0: {_gradeChances = DZAI_gradeChances0;};
+	case 1: {_gradeChances = DZAI_gradeChances1;};
+	case 2: {_gradeChances = DZAI_gradeChances2;};
+};
+_trigger setVariable ["patrolDist",_patrolDist,false];
+_trigger setVariable ["gradeChances",_gradeChances,false];
 
 _totalAI = DZAI_spawnExtra + _minAI + round(random _addAI);	//Calculate the total number of AI to spawn per group
 
@@ -32,10 +40,9 @@ for "_j" from 1 to _numGroups do {
 	_unitGroup = createGroup resistance;						//All units spawned from the same trigger will be part of the same group.
 	_marker = _markerArray call BIS_fnc_selectRandom;			//Choose random marker from the array to use as a spawn point. All units of a group will spawn at the same location.
 	_markerPos = getMarkerPos _marker;
-	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %1 new AI spawns triggered (spawnBandits_markers).",_totalAI];};
 	for "_i" from 1 to _totalAI do {
 		private ["_unit"];
-		_unit = [_unitGroup,_markerPos,_patrolDist,_trigger,_markerArray,3] call fnc_createAI;	//test using exact marker position
+		_unit = [_unitGroup,_markerPos,_trigger,_markerArray,3,_gradeChances] call fnc_createAI;	//test using exact marker position
 		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
 		if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI %1 of %2 spawned (spawnBandits_markers).",_i,_totalAI];};
 	};

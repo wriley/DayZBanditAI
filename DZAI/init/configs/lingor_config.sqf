@@ -1,4 +1,4 @@
-//Lingor Configuration 0.05
+//Lingor Configuration 0.06
 
 switch (DZAI_modName) do {
 	case "skarolingor":

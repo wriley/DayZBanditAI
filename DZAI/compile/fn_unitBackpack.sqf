@@ -6,12 +6,6 @@
     private ["_unit","_bag","_gadgetselect","_weapongrade","_bags","_rnd"];
     _unit = _this select 0;
 	_weapongrade = _this select 1;
-	//_bag = DZAI_DefaultStartPack;
-	
-	//Generate random backpack
-	/*if ((random 1) < DZAI_betterBackPack) then {		//Decide whether to select a non-default backpack.
-		_bag = DZAI_DefaultBackpacks call BIS_fnc_selectRandom;
-	};*/
 	
 	//Generate random backpack based on weapongrade
 	switch (_weapongrade) do {
@@ -32,7 +26,6 @@
 	  };
 	};
 	
-	//_unit addBackpack _bag;							// Add backpack
 	_rnd = floor random (count _bags);
 	_bag = _bags select _rnd;
 	_unit addBackpack _bag;

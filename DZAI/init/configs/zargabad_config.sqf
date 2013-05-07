@@ -1,4 +1,4 @@
-//Zargabad Configuration 0.05
+//Zargabad Configuration 0.06
 
 _this = createTrigger ["EmptyDetector", [2873.4944, 4976.3965]];
 _this setTriggerArea [500, 500, 0, false];
