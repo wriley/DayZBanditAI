@@ -369,6 +369,30 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_169 = _this;
 
+_this = createMarker ["Lub1", [4417.6191, 11039.309, -3.8146973e-006]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_171 = _this;
+
+_this = createMarker ["Lub2", [4295.0586, 11038.771, -3.8146973e-006]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_172 = _this;
+
+_this = createMarker ["Lub3", [4489.8462, 11286.414, -2.3841858e-007]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_173 = _this;
+
+_this = createMarker ["Lub4", [4401.8081, 11208.507, -1.1205673e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_174 = _this;
+
+_this = createMarker ["Lub5", [4511.0195, 10992.617, -2.4795532e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_176 = _this;
 //End markers
 
 //Begin Triggers
@@ -524,12 +548,12 @@ _this setTriggerText "Northern Army Base";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,100,thisTrigger,1] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_38 = _this;
 
-_this = createTrigger ["EmptyDetector", [4455.5391, 11237.011, -1.2159348e-005]];
+_this = createTrigger ["EmptyDetector", [4472.8857, 11208.37, -1.2159348e-005]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
-_this setTriggerText "Lubjansk";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,100,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerText "Lubjansk (Markers)";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,125,thisTrigger,['Lub1','Lub2','Lub3','Lub4','Lub5'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_40 = _this;
 
 _this = createTrigger ["EmptyDetector", [4407.7451, 10748.695]];
