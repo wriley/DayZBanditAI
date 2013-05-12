@@ -12,7 +12,7 @@ _addAI = _this select 1;							//Maximum number of additional AI units to spawn
 _patrolDist = _this select 2;
 _trigger = _this select 3;
 _markerArray = _this select 4;						//Array of markers to select spawn points/reference point for patrolling. These markers should be placed within 100m (approx) of each other.
-_equipType = if ((count _this) > 5) then {_this select 5} else {1};
+_equipType = if ((count _this) > 5) then {_this select 5} else {1};		//(Optional) Select the item probability table to use (0: Newbie, 1: Average, 2: High-end)
 _numGroups = if ((count _this) > 6) then {_this select 6} else {1};		//(Optional) Number of groups of x number of units each to spawn
 
 if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];}; //Check if there are too many AI units in the game.
@@ -28,6 +28,7 @@ switch (_equipType) do {
 };
 _trigger setVariable ["patrolDist",_patrolDist,false];
 _trigger setVariable ["gradeChances",_gradeChances,false];
+_trigger setVariable ["markerArray",_markerArray,false];
 
 _totalAI = DZAI_spawnExtra + _minAI + round(random _addAI);	//Calculate the total number of AI to spawn per group
 
@@ -42,8 +43,8 @@ for "_j" from 1 to _numGroups do {
 	_markerPos = getMarkerPos _marker;
 	for "_i" from 1 to _totalAI do {
 		private ["_unit"];
-		_unit = [_unitGroup,_markerPos,_trigger,_markerArray,3,_gradeChances] call fnc_createAI;	//test using exact marker position
-		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
+		_unit = [_unitGroup,_markerPos,_trigger,3,_gradeChances] call fnc_createAI;
+		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\scripts\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
 		if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI %1 of %2 spawned (spawnBandits_markers).",_i,_totalAI];};
 	};
 	_grpArray = _grpArray + [_unitGroup];							//Add the new group to the trigger's group array.

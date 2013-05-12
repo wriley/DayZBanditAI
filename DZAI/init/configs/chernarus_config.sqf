@@ -3,6 +3,7 @@
 switch (DZAI_modName) do {
 	case "2017":
 	{
+		diag_log "DayZ 2017 configuration selected.";
 		DZAI_BanditTypesDefault = DZAI_BanditTypesDefault - ["Bandit1_DZ", "BanditW1_DZ", "Camo1_DZ", "Sniper1_DZ"] + ["Beard_DZ","Dimitry_DZ","Alexej_DZ","Stanislav_DZ","Czech_Norris","SG_IRA_Soldier_CO_DZ"];
 		DZAI_DefaultStartPack = "ice_apo_pack3";
 		DZAI_DefaultBackpacks = ["ice_apo_pack1","ice_apo_pack2","ice_apo_pack3","ice_apo_pack4"];
@@ -23,6 +24,15 @@ switch (DZAI_modName) do {
 		DZAI_Backpacks0 = ["ice_apo_pack3"];
 		DZAI_Backpacks1 = ["ice_apo_pack3","ice_apo_pack1"];
 		DZAI_Backpacks2 = ["ice_apo_pack1","ice_apo_pack4","ice_apo_pack2"];
+	};
+	case "epoch":
+	{
+		diag_log "DayZ Epoch configuration selected.";
+		DZAI_BanditTypesDefault = DZAI_BanditTypesDefault + ["Soldier1_DZ","RU_Policeman_DZ","Pilot_EP1_DZ","Haris_Press_EP1_DZ","Ins_Soldier_GL_DZ","Functionary1_EP1_DZ","GUE_Commander_DZ","Priest_DZ","Rocker2_DZ","SurvivorWpink_DZ","SurvivorWcombat_DZ","SurvivorWdesert_DZ","SurvivorWurban_DZ","Soldier_TL_PMC_DZ","Soldier_Sniper_PMC_DZ","Soldier_Bodyguard_AA12_PMC_DZ","Drake_Light_DZ","CZ_Special_Forces_GL_DES_EP1_DZ","TK_INS_Soldier_EP1_DZ","TK_INS_Warlord_EP1_DZ"];
+		DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_Soldier1_DZ","Skin_RU_Policeman_DZ","Skin_Pilot_EP1_DZ","Skin_Haris_Press_EP1_DZ","Skin_Ins_Soldier_GL_DZ","Skin_Functionary1_EP1_DZ","Skin_GUE_Commander_DZ","Skin_Priest_DZ","Skin_Rocker2_DZ","Skin_SurvivorWpink_DZ","Skin_SurvivorWcombat_DZ","Skin_SurvivorWdesert_DZ","Skin_SurvivorWurban_DZ","Skin_Soldier_TL_PMC_DZ","Skin_Soldier_Sniper_PMC_DZ","Skin_Soldier_Bodyguard_AA12_PMC_DZ","Skin_Drake_Light_DZ","Skin_CZ_Special_Forces_GL_DES_EP1_DZ","Skin_TK_INS_Soldier_EP1_DZ","Skin_TK_INS_Warlord_EP1"];
+		DZAI_DefaultEdibles = DZAI_DefaultEdibles + ["FoodBioMeat"];
+		DZAI_DefaultTools = DZAI_DefaultTools + ["ItemAluminumBar","ItemTinBar","ItemCopperBar","ItemCopperBar10oz","ItemSilverBar","ItemSilverBar10oz","ItemGoldBar"];	//Consider metal currency as "tools" for DayZEpoch since currency doesn't exist in standard DayZ.
+		DZAI_toolChances = DZAI_toolChances + [0.05,0.05,0.05,0.02,0.02,0.02,0.01];
 	};
 	default {};
 };
@@ -247,6 +257,86 @@ _this = createMarker ["CastleRog2", [11278.462, 4223.6455, 6.1035156e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_85 = _this;
+
+_this = createMarker ["NWAF5_1", [4576.5781, 10877.494, 9.1552734e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_86 = _this;
+
+_this = createMarker ["NWAF5_2", [4848.9712, 10553.556, 0]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_87 = _this;
+
+_this = createMarker ["NWAF5_3", [4629.0986, 10975.196, 0.00012207031]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_88 = _this;
+
+_this = createMarker ["NWAF5_4", [4895.8159, 10448.596, 9.1552734e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_90 = _this;
+
+_this = createMarker ["NWAF6_1", [4186.7158, 11330.71, -3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_91 = _this;
+
+_this = createMarker ["NWAF6_2", [4055.3914, 11332.235, -6.1035156e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_92 = _this;
+
+_this = createMarker ["NWAF6_3", [3925.915, 11296.789, -9.1552734e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_93 = _this;
+
+_this = createMarker ["NWAF6_4", [4267.958, 11244.687, -9.1552734e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_94 = _this;
+
+_this = createMarker ["NWAF7_1", [4110.0996, 10566.475, 0]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_95 = _this;
+
+_this = createMarker ["NWAF7_2", [4283.8174, 10246.262, 3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_96 = _this;
+
+_this = createMarker ["NWAF7_3", [4026.0771, 10301.227, 3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_97 = _this;
+
+_this = createMarker ["NWAF7_4", [4246.4731, 10168.34, 0]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_98 = _this;
+
+_this = createMarker ["NWAF8_1", [5123.7661, 9896.9561, 0]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_99 = _this;
+
+_this = createMarker ["NWAF8_2", [5230.0479, 9855.4219, 3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_100 = _this;
+
+_this = createMarker ["NWAF8_3", [5218.3945, 9664.8857, 3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_101 = _this;
+
+_this = createMarker ["NWAF8_4", [5305.8325, 9810.5674, 0.00024414063]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_102 = _this;
 //End markers
 
 //Begin triggers
@@ -445,7 +535,7 @@ _trigger_64 = _this;
 _this = createTrigger ["EmptyDetector", [4628.0259, 10485.75]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [30, 60, 90, true];
+_this setTriggerTimeout [20, 30, 60, true];
 _this setTriggerText "NWAF1";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [4,2,200,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_66 = _this;
@@ -453,7 +543,7 @@ _trigger_66 = _this;
 _this = createTrigger ["EmptyDetector", [4757.7285, 10060.253, 0.080749512]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [30, 60, 90, true];
+_this setTriggerTimeout [20, 30, 60, true];
 _this setTriggerText "NWAF2";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_68 = _this;
@@ -461,7 +551,7 @@ _trigger_68 = _this;
 _this = createTrigger ["EmptyDetector", [4607.541, 9625.1084]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [30, 60, 90, true];
+_this setTriggerTimeout [20, 30, 60, true];
 _this setTriggerText "NWAF3";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [4,2,150,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_70 = _this;
@@ -789,7 +879,7 @@ _trigger_167 = _this;
 _this = createTrigger ["EmptyDetector", [4308.2876, 10658.527]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [30, 60, 90, true];
+_this setTriggerTimeout [20, 30, 60, true];
 _this setTriggerText "NWAF4 (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,300,thisTrigger,['NWAF4_1','NWAF4_2','NWAF4_3','NWAF4_4','NWAF4_5'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_171 = _this;
@@ -802,6 +892,37 @@ _this setTriggerText "Berezino4";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,150,thisTrigger,1] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_177 = _this;
 
+_this = createTrigger ["EmptyDetector", [4763.522, 10760.788, 0]];
+_this setTriggerArea [500, 500, 0, false];
+_this setTriggerActivation ["ANY", "PRESENT", true];
+_this setTriggerTimeout [20, 30, 60, true];
+_this setTriggerText "NWAF5 (Markers)";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,['NWAF5_1','NWAF5_2','NWAF5_3','NWAF5_4'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_trigger_179 = _this;
+
+_this = createTrigger ["EmptyDetector", [4117.4473, 11175.042, 0]];
+_this setTriggerArea [500, 500, 0, false];
+_this setTriggerActivation ["ANY", "PRESENT", true];
+_this setTriggerTimeout [20, 30, 60, true];
+_this setTriggerText "NWAF6 (Markers)";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,['NWAF6_1','NWAF6_2','NWAF6_3','NWAF6_4'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_trigger_182 = _this;
+
+_this = createTrigger ["EmptyDetector", [4246.9204, 10386.154, 0]];
+_this setTriggerArea [500, 500, 0, false];
+_this setTriggerActivation ["ANY", "PRESENT", true];
+_this setTriggerTimeout [20, 30, 60, true];
+_this setTriggerText "NWAF7 (Markers)";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,['NWAF7_1','NWAF7_2','NWAF7_3','NWAF7_4'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_trigger_185 = _this;
+
+_this = createTrigger ["EmptyDetector", [5222.3984, 9780.6406, 0]];
+_this setTriggerArea [500, 500, 0, false];
+_this setTriggerActivation ["ANY", "PRESENT", true];
+_this setTriggerTimeout [20, 30, 60, true];
+_this setTriggerText "NWAF8 (Markers)";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,['NWAF8_1','NWAF8_2','NWAF8_3','NWAF8_4'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_trigger_188 = _this;
 //triggers end
 
 diag_log "Chernarus configuration loaded";

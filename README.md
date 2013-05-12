@@ -18,8 +18,16 @@ This new package is MP-compatible and works out of the box with any supported Da
 - <b>Note</b>: DZAI version 0.03+ should work with any DayZ mission file. However for DayZ mods not listed above, no AI units will spawn from buildings and default DayZ loot tables will be used to generate AI loadouts. You will have to create and add your own configuration file to create new spawn points. AI may also be randomly spawned by modifying the DZAI_spawnRandom variable. 
 
 
-Date - Version 0.06 Update:
-
+Date - Version 0.06 Update (Patch 1-2):
+- [NEW] Experimental support for DayZ Epoch-exclusive features (Chernarus). Set DZAI_modName to "epoch" to enable Epoch skin loot, AI skins, and metal bar loot. Item probabilities still require tweaking.
+- [MODIFIED] Weapon grade probabilities can now be defined on a per-location basis (new parameter: "equipment type"). AI in "newbie" areas tend to have lower end weaponry and skills while those in high-value areas tend to have high-end weaponry and higher skills.
+- [MODIFIED] AI skill parameters are also determined by the unit's "weapon grade". AI that carry high-end weaponry tend to have higher skill parameters, and vice versa.
+- [MODIFIED] Rebalanced AI skill parameters. General increases in AI aiming speed and spotting time, general decreases in aiming shake and spotting distance.
+- [MODIFIED] Namalsk: Added marker-defined AI spawn points to Lubjansk military base instead of using building locations as spawn points. Should prevent AI from being spawned in water.
+- [MODIFIED] Several variables offloaded from invdividual AI units to the trigger object they were spawned from.
+- [MODIFIED] Cleaned up initialization script for easier reading.
+- [MODIFIED] Renamed several directories for better clarity.
+- [REMOVED] Removed Coyote backpack from second tier backpack table.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)

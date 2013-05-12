@@ -24,8 +24,8 @@ while {alive _unit} do {							//Run script for as long as unit is alive
 	if (DZAI_zombieEnemy && DZAI_zombiesEnabled) then {	//Run only if both zombie hostility and zombie spawns are enabled.
 		_nearbyZeds = (position _unit) nearEntities ["zZombie_Base",DZAI_zDetectRange];
 		{
-			if(rating _x > -10000) then {
-                _x addrating -10000;
+			if(rating _x > -30000) then {
+                _x addrating -30000;
                 if(DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI brain recognizes an nearby zombie as enemy.";};
             };
 		} forEach _nearbyZeds;

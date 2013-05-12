@@ -30,7 +30,7 @@ if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Despawned AI in tr
 _trigger setVariable["GroupArray",[],false];		//Reset trigger's group array.
 
 0 = [1,'center',350,4000,1] spawn fnc_spawnTriggers_random; 	//Spawn a new trigger elsewhere on the map.
-if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Created a new trigger. Deleting the previous trigger.";};
+if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Created a new trigger. Deleting the previous trigger.";};
 deleteVehicle _trigger;										//Remove the old trigger.
 
 true

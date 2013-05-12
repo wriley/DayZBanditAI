@@ -10,7 +10,7 @@ if (!isServer) exitWith {};									//End of client-sided work.
 DZAI_numAIUnits = 0;										//Counter variable used to keep track of currently live AI units.
 
 //DZAI Settings
-DZAI_debugLevel = 1;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 1)
+DZAI_debugLevel = 0;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 1)
 DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI position, locate waypoints, locate randomly-placed triggers. (Default: 0)
 DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017). 
 
@@ -18,11 +18,11 @@ DZAI_modName = "default";									//If using a non-standard version of a DayZ mo
 DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
 DZAI_maxAIUnits = 65535;									//Limit of total AI spawned by DZAI (0: Disables AI spawning completely)
 DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
-DZAI_spawnRandom = 0;										//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: 0)
-DZAI_spawnRandomDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
+DZAI_spawnRandom = 15;										//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: 0)
+DZAI_spawnRandomDelay = 120;								//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
 DZAI_randEquipType = 1;										//Equipment Type of randomly-spawned AI. 0: Beginner areas, 1: Average areas, 2: Areas with high-grade (MilitarySpecial) gear. (Default: 1)
-DZAI_randMinAI = 2;											//Minimum number of randomly-spawned AI to create.
-DZAI_randAddAI = 3;											//Maximum number of additional randomly-spawned AI to create.
+DZAI_randMinAI = 2;											//Minimum number of AI to spawn per randomly-spawned trigger.
+DZAI_randAddAI = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_randMinAI + (0 to DZAI_randAddAI))
 DZAI_respawnTime1 = 300;									//Minimum wait time for AI respawn timer (seconds). (Default: 180)
 DZAI_respawnTime2 = 120;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 120)
 DZAI_dmgFactors1 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for bullet-type damage done to different body parts: Structural, Head, Body, Hands, Legs. Example: to make AI take 50% reduced damage to a body part, set the appropriate value to 0.50.
@@ -34,7 +34,8 @@ DZAI_minFleeChance = 0.05;									//Minimum chance that AI will flee. (Default:
 DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee. (Default: 0.05)
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
 
-//Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI)
+//Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI). 
+//Note: AI are not intended to be friendly to players.
 resistance setFriend [east, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
 resistance setFriend [west, 0];
 EAST setFriend [WEST, 0];									//East (AI) is hostile to West (Player), but friendly to Resistance (AI).
@@ -55,10 +56,10 @@ DZAI_numMiscItemS = 3;										//Maximum number of items to select from DZAI_De
 DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_DefaultMiscItemL table.
 DZAI_maxPistolMags = 2;										//Maximum number of pistol magazines to generate as loot upon death.
 DZAI_maxRifleMags = 1;										//Maximum number of rifle  magazines to generate. (Unused variable)
-DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Residential, 1: Military, 2: MilitarySpecial, 3: Heli Crash.
-DZAI_gradeChances0 = [0.65,0.32,0.03,0.00];					//Weapongrade probabilities for small towns near beginner areas.
-DZAI_gradeChances1 = [0.33,0.56,0.10,0.01];					//Weapongrade probabilities for large cities, or places with Military-grade loot. (Identical to 0.05 grade chances)
-DZAI_gradeChances2 = [0.00,0.70,0.25,0.05];					//Weapongrade probabilities for areas with MilitarySpecial loot.
+DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Residential, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
+DZAI_gradeChances0 = [0.75,0.24,0.01,0.00];					//Weapongrade probabilities for small towns near beginner areas where players depend on houses, farms and deerstands as the primary source of rifle weapons.
+DZAI_gradeChances1 = [0.33,0.56,0.10,0.01];					//Weapongrade probabilities for locations where players are expected to have military-grade weapons. (Identical to 0.05 grade chances)
+DZAI_gradeChances2 = [0.00,0.60,0.33,0.07];					//Weapongrade probabilities for high-risk/high-reward areas or areas where players are expected to be fully-geared with top-tier weapons.
 
 //Load default DZAI loot tables. These tables include weapons and other items that can be added to an AI unit's inventory.
 //Do not delete this file, as it is required for DZAI to work.

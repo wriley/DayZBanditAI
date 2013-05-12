@@ -18,16 +18,16 @@ if (!isServer) exitWith {};
 _unitGroup = _this select 0;
 _spawnPos = _this select 1;
 _trigger = _this select 2;		//Always 0 (zero) for randomly-spawned AI, as they are not spawned by triggers.
-_respawnLoc = _this select 3;
-_respawnType = _this select 4;
-_gradeChances = _this select 5;
+//_respawnLoc = _this select 3;
+_respawnType = _this select 3;
+_gradeChances = _this select 4;
 
 _type = DZAI_BanditTypesDefault call BIS_fnc_selectRandom;							// Select skin of AI unit
 _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 [_unit] joinSilent _unitGroup;														// Add AI unit to group
 
 _unit setVariable["unitGroup",_unitGroup,false];									// Set the unit's group. The unit will respawn into the same group.
-_unit setVariable["respawnLoc",_respawnLoc,false];									// Set position of the trigger/marker the AI was spawned from
+//_unit setVariable["respawnLoc",_respawnLoc,false];									// Set position of the trigger/marker the AI was spawned from
 _unit setVariable["trigger",_trigger,false];										// Record the trigger from which the AI unit was spawned
 _unit setVariable["respawnType",_respawnType,false];								// Set the method used to spawn the AI (ie: 1: from 'center' marker, 2: from a trigger, 3: from a set of markers
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)

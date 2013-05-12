@@ -18,7 +18,7 @@ _minAI = _this select 0;									//Mandatory minimum number of AI units to spawn
 _addAI = _this select 1;									//Maximum number of additional AI units to spawn
 _patrolDist = _this select 2;
 _trigger = _this select 3;									//The trigger calling this script.
-_equipType = if ((count _this) > 4) then {_this select 4} else {1};
+_equipType = if ((count _this) > 4) then {_this select 4} else {1};		//(Optional) Select the item probability table to use (0: Newbie, 1: Average, 2: High-end)
 _numGroups = if ((count _this) > 5) then {_this select 5} else {1};		//(Optional) Number of groups of x number of units each to spawn
 
 //Get/Set trigger variables
@@ -50,8 +50,8 @@ for "_j" from 1 to _numGroups do {
 	_p = _buildingPositions call BIS_fnc_selectRandom;		//Each unit will be spawned at/near a random building position.
 	_pos = [_p,2,_posVariance,5,0,2000,0] call BIS_fnc_findSafePos;
 	for "_i" from 1 to _totalAI do {
-		_unit = [_unitGroup,_pos,_trigger,_triggerPos,2,_gradeChances] call fnc_createAI;	//Create and equip the unit
-		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
+		_unit = [_unitGroup,_pos,_trigger,2,_gradeChances] call fnc_createAI;	//Create and equip the unit
+		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\scripts\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
 	};
 
 	_grpArray = _grpArray + [_unitGroup];							//Add the new group to the trigger's group array.
