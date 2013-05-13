@@ -2,17 +2,22 @@ DZAI - DayZ AI Addon (Current version: 0.06 Patch 3)
 ============
 
 
-This new package is MP-compatible and works out of the box with any supported DayZ mission file. Currently supported DayZ missions:
+This new package is MP-compatible and works out of the box with any supported DayZ mission file. 
+
+Currently supported and tested DayZ missions:
 - Chernarus
+- Celle
+- Namalsk
+
+Currently supported (but untested) DayZ missions:
+- DayZ Epoch (Chernarus)
 - Fallujah
 - Isla Duala
 - Lingor
-- Celle
-- Namalsk
 - Oring
 - Panthera
 - Takistan
-- Taviana 2.0 (Requires testing)
+- Taviana 2.0 	(Note: DZAI will no longer be updated for Taviana 2.0 after DayZ 1.7.7 is released)
 - Utes
 - Zargabad
 - <b>Note</b>: DZAI version 0.03+ should work with any DayZ mission file. However for DayZ mods not listed above, no AI units will spawn from buildings and default DayZ loot tables will be used to generate AI loadouts. You will have to create and add your own configuration file to create new spawn points. AI may also be randomly spawned by modifying the DZAI_spawnRandom variable. 
@@ -29,7 +34,7 @@ Date ?? - Version 0.06 Patch 1, Patch 2:
 - [MODIFIED] Renamed several directories for better clarity.
 - [REMOVED] Removed Coyote backpack from second tier backpack table.
 
-May 12 - Version 0.06 Patch 3:
+May 12, 2013 - Version 0.06 Patch 3:
 - [FIXED] Fixed a bug where having debugLevel set to 0 disabled the check for active AI units in a trigger area, causing more AI units to be spawned than intended.
 - [FIXED] Added checks to mark a trigger as waiting to be cleaned up by the AI despawn script to prevent an excessive instances of the despawn script from being run.
 - [UPCOMING] Added a chance for an AI group to immediately identify a group member's killer to simulate a coordinated group of players. This code is currently commented.
@@ -37,7 +42,6 @@ May 12 - Version 0.06 Patch 3:
 - [MODIFIED] Replaced BIS_fnc_selectRandom with an altered version that should correctly calculate random values. (This may affect any DayZ scripts that use this function).
 - [MODIFIED] debugLevel 2 no longer causes aiBrain to report each zombie that has been identified as hostile (reserved for debugLevel 3+, tentatively called "Super Debug")
 - [MODIFIED] Despawn script now also cleans up variables that have been assigned to the trigger object.
-
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
@@ -65,14 +69,5 @@ progressLoadingScreen 1.0;</code>
 - Repack your mission.pbo file.
 - You are now ready to start your server.
 
-Update Instructions:
-- Extract your mission .pbo file.
-- Back up your dayz_ai_variables.sqf file in "DZAI\init" to a safe location if you wish to keep your current settings. 
-- Open your extracted mission folder.
-- Copy the newer DZAI folder into your extracted mission folder and overwrite everything.
-- If you have not modified your dayz_variables.sqf file or don't want to retain your old settings, you may repack your mission .pbo file immediately and stop following these instructions.
-- Edit dayz_ai_variables.sqf in "DZAI\init" to customize the addon settings. Refer to your old dayz_variables.sqf file as reference if you want to reuse certain settings. DO NOT overwrite the new copy with your old copy. It is no longer recommended to reuse your old dayz_ai_variables.sqf. Do so at your own risk.
-- Repack your mission.pbo file.
-- You are now ready to start your server.
 
 Detailed documentation for the DZAI package is coming. Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
