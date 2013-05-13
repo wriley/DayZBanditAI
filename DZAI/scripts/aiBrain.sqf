@@ -18,7 +18,7 @@ while {alive _unit} do {							//Run script for as long as unit is alive
 		{
 			if(rating _x > -30000) then {
                 _x addrating -30000;
-                if(DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI brain recognizes an nearby zombie as enemy.";};
+                //if(DZAI_debugLevel > 2) then {diag_log "DZAI Super Debug: AI brain recognizes an nearby zombie as enemy.";};
             };
 		} forEach _nearbyZeds;
 	};

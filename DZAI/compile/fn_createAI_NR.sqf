@@ -21,6 +21,14 @@ _type = DZAI_BanditTypesDefault call BIS_fnc_selectRandom;							// Select skin 
 _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 [_unit] joinSilent _unitGroup;														// Add AI unit to group
 
+_unit enableAI "TARGET";
+_unit enableAI "AUTOTARGET";
+_unit enableAI "MOVE";
+_unit enableAI "ANIM";
+_unit enableAI "FSM";
+_unit allowDammage true;
+_unit allowFleeing (DZAI_minFleeChance + random DZAI_addFleeChance);
+
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 
 if (DZAI_debugMarkers < 1) then {
@@ -32,14 +40,14 @@ if (DZAI_zombieEnemy && DZAI_zombiesEnabled && (DZAI_weaponNoise!=0)) then {
 	_unit addEventHandler ["Fired", {_this call ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.
 _unit addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];					// Handle incoming damage. Note: AI durability can be modified in dayz_ai_variables.sqf
 _unit addEventHandler ["Killed",{[_this,"banditKills"] call local_eventKill;}]; 	// Killing this unit will increment player's bandit kill count.
-_unit addEventHandler ["Killed",{_this call fnc_spawn_deathFlies;}];				// Spawn flies around AI bandit corpse.
+_unit addEventHandler ["Killed",{_this spawn fnc_spawn_deathFlies;}];				// Spawn flies around AI bandit corpse.
 _unit addEventHandler ["Killed",{_this call fnc_banditAIKilled;}];					// Update current AI count and generate additional loot on death.
 _unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];					// "People die if they are killed" - Shirou Emiya
 
 _weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
 [_unit, _weapongrade] call fnc_unitSelectRifle;										// Add rifle
 [_unit, _weapongrade] call fnc_unitBackpack;										// Add backpack and chance of binoculars
-[_unit] call fnc_setBehaviour;														// Set AI behavior
+//[_unit] call fnc_setBehaviour;														// Set AI behavior
 [_unit, _weapongrade] call fnc_setSkills;											// Set AI skill
 processInitCommands;
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned AI Type %1 with weapongrade %2 (fn_createAI).",_type,_weapongrade];};

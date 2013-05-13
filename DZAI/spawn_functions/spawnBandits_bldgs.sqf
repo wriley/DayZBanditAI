@@ -23,13 +23,15 @@ _numGroups = if ((count _this) > 5) then {_this select 5} else {1};		//(Optional
 
 //Get/Set trigger variables
 _grpArray = _trigger getVariable ["GroupArray",[]];			//Retrieve groups created by the trigger, or create an empty group array if none found.
-if (count _grpArray > 0) exitWith {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_bldgs)";};						//Exit script if active groups still exist.
+if (count _grpArray > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_bldgs)";};};						//Exit script if active groups still exist.
 _triggerPos = getpos _trigger;									//Position to spawn AI unit. Also used as the respawn position.
+
 switch (_equipType) do {
 	case 0: {_gradeChances = DZAI_gradeChances0;};
 	case 1: {_gradeChances = DZAI_gradeChances1;};
 	case 2: {_gradeChances = DZAI_gradeChances2;};
 };
+
 _trigger setVariable ["patrolDist",_patrolDist,false];
 _trigger setVariable ["gradeChances",_gradeChances,false];
 
@@ -57,3 +59,4 @@ for "_j" from 1 to _numGroups do {
 	_grpArray = _grpArray + [_unitGroup];							//Add the new group to the trigger's group array.
 };
 _trigger setVariable["GroupArray",_grpArray,false];
+_trigger setVariable["isCleaning",false,false];

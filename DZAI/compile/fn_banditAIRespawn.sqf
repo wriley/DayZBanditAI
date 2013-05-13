@@ -5,7 +5,7 @@
 	Description: Called internally by an AI's Killed eventhandler. Retrieves a dead AI unit's respawn type, reference location for spawning, their previous group, and uses this information to respawn the unit after a delay. After the delay, the AI unit corpse is deleted.
 */
 
-private ["_victim","_sleepTime","_respawnType","_respawnLoc","_unitGroup","_patrolDist","_trigger","_dummy","_newLeader","_unitsAlive","_dummyExists","_equipType"];
+private ["_victim","_sleepTime","_respawnType","_respawnLoc","_unitGroup","_trigger","_dummy","_unitsAlive","_dummyExists"];
 _victim = _this select 0;
 
 _respawnType = _victim getVariable "respawnType";

@@ -17,7 +17,7 @@ if (!isServer) exitWith {}; //End of client-sided work
 	waituntil {!isnil "bis_fnc_init"};
 	// [] call BIS_fnc_help;
 	//Compile general functions.
-	fnc_setBehaviour = 				compile preprocessFileLineNumbers "DZAI\compile\fn_setBehaviour.sqf";
+	BIS_fnc_selectRandom = 			compile preprocessFileLineNumbers "DZAI\compile\fn_selectRandom.sqf";	//Altered version
 	fnc_setSkills = 				compile preprocessFileLineNumbers "DZAI\compile\fn_setSkills.sqf";
 	fnc_spawn_deathFlies = 			compile preprocessFileLineNumbers "DZAI\compile\fn_spawn_deathFlies.sqf";
 	fnc_unitConsumables = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitConsumables.sqf";
@@ -50,5 +50,5 @@ if (!isServer) exitWith {}; //End of client-sided work
 	fnc_despawnBandits_NR = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\despawnBandits_NR.sqf";
 	
 initialized = true;
-0 = [DZAI_spawnRandom,'center',350,4000,DZAI_randEquipType] spawn fnc_spawnTriggers_random;
+_nul = [DZAI_spawnRandom,'center',350,4000,DZAI_randEquipType] spawn fnc_spawnTriggers_random;
 if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Loading Complete."];};
