@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.06 Patch 3)
+DZAI - DayZ AI Addon (Current version: 0.06 Patch 4)
 ============
 
 
