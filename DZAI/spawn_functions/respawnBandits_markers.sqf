@@ -14,7 +14,7 @@ _unitGroup = _this select 0;
 //_markerArray = _this select 1;
 _trigger = _this select 2;							//Trigger that spawned the AI unit.
 
-_grpArray = _trigger getVariable "GroupArray";
+_grpArray = _trigger getVariable ["GroupArray",[]];
 if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: No players present in trigger area. Cancelling respawn script. (respawnBandits_markers)";};};
 _patrolDist = _trigger getVariable ["patrolDist",125];
 _gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];

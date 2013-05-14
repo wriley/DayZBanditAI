@@ -27,7 +27,7 @@ _unit enableAI "MOVE";
 _unit enableAI "ANIM";
 _unit enableAI "FSM";
 _unit allowDammage true;
-_unit allowFleeing (DZAI_minFleeChance + random DZAI_addFleeChance);
+if (DZAI_allowFleeing) then {_unit allowFleeing (DZAI_minFleeChance + random DZAI_addFleeChance);};
 
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 

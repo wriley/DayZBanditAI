@@ -33,6 +33,7 @@ switch (DZAI_modName) do {
 		DZAI_DefaultEdibles = DZAI_DefaultEdibles + ["FoodBioMeat"];
 		DZAI_DefaultTools = DZAI_DefaultTools + ["ItemAluminumBar","ItemTinBar","ItemCopperBar","ItemCopperBar10oz","ItemSilverBar","ItemSilverBar10oz","ItemGoldBar"];	//Consider metal currency as "tools" for DayZEpoch since currency doesn't exist in standard DayZ.
 		DZAI_toolChances = DZAI_toolChances + [0.05,0.05,0.05,0.02,0.02,0.02,0.01];
+		DZAI_DefaultMiscItemS = DZAI_DefaultMiscItemS + ["ItemZombieParts"];
 	};
 	default {};
 };
@@ -865,7 +866,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Stary Sobor (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,3,125,thisTrigger,['StaryS1','StaryS2','StaryS3','StaryS4','StaryS5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,3,200,thisTrigger,['StaryS1','StaryS2','StaryS3','StaryS4','StaryS5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_163 = _this;
 
 _this = createTrigger ["EmptyDetector", [4945.6611, 2212.1155]];

@@ -3,7 +3,7 @@ private["_worldname"];
 
 //Enable/Disable Zombies, Zombie Hostility
 DZAI_zombieEnemy = true;									//Enable or disable AI hostility to zombies. If enabled, AI will attack zombies. (default: true)
-DZAI_zombiesEnabled = true;								//Enable or disable zombie spawns (default: true)
+DZAI_zombiesEnabled = true;									//Enable or disable zombie spawns (default: true)
 if (!isServer) exitWith {};									//End of client-sided work.
 
 //Internal Use Variables: DO NOT EDIT THESE
@@ -18,8 +18,8 @@ DZAI_modName = "default";									//If using a non-standard version of a DayZ mo
 DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
 DZAI_maxAIUnits = 65535;									//Limit of total AI spawned by DZAI (0: Disables AI spawning completely)
 DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
-DZAI_spawnRandom = 15;										//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: 0)
-DZAI_spawnRandomDelay = 60;								//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
+DZAI_spawnRandom = 0;										//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: 0)
+DZAI_spawnRandomDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
 DZAI_randEquipType = 1;										//Equipment Type of randomly-spawned AI. 0: Beginner areas, 1: Average areas, 2: Areas with high-grade (MilitarySpecial) gear. (Default: 1)
 DZAI_randMinAI = 2;											//Minimum number of AI to spawn per randomly-spawned trigger.
 DZAI_randAddAI = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_randMinAI + (0 to DZAI_randAddAI))
@@ -33,6 +33,7 @@ DZAI_allowFleeing = false;									//Enable/disable AI fleeing (Default: false)
 DZAI_minFleeChance = 0.05;									//Minimum chance that AI will flee. (Default: 0.05)
 DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee. (Default: 0.05)
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
+DZAI_revealChance = 0.50;									//Chance for AI to become aware of who killed an AI group member. (Default: 0.50)
 
 //Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI). 
 //Note: AI are not intended to be friendly to players.

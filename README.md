@@ -43,6 +43,13 @@ May 12, 2013 - Version 0.06 Patch 3:
 - [MODIFIED] debugLevel 2 no longer causes aiBrain to report each zombie that has been identified as hostile (reserved for debugLevel 3+, tentatively called "Super Debug")
 - [MODIFIED] Despawn script now also cleans up variables that have been assigned to the trigger object.
 
+May 14, 2013 - Version 0.06 Patch 4
+- [FIXED] DZAI_allowFleeing variable was not used to enable/disable fleeing.
+- [FIXED] Applied fixes to despawn script for non-respawning AI that were applied to the respawning-AI despawn script in Patch 3.
+- [MODIFIED] Added chance to reveal player responsible for killing an AI unit to its group (Default: 50% chance of reveal)
+- [MODIFIED] Increased Stary Sobor military tent AI patrol distance from 125m/waypoint to 200m/waypoint to allow easier access to NPC vendor in Chernarus Epoch.
+- [MODIFIED] Triggers' GroupArray variable is now always reset to an empty array if one cannot be found.
+
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
 - Copy the entire DZAI folder into the extracted mission folder.
