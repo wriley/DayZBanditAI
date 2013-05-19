@@ -27,8 +27,6 @@ DZAI_Backpacks0 = ["DZ_Patrol_Pack_EP1","DZ_Assault_Pack_EP1","DZ_Czech_Vest_Puc
 DZAI_Backpacks1 = ["DZ_Czech_Vest_Puch","DZ_Assault_Pack_EP1","DZ_British_ACU","DZ_TK_Assault_Pack_EP1","DZ_CivilBackpack_EP1","DZ_ALICE_Pack_EP1"];
 DZAI_Backpacks2 = ["DZ_CivilBackpack_EP1","DZ_ALICE_Pack_EP1","DZ_Backpack_EP1"];
 DZAI_Backpacks3 = ["DZ_Backpack_EP1"];
-//DZAI_DefaultStartPack = "DZ_Patrol_Pack_EP1"; //Class name of default starting backpack
-//DZAI_DefaultBackpacks = ["CZ_VestPouch_EP1","DZ_Patrol_Pack_EP1", "DZ_Assault_Pack_EP1", "DZ_CivilBackpack_EP1", "DZ_ALICE_Pack_EP1", "DZ_Backpack_EP1", "DZ_British_ACU", "DZ_TK_Assault_Pack_EP1"]; //List of all available backpacks
 
 DZAI_DefaultEdibles = ["ItemSodaCoke", "ItemSodaPepsi", "ItemWaterbottle", "FoodCanSardines", "FoodCanBakedBeans", "FoodCanFrankBeans", "FoodCanPasta", "ItemWaterbottleUnfilled","ItemWaterbottleBoiled","FoodmuttonCooked","FoodchickenCooked","FoodBaconCooked","FoodRabbitCooked","FoodbaconRaw","FoodchickenRaw","FoodmuttonRaw","foodrabbitRaw","FoodCanUnlabeled","FoodPistachio","FoodNutmix","FoodMRE"]; //List of all edible items
 DZAI_DefaultMedicals1 = ["ItemBandage", "ItemPainkiller"]; //List of common medical items
@@ -43,10 +41,43 @@ DZAI_chanceMiscItemL = 0.20;
 DZAI_DefaultSkinLoot = ["Skin_Camo1_DZ", "Skin_Sniper1_DZ"]; //List of all skin packs
 DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_DefaultSkinLoot table.
 
-DZAI_DefaultTools = ["ItemFlashlight","ItemWatch","ItemKnife","ItemHatchet","ItemCompass","ItemMap","ItemToolbox","ItemMatchbox","ItemFlashlightRed","binocular_vector","ItemGPS"]; //List of all tools and gadgets. NOTE: Every entry into the DZAI_DefaultTools table must have corresponding chance added to DZAI_toolChances!
-DZAI_toolChances = [1.00,0.90,0.85,0.80,0.60,0.50,0.20,0.20,0.10,0.05,0.03]; 	//Probabilities for generating each tool item upon unit death. (Flashlight, Watch, Knife, Hatchet, Compass, Map, Toolbox, Matchbox, Military Flashlight, Rangefinder, GPS).
+//DZAI_DefaultTools = ["ItemFlashlight","ItemWatch","ItemKnife","ItemHatchet","ItemCompass","ItemMap","ItemToolbox","ItemMatchbox","ItemFlashlightRed","binocular_vector","ItemGPS"]; //List of all tools and gadgets. NOTE: Every entry into the DZAI_DefaultTools table must have corresponding chance added to DZAI_toolChances!
+//DZAI_toolChances = [1.00,0.90,0.85,0.80,0.60,0.50,0.20,0.20,0.10,0.05,0.03]; 	//Probabilities for generating each tool item upon unit death. (Flashlight, Watch, Knife, Hatchet, Compass, Map, Toolbox, Matchbox, Military Flashlight, Rangefinder, GPS).
 
-DZAI_DefaultGadgets = ["binocular","NVGoggles"];
-DZAI_gadgetChances = [0.50,0.03];								//Probabilities of generating each gadget item upon unit spawn (Binoculars, NVGoggles).
+//DZAI 0.07
+DZAI_tools = [["ItemFlashlight",1.00],["ItemWatch",0.90],["ItemKnife",0.85],["ItemHatchet",0.80],["ItemCompass",0.60],["ItemMap",0.50],["ItemToolbox",0.20],["ItemMatchbox",0.20],["ItemFlashlightRed",0.10],["ItemGPS",0.05]];
+
+//DZAI_DefaultGadgets = ["binocular","NVGoggles"];
+//DZAI_gadgetChances = [0.50,0.03];								//Probabilities of generating each gadget item upon unit spawn (Binoculars, NVGoggles).
+
+//DZAI 0.07
+DZAI_gadgets = [["binocular",0.60],["NVGoggles",0.05]];
+
+private ["_modname"];
+_modname = toLower format ["%1",DZAI_modName];
+
+switch (_modname) do {
+	case "epoch":
+	{
+		private ["_worldname"];
+		diag_log "DayZ Epoch configuration selected.";
+	
+		//Epoch metal bar currency (rare bars only)
+		DZAI_metalBars = [["ItemSilverBar",0.30],["ItemSilverBar10oz",0.15],["ItemGoldBar",0.05],["ItemGoldBar10oz",0.025]];
+		DZAI_metalBarNum = 3;		//Maximum number of metal bars to generate
+	
+		DZAI_BanditTypesDefault = DZAI_BanditTypesDefault + ["Soldier1_DZ","RU_Policeman_DZ","Pilot_EP1_DZ","Haris_Press_EP1_DZ","Ins_Soldier_GL_DZ","Functionary1_EP1_DZ","GUE_Commander_DZ","Priest_DZ","Rocker2_DZ","SurvivorWpink_DZ","SurvivorWcombat_DZ","SurvivorWdesert_DZ","SurvivorWurban_DZ","Soldier_TL_PMC_DZ","Soldier_Sniper_PMC_DZ","Soldier_Bodyguard_AA12_PMC_DZ","Drake_Light_DZ","CZ_Special_Forces_GL_DES_EP1_DZ","TK_INS_Soldier_EP1_DZ","TK_INS_Warlord_EP1_DZ"];
+		DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_Soldier1_DZ","Skin_RU_Policeman_DZ","Skin_Pilot_EP1_DZ","Skin_Haris_Press_EP1_DZ","Skin_Ins_Soldier_GL_DZ","Skin_Functionary1_EP1_DZ","Skin_GUE_Commander_DZ","Skin_Priest_DZ","Skin_Rocker2_DZ","Skin_SurvivorWpink_DZ","Skin_SurvivorWcombat_DZ","Skin_SurvivorWdesert_DZ","Skin_SurvivorWurban_DZ","Skin_Soldier_TL_PMC_DZ","Skin_Soldier_Sniper_PMC_DZ","Skin_Soldier_Bodyguard_AA12_PMC_DZ","Skin_Drake_Light_DZ","Skin_CZ_Special_Forces_GL_DES_EP1_DZ","Skin_TK_INS_Soldier_EP1_DZ","Skin_TK_INS_Warlord_EP1"];
+		DZAI_DefaultEdibles = DZAI_DefaultEdibles + ["FoodBioMeat"];
+		DZAI_DefaultMiscItemS = DZAI_DefaultMiscItemS + ["ItemZombieParts"];
+
+	};
+	case "minimal":
+	{
+		//Minimal configuration is designed with maximum compatability in mind and should be compatible with every existing DayZ mod and possibly future releases, at the cost of variety of weapons and loot.
+		diag_log "Minimal DZAI configuration selected.";
+		#include "minimal_config.sqf"
+	};
+};
 
 diag_log "DZAI loot tables loaded.";

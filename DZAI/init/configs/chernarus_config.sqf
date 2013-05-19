@@ -1,12 +1,11 @@
 //Chernarus Configuration 0.06
+private ["_tmpArray","_modname"];
 
 switch (DZAI_modName) do {
 	case "2017":
 	{
 		diag_log "DayZ 2017 configuration selected.";
 		DZAI_BanditTypesDefault = DZAI_BanditTypesDefault - ["Bandit1_DZ", "BanditW1_DZ", "Camo1_DZ", "Sniper1_DZ"] + ["Beard_DZ","Dimitry_DZ","Alexej_DZ","Stanislav_DZ","Czech_Norris","SG_IRA_Soldier_CO_DZ"];
-		DZAI_DefaultStartPack = "ice_apo_pack3";
-		DZAI_DefaultBackpacks = ["ice_apo_pack1","ice_apo_pack2","ice_apo_pack3","ice_apo_pack4"];
 		DZAI_PistolsDefault0 = ["revolver_EP1","Makarov","Tokarev"];
 		DZAI_PistolsDefault1 = DZAI_PistolsDefault0;
 		DZAI_PistolsDefault2 = DZAI_PistolsDefault0;
@@ -20,20 +19,12 @@ switch (DZAI_modName) do {
 		DZAI_gradeChances0 = [0.90,0.10,0.00];
 		DZAI_gradeChances1 = [0.60,0.30,0.10];
 		DZAI_gradeChances2 = [0.35,0.45,0.20];
-		DZAI_DefaultTools set [6,"ItemFlint"];
+		_tmpArray = DZAI_tools select 7;
+		_tmpArray set [0,"ItemFlint"];
 		DZAI_Backpacks0 = ["ice_apo_pack3"];
 		DZAI_Backpacks1 = ["ice_apo_pack3","ice_apo_pack1"];
 		DZAI_Backpacks2 = ["ice_apo_pack1","ice_apo_pack4","ice_apo_pack2"];
-	};
-	case "epoch":
-	{
-		diag_log "DayZ Epoch configuration selected.";
-		DZAI_BanditTypesDefault = DZAI_BanditTypesDefault + ["Soldier1_DZ","RU_Policeman_DZ","Pilot_EP1_DZ","Haris_Press_EP1_DZ","Ins_Soldier_GL_DZ","Functionary1_EP1_DZ","GUE_Commander_DZ","Priest_DZ","Rocker2_DZ","SurvivorWpink_DZ","SurvivorWcombat_DZ","SurvivorWdesert_DZ","SurvivorWurban_DZ","Soldier_TL_PMC_DZ","Soldier_Sniper_PMC_DZ","Soldier_Bodyguard_AA12_PMC_DZ","Drake_Light_DZ","CZ_Special_Forces_GL_DES_EP1_DZ","TK_INS_Soldier_EP1_DZ","TK_INS_Warlord_EP1_DZ"];
-		DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_Soldier1_DZ","Skin_RU_Policeman_DZ","Skin_Pilot_EP1_DZ","Skin_Haris_Press_EP1_DZ","Skin_Ins_Soldier_GL_DZ","Skin_Functionary1_EP1_DZ","Skin_GUE_Commander_DZ","Skin_Priest_DZ","Skin_Rocker2_DZ","Skin_SurvivorWpink_DZ","Skin_SurvivorWcombat_DZ","Skin_SurvivorWdesert_DZ","Skin_SurvivorWurban_DZ","Skin_Soldier_TL_PMC_DZ","Skin_Soldier_Sniper_PMC_DZ","Skin_Soldier_Bodyguard_AA12_PMC_DZ","Skin_Drake_Light_DZ","Skin_CZ_Special_Forces_GL_DES_EP1_DZ","Skin_TK_INS_Soldier_EP1_DZ","Skin_TK_INS_Warlord_EP1"];
-		DZAI_DefaultEdibles = DZAI_DefaultEdibles + ["FoodBioMeat"];
-		DZAI_DefaultTools = DZAI_DefaultTools + ["ItemAluminumBar","ItemTinBar","ItemCopperBar","ItemCopperBar10oz","ItemSilverBar","ItemSilverBar10oz","ItemGoldBar"];	//Consider metal currency as "tools" for DayZEpoch since currency doesn't exist in standard DayZ.
-		DZAI_toolChances = DZAI_toolChances + [0.05,0.05,0.05,0.02,0.02,0.02,0.01];
-		DZAI_DefaultMiscItemS = DZAI_DefaultMiscItemS + ["ItemZombieParts"];
+		DZAI_Backpacks3 = ["ice_apo_pack4","ice_apo_pack2"];
 	};
 	default {};
 };
@@ -586,7 +577,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Stary Sobor";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,3,225,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_78 = _this;
 
 _this = createTrigger ["EmptyDetector", [7083.9336, 7690.8926]];
@@ -786,7 +777,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Skalisty Island (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,0,125,thisTrigger,['Skalisty1','Skalisty2','Skalisty3'],1] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,125,thisTrigger,['Skalisty1','Skalisty2','Skalisty3'],1] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_132 = _this;
 
 _this = createTrigger ["EmptyDetector", [11250.809, 4274.082]];
@@ -861,6 +852,7 @@ _this setTriggerText "Cherno (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,150,thisTrigger,['Cherno1','Cherno2','Cherno3','Cherno4','Cherno5'],1] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_160 = _this;
 
+/*
 _this = createTrigger ["EmptyDetector", [6325.936, 7791.7266]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
@@ -868,6 +860,7 @@ _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Stary Sobor (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,3,200,thisTrigger,['StaryS1','StaryS2','StaryS3','StaryS4','StaryS5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_163 = _this;
+*/
 
 _this = createTrigger ["EmptyDetector", [4945.6611, 2212.1155]];
 _this setTriggerArea [500, 500, 0, false];

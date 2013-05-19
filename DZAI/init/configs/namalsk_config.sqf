@@ -1,5 +1,5 @@
 //Reconfiguration for Namalsk Version 0.06
-
+private ["_tmpArray"];
 DZAI_invmedicals = 1; 	//Number of selections of medical items (Inventory)
 DZAI_ninmedicals = 1;	//Maximum amount of each medical item, minimum of zero (Inventory)
 DZAI_invedibles = 1;	//Number of selections of edible items (Inventory)
@@ -27,10 +27,13 @@ if ((dayzNam_buildingLoot == "CfgBuildingLootNamalsk") || (dayzNam_buildingLoot 
 DZAI_Backpacks1 = DZAI_Backpacks1 + ["BAF_AssaultPack_DZN"];
 DZAI_Backpacks2 = DZAI_Backpacks2 + ["BAF_AssaultPack_DZN"];
 DZAI_DefaultBackpacks = DZAI_DefaultBackpacks + ["BAF_AssaultPack_DZN"];	
-DZAI_DefaultGadgets set [1,0.005];
-DZAI_toolChances set [10,0.005];
-DZAI_DefaultTools = DZAI_DefaultTools + ["BrokenItemGPS","BrokenNVGoggles","BrokenItemRadio","ItemSolder","APSI"];
-DZAI_toolChances = DZAI_toolChances + [0.04,0.04,0.02,0.01,0.01];
+
+_tmpArray = DZAI_gadgets select 1;	
+_tmpArray set [1,0.005];				//Reduce probability of NVG (functional)
+_tmpArray = DZAI_tools select 9;
+_tmpArray set [1,0.005];				//Reduce probability of GPS (functional)
+
+DZAI_tools = DZAI_tools + [["BrokenItemGPS",0.04],["BrokenNVGoggles",0.04],["BrokenItemRadio",0.02],["ItemSolder",0.01],["APSI",0.01]];	//Add Namalsk tools
 DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_Sniper1W_DZN","Skin_CamoWinter_DZN","Skin_CamoWinterW_DZN"];
 
 //Begin Markers

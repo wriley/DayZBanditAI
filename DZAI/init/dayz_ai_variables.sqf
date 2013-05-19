@@ -1,4 +1,4 @@
-//DZAI Variables Version 0.06
+//DZAI Variables Version 0.07
 private["_worldname"];
 
 //Enable/Disable Zombies, Zombie Hostility
@@ -12,7 +12,7 @@ DZAI_numAIUnits = 0;										//Counter variable used to keep track of currently
 //DZAI Settings
 DZAI_debugLevel = 1;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 1)
 DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI position, locate waypoints, locate randomly-placed triggers. (Default: 0)
-DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017). 
+DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017), "epoch" (DayZ Epoch), "minimal" (Minimal Config - Use if experiencing problems). 
 
 //AI Variables						
 DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
@@ -23,8 +23,8 @@ DZAI_spawnRandomDelay = 60;									//Time to wait between creating each randoml
 DZAI_randEquipType = 1;										//Equipment Type of randomly-spawned AI. 0: Beginner areas, 1: Average areas, 2: Areas with high-grade (MilitarySpecial) gear. (Default: 1)
 DZAI_randMinAI = 2;											//Minimum number of AI to spawn per randomly-spawned trigger.
 DZAI_randAddAI = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_randMinAI + (0 to DZAI_randAddAI))
-DZAI_respawnTime1 = 300;									//Minimum wait time for AI respawn timer (seconds). (Default: 180)
-DZAI_respawnTime2 = 120;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 120)
+DZAI_respawnTime1 = 300;									//Minimum wait time for AI respawn timer (seconds). (Default: 300)
+DZAI_respawnTime2 = 180;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 180)
 DZAI_dmgFactors1 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for bullet-type damage done to different body parts: Structural, Head, Body, Hands, Legs. Example: to make AI take 50% reduced damage to a body part, set the appropriate value to 0.50.
 DZAI_dmgFactors2 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for non-bullet-type (ie: explosions, collisions) damage done to different body parts: Structural, Head, Body, Hands, Legs.
 DZAI_refreshRate = 15;										//Amount of time in seconds between AI ammo and zombie check. (Default: 15)
@@ -33,7 +33,7 @@ DZAI_allowFleeing = false;									//Enable/disable AI fleeing (Default: false)
 DZAI_minFleeChance = 0.05;									//Minimum chance that AI will flee. (Default: 0.05)
 DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee. (Default: 0.05)
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
-DZAI_revealChance = 0.50;									//Chance for AI to become aware of who killed an AI group member. (Default: 0.50)
+DZAI_revealChance = 0.50;									//Chance for AI to become aware of who killed an AI group member. AI group leader will investigate last known position of killer. (Default: 0.50)
 
 //Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI). 
 //Note: AI are not intended to be friendly to players.
@@ -120,4 +120,4 @@ switch (_worldname) do {
     };
 };
 
-if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded."];};
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName];};

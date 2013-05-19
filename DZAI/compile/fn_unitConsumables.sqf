@@ -1,8 +1,8 @@
-//unitConsumables Version 0.05
+//unitConsumables Version 0.07
 /*
 	Usage: [_unit] call fnc_unitConsumables;
 */
-	private ["_unit","_miscItemS","_miscItemL","_skinItem","_bpmedical","_bpedible","_invmedical","_invedible"];
+	private ["_unit","_miscItemS","_miscItemL","_skinItem","_bpmedical","_bpedible","_invmedical","_invedible","_bar"];
 	_unit = _this select 0;
 	
 	//Add one guaranteed Bandage to inventory
@@ -61,3 +61,18 @@
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Inventory Edible Item: %1 for AI.",_invedible];};
 	};
 	
+	if (DZAI_modName == "epoch") then {
+		private ["_itemBar","_index","_chance","_metalBarCount"];
+		_metalBarCount = (count DZAI_metalBars);
+		//diag_log format ["DEBUG :: Counted %1 bars in DZAI_metalBars.",_metalBarCount];
+		for "_i" from 0 to DZAI_metalBarNum do {
+			_index = floor (random _metalBarCount);
+			_chance = ((DZAI_metalBars select _index) select 1);
+			//diag_log format ["DEBUG :: %1 chance to add bar.",_chance];
+			if ((random 1) < _chance) then {
+				_itemBar = ((DZAI_metalBars select _index) select 0);
+				_unit addMagazine _itemBar;
+				//diag_log format ["DEBUG :: Added bar %1 as loot to AI corpse.",_itemBar];
+			};
+		};
+	};

@@ -14,6 +14,8 @@ if (!isDedicated && !DZAI_zombiesEnabled) then {
 };
 if (!isServer) exitWith {}; //End of client-sided work
 
+call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";
+
 	waituntil {!isnil "bis_fnc_init"};
 	// [] call BIS_fnc_help;
 	//Compile general functions.
@@ -50,5 +52,5 @@ if (!isServer) exitWith {}; //End of client-sided work
 	fnc_despawnBandits_NR = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\despawnBandits_NR.sqf";
 	
 initialized = true;
-_nul = [DZAI_spawnRandom,'center',350,4000,DZAI_randEquipType] spawn fnc_spawnTriggers_random;
+_nul = [DZAI_spawnRandom,'center',300,4500,DZAI_randEquipType] spawn fnc_spawnTriggers_random;
 if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Loading Complete."];};

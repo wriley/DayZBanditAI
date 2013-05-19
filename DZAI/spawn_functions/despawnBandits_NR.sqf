@@ -30,7 +30,7 @@ if (count _grpArray == 0) exitWith {};				//Exit script if the array has spawned
 } forEach _grpArray;
 
 if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Despawned AI in trigger area. Creating new trigger.";};
-0 = [1,'center',350,4000,1] spawn fnc_spawnTriggers_random; 	//Spawn a new trigger elsewhere on the map.
+0 = [1,'center',300,4500,DZAI_randEquipType] spawn fnc_spawnTriggers_random; 	//Spawn a new trigger elsewhere on the map.
 if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Created a new trigger. Deleting the previous trigger.";};
 deleteVehicle _trigger;										//Remove the old trigger.
 

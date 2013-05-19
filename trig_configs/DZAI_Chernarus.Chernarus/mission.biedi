@@ -524,9 +524,9 @@ class _trigger_66
 		B="500";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
-		TIMEOUT_MIN="30";
-		TIMEOUT_MID="60";
-		TIMEOUT_MAX="90";
+		TIMEOUT_MIN="20";
+		TIMEOUT_MID="30";
+		TIMEOUT_MAX="60";
 		INTERRUPTABLE="true";
 		TEXT="NWAF1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
@@ -544,9 +544,9 @@ class _trigger_68
 		B="500";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
-		TIMEOUT_MIN="30";
-		TIMEOUT_MID="60";
-		TIMEOUT_MAX="90";
+		TIMEOUT_MIN="20";
+		TIMEOUT_MID="30";
+		TIMEOUT_MAX="60";
 		INTERRUPTABLE="true";
 		TEXT="NWAF2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
@@ -564,9 +564,9 @@ class _trigger_70
 		B="500";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
-		TIMEOUT_MIN="30";
-		TIMEOUT_MID="60";
-		TIMEOUT_MAX="90";
+		TIMEOUT_MIN="20";
+		TIMEOUT_MID="30";
+		TIMEOUT_MAX="60";
 		INTERRUPTABLE="true";
 		TEXT="NWAF3";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
@@ -650,7 +650,7 @@ class _trigger_78
 		INTERRUPTABLE="true";
 		TEXT="Stary Sobor";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,3,225,thisTrigger] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1499,26 +1499,6 @@ class _marker_31
 		FILL="Solid";
 	};
 };
-class _trigger_163
-{
-	objectType="trigger";
-	class Arguments
-	{
-		POSITION="[6325.936, 7791.7266]";
-		A="500";
-		B="500";
-		ACTIVATION_BY="ANY";
-		REPEATING="true";
-		TIMEOUT_MIN="30";
-		TIMEOUT_MID="60";
-		TIMEOUT_MAX="90";
-		INTERRUPTABLE="true";
-		TEXT="Stary Sobor (Markers)";
-		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,3,125,thisTrigger,['StaryS1','StaryS2','StaryS3','StaryS4','StaryS5']] call fnc_spawnBandits_markers;";
-		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
-	};
-};
 class _marker_40
 {
 	objectType="marker";
@@ -1747,9 +1727,9 @@ class _trigger_171
 		B="500";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
-		TIMEOUT_MIN="30";
-		TIMEOUT_MID="60";
-		TIMEOUT_MAX="90";
+		TIMEOUT_MIN="20";
+		TIMEOUT_MID="30";
+		TIMEOUT_MAX="60";
 		INTERRUPTABLE="true";
 		TEXT="NWAF4 (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
@@ -1894,6 +1874,262 @@ class _marker_85
 	{
 		POSITION="[11278.462, 4223.6455, 6.1035156e-005]";
 		NAME="CastleRog2";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _trigger_179
+{
+	objectType="trigger";
+	class Arguments
+	{
+		POSITION="[4763.522, 10760.788, 0]";
+		A="500";
+		B="500";
+		ACTIVATION_BY="ANY";
+		REPEATING="true";
+		TIMEOUT_MIN="20";
+		TIMEOUT_MID="30";
+		TIMEOUT_MAX="60";
+		INTERRUPTABLE="true";
+		TEXT="NWAF5 (Markers)";
+		EXP_COND="{isPlayer _x} count thisList > 0;";
+		EXP_ACTIV="nul = [3,2,200,thisTrigger,['NWAF5_1','NWAF5_2','NWAF5_3','NWAF5_4'],2] call fnc_spawnBandits_markers;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
+	};
+};
+class _marker_86
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4576.5781, 10877.494, 9.1552734e-005]";
+		NAME="NWAF5_1";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_87
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4848.9712, 10553.556, 0]";
+		NAME="NWAF5_2";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_88
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4629.0986, 10975.196, 0.00012207031]";
+		NAME="NWAF5_3";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_90
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4895.8159, 10448.596, 9.1552734e-005]";
+		NAME="NWAF5_4";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _trigger_182
+{
+	objectType="trigger";
+	class Arguments
+	{
+		POSITION="[4117.4473, 11175.042, 0]";
+		A="500";
+		B="500";
+		ACTIVATION_BY="ANY";
+		REPEATING="true";
+		TIMEOUT_MIN="20";
+		TIMEOUT_MID="30";
+		TIMEOUT_MAX="60";
+		INTERRUPTABLE="true";
+		TEXT="NWAF6 (Markers)";
+		EXP_COND="{isPlayer _x} count thisList > 0;";
+		EXP_ACTIV="nul = [3,2,200,thisTrigger,['NWAF6_1','NWAF6_2','NWAF6_3','NWAF6_4'],2] call fnc_spawnBandits_markers;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
+	};
+};
+class _marker_91
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4186.7158, 11330.71, -3.0517578e-005]";
+		NAME="NWAF6_1";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_92
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4055.3914, 11332.235, -6.1035156e-005]";
+		NAME="NWAF6_2";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_93
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[3925.915, 11296.789, -9.1552734e-005]";
+		NAME="NWAF6_3";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_94
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4267.958, 11244.687, -9.1552734e-005]";
+		NAME="NWAF6_4";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _trigger_185
+{
+	objectType="trigger";
+	class Arguments
+	{
+		POSITION="[4246.9204, 10386.154, 0]";
+		A="500";
+		B="500";
+		ACTIVATION_BY="ANY";
+		REPEATING="true";
+		TIMEOUT_MIN="20";
+		TIMEOUT_MID="30";
+		TIMEOUT_MAX="60";
+		INTERRUPTABLE="true";
+		TEXT="NWAF7 (Markers)";
+		EXP_COND="{isPlayer _x} count thisList > 0;";
+		EXP_ACTIV="nul = [3,2,200,thisTrigger,['NWAF7_1','NWAF7_2','NWAF7_3','NWAF7_4'],2] call fnc_spawnBandits_markers;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
+	};
+};
+class _marker_95
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4110.0996, 10566.475, 0]";
+		NAME="NWAF7_1";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_96
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4283.8174, 10246.262, 3.0517578e-005]";
+		NAME="NWAF7_2";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_97
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4026.0771, 10301.227, 3.0517578e-005]";
+		NAME="NWAF7_3";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_98
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[4246.4731, 10168.34, 0]";
+		NAME="NWAF7_4";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _trigger_188
+{
+	objectType="trigger";
+	class Arguments
+	{
+		POSITION="[5222.3984, 9780.6406, 0]";
+		A="500";
+		B="500";
+		ACTIVATION_BY="ANY";
+		REPEATING="true";
+		TIMEOUT_MIN="20";
+		TIMEOUT_MID="30";
+		TIMEOUT_MAX="60";
+		INTERRUPTABLE="true";
+		TEXT="NWAF8 (Markers)";
+		EXP_COND="{isPlayer _x} count thisList > 0;";
+		EXP_ACTIV="nul = [3,2,200,thisTrigger,['NWAF8_1','NWAF8_2','NWAF8_3','NWAF8_4'],2] call fnc_spawnBandits_markers;";
+		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
+	};
+};
+class _marker_99
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[5123.7661, 9896.9561, 0]";
+		NAME="NWAF8_1";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_100
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[5230.0479, 9855.4219, 3.0517578e-005]";
+		NAME="NWAF8_2";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_101
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[5218.3945, 9664.8857, 3.0517578e-005]";
+		NAME="NWAF8_3";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_102
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[5305.8325, 9810.5674, 0.00024414063]";
+		NAME="NWAF8_4";
 		TYPE="Empty";
 		FILL="Solid";
 	};
