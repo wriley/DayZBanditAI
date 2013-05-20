@@ -21,8 +21,8 @@ DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Af
 DZAI_spawnRandom = 15;										//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: 0)
 DZAI_spawnRandomDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
 DZAI_randEquipType = 1;										//Equipment Type of randomly-spawned AI. 0: Beginner areas, 1: Average areas, 2: Areas with high-grade (MilitarySpecial) gear. (Default: 1)
-DZAI_randMinAI = 2;											//Minimum number of AI to spawn per randomly-spawned trigger.
-DZAI_randAddAI = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_randMinAI + (0 to DZAI_randAddAI))
+DZAI_randMinAI = 2;											//Minimum number of AI to spawn per randomly-spawned trigger. (Default: 2)
+DZAI_randAddAI = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger. (Default: 3)	(Maximum Total AI/Trigger =  DZAI_randMinAI + (0 to DZAI_randAddAI))
 DZAI_respawnTime1 = 300;									//Minimum wait time for AI respawn timer (seconds). (Default: 300)
 DZAI_respawnTime2 = 180;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 180)
 DZAI_dmgFactors1 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for bullet-type damage done to different body parts: Structural, Head, Body, Hands, Legs. Example: to make AI take 50% reduced damage to a body part, set the appropriate value to 0.50.
@@ -33,11 +33,13 @@ DZAI_allowFleeing = false;									//Enable/disable AI fleeing (Default: false)
 DZAI_minFleeChance = 0.05;									//Minimum chance that AI will flee. (Default: 0.05)
 DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee. (Default: 0.05)
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
+
+//Experimental AI Settings 
 DZAI_revealChance = 0.00;									//Chance for AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. (Default: 0.00)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3. Temporary NVGs will be removed at death (Default: false).
 
 //Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI). 
-//Note: AI are not intended to be friendly to players.
+//Note: AI are not intended to be friendly to players, and no special features have been added to account for friendly fire.
 resistance setFriend [east, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
 resistance setFriend [west, 0];
 EAST setFriend [WEST, 0];									//East (AI) is hostile to West (Player), but friendly to Resistance (AI).
@@ -67,10 +69,9 @@ DZAI_gradeChances2 = [0.00,0.60,0.33,0.07];					//Weapongrade probabilities for 
 //Do not delete this file, as it is required for DZAI to work.
 #include "configs\default_config.sqf"
 
-/*Load mod-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
-To reduce the size of your mission file, you may delete the configuration files for maps that you are not using. You will also need to comment out the switch-case block below.
-Underneath the commented switch-case block, include a line like this: #include "configs\(mapname)_config.sqf", where 'mapname' is the name of the map you will be using.
-
+/*
+Load mod-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
+To reduce the size of your mission file, you may clear the contents of unused config files to reduce the size of your mission file by at least 230KB.
 */
 _worldname=toLower format ["%1",worldName];
 
