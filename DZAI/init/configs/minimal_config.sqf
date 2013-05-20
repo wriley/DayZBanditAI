@@ -34,7 +34,7 @@ DZAI_DefaultSkinLoot = ["Skin_Camo1_DZ", "Skin_Sniper1_DZ"]; //List of all skin 
 DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_DefaultSkinLoot table.
 
 //DZAI 0.07
-DZAI_tools = [["ItemFlashlight",1.00],["ItemWatch",0.90],["ItemKnife",0.85],["ItemHatchet",0.80],["ItemCompass",0.60],["ItemMap",0.50],["ItemToolbox",0.20],["ItemMatchbox",0.20]];
+DZAI_tools = [["ItemFlashlight",1.00],["ItemWatch",0.90],["ItemKnife",0.85],["ItemHatchet",0.80]];
 
 //DZAI 0.07
 DZAI_gadgets = [["binocular",0.60]];

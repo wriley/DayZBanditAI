@@ -49,6 +49,6 @@ _weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
 [_unit, _weapongrade] call fnc_unitInventory;										// Add backpack and chance of binoculars
 [_unit, _weapongrade] call fnc_setSkills;											// Set AI skill
 processInitCommands;
-if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned AI Type %1 with weapongrade %2 (fn_createAI).",_type,_weapongrade];};
+if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Spawned AI Type %1 with weapongrade %2 (fn_createAI).",_type,_weapongrade];};
 
 _unit
