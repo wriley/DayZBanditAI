@@ -1,6 +1,6 @@
 //AIKilled Version 0.06
 //Updates current live AI count, adds loot to AI corpse if killed by a player, reveals the killer to the victim's group.
-private["_weapongrade","_victim","_killer","_unitGroup","_groupLeader","_killerDist","_removeNVG"];
+private["_weapongrade","_victim","_killer","_killerDist","_removeNVG"];
 _victim = _this select 0;
 _killer = _this select 1;
 
@@ -12,16 +12,21 @@ if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed. 
 
 if (!isPlayer _killer) exitWith {};
 
-_unitGroup = group _victim;
 _killerDist = _victim distance _killer;
-_groupLeader = leader _unitGroup;
 
-
-//Group leader will investigate killer's last known position if it is within 500 meters.
+//If alive, Group leader will investigate killer's last known position if it is within 500 meters.
 if (((random 1) < DZAI_revealChance) && (_killerDist < 500)) then {
+	private ["_groupLeader","_killerPos","_unitGroup"];
+	_unitGroup = group _victim;
+	_groupLeader = leader _unitGroup;
 	_unitGroup reveal [_killer,4];
-	(leader _unitGroup) doMove (getPos _killer);
-	diag_log "DEBUG :: Moving group leader to killer's last known position.";
+	if (alive _groupLeader) then {
+		_killerPos = getPos _killer;
+		_groupLeader doMove _killerPos;	_groupLeader moveTo _killerPos;
+		diag_log "DEBUG :: Moving group leader to killer's last known position.";
+	} else {
+		diag_log "DEBUG :: Group leader is dead.";
+	};
 };
 
 _weapongrade = [DZAI_weaponGrades,DZAI_gradeChances1] call fnc_selectRandomWeighted;	//For pistols, calculate weapongrade using default grade chances
