@@ -18,11 +18,11 @@ DZAI_modName = "default";									//If using a non-standard version of a DayZ mo
 DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
 DZAI_maxAIUnits = 65535;									//Limit of total AI spawned by DZAI (0: Disables AI spawning completely)
 DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
-DZAI_spawnRandom = 15;										//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: 0)
+DZAI_spawnRandom = 0;										//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: 0)
 DZAI_spawnRandomDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
 DZAI_randEquipType = 1;										//Equipment Type of randomly-spawned AI. 0: Beginner areas, 1: Average areas, 2: Areas with high-grade (MilitarySpecial) gear. (Default: 1)
-DZAI_randMinAI = 2;											//Minimum number of AI to spawn per randomly-spawned trigger. (Default: 2)
-DZAI_randAddAI = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger. (Default: 3)	(Maximum Total AI/Trigger =  DZAI_randMinAI + (0 to DZAI_randAddAI))
+DZAI_randMinAI = 2;											//Minimum number of AI to spawn per randomly-spawned trigger.
+DZAI_randAddAI = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_randMinAI + (0 to DZAI_randAddAI))
 DZAI_respawnTime1 = 300;									//Minimum wait time for AI respawn timer (seconds). (Default: 300)
 DZAI_respawnTime2 = 180;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 180)
 DZAI_dmgFactors1 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for bullet-type damage done to different body parts: Structural, Head, Body, Hands, Legs. Example: to make AI take 50% reduced damage to a body part, set the appropriate value to 0.50.
@@ -35,7 +35,7 @@ DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
 
 //Experimental AI Settings 
-DZAI_revealChance = 0.00;									//Chance for AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. (Default: 0.00)
+DZAI_findKiller = false;									//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. (Default: false)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3. Temporary NVGs will be removed at death (Default: false).
 
 //Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI). 

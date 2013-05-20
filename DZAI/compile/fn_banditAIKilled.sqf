@@ -14,8 +14,8 @@ if (!isPlayer _killer) exitWith {};
 
 _killerDist = _victim distance _killer;
 
-//If alive, Group leader will investigate killer's last known position if it is within 500 meters.
-if (((random 1) < DZAI_revealChance) && (_killerDist < 500)) then {
+//If alive, Group leader will investigate killer's last known position if it is within 300 meters of the killer.
+if (DZAI_findKiller && (_killerDist < 300)) then {
 	private ["_groupLeader","_killerPos","_unitGroup"];
 	_unitGroup = group _victim;
 	_groupLeader = leader _unitGroup;
