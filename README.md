@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.06+0.07 Patch 2)
+DZAI - DayZ AI Addon (Current version: 0.06+0.07 Patch 3)
 ============
 
 DZAI is designed to be a simple, configurable, easy-to-install AI package that requires a simple one-line edit to your init.sqf file. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
@@ -31,7 +31,7 @@ Note: Due to the number of changes added shortly after 0.06 was planned for rele
 - [NEW] AI units spawned with weapongrade of 2 or higher can now be configured to always spawn with temporary NVGs if the normal probability check to spawn NVGs fails. This feature is disabled for DayZ 2017 and DayZ Namalsk (Note: Experimental feature, must be enabled manually in dayz_ai_variables)
 - [NEW] AI units spawned with weapongrade of 0 may now spawn with a pistol instead of a rifle. 
 - [NEW] On AI unit death, loot generation script will not generate an additional pistol if unit is already carrying one.
-- [FIXED] Equipment Type of AI created from dynamically-spawned triggers was unintentionally hardcorded to 1.
+- [FIXED] Equipment Type of AI created from dynamically-spawned triggers was unintentionally hardcoded to 1.
 - [MODIFIED] AI loot table for tool items restructured. New format: [["ItemName1",Chance1],["ItemName2",Chance2],["ItemName3",Chance3]...etc]
 - [MODIFIED] Chernarus: Changes to Stary Sobor military tents - Increased maximum number of additional AI units spawned from 2 to 3. Extended patrol distance from 125 to 225m/waypoint. Disabled AI spawn centered around Stary Sobor military tents. 
 - [MODIFIED] Chernarus: Decreased minimum number of AI units spawned on Skalisty Island from 2 to 0. Increased maximum additional number of AI units spawned from 0 to 1. (0 minimum, 1 maximum). 
@@ -39,6 +39,12 @@ Note: Due to the number of changes added shortly after 0.06 was planned for rele
 - [MODIFIED] Changed spawn distance for AI created from dynamically-spawned triggers from 50m + a maximum of 450m to a maximum of 300 (no minimum).
 - [MODIFIED] Modified activation delay time for dynamically-spawned triggers from 10/17/24 seconds to 10/15/20 seconds.
 - [MODIFIED] Renamed fnc_unitBackpack to fnc_unitInventory, and fnc_unitSelectRifle to fnc_unitSelectWeapon.
+
+Version 0.07 Patch 3 Update:
+
+- [MODIFIED] AI groups will only detect killer position within 300 meters (reduced from 500m).
+- [MODIFIED] AI Killed eventhandler changed from call to spawn.
+- [MODIFIED] Changed AI killer detection from a % chance to a true/false toggle (default setting is false).
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
