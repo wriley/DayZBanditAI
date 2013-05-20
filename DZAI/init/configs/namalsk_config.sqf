@@ -36,6 +36,7 @@ _tmpArray set [1,0.005];				//Reduce probability of GPS (functional)
 DZAI_tools = DZAI_tools + [["BrokenItemGPS",0.04],["BrokenNVGoggles",0.04],["BrokenItemRadio",0.02],["ItemSolder",0.01],["APSI",0.01]];	//Add Namalsk tools
 DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_Sniper1W_DZN","Skin_CamoWinter_DZN","Skin_CamoWinterW_DZN"];
 DZAI_tempNVGs = false;	//Disable temporary NVG chance for DayZ Namalsk.
+DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
 
 //Begin Markers
 _this = createMarker ["ObjectA2_1", [4966.9224, 6722.8711]];

@@ -1,4 +1,6 @@
-//Takistan Configuration 0.06
+//Takistan Configuration 0.07
+
+DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
 
 _this = createTrigger ["EmptyDetector", [2025.0662, 348.04688, 0.68896484]];
 _this setTriggerArea [500, 500, 0, false];

@@ -1,4 +1,4 @@
-//Taviana Configuration 0.06
+//Taviana Configuration 0.07
 
 //DZAI_RiflesDefault0 = DZAI_RiflesDefault0 - [];
 DZAI_RiflesDefault1 = DZAI_RiflesDefault1 - ["Sa58P_EP1","Sa58V_EP1","BAF_L85A2_RIS_Holo"];
@@ -9,6 +9,7 @@ DZAI_DefaultBackpacks = DZAI_DefaultBackpacks - ["DZ_British_ACU", "DZ_TK_Assaul
 DZAI_Backpacks0 = DZAI_Backpacks0 + ["CZ_VestPouch_EP1"] - ["DZ_Czech_Vest_Puch"];
 DZAI_Backpacks1 = DZAI_Backpacks1 - ["DZ_Czech_Vest_Puch","DZ_British_ACU","DZ_TK_Assault_Pack_EP1"];
 DZAI_DefaultEdibles = DZAI_DefaultEdibles - ["ItemWaterbottleBoiled","FoodmuttonCooked","FoodchickenCooked","FoodBaconCooked","FoodRabbitCooked","FoodbaconRaw","FoodchickenRaw","FoodmuttonRaw","foodrabbitRaw","FoodCanUnlabeled","FoodPistachio","FoodNutmix","FoodMRE"];
+DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
 
 _this = createTrigger ["EmptyDetector", [11768.875, 763.73596, 6.7572432]];
 _this setTriggerArea [500, 500, 0, false];

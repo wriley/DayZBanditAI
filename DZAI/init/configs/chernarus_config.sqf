@@ -30,6 +30,8 @@ switch (DZAI_modName) do {
 	default {};
 };
 
+DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
+
 //Begin markers
 _this = createMarker ["Elektro1", [10557.953, 2469.0283, 0.00033473969]];
 _this setMarkerType "Empty";

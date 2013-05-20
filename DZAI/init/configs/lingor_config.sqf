@@ -10,6 +10,8 @@ switch (DZAI_modName) do {
 	};
 };
 
+DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
+
 //begin markers
 _this = createMarker ["Prison1", [3044.0842, 8027.1206, 9.5367432e-007]];
 _this setMarkerType "Empty";

@@ -3,6 +3,7 @@
 DZAI_gradeChances0 = [0.45,0.45,0.10,0.00];					//Weapongrade probabilities for small towns near beginner areas.
 DZAI_gradeChances1 = [0.10,0.55,0.30,0.05]; 				//Weapongrade probabilities for large cities, or places with Military-grade loot. (Identical to 0.05 grade chances)
 DZAI_gradeChances2 = [0.00,0.45,0.50,0.05];					//Weapongrade probabilities for areas with MilitarySpecial loot.
+DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
 
 _this = createTrigger ["EmptyDetector", [3376.7136, 4402.3555, 0]];
 _this setTriggerArea [500, 500, 0, false];
