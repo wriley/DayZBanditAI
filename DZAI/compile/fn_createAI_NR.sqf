@@ -1,5 +1,5 @@
 /*
-	fn_createAI_NR version 0.06
+	fn_createAI_NR version 0.07
 	
 	Spawns a non-respawning AI unit. Called internally by spawnBandits_random, spawnBandits_bldgs, spawnBandits_markers.
 	Usage: [_unitGroup,_spawnPos,_gradeChances] call fn_createAI;
@@ -45,9 +45,8 @@ _unit addEventHandler ["Killed",{_this call fnc_banditAIKilled;}];					// Update
 _unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];					// "People die if they are killed" - Shirou Emiya
 
 _weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
-[_unit, _weapongrade] call fnc_unitSelectRifle;										// Add rifle
-[_unit, _weapongrade] call fnc_unitBackpack;										// Add backpack and chance of binoculars
-//[_unit] call fnc_setBehaviour;														// Set AI behavior
+[_unit, _weapongrade] call fnc_unitSelectWeapon;									// Add rifle
+[_unit, _weapongrade] call fnc_unitInventory;										// Add backpack and chance of binoculars
 [_unit, _weapongrade] call fnc_setSkills;											// Set AI skill
 processInitCommands;
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned AI Type %1 with weapongrade %2 (fn_createAI).",_type,_weapongrade];};

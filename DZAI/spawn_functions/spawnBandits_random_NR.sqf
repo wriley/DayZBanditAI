@@ -1,5 +1,5 @@
 /*
-	spawnBandits_random_NR version 0.06 (No Respawn version)
+	spawnBandits_random_NR version 0.07 (No Respawn version)
 
 	Usage: [_totalAI,_spawnMarker,_patrolDist,_spawnRadius] spawn spawnBandits_random_NR;
 	Description: Called through (mapname)_config.sqf. Spawns a group of AI units some distance from a provided reference location.
@@ -29,7 +29,7 @@ _totalAI = (_minAI + round(random _addAI));					//Calculate total number of unit
 if (_totalAI == 0) exitWith {};								//Exit script if there are no units to spawn	
 
 DZAI_numAIUnits = (DZAI_numAIUnits + _totalAI);
-_spawnRadius = random(300);
+_spawnRadius = 50 + random(250);
 //_spawnRadius = 50;
 _pos = [_triggerPos,0,_spawnRadius,5,0,2000,0] call BIS_fnc_findSafePos;
 	

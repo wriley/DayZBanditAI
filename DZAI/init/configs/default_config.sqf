@@ -1,4 +1,4 @@
-/*Default DZAI Loot Tables version 0.06
+/*Default DZAI Loot Tables version 0.07
 EDIT WITH CARE - these tables affect ALL DayZ mods globally. 
 To make changes for a specific DayZ mod, edit the appropriate config file in configs folder. 
 Rule of thumb: If it doesn't belong in the original DayZ mod, it doesn't belong here. Edit the mod-specific config file instead.
@@ -18,7 +18,7 @@ DZAI_RiflesDefault1 = Rifles found in Military areas. (ie: Firestations, Deer St
 DZAI_RiflesDefault2 = Rifles found in MilitarySpecial areas. (ie: Barracks)
 DZAI_RiflesDefault3 = Rifles found in HeliCrash areas.
 */
-DZAI_RiflesDefault0 = ["Winchester1866", "LeeEnfield", "huntingrifle","M1014","MR43"];
+DZAI_RiflesDefault0 = ["Winchester1866", "LeeEnfield", "huntingrifle","M1014","MR43","Colt1911", "revolver_EP1", "Makarov"];	//0.07 Testing - Adding low-grade pistols to weapon list.
 DZAI_RiflesDefault1 = ["M16A2","M16A2GL","AK_74","M4A1_Aim","AKS_74_kobra","AKS_74_U","AK_47_M","M24","M1014","DMR","M4A1","M14_EP1","Remington870_lamp","MP5A5","MP5SD","M4A3_CCO_EP1","Sa58P_EP1","Sa58V_EP1","BAF_L85A2_RIS_Holo"];
 DZAI_RiflesDefault2 = ["M16A2","M16A2GL","M249_DZ","AK_74","M4A1_Aim","AKS_74_kobra","AKS_74_U","AK_47_M","M24","SVD_CAMO","M1014","M107_DZ","DMR","M4A1","M14_EP1","Remington870_lamp","M240_DZ","M4A1_AIM_SD_camo","M16A4_ACG","M4A1_HWS_GL_camo","Mk_48_DZ","M4A3_CCO_EP1","Sa58V_RCO_EP1","Sa58V_CCO_EP1","M40A3"];
 DZAI_RiflesDefault3 = ["FN_FAL","bizon_silenced","M14_EP1","FN_FAL_ANPVS4","M107_DZ","BAF_AS50_scoped","Mk_48_DZ","M249_DZ","DMR","G36C","G36C_camo","G36A_camo","G36K_camo","BAF_L85A2_RIS_SUSAT"]; //+ ["RPK_74"]; For DayZ 1.7.7

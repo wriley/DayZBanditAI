@@ -1,4 +1,4 @@
-//Chernarus Configuration 0.06
+//Chernarus Configuration 0.07
 private ["_tmpArray","_modname"];
 
 switch (DZAI_modName) do {
@@ -25,6 +25,7 @@ switch (DZAI_modName) do {
 		DZAI_Backpacks1 = ["ice_apo_pack3","ice_apo_pack1"];
 		DZAI_Backpacks2 = ["ice_apo_pack1","ice_apo_pack4","ice_apo_pack2"];
 		DZAI_Backpacks3 = ["ice_apo_pack4","ice_apo_pack2"];
+		DZAI_tempNVGs = false;	//Disable temporary NVG chance for DayZ 2017.
 	};
 	default {};
 };

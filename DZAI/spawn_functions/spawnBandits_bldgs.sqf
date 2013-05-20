@@ -1,5 +1,5 @@
 /*
-	spawnBandits_bldgs version 0.06
+	spawnBandits_bldgs version 0.07
 	
 	Usage: [_minAI, _addAI, _patrolDist, _trigger, _numGroups (optional)] call spawnBandits_bldgs;
 	Description: Called through (mapname)_config.sqf. Spawns a specified number groups of AI units some distance from a trigger used as a reference location.
@@ -49,7 +49,7 @@ if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawning %1 new AI g
 for "_j" from 1 to _numGroups do {
 	private ["_unitGroup","_p","_pos"];
 	_unitGroup = createGroup resistance;						//All units spawned from the same trigger will be part of the same group.
-	_p = _buildingPositions call BIS_fnc_selectRandom;		//Each unit will be spawned at/near a random building position.
+	_p = _buildingPositions call BIS_fnc_selectRandom;			//Each unit will be spawned at/near a random building position.
 	_pos = [_p,2,_posVariance,5,0,2000,0] call BIS_fnc_findSafePos;
 	for "_i" from 1 to _totalAI do {
 		_unit = [_unitGroup,_pos,_trigger,2,_gradeChances] call fnc_createAI;	//Create and equip the unit

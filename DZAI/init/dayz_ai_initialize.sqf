@@ -1,4 +1,4 @@
-//dayz_ai_initialize 0.06
+//dayz_ai_initialize 0.07
 
 createcenter east;											//Create centers for all sides
 createcenter west;
@@ -23,9 +23,9 @@ call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";
 	fnc_setSkills = 				compile preprocessFileLineNumbers "DZAI\compile\fn_setSkills.sqf";
 	fnc_spawn_deathFlies = 			compile preprocessFileLineNumbers "DZAI\compile\fn_spawn_deathFlies.sqf";
 	fnc_unitConsumables = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitConsumables.sqf";
-	fnc_unitBackpack = 				compile preprocessFileLineNumbers "DZAI\compile\fn_unitBackpack.sqf";
+	fnc_unitInventory = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitInventory.sqf";
 	fnc_unitTools = 				compile preprocessFileLineNumbers "DZAI\compile\fn_unitTools.sqf";
-	fnc_unitSelectRifle = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitSelectRifle.sqf";
+	fnc_unitSelectWeapon = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitSelectWeapon.sqf";
 	fnc_unitSelectPistol = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitSelectPistol.sqf";
 	if (DZAI_zombieEnemy && DZAI_zombiesEnabled && (DZAI_weaponNoise!=0)) then { // Optional AI-to-Z hostility
 		ai_fired = 					compile preprocessFileLineNumbers "DZAI\compile\ai_fired.sqf";	//Calculates weapon noise of AI unit
