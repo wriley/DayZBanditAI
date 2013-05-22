@@ -1,5 +1,5 @@
 /*
-	spawnBandits_bldgs version 0.07
+	spawnBandits_bldgs version 0.06
 	
 	Usage: [_minAI, _addAI, _patrolDist, _trigger, _numGroups (optional)] call spawnBandits_bldgs;
 	Description: Called through (mapname)_config.sqf. Spawns a specified number groups of AI units some distance from a trigger used as a reference location.
@@ -26,11 +26,7 @@ _grpArray = _trigger getVariable ["GroupArray",[]];			//Retrieve groups created 
 if (count _grpArray > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_bldgs)";};};						//Exit script if active groups still exist.
 _triggerPos = getpos _trigger;									//Position to spawn AI unit. Also used as the respawn position.
 
-switch (_equipType) do {
-	case 0: {_gradeChances = DZAI_gradeChances0;};
-	case 1: {_gradeChances = DZAI_gradeChances1;};
-	case 2: {_gradeChances = DZAI_gradeChances2;};
-};
+_gradeChances = [_equipType] call fnc_getGradeChances;
 
 _trigger setVariable ["patrolDist",_patrolDist,false];
 _trigger setVariable ["gradeChances",_gradeChances,false];
@@ -40,7 +36,7 @@ if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning:
 _totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));	//Calculate total number of units to spawn per group.
 if (_totalAI == 0) exitWith {};									//Exit script if there are no units to spawn
 
-DZAI_numAIUnits = _numGroups*(DZAI_numAIUnits + _totalAI);		//Update the number of currently live AI units.
+//DZAI_numAIUnits = DZAI_numAIUnits + (_numGroups * _totalAI);	//Update the live AI unit counter
 
 _nearbldgs = nearestObjects [_triggerPos, ["Building"], 300];	//Find all buildings within a specified radius of the trigger.
 _buildingPositions = [_nearbldgs] call fnc_getBuildingPositions;//Find all usable building positions of the found buildings.
@@ -54,8 +50,8 @@ for "_j" from 1 to _numGroups do {
 	for "_i" from 1 to _totalAI do {
 		_unit = [_unitGroup,_pos,_trigger,2,_gradeChances] call fnc_createAI;	//Create and equip the unit
 		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\scripts\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
+		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits_bldgs).",_i,_totalAI];};
 	};
-
 	_grpArray = _grpArray + [_unitGroup];							//Add the new group to the trigger's group array.
 };
 _trigger setVariable["GroupArray",_grpArray,false];

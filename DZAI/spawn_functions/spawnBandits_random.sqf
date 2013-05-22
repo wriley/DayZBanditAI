@@ -20,18 +20,16 @@ _equipType = if ((count _this) > 4) then {_this select 4} else {1};	//(Optional)
 _grpArray = _trigger getVariable ["GroupArray",[]];			//Retrieve groups created by the trigger, or create an empty group array if none found.
 if (count _grpArray > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_random)";};};						//Exit script if active groups still exist.
 _triggerPos = getPos _trigger;
-switch (_equipType) do {
-	case 0: {_gradeChances = DZAI_gradeChances0;};
-	case 1: {_gradeChances = DZAI_gradeChances1;};
-	case 2: {_gradeChances = DZAI_gradeChances2;};
-};
+
+_gradeChances = [_equipType] call fnc_getGradeChances;
+
 _trigger setVariable ["patrolDist",_patrolDist,false];
 _trigger setVariable ["gradeChances",_gradeChances,false];
 
 _totalAI = (_minAI + round(random _addAI));					//Calculate total number of units to spawn
 if (_totalAI == 0) exitWith {};								//Exit script if there are no units to spawn	
 
-DZAI_numAIUnits = (DZAI_numAIUnits + _totalAI);
+//DZAI_numAIUnits = (DZAI_numAIUnits + _totalAI);
 _spawnRadius = 50 + random(450);
 _pos = [_triggerPos,0,_spawnRadius,5,0,2000,0] call BIS_fnc_findSafePos;
 

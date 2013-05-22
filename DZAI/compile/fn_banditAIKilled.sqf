@@ -1,4 +1,4 @@
-//AIKilled Version 0.06
+//AIKilled Version 0.07
 //Updates current live AI count, adds loot to AI corpse if killed by a player, reveals the killer to the victim's group.
 private["_weapongrade","_victim","_killer","_killerDist","_removeNVG"];
 _victim = _this select 0;
@@ -8,7 +8,6 @@ _removeNVG = _victim getVariable["removeNVG",0];
 if (_removeNVG == 1) then {_victim removeWeapon "NVGoggles";}; //Remove temporary NVGs from AI.
 
 DZAI_numAIUnits = (DZAI_numAIUnits - 1);
-if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed. %1 AI units left.",DZAI_numAIUnits];};
 
 if (!isPlayer _killer) exitWith {};
 
@@ -34,3 +33,7 @@ if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed b
 [_victim, _weapongrade] call fnc_unitSelectPistol;				// Add sidearm
 [_victim] call fnc_unitConsumables;								// Add food, medical, misc, skin
 [_victim] call fnc_unitTools;									// Add tools and gadget
+
+//Set study_body variables.
+_victim setVariable["bodyName","DZAI Unit",true];
+_victim setVariable["deathType","bled",true];

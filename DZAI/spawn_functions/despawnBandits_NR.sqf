@@ -24,7 +24,7 @@ _grpArray = _trigger getVariable["GroupArray",[]];	//Find the groups spawned by 
 if (count _grpArray == 0) exitWith {};				//Exit script if the array has spawned no groups, or the trigger has already been reset.
 	
 {
-	{deleteVehicle _x} forEach (units _x);			//Delete all units of each group.
+	{deleteVehicle _x; DZAI_numAIUnits = (DZAI_numAIUnits - 1);} forEach (units _x);			//Delete all units of each group.
 	sleep 0.3;
 	deleteGroup _x;									//Delete the group after its units are deleted.
 } forEach _grpArray;
@@ -33,5 +33,6 @@ if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Despawned AI in tr
 0 = [1,'center',300,4500,DZAI_randEquipType] spawn fnc_spawnTriggers_random; 	//Spawn a new trigger elsewhere on the map.
 if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Created a new trigger. Deleting the previous trigger.";};
 deleteVehicle _trigger;										//Remove the old trigger.
+DZAI_numDynTrigs = DZAI_numDynTrigs - 1;
 
 true

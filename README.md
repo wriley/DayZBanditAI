@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.06+0.07 Patch 3)
+DZAI - DayZ AI Addon (Current version: 0.06+0.07 Patch 4)
 ============
 
 DZAI is designed to be a simple, configurable, easy-to-install AI package that requires a simple one-line edit to your init.sqf file. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
@@ -45,6 +45,22 @@ Version 0.07 Patch 3 Update:
 - [MODIFIED] AI groups will only detect killer position within 300 meters (reduced from 500m).
 - [MODIFIED] AI Killed eventhandler changed from call to spawn.
 - [MODIFIED] Changed AI killer detection from a % chance to a true/false toggle (default setting is false).
+
+Version 0.07 Patch 4 Update
+
+- [UNRESOLVED] Current live AI count is buggy and unreliable. Therefore, do not modify DZAI_maxAIUnits from its default value until it is fixed. Setting this number too low may cause AI to stop spawning altogether.
+- [NEW] Study body now can be used on AI. Currently all AI units spawned by DZAI will have the name "DZAI Unit" and their reported cause of death is "bleeding".
+- [NEW] Separate script for spawning invisible/invincible dummy AI group placeholder unit.
+- [NEW] Separate script for determing appropriate set of weapongrade probabilities to use
+- [NEW] Server monitor script to periodically report current/maximum number of active AI units and dynamically-spawned triggers. Default interval is every 3 minutes. (Monitor is on by default)
+- [FIXED] Pistol was sometimes added to AI corpse even if AI was already carrying one.
+- [MODIFIED] Dummy AI unit should now be deleted as soon as the first dead AI unit in the group respawns. Note: Debug logging is temporarily kept on for dummy creation/deletion, will be removed at full release.
+- [MODIFIED] Live AI counter is now incremented by fnc_createAI and fnc_createAI_NR upon creation of each individual AI unit.
+- [MODIFIED] Increased Commanding AI skill parameter
+- [MODIFIED] Seperated config files into map_configs (for map-specific settings) and dzai_configs (for DZAI-specific settings). 
+- [MODIFIED] equipType 2 is now used for areas where military-grade weapons is expected of players (ie: Stary Sobor). equipType 3 is now used for areas with endgame loot (ie: NWAF for Chernarus).
+- [MODIFIED] Considerable decrease in probability of generating military-grade weapons for equipType 1 areas (ie: Cherno, Elektro for Chernarus) and increase in generating civilian-grade weapons.
+- [MODIFIED] Default debug level is now 0 (no debug logging).
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)

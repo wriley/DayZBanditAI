@@ -8,10 +8,13 @@ if (!isServer) exitWith {};									//End of client-sided work.
 
 //Internal Use Variables: DO NOT EDIT THESE
 DZAI_numAIUnits = 0;										//Counter variable used to keep track of currently live AI units.
+DZAI_numDynTrigs = 0;										//Counter variable used to keep track of active dynamically-spawned triggers.
 
 //DZAI Settings
-DZAI_debugLevel = 1;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 1)
+DZAI_debugLevel = 0;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 0)
 DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI position, locate waypoints, locate randomly-placed triggers. (Default: 0)
+DZAI_monitor = true;										//Enable or disable server monitor. Keeps track of number of max/current AI units and dynamically spawned triggers. (Default: true)
+DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
 DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017), "epoch" (DayZ Epoch), "minimal" (Minimal Config - Use if experiencing problems). 
 
 //AI Variables						
@@ -61,13 +64,17 @@ DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_De
 DZAI_maxPistolMags = 2;										//Maximum number of pistol magazines to generate as loot upon death.
 DZAI_maxRifleMags = 1;										//Maximum number of rifle  magazines to generate. (Unused variable)
 DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Residential, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
-DZAI_gradeChances0 = [0.75,0.24,0.01,0.00];					//Weapongrade probabilities for small towns near beginner areas where players depend on houses, farms and deerstands as the primary source of rifle weapons.
-DZAI_gradeChances1 = [0.33,0.56,0.10,0.01];					//Weapongrade probabilities for locations where players are expected to have military-grade weapons. (Identical to 0.05 grade chances)
-DZAI_gradeChances2 = [0.00,0.60,0.33,0.07];					//Weapongrade probabilities for high-risk/high-reward areas or areas where players are expected to be fully-geared with top-tier weapons.
+DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//Weapongrade probabilities for small towns near beginner areas where players depend on houses, farms and deerstands as the primary source of rifle weapons.
+DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//Weapongrade probabilities for locations where players are beginning to find military-grade gear (ie: Large cities near beginner areas).
+DZAI_gradeChances2 = [0.30,0.55,0.11,0.04];					//Weapongrade probabilities for locations where players are expected to have military-grade weapons. (Away from newbie areas)
+DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//Weapongrade probabilities for high-risk/high-reward areas or areas where players are expected to be fully-geared with top-tier weapons.
+DZAI_chanceMiscItemS = 0.66;								//Chance to add random item from DZAI_DefaultMiscItemS table.
+DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_DefaultMiscItemL table.
+DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_DefaultSkinLoot table.
 
 //Load default DZAI loot tables. These tables include weapons and other items that can be added to an AI unit's inventory.
 //Do not delete this file, as it is required for DZAI to work.
-#include "configs\default_config.sqf"
+#include "dzai_configs\default_config.sqf"
 
 /*
 Load mod-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
@@ -78,47 +85,47 @@ _worldname=toLower format ["%1",worldName];
 switch (_worldname) do {
 	case "chernarus":
 	{
-		#include "configs\chernarus_config.sqf"
+		#include "map_configs\chernarus_config.sqf"
 	};
 	case "utes":
 	{
-		#include "configs\utes_config.sqf"
+		#include "map_configs\utes_config.sqf"
 	};
 	case "zargabad":
 	{
-		#include "configs\zargabad_config.sqf"
+		#include "map_configs\zargabad_config.sqf"
 	};
 	case "fallujah":
 	{
-		#include "configs\fallujah_config.sqf"
+		#include "map_configs\fallujah_config.sqf"
 	};
 	case "takistan":
 	{
-		#include "configs\takistan_config.sqf"
+		#include "map_configs\takistan_config.sqf"
 	};
     case "tavi":
     {
-		#include "configs\tavi_config.sqf"
+		#include "map_configs\tavi_config.sqf"
     };
 	 case "lingor":
     {
-		#include "configs\lingor_config.sqf"
+		#include "map_configs\lingor_config.sqf"
     };
     case "namalsk":
     {
-		#include "configs\namalsk_config.sqf"
+		#include "map_configs\namalsk_config.sqf"
     };
     case "mbg_celle2":
     {
-		#include "configs\mbg_celle2_config.sqf"
+		#include "map_configs\mbg_celle2_config.sqf"
     };
 	case "oring":
     {
-		#include "configs\oring_config.sqf"
+		#include "map_configs\oring_config.sqf"
     };
 	case "panthera2":
     {
-		#include "configs\panthera2_config.sqf"
+		#include "map_configs\panthera2_config.sqf"
     };
 };
 

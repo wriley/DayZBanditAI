@@ -24,7 +24,7 @@ _grpArray = _trigger getVariable["GroupArray",[]];	//Find the groups spawned by 
 if (count _grpArray == 0) exitWith {};				//Exit script if the array has spawned no groups.	
 
 {
-	{deleteVehicle _x} forEach (units _x);			//Delete all units of each group.
+	{deleteVehicle _x; DZAI_numAIUnits = (DZAI_numAIUnits - 1);} forEach (units _x);			//Delete all units of each group.
 	sleep 0.3;
 	deleteGroup _x;									//Delete the group after its units are deleted.
 } forEach _grpArray;

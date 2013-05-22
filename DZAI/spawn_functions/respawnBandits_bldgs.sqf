@@ -15,15 +15,14 @@ if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning:
 _posVariance = 100;						//Maximum variance in generated position.
 
 _unitGroup = _this select 0;
-//_respawnLoc = _this select 1;			//Position to spawn AI unit. Also used as the respawn position.
 _trigger = _this select 2;				//Trigger that spawned the AI unit.
 
 _grpArray = _trigger getVariable ["GroupArray",[]];
-if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: No players present in trigger area. Cancelling respawn script. (respawnBandits_bldgs)";};};
+if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: Trigger has already been reset. Cancelling respawn script. (respawnBandits_bldgs)";};};
 _triggerPos = getpos _trigger;
 _patrolDist = _trigger getVariable ["patrolDist",125];
 _gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
-DZAI_numAIUnits = (DZAI_numAIUnits + 1);
+//DZAI_numAIUnits = (DZAI_numAIUnits + 1);
 
 _nearbldgs = nearestObjects [_triggerPos, ["Building"], 300];
 _buildingPositions = [_nearbldgs] call fnc_getBuildingPositions;

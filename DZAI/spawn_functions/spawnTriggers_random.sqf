@@ -43,4 +43,5 @@ for "_i" from 1 to _numTriggers do {
 	_trigger setTriggerTimeout [10, 15, 20, true];
 	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigOnAct, "[thisTrigger] spawn fnc_despawnBandits_NR;"];
 	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Trigger %1 of %2 spawned at %3 (spawnTriggers_random).",_i,_numTriggers,_trigPos];};
+	DZAI_numDynTrigs = DZAI_numDynTrigs + 1;
 };

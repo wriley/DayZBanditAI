@@ -15,11 +15,11 @@ _unitGroup = _this select 0;
 _trigger = _this select 2;							
 
 _grpArray = _trigger getVariable ["GroupArray",[]];
-if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: No players present in trigger area. Cancelling respawn script. (respawnBandits_random)";};};
+if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: Trigger has already been reset. Cancelling respawn script. (respawnBandits_random)";};};
 _triggerPos = getpos _trigger;
 _patrolDist = _trigger getVariable ["patrolDist",125];
 _gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
-DZAI_numAIUnits = (DZAI_numAIUnits + 1);
+//DZAI_numAIUnits = (DZAI_numAIUnits + 1);
 
 _spawnRadius = 50 + random(350);
 _pos = [_triggerPos,0,_spawnRadius,5,0,2000,0] call BIS_fnc_findSafePos;

@@ -33,14 +33,6 @@
 	_unit addBackpack _bag;
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Backpack: %1 for AI.",_bag];};
 
-	/*DZAI 0.06
-	//Chance to add binoculars or NV Goggles. Binoculars and NVGs are added in this script and not unitTools because the default AI sometimes uses binoculars to view surroundings, and AI uses NVGoggles in darkness.
-	_gadgetselect = ((count DZAI_gadgetChances) - 1);
-	for "_i" from 0 to _gadgetselect do {
-		if ((random 1) < (DZAI_gadgetChances select _i)) then {_unit addWeapon (DZAI_DefaultGadgets select _i);};
-	};*/
-	//DZAI 0.07
-	
 	private ["_chance","_gadget"];
 	//diag_log format ["DEBUG :: Counted %1 tools in DZAI_gadgets.",(count DZAI_gadgets)];
 	for "_i" from 0 to ((count DZAI_gadgets) - 1) do {

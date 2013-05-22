@@ -1,4 +1,4 @@
-//unitConsumables Version 0.05
+//unitConsumables Version 0.06
 /*
 	Usage: [_unit] call fnc_unitConsumables;
 */

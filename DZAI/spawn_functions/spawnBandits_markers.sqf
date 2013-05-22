@@ -21,11 +21,9 @@ if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning:
 _grpArray = _trigger getVariable ["GroupArray",[]];			//Retrieve groups created by the trigger, or create an empty group array if none found.
 if (count _grpArray > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_markers)";};};						//Exit script if active groups still exist.
 _triggerPos = getpos _trigger;
-switch (_equipType) do {
-	case 0: {_gradeChances = DZAI_gradeChances0;};
-	case 1: {_gradeChances = DZAI_gradeChances1;};
-	case 2: {_gradeChances = DZAI_gradeChances2;};
-};
+
+_gradeChances = [_equipType] call fnc_getGradeChances;
+
 _trigger setVariable ["patrolDist",_patrolDist,false];
 _trigger setVariable ["gradeChances",_gradeChances,false];
 _trigger setVariable ["markerArray",_markerArray,false];
@@ -33,7 +31,7 @@ _trigger setVariable ["markerArray",_markerArray,false];
 _totalAI = DZAI_spawnExtra + _minAI + round(random _addAI);	//Calculate the total number of AI to spawn per group
 
 if (_totalAI == 0) exitWith {};								//Only run script if there is at least one bandit to spawn
-DZAI_numAIUnits = _numGroups*(DZAI_numAIUnits + _totalAI);	//Update the live AI unit counter
+//DZAI_numAIUnits = DZAI_numAIUnits + (_numGroups * _totalAI);	//Update the live AI unit counter
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawning %1 new AI groups of %2 units each (spawnBandits_markers).",_numGroups,_totalAI];};
 for "_j" from 1 to _numGroups do {
@@ -45,7 +43,7 @@ for "_j" from 1 to _numGroups do {
 		private ["_unit"];
 		_unit = [_unitGroup,_markerPos,_trigger,3,_gradeChances] call fnc_createAI;
 		if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\scripts\BIN_taskPatrol.sqf";	/*Start patrolling after each group is fully spawned.*/};
-		if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI %1 of %2 spawned (spawnBandits_markers).",_i,_totalAI];};
+		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits_markers).",_i,_totalAI];};
 	};
 	_grpArray = _grpArray + [_unitGroup];							//Add the new group to the trigger's group array.
 };

@@ -18,7 +18,8 @@ _unitsAlive = {alive _x} count (units _unitGroup);
 //diag_log format ["%1 units alive in group.",_unitsAlive];
 
 if (_unitsAlive < 1) then {
-	_dummy = _unitGroup createUnit ["Survivor2_DZ",[0,0,0],[],0,"FORM"];
+	0 = [_unitGroup] call fnc_spawnDummy;
+	/*_dummy = _unitGroup createUnit ["Survivor2_DZ",[0,0,0],[],0,"FORM"];
 	[_dummy] joinSilent _unitGroup;
 	_dummy setVehicleInit "this hideObject true;this allowDamage false;"; processInitCommands;
 	_dummy disableAI "FSM";
@@ -26,8 +27,11 @@ if (_unitsAlive < 1) then {
 	_dummy disableAI "MOVE";
     _dummy disableAI "TARGET";
     _dummy disableAI "AUTOTARGET";
-	_dummyExists = 1;
+	//_dummyExists = 1;
+	_trigger setVariable ["dummyExists",1,false];
+	_trigger setVariable ["dummyUnit",_dummy,false];
 	//diag_log "DEBUG: Dummy unit created!";
+	*/
 };
 
 _sleepTime = (DZAI_respawnTime1 + random(DZAI_respawnTime2));
@@ -46,10 +50,14 @@ switch (_respawnType) do {
 	};
 };
 
+_dummyExists = _trigger getVariable ["dummyExists",0];
 if (_dummyExists == 1) then {
+	_dummy = _trigger getVariable ["dummyUnit",objNull];
 	[_dummy] joinSilent grpNull;
 	deleteVehicle _dummy;
-	//diag_log "DEBUG: Dummy Deleted!";
+	_trigger setVariable ["dummyExists",0,false];
+	_trigger setVariable ["dummyUnit",nil,false];
+	diag_log "DEBUG: Dummy Deleted!";
 };
 sleep 10;
 deleteVehicle _victim;

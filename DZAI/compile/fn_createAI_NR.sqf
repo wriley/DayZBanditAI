@@ -17,6 +17,7 @@ _unitGroup = _this select 0;
 _spawnPos = _this select 1;
 _gradeChances = _this select 2;
 
+DZAI_numAIUnits = (DZAI_numAIUnits + 1);
 _type = DZAI_BanditTypesDefault call BIS_fnc_selectRandom;							// Select skin of AI unit
 _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 [_unit] joinSilent _unitGroup;														// Add AI unit to group

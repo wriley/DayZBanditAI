@@ -22,6 +22,7 @@ _trigger = _this select 2;		//Always 0 (zero) for randomly-spawned AI, as they a
 _respawnType = _this select 3;
 _gradeChances = _this select 4;
 
+DZAI_numAIUnits = (DZAI_numAIUnits + 1);
 _type = DZAI_BanditTypesDefault call BIS_fnc_selectRandom;							// Select skin of AI unit
 _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 [_unit] joinSilent _unitGroup;														// Add AI unit to group
