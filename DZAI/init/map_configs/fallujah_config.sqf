@@ -1,7 +1,5 @@
 //Reconfiguration for Fallujah (Incomplete)
 
-DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
-
 _this = createTrigger ["EmptyDetector", [7892.4951, 1765.697]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];

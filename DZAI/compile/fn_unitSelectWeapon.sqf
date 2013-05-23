@@ -2,7 +2,7 @@
 /*
 	Usage: [_unit, _weapongrade] call fnc_unitSelectRifle;
 */
-	private ["_unit","_rifle","_rifles","_rnd","_i","_chance","_weapongrade","_magazine"];
+	private ["_unit","_rifle","_rifles","_weapongrade","_magazine"];
 	_unit = _this select 0;
 	_weapongrade = _this select 1;
 	
@@ -24,8 +24,7 @@
 	  };
 	};
 
-	_rnd = floor random (count _rifles);
-	_rifle = _rifles select _rnd;
+	_rifle = _rifles call BIS_fnc_selectRandom;
 	_magazine = getArray (configFile >> "CfgWeapons" >> _rifle >> "magazines") select 0;
 	_unit addMagazine _magazine;
 	_unit addWeapon _rifle;

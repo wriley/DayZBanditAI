@@ -2,13 +2,12 @@
 /*
 	Usage: [_unit, _weapongrade] call fnc_unitSelectPistol;
 */
-	private ["_unit","_pistol","_pistols","_rnd","_i","_weapongrade","_magazine","_nmags","_currentWeapon"];
+	private ["_unit","_pistol","_pistols","_weapongrade","_magazine","_nmags","_currentWeapon"];
 	_unit = _this select 0;
 	_weapongrade = _this select 1;
 	
-	//0.07 Test - Do not add a handgun if AI has one already.
 	_currentWeapon = currentWeapon _unit;
-	if ((getNumber (configFile >> "CfgWeapons" >> _currentWeapon >> "type")) == 2) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Unit already has a handgun. Exiting selectPistol script."};}; 
+	if ((getNumber (configFile >> "CfgWeapons" >> _currentWeapon >> "type")) == 2) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Unit already has a handgun. Exiting selectPistol script."};}; 
 	
 	_nmags = floor (random (DZAI_maxPistolMags + 1));						// Number of mags to generate for selected weapon, with a minimum of zero.
 	
@@ -30,10 +29,9 @@
 	  };
 	};
 	
-	_rnd = floor random (count _pistols);
-	_pistol = _pistols select _rnd;
+	_pistol = _pistols call BIS_fnc_selectRandom;
 	_magazine = getArray (configFile >> "CfgWeapons" >> _pistol >> "magazines") select 0;
-	for [{_i=1},{_i<=_nmags},{_i=_i+1}] do {
+	for "_i" from 1 to _nmags do {
 			_unit addMagazine _magazine;
 	};
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Pistol: %1 for AI.",_pistol];};

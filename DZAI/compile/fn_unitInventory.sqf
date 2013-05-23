@@ -5,7 +5,7 @@
 		
 		Note: Formerly called fnc_unitBackpack.
 */
-    private ["_unit","_bag","_gadgetselect","_weapongrade","_bags","_rnd"];
+    private ["_unit","_bag","_weapongrade","_bags"];
     _unit = _this select 0;
 	_weapongrade = _this select 1;
 	
@@ -28,8 +28,7 @@
 	  };
 	};
 	
-	_rnd = floor random (count _bags);
-	_bag = _bags select _rnd;
+	_bag = _bags call BIS_fnc_selectRandom;
 	_unit addBackpack _bag;
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Backpack: %1 for AI.",_bag];};
 

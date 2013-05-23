@@ -17,7 +17,8 @@ DZAI_debugLevel = 0;										//Enable or disable event logging to arma2oaserver
 DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI position, locate patrol waypoints, locate dynamically-spawned triggers. (Default: 0)
 DZAI_monitor = true;										//Enable or disable server monitor. Keeps track of number of max/current AI units and dynamically spawned triggers. (Default: true)
 DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
-DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017), "epoch" (DayZ Epoch), "minimal" (Minimal Config - Use if experiencing problems). 
+DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017), "epoch" (DayZ Epoch).
+DZAI_safeMode = false;										//Enable "safe mode" to start DZAI with minimal item tables. Safe Mode is forced on for Taviana and Lingor (non-Skaronator version) (Default: false)
 
 //AI Variables						
 DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
@@ -38,7 +39,7 @@ DZAI_allowFleeing = false;									//Enable/disable AI fleeing (Default: false)
 DZAI_minFleeChance = 0.05;									//Minimum chance that AI will flee. (Default: 0.05)
 DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee. (Default: 0.05)
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
-DZAI_findKiller = false;									//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. (Default: false)
+DZAI_findKiller = false;										//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. (Default: false)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3. Temporary NVGs will be removed at death (Default: false).
 
 //Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI). 
@@ -68,6 +69,12 @@ DZAI_chanceMiscItemS = 0.66;								//Chance to add random item from DZAI_Defaul
 DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_DefaultMiscItemL table.
 DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_DefaultSkinLoot table.
 
+//NOTHING TO EDIT BEYOND THIS POINT.
+
+_worldname=toLower format ["%1",worldName];
+if (((_worldname == "tavi")||(worldname == "lingor"))&&(DZAI_modName == "default")&&(!DZAI_safeMode)) then {DZAI_safeMode = true;};	//Force Safe Mode if using non-Skaronator Lingor or Taviana map.
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] Server is running map %1. Loading map and loot configs.",_worldname];};
+
 //Load default DZAI loot tables. These tables include weapons and other items that can be added to an AI unit's inventory.
 //Do not delete this file, as it is required for DZAI to work.
 #include "dzai_configs\default_config.sqf"
@@ -76,53 +83,68 @@ DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_Defaul
 Load mod-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
 To reduce the size of your mission file, you may clear the contents of unused config files to reduce the size of your mission file by at least 230KB.
 */
-_worldname=toLower format ["%1",worldName];
 
 switch (_worldname) do {
 	case "chernarus":
 	{
 		#include "map_configs\chernarus_config.sqf"
+		#include "loot_configs\chernarus_loot.sqf"
 	};
 	case "utes":
 	{
 		#include "map_configs\utes_config.sqf"
+		#include "loot_configs\utes_loot.sqf"
 	};
 	case "zargabad":
 	{
 		#include "map_configs\zargabad_config.sqf"
+		#include "loot_configs\zargabad_loot.sqf"
 	};
 	case "fallujah":
 	{
 		#include "map_configs\fallujah_config.sqf"
+		#include "loot_configs\fallujah_loot.sqf"
 	};
 	case "takistan":
 	{
 		#include "map_configs\takistan_config.sqf"
+		#include "loot_configs\takistan_loot.sqf"
 	};
     case "tavi":
     {
 		#include "map_configs\tavi_config.sqf"
+		#include "loot_configs\tavi_loot.sqf"
     };
 	 case "lingor":
     {
 		#include "map_configs\lingor_config.sqf"
+		#include "loot_configs\lingor_loot.sqf"
     };
     case "namalsk":
     {
 		#include "map_configs\namalsk_config.sqf"
+		#include "loot_configs\namalsk_loot.sqf"
     };
     case "mbg_celle2":
     {
 		#include "map_configs\mbg_celle2_config.sqf"
+		#include "loot_configs\mbg_celle2_loot.sqf"
     };
 	case "oring":
     {
 		#include "map_configs\oring_config.sqf"
+		#include "loot_configs\oring_loot.sqf"
     };
 	case "panthera2":
     {
 		#include "map_configs\panthera2_config.sqf"
+		#include "loot_configs\panthera2_loot.sqf"
+    };
+	case "isladuala":
+    {
+		#include "map_configs\isladuala_config.sqf"
+		#include "loot_configs\isladuala_loot.sqf"
     };
 };
 
-if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName];};
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3. SafeMode: %4.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_safeMode];};

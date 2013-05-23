@@ -1,17 +1,5 @@
 //Lingor Configuration 0.06
 
-switch (DZAI_modName) do {
-	case "skarolingor":
-	{
-		DZAI_PistolsDefault3 = DZAI_PistolsDefault3 + ["MakarovSD"];
-		DZAI_RiflesDefault1 = DZAI_RiflesDefault1 + ["RPK_74"];
-		DZAI_RiflesDefault2 = DZAI_RiflesDefault2 + ["MG36"];
-		DZAI_RiflesDefault3 = DZAI_RiflesDefault3 + ["BAF_L85A2_UGL_Holo"];
-	};
-};
-
-DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
-
 //begin markers
 _this = createMarker ["Prison1", [3044.0842, 8027.1206, 9.5367432e-007]];
 _this setMarkerType "Empty";

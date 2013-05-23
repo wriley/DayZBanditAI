@@ -1,7 +1,5 @@
 //Reconfiguration for Isladuala (Incomplete)
 
-DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
-
 _this = createTrigger ["EmptyDetector", [7069.0635, 8569.668]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];

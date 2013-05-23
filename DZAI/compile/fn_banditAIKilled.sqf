@@ -7,14 +7,16 @@ _killer = _this select 1;
 _removeNVG = _victim getVariable["removeNVG",0];
 if (_removeNVG == 1) then {_victim removeWeapon "NVGoggles";}; //Remove temporary NVGs from AI.
 
-//DZAI_numAIUnits = (DZAI_numAIUnits - 1); //Note: Counter is decreased right before replacement unit is created.
+//Set study_body variables.
+_victim setVariable["bodyName","DZAI Unit",true];
+_victim setVariable["deathType","bled",true];
 
 if (!isPlayer _killer) exitWith {};
 
 _killerDist = _victim distance _killer;
 
 //If alive, Group leader will investigate killer's last known position if it is within 300 meters of the killer.
-if (DZAI_findKiller && (_killerDist < 300)) then {
+if (DZAI_findKiller && (_killerDist < 300) && !(_killer hasWeapon "ItemRadio")) then {
 	private ["_groupLeader","_killerPos","_unitGroup"];
 	_unitGroup = group _victim;
 	_groupLeader = leader _unitGroup;
@@ -33,7 +35,3 @@ if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed b
 [_victim, _weapongrade] call fnc_unitSelectPistol;				// Add sidearm
 [_victim] call fnc_unitConsumables;								// Add food, medical, misc, skin
 [_victim] call fnc_unitTools;									// Add tools and gadget
-
-//Set study_body variables.
-_victim setVariable["bodyName","DZAI Unit",true];
-_victim setVariable["deathType","bled",true];

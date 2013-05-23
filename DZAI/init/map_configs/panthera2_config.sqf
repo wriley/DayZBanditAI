@@ -1,6 +1,4 @@
-//Panthera Configuration 0.06
-
-DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
+//Panthera Configuration 0.07
 
 _this = createTrigger ["EmptyDetector", [5976.8677, 898.83728]];
 _this setTriggerArea [500, 500, 0, false];

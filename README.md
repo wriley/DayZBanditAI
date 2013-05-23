@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.06+0.07 Patch 5)
+DZAI - DayZ AI Addon (Current version: 0.07 Patch 6)
 ============
 
 DZAI is designed to be a simple, configurable, easy-to-install AI package that requires a simple one-line edit to your init.sqf file. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
@@ -80,6 +80,18 @@ Version 0.07 Hotfix 1
 
 - [FIXED] Fixed config files for alternate DayZ maps with modified item probabilities.
 - [NEW] Added Namalsk 2017 support (UNTESTED)
+
+Version 0.07 Patch 6 Update
+
+- [FIXED] Additional fixes to config files.
+- [FIXED] Isla Duala config is now properly loaded if server is running Isla Duala.
+- [NEW] Added ItemRadio to AI loot table. If DZAI_findKiller is set "true" and player has a Radio in their inventory, AI will not be able to automatically detect and hunt down the player who killed a member of their group.
+- [NEW] If debugLevel is set to 1 or higher, DZAI will report the detected DayZ map into the RPT log.
+- [NEW] Minimal Mode replaced by Safe Mode. Enable Safe Mode by modifying DZAI_safeMode to "true". Safe Mode overwrites all DZAI item tables with stripped down versions to ensure compatibility.
+- [MODIFIED] Separated config files into map configs (marker and trigger configs) and loot configs.
+- [MODIFIED] Taviana and Lingor now always start in "Safe Mode" with minimal loot tables as an attempt to solve crashing issues. Note: Taviana and Lingor support will now continue beyond DZAI version 0.07, but only with Safe Mode settings.
+- [MODIFIED] Epoch mode can now only be enabled on DayZ maps with Epoch support (Chernarus, Namalsk, Lingor, Taviana). Note: DZAI does not support Dingor.
+- [MODIFIED] Combined config files for default and safe mode.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
