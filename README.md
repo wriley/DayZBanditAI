@@ -10,10 +10,13 @@ Currently supported and tested DayZ missions:
 Currently supported (but untested) DayZ missions:
 - Celle			(Pending testing)
 - Namalsk		(Pending testing)
+- Epoch Namalsk*
 - Fallujah
 - Isla Duala
+- Epoch Isla Duala*
 - Lingor		(In "Safe Mode" only)
 - Lingor* (Skaronator)
+- Epoch Lingor*
 - Oring
 - Panthera
 - Takistan
