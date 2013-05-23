@@ -1,113 +1,80 @@
-DZAI - DayZ AI Addon (Current version: 0.05 Patch 4)
+DZAI - DayZ AI Addon (Current version: 0.06+0.07 Patch 5)
 ============
 
+DZAI is designed to be a simple, configurable, easy-to-install AI package that requires a simple one-line edit to your init.sqf file. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
 
-This new package is MP-compatible and works out of the box with any supported DayZ mission file. Currently supported DayZ missions:
+Currently supported and tested DayZ missions:
 - Chernarus
+- DayZ Epoch (Chernarus)
+
+Currently supported (but untested) DayZ missions:
+- Celle			(Pending testing)
+- Namalsk		(Pending testing)
 - Fallujah
 - Isla Duala
-- Lingor
-- Celle
-- Namalsk
+- Lingor		(Note: DZAI is planned to support only Skaronator DayZ Lingor from version 0.08 onwards)
 - Oring
 - Panthera
 - Takistan
-- Taviana 2.0 (Requires testing)
+- Taviana 2.0 	(Note: DZAI will no longer be updated for Taviana 2.0 after DayZ 1.7.7 is released)
 - Utes
 - Zargabad
 - <b>Note</b>: DZAI version 0.03+ should work with any DayZ mission file. However for DayZ mods not listed above, no AI units will spawn from buildings and default DayZ loot tables will be used to generate AI loadouts. You will have to create and add your own configuration file to create new spawn points. AI may also be randomly spawned by modifying the DZAI_spawnRandom variable. 
 
+Version 0.07 Patch 1&2 Update:
+Note: Due to the number of changes added shortly after 0.06 was planned for release, 0.06 and 0.07 will be fully released together. Changes made in 0.06 and earlier are archived in changelog.txt
 
-May 1, 2013 - 0.05 Update:
-- Note: As 0.05 is a huge update for DZAI, there may be bugs that have not been found or fixed. Feel free to open an Issue on GitHub or message me on the OpenDayZ forums to report issues (username: Buttface)
-- Note: Due to the large number of changes that have happened from 0.04 to 0.05, it is not recommended to reuse any 0.04 files in 0.05. Delete your old DZAI folder and replace with the 0.05 version.
-- Note: A few scripts have been adapted from Sarge AI and other sources. Credit has been given in the comments section of relevant script files.
-- Reminder: Due to the large size of the config folder, you may delete all config files that are not related to the map you will be playing on. However, you will need to comment out the switch-case block in dayz_ai_variables.sqf and add in #include "configs\(mapname)_config.sqf". An example is provided in the variables file.
-- [NEW] Bandit AI now works together in organized groups instead of being hostile to each other. After respawning, individual AI units will regroup with their team and continue patrolling.
-- [NEW] AI units will now respawn into the same group. Previously, a new group was created for every AI unit spawned, which quickly lead to the 144 group/side limit being reached.
-- [NEW] AI spawn points can now be added using markers using the function fnc_spawnBandits_markers. Useful for placing precise spawn locations or spawning AI in locations where there are too few or no buildings to use as spawn points.
-- [NEW] Syntax for fnc_spawnBandits_markers: [minimum AI,max. additional AI,distance between waypoints,thisTrigger,[array of markers],optional: number of AI groups] call fnc_spawnBandits_markers;
-- [NEW] Several variables are now attached to each AI unit for respawning purposes: respawn type, respawn location, group, trigger of origin, patrol distance.
-- [NEW] A single fn_banditAIRespawn.sqf script now handles AI respawning, instead of one per respawn type.
-- [NEW] aiBrain.sqf background script for each AI unit. Automatically adds a new magazine to AI when depleted, and sets hostility to nearby zombies. (Credits: Sarge of SARGE AI).
-- [NEW]	despawnBandits.sqf to handle despawning AI when all players have left a trigger area. By default, AI are deleted from a trigger area after 120 seconds of no player presence. (Adapted from SARGE AI).
-- [NEW] Markers to track AI positions can be enabled by setting debug level to 2 (extended debug mode). Positions are updated every 15 seconds by default.
-- [NEW] Zombie-to-AI aggro is now optional (disable by reducing DZAI_weaponNoise to 0.00 in dayz_ai_variables.sqf). By default, zombies do not aggro to AI.
-- [NEW] AI-to-Zombie aggro is now optional (enable/disable by modifying the DZAI_zombieEnemy variable in dayz_ai_variables.sqf). By default, AI are hostile to nearby zombies. Hostility distance is configurable by modifying the DZAI_zDetectRange variable)
-- [NEW] Adjustable health system implemented for AI units. AI durability to bullet/non-bullet damage is now configurable in dayz_ai_variables.sqf. (Credits: Celery, Nullkigan)
-- [NEW] Side relations between AI and players are now configurable. East: Randomly-spawned AI, Resistance: Building/Marker-spawned AI. By default, all AI are friendly to each other, and hostile to players.
-- [NEW] createAI.sqf script to handle individual AI unit spawns and respawns. Initalizes several AI variables, sets up unit loadout, adds eventhandlers, etc.
-- [NEW] Modified several AI spawns from default settings for the following maps: Panthera, Takistan, Zargabad. (Note: Military loot areas tend to have much higher AI spawns)
-- [NEW] Added AI spawn locations at NWAF, Balota Tents.
-- [FIXED] Replaced patrol script (BIN_taskPatrol v1.4) with BIN_taskPatrol v1.3 (last edited by ArmaIIholic) to fix an issue where AI units would randomly travel far beyond their intended patrol area.
-- [MODIFIED] Trigger radius increased from 325m to 500m to prevent excessive cycling of AI spawn/despawns from passing players.
-- [MODIFIED] Triggers have been changed to Repeating type with the introduction of the AI despawn system. (Note: The number of total AI with each spawn cycle may vary).
-- [MODIFIED] Large increases in AI numbers in large cities and certain high value military areas in Chernarus and other maps. (NWAF has a maximum of 20 patrolling AI units). AI spawns will be adjusted further if needed.
-- [MODIFIED] Removed unnecessary code in ai_alertzombies.sqf left over from original player_alertzombies.sqf
-- [MODIFIED] Modified default number of randomly-spawned AI units to zero. This may be changed in dayz_ai_variables.sqf.
-- [MODIFIED] Some debug output now includes name of the script responsible for generating the output.
-- [MODIFIED] Overall increase in AI spawns with the introduction of grouped AI units. Noticeable increase in difficulty of AI encounters.
-- [MODIFIED] Randomly-spawned AI are now spawned 4000m from the center marker, down from 4500m. (original settings)
-- [MODIFIED] AI flee probability is now configurable in dayz_ai_variables.sqf. AI fleeing may also be enabled/disabled.
-- [MODIFIED] Overall increase in AI skill parameters (AI are now much more dangerous than before).
-- [MODIFIED] Adjusted minimum number of AI sidearm ammunition to zero. Increased maximum number to 2.
-- [MODIFIED] AI rifle ammunition now fixed at one magazine.
-- [MODIFIED] wild_spawnZombies.sqf and zombie_generate.sqf replaced with empty dummy scripts to disable zombie spawns if DZAI_zombiesEnabled is set to false. If set to true (enable zombies), the default DayZ files are used instead.
-- [MODIFIED] Scripts for AI weapon noise and Zombie-to-AI aggro are no longer loaded if Z-to-AI aggro is disabled.
-- [MODIFIED] New syntax for fnc_spawnBandits_random. [Number of AI, marker, distance between waypoints, max distance from marker to spawn] spawn fnc_spawnBandits_random;
-- [MODIFIED] New syntax for fnc_spawnBandits_bldgs. [minimum AI,max. additional AI,distance between waypoints,thisTrigger,optional: number of AI groups] call fnc_spawnBandits_bldgs;
-- [MODIFIED] Increased probability of spawning small misc. loot in AI inventory from 0.50 to 0.66 per item (max 3, configurable).
-- [MODIFIED] Lowered probability of spawning large misc. loot in AI inventory from 0.25 to 0.20 per item (max 1). Note: It's not recommended to raise the max number since items that can't fit in the backpack will drop on the ground instead.
-- [MODIFIED] Lowered probability of spawning Compass, Map, Toolbox, Matchbox.
-- [MODIFIED] Relocated default DZAI loot tables to default_config.sqf in the config folder. This file is essential for DZAI to function, so do not remove it.
-- [MODIFIED] Increased minimum respawn time to 180 seconds and reduced maximum additional respawn time to 120 seconds. (180 seconds minimum, 300 seconds maximum). These values may need further rebalancing due the introduction of grouped AI.
-- [MODIFIED] Decreased probability of generating MilitarySpecial weapons from 20% to 15% (Probabilities for Namalsk and Utes remain unchanged)
-- [MODIFIED] Increased probability of generating Farm/Residential weapons from 25% to 30% (Probabilities for Namalsk and Utes remain unchanged)
-- [MODIFIED] AI units may now spawn with NVGoggles instead of having them added as loot after death. 
-- [MODIFIED] NVGoggles and Binoculars are now classified as Gadgets, have their own loot table with configurable chances.
+- [NEW] Dynamically-spawned triggers are now spawned using road positions using SHK_pos. Spawn range extended from 4000m to 4500m. Patrol distance decreased from 350m to 300m/waypoint (Author's note: Watch out for road ambushes!)
+- [NEW] If an AI unit is killed, there can be a chance for the group leader to investigate the killer's last known position. (Note: Experimental feature, chance must be set manually in dayz_ai_variables)
+- [NEW] Added loot tables for DayZ Epoch metal bar currency. Loot table structure is identical to new structure used for tool items. If "Epoch" mode is enabled, AI units will have a chance to carry metal bar currency.
+- [NEW] Added "minimal configuration" setting. Overrides default config info with heavily stripped-down loot tables. If you are experiencing troubles with unsupported DayZ mods, try setting "DZAI_modName = "minimal" in dayz_ai_variables.
+- [NEW] AI units spawned with weapongrade of 2 or higher can now be configured to always spawn with temporary NVGs if the normal probability check to spawn NVGs fails. This feature is disabled for DayZ 2017 and DayZ Namalsk (Note: Experimental feature, must be enabled manually in dayz_ai_variables)
+- [NEW] AI units spawned with weapongrade of 0 may now spawn with a pistol instead of a rifle. 
+- [NEW] On AI unit death, loot generation script will not generate an additional pistol if unit is already carrying one.
+- [FIXED] Equipment Type of AI created from dynamically-spawned triggers was unintentionally hardcoded to 1.
+- [MODIFIED] AI loot table for tool items restructured. New format: [["ItemName1",Chance1],["ItemName2",Chance2],["ItemName3",Chance3]...etc]
+- [MODIFIED] Chernarus: Changes to Stary Sobor military tents - Increased maximum number of additional AI units spawned from 2 to 3. Extended patrol distance from 125 to 225m/waypoint. Disabled AI spawn centered around Stary Sobor military tents. 
+- [MODIFIED] Chernarus: Decreased minimum number of AI units spawned on Skalisty Island from 2 to 0. Increased maximum additional number of AI units spawned from 0 to 1. (0 minimum, 1 maximum). 
+- [MODIFIED] Increased maximum additional AI respawn delay from 120 to 180 seconds (Maximum delay changed from 420 seconds to 480 seconds).
+- [MODIFIED] Changed spawn distance for AI created from dynamically-spawned triggers from 50m + a maximum of 450m to a maximum of 300 (no minimum).
+- [MODIFIED] Modified activation delay time for dynamically-spawned triggers from 10/17/24 seconds to 10/15/20 seconds.
+- [MODIFIED] Renamed fnc_unitBackpack to fnc_unitInventory, and fnc_unitSelectRifle to fnc_unitSelectWeapon.
 
-May 1, 2013 - 0.05 Patch 1 Update:
+Version 0.07 Patch 3 Update:
 
-- [NEW] Debug markers for AI patrol waypoints, AI positions, and randomly placed triggers (more info below) can be enabled/disabled by modifying DZAI_debugMarkers in dayz_ai_variables.sqf
-- [NEW] Reworked random AI spawn system. Instead of spawning individual AI units at server start, triggers are randomly placed around the map through spawnTriggers_random. These triggers have a radius of 400m and spawn a group of 3-5 AI units per spawn. You will have to manually set the number of triggers to create.
-- [FIXED] Fixed a bug that affected the AI respawn scripts when the last unit of a group is killed. Now, a temporary dummy unit is created when the last unit of a group is killed to prevent the group from becoming empty and deleted.
-- [MODIFIED] Reworked spawnBandits_random/respawnBandits_random scripts to generate random patrol waypoints around a central trigger position instead of using markers. spawnBandits_random may be called directly, or called indirectly through spawnTriggers_random
-- [MODIFIED] More AI skill parameter tweaks. In general, minimum skill parameters have been decreased slightly while maximum skill parameters have been increased. (Wider range of AI skill levels)
-- [REMOVED] Satchel Charges have been removed from AI loot tables.
+- [MODIFIED] AI groups will only detect killer position within 300 meters (reduced from 500m).
+- [MODIFIED] AI Killed eventhandler changed from call to spawn.
+- [MODIFIED] Changed AI killer detection from a % chance to a true/false toggle (default setting is false).
 
-May 2, 2013 - 0.05 Patch 2 Update:
+Version 0.07 Patch 4 Update
 
-- [FIXED] Panthera, Lingor: Fixed a couple of typos in trigger activation fields that would have prevented AI from properly spawning.
-- [FIXED] Namalsk: Trigger for Object A2 AI spawns was calling the wrong AI spawn script.
-- [MODIFIED] Lingor: Repositioned several spawn markers for Prison and Palace locations
-- [MODIFIED] Taviana: Increased AI spawns in several areas, with a focus on areas that spawn Military-grade loot.
-- [MODIFIED] Namalsk: Reduced the number of spawn positions for Object A2 from 9 to 5
-- [MODIFIED] In a previous update, marker-spawned groups now all spawn at the same location. Previously, each group member was spawned at separate locations.
-- [MODIFIED] Increased minimum and maximum distance from building positions for building-spawned AI in an attempt to solve an issue where AI were being spawned at the map center due to a lack of clear space to spawn.
-- [MODIFIED] Added author credits to several scripts were credit was previously missing.
-- [MODIFIED] Celle: Shifted Celle city AI trigger to include the east firestation. Added a new AI trigger to the buildings west of Celle city.
+- [UNRESOLVED] Current live AI count is buggy and unreliable. Therefore, do not modify DZAI_maxAIUnits from its default value until it is fixed. Setting this number too low may cause AI to stop spawning altogether.
+- [NEW] Study body now can be used on AI. Currently all AI units spawned by DZAI will have the name "DZAI Unit" and their reported cause of death is "bleeding".
+- [NEW] Separate script for spawning invisible/invincible dummy AI group placeholder unit.
+- [NEW] Separate script for determing appropriate set of weapongrade probabilities to use
+- [NEW] Server monitor script to periodically report current/maximum number of active AI units and dynamically-spawned triggers. Default interval is every 3 minutes. (Monitor is on by default)
+- [FIXED] Pistol was sometimes added to AI corpse even if AI was already carrying one.
+- [MODIFIED] Dummy AI unit should now be deleted as soon as the first dead AI unit in the group respawns. Note: Debug logging is temporarily kept on for dummy creation/deletion, will be removed at full release.
+- [MODIFIED] Live AI counter is now incremented by fnc_createAI and fnc_createAI_NR upon creation of each individual AI unit.
+- [MODIFIED] Increased Commanding AI skill parameter
+- [MODIFIED] Seperated config files into map_configs (for map-specific settings) and dzai_configs (for DZAI-specific settings). 
+- [MODIFIED] equipType 2 is now used for areas where military-grade weapons is expected of players (ie: Stary Sobor). equipType 3 is now used for areas with endgame loot (ie: NWAF for Chernarus).
+- [MODIFIED] Considerable decrease in probability of generating military-grade weapons for equipType 1 areas (ie: Cherno, Elektro for Chernarus) and increase in generating civilian-grade weapons.
+- [MODIFIED] Default debug level is now 0 (no debug logging).
 
-May 3, 2013 - 0.05 Patch 3 Update:
+Version 0.07 Patch 5 Update
 
-- [MODIFIED] Weapongrade value is now also used to determine type of backpack added to AI (For example, Coyote backpack should be rarer than a Patrol Backpack)
-- [MODIFIED] Increased chance of generating Military-grade weapon from 50% to 55, decreased chance of generating MilitarySpecial-grade weapon from 15% to 12%, decreased chance of generating HeliCrash-grade weapon from 5% to 3%.
-- [MODIFIED] Chernarus: Updated several AI spawn triggers for Berezino. Spawn areas now encompass the city center and military tents.
-
-May 3, 2013 - 0.05 Patch 4 Update:
-
-- [NEW] Added a conditional check to ensure that groups always have patrol waypoints.
-- [FIXED] Temporary dummy unit is now created when there are no units alive in a group. Previous script was only called when the number of total units decreased below 2.
-- [FIXED] Added loot tables for AI backpacks that were supposed to be added in Patch 3.
-- [FIXED] Chernarus: AI spawns for Castle Rog, Devil's Castle, and Castle Zub.
-- [MODIFIED] The last respawned unit is now set as group leader. Should fix the issue where group members would stand inactive until the dummy unit is deleted.
-- [MODIFIED] Added conditional checks to delete a dummy unit only if one exists.
-- [MODIFIED] Increased trigger radius for random AI spawns from 400 to 500m. Decreased random AI spawn patrol distances from 400m to 350m/WP.
-- [MODIFIED] Changed activation delays for random AI spawn triggers from 10/15/20 seconds to 20/30/40 seconds (min/med/max).
-- [MODIFIED] Chernarus: Repositioned two AI spawn points for Balota Military Tents further away from the road.
-- [MODIFIED] Chernarus: Respositioned all Balota Airfield spawn points for more variability.
-- [MODIFIED] Chernarus: Repositioned western Cherno building AI spawn trigger, so that AI threat is distributed more towards the Firestation and Supermarket than the Apartment area.
-- [MODIFIED] Chernarus: Repositioned eastern Elektro spawn marker so that the enterable house east of the hospital is less of a death trap.
-- [MODIFIED] Chernarus: Decreased number of spawn markers for Skalisty Island from 5 to 3, repositioned the remaining 3 triggers for more variability.
+- [UNRESOLVED] In some situations, the despawn script fails to despawn AI units properly. However, reactivating then deactivating the trigger should allow the trigger to properly reset. Will investigate further.
+- [FIXED] Several modifications to the way DZAI keeps track of active AI units. Dummy AI group placeholder unit is now also counted as an active unit. Dead units waiting to respawn also count as "active". AI only be considered "inactive" after they have been despawned.
+- [NEW] fnc_initTrigger function to initialize trigger variables. Shared between all spawnBandits scripts except spawnBandits_random_NR.
+- [MODIFIED] BIN_taskPatrol is now spawned instead of execVM'ed to eliminate repetitive compiling of the script. DZAI may take slightly longer to compile scripts, but no difference was observed while running DZAI on a low-end laptop.
+- [MODIFIED] debugLevel 2 now also reports the classname of the weapon generated for each AI unit.
+- [MODIFIED] General decreases in trigger activation delay, more for NWAF in Chernarus.
+- [MODIFIED] DZAI Server Monitor now reports: current/maximum number of active AI units, currently active static triggers, current/total number of dynamic triggers. Monitor now starts after a 60 second delay instead of 120 seconds.
+- [MODIFIED] First AI unit in a group is now set as group leader.
+- [REMOVED] Removed several options to specify the number of a specific consumable item to add to AI loot (for simplification purposes). You may still increase consumable item loot by increasing the number of item selections.
+- [REMOVED] Removed fn_spawnDummy script, re-integrated it into fn_banditAIRespawn.
+- [REMOVED] Removed M1014 shotgun from weapongrade 0 weapon selection.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
@@ -135,14 +102,5 @@ progressLoadingScreen 1.0;</code>
 - Repack your mission.pbo file.
 - You are now ready to start your server.
 
-Update Instructions:
-- Extract your mission .pbo file.
-- Back up your dayz_ai_variables.sqf file in "DZAI\init" to a safe location if you wish to keep your current settings. 
-- Open your extracted mission folder.
-- Copy the newer DZAI folder into your extracted mission folder and overwrite everything.
-- If you have not modified your dayz_variables.sqf file or don't want to retain your old settings, you may repack your mission .pbo file immediately and stop following these instructions.
-- Edit dayz_ai_variables.sqf in "DZAI\init" to customize the addon settings. Refer to your old dayz_variables.sqf file as reference if you want to reuse certain settings. DO NOT overwrite the new copy with your old copy. It is no longer recommended to reuse your old dayz_ai_variables.sqf. Do so at your own risk.
-- Repack your mission.pbo file.
-- You are now ready to start your server.
 
 Detailed documentation for the DZAI package is coming. Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.

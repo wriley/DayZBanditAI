@@ -37,7 +37,7 @@ class _trigger_0
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,0,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -57,7 +57,7 @@ class _trigger_2
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,0,125,thisTrigger,3] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -77,7 +77,7 @@ class _trigger_4
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,0,125,thisTrigger,3] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -86,7 +86,7 @@ class _trigger_6
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[4354.2373, 3207.3979, 0.34515762]";
+		POSITION="[4355.46, 3207.3979, 0.34515762]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -97,7 +97,7 @@ class _trigger_6
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,0,100,thisTrigger] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,0,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
