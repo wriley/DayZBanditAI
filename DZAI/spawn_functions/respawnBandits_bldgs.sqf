@@ -17,7 +17,7 @@ _unitGroup = _this select 0;
 _trigger = _this select 2;				//Trigger that spawned the AI unit.
 
 _grpArray = _trigger getVariable ["GroupArray",[]];
-if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: Group not found in trigger's group array. Cancelling respawn script. (respawnBandits_bldgs)";};};
+if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Group not found in trigger's group array. Cancelling respawn script. (respawnBandits_bldgs)";};};
 _triggerPos = getpos _trigger;
 _patrolDist = _trigger getVariable ["patrolDist",125];
 _gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
