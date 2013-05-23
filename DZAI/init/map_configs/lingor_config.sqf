@@ -1,5 +1,5 @@
 //Lingor Configuration 0.06
-
+if (!isServer) exitWith {};
 //begin markers
 _this = createMarker ["Prison1", [3044.0842, 8027.1206, 9.5367432e-007]];
 _this setMarkerType "Empty";

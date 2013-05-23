@@ -1,5 +1,5 @@
 //Oring Map Configuration 0.07
-
+if (!isServer) exitWith {};
 _this = createTrigger ["EmptyDetector", [2109.7009, 3037.5085, 0]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];

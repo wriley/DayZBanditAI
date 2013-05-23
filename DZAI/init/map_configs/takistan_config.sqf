@@ -1,5 +1,5 @@
 //Takistan Configuration 0.07
-
+if (!isServer) exitWith {};
 _this = createTrigger ["EmptyDetector", [2025.0662, 348.04688, 0.68896484]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];

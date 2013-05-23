@@ -1,5 +1,5 @@
 //Reconfiguration for Isladuala (Incomplete)
-
+if (!isServer) exitWith {};
 _this = createTrigger ["EmptyDetector", [7069.0635, 8569.668]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];

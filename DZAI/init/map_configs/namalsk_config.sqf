@@ -1,5 +1,5 @@
 //Namalsk Map Configuration 0.07
-
+if (!isServer) exitWith {};
 //Begin Markers
 _this = createMarker ["ObjectA2_1", [4966.9224, 6722.8711]];
 _this setMarkerType "Empty";

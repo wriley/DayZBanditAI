@@ -1,5 +1,5 @@
 //Taviana Configuration 0.07
-
+if (!isServer) exitWith {};
 _this = createTrigger ["EmptyDetector", [11768.875, 763.73596, 6.7572432]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];

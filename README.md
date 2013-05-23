@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.07 Patch 6)
+DZAI - DayZ AI Addon (Current version: 0.07 Hotfix 2)
 ============
 
 DZAI is designed to be a simple, configurable, easy-to-install AI package that requires a simple one-line edit to your init.sqf file. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
@@ -100,6 +100,10 @@ Version 0.07 Patch 6 Update
 - [MODIFIED] Taviana and Lingor now always start in "Safe Mode" with minimal loot tables as an attempt to solve crashing issues. Note: Taviana and Lingor support will now continue beyond DZAI version 0.07, but only with Safe Mode settings.
 - [MODIFIED] Epoch mode can now only be enabled on DayZ maps with Epoch support (Chernarus, Namalsk, Lingor, Taviana). Note: DZAI does not support Dingor.
 - [MODIFIED] Combined config files for default and safe mode.
+
+Version 0.07 Hotfix 2
+
+- [FIXED] Fixed issue with BattlEye Script Restriction #241 error. Will continue investigating for BE-related issues.
 
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)

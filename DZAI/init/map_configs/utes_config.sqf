@@ -1,5 +1,5 @@
 //Utes Configuration 0.07
-
+if (!isServer) exitWith {};
 _this = createTrigger ["EmptyDetector", [3376.7136, 4402.3555, 0]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];

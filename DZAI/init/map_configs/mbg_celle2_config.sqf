@@ -1,5 +1,5 @@
 //Celle Configuration 0.07
-
+if (!isServer) exitWith {};
 //begin triggers
 _this = createTrigger ["EmptyDetector", [2356.353, 1182.4937, 0]];
 _this setTriggerArea [500, 500, 0, false];

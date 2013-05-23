@@ -1,5 +1,5 @@
 //Panthera Configuration 0.07
-
+if (!isServer) exitWith {};
 _this = createTrigger ["EmptyDetector", [5976.8677, 898.83728]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];

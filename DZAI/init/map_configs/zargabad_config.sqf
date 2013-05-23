@@ -1,5 +1,5 @@
 //Zargabad Configuration 0.06
-
+if (!isServer) exitWith {};
 _this = createTrigger ["EmptyDetector", [2873.4944, 4976.3965]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];

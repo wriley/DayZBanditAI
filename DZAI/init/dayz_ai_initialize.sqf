@@ -1,9 +1,5 @@
 //dayz_ai_initialize 0.07
 
-createcenter east;											//Create centers for all sides
-createcenter west;
-createcenter resistance;
-
 //Load DZAI variables
 call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_variables.sqf";
 
@@ -53,7 +49,84 @@ call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";
 	fnc_despawnBandits = 			compile preprocessFileLineNumbers "DZAI\spawn_functions\despawnBandits.sqf";
 	fnc_spawnBandits_random_NR = 	compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_random_NR.sqf";
 	fnc_despawnBandits_NR = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\despawnBandits_NR.sqf";
-	
+
+private["_worldname"];
+_worldname=toLower format ["%1",worldName];
+
+if (((_worldname == "tavi")||(worldname == "lingor"))&&(DZAI_modName == "default")&&(!DZAI_safeMode)) then {DZAI_safeMode = true;};	//Force Safe Mode if using non-Skaronator Lingor or Taviana map.
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] Server is running map %1. Loading map and loot configs.",_worldname];};
+
+//Load default DZAI loot tables. These tables include weapons and other items that can be added to an AI unit's inventory.
+//Do not delete this file, as it is required for DZAI to work.
+#include "dzai_configs\default_config.sqf"
+
+/*
+Load mod-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
+To reduce the size of your mission file, you may clear the contents of unused config files to reduce the size of your mission file by at least 230KB.
+*/
+
+switch (_worldname) do {
+	case "chernarus":
+	{
+		#include "map_configs\chernarus_config.sqf"
+		#include "loot_configs\chernarus_loot.sqf"
+	};
+	case "utes":
+	{
+		#include "map_configs\utes_config.sqf"
+		#include "loot_configs\utes_loot.sqf"
+	};
+	case "zargabad":
+	{
+		#include "map_configs\zargabad_config.sqf"
+		#include "loot_configs\zargabad_loot.sqf"
+	};
+	case "fallujah":
+	{
+		#include "map_configs\fallujah_config.sqf"
+		#include "loot_configs\fallujah_loot.sqf"
+	};
+	case "takistan":
+	{
+		#include "map_configs\takistan_config.sqf"
+		#include "loot_configs\takistan_loot.sqf"
+	};
+    case "tavi":
+    {
+		#include "map_configs\tavi_config.sqf"
+		#include "loot_configs\tavi_loot.sqf"
+    };
+	 case "lingor":
+    {
+		#include "map_configs\lingor_config.sqf"
+		#include "loot_configs\lingor_loot.sqf"
+    };
+    case "namalsk":
+    {
+		#include "map_configs\namalsk_config.sqf"
+		#include "loot_configs\namalsk_loot.sqf"
+    };
+    case "mbg_celle2":
+    {
+		#include "map_configs\mbg_celle2_config.sqf"
+		#include "loot_configs\mbg_celle2_loot.sqf"
+    };
+	case "oring":
+    {
+		#include "map_configs\oring_config.sqf"
+		#include "loot_configs\oring_loot.sqf"
+    };
+	case "panthera2":
+    {
+		#include "map_configs\panthera2_config.sqf"
+		#include "loot_configs\panthera2_loot.sqf"
+    };
+	case "isladuala":
+    {
+		#include "map_configs\isladuala_config.sqf"
+		#include "loot_configs\isladuala_loot.sqf"
+    };
+};
 initialized = true;
 if (DZAI_spawnRandom > 0) then {_nul = [DZAI_spawnRandom,'center',300,4500,DZAI_randEquipType] spawn fnc_spawnTriggers_random;};
 if (DZAI_monitor) then {[] execVM 'DZAI\scripts\dzai_monitor.sqf';};

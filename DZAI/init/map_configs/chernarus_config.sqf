@@ -1,5 +1,5 @@
 //Chernarus Configuration 0.07
-
+if (!isServer) exitWith {};
 //Begin markers
 _this = createMarker ["Elektro1", [10557.953, 2469.0283, 0.00033473969]];
 _this setMarkerType "Empty";
