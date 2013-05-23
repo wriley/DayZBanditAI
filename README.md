@@ -76,6 +76,11 @@ Version 0.07 Patch 5 Update
 - [REMOVED] Removed fn_spawnDummy script, re-integrated it into fn_banditAIRespawn.
 - [REMOVED] Removed M1014 shotgun from weapongrade 0 weapon selection.
 
+Version 0.07 Hotfix 1
+
+- [FIXED] Fixed config files for alternate DayZ maps with modified item probabilities.
+- [NEW] Added Namalsk 2017 support (UNTESTED)
+
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
 - Copy the entire DZAI folder into the extracted mission folder.

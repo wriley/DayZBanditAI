@@ -20,8 +20,7 @@ switch (DZAI_modName) do {
 		DZAI_gradeChances1 = [0.65,0.30,0.05];
 		DZAI_gradeChances2 = [0.30,0.45,0.15];
 		DZAI_gradeChances3 = [0.25,0.55,0.20];
-		_tmpArray = DZAI_tools select 7;
-		_tmpArray set [0,"ItemFlint"];
+		DZAI_tools set [7,["ItemFlint",0.20]];
 		DZAI_Backpacks0 = ["ice_apo_pack3"];
 		DZAI_Backpacks1 = ["ice_apo_pack3","ice_apo_pack1"];
 		DZAI_Backpacks2 = ["ice_apo_pack1","ice_apo_pack4","ice_apo_pack2"];
