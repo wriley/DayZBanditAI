@@ -39,7 +39,8 @@ call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";
 	fnc_createAI_NR = 				compile preprocessFileLineNumbers "DZAI\compile\fn_createAI_NR.sqf";
 	fnc_damageAI = 					compile preprocessFileLineNumbers "DZAI\compile\fn_damageHandlerAI.sqf";
 	fnc_getGradeChances =			compile preprocessFileLineNumbers "DZAI\compile\fn_getGradeChances.sqf";
-	fnc_spawnDummy = 				compile preprocessFileLineNumbers "DZAI\compile\fn_spawnDummy.sqf";
+	fnc_initTrigger = 				compile preprocessFileLineNumbers "DZAI\compile\fn_initTrigger.sqf";
+	fnc_BIN_taskPatrol = 			compile preprocessFileLineNumbers "DZAI\compile\BIN_taskPatrol.sqf";
 
 	//Compile spawn scripts
 	fnc_spawnBandits_random = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_random.sqf";
@@ -56,4 +57,4 @@ call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";
 initialized = true;
 if (DZAI_spawnRandom > 0) then {_nul = [DZAI_spawnRandom,'center',300,4500,DZAI_randEquipType] spawn fnc_spawnTriggers_random;};
 if (DZAI_monitor) then {[] execVM 'DZAI\scripts\dzai_monitor.sqf';};
-if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Loading Complete."];};
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI loading complete."];};

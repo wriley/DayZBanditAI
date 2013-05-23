@@ -175,7 +175,7 @@ _this = createTrigger ["EmptyDetector", [4472.8857, 11208.37, -1.2159348e-005]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
-_this setTriggerText "Lubjansk";
+_this setTriggerText "Lubjansk (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,125,thisTrigger,['Lub1','Lub2','Lub3','Lub4','Lub5'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_40 = _this;
 

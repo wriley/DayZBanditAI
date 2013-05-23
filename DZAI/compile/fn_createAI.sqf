@@ -40,7 +40,7 @@ _unit setVariable["trigger",_trigger,false];										// Record the trigger from
 _unit setVariable["respawnType",_respawnType,false];								// Set the method used to spawn the AI (ie: 1: from 'center' marker, 2: from a trigger, 3: from a set of markers
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 
-if (DZAI_debugMarkers < 1) then {
+if (DZAI_debugMarkers == 0) then {
 	_unit setVehicleInit "[this] execVM 'DZAI\scripts\aiBrain.sqf';";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
 	} else {
 	_unit setVehicleInit "[this] execVM 'DZAI\scripts\aiBrain_debug.sqf';";		// Same script as aiBrain, but displays AI unit's current position. (delay = DZAI_refreshRate)
@@ -56,7 +56,7 @@ _unit addEventHandler ["Killed",{_this spawn fnc_banditAIRespawn;}];				// Respa
 _unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];					// "People die if they are killed" - Shirou Emiya
 
 _weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
-[_unit, _weapongrade] call fnc_unitSelectWeapon;										// Add rifle
+[_unit, _weapongrade] call fnc_unitSelectWeapon;									// Add rifle
 [_unit, _weapongrade] call fnc_unitInventory;										// Add backpack and chance of binoculars
 [_unit, _weapongrade] call fnc_setSkills;											// Set AI skill
 processInitCommands;

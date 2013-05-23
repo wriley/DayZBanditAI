@@ -24,7 +24,11 @@ _grpArray = _trigger getVariable["GroupArray",[]];	//Find the groups spawned by 
 if (count _grpArray == 0) exitWith {};				//Exit script if the array has spawned no groups.	
 
 {
-	{deleteVehicle _x; DZAI_numAIUnits = (DZAI_numAIUnits - 1);} forEach (units _x);			//Delete all units of each group.
+	private["_delUnits"];
+	_delUnits =  count (units _x);
+	DZAI_numAIUnits = (DZAI_numAIUnits - _delUnits);
+	//diag_log format ["DEBUG :: Despawning %1 units.",_delUnits];
+	{deleteVehicle _x} forEach (units _x);			//Delete all units of each group.
 	sleep 0.3;
 	deleteGroup _x;									//Delete the group after its units are deleted.
 } forEach _grpArray;
@@ -36,5 +40,6 @@ _trigger setVariable ["GroupArray",[],false];
 _trigger setVariable ["isCleaning",nil,false];
 _trigger setVariable ["patrolDist",nil,false];
 _trigger setVariable ["gradeChances",nil,false];
+DZAI_actTrigs = (DZAI_actTrigs - 1);
 
 true

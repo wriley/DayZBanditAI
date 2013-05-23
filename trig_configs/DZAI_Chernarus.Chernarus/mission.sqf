@@ -160,7 +160,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Berezino2";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger,0] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_42 = _this;
 
 _this = createTrigger ["EmptyDetector", [12882.636, 10052.391, 11.137758]];
@@ -168,7 +168,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Berezeno3";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_46 = _this;
 
 _this = createTrigger ["EmptyDetector", [12318.547, 10812.334]];
@@ -184,7 +184,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "NEAF (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,2,125,thisTrigger,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,2,125,thisTrigger,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_56 = _this;
 
 _this = createTrigger ["EmptyDetector", [11111.347, 12315.711, 9.50177]];
@@ -192,7 +192,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Krasnostav";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,3,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,3,125,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_58 = _this;
 
 _this = createTrigger ["EmptyDetector", [8710.1924, 11791.018, -3.0517578e-005]];
@@ -200,7 +200,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Gvozdno";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_62 = _this;
 
 _this = createTrigger ["EmptyDetector", [6003.6455, 10296.365]];
@@ -208,31 +208,31 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Grishino";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,3,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,3,125,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_64 = _this;
 
-_this = createTrigger ["EmptyDetector", [4628.0259, 10485.75]];
+_this = createTrigger ["EmptyDetector", [4673.8091, 10449.009]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [30, 60, 90, true];
+_this setTriggerTimeout [20, 30, 60, true];
 _this setTriggerText "NWAF1";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [4,2,200,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [4,2,200,thisTrigger,3] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_66 = _this;
 
 _this = createTrigger ["EmptyDetector", [4757.7285, 10060.253, 0.080749512]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [30, 60, 90, true];
+_this setTriggerTimeout [20, 30, 60, true];
 _this setTriggerText "NWAF2";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,3] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_68 = _this;
 
 _this = createTrigger ["EmptyDetector", [4607.541, 9625.1084]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [30, 60, 90, true];
+_this setTriggerTimeout [20, 30, 60, true];
 _this setTriggerText "NWAF3";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [4,2,150,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [4,2,150,thisTrigger,3] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_70 = _this;
 
 _this = createTrigger ["EmptyDetector", [2743.1543, 9997.4131]];
@@ -240,7 +240,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Lopatino";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_72 = _this;
 
 _this = createTrigger ["EmptyDetector", [3826.7798, 8926.0244, 8.6271362]];
@@ -248,7 +248,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Vybor";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,2,125,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_74 = _this;
 
 _this = createTrigger ["EmptyDetector", [5366.3472, 8591.8545, 0]];
@@ -256,7 +256,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Kabanino";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_76 = _this;
 
 _this = createTrigger ["EmptyDetector", [6032.6763, 7775.7192]];
@@ -264,7 +264,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Stary Sobor";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,3,300,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_78 = _this;
 
 _this = createTrigger ["EmptyDetector", [7083.9336, 7690.8926]];
@@ -272,7 +272,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Novy Sobor";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,2,125,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_80 = _this;
 
 _this = createTrigger ["EmptyDetector", [8457.4629, 6688.627, 4.7903137]];
@@ -288,7 +288,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Vyshnoye";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_84 = _this;
 
 _this = createTrigger ["EmptyDetector", [7550.1763, 5146.6963, 0]];
@@ -296,7 +296,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Mogilevka";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,200,thisTrigger,0] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,175,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_86 = _this;
 
 _this = createTrigger ["EmptyDetector", [10121.785, 5479.5034, 0]];
@@ -408,7 +408,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Green Mountain";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,3,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,3,125,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_116 = _this;
 
 _this = createTrigger ["EmptyDetector", [9572.3516, 8847.8584]];
@@ -416,7 +416,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Gorka";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,125,thisTrigger,2] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_118 = _this;
 
 _this = createTrigger ["EmptyDetector", [10420.348, 9844.5205, 0]];
@@ -456,7 +456,7 @@ _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [30, 60, 90, true];
 _this setTriggerText "Shakhovka";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,125,thisTrigger] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_130 = _this;
 
 _this = createTrigger ["EmptyDetector", [13422.189, 2800.8008]];
@@ -614,14 +614,6 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_31 = _this;
 
-_this = createTrigger ["EmptyDetector", [6325.936, 7791.7266]];
-_this setTriggerArea [500, 500, 0, false];
-_this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [30, 60, 90, true];
-_this setTriggerText "Stary Sobor (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,3,125,thisTrigger,['StaryS1','StaryS2','StaryS3','StaryS4','StaryS5']] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
-_trigger_163 = _this;
-
 _this = createMarker ["StaryS1", [6373.0518, 7781.6821, 6.1035156e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
@@ -723,9 +715,9 @@ _marker_73 = _this;
 _this = createTrigger ["EmptyDetector", [4308.2876, 10658.527]];
 _this setTriggerArea [500, 500, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [30, 60, 90, true];
+_this setTriggerTimeout [20, 30, 60, true];
 _this setTriggerText "NWAF4 (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,300,thisTrigger,['NWAF4_1','NWAF4_2','NWAF4_3','NWAF4_4','NWAF4_5'],2] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,300,thisTrigger,['NWAF4_1','NWAF4_2','NWAF4_3','NWAF4_4','NWAF4_5'],3] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_171 = _this;
 
 _this = createMarker ["NWAF4_1", [4151.8853, 10982.557, -6.1035156e-005]];
@@ -790,6 +782,118 @@ _this = createMarker ["CastleRog2", [11278.462, 4223.6455, 6.1035156e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_85 = _this;
+
+_this = createTrigger ["EmptyDetector", [4763.522, 10760.788, 0]];
+_this setTriggerArea [500, 500, 0, false];
+_this setTriggerActivation ["ANY", "PRESENT", true];
+_this setTriggerTimeout [20, 30, 60, true];
+_this setTriggerText "NWAF5 (Markers)";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,['NWAF5_1','NWAF5_2','NWAF5_3','NWAF5_4'],3] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_trigger_179 = _this;
+
+_this = createMarker ["NWAF5_1", [4576.5781, 10877.494, 9.1552734e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_86 = _this;
+
+_this = createMarker ["NWAF5_2", [4848.9712, 10553.556, 0]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_87 = _this;
+
+_this = createMarker ["NWAF5_3", [4629.0986, 10975.196, 0.00012207031]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_88 = _this;
+
+_this = createMarker ["NWAF5_4", [4895.8159, 10448.596, 9.1552734e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_90 = _this;
+
+_this = createTrigger ["EmptyDetector", [4117.4473, 11175.042, 0]];
+_this setTriggerArea [500, 500, 0, false];
+_this setTriggerActivation ["ANY", "PRESENT", true];
+_this setTriggerTimeout [20, 30, 60, true];
+_this setTriggerText "NWAF6 (Markers)";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,['NWAF6_1','NWAF6_2','NWAF6_3','NWAF6_4'],3] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_trigger_182 = _this;
+
+_this = createMarker ["NWAF6_1", [4186.7158, 11330.71, -3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_91 = _this;
+
+_this = createMarker ["NWAF6_2", [4055.3914, 11332.235, -6.1035156e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_92 = _this;
+
+_this = createMarker ["NWAF6_3", [3925.915, 11296.789, -9.1552734e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_93 = _this;
+
+_this = createMarker ["NWAF6_4", [4267.958, 11244.687, -9.1552734e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_94 = _this;
+
+_this = createTrigger ["EmptyDetector", [4246.9204, 10386.154, 0]];
+_this setTriggerArea [500, 500, 0, false];
+_this setTriggerActivation ["ANY", "PRESENT", true];
+_this setTriggerTimeout [20, 30, 60, true];
+_this setTriggerText "NWAF7 (Markers)";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,['NWAF7_1','NWAF7_2','NWAF7_3','NWAF7_4'],3] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_trigger_185 = _this;
+
+_this = createMarker ["NWAF7_1", [4110.0996, 10566.475, 0]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_95 = _this;
+
+_this = createMarker ["NWAF7_2", [4283.8174, 10246.262, 3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_96 = _this;
+
+_this = createMarker ["NWAF7_3", [4026.0771, 10301.227, 3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_97 = _this;
+
+_this = createMarker ["NWAF7_4", [4246.4731, 10168.34, 0]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_98 = _this;
+
+_this = createTrigger ["EmptyDetector", [5222.3984, 9780.6406, 0]];
+_this setTriggerArea [500, 500, 0, false];
+_this setTriggerActivation ["ANY", "PRESENT", true];
+_this setTriggerTimeout [20, 30, 60, true];
+_this setTriggerText "NWAF8 (Markers)";
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,200,thisTrigger,['NWAF8_1','NWAF8_2','NWAF8_3','NWAF8_4'],3] call fnc_spawnBandits_markers;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_trigger_188 = _this;
+
+_this = createMarker ["NWAF8_1", [5123.7661, 9896.9561, 0]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_99 = _this;
+
+_this = createMarker ["NWAF8_2", [5230.0479, 9855.4219, 3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_100 = _this;
+
+_this = createMarker ["NWAF8_3", [5218.3945, 9664.8857, 3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_101 = _this;
+
+_this = createMarker ["NWAF8_4", [5305.8325, 9810.5674, 0.00024414063]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_102 = _this;
 
 processInitCommands;
 runInitScript;

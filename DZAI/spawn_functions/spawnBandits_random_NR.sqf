@@ -33,11 +33,14 @@ if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %1 AI spawns trigger
 
 _unitGroup = createGroup east;						//Randomly-spawned AI units are of EAST side.
 for "_i" from 1 to _totalAI do {
-	private ["_unit","_wp"];
+	private ["_unit"];
 	_unit = [_unitGroup,_pos,_gradeChances] call fnc_createAI_NR;
-	if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\scripts\BIN_taskPatrol.sqf";};
+	//if ((leader _unitGroup) == _unit) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\scripts\BIN_taskPatrol.sqf";};
 	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI %1 of %2 spawned (spawnBandits_random_NR).",_i,_totalAI];};
 };
+_unitGroup selectLeader ((units _unitGroup) select 0);
+_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 _grpArray = _grpArray + [_unitGroup];							//Add the new group to the trigger's group array.
 _trigger setVariable["GroupArray",_grpArray,false];
 _trigger setVariable["isCleaning",false,false];
+DZAI_actDynTrigs = (DZAI_actDynTrigs + 1);

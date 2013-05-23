@@ -7,12 +7,14 @@ DZAI_zombiesEnabled = true;									//Enable or disable zombie spawns (default: 
 if (!isServer) exitWith {};									//End of client-sided work.
 
 //Internal Use Variables: DO NOT EDIT THESE
-DZAI_numAIUnits = 0;										//Counter variable used to keep track of currently live AI units.
-DZAI_numDynTrigs = 0;										//Counter variable used to keep track of active dynamically-spawned triggers.
+DZAI_numAIUnits = 0;										//Keep track of currently active AI units, including dead units waiting for respawn.
+DZAI_actDynTrigs = 0;										//Keep track of current number of active dynamically-spawned triggers
+DZAI_curDynTrigs = 0;										//Keep track of current total of inactive dynamically-spawned triggers.
+DZAI_actTrigs = 0;											//Keep track of active static triggers.										
 
 //DZAI Settings
 DZAI_debugLevel = 0;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 0)
-DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI position, locate waypoints, locate randomly-placed triggers. (Default: 0)
+DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI position, locate patrol waypoints, locate dynamically-spawned triggers. (Default: 0)
 DZAI_monitor = true;										//Enable or disable server monitor. Keeps track of number of max/current AI units and dynamically spawned triggers. (Default: true)
 DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
 DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017), "epoch" (DayZ Epoch), "minimal" (Minimal Config - Use if experiencing problems). 
@@ -23,7 +25,7 @@ DZAI_maxAIUnits = 65535;									//Limit of total AI spawned by DZAI (0: Disable
 DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
 DZAI_spawnRandom = 0;										//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: 0)
 DZAI_spawnRandomDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
-DZAI_randEquipType = 1;										//Equipment Type of randomly-spawned AI. 0: Beginner areas, 1: Average areas, 2: Areas with high-grade (MilitarySpecial) gear. (Default: 1)
+DZAI_randEquipType = 2;										//Equipment Type of randomly-spawned AI. 0: Beginner areas, 1: Average areas, 2: Areas with military loot, 3: Areas with high-grade (MilitarySpecial) loot. (Default: 2)
 DZAI_randMinAI = 2;											//Minimum number of AI to spawn per randomly-spawned trigger.
 DZAI_randAddAI = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_randMinAI + (0 to DZAI_randAddAI))
 DZAI_respawnTime1 = 300;									//Minimum wait time for AI respawn timer (seconds). (Default: 300)
@@ -36,38 +38,32 @@ DZAI_allowFleeing = false;									//Enable/disable AI fleeing (Default: false)
 DZAI_minFleeChance = 0.05;									//Minimum chance that AI will flee. (Default: 0.05)
 DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee. (Default: 0.05)
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
-
-//Experimental AI Settings 
 DZAI_findKiller = false;									//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. (Default: false)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3. Temporary NVGs will be removed at death (Default: false).
 
 //Side relations (Default: West (Player) hostile against East (AI) and Resistance (AI). 
 //Note: AI are not intended to be friendly to players, and no special features have been added to account for friendly fire.
 resistance setFriend [east, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
-resistance setFriend [west, 0];
+resistance setFriend [west, 0];	
 EAST setFriend [WEST, 0];									//East (AI) is hostile to West (Player), but friendly to Resistance (AI).
-EAST setFriend [resistance, 1];
+EAST setFriend [resistance, 1];	
 WEST setFriend [EAST, 0];									//West (Player side) is hostile to all.
 WEST setFriend [resistance, 0];
 
 //AI Loadout Configuration									(Edible and Medical items, Miscellaneous items, Skin packs)
 DZAI_invmedicals = 1; 										//Number of selections of medical items (Inventory)
-DZAI_ninmedicals = 1;										//Maximum amount of each medical item, minimum of zero (Inventory)
 DZAI_invedibles = 1;										//Number of selections of edible items (Inventory)
-DZAI_ninedibles = 1;										//Maximum amount of each edible item, minimum of zero (Inventory)
 DZAI_bpmedicals = 2; 										//Number of selections of medical items (Backpack)
-DZAI_nbpmedicals = 1;										//Maximum amount of each medical item, minimum of zero (Backpack)
 DZAI_bpedibles = 1;											//Number of selections of edible items (Backpack)
-DZAI_nbpedibles = 1;										//Maximum amount of each edible item, minimum of zero (Backpack)
 DZAI_numMiscItemS = 3;										//Maximum number of items to select from DZAI_DefaultMiscItemS table.
 DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_DefaultMiscItemL table.
 DZAI_maxPistolMags = 2;										//Maximum number of pistol magazines to generate as loot upon death.
 DZAI_maxRifleMags = 1;										//Maximum number of rifle  magazines to generate. (Unused variable)
-DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Residential, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
-DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//Weapongrade probabilities for small towns near beginner areas where players depend on houses, farms and deerstands as the primary source of rifle weapons.
-DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//Weapongrade probabilities for locations where players are beginning to find military-grade gear (ie: Large cities near beginner areas).
-DZAI_gradeChances2 = [0.30,0.55,0.11,0.04];					//Weapongrade probabilities for locations where players are expected to have military-grade weapons. (Away from newbie areas)
-DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//Weapongrade probabilities for high-risk/high-reward areas or areas where players are expected to be fully-geared with top-tier weapons.
+DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Civilian, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
+DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//equipType = 0 - most AI will have basic pistols or rifles, and occasionally common military weapons.
+DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.
+DZAI_gradeChances2 = [0.30,0.55,0.11,0.04];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
+DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//equipType = 3 - All AI will carry at least a military-grade weapon. Many will be carrying high-grade military weapons.
 DZAI_chanceMiscItemS = 0.66;								//Chance to add random item from DZAI_DefaultMiscItemS table.
 DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_DefaultMiscItemL table.
 DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_DefaultSkinLoot table.

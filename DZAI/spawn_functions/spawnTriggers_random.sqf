@@ -28,7 +28,7 @@ for "_i" from 1 to _numTriggers do {
 	sleep DZAI_spawnRandomDelay;
 	//_trigPos = [_markerPos,0,_maxDist,5,0,2000,0] call BIS_fnc_findSafePos;
 	_trigPos = [_markerPos,random(_maxDist),random(360),false,[1,500]] call SHK_pos;
-	if (DZAI_debugMarkers > 0) then {													//Adjust to debugLevel > 1
+	if (DZAI_debugMarkers == 1) then {													//Adjust to debugLevel > 1
 		private ["_markername","_marker"];
 		_markername = format["marker_%1",floor(random 200)];
 		_marker = createMarker[_markername,_trigPos];
@@ -43,5 +43,5 @@ for "_i" from 1 to _numTriggers do {
 	_trigger setTriggerTimeout [10, 15, 20, true];
 	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigOnAct, "[thisTrigger] spawn fnc_despawnBandits_NR;"];
 	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Trigger %1 of %2 spawned at %3 (spawnTriggers_random).",_i,_numTriggers,_trigPos];};
-	DZAI_numDynTrigs = DZAI_numDynTrigs + 1;
+	DZAI_curDynTrigs = DZAI_curDynTrigs + 1;
 };

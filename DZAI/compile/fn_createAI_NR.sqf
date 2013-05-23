@@ -32,7 +32,7 @@ if (DZAI_allowFleeing) then {_unit allowFleeing (DZAI_minFleeChance + random DZA
 
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 
-if (DZAI_debugMarkers < 1) then {
+if (DZAI_debugMarkers == 0) then {
 	_unit setVehicleInit "[this] execVM 'DZAI\scripts\aiBrain.sqf';";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
 	} else {
 	_unit setVehicleInit "[this] execVM 'DZAI\scripts\aiBrain_debug.sqf';";		// Same script as aiBrain, but displays AI unit's current position. (delay = DZAI_refreshRate)

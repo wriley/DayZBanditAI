@@ -15,7 +15,7 @@ _unitGroup = _this select 0;
 _trigger = _this select 2;							
 
 _grpArray = _trigger getVariable ["GroupArray",[]];
-if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: Trigger has already been reset. Cancelling respawn script. (respawnBandits_random)";};};
+if !(_unitGroup in _grpArray) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Extended Debug: Group not found in trigger's group array. Cancelling respawn script. (respawnBandits_random)";};};
 _triggerPos = getpos _trigger;
 _patrolDist = _trigger getVariable ["patrolDist",125];
 _gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
@@ -26,5 +26,5 @@ _pos = [_triggerPos,0,_spawnRadius,5,0,2000,0] call BIS_fnc_findSafePos;
 
 _unit = [_unitGroup,_pos,_trigger,1,_gradeChances] call fnc_createAI;		
 _unitGroup selectLeader _unit;
-if ((count (waypoints _unitGroup)) < 2) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] execVM "DZAI\scripts\BIN_taskPatrol.sqf";};
+if ((count (waypoints _unitGroup)) < 2) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;};
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: 1 AI unit respawned at %3(respawnBandits_random).",_pos];};

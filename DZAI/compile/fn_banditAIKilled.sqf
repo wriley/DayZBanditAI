@@ -7,7 +7,7 @@ _killer = _this select 1;
 _removeNVG = _victim getVariable["removeNVG",0];
 if (_removeNVG == 1) then {_victim removeWeapon "NVGoggles";}; //Remove temporary NVGs from AI.
 
-DZAI_numAIUnits = (DZAI_numAIUnits - 1);
+//DZAI_numAIUnits = (DZAI_numAIUnits - 1); //Note: Counter is decreased right before replacement unit is created.
 
 if (!isPlayer _killer) exitWith {};
 
@@ -22,9 +22,9 @@ if (DZAI_findKiller && (_killerDist < 300)) then {
 	if (alive _groupLeader) then {
 		_killerPos = getPos _killer;
 		_groupLeader doMove _killerPos;	_groupLeader moveTo _killerPos;
-		diag_log "DEBUG :: Moving group leader to killer's last known position.";
+		//diag_log "DEBUG :: Moving group leader to killer's last known position.";
 	} else {
-		diag_log "DEBUG :: Group leader is dead.";
+		//diag_log "DEBUG :: Group leader is dead.";
 	};
 };
 

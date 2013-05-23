@@ -62,6 +62,20 @@ Version 0.07 Patch 4 Update
 - [MODIFIED] Considerable decrease in probability of generating military-grade weapons for equipType 1 areas (ie: Cherno, Elektro for Chernarus) and increase in generating civilian-grade weapons.
 - [MODIFIED] Default debug level is now 0 (no debug logging).
 
+Version 0.07 Patch 5 Update
+
+- [UNRESOLVED] In some situations, the despawn script fails to despawn AI units properly. However, reactivating then deactivating the trigger should allow the trigger to properly reset. Will investigate further.
+- [FIXED] Several modifications to the way DZAI keeps track of active AI units. Dummy AI group placeholder unit is now also counted as an active unit. Dead units waiting to respawn also count as "active". AI only be considered "inactive" after they have been despawned.
+- [NEW] fnc_initTrigger function to initialize trigger variables. Shared between all spawnBandits scripts except spawnBandits_random_NR.
+- [MODIFIED] BIN_taskPatrol is now spawned instead of execVM'ed to eliminate repetitive compiling of the script. DZAI may take slightly longer to compile scripts, but no difference was observed while running DZAI on a low-end laptop.
+- [MODIFIED] debugLevel 2 now also reports the classname of the weapon generated for each AI unit.
+- [MODIFIED] General decreases in trigger activation delay, more for NWAF in Chernarus.
+- [MODIFIED] DZAI Server Monitor now reports: current/maximum number of active AI units, currently active static triggers, current/total number of dynamic triggers. Monitor now starts after a 60 second delay instead of 120 seconds.
+- [MODIFIED] First AI unit in a group is now set as group leader.
+- [REMOVED] Removed several options to specify the number of a specific consumable item to add to AI loot (for simplification purposes). You may still increase consumable item loot by increasing the number of item selections.
+- [REMOVED] Removed fn_spawnDummy script, re-integrated it into fn_banditAIRespawn.
+- [REMOVED] Removed M1014 shotgun from weapongrade 0 weapon selection.
+
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
 - Copy the entire DZAI folder into the extracted mission folder.

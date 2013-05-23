@@ -30,3 +30,5 @@
 	_unit addMagazine _magazine;
 	_unit addWeapon _rifle;
 	_unit selectweapon _rifle;
+	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Created weapon %1 for AI with weapongrade %2. (fn_unitSelectWeapon)",_rifle,_weapongrade];};
+	

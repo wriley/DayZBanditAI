@@ -350,7 +350,7 @@ class _trigger_41
 		INTERRUPTABLE="true";
 		TEXT="Fassberg Barracks";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,1,125,thisTrigger,2] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [3,1,125,thisTrigger,3] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };

@@ -57,7 +57,7 @@ class _trigger_2
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,0,125,thisTrigger,2] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,0,125,thisTrigger,3] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -77,7 +77,7 @@ class _trigger_4
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,0,125,thisTrigger,2] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,0,125,thisTrigger,3] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
