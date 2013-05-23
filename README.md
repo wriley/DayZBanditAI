@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.06+0.07 Patch 4)
+DZAI - DayZ AI Addon (Current version: 0.06+0.07 Patch 5)
 ============
 
 DZAI is designed to be a simple, configurable, easy-to-install AI package that requires a simple one-line edit to your init.sqf file. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
