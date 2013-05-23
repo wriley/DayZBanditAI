@@ -5,21 +5,24 @@ DZAI is designed to be a simple, configurable, easy-to-install AI package that r
 
 Currently supported and tested DayZ missions:
 - Chernarus
-- DayZ Epoch (Chernarus)
+- DayZ Epoch* (Chernarus)
 
 Currently supported (but untested) DayZ missions:
 - Celle			(Pending testing)
 - Namalsk		(Pending testing)
 - Fallujah
 - Isla Duala
-- Lingor		(Note: DZAI is planned to support only Skaronator DayZ Lingor from version 0.08 onwards)
+- Lingor		(In "Safe Mode" only)
+- Lingor* (Skaronator)
 - Oring
 - Panthera
 - Takistan
-- Taviana 2.0 	(Note: DZAI will no longer be updated for Taviana 2.0 after DayZ 1.7.7 is released)
+- Taviana 2.0 	(In "Safe Mode" only)
+- Epoch Taviana 1.0*
 - Utes
 - Zargabad
 - <b>Note</b>: DZAI version 0.03+ should work with any DayZ mission file. However for DayZ mods not listed above, no AI units will spawn from buildings and default DayZ loot tables will be used to generate AI loadouts. You will have to create and add your own configuration file to create new spawn points. AI may also be randomly spawned by modifying the DZAI_spawnRandom variable. 
+*: Requires manual activation by editing "DZAI_modName" in DZAI\init\dayz_ai_variables.sqf
 
 Version 0.07 Patch 1&2 Update:
 Note: Due to the number of changes added shortly after 0.06 was planned for release, 0.06 and 0.07 will be fully released together. Changes made in 0.06 and earlier are archived in changelog.txt
