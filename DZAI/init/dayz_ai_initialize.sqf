@@ -1,21 +1,60 @@
-//DayZ AI Bandit Module Version 0.03
+//dayz_ai_initialize 0.07
 
-if (!isDedicated) then { //Handle client-side zombie spawns
-zombie_generate = compile preprocessFileLineNumbers "DZAI\compile\zombie_generate.sqf";
-wild_spawnZombies = compile preprocessFileLineNumbers "DZAI\compile\wild_spawnZombies.sqf";
-};
-call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_variables.sqf";
-if (!isServer) exitWith {};
-call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_functions.sqf";
-call compile preprocessFileLineNumbers "DZAI\mission\mission_functions.sqf";
-createcenter east;
+createcenter east;											//Create centers for all sides
 createcenter west;
 createcenter resistance;
-resistance setFriend [east, 0];
-resistance setFriend [west, 0];
-EAST setFriend [WEST, 0];
-EAST setFriend [resistance, 0];
-WEST setFriend [EAST, 0];
-WEST setFriend [resistance, 0];
-waituntil {!isnil "DZAI_initialized"};
-_nul = [DZAI_spawnRandom,'center', 4500] spawn fnc_spawnBandits_random;
+
+//Load DZAI variables
+call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_variables.sqf";
+
+//Optionally replace DayZ's zombie spawning scripts with dummy scripts if zombies are disabled in dayz_ai_variables.
+if (!isDedicated && !DZAI_zombiesEnabled) then {
+	zombie_generate = compile preprocessFile "DZAI\compile\zombie_generate.sqf";
+	wild_spawnZombies = compile preprocessFile "DZAI\compile\wild_spawnZombies.sqf";
+};
+if (!isServer) exitWith {}; //End of client-sided work
+
+call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";
+
+	waituntil {!isnil "bis_fnc_init"};
+	// [] call BIS_fnc_help;
+	//Compile general functions.
+	BIS_fnc_selectRandom = 			compile preprocessFileLineNumbers "DZAI\compile\fn_selectRandom.sqf";	//Altered version
+	fnc_setSkills = 				compile preprocessFileLineNumbers "DZAI\compile\fn_setSkills.sqf";
+	fnc_spawn_deathFlies = 			compile preprocessFileLineNumbers "DZAI\compile\fn_spawn_deathFlies.sqf";
+	fnc_unitConsumables = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitConsumables.sqf";
+	fnc_unitInventory = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitInventory.sqf";
+	fnc_unitTools = 				compile preprocessFileLineNumbers "DZAI\compile\fn_unitTools.sqf";
+	fnc_unitSelectWeapon = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitSelectWeapon.sqf";
+	fnc_unitSelectPistol = 			compile preprocessFileLineNumbers "DZAI\compile\fn_unitSelectPistol.sqf";
+	if (DZAI_zombieEnemy && DZAI_zombiesEnabled && (DZAI_weaponNoise!=0)) then { // Optional AI-to-Z hostility
+		ai_fired = 					compile preprocessFileLineNumbers "DZAI\compile\ai_fired.sqf";	//Calculates weapon noise of AI unit
+		ai_alertzombies = 			compile preprocessFileLineNumbers "DZAI\compile\ai_alertzombies.sqf"; //AI weapon noise attracts zombie attention
+	};
+	fnc_getBuildingPositions = 		compile preprocessFileLineNumbers "DZAI\compile\fn_getBuildingPositions.sqf";
+	fnc_banditAIKilled = 			compile preprocessFileLineNumbers "DZAI\compile\fn_banditAIKilled.sqf";
+	fnc_banditAIRespawn = 			compile preprocessFileLineNumbers "DZAI\compile\fn_banditAIRespawn.sqf";
+	fnc_selectRandomWeighted = 		compile preprocessFileLineNumbers "DZAI\compile\fn_selectRandomWeighted.sqf";
+	fnc_createAI = 					compile preprocessFileLineNumbers "DZAI\compile\fn_createAI.sqf";
+	fnc_createAI_NR = 				compile preprocessFileLineNumbers "DZAI\compile\fn_createAI_NR.sqf";
+	fnc_damageAI = 					compile preprocessFileLineNumbers "DZAI\compile\fn_damageHandlerAI.sqf";
+	fnc_getGradeChances =			compile preprocessFileLineNumbers "DZAI\compile\fn_getGradeChances.sqf";
+	fnc_initTrigger = 				compile preprocessFileLineNumbers "DZAI\compile\fn_initTrigger.sqf";
+	fnc_BIN_taskPatrol = 			compile preprocessFileLineNumbers "DZAI\compile\BIN_taskPatrol.sqf";
+
+	//Compile spawn scripts
+	fnc_spawnBandits_random = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_random.sqf";
+	fnc_respawnBandits_random = 	compile preprocessFileLineNumbers "DZAI\spawn_functions\respawnBandits_random.sqf";
+	fnc_spawnBandits_bldgs = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_bldgs.sqf";
+	fnc_respawnBandits_bldgs = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\respawnBandits_bldgs.sqf";
+	fnc_spawnBandits_markers = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_markers.sqf";
+	fnc_respawnBandits_markers = 	compile preprocessFileLineNumbers "DZAI\spawn_functions\respawnBandits_markers.sqf";
+	fnc_spawnTriggers_random = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnTriggers_random.sqf";
+	fnc_despawnBandits = 			compile preprocessFileLineNumbers "DZAI\spawn_functions\despawnBandits.sqf";
+	fnc_spawnBandits_random_NR = 	compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_random_NR.sqf";
+	fnc_despawnBandits_NR = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\despawnBandits_NR.sqf";
+	
+initialized = true;
+if (DZAI_spawnRandom > 0) then {_nul = [DZAI_spawnRandom,'center',300,4500,DZAI_randEquipType] spawn fnc_spawnTriggers_random;};
+if (DZAI_monitor) then {[] execVM 'DZAI\scripts\dzai_monitor.sqf';};
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI loading complete."];};

@@ -1,15 +1,16 @@
-//unitSelectPistol version 0.04
+//unitSelectPistol version 0.07
 /*
 	Usage: [_unit, _weapongrade] call fnc_unitSelectPistol;
 */
-	private ["_unit","_pistol","_pistols","_rnd","_i","_weapongrade","_magazine"];
+	private ["_unit","_pistol","_pistols","_rnd","_i","_weapongrade","_magazine","_nmags","_currentWeapon"];
 	_unit = _this select 0;
 	_weapongrade = _this select 1;
-	//_weapongrade = call fnc_selectRandomGrade;
 	
-	//sleep 10;
+	//0.07 Test - Do not add a handgun if AI has one already.
+	_currentWeapon = currentWeapon _unit;
+	if ((getNumber (configFile >> "CfgWeapons" >> _currentWeapon >> "type")) == 2) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Unit already has a handgun. Exiting selectPistol script."};}; 
 	
-	_nmags = (floor (random DZAI_maxPistolMags)) + 1;						// Number of mags to generate for selected weapon.
+	_nmags = floor (random (DZAI_maxPistolMags + 1));						// Number of mags to generate for selected weapon, with a minimum of zero.
 	
 	switch (_weapongrade) do {
 	  case 0: {		//Farm / Residential / Supermarket
