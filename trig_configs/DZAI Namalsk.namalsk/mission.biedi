@@ -39,7 +39,7 @@ class _trigger_0
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[4145.2739, 6654.9507, 0]";
+		POSITION="[4157.5698, 6636.252]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -59,7 +59,7 @@ class _trigger_2
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[3557.7988, 6671.5659]";
+		POSITION="[3557.6055, 6664.4048]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -70,7 +70,7 @@ class _trigger_2
 		INTERRUPTABLE="true";
 		TEXT="Southern Army Base (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,100,thisTrigger,['SebMine1','SebMine2','SebMine3','SebMine4','SebMine5'],2] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,2,150,thisTrigger,['SebMine1','SebMine2','SebMine3'],2] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -90,7 +90,7 @@ class _trigger_4
 		INTERRUPTABLE="true";
 		TEXT="Norinsk (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,100,thisTrigger,['Norinsk1','Norinsk2','Norinsk3','Norinsk4','Norinsk5'],2] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,2,150,thisTrigger,['Norinsk1','Norinsk2','Norinsk3','Norinsk4','Norinsk5'],2] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -110,7 +110,7 @@ class _trigger_6
 		INTERRUPTABLE="true";
 		TEXT="Object A2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,['ObjectA2_1','ObjectA2_2','ObjectA2_3','ObjectA2_4','ObjectA2_5'],2,3] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger,['ObjectA2_1','ObjectA2_2','ObjectA2_3','ObjectA2_4','ObjectA2_5'],2,3] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -130,7 +130,7 @@ class _trigger_8
 		INTERRUPTABLE="true";
 		TEXT="Brensk Railway Station";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger,2] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,150,thisTrigger,2] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -150,7 +150,7 @@ class _trigger_10
 		INTERRUPTABLE="true";
 		TEXT="Western Army Checkpoint";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,2] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger,2] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -199,7 +199,7 @@ class _trigger_16
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6485.832, 9293.6611, 0]";
+		POSITION="[6450.5146, 9296.5107]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -208,9 +208,9 @@ class _trigger_16
 		TIMEOUT_MID="60";
 		TIMEOUT_MAX="90";
 		INTERRUPTABLE="true";
-		TEXT="Sebjan Chemical Factory (Markers_";
+		TEXT="Sebjan Chemical Factory (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,2] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,1,150,thisTrigger,['SebChem1','SebChem2','SebChem3','SebChem4'],2] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -250,7 +250,7 @@ class _trigger_20
 		INTERRUPTABLE="true";
 		TEXT="Old Hospital (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,['OldHosp1','OldHosp2','OldHosp3','OldHosp4','OldHosp5']] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [1,2,150,thisTrigger,['OldHosp1','OldHosp2','OldHosp3','OldHosp4','OldHosp5']] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -259,7 +259,7 @@ class _trigger_22
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[7799.0425, 7566.9746, 1.2397766e-005]";
+		POSITION="[7694.8877, 7602.1001, 1.2397766e-005]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -270,7 +270,7 @@ class _trigger_22
 		INTERRUPTABLE="true";
 		TEXT="Tara harbor (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,['Harb1','Harb2','Harb3','Harb4','Harb5'],0] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [1,2,200,thisTrigger,['Harb1','Harb2','Harb3','Harb4','Harb5'],0] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -310,7 +310,7 @@ class _trigger_28
 		INTERRUPTABLE="true";
 		TEXT="Nitija Army Base";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,thisTrigger,2] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,2,100,thisTrigger,2] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -330,7 +330,7 @@ class _trigger_30
 		INTERRUPTABLE="true";
 		TEXT="Sebjan Mine (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,150,thisTrigger,['SebMine1','SebMine2','SebMine3','SebMine4','SebMine5'],2] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,2,200,thisTrigger,['SebMine1','SebMine2','SebMine3','SebMine4','SebMine5'],2] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -370,7 +370,7 @@ class _trigger_34
 		INTERRUPTABLE="true";
 		TEXT="Vorkuta Outskirts (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,3,200,['Outskirts1','Outskirts2','Outskirts3','Outskirts4','Outskirts5'],0]call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [0,3,300,['Outskirts1','Outskirts2','Outskirts3','Outskirts4','Outskirts5'],0]call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -390,7 +390,7 @@ class _trigger_36
 		INTERRUPTABLE="true";
 		TEXT="Old Yard";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,150,thisTrigger,1] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,1,200,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -410,7 +410,7 @@ class _trigger_38
 		INTERRUPTABLE="true";
 		TEXT="Northern Army Base";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,3] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,2,150,thisTrigger,3] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -419,7 +419,7 @@ class _trigger_40
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[4472.8857, 11208.37, -1.2159348e-005]";
+		POSITION="[4481.5439, 11123.813, -1.2159348e-005]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -430,7 +430,7 @@ class _trigger_40
 		INTERRUPTABLE="true";
 		TEXT="Lubjansk (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,['Lub1','Lub2','Lub3','Lub4','Lub5'],3] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,2,150,thisTrigger,['Lub1','Lub2','Lub3','Lub4','Lub5'],3] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -459,7 +459,7 @@ class _trigger_44
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6769.8472, 11320.711, 5.5010681]";
+		POSITION="[6784.3296, 11291.731, 5.5010681]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -470,7 +470,7 @@ class _trigger_44
 		INTERRUPTABLE="true";
 		TEXT="Vorkuta Central";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,1] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -490,7 +490,7 @@ class _trigger_46
 		INTERRUPTABLE="true";
 		TEXT="Nemsk Factory";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [0,2,125,thisTrigger,0] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -510,7 +510,7 @@ class _trigger_48
 		INTERRUPTABLE="true";
 		TEXT="Tara (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,200,thisTrigger,['Tara1','Tara2','Tara3','Tara4','Tara5'],0] call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [0,1,200,thisTrigger,['Tara1','Tara2','Tara3'],0] call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -539,7 +539,7 @@ class _trigger_60
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6200.2969, 9885.167, -3.3378601e-006]";
+		POSITION="[6196.7612, 9802.2695, -3.3378601e-006]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -550,7 +550,7 @@ class _trigger_60
 		INTERRUPTABLE="true";
 		TEXT="Sebjan Marsh (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,['SebMarsh1','SebMarsh2','SebMarsh3','SebMarsh4','SebMarsh5'],0]call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [0,2,125,['SebMarsh1','SebMarsh2','SebMarsh3','SebMarsh4','SebMarsh5'],0]call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -579,7 +579,7 @@ class _trigger_64
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[8896.6611, 10754.467, 9.5367432e-007]";
+		POSITION="[8802.7764, 10667.967, 9.5367432e-007]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -707,7 +707,7 @@ class _trigger_73
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[3173.5461, 7504.5532, 0]";
+		POSITION="[3173.5461, 7504.5532]";
 		A="500";
 		B="500";
 		ACTIVATION_BY="ANY";
@@ -718,7 +718,7 @@ class _trigger_73
 		INTERRUPTABLE="true";
 		TEXT="CrashedC130";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,['CrashedC1301','CrashedC1302','CrashedC1303'],2]call fnc_spawnBandits_markers;";
+		EXP_ACTIV="nul = [2,1,150,['CrashedC1301','CrashedC1302','CrashedC1303'],2]call fnc_spawnBandits_markers;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -802,7 +802,7 @@ class _marker_32
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6535.1338, 9339.6357, 3.8146973e-006]";
+		POSITION="[6520.0317, 9376.6143, 3.8146973e-006]";
 		NAME="SebChem1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -813,7 +813,7 @@ class _marker_33
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6556.7036, 9296.7754]";
+		POSITION="[6581.7417, 9290.4141]";
 		NAME="SebChem2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -824,7 +824,7 @@ class _marker_35
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6509.1592, 9299.1016, 1.5258789e-005]";
+		POSITION="[6492.0703, 9228.3252, 1.5258789e-005]";
 		NAME="SebChem4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1099,7 +1099,7 @@ class _marker_119
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[7268.625, 7016.7876, 1.5258789e-005]";
+		POSITION="[7284.603, 7067.1802, 1.5258789e-005]";
 		NAME="Tara1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1123,28 +1123,6 @@ class _marker_122
 	{
 		POSITION="[7247.0781, 7069.4111, -1.5258789e-005]";
 		NAME="Tara3";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_123
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[7279.5293, 7073.1455, -3.0517578e-005]";
-		NAME="Tara4";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_124
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[7287.0625, 7054.7998, -1.5258789e-005]";
-		NAME="Tara5";
 		TYPE="Empty";
 		FILL="Solid";
 	};
@@ -1237,28 +1215,6 @@ class _marker_142
 		FILL="Solid";
 	};
 };
-class _marker_143
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[3581.0918, 6632.3164, 1.5258789e-005]";
-		NAME="SAB4";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_145
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[3548.2354, 6697.4038]";
-		NAME="SAB5";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
 class _marker_146
 {
 	objectType="marker";
@@ -1297,7 +1253,7 @@ class _marker_149
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4209.7764, 6611.0352, -6.1035156e-005]";
+		POSITION="[4178.4443, 6582.8184, -6.1035156e-005]";
 		NAME="Seraja4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1308,7 +1264,7 @@ class _marker_150
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4176.917, 6579.0845]";
+		POSITION="[4148.8447, 6558.4243]";
 		NAME="Seraja5";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1396,7 +1352,7 @@ class _trigger_77
 		INTERRUPTABLE="true";
 		TEXT="Alakit";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,1] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [1,1,200,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1416,7 +1372,7 @@ class _trigger_80
 		INTERRUPTABLE="true";
 		TEXT="Vorkuta Residential";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,0,125,thisTrigger,1] call fnc_spawnBandits_bldgs;";
+		EXP_ACTIV="nul = [2,0,150,thisTrigger,1] call fnc_spawnBandits_bldgs;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1471,6 +1427,17 @@ class _marker_176
 	{
 		POSITION="[4511.0195, 10992.617, -2.4795532e-005]";
 		NAME="Lub5";
+		TYPE="Empty";
+		FILL="Solid";
+	};
+};
+class _marker_178
+{
+	objectType="marker";
+	class Arguments
+	{
+		POSITION="[6394.314, 9400.1211]";
+		NAME="SebChem3";
 		TYPE="Empty";
 		FILL="Solid";
 	};
