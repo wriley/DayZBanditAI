@@ -35,7 +35,7 @@ _sleepTime = (DZAI_respawnTime1 + random(DZAI_respawnTime2));
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI killed, respawning in %1 seconds. Respawn Type %2 (fn_banditAIRespawn).",_sleepTime,_respawnType];};
 sleep _sleepTime;
 
-//DZAI_numAIUnits = (DZAI_numAIUnits - 1);
+DZAI_numAIUnits = (DZAI_numAIUnits - 1);
 switch (_respawnType) do {
 	case 1: {
 		0 = [_unitGroup,_respawnLoc,_trigger] call fnc_respawnBandits_random;	//Respawn AI at 'center' marker
