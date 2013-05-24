@@ -29,8 +29,6 @@ _gradeChances = [_equipType] call fnc_getGradeChances;
 //_trigger setVariable ["patrolDist",_patrolDist,false];
 //_trigger setVariable ["gradeChances",_gradeChances,false];
 
-if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];}; //Check if there are too many AI units in the game.
-
 _totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));	//Calculate total number of units to spawn per group.
 if (_totalAI == 0) exitWith {};									//Exit script if there are no units to spawn
 

@@ -28,7 +28,7 @@ _buildingPositions = [_triggerPos,300] call fnc_getBuildingPositions;//Find all 
 _p = _buildingPositions call BIS_fnc_selectRandom;
 _pos = [_p, 2, 100, 5, 0, 2000, 0] call BIS_fnc_findSafePos;
 
-_unit = [_unitGroup,_pos,_trigger,2,_gradeChances] call fnc_createAI;
+_unit = [_unitGroup,_pos,_trigger,2,_gradeChances,true] call fnc_createAI;
 _unitGroup selectLeader _unit;
 if ((count (waypoints _unitGroup)) < 2) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;	/*Start patrolling after each group is fully spawned.*/};
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: 1 AI unit respawned (respawnBandits_bldgs)."];};

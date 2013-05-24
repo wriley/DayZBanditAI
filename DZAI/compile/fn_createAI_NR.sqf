@@ -6,8 +6,8 @@
 	
 	_unitGroup: Group to spawn AI unit. (Building-spawned AI: side 'resistance', Random/Marker-spawned AI: side 'east')
 	_spawnPos: Position to create AI unit.
-	_patrolDist: Maximum distance between patrol waypoints.
 	_trigger: The trigger object responsible for spawning the AI unit.
+	_gradeChances: weapongrade probabilities to be used for generating equipment
 	
 */
 private ["_spawnPos","_type","_unit","_respawnType","_respawnLoc","_weapongrade","_unitGroup","_trigger","_patrolDist","_equipType","_gradeChances"];

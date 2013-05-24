@@ -29,13 +29,14 @@ if (_unitsAlive < 1) then {
 	_dummy disableAI "AUTOTARGET";
 	_trigger setVariable ["dummyExists",1,false];
 	_trigger setVariable ["dummyUnit",_dummy,false];
+	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned 1 dummy AI unit for group %1.",_unitGroup];};
 };
 
 _sleepTime = (DZAI_respawnTime1 + random(DZAI_respawnTime2));
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI killed, respawning in %1 seconds. Respawn Type %2 (fn_banditAIRespawn).",_sleepTime,_respawnType];};
 sleep _sleepTime;
 
-DZAI_numAIUnits = (DZAI_numAIUnits - 1);
+//DZAI_numAIUnits = (DZAI_numAIUnits - 1);
 switch (_respawnType) do {
 	case 1: {
 		0 = [_unitGroup,_respawnLoc,_trigger] call fnc_respawnBandits_random;	//Respawn AI at 'center' marker
@@ -56,7 +57,7 @@ if (_dummyExists == 1) then {
 	DZAI_numAIUnits = (DZAI_numAIUnits - 1);
 	_trigger setVariable ["dummyExists",0,false];
 	_trigger setVariable ["dummyUnit",nil,false];
-	//diag_log "DEBUG: Dummy Deleted!";
+	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Deleted 1 dummy AI unit for group %1.",_unitGroup];};
 };
 sleep 10;
 deleteVehicle _victim;

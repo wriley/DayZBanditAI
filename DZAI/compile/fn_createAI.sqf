@@ -6,23 +6,23 @@
 	
 	_unitGroup: Group to spawn AI unit. (Building-spawned AI: side 'resistance', Random/Marker-spawned AI: side 'east')
 	_spawnPos: Position to create AI unit.
-	_patrolDist: Maximum distance between patrol waypoints.
 	_trigger: The trigger object responsible for spawning the AI unit.
-	_respawnLoc: Position to respawn AI unit on death.
 	_respawnType: 1 (Respawn at random location some distance away from a marker), 2 (Respawn at a building near the trigger), 3 (Respawn randomly at a randomly selected marker)
+	_gradeChances: weapongrade probabilities to be used for generating equipment
+	_isRespawn (optional): is this unit being respawned? If yes, specify "true". Otherwise, assume is new spawn and increment active AI count.
 	
 */
-private ["_spawnPos","_type","_unit","_respawnType","_respawnLoc","_weapongrade","_unitGroup","_trigger","_patrolDist","_equipType","_gradeChances"];
+private ["_spawnPos","_type","_unit","_respawnType","_respawnLoc","_weapongrade","_unitGroup","_trigger","_patrolDist","_equipType","_gradeChances","_isRespawn"];
 if (!isServer) exitWith {};
 
 _unitGroup = _this select 0;
 _spawnPos = _this select 1;
 _trigger = _this select 2;		//Always 0 (zero) for randomly-spawned AI, as they are not spawned by triggers.
-//_respawnLoc = _this select 3;
 _respawnType = _this select 3;
 _gradeChances = _this select 4;
+_isRespawn = if ((count _this) > 5) then {_this select 5} else {false};
 
-DZAI_numAIUnits = (DZAI_numAIUnits + 1);
+if (!_isRespawn) then {DZAI_numAIUnits = (DZAI_numAIUnits + 1);}; 					//Increment active AI counter only if it isn't a respawn
 _type = DZAI_BanditTypesDefault call BIS_fnc_selectRandom;							// Select skin of AI unit
 _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 [_unit] joinSilent _unitGroup;														// Add AI unit to group

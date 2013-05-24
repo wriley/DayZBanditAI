@@ -25,7 +25,7 @@ _marker = _markerArray call BIS_fnc_selectRandom;
 _pos = getMarkerPos _marker;
 _triggerPos = getpos _trigger;
 
-_unit = [_unitGroup,_pos,_trigger,3,_gradeChances] call fnc_createAI;		//Spawn unit at exact marker position (Marker must be placed in a clear area that can hold at least 5 units)
+_unit = [_unitGroup,_pos,_trigger,3,_gradeChances,true] call fnc_createAI;		//Spawn unit at exact marker position (Marker must be placed in a clear area that can hold at least 5 units)
 _unitGroup selectLeader _unit;
 if ((count (waypoints _unitGroup)) < 2) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;	/*Start patrolling after each group is fully spawned.*/};
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: 1 AI unit respawned (respawnBandits_markers)."];};

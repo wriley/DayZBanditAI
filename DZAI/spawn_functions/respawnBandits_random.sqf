@@ -24,7 +24,7 @@ _gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
 _spawnRadius = 50 + random(350);
 _pos = [_triggerPos,0,_spawnRadius,5,0,2000,0] call BIS_fnc_findSafePos;
 
-_unit = [_unitGroup,_pos,_trigger,1,_gradeChances] call fnc_createAI;		
+_unit = [_unitGroup,_pos,_trigger,1,_gradeChances,true] call fnc_createAI;		
 _unitGroup selectLeader _unit;
 if ((count (waypoints _unitGroup)) < 2) then {_nul = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;};
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: 1 AI unit respawned at %3(respawnBandits_random).",_pos];};
