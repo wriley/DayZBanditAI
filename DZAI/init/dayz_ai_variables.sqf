@@ -1,9 +1,11 @@
 //DZAI Variables Version 0.07
 private["_worldname"];
 
+/*
 //Enable/Disable Zombies, Zombie Hostility
 DZAI_zombieEnemy = true;									//Enable or disable AI hostility to zombies. If enabled, AI will attack zombies. (default: true)
 DZAI_zombiesEnabled = true;									//Enable or disable zombie spawns (default: true)
+*/
 if (!isServer) exitWith {};									//End of client-sided work.
 
 //Internal Use Variables: DO NOT EDIT THESE

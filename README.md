@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.07 Hotfix 2)
+DZAI - DayZ AI Addon (Current version: 0.07 Hotfix 3)
 ============
 
 DZAI is designed to be a simple, configurable, easy-to-install AI package that requires a simple one-line edit to your init.sqf file. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
@@ -105,13 +105,18 @@ Version 0.07 Hotfix 2
 
 - [FIXED] Fixed issue with BattlEye Script Restriction #241 error. Will continue investigating for BE-related issues.
 
+Version 0.07 Hotfix 3
+
+- [FIXED] BE Script Restriction #241 should be completely fixed (attempted logging in/out 10+ times without problems). Server and Client now use separate initialization scripts.
+<b><u>IMPORTANT!:</b></u> The steps to install DZAI have changed (slightly). In your init.sqf, you must use this line to start DZAI: <code>#include "DZAI\init\dzai_init.sqf";				//Load DayZ AI Bandit Module</code>. Zombie spawns and AI-to-Zed hostility are now configured in dzai_init.sqf instead of dayz_ai_variables.sqf.
+
 Installation Instructions:
 - Extract your mission .pbo file. (I recommend cpbo, which can be downloaded as part of the Arma Tools package: http://www.armaholic.com/page.php?id=411)
 - Copy the entire DZAI folder into the extracted mission folder.
 - Edit your init.sqf with a text editor.
 - Add the line to your init.sqf file after DayZ's compiled functions: 
 
-<code>call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_initialize.sqf";				//Load DayZ AI Bandit Module</code>
+<code>#include "DZAI\init\dzai_init.sqf";				//Load DayZ AI Bandit Module</code>
 
 Example edit (Note: this block of code is easier to read in a text editor such as Notepad++):
 
@@ -124,7 +129,7 @@ call compile preprocessFileLineNumbers "\z\addons\dayz_code\medical\setup_functi
 progressLoadingScreen 0.4;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";				//Compile regular functions
 progressLoadingScreen 0.6;
-call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_initialize.sqf";				//Load DayZ AI Bandit Module
+#include "DZAI\init\dzai_init.sqf";				//Load DayZ AI Bandit Module
 progressLoadingScreen 1.0;</code>
 
 - Optional: Edit dayz_ai_variables.sqf in "DZAI\init" to customize the addon settings (ie: Enable/Disable zombies, AI loadouts, AI spawns, etc.)

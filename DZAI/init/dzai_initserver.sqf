@@ -1,15 +1,11 @@
 //dayz_ai_initialize 0.07
 
+createcenter east;											//Create centers for all sides
+createcenter west;
+createcenter resistance;
+
 //Load DZAI variables
 call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_variables.sqf";
-
-//Optionally replace DayZ's zombie spawning scripts with dummy scripts if zombies are disabled in dayz_ai_variables.
-if (!isDedicated && !DZAI_zombiesEnabled) then {
-	zombie_generate = compile preprocessFile "DZAI\compile\zombie_generate.sqf";
-	wild_spawnZombies = compile preprocessFile "DZAI\compile\wild_spawnZombies.sqf";
-};
-if (!isServer) exitWith {}; //End of client-sided work
-
 call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";
 
 	waituntil {!isnil "bis_fnc_init"};
