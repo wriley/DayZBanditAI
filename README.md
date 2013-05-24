@@ -111,7 +111,7 @@ Version 0.07 Hotfix 3
 
 <b><u>IMPORTANT!:</b></u> The steps to install DZAI have changed (slightly). In your init.sqf, you must use this line to start DZAI: <code>#include "DZAI\init\dzai_init.sqf";				//Load DayZ AI Bandit Module</code>. Zombie spawns and AI-to-Zed hostility are now configured in dzai_init.sqf instead of dayz_ai_variables.sqf.
 
-Version 0.08 Hotfix 4
+Version 0.07 Hotfix 4
 
 - [FIXED] DZAI Server Monitor should now correctly report AI/trigger statistics. Active AI count is only incremented for new AI spawns, but not respawns. Will keep watch on Server Monitor to ensure it reports statistics accurately.
 
