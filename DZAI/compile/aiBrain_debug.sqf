@@ -4,15 +4,24 @@
 */
 private["_unit","_currentWeapon","_weaponMagazine","_needsReload","_nearbyZeds","_marker","_markername"];
 if (!isServer) exitWith {};
-sleep 0.5;
+sleep 0.2;
 if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI brain active.";};
 
 _unit = _this select 0;								//Unit to monitor/reload ammo
 _currentWeapon = currentWeapon _unit;				//Retrieve unit's current weapon
-sleep 0.002;										//Short sleep necessary for script to retrieve current weapon
+//DZAI_numAIUnits = DZAI_numAIUnits + 1;
+sleep 0.1;										//Short sleep necessary for script to retrieve current weapon
 _weaponMagazine = getArray (configFile >> "CfgWeapons" >> _currentWeapon >> "magazines") select 0;	//Retrieve ammo used by unit's current weapon
 
+_markername = format["marker_%1",floor(random 200)];
+_marker = createMarker[_markername,(getpos _unit)];
+_marker setMarkerShape "ICON";
+_marker setMarkerType "WAYPOINT";
+_marker setMarkerBrush "SOLID";
+_marker setMarkerColor "ColorBlue";
+
 while {alive _unit} do {							//Run script for as long as unit is alive
+	_marker setmarkerpos (getpos _unit);
 	if (DZAI_zombieEnemy && DZAI_zombiesEnabled) then {	//Run only if both zombie hostility and zombie spawns are enabled.
 		_nearbyZeds = (position _unit) nearEntities ["zZombie_Base",DZAI_zDetectRange];
 		{
@@ -34,5 +43,6 @@ while {alive _unit} do {							//Run script for as long as unit is alive
 	};
 	sleep DZAI_refreshRate;										//Check again in x seconds.
 };
-
+//DZAI_numAIUnits = DZAI_numAIUnits - 1;
+deleteMarker _marker;
 if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI killed, AI brain deactivated.";};

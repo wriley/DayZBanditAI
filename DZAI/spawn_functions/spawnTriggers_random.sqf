@@ -1,14 +1,11 @@
 /*
-	spawnTriggers_random version 0.06
+	spawnTriggers_random version 0.08
 
 	Usage: 
 	Description: 
 */
-private ["_numTriggers","_refMarker","_maxDist","_markerPos", "_trigOnAct","_equipType"];
+private ["_numTriggers","_refMarker","_patrolDist","_maxDist","_equipType","_markerPos","_trigOnAct","_patroldist"];
 if (!isServer) exitWith {};
-
-//Check if there are too many AI units in the game.
-if (DZAI_numAIUnits >= DZAI_maxAIUnits) exitWith {diag_log format["DZAI Warning: Maximum number of AI reached! (%1)",DZAI_numAIUnits];};
 
 _numTriggers = _this select 0;							//Number of triggers to create
 _refMarker = _this select 1;							//Reference marker ("center")
@@ -19,14 +16,13 @@ _equipType = if ((count _this) > 4) then {_this select 4} else {1};
 if (_numTriggers == 0) exitWith {};						// Exit script if there is nothing to spawn
 
 _markerPos = getMarkerPos _refMarker;					//Get position of reference marker
-_trigOnAct = format["[%1,%2,%3,thisTrigger,%4] call fnc_spawnBandits_random_NR",DZAI_randMinAI,DZAI_randAddAI,_patroldist,_equipType];
+_trigOnAct = format["[%1,%2,%3,thisTrigger,%4] call fnc_spawnBandits_random_NR",DZAI_dynAIMin,DZAI_dynAIAdd,_patroldist,_equipType];
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %1 Trigger spawns triggered (spawnTriggers_random).",_numTriggers];};
 
 for "_i" from 1 to _numTriggers do {
 	private ["_trigger","_trigPos"];
-	sleep DZAI_spawnRandomDelay;
-	//_trigPos = [_markerPos,0,_maxDist,5,0,2000,0] call BIS_fnc_findSafePos;
+	sleep DZAI_dynSpawnDelay;
 	_trigPos = [_markerPos,random(_maxDist),random(360),false,[1,500]] call SHK_pos;
 	if (DZAI_debugMarkers == 1) then {													//Adjust to debugLevel > 1
 		private ["_markername","_marker"];

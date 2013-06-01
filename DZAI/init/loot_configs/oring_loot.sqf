@@ -12,4 +12,6 @@ DZAI_RiflesDefault2 = DZAI_RiflesDefault2 - ["M107_DZ"];
 DZAI_RiflesDefault3 = DZAI_RiflesDefault3 - ["M107_DZ"] + ["KPFS_KarS","KPFS_MG1","KPFS_MP5A3SD"];
 DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_police1_DZ","Skin_police2_DZ","Skin_civilian2_DZ","Skin_civilian3_DZ","Skin_civilian4_DZ","Skin_civilian5_DZ"];
 
+diag_log "Oring loot tables loaded.";
+
 DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;

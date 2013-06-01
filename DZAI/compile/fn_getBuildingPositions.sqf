@@ -21,4 +21,6 @@ _j = 0;
 	_i = 0;
 } forEach _nearbldgs;
 
+if ((count _bldgpos) == 0) then {diag_log "ERROR :: No building positions found! Using trigger position instead."; _bldgpos = [_triggerPos];};	//If no buildings are found, use trigger's position instead.
+
 _bldgpos

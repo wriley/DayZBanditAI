@@ -17,7 +17,6 @@ _unitGroup = _this select 0;
 _spawnPos = _this select 1;
 _gradeChances = _this select 2;
 
-DZAI_numAIUnits = (DZAI_numAIUnits + 1);
 _type = DZAI_BanditTypesDefault call BIS_fnc_selectRandom;							// Select skin of AI unit
 _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 [_unit] joinSilent _unitGroup;														// Add AI unit to group
@@ -33,10 +32,11 @@ if (DZAI_allowFleeing) then {_unit allowFleeing (DZAI_minFleeChance + random DZA
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 
 if (DZAI_debugMarkers == 0) then {
-	_unit setVehicleInit "[this] execVM 'DZAI\scripts\aiBrain.sqf';";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
+	_unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
 	} else {
-	_unit setVehicleInit "[this] execVM 'DZAI\scripts\aiBrain_debug.sqf';";		// Same script as aiBrain, but displays AI unit's current position. (delay = DZAI_refreshRate)
+	_unit setVehicleInit "[this] spawn fnc_aiBrain_debug;";		// Same script as aiBrain, but displays AI unit's current position. (delay = DZAI_refreshRate)
 };
+
 if (DZAI_zombieEnemy && DZAI_zombiesEnabled && (DZAI_weaponNoise!=0)) then {
 	_unit addEventHandler ["Fired", {_this call ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.
 _unit addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];					// Handle incoming damage. Note: AI durability can be modified in dayz_ai_variables.sqf

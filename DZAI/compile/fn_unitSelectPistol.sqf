@@ -1,4 +1,4 @@
-//unitSelectPistol version 0.07
+//unitSelectPistol version 0.08
 /*
 	Usage: [_unit, _weapongrade] call fnc_unitSelectPistol;
 */
@@ -7,9 +7,8 @@
 	_weapongrade = _this select 1;
 	
 	_currentWeapon = currentWeapon _unit;
+	_nmags = floor (random DZAI_maxPistolMags) + 1;						// Number of mags to generate for selected weapon, with a minimum of zero.
 	if ((getNumber (configFile >> "CfgWeapons" >> _currentWeapon >> "type")) == 2) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Unit already has a handgun. Exiting selectPistol script."};}; 
-	
-	_nmags = floor (random (DZAI_maxPistolMags + 1));						// Number of mags to generate for selected weapon, with a minimum of zero.
 	
 	switch (_weapongrade) do {
 	  case 0: {		//Farm / Residential / Supermarket

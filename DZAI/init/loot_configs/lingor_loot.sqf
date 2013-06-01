@@ -5,11 +5,11 @@ _modname = toLower format ["%1",DZAI_modName];
 switch (DZAI_modName) do {
 	case "skarolingor":
 	{
-		diag_log "DayZ Lingor (Skaronator) config selected.";
 		DZAI_PistolsDefault3 = DZAI_PistolsDefault3 + ["MakarovSD"];
 		DZAI_RiflesDefault1 = DZAI_RiflesDefault1 + ["RPK_74"];
 		DZAI_RiflesDefault2 = DZAI_RiflesDefault2 + ["MG36"];
 		DZAI_RiflesDefault3 = DZAI_RiflesDefault3 + ["BAF_L85A2_UGL_Holo"];
+		diag_log "DayZ Lingor (Skaronator) loot tables loaded.";
 	};
 	case "epoch":
 	{
@@ -27,7 +27,7 @@ switch (DZAI_modName) do {
 	case default
 	{
 		diag_log "DayZ Lingor (safe mode) config selected.";
-		DZAI_safeMode = true;	//Always load regular Lingor in "safe mode". Temporary fix for crashing issues.
+		if (!DZAI_safeMode) then {DZAI_safeMode = true;};	//Always load regular Lingor in "safe mode". Temporary fix for crashing issues.
 	};
 };
 

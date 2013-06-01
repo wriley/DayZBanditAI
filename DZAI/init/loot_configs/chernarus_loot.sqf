@@ -1,9 +1,8 @@
-//Chernarus Loot Configuration 0.07
+//Chernarus Loot Configuration 0.08
 
 switch (DZAI_modName) do {
 	case "2017":
 	{
-		diag_log "DayZ 2017 configuration selected.";
 		DZAI_BanditTypesDefault = DZAI_BanditTypesDefault - ["Bandit1_DZ", "BanditW1_DZ", "Camo1_DZ", "Sniper1_DZ"] + ["Beard_DZ","Dimitry_DZ","Alexej_DZ","Stanislav_DZ","Czech_Norris","SG_IRA_Soldier_CO_DZ"];
 		DZAI_PistolsDefault0 = ["revolver_EP1","Makarov","Tokarev"];
 		DZAI_PistolsDefault1 = ["revolver_EP1","Makarov","Tokarev"];
@@ -31,19 +30,11 @@ switch (DZAI_modName) do {
 		DZAI_Backpacks2 = ["ice_apo_pack1","ice_apo_pack4","ice_apo_pack2"];
 		DZAI_Backpacks3 = ["ice_apo_pack4","ice_apo_pack2"];
 		DZAI_tempNVGs = false;	//Disable temporary NVG chance for DayZ 2017.
+		diag_log "DayZ 2017 loot tables loaded.";
 	};
 	case "epoch":
 	{
-		diag_log "DayZ Epoch configuration selected.";
-		//Epoch metal bar currency (rare bars only)
-		DZAI_metalBars = [["ItemSilverBar",0.20],["ItemSilverBar10oz",0.10],["ItemGoldBar",0.03],["ItemGoldBar10oz",0.015]];
-		DZAI_metalBarNum = 2;		//Maximum number of metal bars to generate
-	
-		DZAI_BanditTypesDefault = DZAI_BanditTypesDefault + ["Soldier1_DZ","RU_Policeman_DZ","Pilot_EP1_DZ","Haris_Press_EP1_DZ","Ins_Soldier_GL_DZ","Functionary1_EP1_DZ","GUE_Commander_DZ","Priest_DZ","Rocker2_DZ","SurvivorWpink_DZ","SurvivorWcombat_DZ","SurvivorWdesert_DZ","SurvivorWurban_DZ","Soldier_TL_PMC_DZ","Soldier_Sniper_PMC_DZ","Soldier_Bodyguard_AA12_PMC_DZ","Drake_Light_DZ","CZ_Special_Forces_GL_DES_EP1_DZ","TK_INS_Soldier_EP1_DZ","TK_INS_Warlord_EP1_DZ"];
-		DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_Soldier1_DZ","Skin_RU_Policeman_DZ","Skin_Pilot_EP1_DZ","Skin_Haris_Press_EP1_DZ","Skin_Ins_Soldier_GL_DZ","Skin_Functionary1_EP1_DZ","Skin_GUE_Commander_DZ","Skin_Priest_DZ","Skin_Rocker2_DZ","Skin_SurvivorWpink_DZ","Skin_SurvivorWcombat_DZ","Skin_SurvivorWdesert_DZ","Skin_SurvivorWurban_DZ","Skin_Soldier_TL_PMC_DZ","Skin_Soldier_Sniper_PMC_DZ","Skin_Soldier_Bodyguard_AA12_PMC_DZ","Skin_Drake_Light_DZ","Skin_CZ_Special_Forces_GL_DES_EP1_DZ","Skin_TK_INS_Soldier_EP1_DZ","Skin_TK_INS_Warlord_EP1"];
-		DZAI_DefaultEdibles = DZAI_DefaultEdibles + ["FoodBioMeat"];
-		DZAI_DefaultMiscItemS = DZAI_DefaultMiscItemS + ["ItemZombieParts"];
-		DZAI_skinItemChance = 0.15;
+		#include "mod_configs\epoch_config.sqf"
 	};
 };
 

@@ -2,4 +2,5 @@
 private ["_modname"];
 _modname = toLower format ["%1",DZAI_modName];
 
+diag_log "Fallujah loot tables loaded.";
 DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;

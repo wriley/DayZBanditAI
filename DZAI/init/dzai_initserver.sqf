@@ -1,12 +1,19 @@
-//dayz_ai_initialize 0.07
+//dayz_ai_initialize 0.08 (Server)
 
-createcenter east;											//Create centers for all sides
-createcenter west;
-createcenter resistance;
 
 //Load DZAI variables
 call compile preprocessFileLineNumbers "DZAI\init\dayz_ai_variables.sqf";
 call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";
+
+createcenter east;											//Create centers for all sides
+createcenter west;
+createcenter resistance;
+resistance setFriend [east, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
+resistance setFriend [west, 0];	
+EAST setFriend [WEST, 0];									//East (AI) is hostile to West (Player), but friendly to Resistance (AI).
+EAST setFriend [resistance, 1];	
+WEST setFriend [EAST, 0];									//West (Player side) is hostile to all.
+WEST setFriend [resistance, 0];
 
 	waituntil {!isnil "bis_fnc_init"};
 	// [] call BIS_fnc_help;
@@ -33,18 +40,36 @@ call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";
 	fnc_getGradeChances =			compile preprocessFileLineNumbers "DZAI\compile\fn_getGradeChances.sqf";
 	fnc_initTrigger = 				compile preprocessFileLineNumbers "DZAI\compile\fn_initTrigger.sqf";
 	fnc_BIN_taskPatrol = 			compile preprocessFileLineNumbers "DZAI\compile\BIN_taskPatrol.sqf";
+	fnc_aiBrain = 					compile preprocessFileLineNumbers "DZAI\compile\aiBrain.sqf";
+	fnc_aiBrain_debug = 			compile preprocessFileLineNumbers "DZAI\compile\aiBrain_debug.sqf";
 
 	//Compile spawn scripts
-	fnc_spawnBandits_random = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_random.sqf";
-	fnc_respawnBandits_random = 	compile preprocessFileLineNumbers "DZAI\spawn_functions\respawnBandits_random.sqf";
-	fnc_spawnBandits_bldgs = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_bldgs.sqf";
-	fnc_respawnBandits_bldgs = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\respawnBandits_bldgs.sqf";
-	fnc_spawnBandits_markers = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_markers.sqf";
-	fnc_respawnBandits_markers = 	compile preprocessFileLineNumbers "DZAI\spawn_functions\respawnBandits_markers.sqf";
+	fnc_spawnBandits = 				compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits.sqf";
+	fnc_respawnBandits = 			compile preprocessFileLineNumbers "DZAI\spawn_functions\respawnBandits.sqf";
+	fnc_spawnBandits_bldgs = 		fnc_spawnBandits;
+	fnc_spawnBandits_markers = 		fnc_spawnBandits;
 	fnc_spawnTriggers_random = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnTriggers_random.sqf";
 	fnc_despawnBandits = 			compile preprocessFileLineNumbers "DZAI\spawn_functions\despawnBandits.sqf";
 	fnc_spawnBandits_random_NR = 	compile preprocessFileLineNumbers "DZAI\spawn_functions\spawnBandits_random_NR.sqf";
 	fnc_despawnBandits_NR = 		compile preprocessFileLineNumbers "DZAI\spawn_functions\despawnBandits_NR.sqf";
+	
+	//Wrapper function for compatibility with old spawnBandits format.
+	fnc_spawnBandits_bldgs = 	{
+		private ["_equipType","_numGroups"];
+		_equipType = if ((count _this) > 4) then {_this select 4} else {1};
+		_numGroups = if ((count _this) > 5) then {_this select 5} else {1};
+		0 = [_this select 0,_this select 1,_this select 2,_this select 3,[],_equipType,_numGroups] call fnc_spawnBandits;
+		true
+	};
+	
+	//Wrapper function for compatibility with old spawnBandits format.
+	fnc_spawnBandits_markers  = 	{
+		private ["_equipType","_numGroups"];
+		_equipType = if ((count _this) > 5) then {_this select 5} else {1};
+		_numGroups = if ((count _this) > 6) then {_this select 6} else {1};
+		0 = [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_equipType,_numGroups] call fnc_spawnBandits;
+		true
+	};
 
 private["_worldname"];
 _worldname=toLower format ["%1",worldName];
@@ -64,66 +89,82 @@ To reduce the size of your mission file, you may clear the contents of unused co
 switch (_worldname) do {
 	case "chernarus":
 	{
-		#include "map_configs\chernarus_config.sqf"
-		#include "loot_configs\chernarus_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\chernarus_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\chernarus_loot.sqf";
 	};
 	case "utes":
 	{
-		#include "map_configs\utes_config.sqf"
-		#include "loot_configs\utes_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\utes_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\utes_loot.sqf";
 	};
 	case "zargabad":
 	{
-		#include "map_configs\zargabad_config.sqf"
-		#include "loot_configs\zargabad_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\zargabad_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\zargabad_loot.sqf";
 	};
 	case "fallujah":
 	{
-		#include "map_configs\fallujah_config.sqf"
-		#include "loot_configs\fallujah_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\fallujah_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\fallujah_loot.sqf";
 	};
 	case "takistan":
 	{
-		#include "map_configs\takistan_config.sqf"
-		#include "loot_configs\takistan_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\takistan_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\takistan_loot.sqf";
 	};
     case "tavi":
     {
-		#include "map_configs\tavi_config.sqf"
-		#include "loot_configs\tavi_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\tavi_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\tavi_loot.sqf";
     };
 	 case "lingor":
     {
-		#include "map_configs\lingor_config.sqf"
-		#include "loot_configs\lingor_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\lingor_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\lingor_loot.sqf";
     };
     case "namalsk":
     {
-		#include "map_configs\namalsk_config.sqf"
-		#include "loot_configs\namalsk_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\namalsk_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\namalsk_loot.sqf";
     };
     case "mbg_celle2":
     {
-		#include "map_configs\mbg_celle2_config.sqf"
-		#include "loot_configs\mbg_celle2_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\mbg_celle2_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\mbg_celle2_loot.sqf";
     };
 	case "oring":
     {
-		#include "map_configs\oring_config.sqf"
-		#include "loot_configs\oring_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\oring_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\oring_loot.sqf";
     };
 	case "panthera2":
     {
-		#include "map_configs\panthera2_config.sqf"
-		#include "loot_configs\panthera2_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\panthera2_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\panthera2_loot.sqf";
     };
 	case "isladuala":
     {
-		#include "map_configs\isladuala_config.sqf"
-		#include "loot_configs\isladuala_loot.sqf"
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\isladuala_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\isladuala_loot.sqf";
     };
+	case "sara":
+	{
+		call compile preprocessFileLineNumbers "DZAI\init\map_configs\sara_config.sqf";
+		call compile preprocessFileLineNumbers "DZAI\init\loot_configs\sara_loot.sqf";
+    };
+	case default {
+		diag_log "Unrecognized worldname found. Verifying table compatibility.";
+		DZAI_dynTriggersMax = 20;
+		DZAI_dynSpawnDelay = 30;
+		DZAI_dynEquipType = 1;
+		DZAI_dynAIMin = 2;
+		DZAI_dynAIAdd = 3;
+		if (!DZAI_verifyTables) then {DZAI_verifyTables = true;};	//Force table verification for unrecognized maps to help creating new loot config files.
+	};
 };
 initialized = true;
-if (DZAI_spawnRandom > 0) then {_nul = [DZAI_spawnRandom,'center',300,4500,DZAI_randEquipType] spawn fnc_spawnTriggers_random;};
+
+if (DZAI_verifyTables) then {call compile preprocessFileLineNumbers "DZAI\scripts\verifyTables.sqf";};
+if (DZAI_dynTriggersMax > 0) then {_nul = [DZAI_dynTriggersMax,'center',300,4500,DZAI_dynEquipType] spawn fnc_spawnTriggers_random;};
 if (DZAI_monitor) then {[] execVM 'DZAI\scripts\dzai_monitor.sqf';};
 if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI loading complete."];};
