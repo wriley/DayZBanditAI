@@ -25,7 +25,7 @@ _grpArray = _trigger getVariable ["GroupArray",[]];
 if (count _grpArray > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits)";};};						
 
 _totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));	//Calculate total number of units to spawn per group.
-if (_totalAI == 0) exitWith {};									//Exit script if there are no units to spawn
+if (_totalAI < 1) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: No units to spawn. Exiting spawn script (spawnBandits)";};};									//Exit script if there are no units to spawn
 
 _triggerPos = getPosATL _trigger;									//Position to spawn AI unit. Also used as the respawn position.
 _gradeChances = [_equipType] call fnc_getGradeChances;
@@ -33,12 +33,12 @@ _spawnCount = (_totalAI * _numGroups);
 _spawnPositions = [];
 if ((count _markerArray) == 0) then {
 	_spawnPositions = [_triggerPos,300] call fnc_getBuildingPositions;
-	diag_log "DEBUG :: Spawning AI from building positions.";
+	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from building positions (spawnBandits).";};
 } else {
 	{
 		_spawnPositions set [(count _spawnPositions),(getMarkerPos _x)];
 	} forEach _markerArray;
-	diag_log "DEBUG :: Spawning AI from marker positions.";
+	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from marker positions (spawnBandits).";};
 	_spawnType = 3;
 };
 
