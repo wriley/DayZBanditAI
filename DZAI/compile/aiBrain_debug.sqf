@@ -22,7 +22,7 @@ _marker setMarkerColor "ColorBlue";
 
 while {alive _unit} do {							//Run script for as long as unit is alive
 	_marker setmarkerpos (getpos _unit);
-	if (DZAI_zombieEnemy && DZAI_zombiesEnabled) then {	//Run only if both zombie hostility and zombie spawns are enabled.
+	if (DZAI_zombieEnemy) then {	//Run only if both zombie hostility and zombie spawns are enabled.
 		_nearbyZeds = (position _unit) nearEntities ["zZombie_Base",DZAI_zDetectRange];
 		{
 			if(rating _x > -30000) then {

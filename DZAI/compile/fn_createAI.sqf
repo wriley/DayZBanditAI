@@ -1,14 +1,17 @@
 /*
-	fn_createAI version 0.07
+	fnc_createAI version 0.07
 	
-	Spawns an independent AI unit. Called internally by spawnBandits_random, respawnBandits_random, spawnBandits_bldgs, respawnBandits_bldgs, spawnBandits_markers, respawnBandits_markers.
-	Usage: [_unitGroup,_spawnPos,_patrolDist,_trigger,_respawnLoc,_respawnType] call fn_createAI;
+	Description: Spawns an independent AI unit. Called internally by spawnBandits_random, respawnBandits_random, spawnBandits_bldgs, respawnBandits_bldgs, spawnBandits_markers, respawnBandits_markers.
+	
+	Usage: [_unitGroup,_spawnPos,_patrolDist,_trigger,_respawnLoc,_respawnType] call fnc_createAI;
 	
 	_unitGroup: Group to spawn AI unit. (Building-spawned AI: side 'resistance', Random/Marker-spawned AI: side 'east')
 	_spawnPos: Position to create AI unit.
 	_trigger: The trigger object responsible for spawning the AI unit.
 	_respawnType: 2 (Respawn at a building near the trigger), 3 (Respawn randomly at a randomly selected marker)
 	_gradeChances: weapongrade probabilities to be used for generating equipment
+	
+	Last updated: 6/3/2013
 	
 */
 private ["_spawnPos","_type","_unit","_respawnType","_respawnLoc","_weapongrade","_unitGroup","_trigger","_patrolDist","_equipType","_gradeChances"];
@@ -37,11 +40,7 @@ _unit setVariable["trigger",_trigger,false];										// Record the trigger from
 _unit setVariable["respawnType",_respawnType,false];								// Set the method used to spawn the AI (ie: 1: from 'center' marker, 2: from a trigger, 3: from a set of markers
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 
-if (DZAI_debugMarkers == 0) then {
-	_unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
-	} else {
-	_unit setVehicleInit "[this] spawn fnc_aiBrain_debug;";		// Same script as aiBrain, but displays AI unit's current position. (delay = DZAI_refreshRate)
-};
+_unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zomb
 
 if (DZAI_zombieEnemy && DZAI_zombiesEnabled && (DZAI_weaponNoise!=0)) then {
 	_unit addEventHandler ["Fired", {_this call ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.

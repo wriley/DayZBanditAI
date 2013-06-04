@@ -1,6 +1,11 @@
-//unitSelectPistol version 0.08
 /*
+	fnc_unitSelectPistol
+	
+	Description: Generates a pistol weapon as loot for AI unit given a provided weapongrade value, only if unit does not already have a pistol weapon.
+	
 	Usage: [_unit, _weapongrade] call fnc_unitSelectPistol;
+	
+	Last updated: 6/2/2013
 */
 	private ["_unit","_pistol","_pistols","_weapongrade","_magazine","_nmags","_currentWeapon"];
 	_unit = _this select 0;

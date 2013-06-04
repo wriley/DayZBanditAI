@@ -1,6 +1,11 @@
-//unitSelectRifle version 0.05
 /*
+	fnc_unitSelectWeapon
+	
+	Description: Generates a random rifle weapon given a provided weapongrade value. If weapongrade is 0, a pistol may be generated instead.
+	
 	Usage: [_unit, _weapongrade] call fnc_unitSelectRifle;
+	
+	Last updated: 6/2/2013
 */
 	private ["_unit","_rifle","_rifles","_weapongrade","_magazine"];
 	_unit = _this select 0;

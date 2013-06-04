@@ -1,9 +1,16 @@
-//DZAI Variables Version 0.07
+/*
+	DZAI Variables File
+	
+	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
+	
+	Last updated: 6/2/2013
+*/
 private["_worldname"];
 
 if (!isServer) exitWith {};									//End of client-sided work.
 
-//Note: Settings for enabling/disabling zombie spawns and Zed-to-AI aggro are in dzai_init.sqf
+//Enable/Disable Zombies, Zombie Hostility
+DZAI_zombieEnemy = true;									//Enable or disable AI hostility to zombies. If enabled, AI will attack zombies. (default: true)
 
 //Internal Use Variables: DO NOT EDIT THESE
 DZAI_numAIUnits = 0;										//Keep track of currently active AI units, including dead units waiting for respawn.
@@ -17,8 +24,7 @@ DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI posi
 DZAI_monitor = true;										//Enable or disable server monitor. Keeps track of number of max/current AI units and dynamically spawned triggers. (Default: true)
 DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
 DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017 and Namalsk 2017), "epoch" (DayZ Epoch).
-DZAI_safeMode = false;										//Set to "true" to start DZAI in Safe Mode with minimal item tables. Safe Mode is forced on for Taviana and Lingor (non-Skaronator version) (Default: false)
-DZAI_verifyTables = false;									//Set to "true" to have DZAI verify all tables for banned/invalid classnames. If invalid entries are found, they are removed and logged into the RPT log. (Default: false)
+DZAI_verifyTables = false;									//Use this if experiencing crashes or errors with DZAI. Set to "true" to have DZAI verify all tables for banned/invalid classnames. If invalid entries are found, they are removed and logged into the RPT log. Forced ON for Taviana 2.0 and Lingor 1.3 (Default: false)
 
 //AI Unit Variables						
 DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
@@ -44,9 +50,10 @@ DZAI_dynSpawnDelay = "auto";								//Time to wait between creating each randoml
 DZAI_dynEquipType = "auto";									//Equipment Type of randomly-spawned AI. (Value Range: 0-3). 0: Lowest grade weaponry. 3: Highest grade weaponry. (Default: "auto")
 DZAI_dynAIMin = "auto";										//Minimum number of AI to spawn per randomly-spawned trigger.  (Default: "auto")
 DZAI_dynAIAdd = "auto";										//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_dynAIMin + (0 to DZAI_dynAIAdd))  (Default: "auto")
+DZAI_dynSpawnDist = "auto";									//Maximum distance from 'center' marker to spawn dynamic triggers. (Ddefault: "auto")
 
 //Extra AI Settings
-DZAI_findKiller = false;									//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. (Default: false)
+DZAI_findKiller = false;										//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3. Temporary NVGs are unlootable and will be removed at death (Default: false).
 
 //AI loot Configuration										(Edible and Medical items, Miscellaneous items, Skin packs)
@@ -69,4 +76,4 @@ DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_Defaul
 
 //NOTHING TO EDIT BEYOND THIS POINT.
 
-if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3. SafeMode: %4. VerifyTables: %5.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_safeMode,DZAI_verifyTables];};
+if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3. VerifyTables: %4.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_verifyTables];};

@@ -31,11 +31,7 @@ if (DZAI_allowFleeing) then {_unit allowFleeing (DZAI_minFleeChance + random DZA
 
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 
-if (DZAI_debugMarkers == 0) then {
-	_unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
-	} else {
-	_unit setVehicleInit "[this] spawn fnc_aiBrain_debug;";		// Same script as aiBrain, but displays AI unit's current position. (delay = DZAI_refreshRate)
-};
+_unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
 
 if (DZAI_zombieEnemy && DZAI_zombiesEnabled && (DZAI_weaponNoise!=0)) then {
 	_unit addEventHandler ["Fired", {_this call ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.

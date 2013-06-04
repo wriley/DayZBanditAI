@@ -1,6 +1,11 @@
-//unitConsumables Version 0.07
 /*
+	fnc_unitConsumables
+	
+	Description: Generates an assortment of consumable items as loot for AI unit. (Edible, Medical, Misc items, Metal bar currency if Epoch mode is on)
+	
 	Usage: [_unit] call fnc_unitConsumables;
+	
+	Last updated: 6/2/2013
 */
 	private ["_unit"];
 	_unit = _this select 0;

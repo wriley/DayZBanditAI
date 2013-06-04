@@ -1,8 +1,14 @@
 /*
-	fnc_initTrigger version 0.08
+	fnc_initTrigger
 	
-	Initializes variables for static and dynamic triggers when called by fnc_spawnBandits_bldgs, fnc_spawnBandits_markers, and fnc_spawnBandits_random_NR.
+	Description: Initializes variables for static and dynamic triggers when called by fnc_spawnBandits and fnc_spawnBandits_random_NR.
 	These variables are retrieved for respawning and despawning AI.
+	
+	Usage: [_trigger,_groupArray,_spawnCount] call fnc_initTrigger; OR [_trigger,_groupArray,_spawnCount,_patrolDist,_gradeChances,_locationArray] call fnc_initTrigger;
+	
+	Note: "_patrolDist" may also contain an array of markers for manual waypoint creation.
+	
+	Last updated: 6/2/2013
 */
 
 private["_trigger"];

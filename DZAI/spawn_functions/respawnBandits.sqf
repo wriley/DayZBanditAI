@@ -1,5 +1,5 @@
 /*
-	respawnBandits version 0.08
+	respawnBandits version 0.9.0
 	
 	Usage: [_unitGroup,_respawnLoc,_patrolDist,_trigger] call respawnBandits;
 	Description: Called internally by fn_banditAIRespawn.sqf. Calls fn_createAI to respawn a unit near a randomly selected building from a stored reference location.
@@ -33,7 +33,13 @@ if (_respawnType == 2) then {
 
 _unit = [_unitGroup,_pos,_trigger,_respawnType,_gradeChances] call fnc_createAI;
 _unitGroup selectLeader _unit;
-if ((count (waypoints _unitGroup)) < 2) then {0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;	/*Start patrolling after each group is fully spawned.*/};
+if ((count (waypoints _unitGroup)) < 2) then {
+	if ((typeName _patroldist) == "SCALAR") then {
+		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+	} else {
+		0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
+	};
+};
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: 1 AI unit respawned (respawnBandits)."];};
 
 true

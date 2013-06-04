@@ -14,7 +14,7 @@ sleep 1;										//Short sleep necessary for script to retrieve current weapon
 _weaponMagazine = getArray (configFile >> "CfgWeapons" >> _currentWeapon >> "magazines") select 0;	//Retrieve ammo used by unit's current weapon
 
 while {alive _unit} do {							//Run script for as long as unit is alive
-	if (DZAI_zombieEnemy && DZAI_zombiesEnabled) then {	//Run only if both zombie hostility and zombie spawns are enabled.
+	if (DZAI_zombieEnemy) then {	//Run only if both zombie hostility and zombie spawns are enabled.
 		_nearbyZeds = (position _unit) nearEntities ["zZombie_Base",DZAI_zDetectRange];
 		{
 			if(rating _x > -30000) then {

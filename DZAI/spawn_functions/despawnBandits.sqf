@@ -4,7 +4,7 @@
 	Deletes all AI units spawned by a trigger once all players leave the trigger area. Adapted from Sarge AI.
 	
 */
-private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime","_spawnCount"];
+private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime"];
 if (!isServer) exitWith {};							//Execute script only on server.
 
 _trigger = _this select 0;							//Get the trigger object
@@ -23,11 +23,6 @@ if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been re
 	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: A player has entered the trigger area. Cancelling despawn script.";};
 	_trigger setVariable ["isCleaning",false,false];	//Allow next despawn request.
 };			
-
-_isCleaning = _trigger getVariable ["isCleaning",nil];	//check if cleanup has already occured.
-_spawnCount = _trigger getVariable ["spawnCount",nil];
-if (isNil "_isCleaning") exitWith {diag_log "ERROR :: Trigger has nil isCleaning value. Trigger has already been cleaned?";};
-if (isNil "_spawnCount") exitWith {diag_log "ERROR :: Trigger has nil spawnCount value. Trigger has already been cleaned?";};
 
 {
 	{deleteVehicle _x} forEach (units _x);			//Delete all units of each group.

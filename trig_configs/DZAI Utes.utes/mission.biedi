@@ -32,8 +32,8 @@ class _trigger_0
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
-		TIMEOUT_MID="40";
-		TIMEOUT_MAX="60";
+		TIMEOUT_MID="25";
+		TIMEOUT_MAX="30";
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
@@ -52,8 +52,8 @@ class _trigger_2
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
-		TIMEOUT_MID="40";
-		TIMEOUT_MAX="60";
+		TIMEOUT_MID="25";
+		TIMEOUT_MAX="30";
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
@@ -72,8 +72,8 @@ class _trigger_4
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
-		TIMEOUT_MID="40";
-		TIMEOUT_MAX="60";
+		TIMEOUT_MID="25";
+		TIMEOUT_MAX="30";
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
@@ -92,8 +92,8 @@ class _trigger_6
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
-		TIMEOUT_MID="40";
-		TIMEOUT_MAX="60";
+		TIMEOUT_MID="25";
+		TIMEOUT_MAX="30";
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";

@@ -1,4 +1,10 @@
-//Oring Loot Configuration 0.07
+/*
+	Oring Loot Configuration
+	
+	Last updated:
+	
+*/
+
 private ["_modname"];
 _modname = toLower format ["%1",DZAI_modName];
 
@@ -14,4 +20,4 @@ DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_police1_DZ","Skin_police2_D
 
 diag_log "Oring loot tables loaded.";
 
-DZAI_RiflesDefault0 = DZAI_RiflesDefault0 + DZAI_PistolsDefault0;
+for "_i" from 0 to ((count DZAI_PistolsDefault0) - 1) do {DZAI_RiflesDefault0 set [(count DZAI_RiflesDefault0),(DZAI_PistolsDefault0 select _i)];};
