@@ -8,16 +8,25 @@ private ["_newItems"];
 switch (DZAI_modName) do {
 	case "2017":
 	{
+		DZAI_maxPistolMags = 1;
+		DZAI_invmedicals = 0; 										//Number of selections of medical items (Inventory)
+		DZAI_invedibles = 0;										//Number of selections of edible items (Inventory)
+		DZAI_bpmedicals = 0; 										//Number of selections of medical items (Backpack)
+		DZAI_bpedibles = 1;											//Number of selections of edible items (Backpack)
+		DZAI_DefaultSkinLoot = [];
 		DZAI_BanditTypesDefault = DZAI_BanditTypesDefault - ["Bandit1_DZ", "BanditW1_DZ", "Camo1_DZ", "Sniper1_DZ"];
-		_newItems = ["Beard_DZ","Dimitry_DZ","Alexej_DZ","Stanislav_DZ","Czech_Norris","SG_IRA_Soldier_CO_DZ"];
-		for "_i" from 0 to (count _newItems) do {DZAI_BanditTypesDefault set [count DZAI_BanditTypesDefault,_i];};
+		_newItems = ["Beard_DZ","Dimitry_DZ","Alexej_DZ","Stanislav_DZ","Czech_Norris"];
+		for "_i" from 0 to ((count _newItems) - 1) do {DZAI_BanditTypesDefault set [count DZAI_BanditTypesDefault,_newItems select _i];};
 		DZAI_PistolsDefault0 = ["revolver_EP1","Makarov","Tokarev"];
 		DZAI_PistolsDefault1 = ["revolver_EP1","Makarov","Tokarev"];
 		DZAI_PistolsDefault2 = ["revolver_EP1","Makarov","Tokarev"];
+		DZAI_PistolsDefault3 = [];
 		DZAI_RiflesDefault0 = ["LeeEnfield","Winchester1866","Crossbow","MR43","Mosin38"];
 		DZAI_RiflesDefault1 = ["LeeEnfield","Winchester1866","Remington870_lamp","Mosin38"];
 		DZAI_RiflesDefault2 = ["LeeEnfield","Winchester1866","Remington870_lamp","Mosin38","M16_FlashLight","M4_FlashLight"];
-		DZAI_DefaultEdibles = DZAI_DefaultEdibles - ["FoodmuttonCooked","FoodchickenCooked","FoodBaconCooked","FoodRabbitCooked","FoodbaconRaw","FoodchickenRaw","FoodmuttonRaw","foodrabbitRaw","FoodCanUnlabeled","FoodPistachio","FoodNutmix","FoodMRE"] + ["HumanFleshCooked","RawHumanFlesh","RawInfectedFlesh","InfectedFleshCooked","FoodSteakCooked","FoodSteakRaw","FoodCanDogFood"];
+		DZAI_RiflesDefault3 = [];
+		DZAI_DefaultEdibles = DZAI_DefaultEdibles - ["FoodCanPasta","ItemWaterbottleBoiled","FoodmuttonCooked","FoodchickenCooked","FoodBaconCooked","FoodRabbitCooked","FoodbaconRaw","FoodchickenRaw","FoodmuttonRaw","foodrabbitRaw","FoodCanUnlabeled","FoodPistachio","FoodNutmix","FoodMRE"] + ["HumanFleshCooked","RawHumanFlesh","RawInfectedFlesh","InfectedFleshCooked","FoodSteakCooked","FoodSteakRaw","FoodCanDogFood"];
+		DZAI_DefaultMiscItemS = DZAI_DefaultMiscItemS - ["HandGrenade_West","FlareGreen_M203","HandGrenade_West","FlareGreen_M203"];
 		DZAI_weaponGrades = [0,1,2];
 		DZAI_gradeChances0 = [0.90,0.10,0.00];
 		DZAI_gradeChances1 = [0.65,0.30,0.05];

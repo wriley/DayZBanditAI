@@ -37,7 +37,7 @@ _playerPos = getPosATL _targetPlayer;
 //_triggerPos = getPos _trigger;	
 _gradeChances = [_equipType] call fnc_getGradeChances;
 
-_minDist = 100;
+_minDist = 150;
 _maxDist = (_minDist + random(100));
 _pos = [_playerPos,_minDist,_maxDist,5,0,2000,0] call BIS_fnc_findSafePos;
 

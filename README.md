@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.9.0)
+DZAI - DayZ AI Addon (Current version: 0.9.1)
 ============
 
 
@@ -78,3 +78,9 @@ Note: This is a basic version for testing purposes and more features will be add
 - [MODIFIED] Considerable AI skill parameter decreases for AI with weapongrade 0&1. AimingSpeed decrease and SpotDistance increase for AI with weapongrade 2. General skill increases for AI with weapongrade 3. (Note: This change means that high weapongrade AI are more skilled, and vice versa).
 - [MODIFIED] AI units are now randomly assigned to the East or Resistance side.
 - [MODIFIED] Slight decreases in AI spawns for NWAF, Cherno, and Elektro.
+
+0.9.1 Update:
+
+- [FIXED] Fixed DayZ 2017 classname tables
+- [MODIFIED] DayZ 2017: Maximum pistol ammo fixed at 1. AI may carry a maximum of 1 edible item in their inventory, none in backpack. AI do not carry medical items other than a bandage.
+- [MODIFIED] AI spawn distance from dynamically spawned triggers increased to 150m (+100m max) from 100m (+100m max).
