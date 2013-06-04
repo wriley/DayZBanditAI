@@ -12,8 +12,6 @@ if ((count playableUnits == 0) and !isDedicated) then {
 
 waitUntil{initialized}; //means all the functions are now defined
 
-call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
-
 diag_log "HIVE: Starting";
 
 if (_script != "") then
@@ -174,6 +172,8 @@ if (_script != "") then
 		} forEach _myArray;
 		
 	// # END OF STREAMING #
+
+call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
 
 //Set the Time
 	//Send request
