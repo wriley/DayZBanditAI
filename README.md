@@ -81,6 +81,45 @@ Note: This is a basic version for testing purposes and more features will be add
 
 0.9.1 Update:
 
-- [FIXED] Fixed DayZ 2017 classname tables
+- [FIXED] Fixed DayZ 2017 classname tables.
 - [MODIFIED] DayZ 2017: Maximum pistol ammo fixed at 1. AI may carry a maximum of 1 edible item in their inventory, none in backpack. AI do not carry medical items other than a bandage.
 - [MODIFIED] AI spawn distance from dynamically spawned triggers increased to 150m (+100m max) from 100m (+100m max).
+
+0.9.2 Update:
+
+- [MODIFIED] Reduced rates of generating tools/gadgets for low-tier tools/gadgets table. (weapongrade 0-1).
+<table>
+<tr>
+<td>Item Name:</td><td>Old Rate</td><td>New Rate</td>
+</tr>
+<tr>
+<td>ItemFlashlight:</td><td>0.90</td><td>0.80</td>
+</tr>
+<tr>
+<td>ItemWatch:</td><td>0.90</td><td>0.80</td>
+</tr>
+<tr>
+<td>ItemKnife:</td><td>0.75</td><td>0.80</td>
+</tr>
+<tr>
+<td>ItemHatchet:</td><td>0.70</td><td>0.40</td>
+</tr>
+<tr>
+<td>ItemCompass:</td><td>0.60</td><td>0.35</td>
+</tr>
+<tr>
+<td>ItemMap:</td><td>0.50</td><td>0.25</td>
+</tr>
+<tr>
+<td>ItemToolbox:</td><td>0.20</td><td>0.10</td>
+</tr>
+<tr>
+<td>ItemMatchbox:</td><td>0.20</td><td>0.10</td>
+</tr>
+<tr>
+<td>ItemFlashlightRed:</td><td>0.10</td><td>0.05</td>
+</tr>
+</table>
+- [MODIFIED] Increased radius of all static triggers from 500m to 600m. Will test if this change affects performance.
+- [MODIFIED] Spawn radius of AI from dynamically spawned triggers reverted to 100m (+100m max) from 150m (+100m max).
+

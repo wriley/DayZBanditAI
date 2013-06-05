@@ -1,4 +1,4 @@
-//This server_monitor file has been provided as an example only.
+//This server_monitor file has been provided as an example only. Note: The required edit is located on Line 176 of this file.
 
 []execVM "\z\addons\dayz_server\system\s_fps.sqf"; //server monitor FPS (writes each ~181s diag_fps+181s diag_fpsmin*)
 

@@ -43,32 +43,15 @@ Version 0.08 Patch 6:
 - [FIXED] Fixed bug that prevented AI from properly respawning if numGroups was set higher than 1 for a trigger.
 - [MODIFIED] <b>IMPORTANT:</b> fnc_spawnBandits_bldgs and fnc_spawnBandits_markers combined into a single script (fnc_spawnBandits).
 
-<table>
-<tr>
-<td>New format:</td><td>[_minAI, _addAI, _patrolRadius, thisTrigger,[],_equipType (optional),_numGroups (optional)] call fnc_spawnBandits;</td>
-</tr>
-<tr>
-<td>_minAI:</td><td> Minimum number of AI units to spawn.</td>
-</tr>
-<tr>
-<td>_addAI:</td> <td>Maximum additional number of AI units to spawn</td>
-</tr>
-<tr>
-<td>_patrolRadius:</td><td> Patrol radius</td>
-</tr>
-<tr>
-<td>thisTrigger:</td><td> Leave as is</td>
-</tr>
-<tr>
-<td>[]:</td> <td>Leave array empty if you want to use buildings within a 300m distance from trigger center as spawn points. To manually insert spawn points, insert names of markers to use as spawn points. Example: ['marker1','marker2','marker3']</td>
-</tr>
-<tr>
-<td>_equipType (OPTIONAL):</td> <td>If no value is specified, 1 is used as default. 0: Basic rifles and pistols, 1: Basic rifles and occasionally military weapons, 2: Military weapons and occasionally basic rifles, 3: Military weapons and some high-grade military weapons.</td>
-</tr>
-<tr>
-<td>_numGroups (OPTIONAL):</td> <td>If no value is specified, 1 is used as default. Number of groups to spawn using the above values.</td>
-</tr>
-</table>
+New format: [_minAI, _addAI, _patrolRadius, thisTrigger,[],_equipType (optional),_numGroups (optional)] call fnc_spawnBandits;
+
+_minAI: Minimum number of AI units to spawn.
+_addAI: Maximum additional number of AI units to spawn.
+_patrolRadius: Patrol radius.
+thisTrigger: Leave as is.
+[]: Leave array empty if you want to use buildings within a 300m distance from trigger center as spawn points. To manually insert spawn points, insert names of markers to use as spawn points. Example: ['marker1','marker2','marker3']
+_equipType (OPTIONAL): If no value is specified, 1 is used as default. 0: Basic rifles and pistols, 1: Basic rifles and occasionally military weapons, 2: Military weapons and occasionally basic rifles, 3: Military weapons and some high-grade military weapons.
+_numGroups (OPTIONAL): If no value is specified, 1 is used as default. Number of groups to spawn using the above values.
 
 <b>Note:</b> Wrapper functions have been added so that all calls to fnc_spawnBandits_bldgs and fnc_spawnBandits_markers are transferred to fnc_spawnBandits. If you have added any custom spawns, they will still work without modification.
 

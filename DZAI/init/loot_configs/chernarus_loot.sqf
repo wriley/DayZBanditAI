@@ -62,6 +62,11 @@ switch (DZAI_modName) do {
 	{
 		#include "mod_configs\epoch_config.sqf"
 	};
+	case "civilian":
+	{
+		_newItems = ["Warlord_DZ","Skimask_DZ","Bardak_DZ","Boss_DZ","Euroman2_DZ","Euroman1_DZ","Doctor_DZ","CameraMan_DZ","Profiteer4_DZ","Profiteer3_DZ","Profiteer3_DZ","Profiteer2_DZ","Profiteer1_DZ","Priest_DZ","Pilot_DZ","PMC_Female_DZ","Female_2_DZ","Survivor2_DZ","Sniper1_DZ","Soldier1_DZ","BanditW1_DZ","Bandit1_DZ","SurvivorW2_DZ","Policeman_DZ","Rocker1_DZ","Rocker2_DZ","Rocker3_DZ","Rocker4_DZ","Civilian2_DZ","Civilian3_DZ","Priest_DZ","Pilot_DZ","Villager1_DZ","Villager4_DZ","Villager3_DZ","Villager2_DZ","Worker4_DZ","Worker3_DZ","Worker2_DZ","Worker1_DZ","Assistant_DZ"];
+		for "_i" from 0 to ((count _newItems) - 1) do {DZAI_BanditTypesDefault set [(count DZAI_BanditTypesDefault),(_newItems select _i)];};
+	};
 };
 
 for "_i" from 0 to ((count DZAI_PistolsDefault0) - 1) do {DZAI_RiflesDefault0 set [(count DZAI_RiflesDefault0),(DZAI_PistolsDefault0 select _i)];};
