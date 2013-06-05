@@ -99,7 +99,7 @@ Note: This is a basic version for testing purposes and more features will be add
 <td>ItemWatch:</td><td>0.90</td><td>0.80</td>
 </tr>
 <tr>
-<td>ItemKnife:</td><td>0.75</td><td>0.80</td>
+<td>ItemKnife:</td><td>0.75</td><td>0.50</td>
 </tr>
 <tr>
 <td>ItemHatchet:</td><td>0.70</td><td>0.40</td>
