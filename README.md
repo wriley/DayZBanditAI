@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.9.2)
+DZAI - DayZ AI Addon (Current version: 0.9.3)
 ============
 
 
@@ -6,7 +6,7 @@ Introduction
 ============
 <b>IMPORTANT</b>: Version 0.9.0 onwards will be moving to the dayz_server.pbo instead of the mission pbo. If your DayZ server hoster does not give you access to your dayz_server.pbo, please notify me on the OpenDayZ forums (contact info below) with the hoster name. Thanks.
 
-DZAI is designed to be a simple, configurable, easy-to-install AI package that requires a simple one-line edit to your init.sqf file to install. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
+DZAI is designed to be a simple, configurable, easy-to-install AI package. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
 
 Detailed documentation for the DZAI package is coming. Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
 
@@ -123,3 +123,6 @@ Note: This is a basic version for testing purposes and more features will be add
 - [MODIFIED] Increased radius of all static triggers from 500m to 600m. Will test if this change affects performance.
 - [MODIFIED] Spawn radius of AI from dynamically spawned triggers reverted to 100m (+100m max) from 150m (+100m max).
 
+0.9.3 Update:
+
+- [NEW] Added support for DayZ Civilian mod. To enable DayZ Civilian support, edit DZAI_modName = "civilian" in dayz_ai_variables.sqf. Note: Weapon  parts for Civilian's ASC - Customizable Weapon Addon component have not yet been added to the DZAI loot tables.

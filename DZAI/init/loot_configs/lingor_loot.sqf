@@ -21,6 +21,10 @@ switch (DZAI_modName) do {
 		DZAI_RiflesDefault3 set [count DZAI_RiflesDefault3,_newItems];
 		diag_log "DayZ Lingor (Skaronator) loot tables loaded.";
 	};
+	case "epoch":
+	{
+		#include "mod_configs\epoch_config.sqf"
+	};
 	case default
 	{
 		diag_log "DayZ Lingor config selected.";
