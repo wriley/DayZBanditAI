@@ -22,7 +22,7 @@ _gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
 _spawnPositions = _trigger getVariable "locationArray";
 	
 _p = _spawnPositions call BIS_fnc_selectRandom;
-_pos = null;
+_pos = -1;
 if (_respawnType == 2) then {
 	_pos = [_p, 2, 100, 5, 0, 2000, 0] call BIS_fnc_findSafePos;
 	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Respawning AI from building positions (respawnBandits).";};

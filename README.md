@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.9.3)
+DZAI - DayZ AI Addon (Current version: 0.9.4)
 ============
 
 
@@ -15,6 +15,7 @@ Supported and tested maps:
 - Chernarus
 - Chernarus - DayZ Epoch*
 - Celle
+- DayZ Civilian
 - Namalsk
 
 Supported (untested) maps:
@@ -126,3 +127,10 @@ Note: This is a basic version for testing purposes and more features will be add
 0.9.3 Update:
 
 - [NEW] Added support for DayZ Civilian mod. To enable DayZ Civilian support, edit DZAI_modName = "civilian" in dayz_ai_variables.sqf. Note: Weapon  parts for Civilian's ASC - Customizable Weapon Addon component have not yet been added to the DZAI loot tables.
+
+0.9.4 Update:
+
+- [FIXED] aiBrain script now waits until the AI unit's current weapon classname is found before proceeding. Fixes rare cases where script proceeds without having the weapon classname defined, resulting in AI running out of ammo.
+- [FIXED] unitSelectPistol script now waits until the AI unit's current weapon classname is found before proceeding. Fixes rare cases where a second sidearm weapon would be generated.
+- [FIXED] banditAIKilled script is now called instead of spawned, to solve cases where killing an AI would cause long delays in actions such as using items or performing actions.
+- [FIXED] Fixed several scripts that were producing undefined variable errors.

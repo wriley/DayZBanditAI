@@ -60,7 +60,7 @@ for "_j" from 1 to _numGroups do {
 		_unitGroup = createGroup resistance;
 	};
 	_p = _spawnPositions call BIS_fnc_selectRandom;
-	_pos = null;
+	_pos = -1;
 	if (_spawnType == 2) then {	
 		_pos = [_p,2,100,5,0,2000,0] call BIS_fnc_findSafePos;
 	} else {

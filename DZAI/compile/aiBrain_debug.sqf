@@ -4,13 +4,12 @@
 */
 private["_unit","_currentWeapon","_weaponMagazine","_needsReload","_nearbyZeds","_marker","_markername"];
 if (!isServer) exitWith {};
-sleep 0.5;
 if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI brain active.";};
 
 _unit = _this select 0;								//Unit to monitor/reload ammo
+diag_log "aiBrain: Checking for unit's weapon.";
 _currentWeapon = currentWeapon _unit;				//Retrieve unit's current weapon
-//DZAI_numAIUnits = DZAI_numAIUnits + 1;
-sleep 0.5;										//Short sleep necessary for script to retrieve current weapon
+waitUntil {sleep 0.005; !isNil "_currentWeapon"};
 _weaponMagazine = getArray (configFile >> "CfgWeapons" >> _currentWeapon >> "magazines") select 0;	//Retrieve ammo used by unit's current weapon
 
 _markername = format["marker_%1",floor(random 200)];
@@ -43,6 +42,5 @@ while {alive _unit} do {							//Run script for as long as unit is alive
 	};
 	sleep DZAI_refreshRate;										//Check again in x seconds.
 };
-//DZAI_numAIUnits = DZAI_numAIUnits - 1;
 deleteMarker _marker;
 if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI killed, AI brain deactivated.";};

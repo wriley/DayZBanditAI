@@ -30,7 +30,7 @@
 	  };
 	};
 	
-	_gadgetsArray = null;
+	_gadgetsArray = [];
 	if (_weapongrade < 2) then {
 		_gadgetsArray = DZAI_gadgets0;
 	} else {

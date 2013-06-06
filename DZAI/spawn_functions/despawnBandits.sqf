@@ -13,7 +13,8 @@ _grpArray = _trigger getVariable ["GroupArray",[]];	//Find the groups spawned by
 _isCleaning = _trigger getVariable ["isCleaning",nil];	//Find whether or not the trigger has been marked for cleanup, otherwise assume a cleanup has already happened.
 _grpCount = count _grpArray;
 //diag_log format ["DEBUG:: _grpCount is %1. _isCleaning is %2.",_grpCount,_isCleaning];
-if ((_grpCount == 0) || (_isCleaning) || (isNil "_isCleaning")) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Trigger's group array is empty, or a despawn script is already running. Exiting despawn script.";};};				//Exit script if the trigger hasn't spawned any AI units, or if a despawn script is already running for the trigger.
+if (isNil "_isCleaning") exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Trigger's isCleaning variable is nil. Exiting despawn script.";};};
+if ((_grpCount == 0) || (_isCleaning)) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Trigger's group array is empty, or a despawn script is already running. Exiting despawn script.";};};				//Exit script if the trigger hasn't spawned any AI units, or if a despawn script is already running for the trigger.
 
 _trigger setVariable["isCleaning",true,false];		//Mark the trigger as being in a cleanup state so that subsequent requests to despawn for the same trigger will not run.
 if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: No players remain in trigger area. Deleting %1 AI groups in %2 seconds.",_grpCount, DZAI_despawnWait];};
@@ -31,7 +32,8 @@ if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been re
 } forEach _grpArray;
 
 //Update active AI count
-_spawnCount = _trigger getVariable ["spawnCount",0];
+if (isNil {_trigger getVariable "spawnCount"}) then {_trigger setVariable ["spawnCount",0]}; 
+_spawnCount = _trigger getVariable "spawnCount";
 if (_spawnCount == 0) exitWith {diag_log "ERROR :: Spawncount is zero.";};
 DZAI_numAIUnits = DZAI_numAIUnits - _spawnCount;
 

@@ -11,7 +11,7 @@ private ["_unit","_toolselect","_chance","_tool","_toolsArray"];
 _unit = _this select 0;
 _weapongrade = _this select 1;
 
-_toolsArray = null;
+_toolsArray = [];
 if (_weapongrade < 2) then {
 	_toolsArray = DZAI_tools0;
 } else {

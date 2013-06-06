@@ -42,6 +42,6 @@ if (DZAI_findKiller && (_killerDist < 300) && !(_killer hasWeapon "ItemRadio")) 
 
 _weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;	//For pistols, calculate weapongrade using default grade chances
 if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed by player. Generating loot with weapongrade %1 (fn_banditAIKilled).",_weapongrade];};
-[_victim, _weapongrade] call fnc_unitSelectPistol;				// Add sidearm
+[_victim, _weapongrade] spawn fnc_unitSelectPistol;				// Add sidearm
 [_victim] call fnc_unitConsumables;								// Add food, medical, misc, skin
 [_victim, _weapongrade] call fnc_unitTools;						// Add tools and gadget

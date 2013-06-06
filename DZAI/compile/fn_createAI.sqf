@@ -42,12 +42,12 @@ _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health s
 
 _unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zomb
 
-if (DZAI_zombieEnemy && DZAI_zombiesEnabled && (DZAI_weaponNoise!=0)) then {
+if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then {
 	_unit addEventHandler ["Fired", {_this call ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.
 _unit addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];					// Handle incoming damage. Note: AI durability can be modified in dayz_ai_variables.sqf
 _unit addEventHandler ["Killed",{[_this,"banditKills"] call local_eventKill;}]; 	// Killing this unit will increment player's bandit kill count.
 _unit addEventHandler ["Killed",{_this spawn fnc_spawn_deathFlies;}];				// Spawn flies around AI bandit corpse.
-_unit addEventHandler ["Killed",{_this spawn fnc_banditAIKilled;}];					// Update current AI count and generate additional loot on death.
+_unit addEventHandler ["Killed",{_this call fnc_banditAIKilled;}];					// Update current AI count and generate additional loot on death.
 _unit addEventHandler ["Killed",{_this spawn fnc_banditAIRespawn;}];				// Respawns AI using the same parameters they were spawned with.
 _unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];					// "People die if they are killed" - Shirou Emiya
 
