@@ -147,6 +147,8 @@ Note: This is a basic version for testing purposes and more features will be add
 - [NEW] Added independent settings for dynamic triggers for each map. Each map will have varying numbers of dynamic triggers and ranges for spawning triggers.
 - [NEW] Dynamic trigger spawning script now checks for player presence before placing each trigger. If a player is present within activation range of the trigger, the script will attempt to find another location without a player. (Note: This does not apply when dynamic triggers are being relocated).
 - [REMOVED] Disabled AI fleeing option.
+- [MODIFIED] Maximum AI spawn range from dynamic triggers increased from 100m (+100m max) to 100m (+150m max).
+- [MODIFIED] Dynamic trigger radius increased from 500m to 600m.
 - [MODIFIED] Classname verification script (verifyTables.sqf) now accepts a string of array names to check, instead of having the array names hardcoded.
 - [MODIFIED] fnc_initTrigger is now called instead of spawned.
 - [MODIFIED] Renamed several directories and script files for better clarity. (NB: The DZAI variable definitions file, dayz_ai_variables.sqf has been renamed to dzai_variables.sqf)
