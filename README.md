@@ -142,6 +142,7 @@ Note: This is a basic version for testing purposes and more features will be add
 0.9.5 Update:
 
 - [FIXED] aiBrain script now waits until the AI unit's magazine classname is defined before continuing.
+- [NEW] Initial release of DZAI Lite 0.0.1, a simplified version of DZAI. More details here: https://github.com/dayzai/DZAI-Lite
 - [NEW] Dead dynamically-spawned AI are now deleted after 300 seconds have elapsed. (if not already deleted by the standard despawn script).
 - [NEW] Added independent settings for dynamic triggers for each map. Each map will have varying numbers of dynamic triggers and ranges for spawning triggers.
 - [NEW] Dynamic trigger spawning script now checks for player presence before placing each trigger. If a player is present within activation range of the trigger, the script will attempt to find another location without a player. (Note: This does not apply when dynamic triggers are being relocated).
