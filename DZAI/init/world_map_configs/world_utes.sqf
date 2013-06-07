@@ -1,17 +1,14 @@
 /*
 	Utes map configuration 
 	
-	Last updated: 8:11 PM 6/3/2013
+	Last updated: 11:44 AM 6/7/2013
 	
 */
 
 //Begin dynamic trigger settings for Utes
-if (DZAI_dynTriggersMax == "auto") then {DZAI_dynTriggersMax = 10;};
-if (DZAI_dynSpawnDelay == "auto") then {DZAI_dynSpawnDelay = 60;};
-if (DZAI_dynEquipType == "auto") then {DZAI_dynEquipType = 3;};
-if (DZAI_dynAIMin == "auto") then {DZAI_dynAIMin = 2;};
-if (DZAI_dynAIAdd == "auto") then {DZAI_dynAIAdd = 2;};
-if (DZAI_dynSpawnDist == "auto") then {DZAI_dynSpawnDist = 4000;};
+DZAI_centerMarker setMarkerPos [3594.1797, 3726.0903];
+DZAI_centerSize = 1250;
+DZAI_dynTriggersMax = 4;
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [3376.7136, 4402.3555, 0]];

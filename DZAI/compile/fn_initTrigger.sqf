@@ -28,3 +28,5 @@ if ((count _this) > 3) then {
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Initialized dynamic trigger %1. GroupArray: %2, SpawnCount %3.",(_this select 0),(_this select 1),(_this select 2)];};
 };
 DZAI_numAIUnits = DZAI_numAIUnits + (_this select 2);
+
+true

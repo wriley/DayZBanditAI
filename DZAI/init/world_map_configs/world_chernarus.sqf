@@ -1,18 +1,15 @@
 /*
 	Chernarus map configuration 
 	
-	Last updated: 8:10 PM 6/3/2013
+	Last updated: 11:44 AM 6/7/2013
 	
 */
 
 
 //Begin dynamic trigger settings for Chernarus
-if (DZAI_dynTriggersMax == "auto") then {DZAI_dynTriggersMax = 15;};
-if (DZAI_dynSpawnDelay == "auto") then {DZAI_dynSpawnDelay = 60;};
-if (DZAI_dynEquipType == "auto") then {DZAI_dynEquipType = 2;};
-if (DZAI_dynAIMin == "auto") then {DZAI_dynAIMin = 2;};
-if (DZAI_dynAIAdd == "auto") then {DZAI_dynAIAdd = 2;};
-if (DZAI_dynSpawnDist == "auto") then {DZAI_dynSpawnDist = 4500;};
+DZAI_centerMarker setMarkerPos [7130.2007, 8413.7295];
+DZAI_centerSize = 5250;
+DZAI_dynTriggersMax = 18;
 
 //Begin markers
 _this = createMarker ["Elektro1", [10557.953, 2469.0283, 0.00033473969]];

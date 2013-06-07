@@ -21,7 +21,7 @@ DZAI_tempNVGs = false;	//Disable temporary NVG chance for DayZ Namalsk.
 switch (_modname) do {
 	case "epoch":
 	{
-		#include "mod_configs\epoch_config.sqf"
+		#include "mod_configs\epoch_classnames.sqf"
 	};
 	case "2017" :
 	{

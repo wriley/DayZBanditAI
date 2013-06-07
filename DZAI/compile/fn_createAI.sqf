@@ -33,7 +33,6 @@ _unit enableAI "MOVE";
 _unit enableAI "ANIM";
 _unit enableAI "FSM";
 _unit allowDammage true;
-if (DZAI_allowFleeing) then {_unit allowFleeing (DZAI_minFleeChance + random DZAI_addFleeChance);};
 	
 _unit setVariable["unitGroup",_unitGroup,false];									// Set the unit's group. The unit will respawn into the same group.
 _unit setVariable["trigger",_trigger,false];										// Record the trigger from which the AI unit was spawned

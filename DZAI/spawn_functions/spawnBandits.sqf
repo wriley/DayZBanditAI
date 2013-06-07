@@ -1,5 +1,5 @@
 /*
-	spawnBandits version 0.9.0
+	spawnBandits
 	
 	Usage: [_minAI, _addAI, _patrolDist, _trigger, _numGroups (optional)] call spawnBandits;
 	
@@ -72,12 +72,13 @@ for "_j" from 1 to _numGroups do {
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits).",_i,_totalAI];};
 	};
 	_unitGroup selectLeader ((units _unitGroup) select 0);
+	_unitGroup allowFleeing 0;
 	if ((typeName _patroldist) == "SCALAR") then {
 		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 	} else {
 		0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
 	};
-	_grpArray = _grpArray + [_unitGroup];							//Add the new group to the trigger's group array.
+	_grpArray set [count _grpArray,_unitGroup];
 };
 0 = [_trigger,_grpArray,_spawnCount,_patrolDist,_gradeChances,_spawnPositions] spawn fnc_initTrigger;
 

@@ -1,8 +1,11 @@
 /*
-	spawnBandits_random_NR version 0.08 (No Respawn version)
+	spawnBandits_random_NR
 
-	Usage: [_totalAI,_spawnMarker,_patrolDist,_maxDist] spawn spawnBandits_random_NR;
-	Description: Called through (mapname)_config.sqf. Spawns a group of AI units some distance from a provided reference location.
+	Usage: Called by an activated dynamic trigger when a player unit enters the trigger area.
+	
+	Description: Spawns a group of AI units some distance from a dynamically-spawned trigger. These units do not respawn after death.
+	
+	Last updated: 4:28 PM 6/7/2013
 */
 private ["_minAI","_addAI","_patrolDist","_trigger","_equipType","_unitGroupArray","_triggerPos","_gradeChances","_totalAI","_maxDist","_unitGroup","_pos","_nearbyPlayers","_targetPlayer","_unitArray","_playerArray","_playerPos","_minDist","_formation","_wp"];
 if (!isServer) exitWith {};
@@ -38,15 +41,15 @@ _playerPos = getPosATL _targetPlayer;
 _gradeChances = [_equipType] call fnc_getGradeChances;
 
 _minDist = 100;
-_maxDist = (_minDist + random(100));
+_maxDist = (_minDist + random(150));
 _pos = [_playerPos,_minDist,_maxDist,5,0,2000,0] call BIS_fnc_findSafePos;
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %1 AI spawns triggered (spawnBandits_random_NR).",_totalAI];};
 
 _unitGroup = grpNull;
 if ((random 1) < 0.5) then {				//50% chance to choose East or Resistance as AI side to avoid reaching 140 group/side limit.
-	_unitGroup = createGroup east;
 } else {
+	_unitGroup = createGroup east;
 	_unitGroup = createGroup resistance;
 };
 for "_i" from 1 to _totalAI do {
@@ -55,13 +58,15 @@ for "_i" from 1 to _totalAI do {
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits_random_NR).",_i,_totalAI];};
 };
 _unitGroup selectLeader ((units _unitGroup) select 0);
-0 = [_unitGroup,_playerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+_unitGroup allowFleeing 0;
 
-_unitGroupArray = _unitGroupArray + [_unitGroup];							//Add the new group to the trigger's group array.
-0 = [_trigger,_unitGroupArray,_totalAI] call fnc_initTrigger;
+0 = [_unitGroup,_playerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 
 {
 	_unitGroup reveal [_x,4];
 } forEach _playerArray;
+
+_unitGroupArray set [count _unitGroupArray,_unitGroup];
+0 = [_trigger,_unitGroupArray,_totalAI] call fnc_initTrigger;
 
 true

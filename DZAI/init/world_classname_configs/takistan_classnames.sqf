@@ -11,7 +11,7 @@ _modname = toLower format ["%1",DZAI_modName];
 switch (DZAI_modName) do {
 	case "epoch":
 	{
-		#include "mod_configs\epoch_config.sqf"
+		#include "mod_configs\epoch_classnames.sqf"
 	};
 	case default {
 		diag_log "Takistan loot tables loaded.";

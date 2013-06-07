@@ -1,17 +1,14 @@
 /*
 	Takistan map configuration 
 	
-	Last updated: 8:11 PM 6/3/2013
+	Last updated: 11:58 PM 6/6/2013
 	
 */
 
 //Begin dynamic trigger settings for Takistan
-if (DZAI_dynTriggersMax == "auto") then {DZAI_dynTriggersMax = 15;};
-if (DZAI_dynSpawnDelay == "auto") then {DZAI_dynSpawnDelay = 60;};
-if (DZAI_dynEquipType == "auto") then {DZAI_dynEquipType = 2;};
-if (DZAI_dynAIMin == "auto") then {DZAI_dynAIMin = 2;};
-if (DZAI_dynAIAdd == "auto") then {DZAI_dynAIAdd = 2;};
-if (DZAI_dynSpawnDist == "auto") then {DZAI_dynSpawnDist = 4500;};
+DZAI_centerMarker setMarkerPos [7027.8721, 6796.8696];
+DZAI_centerSize = 5750;
+DZAI_dynTriggersMax = 19;
 
 //begin triggers
 

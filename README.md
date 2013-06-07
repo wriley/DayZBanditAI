@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.9.4)
+DZAI - DayZ AI Addon (Current version: 0.9.5)
 ============
 
 
@@ -15,8 +15,10 @@ Supported and tested maps:
 - Chernarus
 - Chernarus - DayZ Epoch*
 - Celle
-- DayZ Civilian
+- DayZ Civilian*
 - Namalsk
+
+*: Requires manual activation by editing "DZAI_modName" in DZAI\init\dayz_ai_variables.sqf
 
 Supported (untested) maps:
 ============
@@ -37,13 +39,15 @@ No issues have been reported with the following maps, but have not been tested. 
 - Utes
 - Zargabad
 
+*: Requires manual activation by editing "DZAI_modName" in DZAI\init\dayz_ai_variables.sqf
+
 Non-supported maps
 ============
 The following maps have been known to cause problems in the past, but recent updates may have provided compatibility. For these maps, the "Verify Tables" option will automatically be enabled to make on-the-fly adjustments to DZAI's classname tables to solve incompatibility issues.
 - Taviana 2.0
 - Lingor 1.3
  
-*: Requires manual activation by editing "DZAI_modName" in DZAI\init\dayz_ai_variables.sqf
+
 
 Installation Instructions:
 ============
@@ -134,3 +138,20 @@ Note: This is a basic version for testing purposes and more features will be add
 - [FIXED] unitSelectPistol script now waits until the AI unit's current weapon classname is found before proceeding. Fixes rare cases where a second sidearm weapon would be generated.
 - [FIXED] banditAIKilled script is now called instead of spawned, to solve cases where killing an AI would cause long delays in actions such as using items or performing actions.
 - [FIXED] Fixed several scripts that were producing undefined variable errors.
+
+0.9.5 Update:
+
+- [FIXED] aiBrain script now waits until the AI unit's magazine classname is defined before continuing.
+- [NEW] Dead dynamically-spawned AI are now deleted after 300 seconds have elapsed. (if not already deleted by the standard despawn script).
+- [NEW] Added independent settings for dynamic triggers for each map. Each map will have varying numbers of dynamic triggers and ranges for spawning triggers.
+- [NEW] Dynamic trigger spawning script now checks for player presence before placing each trigger. If a player is present within activation range of the trigger, the script will attempt to find another location without a player. (Note: This does not apply when dynamic triggers are being relocated).
+- [REMOVED] Disabled AI fleeing option.
+- [MODIFIED] Classname verification script (verifyTables.sqf) now accepts a string of array names to check, instead of having the array names hardcoded.
+- [MODIFIED] fnc_initTrigger is now called instead of spawned.
+- [MODIFIED] Renamed several directories and script files for better clarity. (NB: The DZAI variable definitions file, dayz_ai_variables.sqf has been renamed to dzai_variables.sqf)
+- [MODIFIED] Debug markers for patrol waypoints have been changed from red X's to blue dots.
+- [MODIFIED] Debug markers for custom patrol waypoints have been changed from pink X's to pink dots.
+- [MODIFIED] Debug markers indicating AI unit positions have been changed from blue X's to small red dots.
+- [MODIFIED] Debug markers for dynamic triggers have been changed from yellow X's to filled yellow circles. (Respawned: orange).
+- [MODIFIED] Debug markers for AI patrol waypoints are now also deleted when AI are despawned.
+- [MODIFIED] Added an independent reference marker for spawning dynamic triggers instead of using the standard DayZ 'center' marker. (Note: for unrecognized maps, DZAI will default to the 'center' marker instead).

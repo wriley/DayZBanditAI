@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 12:15 AM 6/6/2013
+	Last updated: 4:18 PM 6/7/2013
 */
 private["_worldname"];
 
@@ -11,12 +11,6 @@ if (!isServer) exitWith {};									//End of client-sided work.
 
 //Enable/Disable Zombies, Zombie Hostility
 DZAI_zombieEnemy = true;									//Enable or disable AI hostility to zombies. If enabled, AI will attack zombies. (default: true)
-
-//Internal Use Variables: DO NOT EDIT THESE
-DZAI_numAIUnits = 0;										//Keep track of currently active AI units, including dead units waiting for respawn.
-DZAI_actDynTrigs = 0;										//Keep track of current number of active dynamically-spawned triggers
-DZAI_curDynTrigs = 0;										//Keep track of current total of inactive dynamically-spawned triggers.
-DZAI_actTrigs = 0;											//Keep track of active static triggers.										
 
 //DZAI Settings
 DZAI_debugLevel = 0;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 0)
@@ -32,25 +26,21 @@ DZAI_dmgFactors1 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for bullet-type damag
 DZAI_dmgFactors2 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for non-bullet-type (ie: explosions, collisions) damage done to different body parts: Structural, Head, Body, Hands, Legs.
 DZAI_refreshRate = 15;										//Amount of time in seconds between AI ammo and zombie check. (Default: 15)
 DZAI_zDetectRange = 200;									//Maximum distance for AI to detect zombies. (Default: 200)
-DZAI_allowFleeing = false;									//Enable/disable AI fleeing (Default: false)
-DZAI_minFleeChance = 0.05;									//Minimum chance that AI will flee. (Default: 0.05)
-DZAI_addFleeChance = 0.05;									//Maximum additional chance that AI will flee. (Default: 0.05)
 
 //AI Spawning Variables
 DZAI_maxAIUnits = 65535;									//Limit of total AI spawned by DZAI (0: Disables AI spawning completely)
 DZAI_respawnTime1 = 300;									//Minimum wait time for AI respawn timer (seconds). (Default: 300)
 DZAI_respawnTime2 = 180;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 180)
+DZAI_delDeadTime = 300;										//Time to allow AI corpse to remain (in seconds) before deleting it. (For non-respawning AI units only).
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
 DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
 
 //Dynamic Trigger Settings
 //DZAI automatically determines the settings for dynamic triggers. To manually change a value, replace "auto" with a value for the setting.
-DZAI_dynTriggersMax = "auto";								//Number of randomly-placed triggers to spawn across the map on server start. These triggers will spawn a specified number of AI when activated (see lines below). (Default: "auto")
-DZAI_dynSpawnDelay = "auto";								//Time to wait between creating each randomly-placed trigger (seconds). (Default: "auto")
-DZAI_dynEquipType = "auto";									//Equipment Type of randomly-spawned AI. (Value Range: 0-3). 0: Lowest grade weaponry. 3: Highest grade weaponry. (Default: "auto")
-DZAI_dynAIMin = "auto";										//Minimum number of AI to spawn per randomly-spawned trigger.  (Default: "auto")
-DZAI_dynAIAdd = "auto";										//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_dynAIMin + (0 to DZAI_dynAIAdd))  (Default: "auto")
-DZAI_dynSpawnDist = "auto";									//Maximum distance from 'center' marker to spawn dynamic triggers. (Ddefault: "auto")
+DZAI_dynSpawnDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 20)
+DZAI_dynEquipType = 2;										//Equipment Type of randomly-spawned AI. (Value Range: 0-3). 0: Lowest grade weaponry. 3: Highest grade weaponry. (Default: 2)
+DZAI_dynAIMin = 2;											//Minimum number of AI to spawn per randomly-spawned trigger.  (Default: 2)
+DZAI_dynAIAdd = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_dynAIMin + (0 to DZAI_dynAIAdd))  (Default: 3)
 
 //Extra AI Settings
 DZAI_findKiller = false;										//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
@@ -75,5 +65,11 @@ DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_Defaul
 DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_DefaultSkinLoot table.
 
 //NOTHING TO EDIT BEYOND THIS POINT.
+
+//Internal Use Variables: DO NOT EDIT THESE
+DZAI_numAIUnits = 0;										//Keep track of currently active AI units, including dead units waiting for respawn.
+DZAI_actDynTrigs = 0;										//Keep track of current number of active dynamically-spawned triggers
+DZAI_curDynTrigs = 0;										//Keep track of current total of inactive dynamically-spawned triggers.
+DZAI_actTrigs = 0;											//Keep track of active static triggers.	
 
 if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3. VerifyTables: %4.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_verifyTables];};

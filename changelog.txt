@@ -1,5 +1,5 @@
-Changelog Archive
-Last updated: 2:19 AM 6/4/2013
+DZAI Changelog Archive
+Last updated: 5:15 PM 6/7/2013
 --------------------------------
 
 Version 0.08 Update:

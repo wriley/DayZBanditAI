@@ -1,17 +1,14 @@
 /*
 	Taviana map configuration 
 	
-	Last updated: 8:11 PM 6/3/2013
+	Last updated: 11:58 PM 6/6/2013
 	
 */
 
 //Begin dynamic trigger settings for Taviana
-if (DZAI_dynTriggersMax == "auto") then {DZAI_dynTriggersMax = 25;};
-if (DZAI_dynSpawnDelay == "auto") then {DZAI_dynSpawnDelay = 60;};
-if (DZAI_dynEquipType == "auto") then {DZAI_dynEquipType = 2;};
-if (DZAI_dynAIMin == "auto") then {DZAI_dynAIMin = 3;};
-if (DZAI_dynAIAdd == "auto") then {DZAI_dynAIAdd = 2;};
-if (DZAI_dynSpawnDist == "auto") then {DZAI_dynSpawnDist = 5500;};
+DZAI_centerMarker setMarkerPos [11100.776, 11298.289, 1.5322094];
+DZAI_centerSize = 8000;
+DZAI_dynTriggersMax = 27;
 
 //begin triggers
 

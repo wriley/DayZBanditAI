@@ -59,7 +59,7 @@ if ((random 1) < 0.5) then {
 };
 
 for "_i" from _firstWP to _lastWP step _step do {
-	private["_markerPos","_waypoint","_marker_name","_marker"];
+	private["_markerPos","_waypoint"];
 	_markerPos = getMarkerPos (_wpArray select _i);
 	_waypoint = _group addWaypoint [_markerPos,0];
 	_waypoint setWaypointType "MOVE";
@@ -68,12 +68,14 @@ for "_i" from _firstWP to _lastWP step _step do {
 	[_group,(_j+_i)] setWaypointStatements ["true", _wpStatement];
 	
 	if (_debug > 0) then {
-		_marker_name = str(_wpArray select _i);
-		_marker = createMarker[_marker_name,[_markerPos select 0,_markerPos select 1]];
-		_marker setMarkerShape "ICON";
-		_marker_name setMarkerType "WAYPOINT";
-		_marker_name setMarkerBrush "SOLID";
-		_marker_name setMarkerColor "ColorPink";
+		private["_marker","_markername"];
+		_markername = format["%1_%2",_group,_i];
+		_marker = createMarker[_markername,_markerPos];
+		_marker setMarkerShape "ELLIPSE";
+		_marker setMarkerType "Dot";
+		_marker setMarkerColor "ColorPink";
+		_marker setMarkerBrush "SolidBorder";
+		_marker setMarkerSize [20, 20];
 	};
 		
 	sleep 0.5;

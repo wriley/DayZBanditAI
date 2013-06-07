@@ -1,9 +1,11 @@
 /*
-	respawnBandits version 0.9.0
+	respawnBandits
 	
-	Usage: [_unitGroup,_respawnLoc,_patrolDist,_trigger] call respawnBandits;
-	Description: Called internally by fn_banditAIRespawn.sqf. Calls fn_createAI to respawn a unit near a randomly selected building from a stored reference location.
+	Usage: [_unitGroup,_trigger,_respawnType] call respawnBandits;
 	
+	Description: Called internally by fnc_banditAIRespawn. Calls fnc_createAI to respawn a unit near a randomly selected building from a stored reference location.
+	
+	Last updated: 4:32 PM 6/7/2013
 */
 
 private ["_unitGroup","_trigger","_grpArray","_triggerPos","_patrolDist","_gradeChances","_spawnPositions","_p","_unit","_pos","_respawnType"];

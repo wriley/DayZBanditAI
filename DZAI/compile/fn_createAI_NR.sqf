@@ -27,7 +27,6 @@ _unit enableAI "MOVE";
 _unit enableAI "ANIM";
 _unit enableAI "FSM";
 _unit allowDammage true;
-if (DZAI_allowFleeing) then {_unit allowFleeing (DZAI_minFleeChance + random DZAI_addFleeChance);};
 
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 
@@ -39,6 +38,7 @@ _unit addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];					// Handle
 _unit addEventHandler ["Killed",{[_this,"banditKills"] call local_eventKill;}]; 	// Killing this unit will increment player's bandit kill count.
 _unit addEventHandler ["Killed",{_this spawn fnc_spawn_deathFlies;}];				// Spawn flies around AI bandit corpse.
 _unit addEventHandler ["Killed",{_this call fnc_banditAIKilled;}];					// Update current AI count and generate additional loot on death.
+_unit addEventHandler ["Killed",{_this spawn fnc_deleteVictim;}];					// Remove corpse after specified time.
 _unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];					// "People die if they are killed" - Shirou Emiya
 
 _weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;

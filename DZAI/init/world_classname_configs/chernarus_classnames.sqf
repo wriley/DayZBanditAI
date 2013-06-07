@@ -60,7 +60,7 @@ switch (DZAI_modName) do {
 	};
 	case "epoch":
 	{
-		#include "mod_configs\epoch_config.sqf"
+		#include "mod_configs\epoch_classnames.sqf"
 	};
 	case "civilian":
 	{

@@ -1,6 +1,9 @@
 /*
-	DZAI Monitor 0.07 
-	Periodically eports current numbers of active AI units, static triggers, and dynamic triggers.
+	DZAI Server Monitor
+	
+	Description: Periodically reports current numbers of active AI units, static triggers, and dynamic triggers.
+	
+	Last updated: 4:25 PM 6/7/2013
 */
 
 diag_log "Starting DZAI Server Monitor in 60 seconds.";

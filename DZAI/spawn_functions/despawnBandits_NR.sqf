@@ -1,10 +1,14 @@
 /*
-	despawnBandits_NR version 0.08 (No respawn version)
-	Usage: [thisTrigger] call despawnBandits_NR;
-	Deletes all AI units spawned by a trigger once all players leave the trigger area, then creates a new trigger elsewhere while deleting the previous one. Adapted from Sarge AI.
+	despawnBandits_NR
+	
+	Usage: Called by a dynamic trigger when all players have left the trigger area.
+	
+	Description: Deletes all AI units spawned by a trigger once all players leave the trigger area, then moves the trigger to a random location. Basic script concept adapted from Sarge AI.
+	
+	Last updated: 4:30 PM 6/7/2013
 	
 */
-private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime","_spawnCount","_newPos"];
+private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime","_spawnCount","_newPos","_nearbyPlayer","_retries"];
 if (!isServer) exitWith {};							//Execute script only on server.
 
 _trigger = _this select 0;							//Get the trigger object
@@ -26,6 +30,17 @@ if (triggerActivated _trigger) exitWith {
 };			
 
 {
+	if (DZAI_debugMarkers > 0) then {
+		private["_markerName","_markerCount"];
+		_markerCount = (count (waypoints _x)) - 3;
+		//diag_log format ["DEBUG :: Estimating %1 waypoints for group %2.",_markerCount,_x];
+		for "_i" from 1 to (count (waypoints _x) - 3) do {
+			_markerName = format ["%1_%2",_x,_i];
+			//diag_log format ["DEBUG :: Deleting marker: %1_%2.",_x,_i];
+			deleteMarker _markerName;
+		};
+		sleep 0.2;
+	};
 	{deleteVehicle _x} forEach (units _x);			//Delete all units of each group.
 	sleep 0.2;
 	deleteGroup _x;									//Delete the group after its units are deleted.
@@ -44,8 +59,10 @@ _trigger setVariable ["isCleaning",nil,false];
 _trigger setVariable ["patrolDist",nil,false];
 _trigger setVariable ["gradeChances",nil,false];
 _trigger setVariable ["spawnCount",nil,false];
-_newPos = [(getMarkerPos 'center'),random(DZAI_dynSpawnDist),random(360),false,[1,500]] call SHK_pos;
+
+_newPos = [(getMarkerPos 'DZAI_centerMarker'),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
 _trigger setPos _newPos;
+
 if (DZAI_debugMarkers > 0) then {
 	_marker = format["trigger_%1",_trigger];
 	_marker setMarkerPos _newPos;
@@ -54,6 +71,5 @@ if (DZAI_debugMarkers > 0) then {
 
 DZAI_actDynTrigs = (DZAI_actDynTrigs - 1);
 if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Despawned %1 AI in dynamic trigger area. Trigger relocated to %2.",_spawnCount,_newPos];};
-//deleteVehicle _trigger;										//Remove the old trigger.
 
 true

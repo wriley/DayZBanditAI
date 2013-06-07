@@ -1,23 +1,29 @@
 /*
-	aiBrain script adapted from SARGE AI
-	Handles AI ammo reload and zombie hostility. Called by fn_createAI.sqf upon AI unit creation.
+	aiBrain (debugging version)
+	
+	Credits:  Basic script concept adapted from Sarge AI.
+	
+	Description: Handles AI ammo reload and zombie hostility. Called by fnc_createAI upon AI unit creation.
+	
+	Last updated: 4:08 PM 6/7/2013
 */
 private["_unit","_currentWeapon","_weaponMagazine","_needsReload","_nearbyZeds","_marker","_markername"];
 if (!isServer) exitWith {};
 if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI brain active.";};
 
 _unit = _this select 0;								//Unit to monitor/reload ammo
-diag_log "aiBrain: Checking for unit's weapon.";
 _currentWeapon = currentWeapon _unit;				//Retrieve unit's current weapon
 waitUntil {sleep 0.005; !isNil "_currentWeapon"};
 _weaponMagazine = getArray (configFile >> "CfgWeapons" >> _currentWeapon >> "magazines") select 0;	//Retrieve ammo used by unit's current weapon
+waitUntil {sleep 0.005; !isNil "_weaponMagazine"};
 
-_markername = format["marker_%1",floor(random 200)];
+_markername = format["AI_%1",_unit];
 _marker = createMarker[_markername,(getpos _unit)];
-_marker setMarkerShape "ICON";
-_marker setMarkerType "WAYPOINT";
-_marker setMarkerBrush "SOLID";
-_marker setMarkerColor "ColorBlue";
+_marker setMarkerShape "ELLIPSE";
+_marker setMarkerType "Dot";
+_marker setMarkerColor "ColorRed";
+_marker setMarkerBrush "SolidBorder";
+_marker setMarkerSize [5, 5];
 
 while {alive _unit} do {							//Run script for as long as unit is alive
 	_marker setmarkerpos (getpos _unit);
@@ -30,7 +36,6 @@ while {alive _unit} do {							//Run script for as long as unit is alive
             };
 		} forEach _nearbyZeds;
 	};
-
 	_needsReload = true;
 	if (_weaponMagazine in magazines _unit) then {	//If unit already has at least one magazine, assume reload is not needed
 		_needsReload = false;

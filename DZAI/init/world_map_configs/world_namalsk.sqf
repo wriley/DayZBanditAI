@@ -1,17 +1,14 @@
 /*
 	Namalsk map configuration 
 	
-	Last updated: 8:11 PM 6/3/2013
+	Last updated: 11:57 PM 6/6/2013
 	
 */
 
 //Begin dynamic trigger settings for Namalsk
-if (DZAI_dynTriggersMax == "auto") then {DZAI_dynTriggersMax = 10;};
-if (DZAI_dynSpawnDelay == "auto") then {DZAI_dynSpawnDelay = 60;};
-if (DZAI_dynEquipType == "auto") then {DZAI_dynEquipType = 2;};
-if (DZAI_dynAIMin == "auto") then {DZAI_dynAIMin = 2;};
-if (DZAI_dynAIAdd == "auto") then {DZAI_dynAIAdd = 2;};
-if (DZAI_dynSpawnDist == "auto") then {DZAI_dynSpawnDist = 4500;};
+DZAI_centerMarker setMarkerPos [6007.2007, 8589.5469];
+DZAI_centerSize = 3750;
+DZAI_dynTriggersMax = 12;
 
 //AI hostility to Bloodsuckers by decreasing their leader's rating (untested). Required because Bloodsuckers will aggro on AI.
 sefik addRating -50000;

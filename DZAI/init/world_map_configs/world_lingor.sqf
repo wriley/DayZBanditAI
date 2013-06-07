@@ -1,17 +1,14 @@
 /*
 	Lingor map configuration 
 	
-	Last updated: 8:10 PM 6/3/2013
+	Last updated: 11:57 PM 6/6/2013
 	
 */
 
 //Begin dynamic trigger settings for Lingor
-if (DZAI_dynTriggersMax == "auto") then {DZAI_dynTriggersMax = 15;};
-if (DZAI_dynSpawnDelay == "auto") then {DZAI_dynSpawnDelay = 60;};
-if (DZAI_dynEquipType == "auto") then {DZAI_dynEquipType = 2;};
-if (DZAI_dynAIMin == "auto") then {DZAI_dynAIMin = 2;};
-if (DZAI_dynAIAdd == "auto") then {DZAI_dynAIAdd = 2;};
-if (DZAI_dynSpawnDist == "auto") then {DZAI_dynSpawnDist = 4500;};
+DZAI_centerMarker setMarkerPos [3832.7305, 4662.5327];
+DZAI_centerSize = 4000;
+DZAI_dynTriggersMax = 13;
 
 //begin markers
 _this = createMarker ["Prison1", [3044.0842, 8027.1206, 9.5367432e-007]];

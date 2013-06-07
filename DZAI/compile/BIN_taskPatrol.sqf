@@ -139,7 +139,7 @@ if (isServer) then
 
 	for "_i" from 1 to (_wp_count - 1) do
 	{
-		private ["_wp","_cur_pos","_marker","_marker_name"];
+		private ["_wp","_cur_pos","_marker","_markername"];
 
 		_cur_pos = (_wp_array select _i);
 
@@ -154,13 +154,13 @@ if (isServer) then
 		[_grp,_j+i] setWaypointStatements ["true", "if ((random 3) > 2) then { group this setCurrentWaypoint [(group this), (floor (random (count (waypoints (group this)))))];};"];
 		
 		if (_debug > 0) then {
-			_marker_name = str(_wp_array select _i);
-			_marker = createMarker[_marker_name,[_cur_pos select 0,_cur_pos select 1]];
-			_marker setMarkerShape "ICON";
-			//_marker_name setMarkerType "DOT";
-			_marker_name setMarkerType "WAYPOINT";
-			_marker_name setMarkerBrush "SOLID";
-			_marker_name setMarkerColor "ColorRed";
+			_markername = format["%1_%2",_grp,_i];
+			_marker = createMarker[_markername,[_cur_pos select 0,_cur_pos select 1]];
+			_marker setMarkerShape "ELLIPSE";
+			_marker setMarkerType "Dot";
+			_marker setMarkerColor "ColorBlue";
+			_marker setMarkerBrush "SolidBorder";
+			_marker setMarkerSize [20, 20];
 		};
 
 		sleep 0.5;

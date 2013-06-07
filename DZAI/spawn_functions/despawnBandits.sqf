@@ -1,8 +1,11 @@
 /*
-	despawnBandits version 0.08
-	Usage: [thisTrigger] call despawnBandits;
-	Deletes all AI units spawned by a trigger once all players leave the trigger area. Adapted from Sarge AI.
+	despawnBandits
 	
+	Usage: [thisTrigger] call despawnBandits;
+	
+	Description: Deletes all AI units spawned by a trigger once all players leave the trigger area. Basic script concept adapted from Sarge AI.
+	
+	Last updated: 4:33 PM 6/7/2013
 */
 private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime"];
 if (!isServer) exitWith {};							//Execute script only on server.
@@ -26,6 +29,17 @@ if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been re
 };			
 
 {
+	if (DZAI_debugMarkers > 0) then {
+		private["_markerName","_markerCount"];
+		_markerCount = (count (waypoints _x)) - 3;
+		//diag_log format ["DEBUG :: Estimating %1 waypoints for group %2.",_markerCount,_x];
+		for "_i" from 1 to (count (waypoints _x) - 3) do {
+			_markerName = format ["%1_%2",_x,_i];
+			//diag_log format ["DEBUG :: Deleting marker: %1_%2.",_x,_i];
+			deleteMarker _markerName;
+		};
+		sleep 0.2;
+	};
 	{deleteVehicle _x} forEach (units _x);			//Delete all units of each group.
 	sleep 0.2;
 	deleteGroup _x;									//Delete the group after its units are deleted.

@@ -9,8 +9,8 @@
 
 private["_unverified","_verified","_errorFound","_weapChk","_vehChk","_magCheck","_stringArray"];
 
-//_stringArray = _this select 0;
-_stringArray = ["DZAI_RiflesDefault0","DZAI_RiflesDefault1","DZAI_RiflesDefault2","DZAI_RiflesDefault3","DZAI_PistolsDefault0","DZAI_PistolsDefault1","DZAI_PistolsDefault2","DZAI_PistolsDefault3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_DefaultEdibles","DZAI_DefaultMedicals1","DZAI_DefaultMedicals2","DZAI_DefaultMiscItemS","DZAI_DefaultMiscItemL","DZAI_DefaultSkinLoot","DZAI_BanditTypesDefault"];
+_stringArray = _this;
+//_stringArray = ["DZAI_RiflesDefault0","DZAI_RiflesDefault1","DZAI_RiflesDefault2","DZAI_RiflesDefault3","DZAI_PistolsDefault0","DZAI_PistolsDefault1","DZAI_PistolsDefault2","DZAI_PistolsDefault3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_DefaultEdibles","DZAI_DefaultMedicals1","DZAI_DefaultMedicals2","DZAI_DefaultMiscItemS","DZAI_DefaultMiscItemL","DZAI_DefaultSkinLoot","DZAI_BanditTypesDefault"];
 _unverified = [];
 _verified = [];
 _errorFound = false;
