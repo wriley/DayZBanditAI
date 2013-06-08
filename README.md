@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.9.6)
+DZAI 0.9.6 - AI Addon for DayZ
 ============
 
 
@@ -6,7 +6,7 @@ Introduction
 ============
 <b>IMPORTANT</b>: Version 0.9.0 onwards will be moving to the dayz_server.pbo instead of the mission pbo. If your DayZ server hoster does not give you access to your dayz_server.pbo, please notify me on the OpenDayZ forums (contact info below) with the hoster name. Thanks.
 
-DZAI is designed to be a simple, configurable, easy-to-install AI package. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
+DZAI is designed to be a simple, configurable, easy-to-install AI package. This AI package is MP-compatible and works out of the box with any supported DayZ map. Installation instructions are provided below.
 
 DZAI is also available as a "Lite" version. More details can be found here: https://github.com/dayzai/DZAI-Lite
 
