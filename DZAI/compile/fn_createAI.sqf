@@ -11,7 +11,7 @@
 	_respawnType: 2 (Respawn at a building near the trigger), 3 (Respawn randomly at a randomly selected marker)
 	_gradeChances: weapongrade probabilities to be used for generating equipment
 	
-	Last updated: 6/3/2013
+	Last updated: 4:36 PM 6/8/2013
 	
 */
 private ["_spawnPos","_type","_unit","_respawnType","_respawnLoc","_weapongrade","_unitGroup","_trigger","_patrolDist","_equipType","_gradeChances"];
@@ -23,7 +23,7 @@ _trigger = _this select 2;
 _respawnType = _this select 3;
 _gradeChances = _this select 4;
 
-_type = DZAI_BanditTypesDefault call BIS_fnc_selectRandom;							// Select skin of AI unit
+_type = DZAI_BanditTypes call BIS_fnc_selectRandom;							// Select skin of AI unit
 _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 [_unit] joinSilent _unitGroup;														// Add AI unit to group
 

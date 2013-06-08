@@ -14,8 +14,8 @@ DZAI_invedibles = 1;	//Number of selections of edible items (Inventory)
 DZAI_bpmedicals = 1; 	//Number of selections of medical items (Backpack)
 DZAI_bpedibles = 0;		//Number of selections of edible items (Backpack)
 
-DZAI_BanditTypesDefault = DZAI_BanditTypesDefault + ["CamoWinterW_DZN", "CamoWinter_DZN", "Sniper1W_DZN"];
-DZAI_DefaultSkinLoot = DZAI_DefaultSkinLoot + ["Skin_Sniper1W_DZN","Skin_CamoWinter_DZN","Skin_CamoWinterW_DZN"];
+DZAI_BanditTypes = DZAI_BanditTypes + ["CamoWinterW_DZN", "CamoWinter_DZN", "Sniper1W_DZN"];
+DZAI_SkinLoot = DZAI_SkinLoot + ["Skin_Sniper1W_DZN","Skin_CamoWinter_DZN","Skin_CamoWinterW_DZN"];
 DZAI_tempNVGs = false;	//Disable temporary NVG chance for DayZ Namalsk.
 
 switch (_modname) do {
@@ -31,12 +31,12 @@ switch (_modname) do {
 		DZAI_gradeChances2 = [0.30,0.45,0.15];
 		DZAI_gradeChances3 = [0.25,0.55,0.20];
 		//Overwrite default weapon tables
-		DZAI_PistolsDefault0 = ["Makarov","Tokarev"];
-		DZAI_PistolsDefault1 = ["Tokarev"];
-		DZAI_PistolsDefault2 = ["Tokarev"];
-		DZAI_RiflesDefault0 = ["MR43","Mosin38","Winchester1866","Crossbow"];
-		DZAI_RiflesDefault1 = ["Mosin38","Winchester1866"];
-		DZAI_RiflesDefault2 = ["Mosin38","M16_FlashLight","M4_FlashLight","Winchester1866"];
+		DZAI_Pistols0 = ["Makarov","Tokarev"];
+		DZAI_Pistols1 = ["Tokarev"];
+		DZAI_Pistols2 = ["Tokarev"];
+		DZAI_Rifles0 = ["MR43","Mosin38","Winchester1866","Crossbow"];
+		DZAI_Rifles1 = ["Mosin38","Winchester1866"];
+		DZAI_Rifles2 = ["Mosin38","M16_FlashLight","M4_FlashLight","Winchester1866"];
 		//Reduce gadget probabilities
 		DZAI_gadgets0 set [0,["binocular",0.50]];
 		DZAI_gadgets0 set [1,["NVGoggles",0.000]];	//Reduce probability of functional NVGs
@@ -71,25 +71,25 @@ switch (_modname) do {
 		DZAI_gradeChances2 = [0.50,0.46,0.10,0.01];						
 		DZAI_gradeChances2 = [0.20,0.60,0.15,0.05];									
 		DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];	
-		DZAI_PistolsDefault0 set [count DZAI_PistolsDefault0,"MakarovSD_DZN"];
+		DZAI_Pistols0 set [count DZAI_Pistols0,"MakarovSD_DZN"];
 		if ((dayzNam_buildingLoot == "CfgBuildingLootNamalsk") || (dayzNam_buildingLoot == "CfgBuildingLootNamalskNOER7") || (isNil "dayzNam_buildingLoot")) then {
 			_newItems = ["Saiga12K_DZN", "AKS_74_UN_kobra_DZN","RPK_74_DZN","AK_47_S","AK_74_GL","AK_107_kobra","AK_107_GL_kobra"];
-			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_RiflesDefault1 set [(count DZAI_RiflesDefault1),(_newItems select _i)];};
+			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_Rifles1 set [(count DZAI_Rifles1),(_newItems select _i)];};
 			_newItems = ["Saiga12K_DZN","AKS_74_UN_kobra_DZN","AK_107_GL_pso_DZN","G36_C_SD_eotech_DZN","PK_DZN","RPK_74_DZN","VSS_vintorez_DZN","MG36_DZN","AKS_74_pso","AK_74_GL","AK_107_kobra","AK_107_pso","AKS_GOLD_DZN","AK_47_S"];
-			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_RiflesDefault2 set [(count DZAI_RiflesDefault2),(_newItems select _i)];};
+			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_Rifles2 set [(count DZAI_Rifles2),(_newItems select _i)];};
 			_newItems = ["PK_DZN", "Pecheneg_DZN", "KSVK_DZN", "AKS_GOLD_DZN","BAF_L85A2_UGL_ACOG_DZN","Bizon"];
-			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_RiflesDefault3 set [(count DZAI_RiflesDefault3),(_newItems select _i)];};
+			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_Rifles3 set [(count DZAI_Rifles3),(_newItems select _i)];};
 			} else { //No-sniper setting
-			DZAI_RiflesDefault0 = DZAI_RiflesDefault0 - ["huntingrifle"];
-			DZAI_RiflesDefault1 = DZAI_RiflesDefault1 - ["M24","DMR"];
+			DZAI_Rifles0 = DZAI_Rifles0 - ["huntingrifle"];
+			DZAI_Rifles1 = DZAI_Rifles1 - ["M24","DMR"];
 			_newItems = ["Saiga12K_DZN", "AKS_74_UN_kobra_DZN","RPK_74_DZN","AK_47_S","AK_74_GL","AK_107_kobra","AK_107_GL_kobra"];
-			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_RiflesDefault1 set [(count DZAI_RiflesDefault1),(_newItems select _i)];};
-			DZAI_RiflesDefault2 = DZAI_RiflesDefault2 - ["M24","SVD_CAMO","M107_DZ","DMR","M16A4_ACG"];
+			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_Rifles1 set [(count DZAI_Rifles1),(_newItems select _i)];};
+			DZAI_Rifles2 = DZAI_Rifles2 - ["M24","SVD_CAMO","M107_DZ","DMR","M16A4_ACG"];
 			_newItems = ["Saiga12K_DZN","AKS_74_UN_kobra_DZN","AK_107_GL_pso_DZN","G36_C_SD_eotech_DZN","PK_DZN","RPK_74_DZN","MG36_DZN","AKS_74_pso","AK_74_GL","AK_107_kobra","AK_107_pso","AK_107_GL_kobra","AK_47_S"];
-			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_RiflesDefault2 set [(count DZAI_RiflesDefault2),(_newItems select _i)];};
-			DZAI_RiflesDefault3 = DZAI_RiflesDefault3 - ["FN_FAL_ANPVS4","M107_DZ","BAF_AS50_scoped","DMR","BAF_L85A2_RIS_SUSAT"];
+			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_Rifles2 set [(count DZAI_Rifles2),(_newItems select _i)];};
+			DZAI_Rifles3 = DZAI_Rifles3 - ["FN_FAL_ANPVS4","M107_DZ","BAF_AS50_scoped","DMR","BAF_L85A2_RIS_SUSAT"];
 			_newItems = ["PK_DZN", "Pecheneg_DZN", "AKS_GOLD_DZN","Bizon"];
-			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_RiflesDefault3 set [(count DZAI_RiflesDefault3),(_newItems select _i)];};
+			for "_i" from 0 to ((count _newItems) - 1) do {DZAI_Rifles3 set [(count DZAI_Rifles3),(_newItems select _i)];};
 		};
 		DZAI_Backpacks1 set [count DZAI_Backpacks1,"BAF_AssaultPack_DZN"];
 		DZAI_Backpacks2 set [count DZAI_Backpacks2,"BAF_AssaultPack_DZN"];
@@ -101,4 +101,4 @@ switch (_modname) do {
 	};
 };
 
-for "_i" from 0 to ((count DZAI_PistolsDefault0) - 1) do {DZAI_RiflesDefault0 set [(count DZAI_RiflesDefault0),(DZAI_PistolsDefault0 select _i)];};
+for "_i" from 0 to ((count DZAI_Pistols0) - 1) do {DZAI_Rifles0 set [(count DZAI_Rifles0),(DZAI_Pistols0 select _i)];};

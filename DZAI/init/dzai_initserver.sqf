@@ -3,7 +3,7 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 6/2/2013
+	Last updated: 4:36 PM 6/8/2013
 */
 
 diag_log "[DZAI] Initializing DZAI addon. Reading dzai_variables.sqf.";
@@ -176,7 +176,7 @@ switch (_worldname) do {
 	};
 };
 
-if (DZAI_verifyTables) then {["DZAI_RiflesDefault0","DZAI_RiflesDefault1","DZAI_RiflesDefault2","DZAI_RiflesDefault3","DZAI_PistolsDefault0","DZAI_PistolsDefault1","DZAI_PistolsDefault2","DZAI_PistolsDefault3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_DefaultEdibles","DZAI_DefaultMedicals1","DZAI_DefaultMedicals2","DZAI_DefaultMiscItemS","DZAI_DefaultMiscItemL","DZAI_DefaultSkinLoot","DZAI_BanditTypesDefault"] execVM "\z\addons\dayz_server\DZAI\scripts\verifyTables.sqf";};
-if (DZAI_dynTriggersMax > 0) then {[DZAI_dynTriggersMax,DZAI_dynEquipType] execVM '\z\addons\dayz_server\DZAI\scripts\spawnTriggers_random.sqf';};
+if (DZAI_verifyTables) then {["DZAI_Rifles0","DZAI_Rifles1","DZAI_Rifles2","DZAI_Rifles3","DZAI_Pistols0","DZAI_Pistols1","DZAI_Pistols2","DZAI_Pistols3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_Edibles","DZAI_Medicals1","DZAI_Medicals2","DZAI_MiscItemS","DZAI_MiscItemL","DZAI_SkinLoot","DZAI_BanditTypes"] execVM "\z\addons\dayz_server\DZAI\scripts\verifyTables.sqf";};
+if (DZAI_dynTriggersMax > 0) then {[DZAI_dynTriggersMax] execVM '\z\addons\dayz_server\DZAI\scripts\spawnTriggers_random.sqf';};
 if (DZAI_monitor) then {[] execVM '\z\addons\dayz_server\DZAI\scripts\dzai_monitor.sqf';};
 if (DZAI_debugLevel > 0) then {diag_log "[DZAI] DZAI loading complete.";};

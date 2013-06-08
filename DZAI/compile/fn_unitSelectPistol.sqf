@@ -5,7 +5,7 @@
 	
 	Usage: [_unit, _weapongrade] call fnc_unitSelectPistol;
 	
-	Last updated: 6/2/2013
+	Last updated: 4:36 PM 6/8/2013
 */
 	private ["_unit","_pistol","_pistols","_weapongrade","_magazine","_nmags","_currentWeapon"];
 	_unit = _this select 0;
@@ -18,16 +18,16 @@
 	
 	switch (_weapongrade) do {
 	  case 0: {		//Farm / Residential / Supermarket
-		_pistols = DZAI_PistolsDefault0;
+		_pistols = DZAI_Pistols0;
 	  };
 	  case 1: {		//Military + Civilian
-		_pistols = DZAI_PistolsDefault1;
+		_pistols = DZAI_Pistols1;
 	  };
 	  case 2: {		//Military Only
-		_pistols = DZAI_PistolsDefault2;
+		_pistols = DZAI_Pistols2;
 	  };
 	  case 3: {		//Military Only
-		_pistols = DZAI_PistolsDefault3;
+		_pistols = DZAI_Pistols3;
 	  };
 	  default {		//Default - Give a Revolver if weapongrade is not within 0-3 or not declared.
 	    _pistols = ["revolver_EP1"];

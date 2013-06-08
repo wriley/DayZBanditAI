@@ -5,9 +5,9 @@
 	
 	Description: Deletes all AI units spawned by a trigger once all players leave the trigger area. Basic script concept adapted from Sarge AI.
 	
-	Last updated: 4:33 PM 6/7/2013
+	Last updated: 4:36 PM 6/8/2013
 */
-private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime"];
+private ["_trigger","_grpArray","_isCleaning","_grpCount"];
 if (!isServer) exitWith {};							//Execute script only on server.
 
 _trigger = _this select 0;							//Get the trigger object
@@ -23,7 +23,7 @@ _trigger setVariable["isCleaning",true,false];		//Mark the trigger as being in a
 if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: No players remain in trigger area. Deleting %1 AI groups in %2 seconds.",_grpCount, DZAI_despawnWait];};
 sleep DZAI_despawnWait;								//Wait some time before deleting units. (amount of time to allow units to exist when the trigger area has no players)
 
-if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been reactivated since _waitTime seconds has passed.
+if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been reactivated since DZAI_despawnWait seconds has passed.
 	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: A player has entered the trigger area. Cancelling despawn script.";};
 	_trigger setVariable ["isCleaning",false,false];	//Allow next despawn request.
 };			
@@ -35,7 +35,7 @@ if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been re
 		//diag_log format ["DEBUG :: Estimating %1 waypoints for group %2.",_markerCount,_x];
 		for "_i" from 1 to (count (waypoints _x) - 3) do {
 			_markerName = format ["%1_%2",_x,_i];
-			//diag_log format ["DEBUG :: Deleting marker: %1_%2.",_x,_i];
+			//diag_log format ["DEBUG :: Deleting marker: %1_%2. (Actual: %3)",_x,_i,_markerName];
 			deleteMarker _markerName;
 		};
 		sleep 0.2;

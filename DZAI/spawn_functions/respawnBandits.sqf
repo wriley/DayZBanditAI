@@ -5,7 +5,7 @@
 	
 	Description: Called internally by fnc_banditAIRespawn. Calls fnc_createAI to respawn a unit near a randomly selected building from a stored reference location.
 	
-	Last updated: 4:32 PM 6/7/2013
+	Last updated: 4:36 PM 6/8/2013
 */
 
 private ["_unitGroup","_trigger","_grpArray","_triggerPos","_patrolDist","_gradeChances","_spawnPositions","_p","_unit","_pos","_respawnType"];

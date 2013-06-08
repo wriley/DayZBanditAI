@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 4:18 PM 6/7/2013
+	Last updated: 5:51 PM 6/8/2013
 */
 private["_worldname"];
 
@@ -18,7 +18,7 @@ DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI posi
 DZAI_monitor = true;										//Enable or disable server monitor. Keeps track of number of max/current AI units and dynamically spawned triggers. (Default: true)
 DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
 DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017 and Namalsk 2017), "epoch" (DayZ Epoch), "civilian (DayZ Civilian).
-DZAI_verifyTables = false;									//Use this if experiencing crashes or errors with DZAI. Set to "true" to have DZAI verify all tables for banned/invalid classnames. If invalid entries are found, they are removed and logged into the RPT log. Forced ON for Taviana 2.0 and Lingor 1.3 (Default: false)
+DZAI_verifyTables = true;									//Use this if experiencing crashes or errors with DZAI. Set to "true" to have DZAI verify all tables for banned/invalid classnames. If invalid entries are found, they are removed and logged into the RPT log. Forced ON for Taviana 2.0 and Lingor 1.3 (Default: true)
 
 //AI Unit Variables						
 DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
@@ -33,12 +33,11 @@ DZAI_respawnTime1 = 300;									//Minimum wait time for AI respawn timer (secon
 DZAI_respawnTime2 = 180;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 180)
 DZAI_delDeadTime = 300;										//Time to allow AI corpse to remain (in seconds) before deleting it. (For non-respawning AI units only).
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
-DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
+DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects AI spawned from static triggers (Default: 0).
 
 //Dynamic Trigger Settings
-//DZAI automatically determines the settings for dynamic triggers. To manually change a value, replace "auto" with a value for the setting.
-DZAI_dynSpawnDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 20)
-DZAI_dynEquipType = 2;										//Equipment Type of randomly-spawned AI. (Value Range: 0-3). 0: Lowest grade weaponry. 3: Highest grade weaponry. (Default: 2)
+//DZAI automatically determines the settings for dynamic triggers. Below are settings that can be manually adjusted.
+DZAI_dynSpawnDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
 DZAI_dynAIMin = 2;											//Minimum number of AI to spawn per randomly-spawned trigger.  (Default: 2)
 DZAI_dynAIAdd = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_dynAIMin + (0 to DZAI_dynAIAdd))  (Default: 3)
 
@@ -51,8 +50,8 @@ DZAI_invmedicals = 1; 										//Number of selections of medical items (Invento
 DZAI_invedibles = 1;										//Number of selections of edible items (Inventory)
 DZAI_bpmedicals = 2; 										//Number of selections of medical items (Backpack)
 DZAI_bpedibles = 1;											//Number of selections of edible items (Backpack)
-DZAI_numMiscItemS = 3;										//Maximum number of items to select from DZAI_DefaultMiscItemS table.
-DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_DefaultMiscItemL table.
+DZAI_numMiscItemS = 3;										//Maximum number of items to select from DZAI_MiscItemS table.
+DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_MiscItemL table.
 DZAI_maxPistolMags = 2;										//Maximum number of pistol magazines to generate as loot upon death.
 DZAI_maxRifleMags = 1;										//Maximum number of rifle  magazines to generate. (Unused variable)
 DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Civilian, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
@@ -60,9 +59,10 @@ DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//equipType = 0 - most AI will h
 DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.
 DZAI_gradeChances2 = [0.30,0.55,0.11,0.04];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
 DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//equipType = 3 - All AI will carry at least a military-grade weapon. Many will be carrying high-grade military weapons.
-DZAI_chanceMiscItemS = 0.66;								//Chance to add random item from DZAI_DefaultMiscItemS table.
-DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_DefaultMiscItemL table.
-DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_DefaultSkinLoot table.
+DZAI_gradeChancesDyn = [0.30,0.55,0.11,0.04];				//Weapongrade chances for AI spawned from dynamic triggers.
+DZAI_chanceMiscItemS = 0.66;								//Chance to add random item from DZAI_MiscItemS table.
+DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_MiscItemL table.
+DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_SkinLoot table.
 
 //NOTHING TO EDIT BEYOND THIS POINT.
 

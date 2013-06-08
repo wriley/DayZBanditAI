@@ -1,4 +1,4 @@
-DZAI - DayZ AI Addon (Current version: 0.9.5)
+DZAI - DayZ AI Addon (Current version: 0.9.6)
 ============
 
 
@@ -7,6 +7,10 @@ Introduction
 <b>IMPORTANT</b>: Version 0.9.0 onwards will be moving to the dayz_server.pbo instead of the mission pbo. If your DayZ server hoster does not give you access to your dayz_server.pbo, please notify me on the OpenDayZ forums (contact info below) with the hoster name. Thanks.
 
 DZAI is designed to be a simple, configurable, easy-to-install AI package. This AI package is MP-compatible and works out of the box with any supported DayZ mission file. Installation instructions are provided below.
+
+DZAI is also available as a "Lite" version. More details can be found here: https://github.com/dayzai/DZAI-Lite
+
+Reminder: The latest stable build of DZAI is always located in the 'master' branch. The latest experimental build is located in a separate branch, usually labeled with a version number. These experimental builds have the latest improvements and bugfixes, but may also have new bugs that need to be fixed, so they are not guaranteed to be stable.
 
 Detailed documentation for the DZAI package is coming. Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
 
@@ -158,3 +162,11 @@ Note: This is a basic version for testing purposes and more features will be add
 - [MODIFIED] Debug markers for dynamic triggers have been changed from yellow X's to filled yellow circles. (Respawned: orange).
 - [MODIFIED] Debug markers for AI patrol waypoints are now also deleted when AI are despawned.
 - [MODIFIED] Added an independent reference marker for spawning dynamic triggers instead of using the standard DayZ 'center' marker. (Note: for unrecognized maps, DZAI will default to the 'center' marker instead).
+
+0.9.6 Update:
+
+- [FIXED] Fixed undefined variable issue in BIN_taskPatrol.sqf.
+- [FIXED] Imported several fixes related to dynamic triggers added in DZAI Lite 0.0.2.
+- [FIXED] Fixed bug where dynamic triggers sometimes failed to spawn AI properly.
+- [MODIFIED] Simplified several global variable names.
+- [MODIFIED] AI spawned from dynamic triggers use a separate GradeChances table (DZAI_gradeChancesDyn). Dynamically-spawned AI no longer use the equipType system.

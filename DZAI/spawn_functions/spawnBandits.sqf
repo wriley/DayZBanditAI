@@ -11,7 +11,7 @@
 		- A number between 0-1 specifiying probability of reading the marker array in reverse order.
 		- Example: [['marker1','marker2','marker3'],0.50,0.50]
 	
-	Last updated: 6/2/2013
+	Last updated: 4:36 PM 6/8/2013
 */
 
 private ["_minAI","_addAI","_patrolDist","_trigger","_equipType","_numGroups","_grpArray","_triggerPos","_gradeChances","_totalAI","_spawnPositions","_spawnCount","_markerArray","_spawnType"];
