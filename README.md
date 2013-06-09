@@ -170,3 +170,8 @@ Note: This is a basic version for testing purposes and more features will be add
 - [FIXED] Fixed bug where dynamic triggers sometimes failed to spawn AI properly.
 - [MODIFIED] Simplified several global variable names.
 - [MODIFIED] AI spawned from dynamic triggers use a separate GradeChances table (DZAI_gradeChancesDyn). Dynamically-spawned AI no longer use the equipType system.
+
+0.9.7 Update: 
+
+- [MODIFIED] Classname verification option (DZAI_verifyTables) is now enabled by default.
+- [MODIFIED] Number of AI units spawned from dynamic triggers are now dependent on the number of players present in the trigger area. (minimum of 2 ±1 to maximum of 6 ±1)

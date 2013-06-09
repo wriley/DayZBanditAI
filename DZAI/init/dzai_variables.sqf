@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 5:51 PM 6/8/2013
+	Last updated: 4:36 PM 6/8/2013
 */
 private["_worldname"];
 
@@ -18,7 +18,7 @@ DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI posi
 DZAI_monitor = true;										//Enable or disable server monitor. Keeps track of number of max/current AI units and dynamically spawned triggers. (Default: true)
 DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
 DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017 and Namalsk 2017), "epoch" (DayZ Epoch), "civilian (DayZ Civilian).
-DZAI_verifyTables = true;									//Use this if experiencing crashes or errors with DZAI. Set to "true" to have DZAI verify all tables for banned/invalid classnames. If invalid entries are found, they are removed and logged into the RPT log. Forced ON for Taviana 2.0 and Lingor 1.3 (Default: true)
+DZAI_verifyTables = true;									//Use this if experiencing crashes or errors with DZAI. Set to "true" to have DZAI verify all tables for banned/invalid classnames. If invalid entries are found, they are removed and logged into the RPT log. Forced ON for Taviana 2.0 and Lingor 1.3 (Default: false)
 
 //AI Unit Variables						
 DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
@@ -31,15 +31,12 @@ DZAI_zDetectRange = 200;									//Maximum distance for AI to detect zombies. (D
 DZAI_maxAIUnits = 65535;									//Limit of total AI spawned by DZAI (0: Disables AI spawning completely)
 DZAI_respawnTime1 = 300;									//Minimum wait time for AI respawn timer (seconds). (Default: 300)
 DZAI_respawnTime2 = 180;									//Maximum additional wait time for AI respawn timer (seconds). Total Respawn Time = DZAI_respawnTime1 + random(DZAI_respawnTime2) (Default: 180)
-DZAI_delDeadTime = 300;										//Time to allow AI corpse to remain (in seconds) before deleting it. (For non-respawning AI units only).
 DZAI_despawnWait = 120;										//Time to allow AI to remain in seconds before being removed when all players have left a trigger area. (Default: 120)
-DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects AI spawned from static triggers (Default: 0).
+DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Affects building and marker AI spawns. (Default: 0)
 
 //Dynamic Trigger Settings
 //DZAI automatically determines the settings for dynamic triggers. Below are settings that can be manually adjusted.
 DZAI_dynSpawnDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
-DZAI_dynAIMin = 2;											//Minimum number of AI to spawn per randomly-spawned trigger.  (Default: 2)
-DZAI_dynAIAdd = 3;											//Maximum number of additional AI to spawn per randomly-spawned trigger.	(Maximum Total AI/Trigger =  DZAI_dynAIMin + (0 to DZAI_dynAIAdd))  (Default: 3)
 
 //Extra AI Settings
 DZAI_findKiller = false;										//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
