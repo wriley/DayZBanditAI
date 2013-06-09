@@ -182,3 +182,5 @@ Note: This is a basic version for testing purposes and more features will be add
 - [REMOVED] Dynamic trigger spawning script no longer avoids player positions.
 - [MODIFIED] Chernarus: adjusted spawning range of dynamic triggers from 5250m to 6000m. Increased number of dynamic triggers from 18 to 20.
 - [MODIFIED] Spawning range of AI from dynamic triggers increased from 125m (+125m max) to 125m (+175m max).
+- [MODIFIED] Increased number of dynamic triggers for all maps (+2).
+- [MODIFIED] Dynamic trigger activation timings changed to 5/10/30 seconds.
