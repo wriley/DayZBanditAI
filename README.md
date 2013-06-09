@@ -174,4 +174,4 @@ Note: This is a basic version for testing purposes and more features will be add
 0.9.7 Update: 
 
 - [MODIFIED] Classname verification option (DZAI_verifyTables) is now enabled by default.
-- [MODIFIED] Number of AI units spawned from dynamic triggers are now dependent on the number of players present in the trigger area. (minimum of 2 ±1 to maximum of 6 ±1)
+- [MODIFIED] Number of AI units spawned from dynamic triggers are now dependent on the number of players present in the trigger area. (minimum of 2 to maximum of 6, +/- 1)
