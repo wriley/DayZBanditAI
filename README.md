@@ -1,4 +1,4 @@
-DZAI 0.9.7 - AI Addon for DayZ
+DZAI 0.9.8 - AI Addon for DayZ
 ============
 
 
@@ -175,3 +175,10 @@ Note: This is a basic version for testing purposes and more features will be add
 
 - [MODIFIED] Classname verification option (DZAI_verifyTables) is now enabled by default.
 - [MODIFIED] Number of AI units spawned from dynamic triggers are now dependent on the number of players present in the trigger area. (minimum of 2 to maximum of 6, +/- 1)
+
+0.9.8 Update:
+
+- [FIXED] Removed all remaining variables relating to minimum/additional AI to spawn for dynamic triggers.
+- [REMOVED] Dynamic trigger spawning script no longer avoids player positions.
+- [MODIFIED] Chernarus: adjusted spawning range of dynamic triggers from 5250m to 6000m. Increased number of dynamic triggers from 18 to 20.
+- [MODIFIED] Spawning range of AI from dynamic triggers increased from 125m (+125m max) to 125m (+175m max).
