@@ -37,6 +37,7 @@ DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Af
 //Dynamic Trigger Settings
 //DZAI automatically determines the settings for dynamic triggers. Below are settings that can be manually adjusted.
 DZAI_dynSpawnDelay = 30;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 30)
+DZAI_dynSpawnChance = 0.75;									//Probability of spawning AI when a dynamic trigger is activated. If probability check fails, the trigger is relocated. (Default: 0.75)
 
 //Extra AI Settings
 DZAI_findKiller = false;										//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
