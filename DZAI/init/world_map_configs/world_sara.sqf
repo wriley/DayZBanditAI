@@ -8,7 +8,7 @@
 //Begin dynamic trigger settings for Sahrani
 DZAI_centerMarker setMarkerPos [12126.131, 11405.327, 0.036790848];
 DZAI_centerSize = 6000;
-DZAI_dynTriggersMax = 20;
+DZAI_dynTriggersMax = 16;
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [9567.4844, 9819.4053, 0.00024414063]];

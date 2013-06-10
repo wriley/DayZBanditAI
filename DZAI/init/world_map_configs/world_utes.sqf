@@ -8,7 +8,7 @@
 //Begin dynamic trigger settings for Utes
 DZAI_centerMarker setMarkerPos [3594.1797, 3726.0903];
 DZAI_centerSize = 1250;
-DZAI_dynTriggersMax = 4;
+DZAI_dynTriggersMax = 3;
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [3376.7136, 4402.3555, 0]];

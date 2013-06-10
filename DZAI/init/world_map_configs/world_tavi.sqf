@@ -8,7 +8,7 @@
 //Begin dynamic trigger settings for Taviana
 DZAI_centerMarker setMarkerPos [11100.776, 11298.289, 1.5322094];
 DZAI_centerSize = 8000;
-DZAI_dynTriggersMax = 27;
+DZAI_dynTriggersMax = 21;
 
 //begin triggers
 

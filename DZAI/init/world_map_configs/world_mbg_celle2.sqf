@@ -8,7 +8,7 @@
 //Begin dynamic trigger settings for Celle
 DZAI_centerMarker setMarkerPos [6337.6265, 6088.0913];
 DZAI_centerSize = 6000;
-DZAI_dynTriggersMax = 20;
+DZAI_dynTriggersMax = 16;
 
 //begin markers
 

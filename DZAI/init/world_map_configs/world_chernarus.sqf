@@ -9,7 +9,7 @@
 //Begin dynamic trigger settings for Chernarus
 DZAI_centerMarker setMarkerPos [7953.9854, 7399.4653];
 DZAI_centerSize = 6000;
-DZAI_dynTriggersMax = 20;
+DZAI_dynTriggersMax = 16;
 
 //Begin markers
 _this = createMarker ["Elektro1", [10557.953, 2469.0283, 0.00033473969]];

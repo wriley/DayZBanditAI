@@ -8,7 +8,7 @@
 //Begin dynamic trigger settings for Fallujah
 DZAI_centerMarker setMarkerPos [4865.4653, 4530.5254, 0];
 DZAI_centerSize = 4500;
-DZAI_dynTriggersMax = 15;
+DZAI_dynTriggersMax = 12;
 
 _this = createTrigger ["EmptyDetector", [7892.4951, 1765.697]];
 _this setTriggerArea [600, 600, 0, false];

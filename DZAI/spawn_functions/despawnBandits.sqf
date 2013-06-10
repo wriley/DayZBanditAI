@@ -41,7 +41,7 @@ if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been re
 		sleep 0.2;
 	};
 	{deleteVehicle _x} forEach (units _x);			//Delete all units of each group.
-	sleep 0.2;
+	sleep 0.5;
 	deleteGroup _x;									//Delete the group after its units are deleted.
 } forEach _grpArray;
 

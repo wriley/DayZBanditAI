@@ -8,7 +8,7 @@
 //Begin dynamic trigger settings for Zargabad
 DZAI_centerMarker setMarkerPos [4181.522, 4087.2085];
 DZAI_centerSize = 2750;
-DZAI_dynTriggersMax = 9;
+DZAI_dynTriggersMax = 7;
 
 //begin triggers
 

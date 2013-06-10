@@ -8,7 +8,7 @@
 //Begin dynamic trigger settings for Isladuala
 DZAI_centerMarker setMarkerPos [5307.73, 5020.272];
 DZAI_centerSize = 4500;
-DZAI_dynTriggersMax = 15;
+DZAI_dynTriggersMax = 12;
 
 _this = createTrigger ["EmptyDetector", [7069.0635, 8569.668]];
 _this setTriggerArea [600, 600, 0, false];

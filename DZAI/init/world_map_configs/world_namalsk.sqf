@@ -8,7 +8,7 @@
 //Begin dynamic trigger settings for Namalsk
 DZAI_centerMarker setMarkerPos [6007.2007, 8589.5469];
 DZAI_centerSize = 3750;
-DZAI_dynTriggersMax = 12;
+DZAI_dynTriggersMax = 10;
 
 //AI hostility to Bloodsuckers by decreasing their leader's rating (untested). Required because Bloodsuckers will aggro on AI.
 sefik addRating -50000;

@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 4:36 PM 6/8/2013
+	Last updated: 8:24 PM 6/9/2013
 */
 private["_worldname"];
 
@@ -36,7 +36,7 @@ DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Af
 
 //Dynamic Trigger Settings
 //DZAI automatically determines the settings for dynamic triggers. Below are settings that can be manually adjusted.
-DZAI_dynSpawnDelay = 60;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 60)
+DZAI_dynSpawnDelay = 30;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 30)
 
 //Extra AI Settings
 DZAI_findKiller = false;										//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)

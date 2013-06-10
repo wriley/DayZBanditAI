@@ -1,4 +1,4 @@
-DZAI 0.9.8 - AI Addon for DayZ
+DZAI 0.9.9 - AI Addon for DayZ
 ============
 
 
@@ -184,3 +184,11 @@ Note: This is a basic version for testing purposes and more features will be add
 - [MODIFIED] Spawning range of AI from dynamic triggers increased from 125m (+125m max) to 125m (+175m max).
 - [MODIFIED] Increased number of dynamic triggers for all maps (+2).
 - [MODIFIED] Dynamic trigger activation timings changed to 5/10/30 seconds.
+
+0.9.9 Update (Imported from DZAI Lite 0.0.5):
+
+- [NEW] Debug markers: Added color-coding for activation state of dynamic triggers. Yellow (Ready Trigger), Green (Awaiting Despawn), Orange (Activated Trigger).
+- [NEW] Dynamic triggers now relocate to center around a random player in the trigger area when activated. (Prevents player from quickly leaving the trigger area after entering).
+- [MODIFIED] Addition of glanceAt command for AI group leader to help locate player unit.
+- [MODIFIED] Modification of dynamic trigger amounts for each map.
+- [MODIFIED] Time delay in between each dynamic trigger spawn reduced from 60 seconds to 30 seconds.
