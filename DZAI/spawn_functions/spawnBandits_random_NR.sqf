@@ -5,7 +5,7 @@
 	
 	Description: Spawns a group of AI units some distance from a dynamically-spawned trigger. These units do not respawn after death.
 	
-	Last updated: 4:28 PM 8:18 PM 6/9/2013
+	Last updated: 8:18 PM 6/9/2013
 */
 private ["_patrolDist","_trigger","_unitGroupArray","_totalAI","_maxDist","_unitGroup","_pos","_targetPlayer","_unitArray","_playerArray","_playerPos","_minDist","_playerCount"];
 if (!isServer) exitWith {};
@@ -72,7 +72,7 @@ _unitGroup allowFleeing 0;
 {
 	_unitGroup reveal [_x,4];
 } forEach _playerArray;
-(leader _unitGroup) glanceAt _playerPos;
+(leader _unitGroup) glanceAt _targetPlayer;
 
 _unitGroupArray set [count _unitGroupArray,_unitGroup];
 //diag_log format ["DEBUG :: _trigger %1, groupArray %2, _total AI %3.",_trigger,_unitGroupArray,_totalAI];
