@@ -6,9 +6,9 @@
 */
 
 //Begin dynamic trigger settings for Panthera
-DZAI_centerMarker setMarkerPos [5503.541, 4348.9707];
-DZAI_centerSize = 3800;
-DZAI_dynTriggersMax = 10;
+DZAI_centerMarker setMarkerPos [5517.9404, 4536.2656];
+DZAI_centerSize = 3000;
+DZAI_dynTriggersMax = 8;
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [5976.8677, 898.83728]];

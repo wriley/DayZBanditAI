@@ -7,7 +7,7 @@
 
 //Begin dynamic trigger settings for Takistan
 DZAI_centerMarker setMarkerPos [7027.8721, 6796.8696];
-DZAI_centerSize = 5750;
+DZAI_centerSize = 5500;
 DZAI_dynTriggersMax = 15;
 
 //begin triggers

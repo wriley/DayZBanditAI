@@ -6,8 +6,8 @@
 */
 
 //Begin dynamic trigger settings for Utes
-DZAI_centerMarker setMarkerPos [3594.1797, 3726.0903];
-DZAI_centerSize = 1250;
+DZAI_centerMarker setMarkerPos [3638.7322, 3728.3191];
+DZAI_centerSize = 900;
 DZAI_dynTriggersMax = 3;
 
 //begin triggers

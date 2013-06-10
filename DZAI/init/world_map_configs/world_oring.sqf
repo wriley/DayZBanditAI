@@ -7,8 +7,8 @@
 
 //Begin dynamic trigger settings for Oring
 DZAI_centerMarker setMarkerPos [5138.3276, 5535.9248];
-DZAI_centerSize = 4500;
-DZAI_dynTriggersMax = 12;
+DZAI_centerSize = 4000;
+DZAI_dynTriggersMax = 11;
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [2109.7009, 3037.5085, 0]];

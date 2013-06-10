@@ -6,9 +6,9 @@
 */
 
 //Begin dynamic trigger settings for Lingor
-DZAI_centerMarker setMarkerPos [3832.7305, 4662.5327];
-DZAI_centerSize = 4000;
-DZAI_dynTriggersMax = 11;
+DZAI_centerMarker setMarkerPos [4393.4473, 4299.8701];
+DZAI_centerSize = 3000;
+DZAI_dynTriggersMax = 8;
 
 //begin markers
 _this = createMarker ["Prison1", [3044.0842, 8027.1206, 9.5367432e-007]];
