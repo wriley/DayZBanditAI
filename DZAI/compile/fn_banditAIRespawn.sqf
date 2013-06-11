@@ -39,17 +39,19 @@ _sleepTime = (DZAI_respawnTime1 + random(DZAI_respawnTime2));
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI killed, respawning in %1 seconds. Respawn Type %2 (fn_banditAIRespawn).",_sleepTime,_respawnType];};
 sleep _sleepTime;
 
-0 = [_unitGroup,_trigger,_respawnType] call fnc_respawnBandits;
+if (!isNull _unitGroup) then {
+	0 = [_unitGroup,_trigger,_respawnType] call fnc_respawnBandits;
 
-_dummyExists = _unitGroup getVariable ["dummyExists",0];
-if (_dummyExists == 1) then {
-	_dummy = _unitGroup getVariable ["dummyUnit",objNull];
-	[_dummy] joinSilent grpNull;
-	deleteVehicle _dummy;
-	//DZAI_numAIUnits = (DZAI_numAIUnits - 1);
-	_unitGroup setVariable ["dummyExists",0,false];
-	_unitGroup setVariable ["dummyUnit",nil,false];
-	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Deleted 1 dummy AI unit for group %1.",_unitGroup];};
+	_dummyExists = _unitGroup getVariable ["dummyExists",0];
+	if (_dummyExists == 1) then {
+		_dummy = _unitGroup getVariable ["dummyUnit",objNull];
+		[_dummy] joinSilent grpNull;
+		deleteVehicle _dummy;
+		//DZAI_numAIUnits = (DZAI_numAIUnits - 1);
+		_unitGroup setVariable ["dummyExists",0,false];
+		_unitGroup setVariable ["dummyUnit",nil,false];
+		if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Deleted 1 dummy AI unit for group %1.",_unitGroup];};
+	};
+	sleep 10;
 };
-sleep 10;
 deleteVehicle _victim;

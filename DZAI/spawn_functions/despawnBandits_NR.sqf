@@ -29,7 +29,7 @@ if (DZAI_debugMarkers > 0) then {
 	private["_marker"];
 	_marker = format["trigger_%1",_trigger];
 	_marker setMarkerColor "ColorGreenAlpha";
-	_marker setMarkerAlpha 0.3;							//Light green: Active trigger awaiting despawn.
+	_marker setMarkerAlpha 0.7;							//Light green: Active trigger awaiting despawn.
 };
 sleep DZAI_despawnWait;									//Wait some time before deleting units. (amount of time to allow units to exist when the trigger area has no players)
 

@@ -3,7 +3,7 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 4:36 PM 6/8/2013
+	Last updated: 7:46 PM 6/10/2013
 */
 
 diag_log "[DZAI] Initializing DZAI addon. Reading dzai_variables.sqf.";
@@ -54,7 +54,7 @@ WEST setFriend [resistance, 0];
 		fnc_aiBrain = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\aiBrain_debug.sqf";
 	};
 	fnc_DZAI_customPatrol = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\DZAI_customPatrol.sqf";
-	fnc_deleteVictim = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_deleteVictim.sqf";
+	fnc_updateDead = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_updateDead.sqf";
 	//Compile spawn scripts
 	fnc_spawnBandits = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits.sqf";
 	fnc_respawnBandits = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\respawnBandits.sqf";

@@ -41,7 +41,7 @@ _unit addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];					// Handle
 _unit addEventHandler ["Killed",{[_this,"banditKills"] call local_eventKill;}]; 	// Killing this unit will increment player's bandit kill count.
 _unit addEventHandler ["Killed",{_this spawn fnc_spawn_deathFlies;}];				// Spawn flies around AI bandit corpse.
 _unit addEventHandler ["Killed",{_this call fnc_banditAIKilled;}];					// Update current AI count and generate additional loot on death.
-_unit addEventHandler ["Killed",{_this spawn fnc_deleteVictim;}];					// Remove corpse after specified time.
+_unit addEventHandler ["Killed",{_this spawn fnc_updateDead;}];						// Remove corpse after specified time.
 _unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];					// "People die if they are killed" - Shirou Emiya
 
 _weapongrade = [DZAI_weaponGrades,DZAI_gradeChancesDyn] call fnc_selectRandomWeighted;

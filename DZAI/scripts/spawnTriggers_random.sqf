@@ -4,7 +4,7 @@
 	Usage: 
 	Description: 
 	
-	Last updated: 8:20 PM 6/9/2013
+	Last updated: 7:40 PM 6/10/2013
 */
 private ["_numTriggers","_trigOnAct","_triggerRadius","_patrolRadius"];
 if (!isServer) exitWith {};
@@ -23,10 +23,8 @@ if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawning %1 dynamic 
 sleep 60;
 
 for "_i" from 1 to _numTriggers do {
-	private ["_trigger","_trigPos","_nearbyPlayer"];
-	_nearbyPlayer = false;
+	private ["_trigger","_trigPos"];
 	_trigPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
-	_nearbyPlayer = ({isPlayer _x} count (_trigPos nearEntities [["AllVehicles","CAManBase"],_triggerRadius]) > 0);
 	_trigger = createTrigger ["EmptyDetector",_trigPos];
 	_trigger setTriggerArea [_triggerRadius, _triggerRadius, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
@@ -45,6 +43,7 @@ for "_i" from 1 to _numTriggers do {
 	};
 	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Dynamic trigger %1 of %2 spawned at %3 (spawnTriggers_random). Next trigger spawning in %4 seconds.",_i,_numTriggers,_trigPos,DZAI_dynSpawnDelay];};
 	DZAI_curDynTrigs = DZAI_curDynTrigs + 1;
+	DZAI_dynTriggerArray set [(count DZAI_dynTriggerArray),_trigger];
 	sleep DZAI_dynSpawnDelay;
 };
-
+[] execVM '\z\addons\dayz_server\DZAI\scripts\dynTrigger_manager.sqf';

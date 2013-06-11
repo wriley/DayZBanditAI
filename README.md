@@ -1,4 +1,4 @@
-DZAI 0.9.9 - AI Addon for DayZ
+DZAI 0.9.10 - AI Addon for DayZ
 ============
 
 
@@ -192,3 +192,10 @@ Note: This is a basic version for testing purposes and more features will be add
 - [MODIFIED] Addition of glanceAt command for AI group leader to help locate player unit.
 - [MODIFIED] Modification of dynamic trigger amounts for each map.
 - [MODIFIED] Time delay in between each dynamic trigger spawn reduced from 60 seconds to 30 seconds.
+
+0.9.10 Update:
+
+- Imported several updates and fixes to dynamic triggers from DZAI Lite 0.0.6
+- [NEW] Added Dynamic Trigger Manager script to periodically relocate dynamic triggers.
+- [FIXED] AI respawn script now checks if group exists before respawning the unit (fixes undefined variable errors).
+

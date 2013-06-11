@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 8:24 PM 6/9/2013
+	Last updated: 7:40 PM 6/10/2013
 */
 private["_worldname"];
 
@@ -36,11 +36,14 @@ DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Af
 
 //Dynamic Trigger Settings
 //DZAI automatically determines the settings for dynamic triggers. Below are settings that can be manually adjusted.
+DZAI_dynManagerRate = 300;									//Frequency of dynamic trigger manager in seconds. The manager periodically relocates a randomly selected dynamic trigger(Default: 300)
+DZAI_dynRandomizeRate = 0.75;								//Probability of randomizing location of an inactive dynamic trigger. (Default: 0.75)
 DZAI_dynSpawnDelay = 30;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 30)
 DZAI_dynSpawnChance = 0.75;									//Probability of spawning AI when a dynamic trigger is activated. If probability check fails, the trigger is relocated. (Default: 0.75)
+DZAI_dynRemoveDeadWait = 300;								//Time to wait before deleting dead AI corpse. (Default: 300)
 
 //Extra AI Settings
-DZAI_findKiller = false;										//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
+DZAI_findKiller = false;									//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3. Temporary NVGs are unlootable and will be removed at death (Default: false).
 
 //AI loot Configuration										(Edible and Medical items, Miscellaneous items, Skin packs)
@@ -57,7 +60,7 @@ DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//equipType = 0 - most AI will h
 DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.
 DZAI_gradeChances2 = [0.30,0.55,0.11,0.04];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
 DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//equipType = 3 - All AI will carry at least a military-grade weapon. Many will be carrying high-grade military weapons.
-DZAI_gradeChancesDyn = [0.30,0.55,0.11,0.04];				//Weapongrade chances for AI spawned from dynamic triggers.
+DZAI_gradeChancesDyn = [0.35,0.60,0.04,0.01];				//Weapongrade chances for AI spawned from dynamic triggers.
 DZAI_chanceMiscItemS = 0.66;								//Chance to add random item from DZAI_MiscItemS table.
 DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_MiscItemL table.
 DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_SkinLoot table.
@@ -69,5 +72,6 @@ DZAI_numAIUnits = 0;										//Keep track of currently active AI units, includi
 DZAI_actDynTrigs = 0;										//Keep track of current number of active dynamically-spawned triggers
 DZAI_curDynTrigs = 0;										//Keep track of current total of inactive dynamically-spawned triggers.
 DZAI_actTrigs = 0;											//Keep track of active static triggers.	
+DZAI_dynTriggerArray = [];
 
 if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3. VerifyTables: %4.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_verifyTables];};
