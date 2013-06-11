@@ -1,11 +1,13 @@
-//unitInventory Version 0.07
 /*
-        Usage: [_unit,_weapongrade] call fnc_unitInventory;
-		Adds a random backpack to AI, and a chance to add binoculars/NVGoggles.
-		
-		Note: Formerly called fnc_unitBackpack.
+	fnc_unitInventory
+       
+	Description: Adds a random backpack to AI unit, and a chance to add binoculars/NVGoggles. If unit has weapongrade 2 or higher, assigns temporary unlootable NVGs if not previously given one and DZAI_tempNVGs is set to true.
+	
+	Usage: [_unit,_weapongrade] call fnc_unitInventory;
+	
+	Last updated: 6/2/2013
 */
-    private ["_unit","_bag","_weapongrade","_bags"];
+    private ["_unit","_bag","_weapongrade","_bags","_gadgetsArray"];
     _unit = _this select 0;
 	_weapongrade = _this select 1;
 	
@@ -28,17 +30,24 @@
 	  };
 	};
 	
+	_gadgetsArray = [];
+	if (_weapongrade < 2) then {
+		_gadgetsArray = DZAI_gadgets0;
+	} else {
+		_gadgetsArray = DZAI_gadgets1;
+	};
+	
 	_bag = _bags call BIS_fnc_selectRandom;
 	_unit addBackpack _bag;
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Backpack: %1 for AI.",_bag];};
 
 	private ["_chance","_gadget"];
-	//diag_log format ["DEBUG :: Counted %1 tools in DZAI_gadgets.",(count DZAI_gadgets)];
-	for "_i" from 0 to ((count DZAI_gadgets) - 1) do {
-		_chance = ((DZAI_gadgets select _i) select 1);
+	//diag_log format ["DEBUG :: Counted %1 tools in _gadgetsArray.",(count _gadgetsArray)];
+	for "_i" from 0 to ((count _gadgetsArray) - 1) do {
+		_chance = ((_gadgetsArray select _i) select 1);
 		//diag_log format ["DEBUG :: %1 chance to add gadget.",_chance];
 		if ((random 1) < _chance) then {
-			_gadget = ((DZAI_gadgets select _i) select 0);
+			_gadget = ((_gadgetsArray select _i) select 0);
 			_unit addWeapon _gadget;
 			//diag_log format ["DEBUG :: Added gadget %1 as loot to AI inventory.",_gadget];
 		};

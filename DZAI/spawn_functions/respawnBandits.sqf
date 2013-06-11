@@ -1,9 +1,11 @@
 /*
-	respawnBandits version 0.08
+	respawnBandits
 	
-	Usage: [_unitGroup,_respawnLoc,_patrolDist,_trigger] call respawnBandits;
-	Description: Called internally by fn_banditAIRespawn.sqf. Calls fn_createAI to respawn a unit near a randomly selected building from a stored reference location.
+	Usage: [_unitGroup,_trigger,_respawnType] call respawnBandits;
 	
+	Description: Called internally by fnc_banditAIRespawn. Calls fnc_createAI to respawn a unit near a randomly selected building from a stored reference location.
+	
+	Last updated: 4:36 PM 6/8/2013
 */
 
 private ["_unitGroup","_trigger","_grpArray","_triggerPos","_patrolDist","_gradeChances","_spawnPositions","_p","_unit","_pos","_respawnType"];
@@ -22,7 +24,7 @@ _gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
 _spawnPositions = _trigger getVariable "locationArray";
 	
 _p = _spawnPositions call BIS_fnc_selectRandom;
-_pos = null;
+_pos = -1;
 if (_respawnType == 2) then {
 	_pos = [_p, 2, 100, 5, 0, 2000, 0] call BIS_fnc_findSafePos;
 	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Respawning AI from building positions (respawnBandits).";};
@@ -33,7 +35,13 @@ if (_respawnType == 2) then {
 
 _unit = [_unitGroup,_pos,_trigger,_respawnType,_gradeChances] call fnc_createAI;
 _unitGroup selectLeader _unit;
-if ((count (waypoints _unitGroup)) < 2) then {0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;	/*Start patrolling after each group is fully spawned.*/};
+if ((count (waypoints _unitGroup)) < 2) then {
+	if ((typeName _patroldist) == "SCALAR") then {
+		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+	} else {
+		0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
+	};
+};
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: 1 AI unit respawned (respawnBandits)."];};
 
 true

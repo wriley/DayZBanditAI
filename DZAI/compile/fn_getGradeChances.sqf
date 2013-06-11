@@ -1,6 +1,11 @@
-//getGradeChances version 0.07
 /*
+	fnc_gradeChances
+	
+	Description: Based on a given equipType value, returns an array of weapongrade probabilities.
+	
 	Usage: [_equipType] call fnc_getGradeChances;
+	
+	Last updated: 6/2/2013
 */
 private ["_equipType", "_gradeChances"];
 _equipType = _this select 0;

@@ -1,5 +1,11 @@
 /*
+	fnc_spawndeathFlies
+	
+	Description: Does what it says on the box.
+	
 	Usage: [_unit] call fnc_spawn_deathFlies;
+	
+	Last updated: 6/2/2013
 */
 
 	// private[""];
