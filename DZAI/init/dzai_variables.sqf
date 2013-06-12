@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 7:40 PM 6/10/2013
+	Last updated: 12:39 AM 6/12/2013
 */
 private["_worldname"];
 
@@ -18,7 +18,7 @@ DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI posi
 DZAI_monitor = true;										//Enable or disable server monitor. Keeps track of number of max/current AI units and dynamically spawned triggers. (Default: true)
 DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
 DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017 and Namalsk 2017), "epoch" (DayZ Epoch), "civilian (DayZ Civilian).
-DZAI_verifyTables = true;									//Use this if experiencing crashes or errors with DZAI. Set to "true" to have DZAI verify all tables for banned/invalid classnames. If invalid entries are found, they are removed and logged into the RPT log. Forced ON for Taviana 2.0 and Lingor 1.3 (Default: false)
+DZAI_verifyTables = true;									//Use this if experiencing crashes or errors with DZAI. Set to "true" to have DZAI verify all tables for banned/invalid classnames. If invalid entries are found, they are removed and logged into the RPT log. (Default: true)
 
 //AI Unit Variables						
 DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
@@ -43,10 +43,14 @@ DZAI_dynSpawnChance = 0.75;									//Probability of spawning AI when a dynamic 
 DZAI_dynRemoveDeadWait = 300;								//Time to wait before deleting dead AI corpse. (Default: 300)
 
 //Extra AI Settings
-DZAI_findKiller = false;									//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
+DZAI_findKiller = false;										//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3. Temporary NVGs are unlootable and will be removed at death (Default: false).
 
-//AI loot Configuration										(Edible and Medical items, Miscellaneous items, Skin packs)
+//AI weapon configuration
+DZAI_dynamicWeaponList = true;								//True: Dynamically generate AI weapon list from CfgBuildingLoot. False: Use preset weapon list (DayZ 1.7.6.1). Highly recommended to enable DZAI_verifyTables if this option is set to false. (Default: true).
+DZAI_banAIWeapons = [];										//(Only if DZAI_dynamicWeaponList = true) List of weapons that AI should never use. By default, AI may carry any lootable weapon. Example: DZAI_banAIWeapons = ["M107_DZ","BAF_AS50_scoped"]; will remove the M107 and AS50 from AI weapon tables if dynamic weapon list is enabled.
+
+//AI loot configuration										(Edible and Medical items, Miscellaneous items, Skin packs)
 DZAI_invmedicals = 1; 										//Number of selections of medical items (Inventory)
 DZAI_invedibles = 1;										//Number of selections of edible items (Inventory)
 DZAI_bpmedicals = 2; 										//Number of selections of medical items (Backpack)
@@ -54,8 +58,8 @@ DZAI_bpedibles = 1;											//Number of selections of edible items (Backpack)
 DZAI_numMiscItemS = 3;										//Maximum number of items to select from DZAI_MiscItemS table.
 DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_MiscItemL table.
 DZAI_maxPistolMags = 2;										//Maximum number of pistol magazines to generate as loot upon death.
-DZAI_maxRifleMags = 1;										//Maximum number of rifle  magazines to generate. (Unused variable)
-DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Civilian, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
+
+//AI loot probabilities
 DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//equipType = 0 - most AI will have basic pistols or rifles, and occasionally common military weapons.
 DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.
 DZAI_gradeChances2 = [0.30,0.55,0.11,0.04];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
@@ -68,6 +72,7 @@ DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_SkinLo
 //NOTHING TO EDIT BEYOND THIS POINT.
 
 //Internal Use Variables: DO NOT EDIT THESE
+DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Civilian, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
 DZAI_numAIUnits = 0;										//Keep track of currently active AI units, including dead units waiting for respawn.
 DZAI_actDynTrigs = 0;										//Keep track of current number of active dynamically-spawned triggers
 DZAI_curDynTrigs = 0;										//Keep track of current total of inactive dynamically-spawned triggers.

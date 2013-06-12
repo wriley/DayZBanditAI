@@ -1,5 +1,5 @@
 /*
-	Takistan Loot Configuration
+	Takistan Classname Configuration
 	
 	Last updated:
 	
@@ -14,8 +14,6 @@ switch (DZAI_modName) do {
 		#include "mod_configs\epoch_classnames.sqf"
 	};
 	case default {
-		diag_log "Takistan loot tables loaded.";
+		diag_log "Takistan classnames loaded.";
 	};
 };
-
-for "_i" from 0 to ((count DZAI_Pistols0) - 1) do {DZAI_Rifles0 set [(count DZAI_Rifles0),(DZAI_Pistols0 select _i)];};

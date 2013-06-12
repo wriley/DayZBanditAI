@@ -85,12 +85,14 @@ WEST setFriend [resistance, 0];
 private["_worldname"];
 _worldname=toLower format ["%1",worldName];
 
-if (((_worldname == "tavi")||(worldname == "lingor"))&&(DZAI_modName == "default")&&(!DZAI_verifyTables)) then {DZAI_verifyTables = true;};	//Force Safe Mode if using non-Skaronator Lingor or Taviana map.
 if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] Server is running map %1. Loading static trigger and classname configs.",_worldname];};
 
-//Load default DZAI loot tables. These tables include weapons and other items that can be added to an AI unit's inventory.
-//Do not delete this file, as it is required for DZAI to work.
+//Load DZAI classname tables.
 #include "base_classname_configs\base_classnames.sqf"
+
+
+//Build DZAI weapon classname tables from CfgBuildingLoot data if DZAI_dynamicWeapons = true;
+if (DZAI_dynamicWeaponList) then {[[["Residential","Farm","Supermarket"],["Military"],["MilitarySpecial"],["HeliCrash"]],DZAI_banAIWeapons] execVM '\z\addons\dayz_server\DZAI\scripts\buildWeaponArrays.sqf';};
 
 //Create reference marker for dynamic triggers and set default values. These values are modified by world_(map_name).sqf
 _this = createMarker ["DZAI_centerMarker", (getMarkerPos 'center')];
@@ -176,6 +178,7 @@ switch (_worldname) do {
 	};
 };
 
+waitUntil {sleep 0.05; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
 if (DZAI_verifyTables) then {["DZAI_Rifles0","DZAI_Rifles1","DZAI_Rifles2","DZAI_Rifles3","DZAI_Pistols0","DZAI_Pistols1","DZAI_Pistols2","DZAI_Pistols3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_Edibles","DZAI_Medicals1","DZAI_Medicals2","DZAI_MiscItemS","DZAI_MiscItemL","DZAI_SkinLoot","DZAI_BanditTypes"] execVM "\z\addons\dayz_server\DZAI\scripts\verifyTables.sqf";};
 if (DZAI_dynTriggersMax > 0) then {[DZAI_dynTriggersMax] execVM '\z\addons\dayz_server\DZAI\scripts\spawnTriggers_random.sqf';};
 if (DZAI_monitor) then {[] execVM '\z\addons\dayz_server\DZAI\scripts\dzai_monitor.sqf';};

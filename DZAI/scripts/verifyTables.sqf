@@ -37,6 +37,7 @@ diag_log "DZAI is verifying all tables for banned or invalid classnames...";
 			//diag_log format ["Entry %1 is valid.",_x];
 		};
 	} forEach _x;
+	sleep 0.1;
 	if ((count _removeArray) > 0) then {
 		diag_log format ["Removing entries: %1",_removeArray];
 		_x = _x - _removeArray;				//Remove invalid classnames

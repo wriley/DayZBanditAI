@@ -1,5 +1,5 @@
 /*
-	Taviana Loot Configuration
+	Taviana Classname Configuration
 	
 	Last updated:
 	
@@ -17,5 +17,3 @@ switch (DZAI_modName) do {
 		diag_log "DayZ Taviana config selected.";
 	};
 };
-
-for "_i" from 0 to ((count DZAI_Pistols0) - 1) do {DZAI_Rifles0 set [(count DZAI_Rifles0),(DZAI_Pistols0 select _i)];};
