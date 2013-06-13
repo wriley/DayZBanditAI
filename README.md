@@ -1,4 +1,4 @@
-DZAI 0.9.10 - AI Addon for DayZ
+DZAI 1.0.1.1 - AI Addon for DayZ
 ============
 
 
@@ -68,6 +68,12 @@ Installation Instructions:
 Latest Updates:
 ============
 
+Note: Information about past updates are archived in changelog.txt
+
 1.0.0 update:
 
 - [NEW] Imported dynamic weapon list feature from DZAI Lite 0.0.7-0.0.8. This feature is enabled by default to ensure DZAI's compatibility across all DayZ maps. For more details, see the DZAI Lite patch notes (https://github.com/dayzai/DZAI-Lite).
+
+1.0.0.1 hotfix:
+
+- [FIXED] Added fixes to dynamic weapon list feature to ensure compatibility with DayZ 1.7.7 as well as previous versions.

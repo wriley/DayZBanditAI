@@ -3,7 +3,7 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 7:46 PM 6/10/2013
+	Last updated: 4:03 PM 6/13/2013
 */
 
 diag_log "[DZAI] Initializing DZAI addon. Reading dzai_variables.sqf.";
@@ -92,7 +92,7 @@ if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] Server is running map %1.
 
 
 //Build DZAI weapon classname tables from CfgBuildingLoot data if DZAI_dynamicWeapons = true;
-if (DZAI_dynamicWeaponList) then {[[["Residential","Farm","Supermarket"],["Military"],["MilitarySpecial"],["HeliCrash"]],DZAI_banAIWeapons] execVM '\z\addons\dayz_server\DZAI\scripts\buildWeaponArrays.sqf';};
+if (DZAI_dynamicWeaponList) then {[[["Residential","Farm"],["Military"],["MilitarySpecial"],["HeliCrash"]],DZAI_banAIWeapons] execVM '\z\addons\dayz_server\DZAI\scripts\buildWeaponArrays.sqf';};
 
 //Create reference marker for dynamic triggers and set default values. These values are modified by world_(map_name).sqf
 _this = createMarker ["DZAI_centerMarker", (getMarkerPos 'center')];
