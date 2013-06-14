@@ -1,4 +1,4 @@
-DZAI 1.0.1.1 - AI Addon for DayZ
+DZAI 1.0.1.2 - AI Addon for DayZ
 ============
 
 
@@ -74,6 +74,14 @@ Note: Information about past updates are archived in changelog.txt
 
 - [NEW] Imported dynamic weapon list feature from DZAI Lite 0.0.7-0.0.8. This feature is enabled by default to ensure DZAI's compatibility across all DayZ maps. For more details, see the DZAI Lite patch notes (https://github.com/dayzai/DZAI-Lite).
 
-1.0.0.1 hotfix:
+0.0.9.1 hotfix (DayZ 1.7.7 compatibility):
 
 - [FIXED] Added fixes to dynamic weapon list feature to ensure compatibility with DayZ 1.7.7 as well as previous versions.
+
+0.0.9.2 hotfix (DayZ 1.7.7 compatibility):
+
+- [FIXED] Implemented additional compatibility fixes to dynamic weapon list feature.
+- [NEW] Namalsk: Added compatibility with Namalsk's selectable loot table feature. DZAI will read from the user-specified loot table instead of the default. 
+- [MODIFIED] Namalsk: DZAI will now also read from the HeliCrashNamalsk table instead of HeliCrash.
+- [MODIFIED] Added MeleeBaseBallBat and MeleeMachete to AI weapon banlist.
+- [MODIFIED] User-specified weapon banlist is now added to the default weapon banlist, instead of the other way around.
