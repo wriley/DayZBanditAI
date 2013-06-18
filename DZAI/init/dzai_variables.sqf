@@ -3,11 +3,11 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 12:39 AM 6/12/2013
+	Last updated: 12:05 AM 6/18/2013
 */
 private["_worldname"];
 
-if (!isServer) exitWith {};									//End of client-sided work.
+if (!isServer) exitWith {};
 
 //Enable/Disable Zombies, Zombie Hostility
 DZAI_zombieEnemy = true;									//Enable or disable AI hostility to zombies. If enabled, AI will attack zombies. (default: true)
@@ -36,10 +36,9 @@ DZAI_spawnExtra = 0;										//Number of extra AI to spawn for each trigger. Af
 
 //Dynamic Trigger Settings
 //DZAI automatically determines the settings for dynamic triggers. Below are settings that can be manually adjusted.
-DZAI_dynManagerRate = 300;									//Frequency of dynamic trigger manager in seconds. The manager periodically relocates a randomly selected dynamic trigger(Default: 300)
-DZAI_dynRandomizeRate = 0.75;								//Probability of randomizing location of an inactive dynamic trigger. (Default: 0.75)
-DZAI_dynSpawnDelay = 30;									//Time to wait between creating each randomly-placed trigger (seconds). (Default: 30)
-DZAI_dynSpawnChance = 0.75;									//Probability of spawning AI when a dynamic trigger is activated. If probability check fails, the trigger is relocated. (Default: 0.75)
+DZAI_dynManagerRate = 180;									//Frequency of dynamic trigger manager in seconds. The manager periodically relocates a randomly selected dynamic trigger(Default: 180)
+DZAI_dynRandomizeRate = 0.80;								//Probability of randomizing location of an inactive dynamic trigger. (Default: 0.80)
+DZAI_dynSpawnChance = 0.90;									//Probability of spawning AI when a dynamic trigger is activated. If probability check fails, the trigger is relocated. (Default: 0.90)
 DZAI_dynRemoveDeadWait = 300;								//Time to wait before deleting dead AI corpse. (Default: 300)
 
 //Extra AI Settings
@@ -57,7 +56,6 @@ DZAI_bpmedicals = 2; 										//Number of selections of medical items (Backpack
 DZAI_bpedibles = 1;											//Number of selections of edible items (Backpack)
 DZAI_numMiscItemS = 3;										//Maximum number of items to select from DZAI_MiscItemS table.
 DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_MiscItemL table.
-DZAI_maxPistolMags = 2;										//Maximum number of pistol magazines to generate as loot upon death.
 
 //AI loot probabilities
 DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//equipType = 0 - most AI will have basic pistols or rifles, and occasionally common military weapons.
@@ -79,4 +77,4 @@ DZAI_curDynTrigs = 0;										//Keep track of current total of inactive dynamic
 DZAI_actTrigs = 0;											//Keep track of active static triggers.	
 DZAI_dynTriggerArray = [];
 
-if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3. VerifyTables: %4.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_verifyTables];};
+diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3. DZAI_dynamicWeaponList: %4. VerifyTables: %5.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_dynamicWeaponList,DZAI_verifyTables];

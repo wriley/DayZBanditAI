@@ -1,4 +1,4 @@
-DZAI 1.0.0.2 - AI Addon for DayZ
+DZAI 1.0.1 - AI Addon for DayZ
 ============
 
 
@@ -42,15 +42,9 @@ No issues have been reported with the following maps, but have not been tested. 
 - Taviana - DayZ Epoch*
 - Utes
 - Zargabad
-
-*: Requires manual activation by editing "DZAI_modName" in DZAI\init\dayz_ai_variables.sqf
-
-Non-supported maps
-============
-The following maps have been known to cause problems in the past, but recent updates may have provided compatibility. For these maps, the "Verify Tables" option will automatically be enabled to make on-the-fly adjustments to DZAI's classname tables to solve incompatibility issues.
 - Taviana 2.0
 - Lingor 1.3
- 
+*: Requires manual activation by editing "DZAI_modName" in DZAI\init\dayz_ai_variables.sqf
 
 
 Installation Instructions:
@@ -70,18 +64,38 @@ Latest Updates:
 
 Note: Information about past updates are archived in changelog.txt
 
-1.0.0 update:
+1.0.0 Update:
 
 - [NEW] Imported dynamic weapon list feature from DZAI Lite 0.0.7-0.0.8. This feature is enabled by default to ensure DZAI's compatibility across all DayZ maps. For more details, see the DZAI Lite patch notes (https://github.com/dayzai/DZAI-Lite).
 
-1.0.0.1 hotfix (DayZ 1.7.7 compatibility):
+1.0.0.1 Hotfix (DayZ 1.7.7 compatibility):
 
 - [FIXED] Added fixes to dynamic weapon list feature to ensure compatibility with DayZ 1.7.7 as well as previous versions.
 
-1.0.0.2 hotfix (DayZ 1.7.7 compatibility):
+1.0.0.2 Hotfix (DayZ 1.7.7 compatibility):
 
 - [FIXED] Implemented additional compatibility fixes to dynamic weapon list feature.
 - [NEW] Namalsk: Added compatibility with Namalsk's selectable loot table feature. DZAI will read from the user-specified loot table instead of the default. 
 - [MODIFIED] Namalsk: DZAI will now also read from the HeliCrashNamalsk table instead of HeliCrash.
 - [MODIFIED] Added MeleeBaseBallBat and MeleeMachete to AI weapon banlist.
 - [MODIFIED] User-specified weapon banlist is now added to the default weapon banlist, instead of the other way around.
+
+1.0.1 Update:
+
+- [NEW] Execution time is now reported into RPT log for DZAI initialization, dynamic weapon list generation, and classname verification.
+- [NEW] Overlapping dynamic triggers now spawn a reduced number of AI units.
+- [NEW] If a static trigger has no minimum number of AI to spawn and total AI to spawn is zero, the trigger will continue to recalculate the total number of AI to spawn every 2 minutes until a non-zero amount is reached.
+- [REMOVED] Removed M107 and AS50 from preset weapon classname table.
+- [MODIFIED] Server no longer waits for DZAI to finish initializing before continuing startup process.
+- [MODIFIED] Static and dynamic triggers are generated only after dynamic weapon list and classname verification (if enabled) are completed. This avoids possible cases where AI spawn with invalid items before the weapon list and verification steps are completed.
+- [MODIFIED] AI units will now always spawn in an "AWARE" state. When a member if an AI group is killed, the group's state is changed to "COMBAT". When all members of the group have been killed, the group's state will return to "AWARE" with the first respawning unit.
+- [MODIFIED] AI units will no longer move with "LIMITED" speed. Possible movement modes are "NORMAL" (move in formation) or "FULL" (move without regard to maintaining formation).
+- [MODIFIED] Building positions are now calculated directly instead of using interior positions (less complicated calculations).
+- [MODIFIED] Spawn points are now calculated when the trigger is first activated, and stored for re-use for subsequent activations, instead of being re-calculated with each activation.
+- [MODIFIED] AI skill parameters are now more consistent for each weapongrade value. Base values increased, bonus values decreased.
+- [MODIFIED] Pistol ammo loot is now fixed at one magazine.
+- [MODIFIED] Frequency of dynamic trigger manager script increased to every 3 minutes from 5 minutes.
+- [MODIFIED] Increased probabilities of randomizing dynamic trigger location and activation chance.
+- [MODIFIED] Modified preset dynamic trigger settings for all maps.
+- [MODIFIED] Several fixes and DayZ 1.7.7 compatibility updates to dynamic weapon list script.
+- [MODIFIED] Delay between each dynamic trigger spawn now fixed at 5 seconds.

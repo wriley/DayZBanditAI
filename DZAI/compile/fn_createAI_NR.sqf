@@ -23,20 +23,13 @@ _type = DZAI_BanditTypes call BIS_fnc_selectRandom;							// Select skin of AI u
 _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 [_unit] joinSilent _unitGroup;														// Add AI unit to group
 
-_unit enableAI "TARGET";
-_unit enableAI "AUTOTARGET";
-_unit enableAI "MOVE";
-_unit enableAI "ANIM";
-_unit enableAI "FSM";
-_unit allowDammage true;
-
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 _unit setVariable["trigger",_trigger];
 
 _unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
 
 if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then {
-	_unit addEventHandler ["Fired", {_this call ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.
+	_unit addEventHandler ["Fired", {_this spawn ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.
 _unit addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];					// Handle incoming damage. Note: AI durability can be modified in dayz_ai_variables.sqf
 _unit addEventHandler ["Killed",{[_this,"banditKills"] call local_eventKill;}]; 	// Killing this unit will increment player's bandit kill count.
 _unit addEventHandler ["Killed",{_this spawn fnc_spawn_deathFlies;}];				// Spawn flies around AI bandit corpse.
@@ -48,6 +41,14 @@ _weapongrade = [DZAI_weaponGrades,DZAI_gradeChancesDyn] call fnc_selectRandomWei
 [_unit, _weapongrade] call fnc_unitSelectWeapon;									// Add rifle
 [_unit, _weapongrade] call fnc_unitInventory;										// Add backpack and chance of binoculars
 [_unit, _weapongrade] call fnc_setSkills;											// Set AI skill
+
+_unit enableAI "TARGET";
+_unit enableAI "AUTOTARGET";
+_unit enableAI "MOVE";
+_unit enableAI "ANIM";
+_unit enableAI "FSM";
+_unit allowDammage true;
+
 processInitCommands;
 if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Spawned AI Type %1 with weapongrade %2 (fn_createAI).",_type,_weapongrade];};
 

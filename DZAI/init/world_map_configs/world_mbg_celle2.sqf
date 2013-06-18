@@ -6,9 +6,15 @@
 */
 
 //Begin dynamic trigger settings for Celle
-DZAI_centerMarker setMarkerPos [6337.6265, 6088.0913];
-DZAI_centerSize = 5500;
-DZAI_dynTriggersMax = 15;
+DZAI_centerMarker setMarkerPos [6399.5469, 6583.6987];
+DZAI_centerSize = 6250;
+DZAI_dynTriggersMax = 17;
+
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //begin markers
 

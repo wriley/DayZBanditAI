@@ -6,9 +6,15 @@
 */
 
 //Begin dynamic trigger settings for Taviana
-DZAI_centerMarker setMarkerPos [10704.772, 10397.833, 1.5322094];
-DZAI_centerSize = 7000;
-DZAI_dynTriggersMax = 19;
+DZAI_centerMarker setMarkerPos [10864.419, 11084.657, 1.5322094];
+DZAI_centerSize = 8000;
+DZAI_dynTriggersMax = 16;
+
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //begin triggers
 

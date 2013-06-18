@@ -6,9 +6,15 @@
 */
 
 //Begin dynamic trigger settings for Zargabad
-DZAI_centerMarker setMarkerPos [3959.501, 4477.0693];
-DZAI_centerSize = 2750;
+DZAI_centerMarker setMarkerPos [3998.7087, 4120.4692];
+DZAI_centerSize = 2000;
 DZAI_dynTriggersMax = 5;
+
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //begin triggers
 

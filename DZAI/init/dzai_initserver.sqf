@@ -3,9 +3,11 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 4:03 PM 6/13/2013
+	Last updated: 6:16 PM 6/17/2013
 */
+private ["_startTime"];
 
+_startTime = diag_tickTime;
 diag_log "[DZAI] Initializing DZAI addon. Reading dzai_variables.sqf.";
 
 //Load DZAI variables
@@ -13,7 +15,6 @@ call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_var
 call compile preprocessFile "\z\addons\dayz_server\DZAI\SHK_pos\shk_pos_init.sqf";
 
 createcenter east;											//Create centers for all sides
-createcenter west;
 createcenter resistance;
 resistance setFriend [east, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
 resistance setFriend [west, 0];	
@@ -38,7 +39,6 @@ WEST setFriend [resistance, 0];
 		ai_fired = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\ai_fired.sqf";	//Calculates weapon noise of AI unit
 		ai_alertzombies = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\ai_alertzombies.sqf"; //AI weapon noise attracts zombie attention
 	};
-	fnc_getBuildingPositions = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_getBuildingPositions.sqf";
 	fnc_banditAIKilled = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIKilled.sqf";
 	fnc_banditAIRespawn = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIRespawn.sqf";
 	fnc_selectRandomWeighted = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_selectRandomWeighted.sqf";
@@ -85,21 +85,21 @@ WEST setFriend [resistance, 0];
 private["_worldname"];
 _worldname=toLower format ["%1",worldName];
 
-if (DZAI_debugLevel > 0) then {diag_log format["[DZAI] Server is running map %1. Loading static trigger and classname configs.",_worldname];};
+diag_log format["[DZAI] Server is running map %1. Loading static trigger and classname configs.",_worldname];
 
 //Load DZAI classname tables.
 #include "base_classname_configs\base_classnames.sqf"
 
 
 //Build DZAI weapon classname tables from CfgBuildingLoot data if DZAI_dynamicWeapons = true;
-if (DZAI_dynamicWeaponList) then {[[["Residential","Farm"],["Military"],["MilitarySpecial"],["HeliCrash"]],DZAI_banAIWeapons] execVM '\z\addons\dayz_server\DZAI\scripts\buildWeaponArrays.sqf';};
+if (DZAI_dynamicWeaponList) then {[DZAI_banAIWeapons] execVM '\z\addons\dayz_server\DZAI\scripts\buildWeaponArrays.sqf';};
 
 //Create reference marker for dynamic triggers and set default values. These values are modified by world_(map_name).sqf
 _this = createMarker ["DZAI_centerMarker", (getMarkerPos 'center')];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 DZAI_centerMarker = _this;
-DZAI_centerSize = 4500;
+DZAI_centerSize = 5000;
 DZAI_dynTriggersMax = 20;
 
 /*
@@ -110,67 +110,67 @@ switch (_worldname) do {
 	case "chernarus":
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\chernarus_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_chernarus.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_chernarus.sqf";
 	};
 	case "utes":
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\utes_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_utes.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_utes.sqf";
 	};
 	case "zargabad":
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\zargabad_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_zargabad.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_zargabad.sqf";
 	};
 	case "fallujah":
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\fallujah_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_fallujah.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_fallujah.sqf";
 	};
 	case "takistan":
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\takistan_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_takistan.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_takistan.sqf";
 	};
     case "tavi":
     {
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\tavi_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_tavi.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_tavi.sqf";
     };
 	 case "lingor":
     {
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\lingor_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_lingor.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_lingor.sqf";
     };
     case "namalsk":
     {
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\namalsk_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_namalsk.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_namalsk.sqf";
     };
     case "mbg_celle2":
     {
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\mbg_celle2_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_mbg_celle2.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_mbg_celle2.sqf";
     };
 	case "oring":
     {
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\oring_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_oring.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_oring.sqf";
     };
 	case "panthera2":
     {
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\panthera2_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_panthera2.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_panthera2.sqf";
     };
 	case "isladuala":
     {
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\isladuala_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_isladuala.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_isladuala.sqf";
     };
 	case "sara":
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\sara_classnames.sqf";
-		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_map_configs\world_sara.sqf";
+		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_sara.sqf";
     };
 	case default {
 		diag_log "Unrecognized worldname found. Verifying table compatibility.";
@@ -178,8 +178,7 @@ switch (_worldname) do {
 	};
 };
 
-waitUntil {sleep 0.05; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
 if (DZAI_verifyTables) then {["DZAI_Rifles0","DZAI_Rifles1","DZAI_Rifles2","DZAI_Rifles3","DZAI_Pistols0","DZAI_Pistols1","DZAI_Pistols2","DZAI_Pistols3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_Edibles","DZAI_Medicals1","DZAI_Medicals2","DZAI_MiscItemS","DZAI_MiscItemL","DZAI_SkinLoot","DZAI_BanditTypes"] execVM "\z\addons\dayz_server\DZAI\scripts\verifyTables.sqf";};
 if (DZAI_dynTriggersMax > 0) then {[DZAI_dynTriggersMax] execVM '\z\addons\dayz_server\DZAI\scripts\spawnTriggers_random.sqf';};
 if (DZAI_monitor) then {[] execVM '\z\addons\dayz_server\DZAI\scripts\dzai_monitor.sqf';};
-if (DZAI_debugLevel > 0) then {diag_log "[DZAI] DZAI loading complete.";};
+diag_log format ["[DZAI] DZAI loading completed in %1 seconds.",(diag_tickTime - _startTime)];

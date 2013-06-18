@@ -6,9 +6,15 @@
 */
 
 //Begin dynamic trigger settings for Sahrani
-DZAI_centerMarker setMarkerPos [12126.131, 11405.327, 0.036790848];
-DZAI_centerSize = 6000;
-DZAI_dynTriggersMax = 16;
+DZAI_centerMarker setMarkerPos [12011.185, 11251.99, 0.036790848];
+DZAI_centerSize = 6250;
+DZAI_dynTriggersMax = 17;
+
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [9567.4844, 9819.4053, 0.00024414063]];

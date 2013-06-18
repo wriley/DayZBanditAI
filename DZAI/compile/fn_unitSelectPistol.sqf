@@ -14,7 +14,6 @@
 	_currentWeapon = currentWeapon _unit;
 	waitUntil {sleep 0.01; !isNil "_currentWeapon"};
 	if ((getNumber (configFile >> "CfgWeapons" >> _currentWeapon >> "type")) == 2) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Unit already has a handgun. Exiting selectPistol script."};}; 
-	_nmags = floor (random DZAI_maxPistolMags) + 1;						// Number of mags to generate for selected weapon, with a minimum of zero.
 	
 	switch (_weapongrade) do {
 	  case 0: {		//Farm / Residential / Supermarket
@@ -36,10 +35,6 @@
 	
 	_pistol = _pistols call BIS_fnc_selectRandom;
 	_magazine = getArray (configFile >> "CfgWeapons" >> _pistol >> "magazines") select 0;
-	for "_i" from 1 to _nmags do {
-			_unit addMagazine _magazine;
-	};
-	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Pistol: %1 for AI.",_pistol];};
-	
+	_unit addMagazine _magazine;	
 	_unit addWeapon _pistol;
 	

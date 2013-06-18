@@ -6,9 +6,15 @@
 */
 
 //Begin dynamic trigger settings for Isladuala
-DZAI_centerMarker setMarkerPos [5710.4683, 4782.1729];
-DZAI_centerSize = 3000;
+DZAI_centerMarker setMarkerPos [5133.2119, 5228.4541];
+DZAI_centerSize = 5500;
 DZAI_dynTriggersMax = 8;
+
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 _this = createTrigger ["EmptyDetector", [7069.0635, 8569.668]];
 _this setTriggerArea [600, 600, 0, false];

@@ -10,6 +10,12 @@ DZAI_centerMarker setMarkerPos [5139.8008, 4092.6797];
 DZAI_centerSize = 4000;
 DZAI_dynTriggersMax = 11;
 
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
+
 _this = createTrigger ["EmptyDetector", [7892.4951, 1765.697]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
