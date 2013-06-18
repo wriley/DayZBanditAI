@@ -44,6 +44,8 @@ No issues have been reported with the following maps, but have not been tested. 
 - Zargabad
 - Taviana 2.0
 - Lingor 1.3
+
+
 *: Requires manual activation by editing "DZAI_modName" in DZAI\init\dayz_ai_variables.sqf
 
 
