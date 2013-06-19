@@ -1,4 +1,4 @@
-DZAI 1.0.2 - AI Addon for DayZ
+DZAI 1.0.3 - AI Addon for DayZ
 ============
 
 
@@ -106,7 +106,13 @@ Note: Information about past updates are archived in changelog.txt
 
 - [FIXED] Fixed a bug where default settings for dynamic trigger settings were overwriting per-map settings.
 - [NEW] AI units with broken legs now have a 10% chance to have their legs healed (chance is evaluated every cycle determined by DZAI_refreshRate).
+- [NEW] Trigger area overlap for dynamic triggers now limited to 10% area overlap (Up to 3 locations are generated per trigger to help ensure that no two triggers overlap).
 - [MODIFIED] Radio now has a 3% rate in low-tier tools table. (Note: If DZAI_findKiller is enabled, having a radio prevents AI group from automatically detecting and investigating player's position if they have killed a member of an AI group)
-- [MODIFIED] Trigger area overlap for dynamic triggers now limited to 10% area overlap (Up to 3 locations are generated per trigger to help ensure that no two triggers overlap).
 - [MODIFIED] Adjusted weapon loadout probabilities for dynamic-spawned AI.
 
+1.0.3 Update:
+
+- [FIXED] Fixed error in dynamic trigger area overlap detection.
+- [NEW] Injured AI units now slowly heal themselves in 5% increments. (Replaces chance to heal broken legs).
+- [MODIFIED] Reduced rate of Radio in low-tier tools table to 0.5% from 3%.
+- [MODIFIED] Dynamic trigger activation timings changed to 5/7/20 seconds from 5/10/30 seconds.

@@ -36,12 +36,9 @@ while {alive _unit} do {							//Run script for as long as unit is alive
 		_unit addMagazine _weaponMagazine;
 		if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI ammo depleted, added one magazine to AI unit.";};
 	};
-	if (!canStand _unit) then {	//Chance to heal legs if broken.
-		if ((random 1) < 0.10) then {
-			_unit setHit ["legs",0];
-			if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Healed AI unit's broken legs.";};
-		};
-	}
+	if ((getDammage _unit > 0.05)&&(getDammage _unit < 1)) then {
+		_unit setDamage ((getDammage _unit) - 0.05);			//AI heals 5% of their health periodically
+	};
 	sleep DZAI_refreshRate;										//Check again in x seconds.
 };
 if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI killed, AI brain deactivated.";};

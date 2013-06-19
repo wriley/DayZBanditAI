@@ -26,8 +26,6 @@ _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn th
 _unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 _unit setVariable["trigger",_trigger];
 
-_unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
-
 if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then {
 	_unit addEventHandler ["Fired", {_this spawn ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.
 _unit addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];					// Handle incoming damage. Note: AI durability can be modified in dayz_ai_variables.sqf
@@ -36,7 +34,8 @@ _unit addEventHandler ["Killed",{_this spawn fnc_spawn_deathFlies;}];				// Spaw
 _unit addEventHandler ["Killed",{_this call fnc_banditAIKilled;}];					// Update current AI count and generate additional loot on death.
 _unit addEventHandler ["Killed",{_this spawn fnc_updateDead;}];						// Remove corpse after specified time.
 _unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];					// "People die if they are killed" - Shirou Emiya
-
+	
+_unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies.
 _weapongrade = [DZAI_weaponGrades,DZAI_gradeChancesDyn] call fnc_selectRandomWeighted;
 [_unit, _weapongrade] call fnc_unitSelectWeapon;									// Add rifle
 [_unit, _weapongrade] call fnc_unitInventory;										// Add backpack and chance of binoculars

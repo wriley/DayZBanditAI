@@ -86,10 +86,10 @@ for "_j" from 1 to _numGroups do {
 		_unit = [_unitGroup,_pos,_trigger,_gradeChances] call fnc_createAI;	//Create and equip the unit
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits).",_i,_totalAI];};
 	};
-	0 = [_unitGroup] spawn {
-		_unitGroup selectLeader ((units _unitGroup) select 0);
-		_unitGroup allowFleeing 0;
-	};
+	
+	_unitGroup selectLeader ((units _unitGroup) select 0);
+	_unitGroup allowFleeing 0;
+	
 	if ((typeName _patroldist) == "SCALAR") then {
 		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 	} else {
