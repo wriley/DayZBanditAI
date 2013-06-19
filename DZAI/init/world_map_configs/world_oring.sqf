@@ -5,11 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Oring
-DZAI_centerMarker setMarkerPos [5138.3276, 5535.9248];
-DZAI_centerSize = 4750;
-DZAI_dynTriggersMax = 15;
-
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
 } else {

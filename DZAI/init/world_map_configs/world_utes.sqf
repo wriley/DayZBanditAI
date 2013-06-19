@@ -5,11 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Utes
-DZAI_centerMarker setMarkerPos [3648.311, 3820.9607];
-DZAI_centerSize = 1000;
-DZAI_dynTriggersMax = 3;
-
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
 } else {

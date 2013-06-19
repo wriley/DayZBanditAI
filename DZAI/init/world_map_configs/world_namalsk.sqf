@@ -5,17 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Namalsk
-DZAI_centerMarker setMarkerPos [6051.7534, 8728.8447];
-DZAI_centerSize = 3500;
-DZAI_dynTriggersMax = 6;
-
-if (DZAI_verifyTables) then {
-	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
-} else {
-	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
-};
-
 //AI hostility to Bloodsuckers by decreasing their leader's rating (untested). Required because Bloodsuckers will aggro on AI.
 sefik addRating -50000;
 
@@ -360,6 +349,12 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_178 = _this;
 //End markers
+
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //Begin Triggers
 _this = createTrigger ["EmptyDetector", [4157.5698, 6636.252]];

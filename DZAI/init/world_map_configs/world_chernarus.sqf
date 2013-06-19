@@ -5,17 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Chernarus
-DZAI_centerMarker setMarkerPos [7580.2803, 7636.8018];
-DZAI_centerSize = 6000;
-DZAI_dynTriggersMax = 16;
-
-if (DZAI_verifyTables) then {
-	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
-} else {
-	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
-};
-
 //Begin markers
 _this = createMarker ["Elektro1", [10557.953, 2469.0283, 0.00033473969]];
 _this setMarkerType "Empty";
@@ -317,6 +306,12 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_102 = _this;
 //End markers
+
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //Begin triggers
 _this = createTrigger ["EmptyDetector", [1870.8976, 2225.4915]];

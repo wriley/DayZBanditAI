@@ -5,17 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Celle
-DZAI_centerMarker setMarkerPos [6399.5469, 6583.6987];
-DZAI_centerSize = 6250;
-DZAI_dynTriggersMax = 17;
-
-if (DZAI_verifyTables) then {
-	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
-} else {
-	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
-};
-
 //begin markers
 
 _this = createMarker ["ETHS1", [10451.422, 11695.715, -2.7656555e-005]];
@@ -39,6 +28,12 @@ _this setMarkerBrush "Solid";
 _marker_5 = _this;
 
 //end markers
+
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [2356.353, 1182.4937, 0]];

@@ -5,11 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Takistan
-DZAI_centerMarker setMarkerPos [6368.2764, 6624.2744];
-DZAI_centerSize = 6000;
-DZAI_dynTriggersMax = 16;
-
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
 } else {

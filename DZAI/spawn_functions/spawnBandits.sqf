@@ -36,7 +36,7 @@ if (count _grpArray > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI
 _totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));	//Calculate total number of units to spawn per group.
 if (_totalAI < 1) exitWith {[_trigger] execVM '\z\addons\dayz_server\DZAI\scripts\resetStaticTrigger.sqf'; if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: No units to spawn. Force resetting trigger area (spawnBandits)";};};									
 
-_triggerPos = getPosATL _trigger;									//Position to spawn AI unit. Also used as the respawn position.
+_triggerPos = getPosATL _trigger;
 _gradeChances = [_equipType] call fnc_getGradeChances;
 _spawnCount = (_totalAI * _numGroups);
 
@@ -75,7 +75,7 @@ for "_j" from 1 to _numGroups do {
 		_unitGroup = createGroup resistance;
 	};
 	_p = _spawnPositions call BIS_fnc_selectRandom;
-	_pos = -1;
+	_pos = [0,0,0];
 	if (_spawnType == 2) then {	
 		_pos = [_p,1,100,2,0,2000,0] call BIS_fnc_findSafePos;
 	} else {
@@ -86,8 +86,10 @@ for "_j" from 1 to _numGroups do {
 		_unit = [_unitGroup,_pos,_trigger,_gradeChances] call fnc_createAI;	//Create and equip the unit
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits).",_i,_totalAI];};
 	};
-	_unitGroup selectLeader ((units _unitGroup) select 0);
-	_unitGroup allowFleeing 0;
+	0 = [_unitGroup] spawn {
+		_unitGroup selectLeader ((units _unitGroup) select 0);
+		_unitGroup allowFleeing 0;
+	};
 	if ((typeName _patroldist) == "SCALAR") then {
 		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 	} else {

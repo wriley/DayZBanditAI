@@ -5,11 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Isladuala
-DZAI_centerMarker setMarkerPos [5133.2119, 5228.4541];
-DZAI_centerSize = 5500;
-DZAI_dynTriggersMax = 8;
-
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
 } else {

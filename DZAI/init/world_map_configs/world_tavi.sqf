@@ -5,11 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Taviana
-DZAI_centerMarker setMarkerPos [10864.419, 11084.657, 1.5322094];
-DZAI_centerSize = 8000;
-DZAI_dynTriggersMax = 16;
-
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
 } else {

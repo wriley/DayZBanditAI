@@ -42,7 +42,7 @@ DZAI_dynSpawnChance = 0.90;									//Probability of spawning AI when a dynamic 
 DZAI_dynRemoveDeadWait = 300;								//Time to wait before deleting dead AI corpse. (Default: 300)
 
 //Extra AI Settings
-DZAI_findKiller = false;										//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
+DZAI_findKiller = false;									//Enable AI to become aware of who killed an AI group member. If alive, AI group leader will investigate last known position of killer. Players with radios are able to evade detection (Default: false)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3. Temporary NVGs are unlootable and will be removed at death (Default: false).
 
 //AI weapon configuration
@@ -62,7 +62,7 @@ DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//equipType = 0 - most AI will h
 DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.
 DZAI_gradeChances2 = [0.30,0.55,0.11,0.04];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
 DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//equipType = 3 - All AI will carry at least a military-grade weapon. Many will be carrying high-grade military weapons.
-DZAI_gradeChancesDyn = [0.35,0.60,0.04,0.01];				//Weapongrade chances for AI spawned from dynamic triggers.
+DZAI_gradeChancesDyn = [0.30,0.65,0.04,0.01];				//Weapongrade chances for AI spawned from dynamic triggers.
 DZAI_chanceMiscItemS = 0.66;								//Chance to add random item from DZAI_MiscItemS table.
 DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_MiscItemL table.
 DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_SkinLoot table.

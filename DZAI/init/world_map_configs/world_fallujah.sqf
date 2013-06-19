@@ -5,11 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Fallujah
-DZAI_centerMarker setMarkerPos [5139.8008, 4092.6797];
-DZAI_centerSize = 4000;
-DZAI_dynTriggersMax = 11;
-
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
 } else {

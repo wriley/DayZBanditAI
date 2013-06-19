@@ -71,11 +71,11 @@ if (_playerCount < 7) then {
 } else {
 	_totalAI = (6 + round(random 1) - round(random 1));												//Set AI upper limit.
 };
-//Reduce number of AI spawned if trigger areas are overlapping to avoid overwhelming AI spawns.
-_nearbyTriggers = {(_trigger distance _x) < ((triggerArea _trigger) select 0)} count DZAI_dynTriggerArray;
+//Reduce number of AI spawned if trigger area intersects another activated trigger to avoid overwhelming AI spawns.
+_nearbyTriggers = {((_trigger distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap))&&(triggerActivated _x)} count DZAI_dynTriggerArray;
 if (_nearbyTriggers > 0) then {
 	_totalAI = round(_totalAI/(_nearbyTriggers + 1));
-	diag_log format ["DEBUG :: Counted %1 other triggers within %2 meters. Number of AI to spawn reduced to %3.",_nearbyTriggers,((triggerArea _trigger) select 0),_totalAI];
+	if (DZAI_debugLevel > 0) then {diag_log format ["DEBUG :: Counted %1 other triggers within %2 meters. Number of AI to spawn reduced to %3.",_nearbyTriggers,((triggerArea _trigger) select 0),_totalAI];};
 };
 
 //No more exitWith statements, so trigger is committed to spawning at this point.
@@ -100,8 +100,10 @@ for "_i" from 1 to _totalAI do {
 	_unit = [_unitGroup,_pos,_trigger] call fnc_createAI_NR;
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits_random_NR).",_i,_totalAI];};
 };
-_unitGroup selectLeader ((units _unitGroup) select 0);
-_unitGroup allowFleeing 0;
+0 = [_unitGroup] spawn {
+		_unitGroup selectLeader ((units _unitGroup) select 0);
+		_unitGroup allowFleeing 0;
+	};
 
 0 = [_unitGroup,_spawnPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 

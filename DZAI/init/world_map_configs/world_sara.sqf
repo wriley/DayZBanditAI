@@ -5,11 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Sahrani
-DZAI_centerMarker setMarkerPos [12011.185, 11251.99, 0.036790848];
-DZAI_centerSize = 6250;
-DZAI_dynTriggersMax = 17;
-
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
 } else {

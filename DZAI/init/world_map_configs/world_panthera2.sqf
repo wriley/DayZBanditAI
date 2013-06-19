@@ -5,11 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Panthera
-DZAI_centerMarker setMarkerPos [5510.7402, 4248.1196];
-DZAI_centerSize = 3250;
-DZAI_dynTriggersMax = 9;
-
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
 } else {
