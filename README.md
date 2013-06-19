@@ -104,7 +104,7 @@ Note: Information about past updates are archived in changelog.txt
 
 1.0.2 Update:
 
-- [FIXED] Fixed a bug where default settings for dynamic trigger settings were overwriting pre-map settings.
+- [FIXED] Fixed a bug where default settings for dynamic trigger settings were overwriting per-map settings.
 - [NEW] AI units with broken legs now have a 10% chance to have their legs healed (chance is evaluated every cycle determined by DZAI_refreshRate).
 - [MODIFIED] Radio now has a 3% rate in low-tier tools table. (Note: If DZAI_findKiller is enabled, having a radio prevents AI group from automatically detecting and investigating player's position if they have killed a member of an AI group)
 - [MODIFIED] Trigger area overlap for dynamic triggers now limited to 10% area overlap (Up to 3 locations are generated per trigger to help ensure that no two triggers overlap).
