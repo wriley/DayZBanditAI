@@ -5,10 +5,11 @@
 	
 */
 
-//Begin dynamic trigger settings for Oring
-DZAI_centerMarker setMarkerPos [5138.3276, 5535.9248];
-DZAI_centerSize = 4000;
-DZAI_dynTriggersMax = 11;
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [2109.7009, 3037.5085, 0]];

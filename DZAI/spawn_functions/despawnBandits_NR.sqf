@@ -5,10 +5,10 @@
 	
 	Usage: Called by a dynamic trigger when all players have left the trigger area.
 
-	Last updated: 8:18 PM 6/9/2013
+	Last updated: 8:45 PM 6/18/2013
 	
 */
-private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime","_spawnCount","_newPos","_forceDespawn"];
+private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime","_spawnCount","_newPos","_forceDespawn","_attempts"];
 if (!isServer) exitWith {};							//Execute script only on server.
 
 _trigger = _this select 0;							//Get the trigger object
@@ -16,6 +16,7 @@ _trigger = _this select 0;							//Get the trigger object
 _grpArray = _trigger getVariable ["GroupArray",[]];	//Find the groups spawned by the trigger. Or set an empty group array if none are found.
 _isCleaning = _trigger getVariable ["isCleaning",nil];	//Find whether or not the trigger has been marked for cleanup, otherwise assume a cleanup has already happened.
 _forceDespawn = _trigger getVariable ["forceDespawn",false];	//Check whether to run despawn script even if players are present in the trigger area.
+if (isNil "_forceDespawn") then {_forceDespawn = false;};
 
 _grpCount = count _grpArray;
 
@@ -76,8 +77,15 @@ _trigger setVariable ["gradeChances",nil,false];
 _trigger setVariable ["spawnCount",nil,false];
 _trigger setVariable ["forceDespawn",nil,false];
 
-_newPos = [(getMarkerPos 'DZAI_centerMarker'),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
-_trigger setPos _newPos;
+_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
+_attempts = 0;
+while {(({([_newPos select 0,_newPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)&&(_attempts < 3)} do {
+	sleep 0.5;
+	_attempts = _attempts +1;
+	_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
+	if (DZAI_debugLevel > 0) then {diag_log format ["DEBUG :: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
+};
+_trigger setPos [_newPos select 0,_newPos select 1];
 
 if (DZAI_debugMarkers > 0) then {
 	private["_marker"];
