@@ -5,10 +5,11 @@
 	
 */
 
-//Begin dynamic trigger settings for Panthera
-DZAI_centerMarker setMarkerPos [5517.9404, 4536.2656];
-DZAI_centerSize = 3000;
-DZAI_dynTriggersMax = 8;
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [5976.8677, 898.83728]];

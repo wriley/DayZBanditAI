@@ -5,11 +5,6 @@
 	
 */
 
-//Begin dynamic trigger settings for Lingor
-DZAI_centerMarker setMarkerPos [4393.4473, 4299.8701];
-DZAI_centerSize = 3000;
-DZAI_dynTriggersMax = 8;
-
 //begin markers
 _this = createMarker ["Prison1", [3044.0842, 8027.1206, 9.5367432e-007]];
 _this setMarkerType "Empty";
@@ -87,6 +82,12 @@ _this setMarkerBrush "Solid";
 _marker_26 = _this;
 
 //end markers
+
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [1786.98, 596.24695]];

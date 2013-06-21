@@ -5,10 +5,11 @@
 	
 */
 
-//Begin dynamic trigger settings for Utes
-DZAI_centerMarker setMarkerPos [3638.7322, 3728.3191];
-DZAI_centerSize = 900;
-DZAI_dynTriggersMax = 3;
+if (DZAI_verifyTables) then {
+	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
+} else {
+	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+};
 
 //begin triggers
 _this = createTrigger ["EmptyDetector", [3376.7136, 4402.3555, 0]];

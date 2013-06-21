@@ -7,4 +7,4 @@ _ammo = 		_this select 4;
 _audible = getNumber (configFile >> "CfgAmmo" >> _ammo >> "audibleFire");
 _caliber = getNumber (configFile >> "CfgAmmo" >> _ammo >> "caliber");
 _distance = round(_audible * 10 * _caliber * DZAI_weaponNoise);
-_id = [_unit,_distance,true,(getPosATL _unit)] spawn ai_alertzombies;
+[_unit,_distance/2,true,(getPosATL _unit)] spawn ai_alertzombies;

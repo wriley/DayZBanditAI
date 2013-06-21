@@ -4,10 +4,17 @@
 
 /*
 	verifyTables script written for DZAI
-	Checks an array of arrays for classnames banned by DayZ or non-existent classnames. If any banned/invalid classnames are found, they are removed and reported into the RPT log.
+	
+	Description: Checks an array of arrays for classnames banned by DayZ or non-existent classnames. If any banned/invalid classnames are found, they are removed and reported into the RPT log.
+	
+	Last updated: 6:16 PM 6/17/2013
 */
 
-private["_unverified","_verified","_errorFound","_weapChk","_vehChk","_magCheck","_stringArray"];
+private["_unverified","_verified","_errorFound","_weapChk","_vehChk","_magCheck","_stringArray","_startTime"];
+
+waitUntil {!isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
+
+_startTime = diag_tickTime;
 
 _stringArray = _this;
 //_stringArray = ["DZAI_RiflesDefault0","DZAI_RiflesDefault1","DZAI_RiflesDefault2","DZAI_RiflesDefault3","DZAI_PistolsDefault0","DZAI_PistolsDefault1","DZAI_PistolsDefault2","DZAI_PistolsDefault3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_DefaultEdibles","DZAI_DefaultMedicals1","DZAI_DefaultMedicals2","DZAI_DefaultMiscItemS","DZAI_DefaultMiscItemL","DZAI_DefaultSkinLoot","DZAI_BanditTypesDefault"];
@@ -37,6 +44,7 @@ diag_log "DZAI is verifying all tables for banned or invalid classnames...";
 			//diag_log format ["Entry %1 is valid.",_x];
 		};
 	} forEach _x;
+	sleep 0.1;
 	if ((count _removeArray) > 0) then {
 		diag_log format ["Removing entries: %1",_removeArray];
 		_x = _x - _removeArray;				//Remove invalid classnames
@@ -51,4 +59,6 @@ if (_errorFound) then {
 } else {
 	diag_log "All tables have been verified. No invalid entries found.";
 };
-diag_log "Table verification complete.";
+diag_log format ["Table verification completed in %1 seconds.",(diag_tickTime - _startTime)];
+
+DZAI_classnamesVerified = true;

@@ -1,4 +1,4 @@
-DZAI 0.9.10 - AI Addon for DayZ
+DZAI 1.0.3 - AI Addon for DayZ
 ============
 
 
@@ -42,15 +42,11 @@ No issues have been reported with the following maps, but have not been tested. 
 - Taviana - DayZ Epoch*
 - Utes
 - Zargabad
-
-*: Requires manual activation by editing "DZAI_modName" in DZAI\init\dayz_ai_variables.sqf
-
-Non-supported maps
-============
-The following maps have been known to cause problems in the past, but recent updates may have provided compatibility. For these maps, the "Verify Tables" option will automatically be enabled to make on-the-fly adjustments to DZAI's classname tables to solve incompatibility issues.
 - Taviana 2.0
 - Lingor 1.3
- 
+
+
+*: Requires manual activation by editing "DZAI_modName" in DZAI\init\dayz_ai_variables.sqf
 
 
 Installation Instructions:
@@ -68,134 +64,55 @@ Installation Instructions:
 Latest Updates:
 ============
 
-0.9.0 Update:
+Note: Information about past updates are archived in changelog.txt
 
-- [NEW] DZAI is now installed to your dayz_server.pbo instead of your mission file. This method of installation will help reduce the size of your mission file (and associated network traffic) as well as prevent prying eyes from looking into any customizations you have made.
-- [NEW] Added experimental support for custom patrol definitions. This feature has already been integrated into the normal spawn and despawn scripts. Instead of specifying a patrol distance when calling spawnBandits.sqf, you can either: 1) Specify an array of markers as waypoints, 2) Specify an array containing an array of waypoints, probability of choosing a random marker as the next waypoint, and probability of patrolling in reverse sequence.
-Example 1: ['Marker1','Marker2','Marker3']	//Default probabilities for random waypoint selection and patrol reversal will be used
-Example 2: [['Marker1','Marker2','Marker3'],0.50,0.50]	//Manually specify probabilities. To have the patrol path followed exactly (without deviations), set the second variable to zero. To have the patrol sequence followed in its specified order, set the third variable to zero.
-Note: This is a basic version for testing purposes and more features will be added later.
+1.0.0 Update:
 
-- [REMOVED] Removed "disable zombies" option. Note: an easier method is to redefine the maximum zombie amounts in your init.sqf instead.
-- [REMOVED] Removed Safe Mode and related tables. Note: if experiencing crashes or missing config entry errors, set DZAI_verifyTables = true (if possible, send me the RPT logs with verifyTables enabled on the OpenDayZ forums, username Buttface).
-- [MODIFIED] Lingor 1.3 and Taviana 2.0 have verifyTables automatically enabled. (Note: If anyone has an RPT log using these DayZ mods with verifyTables enabled, please send me your RPT log on the OpenDayZ forums. Thanks).
-- [MODIFIED] Dynamically-spawned triggers now spawn AI groups 100m (+100m max) from a randomly selected player within the trigger area, instead of randomly spawning around the trigger center.
-- [MODIFIED] Dynamically-spawned triggers are now setPos'ed to their next location instead of being deleted and respawned. Note: If debugMarkers are enabled, the marker also moves to the new location, changing color from yellow (new) to orange (respawned).
-- [MODIFIED] Changed documentation for several script files.
-- [MODIFIED] AI loot is now generated using the same _equipType they were spawned with (note: _weapongrade value may differ).
-- [MODIFIED] Separated gadget and tool loot tables into two separate tables: low and high grade. Table for low grade tools/gadgets has probabilities for NVGs and GPS set to zero. (Note: This change means that only AI units with weapongrade 2 or 3 can carry NVGs/GPS).
-- [MODIFIED] Considerable AI skill parameter decreases for AI with weapongrade 0&1. AimingSpeed decrease and SpotDistance increase for AI with weapongrade 2. General skill increases for AI with weapongrade 3. (Note: This change means that high weapongrade AI are more skilled, and vice versa).
-- [MODIFIED] AI units are now randomly assigned to the East or Resistance side.
-- [MODIFIED] Slight decreases in AI spawns for NWAF, Cherno, and Elektro.
+- [NEW] Imported dynamic weapon list feature from DZAI Lite 0.0.7-0.0.8. This feature is enabled by default to ensure DZAI's compatibility across all DayZ maps. For more details, see the DZAI Lite patch notes (https://github.com/dayzai/DZAI-Lite).
 
-0.9.1 Update:
+1.0.0.1 Hotfix (DayZ 1.7.7 compatibility):
 
-- [FIXED] Fixed DayZ 2017 classname tables.
-- [MODIFIED] DayZ 2017: Maximum pistol ammo fixed at 1. AI may carry a maximum of 1 edible item in their inventory, none in backpack. AI do not carry medical items other than a bandage.
-- [MODIFIED] AI spawn distance from dynamically spawned triggers increased to 150m (+100m max) from 100m (+100m max).
+- [FIXED] Added fixes to dynamic weapon list feature to ensure compatibility with DayZ 1.7.7 as well as previous versions.
 
-0.9.2 Update:
+1.0.0.2 Hotfix (DayZ 1.7.7 compatibility):
 
-- [MODIFIED] Reduced rates of generating tools/gadgets for low-tier tools/gadgets table. (weapongrade 0-1).
-<table>
-<tr>
-<td>Item Name:</td><td>Old Rate</td><td>New Rate</td>
-</tr>
-<tr>
-<td>ItemFlashlight:</td><td>0.90</td><td>0.80</td>
-</tr>
-<tr>
-<td>ItemWatch:</td><td>0.90</td><td>0.80</td>
-</tr>
-<tr>
-<td>ItemKnife:</td><td>0.75</td><td>0.50</td>
-</tr>
-<tr>
-<td>ItemHatchet:</td><td>0.70</td><td>0.40</td>
-</tr>
-<tr>
-<td>ItemCompass:</td><td>0.60</td><td>0.35</td>
-</tr>
-<tr>
-<td>ItemMap:</td><td>0.50</td><td>0.25</td>
-</tr>
-<tr>
-<td>ItemToolbox:</td><td>0.20</td><td>0.10</td>
-</tr>
-<tr>
-<td>ItemMatchbox:</td><td>0.20</td><td>0.10</td>
-</tr>
-<tr>
-<td>ItemFlashlightRed:</td><td>0.10</td><td>0.05</td>
-</tr>
-</table>
-- [MODIFIED] Increased radius of all static triggers from 500m to 600m. Will test if this change affects performance.
-- [MODIFIED] Spawn radius of AI from dynamically spawned triggers reverted to 100m (+100m max) from 150m (+100m max).
+- [FIXED] Implemented additional compatibility fixes to dynamic weapon list feature.
+- [NEW] Namalsk: Added compatibility with Namalsk's selectable loot table feature. DZAI will read from the user-specified loot table instead of the default. 
+- [MODIFIED] Namalsk: DZAI will now also read from the HeliCrashNamalsk table instead of HeliCrash.
+- [MODIFIED] Added MeleeBaseBallBat and MeleeMachete to AI weapon banlist.
+- [MODIFIED] User-specified weapon banlist is now added to the default weapon banlist, instead of the other way around.
 
-0.9.3 Update:
+1.0.1 Update:
 
-- [NEW] Added support for DayZ Civilian mod. To enable DayZ Civilian support, edit DZAI_modName = "civilian" in dayz_ai_variables.sqf. Note: Weapon  parts for Civilian's ASC - Customizable Weapon Addon component have not yet been added to the DZAI loot tables.
+- [NEW] Execution time is now reported into RPT log for DZAI initialization, dynamic weapon list generation, and classname verification.
+- [NEW] Overlapping dynamic triggers now spawn a reduced number of AI units.
+- [NEW] If a static trigger has no minimum number of AI to spawn and total AI to spawn is zero, the trigger will continue to recalculate the total number of AI to spawn every 2 minutes until a non-zero amount is reached.
+- [REMOVED] Removed M107 and AS50 from preset weapon classname table.
+- [MODIFIED] Server no longer waits for DZAI to finish initializing before continuing startup process.
+- [MODIFIED] Static and dynamic triggers are generated only after dynamic weapon list and classname verification (if enabled) are completed. This avoids possible cases where AI spawn with invalid items before the weapon list and verification steps are completed.
+- [MODIFIED] AI units will now always spawn in an "AWARE" state. When a member if an AI group is killed, the group's state is changed to "COMBAT". When all members of the group have been killed, the group's state will return to "AWARE" with the first respawning unit.
+- [MODIFIED] AI units will no longer move with "LIMITED" speed. Possible movement modes are "NORMAL" (move in formation) or "FULL" (move without regard to maintaining formation).
+- [MODIFIED] Building positions are now calculated directly instead of using interior positions (less complicated calculations).
+- [MODIFIED] Spawn points are now calculated when the trigger is first activated, and stored for re-use for subsequent activations, instead of being re-calculated with each activation.
+- [MODIFIED] AI skill parameters are now more consistent for each weapongrade value. Base values increased, bonus values decreased.
+- [MODIFIED] Pistol ammo loot is now fixed at one magazine.
+- [MODIFIED] Frequency of dynamic trigger manager script increased to every 3 minutes from 5 minutes.
+- [MODIFIED] Increased probabilities of randomizing dynamic trigger location and activation chance.
+- [MODIFIED] Modified preset dynamic trigger settings for all maps.
+- [MODIFIED] Several fixes and DayZ 1.7.7 compatibility updates to dynamic weapon list script.
+- [MODIFIED] Delay between each dynamic trigger spawn now fixed at 5 seconds.
 
-0.9.4 Update:
+1.0.2 Update:
 
-- [FIXED] aiBrain script now waits until the AI unit's current weapon classname is found before proceeding. Fixes rare cases where script proceeds without having the weapon classname defined, resulting in AI running out of ammo.
-- [FIXED] unitSelectPistol script now waits until the AI unit's current weapon classname is found before proceeding. Fixes rare cases where a second sidearm weapon would be generated.
-- [FIXED] banditAIKilled script is now called instead of spawned, to solve cases where killing an AI would cause long delays in actions such as using items or performing actions.
-- [FIXED] Fixed several scripts that were producing undefined variable errors.
+- [FIXED] Fixed a bug where default settings for dynamic trigger settings were overwriting per-map settings.
+- [NEW] AI units with broken legs now have a 10% chance to have their legs healed (chance is evaluated every cycle determined by DZAI_refreshRate).
+- [NEW] Trigger area overlap for dynamic triggers now limited to 10% area overlap (Up to 3 locations are generated per trigger to help ensure that no two triggers overlap).
+- [MODIFIED] Radio now has a 3% rate in low-tier tools table. (Note: If DZAI_findKiller is enabled, having a radio prevents AI group from automatically detecting and investigating player's position if they have killed a member of an AI group)
+- [MODIFIED] Adjusted weapon loadout probabilities for dynamic-spawned AI.
 
-0.9.5 Update:
+1.0.3 Update:
 
-- [FIXED] aiBrain script now waits until the AI unit's magazine classname is defined before continuing.
-- [NEW] Initial release of DZAI Lite 0.0.1, a simplified version of DZAI. More details here: https://github.com/dayzai/DZAI-Lite
-- [NEW] Dead dynamically-spawned AI are now deleted after 300 seconds have elapsed. (if not already deleted by the standard despawn script).
-- [NEW] Added independent settings for dynamic triggers for each map. Each map will have varying numbers of dynamic triggers and ranges for spawning triggers.
-- [NEW] Dynamic trigger spawning script now checks for player presence before placing each trigger. If a player is present within activation range of the trigger, the script will attempt to find another location without a player. (Note: This does not apply when dynamic triggers are being relocated).
-- [REMOVED] Disabled AI fleeing option.
-- [MODIFIED] Maximum AI spawn range from dynamic triggers increased from 100m (+100m max) to 100m (+150m max).
-- [MODIFIED] Dynamic trigger radius increased from 500m to 600m.
-- [MODIFIED] Classname verification script (verifyTables.sqf) now accepts a string of array names to check, instead of having the array names hardcoded.
-- [MODIFIED] fnc_initTrigger is now called instead of spawned.
-- [MODIFIED] Renamed several directories and script files for better clarity. (NB: The DZAI variable definitions file, dayz_ai_variables.sqf has been renamed to dzai_variables.sqf)
-- [MODIFIED] Debug markers for patrol waypoints have been changed from red X's to blue dots.
-- [MODIFIED] Debug markers for custom patrol waypoints have been changed from pink X's to pink dots.
-- [MODIFIED] Debug markers indicating AI unit positions have been changed from blue X's to small red dots.
-- [MODIFIED] Debug markers for dynamic triggers have been changed from yellow X's to filled yellow circles. (Respawned: orange).
-- [MODIFIED] Debug markers for AI patrol waypoints are now also deleted when AI are despawned.
-- [MODIFIED] Added an independent reference marker for spawning dynamic triggers instead of using the standard DayZ 'center' marker. (Note: for unrecognized maps, DZAI will default to the 'center' marker instead).
-
-0.9.6 Update:
-
-- [FIXED] Fixed undefined variable issue in BIN_taskPatrol.sqf.
-- [FIXED] Imported several fixes related to dynamic triggers added in DZAI Lite 0.0.2.
-- [FIXED] Fixed bug where dynamic triggers sometimes failed to spawn AI properly.
-- [MODIFIED] Simplified several global variable names.
-- [MODIFIED] AI spawned from dynamic triggers use a separate GradeChances table (DZAI_gradeChancesDyn). Dynamically-spawned AI no longer use the equipType system.
-
-0.9.7 Update: 
-
-- [MODIFIED] Classname verification option (DZAI_verifyTables) is now enabled by default.
-- [MODIFIED] Number of AI units spawned from dynamic triggers are now dependent on the number of players present in the trigger area. (minimum of 2 to maximum of 6, +/- 1)
-
-0.9.8 Update:
-
-- [FIXED] Removed all remaining variables relating to minimum/additional AI to spawn for dynamic triggers.
-- [REMOVED] Dynamic trigger spawning script no longer avoids player positions.
-- [MODIFIED] Chernarus: adjusted spawning range of dynamic triggers from 5250m to 6000m. Increased number of dynamic triggers from 18 to 20.
-- [MODIFIED] Spawning range of AI from dynamic triggers increased from 125m (+125m max) to 125m (+175m max).
-- [MODIFIED] Increased number of dynamic triggers for all maps (+2).
-- [MODIFIED] Dynamic trigger activation timings changed to 5/10/30 seconds.
-
-0.9.9 Update (Imported from DZAI Lite 0.0.5):
-
-- [NEW] Debug markers: Added color-coding for activation state of dynamic triggers. Yellow (Ready Trigger), Green (Awaiting Despawn), Orange (Activated Trigger).
-- [NEW] Dynamic triggers now relocate to center around a random player in the trigger area when activated. (Prevents player from quickly leaving the trigger area after entering).
-- [MODIFIED] Addition of glanceAt command for AI group leader to help locate player unit.
-- [MODIFIED] Modification of dynamic trigger amounts for each map.
-- [MODIFIED] Time delay in between each dynamic trigger spawn reduced from 60 seconds to 30 seconds.
-
-0.9.10 Update:
-
-- Imported several updates and fixes to dynamic triggers from DZAI Lite 0.0.6
-- [NEW] Added Dynamic Trigger Manager script to periodically relocate dynamic triggers.
-- [FIXED] AI respawn script now checks if group exists before respawning the unit (fixes undefined variable errors).
-
+- [FIXED] Fixed error in dynamic trigger area overlap detection.
+- [NEW] Injured AI units now slowly heal themselves in 5% increments. (Replaces chance to heal broken legs).
+- [MODIFIED] Reduced rate of Radio in low-tier tools table to 0.5% from 3%.
+- [MODIFIED] Dynamic trigger activation timings changed to 5/7/20 seconds from 5/10/30 seconds.
