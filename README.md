@@ -1,4 +1,4 @@
-DZAI 1.1.0 - AI Addon for DayZ
+DZAI 1.1.1 - AI Addon for DayZ
 ============
 
 
@@ -83,4 +83,7 @@ Latest Updates:
 - [MODIFIED] Classname verification script no longer checks if nonexistant classnames are banned.
 - [MODIFIED] AI corpse deletion is now handled by the respawn handler script.
 
+1.1.1 Update:
+
+- [FIXED] AI group is only marked as in "Pursuit" state if distance check passes. Waypoint patrol mode is now only restored if exiting Pursuit mode.
 Note: Information about past updates are archived in changelog.txt
