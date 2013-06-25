@@ -69,8 +69,8 @@ Latest Updates:
 - [NEW] AI respawns are now processed in a queue by a single script instead of one script per individual unit. AI now respawn after the entire group is killed. Timer begins when the last surviving member dies.
 - [NEW] AI spawned from dynamic triggers now seek out the player's position at the time of trigger activation, then begin patrolling the area.
 - [NEW] Radio now issues an on-screen text warning to the player if they are being pursued by AI bandits. (Dynamically-spawned AI will pursue a randomly selected player. AI will pursue a player who killed a team member if DZAI_findKiller is set 'true' in dzai_variables.sqf)
-- [NEW] AI now actively pursue player responsible for killing a group member for up to 120 seconds if DZAI_findKiller is enabled. Pursuit distance is randomized between 250-450m of killed AI unit's location.
-- [REMOVED] Radio no longer prevents AI from pursuing player if the player killed a team member. (Applies only if DZAI_findKiller is set 'true' in dzai_variables.sqf).
+- [NEW] AI groups now actively pursue player responsible for killing a group member for up to 120 seconds if DZAI_findKiller is enabled. AI death will be detected if player is within 250-450m of the killed AI. Pursuit distance is randomized between 500-700m of killed AI unit's location.
+- [REMOVED] Radio no longer prevents AI from pursuing player if the player killed a team member.
 - [MODIFIED] AI group size may now vary with each respawn. Previously, the group size was fixed at the time of the first trigger activation.
 - [MODIFIED] Large AI skill parameter increases for AI. Highest-skilled AI may now potentially reach maximum skill levels for all skills except Accuracy and AimingShake.
 - [MODIFIED] AI counts are now updated when an AI group is spawned, killed entirely, or despawned.
@@ -84,5 +84,3 @@ Latest Updates:
 - [MODIFIED] AI corpse deletion is now handled by the respawn handler script.
 
 Note: Information about past updates are archived in changelog.txt
-
-
