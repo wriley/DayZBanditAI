@@ -85,5 +85,8 @@ Latest Updates:
 
 1.1.1 Update:
 
-- [FIXED] AI group is only marked as in "Pursuit" state if distance check passes. Waypoint patrol mode is now only restored if exiting Pursuit mode.
+- [FIXED] AI group is only marked as in "Pursuit" state if distance check passes. 
+- [FIXED] Waypoint patrol mode is now only restored if exiting Pursuit mode.
+
+
 Note: Information about past updates are archived in changelog.txt
