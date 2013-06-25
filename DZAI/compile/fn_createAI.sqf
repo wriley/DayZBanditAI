@@ -1,5 +1,5 @@
 /*
-	fnc_createAI version 0.07
+	fnc_createAI
 	
 	Description: Spawns an independent AI unit. Called internally by spawnBandits_random, respawnBandits_random, spawnBandits_bldgs, respawnBandits_bldgs, spawnBandits_markers, respawnBandits_markers.
 	
@@ -28,7 +28,6 @@ _unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn th
 
 _unit setVariable["unitGroup",_unitGroup,false];									// Set the unit's group. The unit will respawn into the same group.
 _unit setVariable["trigger",_trigger,false];										// Record the trigger from which the AI unit was spawned
-_unit setVariable["gethit",[0,0,0,0]];												// Set unit's initial health statistics. (Structural, Body, Hands, Legs)
 
 if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then {
 	_unit addEventHandler ["Fired", {_this spawn ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.
@@ -42,8 +41,8 @@ _unit addEventHandler ["Killed",{(_this select 0) setDamage 1;}];					// "People
 _unit setVehicleInit "[this] spawn fnc_aiBrain;";			// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies
 _weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
 [_unit, _weapongrade] call fnc_unitSelectWeapon;									// Add rifle
-[_unit, _weapongrade] call fnc_unitInventory;										// Add backpack and chance of binoculars
-[_unit, _weapongrade] call fnc_setSkills;											// Set AI skill
+0 = [_unit, _weapongrade] spawn fnc_unitInventory;									// Add backpack and chance of binoculars
+0 = [_unit, _weapongrade] spawn fnc_setSkills;										// Set AI skill
 
 _unit enableAI "TARGET";
 _unit enableAI "AUTOTARGET";

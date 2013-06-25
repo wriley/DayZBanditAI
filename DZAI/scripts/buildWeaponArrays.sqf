@@ -41,10 +41,12 @@ if ((isClass (configFile >> _cfgBuildingLoot >> "HeliCrashWEST")) && (isClass (c
 };
 
 //Fix for CfgBuildingLoot structure change in DayZ 1.7.7
+_lootList = "";
 _lootListCheck = isArray (configFile >> _cfgBuildingLoot >> "Default" >> "lootType");
 //diag_log format ["DEBUG :: _lootListCheck: %1",_lootListCheck];
-_lootList = "lootType";
-if !(_lootListCheck) then {
+if (_lootListCheck) then {
+	_lootList = "lootType";
+} else {
 	_lootList = "itemType";
 };
 //diag_log format ["DEBUG :: _lootList: %1",_lootList];

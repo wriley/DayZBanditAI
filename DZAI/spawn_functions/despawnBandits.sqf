@@ -1,13 +1,14 @@
 /*
 	despawnBandits
 	
-	Usage: [thisTrigger] call despawnBandits;
-	
 	Description: Deletes all AI units spawned by a trigger once all players leave the trigger area. Basic script concept adapted from Sarge AI.
 	
-	Last updated: 4:36 PM 6/8/2013
+	Usage: Called by a static trigger when all players have left the trigger area.
+	
+	Last updated: 12:30 AM 6/25/2013
+	
 */
-private ["_trigger","_grpArray","_isCleaning","_grpCount"];
+private ["_trigger","_grpArray","_isCleaning","_grpCount","_totalGroupSize"];
 if (!isServer) exitWith {};							//Execute script only on server.
 
 _trigger = _this select 0;							//Get the trigger object
@@ -28,6 +29,7 @@ if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been re
 	_trigger setVariable ["isCleaning",false,false];	//Allow next despawn request.
 };			
 
+_totalGroupSize = 0;
 {
 	if (DZAI_debugMarkers > 0) then {
 		private["_markerName","_markerCount"];
@@ -38,26 +40,26 @@ if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been re
 			//diag_log format ["DEBUG :: Deleting marker: %1_%2. (Actual: %3)",_x,_i,_markerName];
 			deleteMarker _markerName;
 		};
-		sleep 0.2;
 	};
-	{deleteVehicle _x} forEach (units _x);			//Delete all units of each group.
+	//Delete dead units
+	{deleteVehicle _x} forEach (_x getVariable ["deadUnits",[]]);
+	_x setVariable ["deadUnits",[]];
+	//Delete live units
+	{deleteVehicle _x} forEach (units _x);
+	_totalGroupSize = _totalGroupSize + (_x getVariable ["groupSize",0]);
 	sleep 0.5;
 	deleteGroup _x;									//Delete the group after its units are deleted.
 } forEach _grpArray;
 
 //Update active AI count
-if (isNil {_trigger getVariable "spawnCount"}) then {_trigger setVariable ["spawnCount",0]}; 
-_spawnCount = _trigger getVariable "spawnCount";
-if (_spawnCount == 0) exitWith {diag_log "ERROR :: Spawncount is zero.";};
-DZAI_numAIUnits = DZAI_numAIUnits - _spawnCount;
+DZAI_numAIUnits = DZAI_numAIUnits - _totalGroupSize;
 
 //Cleanup variables attached to trigger
 _trigger setVariable ["GroupArray",[],false];
 _trigger setVariable ["isCleaning",nil,false];
 _trigger setVariable ["patrolDist",nil,false];
 _trigger setVariable ["gradeChances",nil,false];
-_trigger setVariable ["spawnCount",nil,false];
 DZAI_actTrigs = (DZAI_actTrigs - 1);
-if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Despawned %1 AI in static trigger area. Resetting trigger's group array.",_spawnCount];};
+if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Despawned %1 AI in static trigger area. Resetting trigger's group array.",_totalGroupSize];};
 
 true

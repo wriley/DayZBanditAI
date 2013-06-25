@@ -21,7 +21,7 @@ if (DZAI_verifyTables) then {
 
 _patrolRadius = 300;
 
-_trigOnAct = format["[%1,thisTrigger,thisList] call fnc_spawnBandits_random_NR",_patrolRadius];
+_trigOnAct = format["[%1,thisTrigger,thisList] call fnc_spawnBandits_dynamic",_patrolRadius];
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawning %1 dynamic trigger spawns in 60 seconds (spawnTriggers_random).",_numTriggers];};
 
@@ -41,7 +41,7 @@ for "_i" from 1 to _numTriggers do {
 	_trigger setTriggerArea [DZAI_dynTriggerRadius, DZAI_dynTriggerRadius, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
 	_trigger setTriggerTimeout [5, 7, 20, true];
-	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigOnAct, "[thisTrigger] spawn fnc_despawnBandits_NR;"];
+	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigOnAct, "[thisTrigger] spawn fnc_despawnBandits_dynamic;"];
 	if (DZAI_debugMarkers == 1) then {
 		private ["_markername","_marker"];
 		_markername = format["trigger_%1",_trigger];

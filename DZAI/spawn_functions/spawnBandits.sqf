@@ -3,15 +3,15 @@
 	
 	Usage: [_minAI, _addAI, _patrolDist, _trigger, _numGroups (optional)] call spawnBandits;
 	
-	Description: Called through (mapname)_config.sqf. Spawns a specified number groups of AI units some distance from a trigger used as a reference location.
+	Description: Called through (mapname)_config.sqf when a static trigger is activated by a player.
 	
 	Note: To specify custom patrol waypoints, replace _patrolDist with an array containing:
 		- An array of markers specifying each waypoint
-		- A number between 0-1 specifying probability of selecting a random marker as the next waypoint.
-		- A number between 0-1 specifiying probability of reading the marker array in reverse order.
+		- A number between 0-1 specifying probability of selecting a random marker as the next waypoint. (Default: 0.00)
+		- A number between 0-1 specifiying probability of reading the marker array in reverse order. (Default: 0.50)
 		- Example: [['marker1','marker2','marker3'],0.50,0.50]
 	
-	Last updated: 6:16 PM 6/17/2013
+	Last updated: 12:27 AM 6/25/2013
 */
 
 private ["_minAI","_addAI","_patrolDist","_trigger","_equipType","_numGroups","_grpArray","_triggerPos","_gradeChances","_totalAI","_spawnPositions","_spawnCount","_markerArray","_spawnType","_locationArray","_startTime"];
@@ -38,7 +38,6 @@ if (_totalAI < 1) exitWith {[_trigger] execVM '\z\addons\dayz_server\DZAI\script
 
 _triggerPos = getPosATL _trigger;
 _gradeChances = [_equipType] call fnc_getGradeChances;
-_spawnCount = (_totalAI * _numGroups);
 
 //If trigger already has defined spawn points, then reuse them instead of recalculating new ones.
 _spawnPositions = [];
@@ -90,6 +89,10 @@ for "_j" from 1 to _numGroups do {
 	_unitGroup selectLeader ((units _unitGroup) select 0);
 	_unitGroup allowFleeing 0;
 	
+	//Update AI count
+	_unitGroup setVariable ["groupSize",_totalAI];
+	DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
+	
 	if ((typeName _patroldist) == "SCALAR") then {
 		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 	} else {
@@ -100,6 +103,6 @@ for "_j" from 1 to _numGroups do {
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned %1 new AI groups of %2 units each in %3 seconds (spawnBandits).",_numGroups,_totalAI,(diag_tickTime - _startTime)];};
 
-0 = [_trigger,_grpArray,_spawnCount,_patrolDist,_gradeChances,_spawnPositions,_spawnType] spawn fnc_initTrigger;
+0 = [_trigger,_grpArray,_patrolDist,_gradeChances,_spawnPositions,_spawnType,[_minAI,_addAI]] spawn fnc_initTrigger;
 
 true
