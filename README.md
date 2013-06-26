@@ -1,4 +1,4 @@
-DZAI 1.1.1 - AI Addon for DayZ
+DZAI 1.1.2 - AI Addon for DayZ
 ============
 
 
@@ -88,5 +88,13 @@ Latest Updates:
 - [FIXED] AI group is only marked as in "Pursuit" state if distance check passes. 
 - [FIXED] Waypoint patrol mode is now only restored if exiting Pursuit mode.
 
+1.1.2 Update:
+
+- [NEW] Dynamic AI now spawn in a "Pursuit" state where they follow the randomly-selected player for a distance of 100m from (calculated from the player's position at time of trigger activation). Player's position is updated every 30 seconds.
+- [NEW] Players with Radios now recieve on-screen text warnings if they are being pursued by dynamic AI.
+- [MODIFIED] findKiller feature: Chase distance decreased to 400-600m from 500-700m. Time limit is unchanged.
+- [MODIFIED] findKiller feature: AI will not pursue players in vehicles, and will exit pursuit state if player enters a vehicle (since AI do not use vehicles).
+- [MODIFIED] findKiller feature: Player's position is now updated every 15 seconds.
+- [MODIFIED] Players with radios are now also notified if AI have broken off their pursuit.
 
 Note: Information about past updates are archived in changelog.txt

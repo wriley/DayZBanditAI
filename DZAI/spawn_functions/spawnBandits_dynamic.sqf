@@ -122,5 +122,5 @@ _unitGroupArray set [count _unitGroupArray,_unitGroup];
 //diag_log format ["DEBUG :: _trigger %1, groupArray %2, _total AI %3.",_trigger,_unitGroupArray,_totalAI];
 0 = [_trigger,_unitGroupArray] spawn fnc_initTrigger;
 
-if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned %1 new AI groups of %2 units each in %3 seconds (spawnBandits_dynamic).",_numGroups,_totalAI,(diag_tickTime - _startTime)];};
+if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned an AI groups of %1 units each in %2 seconds (spawnBandits_dynamic).",_totalAI,(diag_tickTime - _startTime)];};
 true
