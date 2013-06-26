@@ -24,6 +24,7 @@ _waypoint setWaypointCompletionRadius 40;
 _waypoint setWaypointTimeout [0,5,10];
 //_waypoint setWaypointStatements ["true",_statement];
 
+_unitGroup reveal [_targetPlayer,4];
 (units _unitGroup) glanceAt _targetPlayer;
 if (_targetPlayer hasWeapon "ItemRadio") then {
 	[nil,_targetPlayer,"loc",rTITLETEXT,"[RADIO] You are being pursued by a group of bandits.","PLAIN DOWN",0] call RE;
