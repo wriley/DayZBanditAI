@@ -90,6 +90,8 @@ Latest Updates:
 
 1.1.2 Update:
 
+- [FIXED] AI will only enter Pursuit state if player is not in a vehicle, and will exit Pursuit state if player enters a vehicle.
+- [FIXED] Dynamic AI will not enter Pursuit state upon spawning if target player is in a vehicle.
 - [NEW] Dynamic AI now spawn in a "Pursuit" state where they follow the randomly-selected player for a distance of 100m from (calculated from the player's position at time of trigger activation). Player's position is updated every 30 seconds.
 - [NEW] Players with Radios now recieve on-screen text warnings if they are being pursued by dynamic AI.
 - [MODIFIED] findKiller feature: Chase distance decreased to 400-600m from 500-700m. Time limit is unchanged.

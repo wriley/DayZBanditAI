@@ -39,9 +39,16 @@ _findPlayer = true;
 if !(surfaceIsWater [_playerPos select 0,_playerPos select 1]) then {
 	_trigger setPosATL _playerPos;									
 	_spawnPos = _playerPos;
+	//Don't hunt player if they are in a vehicle
+	if !(_targetPlayer isKindOf "Man") then {
+		_findPlayer = false;
+		//diag_log format ["DEBUG :: Target player %1 is in a vehicle.",_targetPlayer];
+	};
 } else {
+	//Don't hunt player if they are over water
 	_spawnPos = getPosATL _trigger;
 	_findPlayer = false;
+	//diag_log "DEBUG :: Target player is over water.";
 };
 _minDist = 125;
 _maxDist = (_minDist + random(175));
@@ -110,9 +117,11 @@ DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
 if (_findPlayer) then {
 	//Travel to player's position, then begin patrol.
 	0 = [_unitGroup,_spawnPos,_patrolDist,_targetPlayer] spawn DZAI_seekPlayer;
+	//diag_log "DEBUG :: Seeking target player.";
 } else {
 	//Begin patrol immediately.
 	0 = [_unitGroup,_spawnPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+	//diag_log "DEBUG :: Beginning patrol.";
 };
 {
 	_unitGroup reveal [_x,4];

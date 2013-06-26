@@ -24,7 +24,7 @@ _waypoint setWaypointCompletionRadius 40;
 _waypoint setWaypointTimeout [0,5,10];
 //_waypoint setWaypointStatements ["true",_statement];
 
-(units _unitGroup) glanceAt (vehicle _targetPlayer);
+(units _unitGroup) glanceAt _targetPlayer;
 if (_targetPlayer hasWeapon "ItemRadio") then {
 	[nil,_targetPlayer,"loc",rTITLETEXT,"[RADIO] You are being pursued by a group of bandits.","PLAIN DOWN",0] call RE;
 };
@@ -32,7 +32,7 @@ if (_targetPlayer hasWeapon "ItemRadio") then {
 sleep 30;
 
 //Begin hunting phase
-while {(alive _targetPlayer) && !(isNull _targetPlayer) && ((vehicle _targetPlayer) == _targetPlayer) && ((_targetPlayer distance _spawnPos) < 100) && !(_unitGroup getVariable ["groupKIA",false])} do {
+while {(alive _targetPlayer) && !(isNull _targetPlayer) && (_targetPlayer isKindOf "Man") && ((_targetPlayer distance _spawnPos) < 100) && !(_unitGroup getVariable ["groupKIA",false])} do {
 	if !(_unitGroup getVariable ["inPursuit",false]) then {
 		_waypoint setWPPos getPosATL _targetPlayer;
 		_unitGroup setCurrentWaypoint _waypoint;

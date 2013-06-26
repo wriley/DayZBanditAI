@@ -10,7 +10,7 @@ private ["_killerPos","_unitGroup","_victim","_killer","_inPursuit","_groupKIA",
 sleep 1;
 
 _victim = _this select 0;
-_killer = vehicle (_this select 1);
+_killer = _this select 1;
 _unitGroup = _this select 2;
 
 _groupKIA = _unitGroup getVariable ["groupKIA",false];
@@ -22,7 +22,7 @@ if (_inPursuit) exitWith {diag_log "DEBUG :: Group is already in pursuit of a ta
 //Calculate detection range.
 _detectRange = (350 + (random 100) - (random 100));
 
-if (((_victim distance _killer) < _detectRange) && ((vehicle _killer) == _killer)) then {
+if (((_victim distance _killer) < _detectRange) && (_killer isKindOf "Man")) then {
 	diag_log format ["Group %1 has entered pursuit state. Target: %2.",_unitGroup,_killer];
 	_unitGroup setVariable ["inPursuit",true];
 	_unitGroup reveal [_killer,4];
@@ -35,9 +35,9 @@ if (((_victim distance _killer) < _detectRange) && ((vehicle _killer) == _killer
 	
 	_endTime = (time + 120);
 	//Begin pursuit state.
-	while {(time < _endTime) && (alive _killer) && (!_groupKIA) && !(isNull _killer) && !(isNull _unitGroup) && ((_victim distance _killer) < _chaseDist) && ((vehicle _killer) == _killer)} do {
+	while {(time < _endTime) && (alive _killer) && (!_groupKIA) && !(isNull _killer) && !(isNull _unitGroup) && ((_victim distance _killer) < _chaseDist) && (_killer isKindOf "Man")} do {
 		_killerPos = getPos _killer;
-		(units _unitGroup) glanceAt (vehicle _targetPlayer);
+		(units _unitGroup) glanceAt _killer;
 		{if (alive _x) then {_x moveTo _killerPos; _x doMove _killerPos; diag_log "AI unit in pursuit.";};} forEach (units _unitGroup);
 		diag_log format ["DEBUG :: AI group %3 in pursuit state. Time: %1/%2.",time,_endTime,_unitGroup];
 		if (_killer hasWeapon "ItemRadio") then {

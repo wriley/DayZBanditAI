@@ -49,9 +49,9 @@ _totalGroupSize = 0;
 {
 	if (DZAI_debugMarkers > 0) then {
 		private["_markerName","_markerCount"];
-		_markerCount = (count (waypoints _x)) - 3;
+		//_markerCount = (count (waypoints _x)) - 3;
 		//diag_log format ["DEBUG :: Estimating %1 waypoints for group %2.",_markerCount,_x];
-		for "_i" from 1 to (count (waypoints _x) - 3) do {
+		for "_i" from 1 to (count (waypoints _x) - 2) do {
 			_markerName = format ["%1_%2",_x,_i];
 			//diag_log format ["DEBUG :: Deleting marker: %1_%2. (Actual: %3)",_x,_i,_markerName];
 			deleteMarker _markerName;
