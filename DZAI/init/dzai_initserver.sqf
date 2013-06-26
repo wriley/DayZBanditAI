@@ -3,7 +3,7 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 2:00 AM 6/25/2013
+	Last updated: 12:55 PM 6/26/2013
 */
 private ["_startTime"];
 
@@ -42,8 +42,9 @@ WEST setFriend [resistance, 0];
 	fnc_banditAIKilled = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIKilled.sqf";
 	fnc_banditAIRespawn = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIRespawn.sqf";
 	fnc_selectRandomWeighted = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_selectRandomWeighted.sqf";
-	fnc_createAI = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createAI.sqf";
-	fnc_createAI_dynamic = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createAI_dynamic.sqf";
+	fnc_createGroups = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createGroups.sqf";
+	fnc_createGroups_dyn = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createGroups_dyn.sqf";
+	fnc_createUnit = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createUnit.sqf";
 	fnc_damageAI = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_damageHandlerAI.sqf";
 	fnc_getGradeChances =			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_getGradeChances.sqf";
 	fnc_initTrigger = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_initTrigger.sqf";
@@ -57,24 +58,22 @@ WEST setFriend [resistance, 0];
 	fnc_updateDead = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_updateDead.sqf";
 	if (DZAI_findKiller) then {
 		fnc_findKiller = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_findKiller.sqf";};
-	DZAI_seekPlayer =				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\DZAI_seekPlayer.sqf";
+	fnc_seekPlayer =				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_seekPlayer.sqf";
 		
 	//Compile spawn scripts
 	fnc_spawnBandits = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits.sqf";
 	fnc_respawnBandits = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\respawnBandits.sqf";
 	fnc_respawnHandler = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\respawnHandler.sqf";
-	fnc_spawnBandits_bldgs = 		fnc_spawnBandits;
-	fnc_spawnBandits_markers = 		fnc_spawnBandits;
 	fnc_despawnBandits = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\despawnBandits.sqf";
-	fnc_spawnBandits_dynamic = 	compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits_dynamic.sqf";
-	fnc_despawnBandits_dynamic = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\despawnBandits_dynamic.sqf";
+	fnc_spawnBandits_dynamic = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits_dynamic.sqf";
+	fnc_despawnBandits_dynamic = 	compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\despawnBandits_dynamic.sqf";
 	
 	//Wrapper function for compatibility with old spawnBandits format.
 	fnc_spawnBandits_bldgs = 	{
 		private ["_equipType","_numGroups"];
 		_equipType = if ((count _this) > 4) then {_this select 4} else {1};
 		_numGroups = if ((count _this) > 5) then {_this select 5} else {1};
-		0 = [_this select 0,_this select 1,_this select 2,_this select 3,[],_equipType,_numGroups] call fnc_spawnBandits;
+		0 = [_this select 0,_this select 1,_this select 2,_this select 3,[],_equipType,_numGroups] spawn fnc_spawnBandits;
 		true
 	};
 	
@@ -83,7 +82,7 @@ WEST setFriend [resistance, 0];
 		private ["_equipType","_numGroups"];
 		_equipType = if ((count _this) > 5) then {_this select 5} else {1};
 		_numGroups = if ((count _this) > 6) then {_this select 6} else {1};
-		0 = [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_equipType,_numGroups] call fnc_spawnBandits;
+		0 = [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_equipType,_numGroups] spawn fnc_spawnBandits;
 		true
 	};
 

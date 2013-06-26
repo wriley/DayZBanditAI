@@ -1,7 +1,7 @@
 /*
 	fnc_updateDead
 	
-	Description:
+	Description: Begins force despawn for dynamic AI when the entire group has been killed.
 	
 	Usage:
 	
@@ -14,18 +14,18 @@ _victim = _this select 0;
 _trigger = _victim getVariable "trigger";
 _unitGroup = (group _victim);
 
+//Add unit to group's list of dead units.
 _deadUnits = _unitGroup getVariable ["deadUnits",[]];
 _deadUnits set [(count _deadUnits),_victim];
 _unitGroup setVariable ["deadUnits",_deadUnits];
 
 _unitsAlive = {alive _x} count (units _unitGroup);
 
-//diag_log format ["Units alive in group %1: %2.",_unitGroup,_unitsAlive];
-if (_unitsAlive == 0) then {	//Continue only when all units of the group have died.
+//If all units in the group have died, create dummy AI unit to preserve group, then begin force despawn process.
+if (_unitsAlive == 0) then {
 	private["_groupSize"];
 	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: All units in group %1 are dead. Spawning temporary dummy unit for group. (fn_updateDead).",_unitGroup];};
 
-	//Create temporary dummy unit, will be deleted during despawn process.
 	_dummy = _unitGroup createUnit ["Survivor2_DZ",[0,0,0],[],0,"FORM"];
 	[_dummy] joinSilent _unitGroup;
 	_dummy setVehicleInit "this hideObject true;this allowDamage false;"; processInitCommands;
@@ -37,7 +37,6 @@ if (_unitsAlive == 0) then {	//Continue only when all units of the group have di
 	
 	_unitGroup setVariable ["groupKIA",true];
 
-	//Update AI count
 	_groupSize = _unitGroup getVariable "groupSize";
 	DZAI_numAIUnits = DZAI_numAIUnits - _groupSize;
 	_unitGroup setVariable ["groupSize",0];
@@ -47,4 +46,4 @@ if (_unitsAlive == 0) then {	//Continue only when all units of the group have di
 	[_trigger] spawn fnc_despawnBandits_dynamic;	//force despawning even if players are present in trigger area.
 };
 
-if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI killed, deleting body in %1 seconds. (fn_updateDead).",DZAI_dynRemoveDeadWait];};
+if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI group %1 killed, deleting bodies in %2 seconds. (fn_updateDead).",_unitGroup,DZAI_dynDespawnWait];};

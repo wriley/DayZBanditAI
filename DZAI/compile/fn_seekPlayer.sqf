@@ -1,5 +1,5 @@
 /*
-	DZAI_seekPlayer
+	fnc_seekPlayer
 	
 	Description: Used for dynamically spawned AI. Creates a MOVE waypoint directing AI to a random player's position, then uses BIN_taskPatrol to create a circular patrol path around player's position.
 	
@@ -45,7 +45,7 @@ while {(alive _targetPlayer) && !(isNull _targetPlayer) && (_targetPlayer isKind
 	sleep 30;
 };
 
-diag_log format ["DEBUG :: Group %1 has exited hunting phase. Moving to patrol phase.",_unitGroup];
+if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Group %1 has exited hunting phase. Moving to patrol phase. (fn_seekPlayer)",_unitGroup];};
 
 //Begin patrol phase
 deleteWaypoint [_unitGroup,0];

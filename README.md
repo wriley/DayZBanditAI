@@ -1,4 +1,4 @@
-DZAI 1.1.2 - AI Addon for DayZ
+DZAI 1.1.3 - AI Addon for DayZ
 ============
 
 
@@ -98,5 +98,13 @@ Latest Updates:
 - [MODIFIED] findKiller feature: AI will not pursue players in vehicles, and will exit pursuit state if player enters a vehicle (since AI do not use vehicles).
 - [MODIFIED] findKiller feature: Player's position is now updated every 15 seconds.
 - [MODIFIED] Players with radios are now also notified if AI have broken off their pursuit.
+
+1.1.3 Update:
+
+- [UPDATED] fnc_spawnBandits and fnc_spawnBandits_dynamic are now "spawned" instead of "called", and handles preparatory calculations before spawning AI units. IMPORTANT: If using custom static triggers, please make this update. (call fnc_spawnBandits >> spawn fnc_spawnBandits)
+- [UPDATED] AI group creation is now handled by fnc_createGroups (static triggers) and fnc_createGroups_dyn (dynamic triggers). Individual AI units are created by fn_createUnit. This script is shared by fnc_createGroups and fnc_createGroups.
+- [MODIFIED] AI units revert to an "AWARE" state from "COMBAT" after pursuit state ends if DZAI_findKiller is enabled. If not enabled, AI will remain in "COMBAT" mode until the entire group is killed (this is intended).
+- [MODIFIED] Updated preset default classname tables to DayZ 1.7.7.1 version.
+- [MODIFIED] Dynamic triggers no longer activate if players are in an Air vehicle (and none on ground). Note: Trigger will activate if players exit the air vehicle, but will not deactivate if players re-enter. AI stop actively tracking targeted player's position but will continue to the last known position.
 
 Note: Information about past updates are archived in changelog.txt

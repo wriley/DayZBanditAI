@@ -41,7 +41,7 @@ if (_spawnType == 2) then {
 //Respawn the group
 for "_i" from 1 to _totalAI do {
 	private ["_unit"];
-	_unit = [_unitGroup,_pos,_trigger,_gradeChances] call fnc_createAI;
+	_unit = [_unitGroup,_pos,_trigger,_gradeChances] call fnc_createUnit;
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits).",_i,_totalAI];};
 };
 

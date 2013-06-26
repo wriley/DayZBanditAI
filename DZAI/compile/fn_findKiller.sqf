@@ -3,7 +3,7 @@
 	
 	Description: If an AI unit is killed, surviving members of their group will aggressively pursue the killer for a set amount of time. After this amount of time has passed, the group will return to their patrol state.
 	
-	Last updated: 1:40 AM 6/26/2013
+	Last updated: 3:03 PM 6/26/2013
 */
 private ["_killerPos","_unitGroup","_victim","_killer","_inPursuit","_groupKIA","_trigger","_detectRange","_chaseDist"];
 
@@ -14,16 +14,16 @@ _killer = _this select 1;
 _unitGroup = _this select 2;
 
 _groupKIA = _unitGroup getVariable ["groupKIA",false];
-if (_groupKIA) exitWith {diag_log "DEBUG :: All units in group are dead.";};
+if (_groupKIA) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: All units in group are dead. (fn_findKiller)";};};
 
 _inPursuit = _unitGroup getVariable ["inPursuit",false];
-if (_inPursuit) exitWith {diag_log "DEBUG :: Group is already in pursuit of a target.";};
+if (_inPursuit) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Group is already in pursuit of a target. (fn_findKiller)";};};
 
 //Calculate detection range.
 _detectRange = (350 + (random 100) - (random 100));
 
 if (((_victim distance _killer) < _detectRange) && (_killer isKindOf "Man")) then {
-	diag_log format ["Group %1 has entered pursuit state. Target: %2.",_unitGroup,_killer];
+	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Group %1 has entered pursuit state. Target: %2. (fn_findKiller)",_unitGroup,_killer];};
 	_unitGroup setVariable ["inPursuit",true];
 	_unitGroup reveal [_killer,4];
 	
@@ -38,8 +38,8 @@ if (((_victim distance _killer) < _detectRange) && (_killer isKindOf "Man")) the
 	while {(time < _endTime) && (alive _killer) && (!_groupKIA) && !(isNull _killer) && !(isNull _unitGroup) && ((_victim distance _killer) < _chaseDist) && (_killer isKindOf "Man")} do {
 		_killerPos = getPos _killer;
 		(units _unitGroup) glanceAt _killer;
-		{if (alive _x) then {_x moveTo _killerPos; _x doMove _killerPos; diag_log "AI unit in pursuit.";};} forEach (units _unitGroup);
-		diag_log format ["DEBUG :: AI group %3 in pursuit state. Time: %1/%2.",time,_endTime,_unitGroup];
+		{if (alive _x) then {_x moveTo _killerPos; _x doMove _killerPos; /*diag_log "AI unit in pursuit.";*/};} forEach (units _unitGroup);
+		if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: AI group %3 in pursuit state. Time: %1/%2.",time,_endTime,_unitGroup];};
 		if (_killer hasWeapon "ItemRadio") then {
 			[nil,_killer,"loc",rTITLETEXT,"[RADIO] You are being pursued by a group of bandits.","PLAIN DOWN",0] call RE;
 		};
@@ -51,10 +51,11 @@ if (((_victim distance _killer) < _detectRange) && (_killer isKindOf "Man")) the
 	_unitGroup setVariable ["inPursuit",false];
 	_unitGroup lockWP false;
 	_unitGroup setCurrentWaypoint ((waypoints _unitGroup) call BIS_fnc_selectRandom);
-	diag_log format ["DEBUG :: Pursuit state ended for group %1. Returning to patrol state.",_unitGroup];
+	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Pursuit state ended for group %1. Returning to patrol state. (fn_findKiller)",_unitGroup];};
 	
 	sleep 5;
 	if (_killer hasWeapon "ItemRadio") then {
 		[nil,_killer,"loc",rTITLETEXT,"[RADIO] The bandits have given up their pursuit.","PLAIN DOWN",0] call RE;
 	};
+	_unitGroup setBehaviour "AWARE";
 };

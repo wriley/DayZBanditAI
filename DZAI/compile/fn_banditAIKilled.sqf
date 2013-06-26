@@ -22,7 +22,7 @@ _victim setVariable["deathType","bled",true];
 if (!isPlayer _killer) exitWith {};
 
 _unitGroup = group _victim;
-_unitGroup setBehaviour "COMBAT"; 
+_unitGroup setBehaviour "COMBAT";
 
 _trigger = _victim getVariable "trigger";
 _gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances2];

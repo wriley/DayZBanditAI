@@ -1,12 +1,16 @@
 /*
 	spawnTriggers_random
 
-	Usage: 
-	Description: 
+	Usage:
 	
+	Description: Spawns a specified number of dynamic triggers using DZAI_centerMarker as a reference marker. Three attempts are made per trigger to reduce trigger area overlap. 
+				 These triggers have their positions randomized at a set interval by the dynamic trigger manager.
+
 	Last updated: 8:45 PM 6/18/2013
 */
-private ["_numTriggers","_trigOnAct","_patrolRadius"];
+#include "\z\addons\dayz_server\DZAI\init\dyn_trigger_defs.hpp"
+
+private ["_numTriggers"];
 if (!isServer) exitWith {};
 
 _numTriggers = _this select 0;							//Number of triggers to create
@@ -18,10 +22,6 @@ if (DZAI_verifyTables) then {
 } else {
 	waitUntil {sleep 0.1; !isNil "DZAI_weaponsInitialized"};	//Wait for DZAI to finish building weapon classname arrays.
 };
-
-_patrolRadius = 300;
-
-_trigOnAct = format["[%1,thisTrigger,thisList] call fnc_spawnBandits_dynamic",_patrolRadius];
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawning %1 dynamic trigger spawns in 60 seconds (spawnTriggers_random).",_numTriggers];};
 
@@ -41,7 +41,7 @@ for "_i" from 1 to _numTriggers do {
 	_trigger setTriggerArea [DZAI_dynTriggerRadius, DZAI_dynTriggerRadius, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
 	_trigger setTriggerTimeout [5, 7, 20, true];
-	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigOnAct, "[thisTrigger] spawn fnc_despawnBandits_dynamic;"];
+	_trigger setTriggerStatements [DYNTRIG_STATEMENTS_INACTIVE];
 	if (DZAI_debugMarkers == 1) then {
 		private ["_markername","_marker"];
 		_markername = format["trigger_%1",_trigger];

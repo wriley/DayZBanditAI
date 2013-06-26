@@ -1,7 +1,7 @@
 /*
 	spawnBandits
 	
-	Usage: [_minAI, _addAI, _patrolDist, _trigger, _numGroups (optional)] call spawnBandits;
+	Usage: [_minAI, _addAI, _patrolDist, _trigger, _numGroups (optional)] spawn spawnBandits;
 	
 	Description: Called through (mapname)_config.sqf when a static trigger is activated by a player.
 	
@@ -44,6 +44,7 @@ _spawnPositions = [];
 _locationArray = _trigger getVariable ["locationArray",[]];	
 _spawnType = 2;
 if ((count _locationArray) == 0) then {
+	//If no spawn points are found (first trigger activation)
 	if ((count _markerArray) == 0) then {
 		private["_nearbldgs"];
 		_nearbldgs = nearestObjects [_triggerPos,["Building"],300];
@@ -60,49 +61,14 @@ if ((count _locationArray) == 0) then {
 		_spawnType = 3;
 	};
 } else {
+	//If spawn points are already defined (subsequent trigger activations)
 	_spawnPositions = _locationArray;
 	_spawnType = _trigger getVariable ["spawnType",2];
 };
 
-//Spawn units
-for "_j" from 1 to _numGroups do {
-	private ["_unitGroup","_p","_pos"];
-	_unitGroup = grpNull;
-	if ((random 1) < 0.5) then {				//50% chance to choose East or Resistance as AI side to avoid reaching 140 group/side limit.
-		_unitGroup = createGroup east;
-	} else {
-		_unitGroup = createGroup resistance;
-	};
-	_p = _spawnPositions call BIS_fnc_selectRandom;
-	_pos = [0,0,0];
-	if (_spawnType == 2) then {	
-		_pos = [_p,1,100,2,0,2000,0] call BIS_fnc_findSafePos;
-	} else {
-		_pos = _p;
-	};
-	for "_i" from 1 to _totalAI do {
-		private["_unit"];
-		_unit = [_unitGroup,_pos,_trigger,_gradeChances] call fnc_createAI;	//Create and equip the unit
-		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits).",_i,_totalAI];};
-	};
-	
-	_unitGroup selectLeader ((units _unitGroup) select 0);
-	_unitGroup allowFleeing 0;
-	
-	//Update AI count
-	_unitGroup setVariable ["groupSize",_totalAI];
-	DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
-	
-	if ((typeName _patroldist) == "SCALAR") then {
-		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
-	} else {
-		0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
-	};
-	_grpArray set [count _grpArray,_unitGroup];
-};
+if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Processed static trigger spawn data in %1 seconds (spawnBandits).",(diag_tickTime - _startTime)];};
 
-if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned %1 new AI groups of %2 units each in %3 seconds (spawnBandits).",_numGroups,_totalAI,(diag_tickTime - _startTime)];};
-
+_grpArray = [_numGroups,_spawnPositions,_spawnType,_trigger,_gradeChances,_totalAI,_patrolDist,_triggerPos] call fnc_createGroups;
 0 = [_trigger,_grpArray,_patrolDist,_gradeChances,_spawnPositions,_spawnType,[_minAI,_addAI]] spawn fnc_initTrigger;
 
 true
