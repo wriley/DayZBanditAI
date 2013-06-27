@@ -61,6 +61,13 @@ Installation Instructions:
 - Repack your dayz_server.pbo (it should be about 400KB larger).
 - You are now ready to start your server.
 
+Note: DZAI's settings file can be found in DZAI\init\dzai_variables.sqf
+
+BattlEye Edits Required:
+============
+
+DZAI's loot tables include the Radio (ItemRadio) which will trigger a BattlEye kick a player attempts to place it in their backpack. To remedy this, you will need to comment out the line in your addmagazinecargo.txt that reads "5=ItemRadio" by editing it to "//5=ItemRadio"
+
 Latest Updates:
 ============
 
@@ -94,17 +101,17 @@ Latest Updates:
 - [FIXED] Dynamic AI will not enter Pursuit state upon spawning if target player is in a vehicle.
 - [NEW] Dynamic AI now spawn in a "Pursuit" state where they follow the randomly-selected player for a distance of 100m from (calculated from the player's position at time of trigger activation). Player's position is updated every 30 seconds.
 - [NEW] Players with Radios now recieve on-screen text warnings if they are being pursued by dynamic AI.
-- [MODIFIED] findKiller feature: Chase distance decreased to 400-600m from 500-700m. Time limit is unchanged.
-- [MODIFIED] findKiller feature: AI will not pursue players in vehicles, and will exit pursuit state if player enters a vehicle (since AI do not use vehicles).
-- [MODIFIED] findKiller feature: Player's position is now updated every 15 seconds.
+- [UPDATED] findKiller feature: Chase distance decreased to 400-600m from 500-700m. Time limit is unchanged.
+- [UPDATED] findKiller feature: AI will not pursue players in vehicles, and will exit pursuit state if player enters a vehicle (since AI do not use vehicles).
+- [UPDATED] findKiller feature: Player's position is now updated every 15 seconds.
 - [MODIFIED] Players with radios are now also notified if AI have broken off their pursuit.
 
 1.1.3 Update:
 
 - [UPDATED] fnc_spawnBandits and fnc_spawnBandits_dynamic are now "spawned" instead of "called", and handles preparatory calculations before spawning AI units. IMPORTANT: If using custom static triggers, please make this update. (call fnc_spawnBandits >> spawn fnc_spawnBandits)
 - [UPDATED] AI group creation is now handled by fnc_createGroups (static triggers) and fnc_createGroups_dyn (dynamic triggers). Individual AI units are created by fn_createUnit. This script is shared by fnc_createGroups and fnc_createGroups.
+- [UPDATED] Updated preset default classname tables to DayZ 1.7.7.1 version.
 - [MODIFIED] AI units revert to an "AWARE" state from "COMBAT" after pursuit state ends if DZAI_findKiller is enabled. If not enabled, AI will remain in "COMBAT" mode until the entire group is killed (this is intended).
-- [MODIFIED] Updated preset default classname tables to DayZ 1.7.7.1 version.
 - [MODIFIED] Dynamic triggers no longer activate for players in Air vehicles. Note: Trigger will activate if players exit the air vehicle, but will not deactivate if players re-enter. AI stop actively tracking targeted player's position but will continue to the last known position.
 
 1.1.4 Update:
