@@ -35,7 +35,7 @@ for "_i" from 1 to _numTriggers do {
 		sleep 0.5;
 		_attempts = _attempts +1;
 		_trigPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
-		diag_log format ["DEBUG :: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];
+		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
 	};
 	_trigger = createTrigger ["EmptyDetector",[_trigPos select 0,_trigPos select 1]];
 	_trigger setTriggerArea [DZAI_dynTriggerRadius, DZAI_dynTriggerRadius, 0, false];

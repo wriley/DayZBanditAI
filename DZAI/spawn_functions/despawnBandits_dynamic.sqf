@@ -21,21 +21,27 @@ _forceDespawn = _trigger getVariable ["forceDespawn",false];	//Check whether to 
 //_preventDespawn = _trigger getVariable ["preventDespawn",false];
 if (isNil "_forceDespawn") then {_forceDespawn = false;};
 
+if (_forceDespawn) then {
+	_waitTime = DZAI_dynRemoveDeadWait;	//Longer sleep if despawning due to all units killed to allow for looting.
+} else {
+	_waitTime = DZAI_dynDespawnWait;	//Shorter sleep if despawning due to no player presence.
+};
+
 _grpCount = count _grpArray;
 
-//diag_log format ["DEBUG:: _grpCount is %1. _isCleaning is %2.",_grpCount,_isCleaning];
+if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: _grpCount is %1. _isCleaning is %2.",_grpCount,_isCleaning];};
 if (isNil "_isCleaning") exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Trigger's isCleaning variable is nil. Exiting despawn script.";};};
 if ((_grpCount == 0) || (_isCleaning)) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Trigger's group array is empty, or a despawn script is already running. Exiting despawn script.";};};				//Exit script if the trigger hasn't spawned any AI units, or if a despawn script is already running for the trigger.
 
 _trigger setVariable["isCleaning",true,false];			//Mark the trigger as being in a cleanup state so that subsequent requests to despawn for the same trigger will not run.
-if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: No players remain in trigger area. Deleting spawned AI in %1 seconds.",DZAI_dynDespawnWait];};
+if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: No players remain in trigger area. Deleting spawned AI in %1 seconds.",_waitTime];};
 if (DZAI_debugMarkers > 0) then {
 	private["_marker"];
 	_marker = format["trigger_%1",_trigger];
 	_marker setMarkerColor "ColorGreenAlpha";
 	_marker setMarkerAlpha 0.7;							//Light green: Active trigger awaiting despawn.
 };
-sleep DZAI_dynDespawnWait;								//Wait some time before deleting units. (amount of time to allow units to exist when the trigger area has no players)
+sleep _waitTime;								//Wait some time before deleting units. (amount of time to allow units to exist when the trigger area has no players)
 
 if ((triggerActivated _trigger) && (!_forceDespawn)) exitWith {
 	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: A player has entered the trigger area. Cancelling despawn script.";}; //Exit script if trigger has been reactivated since _waitTime seconds has passed.
@@ -75,14 +81,7 @@ DZAI_numAIUnits = DZAI_numAIUnits - _totalGroupSize;
 //Restore original trigger statements
 _trigger setTriggerStatements [DYNTRIG_STATEMENTS_INACTIVE];
 
-//Clean up trigger variables and relocate trigger.
-if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Relocating dynamic trigger.";};
-_trigger setVariable ["GroupArray",[],false];
-_trigger setVariable ["isCleaning",nil,false];
-_trigger setVariable ["patrolDist",nil,false];
-_trigger setVariable ["gradeChances",nil,false];
-_trigger setVariable ["forceDespawn",nil,false];
-
+//Relocate trigger
 _newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
 _attempts = 0;
 while {(({([_newPos select 0,_newPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)&&(_attempts < 3)} do {
@@ -100,6 +99,14 @@ if (DZAI_debugMarkers > 0) then {
 	_marker setMarkerColor "ColorYellow";			//Reset trigger indicator to Ready.
 	_marker setMarkerAlpha 0.8;
 };
+
+//Clean up trigger variables
+if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Relocating dynamic trigger.";};
+_trigger setVariable ["GroupArray",[],false];
+_trigger setVariable ["isCleaning",nil,false];
+_trigger setVariable ["patrolDist",nil,false];
+_trigger setVariable ["gradeChances",nil,false];
+_trigger setVariable ["forceDespawn",nil,false];
 
 DZAI_actDynTrigs = (DZAI_actDynTrigs - 1);
 if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Despawned %1 AI in dynamic trigger area. Trigger relocated to %2.",_totalGroupSize,_newPos];};

@@ -112,9 +112,9 @@ switch (_worldname) do {
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\chernarus_classnames.sqf";
 		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_chernarus.sqf";
-		DZAI_centerMarker setMarkerPos [7580.2803, 7636.8018];
-		DZAI_centerSize = 6000;
-		DZAI_dynTriggersMax = 16;
+		DZAI_centerMarker setMarkerPos [7130.0073, 8155.2944];
+		DZAI_centerSize = 5500;
+		DZAI_dynTriggersMax = 15;
 	};
 	case "utes":
 	{

@@ -46,4 +46,4 @@ if (_unitsAlive == 0) then {
 	[_trigger] spawn fnc_despawnBandits_dynamic;	//force despawning even if players are present in trigger area.
 };
 
-if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI group %1 killed, deleting bodies in %2 seconds. (fn_updateDead).",_unitGroup,DZAI_dynDespawnWait];};
+if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: AI group %1 killed, %2 units left alive in group. (fn_updateDead).",_unitGroup,_unitsAlive];};
