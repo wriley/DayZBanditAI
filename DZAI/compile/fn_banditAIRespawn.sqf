@@ -23,7 +23,6 @@ _unitsAlive = {alive _x} count (units _unitGroup);
 //diag_log format ["%1 units alive in group.",_unitsAlive];
 
 if (_unitsAlive == 0) then {
-	private["_groupSize"];
 	_unitGroup setBehaviour "AWARE";
 	_dummy = _unitGroup createUnit ["Survivor2_DZ",[0,0,0],[],0,"FORM"];
 	[_dummy] joinSilent _unitGroup;
@@ -36,11 +35,6 @@ if (_unitsAlive == 0) then {
 	_unitGroup setVariable ["dummyUnit",_dummy];
 	_unitGroup setVariable ["groupKIA",true];
 	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned 1 dummy AI unit for group %1.",_unitGroup];};
-	
-	//Update AI count
-	_groupSize = _unitGroup getVariable "groupSize";
-	DZAI_numAIUnits = DZAI_numAIUnits - _groupSize;
-	_unitGroup setVariable ["groupSize",0];
 	
 	0 = [(time + DZAI_respawnTime),_trigger,_unitGroup] spawn fnc_respawnHandler;
 };

@@ -7,7 +7,7 @@
 	
 	Description: Checks an array of arrays for classnames banned by DayZ or non-existent classnames. If any banned/invalid classnames are found, they are removed and reported into the RPT log.
 	
-	Last updated: 4:59 PM 6/24/2013
+	Last updated: 12:12 AM 6/27/2013
 */
 
 private["_unverified","_verified","_errorFound","_weapChk","_vehChk","_magCheck","_stringArray","_startTime"];

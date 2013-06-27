@@ -46,8 +46,11 @@ for "_i" from 1 to _totalAI do {
 };
 
 _unitGroup selectLeader ((units _unitGroup) select 0);
+
+//Update AI count
 _unitGroup setVariable ["groupSize",_totalAI];
 DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
+if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Created group %1 of size %2.",_unitGroup,_totalAI];};
 
 if ((count (waypoints _unitGroup)) < 2) then {
 	if ((typeName _patroldist) == "SCALAR") then {

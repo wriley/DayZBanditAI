@@ -35,6 +35,7 @@ _unitGroup allowFleeing 0;
 //Update AI count
 _unitGroup setVariable ["groupSize",_totalAI];
 DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
+if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_unitGroup,_totalAI];};
 
 if (_findPlayer) then {
 	//Travel to player's position, then begin patrol.

@@ -47,6 +47,7 @@ for "_j" from 1 to _numGroups do {
 	//Update AI count
 	_unitGroup setVariable ["groupSize",_totalAI];
 	DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
+	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_unitGroup,_totalAI];};
 	
 	if ((typeName _patroldist) == "SCALAR") then {
 		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
