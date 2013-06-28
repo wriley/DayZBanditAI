@@ -62,7 +62,7 @@ while {(count DZAI_respawnQueue) > 0} do {
 				[_dummy] joinSilent grpNull;
 				deleteVehicle _dummy;
 				_unitGroup setVariable ["dummyUnit",nil];
-				_unitGroup setVariable ["groupKIA",nil];
+				//_unitGroup setVariable ["groupKIA",nil];
 				if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Deleted 1 dummy AI unit for group %1. (respawnHandler)",_unitGroup];};
 			};
 			DZAI_respawnQueue set [_i,objNull];

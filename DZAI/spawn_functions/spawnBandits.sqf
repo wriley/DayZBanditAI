@@ -14,7 +14,7 @@
 	Last updated: 12:27 AM 6/25/2013
 */
 
-private ["_minAI","_addAI","_patrolDist","_trigger","_equipType","_numGroups","_grpArray","_triggerPos","_gradeChances","_totalAI","_spawnPositions","_spawnCount","_markerArray","_spawnType","_locationArray","_startTime"];
+private ["_minAI","_addAI","_patrolDist","_trigger","_equipType","_numGroups","_grpArray","_triggerPos","_gradeChances","_totalAI","_spawnPositions","_spawnCount","_positionArray","_spawnType","_locationArray","_startTime"];
 if (!isServer) exitWith {};
 
 _startTime = diag_tickTime;
@@ -26,7 +26,7 @@ _minAI = _this select 0;									//Mandatory minimum number of AI units to spawn
 _addAI = _this select 1;									//Maximum number of additional AI units to spawn
 _patrolDist = _this select 2;								//Numerical: patrol radius. Array: List of markers to use as patrol waypoints.
 _trigger = _this select 3;									//The trigger calling this script.
-_markerArray = _this select 4;								//Array of manually-defined spawn points (markers). If empty, nearby buildings are used as spawn points.
+_positionArray = _this select 4;								//Array of manually-defined spawn points (markers). If empty, nearby buildings are used as spawn points.
 _equipType = if ((count _this) > 5) then {_this select 5} else {1};		//(Optional) Select the item probability table to use
 _numGroups = if ((count _this) > 6) then {_this select 6} else {1};		//(Optional) Number of groups of x number of units each to spawn
 
@@ -45,7 +45,7 @@ _locationArray = _trigger getVariable ["locationArray",[]];
 _spawnType = 2;
 if ((count _locationArray) == 0) then {
 	//If no spawn points are found (first trigger activation)
-	if ((count _markerArray) == 0) then {
+	if ((count _positionArray) == 0) then {
 		private["_nearbldgs"];
 		_nearbldgs = nearestObjects [_triggerPos,["Building"],300];
 		{
@@ -54,16 +54,22 @@ if ((count _locationArray) == 0) then {
 		if ((count _spawnPositions) == 0) then {_spawnPositions = [_triggerPos];};	//If no buildings are nearby, use trigger position as backup spawn location.
 		if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from building positions (spawnBandits).";};
 	} else {
-		{
-			_spawnPositions set [(count _spawnPositions),(getMarkerPos _x)];
-		} forEach _markerArray;
-		if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from marker positions (spawnBandits).";};
+		if (typeName (_positionArray select 0) == "STRING") then {
+			{
+				_spawnPositions set [(count _spawnPositions),(getMarkerPos _x)];
+			} forEach _positionArray;
+			if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from marker positions (spawnBandits).";};
+		} else {
+			_spawnPositions = _positionArray;
+			if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from predefined positions (spawnBandits).";};
+		};
 		_spawnType = 3;
 	};
 } else {
 	//If spawn points are already defined (subsequent trigger activations)
 	_spawnPositions = _locationArray;
 	_spawnType = _trigger getVariable ["spawnType",2];
+	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from stored positions (spawnBandits).";};
 };
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Processed static trigger spawn data in %1 seconds (spawnBandits).",(diag_tickTime - _startTime)];};

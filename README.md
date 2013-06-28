@@ -1,4 +1,4 @@
-DZAI 1.1.5 - AI Addon for DayZ
+DZAI 1.1.6 - AI Addon for DayZ
 ============
 
 
@@ -125,5 +125,15 @@ Latest Updates:
 - [FIXED] Fixed active AI counter. Active AI counter is decreased for each AI unit killed, despawned, instead of being updated when the entire group is killed.
 - [FIXED] findKiller: Minimum pursuit distance increased from 400m to 500m to better match maximum detection distance (450m).
 - [FIXED] Despawn script now checks if the group exists before attempting despawn.
+
+1.1.6 Update:
+
+- [NEW] Added improved support for custom AI spawn definitions. Basic instructions can be found here: http://img42.imageshack.us/img42/3187/5o.png. Note: You must create the marker in the ArmA2 3D editor (Alt+E to access from main menu).
+- [FIXED] Fixed rare cases where null AI groups would be generated when spawning AI.
+- [UPDATED] Updated configuration files in trig_configs folder with updated spawnBandits format.
+- [MODIFIED] Increased pursuit distance for dynamic AI from 100m to 200m of initial position of targeted player.
+- [MODIFIED] Increased Accuracy and AimingShake ratings of AI for all skill levels.
+- [MODIFIED] Chernarus: moved reference marker for dynamic AI spawns further south slightly.
+- [MODIFIED] Increased probability of dynamic AI to spawn with weapons from MilitarySpecial table from 4% to 8%, HeliCrash table from 1% to 2%. (Military weapons probability decreased accordingly).
 
 Note: Information about past updates are archived in changelog.txt

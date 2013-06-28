@@ -23,12 +23,7 @@ _grpArray = [];
 //Spawn units
 for "_j" from 1 to _numGroups do {
 	private ["_unitGroup","_p","_pos"];
-	_unitGroup = grpNull;
-	if ((random 1) < 0.5) then {				//50% chance to choose East or Resistance as AI side to avoid reaching 140 group/side limit.
-		_unitGroup = createGroup east;
-	} else {
-		_unitGroup = createGroup resistance;
-	};
+	_unitGroup = createGroup ([east,resistance] call BIS_fnc_selectRandom);
 	_p = _spawnPositions call BIS_fnc_selectRandom;
 	_pos = [0,0,0];
 	if (_spawnType == 2) then {	

@@ -33,7 +33,7 @@ if (_unitsAlive == 0) then {
 	_dummy disableAI "TARGET";
 	_dummy disableAI "AUTOTARGET";
 	_unitGroup setVariable ["dummyUnit",_dummy];
-	_unitGroup setVariable ["groupKIA",true];
+	//_unitGroup setVariable ["groupKIA",true];
 	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned 1 dummy AI unit for group %1.",_unitGroup];};
 	
 	0 = [(time + DZAI_respawnTime),_trigger,_unitGroup] spawn fnc_respawnHandler;
