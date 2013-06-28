@@ -33,8 +33,8 @@ _numGroups = if ((count _this) > 6) then {_this select 6} else {1};		//(Optional
 _grpArray = _trigger getVariable ["GroupArray",[]];			
 if (count _grpArray > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits)";};};						
 
-_totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));	//Calculate total number of units to spawn per group.
-if (_totalAI < 1) exitWith {[_trigger] execVM '\z\addons\dayz_server\DZAI\scripts\resetStaticTrigger.sqf'; if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: No units to spawn. Force resetting trigger area (spawnBandits)";};};									
+//_totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));	//Calculate total number of units to spawn per group.
+//if (_totalAI < 1) exitWith {[_trigger] execVM '\z\addons\dayz_server\DZAI\scripts\resetStaticTrigger.sqf'; if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: No units to spawn. Force resetting trigger area (spawnBandits)";};};									
 
 _triggerPos = getPosATL _trigger;
 _gradeChances = [_equipType] call fnc_getGradeChances;
@@ -61,7 +61,7 @@ if ((count _locationArray) == 0) then {
 			if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from marker positions (spawnBandits).";};
 		} else {
 			_spawnPositions = _positionArray;
-			if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from predefined positions (spawnBandits).";};
+			if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Spawning AI from randomly-generated positions (spawnBandits).";};
 		};
 		_spawnType = 3;
 	};
@@ -74,7 +74,6 @@ if ((count _locationArray) == 0) then {
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Processed static trigger spawn data in %1 seconds (spawnBandits).",(diag_tickTime - _startTime)];};
 
-_grpArray = [_numGroups,_spawnPositions,_spawnType,_trigger,_gradeChances,_totalAI,_patrolDist,_triggerPos] call fnc_createGroups;
-0 = [_trigger,_grpArray,_patrolDist,_gradeChances,_spawnPositions,_spawnType,[_minAI,_addAI]] spawn fnc_initTrigger;
+0 = [_numGroups,_spawnPositions,_spawnType,_trigger,_gradeChances,[_minAI,_addAI],_patrolDist,_triggerPos] spawn fnc_createGroups;
 
 true

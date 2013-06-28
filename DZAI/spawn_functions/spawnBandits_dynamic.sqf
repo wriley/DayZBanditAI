@@ -100,9 +100,8 @@ if (DZAI_debugMarkers > 0) then {
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Processed dynamic trigger spawn data in %1 seconds (spawnBandits_dynamic).",(diag_tickTime - _startTime)];};
 
-_grpArray = [_totalAI,_patrolDist,_spawnPos,_pos,_trigger,_findPlayer,_targetPlayer] call fnc_createGroups_dyn;
+0 = [_totalAI,_patrolDist,_spawnPos,_pos,_trigger,_findPlayer,_targetPlayer] spawn fnc_createGroups_dyn;
 //diag_log format ["DEBUG :: _trigger %1, groupArray %2, _total AI %3.",_trigger,_grpArray,_totalAI];
-0 = [_trigger,_grpArray] spawn fnc_initTrigger;
 //Prevent player(s) from causing despawn by entering an air vehicle.
 _trigger setTriggerStatements [DYNTRIG_STATEMENTS_ACTIVE];
 

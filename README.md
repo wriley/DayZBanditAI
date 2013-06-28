@@ -1,4 +1,4 @@
-DZAI 1.1.6 - AI Addon for DayZ
+DZAI 1.1.7 - AI Addon for DayZ
 ============
 
 
@@ -66,7 +66,7 @@ Note: DZAI's settings file can be found in DZAI\init\dzai_variables.sqf
 BattlEye Edits Required:
 ============
 
-DZAI's loot tables include the Radio (ItemRadio) which will trigger a BattlEye kick a player attempts to place it in their backpack. To remedy this, you will need to comment out the line in your addmagazinecargo.txt that reads "5=ItemRadio" by editing it to "//5=ItemRadio"
+DZAI's loot tables include the Radio (ItemRadio) which will trigger a BattlEye kick if a player attempts to place it in their backpack. To remedy this, you will need to comment out the line in your addmagazinecargo.txt that reads "5=ItemRadio" by editing it to "//5=ItemRadio"
 
 Latest Updates:
 ============
@@ -109,7 +109,7 @@ Latest Updates:
 1.1.3 Update:
 
 - [UPDATED] fnc_spawnBandits and fnc_spawnBandits_dynamic are now "spawned" instead of "called", and handles preparatory calculations before spawning AI units. IMPORTANT: If using custom static triggers, please make this update. (call fnc_spawnBandits >> spawn fnc_spawnBandits)
-- [UPDATED] AI group creation is now handled by fnc_createGroups (static triggers) and fnc_createGroups_dyn (dynamic triggers). Individual AI units are created by fn_createUnit. This script is shared by fnc_createGroups and fnc_createGroups.
+- [UPDATED] AI group creation is now handled by fnc_createGroups (static triggers) and fnc_createGroups_dyn (dynamic triggers). Individual AI units are created by fn_createUnit. This script is shared by fnc_createGroups and fnc_createGroups_dyn.
 - [UPDATED] Updated preset default classname tables to DayZ 1.7.7.1 version.
 - [MODIFIED] AI units revert to an "AWARE" state from "COMBAT" after pursuit state ends if DZAI_findKiller is enabled. If not enabled, AI will remain in "COMBAT" mode until the entire group is killed (this is intended).
 - [MODIFIED] Dynamic triggers no longer activate for players in Air vehicles. Note: Trigger will activate if players exit the air vehicle, but will not deactivate if players re-enter. AI stop actively tracking targeted player's position but will continue to the last known position.
@@ -135,5 +135,13 @@ Latest Updates:
 - [MODIFIED] Increased Accuracy and AimingShake ratings of AI for all skill levels.
 - [MODIFIED] Chernarus: moved reference marker for dynamic AI spawns further south slightly.
 - [MODIFIED] Increased probability of dynamic AI to spawn with weapons from MilitarySpecial table from 4% to 8%, HeliCrash table from 1% to 2%. (Military weapons probability decreased accordingly).
+
+1.1.7 Update:
+
+- [FIXED] Fixed cause of null groups being created (again).
+- [UPDATED] spawnBandits/spawnBandits_dynamic now handles spawn point calculations, fn_createGroups/fn_createGroups_dyn handles group creation and trigger variable initialization, and fn_createUnit handles creation of individual AI units.
+- [UPDATED] For static triggers instructed to spawn multiple groups, each individual group's size may now vary instead of being a simple duplicate of the first group.
+- [REMOVED] Removed DZAI_spawnExtra variable.
+
 
 Note: Information about past updates are archived in changelog.txt

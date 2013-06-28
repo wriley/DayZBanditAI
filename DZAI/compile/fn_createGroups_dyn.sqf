@@ -19,14 +19,10 @@ _startTime = diag_tickTime;
 _grpArray = [];
 
 _unitGroup = createGroup ([east,resistance] call BIS_fnc_selectRandom);
+waitUntil {!isNull _unitGroup};
 
-for "_i" from 1 to _totalAI do {
-	[_unitGroup,_pos,_trigger] call fnc_createUnit;
-	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits_dynamic).",_i,_totalAI];};
-};
-
-_unitGroup selectLeader ((units _unitGroup) select 0);
-_unitGroup allowFleeing 0;
+//Spawn units
+[_totalAI,_unitGroup,_pos,_trigger] call fnc_createUnit;
 
 //Update AI count
 _unitGroup setVariable ["groupSize",_totalAI];
@@ -48,4 +44,6 @@ _grpArray = [_unitGroup];
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned 1 new AI groups of %1 units each in %2 seconds (fn_createGroups_dyn).",_totalAI,(diag_tickTime - _startTime)];};
 
-_grpArray
+0 = [_trigger,_grpArray] spawn fnc_initTrigger;
+
+true

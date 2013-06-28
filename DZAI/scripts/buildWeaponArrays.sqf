@@ -11,7 +11,7 @@ private ["_bldgClasses","_weapons","_lootItem","_aiWeaponBanList","_unwantedWeap
 if !(isNil "DZAI_weaponsInitialized") exitWith {};
 
 _startTime = diag_tickTime;
-diag_log "Building DZAI weapon arrays using CfgBuildingLoot data.";
+diag_log "[DZAI] Building DZAI weapon arrays using CfgBuildingLoot data.";
 
 _bldgClasses = [["Residential","Farm"],["Military"],["MilitarySpecial"],["HeliCrash"]];
 _unwantedWeapons = _this select 0;		//User-specified weapon banlist.
@@ -115,6 +115,6 @@ if (DZAI_debugLevel > 0) then {
 	diag_log format ["Contents of DZAI_Rifles3: %1",DZAI_Rifles3];
 };
 
-diag_log format ["DZAI weapon classname tables created in %1 seconds.",(diag_tickTime - _startTime)];
+diag_log format ["[DZAI] DZAI weapon classname tables created in %1 seconds.",(diag_tickTime - _startTime)];
 
 DZAI_weaponsInitialized = true;

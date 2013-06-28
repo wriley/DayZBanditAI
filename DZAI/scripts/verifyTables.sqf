@@ -26,7 +26,7 @@ _errorFound = false;
 	_unverified set [(count _unverified),(call compile _x)];
 } forEach _stringArray;
 
-diag_log "DZAI is verifying all tables for banned or invalid classnames...";
+diag_log "[DZAI] DZAI is verifying all tables for banned or invalid classnames...";
 {
 	private["_removeArray"];
 	_removeArray = [];	//Will contain all invalid classnames. Is reset for each element of _unverified cleaned.
@@ -59,8 +59,8 @@ if (_errorFound) then { //If a classname table requires editing, perform the req
 		if ((count (_unverified select _i)) != (count (_verified select _i))) then {call compile format ["%1 = %2;",(_stringArray select _i),(_verified select _i)];	diag_log format ["Contents of %1: %2.",(_stringArray select _i),(call compile (_stringArray select _i))];};
 	};
 } else {
-	diag_log "All tables have been verified. No invalid entries found.";
+	diag_log "[DZAI] All tables have been verified. No invalid entries found.";
 };
-diag_log format ["Table verification completed in %1 seconds.",(diag_tickTime - _startTime)];
+diag_log format ["[DZAI] Table verification completed in %1 seconds.",(diag_tickTime - _startTime)];
 
 DZAI_classnamesVerified = true;

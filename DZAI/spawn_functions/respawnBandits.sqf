@@ -25,7 +25,7 @@ _spawnType = _trigger getVariable ["spawnType",2];
 
 _minAI = _maxUnits select 0;
 _addAI = _maxUnits select 1;
-_totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));
+_totalAI = (_minAI + round(random _addAI));
 
 //Select spawn position
 _p = _spawnPositions call BIS_fnc_selectRandom;
@@ -35,17 +35,12 @@ if (_spawnType == 2) then {
 	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Respawning AI from building positions (respawnBandits).";};
 } else {
 	_pos = _p;
-	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Respawning AI from marker positions (respawnBandits).";};
+	if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Respawning AI from predefined positions (respawnBandits).";};
 };
 
 //Respawn the group
-for "_i" from 1 to _totalAI do {
-	private ["_unit"];
-	_unit = [_unitGroup,_pos,_trigger,_gradeChances] call fnc_createUnit;
-	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits).",_i,_totalAI];};
-};
-
-_unitGroup selectLeader ((units _unitGroup) select 0);
+[_totalAI,_unitGroup,_pos,_trigger,_gradeChances] call fnc_createUnit;
+if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI %1 of %2 spawned (spawnBandits).",_i,_totalAI];};
 
 //Update AI count
 _unitGroup setVariable ["groupSize",_totalAI];
