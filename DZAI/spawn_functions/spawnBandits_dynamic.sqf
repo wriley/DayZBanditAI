@@ -124,7 +124,7 @@ if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 h
 
 if (_findPlayer) then {
 	//Travel to player's position, then begin patrol.
-	0 = [_unitGroup,_spawnPos,_patrolDist,(_this select 6)] spawn fnc_seekPlayer;	//_this select 6 >> _targetPlayer
+	0 = [_unitGroup,_spawnPos,_patrolDist,_targetPlayer] spawn fnc_seekPlayer;	//_this select 6 >> _targetPlayer
 	//diag_log "DEBUG :: Seeking target player.";
 } else {
 	//Begin patrol immediately.
