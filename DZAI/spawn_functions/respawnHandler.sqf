@@ -56,7 +56,6 @@ while {(count DZAI_respawnQueue) > 0} do {
 				{deleteVehicle _x} forEach (_unitGroup getVariable "deadUnits");
 				_unitGroup setVariable ["deadUnits",[]];
 				[_unitGroup,_trigger,_maxUnits] call fnc_respawnBandits;
-				
 				//Delete group's dummy unit
 				_dummy = _unitGroup getVariable ["dummyUnit",objNull];
 				[_dummy] joinSilent grpNull;

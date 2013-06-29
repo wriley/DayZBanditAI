@@ -108,7 +108,7 @@ Latest Updates:
 
 1.1.3 Update:
 
-- [UPDATED] fnc_spawnBandits and fnc_spawnBandits_dynamic are now "spawned" instead of "called", and handles preparatory calculations before spawning AI units. IMPORTANT: If using custom static triggers, please make this update. (call fnc_spawnBandits >> spawn fnc_spawnBandits)
+- [UPDATED] fnc_spawnBandits and fnc_spawnBandits_dynamic are now "spawned" instead of "called", and handles preparatory calculations before spawning AI units. IMPORTANT: If using custom static triggers, please make this update. (call fnc_spawnBandits >> call fnc_spawnBandits)
 - [UPDATED] AI group creation is now handled by fnc_createGroups (static triggers) and fnc_createGroups_dyn (dynamic triggers). Individual AI units are created by fn_createUnit. This script is shared by fnc_createGroups and fnc_createGroups_dyn.
 - [UPDATED] Updated preset default classname tables to DayZ 1.7.7.1 version.
 - [MODIFIED] AI units revert to an "AWARE" state from "COMBAT" after pursuit state ends if DZAI_findKiller is enabled. If not enabled, AI will remain in "COMBAT" mode until the entire group is killed (this is intended).
@@ -142,6 +142,13 @@ Latest Updates:
 - [UPDATED] spawnBandits/spawnBandits_dynamic now handles spawn point calculations, fn_createGroups/fn_createGroups_dyn handles group creation and trigger variable initialization, and fn_createUnit handles creation of individual AI units.
 - [UPDATED] For static triggers instructed to spawn multiple groups, each individual group's size may now vary instead of being a simple duplicate of the first group.
 - [REMOVED] Removed DZAI_spawnExtra variable.
+
+1.1.8 Update:
+
+- [NEW] Added function DZAI_createGroup to create groups for AI use. The function creates groups belonging to the East side, then when/if the number of East groups reaches 140, it will switch to Resistance.
+- [REVERTED] spawnBandits and spawnBandits_dynamic are called instead of spawned (to fix null group issue). 
+- [REVERTED] Re-integrated fn_createGroups into spawnBandits and fn_createGroups_dyn into spawnBandits_dynamic.
+
 
 
 Note: Information about past updates are archived in changelog.txt

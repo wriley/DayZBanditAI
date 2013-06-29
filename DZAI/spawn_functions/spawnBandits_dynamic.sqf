@@ -30,12 +30,19 @@ _playerArray = [];
 		_playerArray set [(count _playerArray),_x];	
 	};
 } forEach _unitArray;
-_playerCount = (count _playerArray);
+//_playerCount = (count _playerArray);
 
-if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: %1 units within trigger area. %2 are players. (spawnBandits_dynamic)",(count _unitArray),_playerCount];};
+//if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: %1 units within trigger area. %2 are players. (spawnBandits_dynamic)",(count _unitArray),_playerCount];};
 
 _targetPlayer = _playerArray call BIS_fnc_selectRandom;
 _playerPos = getPosATL _targetPlayer;
+
+//Count number of players close to the targeted player.
+_playerCount = {isPlayer _x} count (_playerPos nearEntities [["AllVehicles","CAManBase"],100]);
+//_playerCount = ({(_isPlayer _x) && ((_x distance _targetPlayer) < 100)} count _unitArray) -1;
+
+if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Counted %1 players within 100m of target player (spawnBandits_dynamic)",_playerCount];};
+
 _spawnPos = [0,0,0];
 _findPlayer = true;
 if !(surfaceIsWater [_playerPos select 0,_playerPos select 1]) then {
@@ -67,7 +74,7 @@ if ((_pos distance _spawnPos) > 500) exitWith {
 		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
 	};
 	_trigger setPos [_newPos select 0,_newPos select 1];
-	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Could not find suitable location to spawn AI units, relocating trigger to position %1. (spawnBandits_dynamic)",_newPos];};
+	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Could not find suitable location to spawn AI units, relocating trigger to position %1. (spawnBandits_dynamic)",_newPos];};
 	if (DZAI_debugMarkers > 0) then {
 		private["_marker"];
 		_marker = format["trigger_%1",_trigger];
@@ -100,7 +107,38 @@ if (DZAI_debugMarkers > 0) then {
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Processed dynamic trigger spawn data in %1 seconds (spawnBandits_dynamic).",(diag_tickTime - _startTime)];};
 
-0 = [_totalAI,_patrolDist,_spawnPos,_pos,_trigger,_findPlayer,_targetPlayer] spawn fnc_createGroups_dyn;
+_startTime = diag_tickTime;
+
+_grpArray = [];
+
+_unitGroup = call DZAI_createGroup;
+
+diag_log format ["DEBUG :: Created group %1 (fn_createGroups_dyn).",_unitGroup];
+
+//Spawn units
+[_totalAI,_unitGroup,_pos,_trigger] call fnc_createUnit;
+
+//Update AI count
+_unitGroup setVariable ["groupSize",_totalAI];
+DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
+if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_unitGroup,_totalAI];};
+
+if (_findPlayer) then {
+	//Travel to player's position, then begin patrol.
+	0 = [_unitGroup,_spawnPos,_patrolDist,(_this select 6)] spawn fnc_seekPlayer;	//_this select 6 >> _targetPlayer
+	//diag_log "DEBUG :: Seeking target player.";
+} else {
+	//Begin patrol immediately.
+	0 = [_unitGroup,_spawnPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+	//diag_log "DEBUG :: Beginning patrol.";
+};
+
+//_grpArray set [count _grpArray,_unitGroup];
+_grpArray = [_unitGroup];
+
+if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned 1 new AI groups of %1 units each in %2 seconds (fn_createGroups_dyn).",_totalAI,(diag_tickTime - _startTime)];};
+
+0 = [_trigger,_grpArray] spawn fnc_initTrigger;
 //diag_log format ["DEBUG :: _trigger %1, groupArray %2, _total AI %3.",_trigger,_grpArray,_totalAI];
 //Prevent player(s) from causing despawn by entering an air vehicle.
 _trigger setTriggerStatements [DYNTRIG_STATEMENTS_ACTIVE];

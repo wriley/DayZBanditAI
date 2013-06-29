@@ -50,7 +50,7 @@ class _trigger_0
 		INTERRUPTABLE="true";
 		TEXT="Nango";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -70,7 +70,7 @@ class _trigger_3
 		INTERRUPTABLE="true";
 		TEXT="Road";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -90,7 +90,7 @@ class _trigger_5
 		INTERRUPTABLE="true";
 		TEXT="ZargabadW";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [3,1,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -110,7 +110,7 @@ class _trigger_9
 		INTERRUPTABLE="true";
 		TEXT="ZargabadCenter";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -130,7 +130,7 @@ class _trigger_11
 		INTERRUPTABLE="true";
 		TEXT="Yarum";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [3,1,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -150,7 +150,7 @@ class _trigger_13
 		INTERRUPTABLE="true";
 		TEXT="Barracks";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [3,2,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -170,7 +170,7 @@ class _trigger_15
 		INTERRUPTABLE="true";
 		TEXT="Shahbaz";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -190,7 +190,7 @@ class _trigger_17
 		INTERRUPTABLE="true";
 		TEXT="ZargabadN";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -210,7 +210,7 @@ class _trigger_19
 		INTERRUPTABLE="true";
 		TEXT="The Villa";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -230,7 +230,7 @@ class _trigger_21
 		INTERRUPTABLE="true";
 		TEXT="Military Base";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [3,2,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -250,7 +250,7 @@ class _trigger_23
 		INTERRUPTABLE="true";
 		TEXT="Hazar Bagh";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [3,1,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -270,7 +270,7 @@ class _trigger_25
 		INTERRUPTABLE="true";
 		TEXT="Azizyt";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -290,7 +290,7 @@ class _trigger_27
 		INTERRUPTABLE="true";
 		TEXT="ZargabadE";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;"; 
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;"; 
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };

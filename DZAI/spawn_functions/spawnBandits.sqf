@@ -74,6 +74,48 @@ if ((count _locationArray) == 0) then {
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Processed static trigger spawn data in %1 seconds (spawnBandits).",(diag_tickTime - _startTime)];};
 
-0 = [_numGroups,_spawnPositions,_spawnType,_trigger,_gradeChances,[_minAI,_addAI],_patrolDist,_triggerPos] spawn fnc_createGroups;
+_startTime = diag_tickTime;
+
+_grpArray = [];
+_totalSpawned = 0;
+
+//Spawn groups
+for "_j" from 1 to _numGroups do {
+	private ["_unitGroup","_p","_pos","_totalAI"];
+	_totalAI = (_minAI + round(random _addAI));
+	if (_totalAI == 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: No AI to spawn for AI group %1 of %2.",_j,_numGroups]};};
+	
+	_unitGroup = call DZAI_createGroup;
+
+	diag_log format ["DEBUG :: Created group %1 (fn_createGroups).",_unitGroup];
+	_p = _spawnPositions call BIS_fnc_selectRandom;
+	_pos = [0,0,0];
+	if (_spawnType == 2) then {	
+		_pos = [_p,1,100,2,0,2000,0] call BIS_fnc_findSafePos;
+	} else {
+		_pos = _p;
+	};
+
+	//Spawn units
+	[_totalAI,_unitGroup,_pos,_trigger,_gradeChances] call fnc_createUnit;
+	
+	//Update AI count
+	_unitGroup setVariable ["groupSize",_totalAI];
+	DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
+	_totalSpawned = _totalSpawned + _totalAI;
+	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_unitGroup,_totalAI];};
+	
+	if ((typeName _patroldist) == "SCALAR") then {
+		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+	} else {
+		0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
+	};
+	_grpArray set [count _grpArray,_unitGroup];
+};
+
+if ((count _grpArray) == 0) exitWith {[_trigger] execVM '\z\addons\dayz_server\DZAI\scripts\resetStaticTrigger.sqf'; if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: No units to spawn. Force resetting trigger area (spawnBandits)";};};
+if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned %1 new AI groups of %2 units each in %3 seconds (fn_createGroups).",_numGroups,_totalSpawned,(diag_tickTime - _startTime)];};
+
+0 = [_trigger,_grpArray,_patrolDist,_gradeChances,_spawnPositions,_spawnType,[_minAI,_addAI]] spawn fnc_initTrigger;
 
 true

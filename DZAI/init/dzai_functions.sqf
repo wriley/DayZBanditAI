@@ -23,8 +23,6 @@ if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then { // Optional AI-to-Z hosti
 fnc_banditAIKilled = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIKilled.sqf";
 fnc_banditAIRespawn = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIRespawn.sqf";
 fnc_selectRandomWeighted = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_selectRandomWeighted.sqf";
-fnc_createGroups = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createGroups.sqf";
-fnc_createGroups_dyn = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createGroups_dyn.sqf";
 fnc_createUnit = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createUnit.sqf";
 fnc_damageAI = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_damageHandlerAI.sqf";
 fnc_getGradeChances =			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_getGradeChances.sqf";
@@ -55,7 +53,7 @@ fnc_spawnBandits_bldgs = 	{
 	private ["_equipType","_numGroups"];
 	_equipType = if ((count _this) > 4) then {_this select 4} else {1};
 	_numGroups = if ((count _this) > 5) then {_this select 5} else {1};
-	0 = [_this select 0,_this select 1,_this select 2,_this select 3,[],_equipType,_numGroups] spawn fnc_spawnBandits;
+	0 = [_this select 0,_this select 1,_this select 2,_this select 3,[],_equipType,_numGroups] call fnc_spawnBandits;
 	true
 };
 	
@@ -64,7 +62,7 @@ fnc_spawnBandits_markers  = 	{
 	private ["_equipType","_numGroups"];
 	_equipType = if ((count _this) > 5) then {_this select 5} else {1};
 	_numGroups = if ((count _this) > 6) then {_this select 6} else {1};
-	0 = [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_equipType,_numGroups] spawn fnc_spawnBandits;
+	0 = [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_equipType,_numGroups] call fnc_spawnBandits;
 	true
 };
 */
@@ -85,7 +83,7 @@ DZAI_spawn = {
 		_positionArray set [(count _positionArray),_pos];
 	};
 	
-	_trigStatements = format ["0 = [%1,0,%2,thisTrigger,%4,%3] spawn fnc_spawnBandits;",(_this select 1),_patrolRadius,(_this select 2),_positionArray];
+	_trigStatements = format ["0 = [%1,0,%2,thisTrigger,%4,%3] call fnc_spawnBandits;",(_this select 1),_patrolRadius,(_this select 2),_positionArray];
 	_trigger = createTrigger ["EmptyDetector", getMarkerPos(_spawnMarker)];
 	_trigger setTriggerArea [600, 600, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
@@ -95,4 +93,14 @@ DZAI_spawn = {
 	
 	true
 };
-	
+
+DZAI_createGroup = {
+	private["_unitGroup"];
+	if (({(side _x) == EAST} count allGroups) <= 140) then {
+		_unitGroup = createGroup east;
+	} else {
+		_unitGroup = createGroup resistance;
+		diag_log "DZAI Warning: East side has exceeded 140 groups. Using Resistance as AI side.";
+	};
+	_unitGroup
+};

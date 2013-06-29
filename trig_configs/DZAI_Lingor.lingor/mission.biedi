@@ -50,7 +50,7 @@ class _trigger_0
 		INTERRUPTABLE="true";
 		TEXT="Medlina";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -70,7 +70,7 @@ class _trigger_2
 		INTERRUPTABLE="true";
 		TEXT="Alma";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -90,7 +90,7 @@ class _trigger_4
 		INTERRUPTABLE="true";
 		TEXT="Mercadio";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -110,7 +110,7 @@ class _trigger_6
 		INTERRUPTABLE="true";
 		TEXT="Zuela";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -130,7 +130,7 @@ class _trigger_8
 		INTERRUPTABLE="true";
 		TEXT="Drassen";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -150,7 +150,7 @@ class _trigger_10
 		INTERRUPTABLE="true";
 		TEXT="Verto";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -170,7 +170,7 @@ class _trigger_12
 		INTERRUPTABLE="true";
 		TEXT="Rock Cafe";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -190,7 +190,7 @@ class _trigger_14
 		INTERRUPTABLE="true";
 		TEXT="Ralon";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -210,7 +210,7 @@ class _trigger_16
 		INTERRUPTABLE="true";
 		TEXT="Calamar";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -230,7 +230,7 @@ class _trigger_20
 		INTERRUPTABLE="true";
 		TEXT="Sargento (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,['Sargento1','Sargento2','Sargento3','Sargento4','Sargento5'],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,['Sargento1','Sargento2','Sargento3','Sargento4','Sargento5'],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -250,7 +250,7 @@ class _trigger_22
 		INTERRUPTABLE="true";
 		TEXT="Melana Resort";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -270,7 +270,7 @@ class _trigger_24
 		INTERRUPTABLE="true";
 		TEXT="Bilbado";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -290,7 +290,7 @@ class _trigger_26
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -310,7 +310,7 @@ class _trigger_28
 		INTERRUPTABLE="true";
 		TEXT="Research Lab 102";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -330,7 +330,7 @@ class _trigger_30
 		INTERRUPTABLE="true";
 		TEXT="Motodrom Rapido";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -350,7 +350,7 @@ class _trigger_32
 		INTERRUPTABLE="true";
 		TEXT="Regina Tributa";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -370,7 +370,7 @@ class _trigger_36
 		INTERRUPTABLE="true";
 		TEXT="Benio";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -390,7 +390,7 @@ class _trigger_38
 		INTERRUPTABLE="true";
 		TEXT="Vidora";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -410,7 +410,7 @@ class _trigger_40
 		INTERRUPTABLE="true";
 		TEXT="Rosalia";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -430,7 +430,7 @@ class _trigger_42
 		INTERRUPTABLE="true";
 		TEXT="Distrito Turistico";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -450,7 +450,7 @@ class _trigger_44
 		INTERRUPTABLE="true";
 		TEXT="Calapedro";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -470,7 +470,7 @@ class _trigger_46
 		INTERRUPTABLE="true";
 		TEXT="San Arulco";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -490,7 +490,7 @@ class _trigger_48
 		INTERRUPTABLE="true";
 		TEXT="Centro Esencia";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -510,7 +510,7 @@ class _trigger_50
 		INTERRUPTABLE="true";
 		TEXT="Morada";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -530,7 +530,7 @@ class _trigger_52
 		INTERRUPTABLE="true";
 		TEXT="Faunaverde";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -550,7 +550,7 @@ class _trigger_54
 		INTERRUPTABLE="true";
 		TEXT="Montehofo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -570,7 +570,7 @@ class _trigger_56
 		INTERRUPTABLE="true";
 		TEXT="Negrosa";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -590,7 +590,7 @@ class _trigger_58
 		INTERRUPTABLE="true";
 		TEXT="Lagosa";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -610,7 +610,7 @@ class _trigger_60
 		INTERRUPTABLE="true";
 		TEXT="Prospero";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -630,7 +630,7 @@ class _trigger_62
 		INTERRUPTABLE="true";
 		TEXT="Victorin";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -650,7 +650,7 @@ class _trigger_64
 		INTERRUPTABLE="true";
 		TEXT="Cafe Santiago";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -670,7 +670,7 @@ class _trigger_66
 		INTERRUPTABLE="true";
 		TEXT="Marcella";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -690,7 +690,7 @@ class _trigger_68
 		INTERRUPTABLE="true";
 		TEXT="El Villon";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -710,7 +710,7 @@ class _trigger_72
 		INTERRUPTABLE="true";
 		TEXT="Monga-Tamba-Pachi";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -730,7 +730,7 @@ class _trigger_74
 		INTERRUPTABLE="true";
 		TEXT="Palida";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -750,7 +750,7 @@ class _trigger_76
 		INTERRUPTABLE="true";
 		TEXT="Building";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -770,7 +770,7 @@ class _trigger_78
 		INTERRUPTABLE="true";
 		TEXT="Corazon";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -790,7 +790,7 @@ class _trigger_82
 		INTERRUPTABLE="true";
 		TEXT="Manteria";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -810,7 +810,7 @@ class _trigger_84
 		INTERRUPTABLE="true";
 		TEXT="Sanvigado";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -830,7 +830,7 @@ class _trigger_86
 		INTERRUPTABLE="true";
 		TEXT="Cafe Prada";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -850,7 +850,7 @@ class _trigger_88
 		INTERRUPTABLE="true";
 		TEXT="Tres Palmas Inn";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -870,7 +870,7 @@ class _trigger_92
 		INTERRUPTABLE="true";
 		TEXT="Maruko";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [4,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [4,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -890,7 +890,7 @@ class _trigger_94
 		INTERRUPTABLE="true";
 		TEXT="Airport Terminal";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -910,7 +910,7 @@ class _trigger_98
 		INTERRUPTABLE="true";
 		TEXT="Conoteta";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -930,7 +930,7 @@ class _trigger_100
 		INTERRUPTABLE="true";
 		TEXT="Cemarin";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -950,7 +950,7 @@ class _trigger_102
 		INTERRUPTABLE="true";
 		TEXT="San Isabel";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -970,7 +970,7 @@ class _trigger_104
 		INTERRUPTABLE="true";
 		TEXT="Research Lab 101";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -990,7 +990,7 @@ class _trigger_106
 		INTERRUPTABLE="true";
 		TEXT="Aculto-Garibosa";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1010,7 +1010,7 @@ class _trigger_108
 		INTERRUPTABLE="true";
 		TEXT="Gayucca";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1030,7 +1030,7 @@ class _trigger_112
 		INTERRUPTABLE="true";
 		TEXT="Tucos";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1050,7 +1050,7 @@ class _trigger_114
 		INTERRUPTABLE="true";
 		TEXT="Barracks";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [3,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [3,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1070,7 +1070,7 @@ class _trigger_116
 		INTERRUPTABLE="true";
 		TEXT="Checkpoint Oeste";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1090,7 +1090,7 @@ class _trigger_118
 		INTERRUPTABLE="true";
 		TEXT="Fernando";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1110,7 +1110,7 @@ class _trigger_120
 		INTERRUPTABLE="true";
 		TEXT="FOB Eddie";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1130,7 +1130,7 @@ class _trigger_122
 		INTERRUPTABLE="true";
 		TEXT="FOB Eddie 2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1150,7 +1150,7 @@ class _trigger_124
 		INTERRUPTABLE="true";
 		TEXT="Prison (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,150,['Prison1','Prison2','Prison3','Prison4','Prison5'],2] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,150,['Prison1','Prison2','Prison3','Prison4','Prison5'],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1170,7 +1170,7 @@ class _trigger_126
 		INTERRUPTABLE="true";
 		TEXT="DZAI Trigger";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1190,7 +1190,7 @@ class _trigger_128
 		INTERRUPTABLE="true";
 		TEXT="Pintosa";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1210,7 +1210,7 @@ class _trigger_130
 		INTERRUPTABLE="true";
 		TEXT="Villa Oscura";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,0,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,0,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1230,7 +1230,7 @@ class _trigger_133
 		INTERRUPTABLE="true";
 		TEXT="Old Dutch Castle";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1250,7 +1250,7 @@ class _trigger_136
 		INTERRUPTABLE="true";
 		TEXT="Mairango";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1325,7 +1325,7 @@ class _trigger_138
 		INTERRUPTABLE="true";
 		TEXT="PresidentePalace (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,['Palace1','Palace2','Palace3'],1] spawn fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,100,['Palace1','Palace2','Palace3'],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
