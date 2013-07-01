@@ -40,8 +40,8 @@ class _trigger_0
 	class Arguments
 	{
 		POSITION="[9567.4844, 9819.4053, 0.00024414063]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -60,8 +60,8 @@ class _trigger_2
 	class Arguments
 	{
 		POSITION="[9836.3662, 9964.916, 0.080734253]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -80,8 +80,8 @@ class _trigger_5
 	class Arguments
 	{
 		POSITION="[10556.573, 9628.2139]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -100,8 +100,8 @@ class _trigger_8
 	class Arguments
 	{
 		POSITION="[10648.018, 9272.71, 0.036804199]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -120,8 +120,8 @@ class _trigger_11
 	class Arguments
 	{
 		POSITION="[10292.688, 9383.8066]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -140,8 +140,8 @@ class _trigger_15
 	class Arguments
 	{
 		POSITION="[10748.605, 9488.3633, 6.7463531]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -160,8 +160,8 @@ class _trigger_18
 	class Arguments
 	{
 		POSITION="[11562.466, 9200.8262]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -180,8 +180,8 @@ class _trigger_20
 	class Arguments
 	{
 		POSITION="[11186.234, 8862.3135]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -200,8 +200,8 @@ class _trigger_23
 	class Arguments
 	{
 		POSITION="[10151.598, 8410.0957, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -220,8 +220,8 @@ class _trigger_26
 	class Arguments
 	{
 		POSITION="[9784.5107, 8696.3291, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -240,8 +240,8 @@ class _trigger_29
 	class Arguments
 	{
 		POSITION="[9157.2334, 8319.3779, 0.036804199]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -260,8 +260,8 @@ class _trigger_31
 	class Arguments
 	{
 		POSITION="[8217.6494, 9031.8418]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -280,8 +280,8 @@ class _trigger_34
 	class Arguments
 	{
 		POSITION="[8065.3569, 9300.1055, 6.7385035]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -300,8 +300,8 @@ class _trigger_37
 	class Arguments
 	{
 		POSITION="[8308.2803, 9548.1729, 4.2521825]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -320,8 +320,8 @@ class _trigger_40
 	class Arguments
 	{
 		POSITION="[7423.0586, 8711.1533, 4.7683716e-007]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -340,8 +340,8 @@ class _trigger_43
 	class Arguments
 	{
 		POSITION="[8884.1748, 7772.5942]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -360,8 +360,8 @@ class _trigger_46
 	class Arguments
 	{
 		POSITION="[8134.5352, 7818.9639, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -380,8 +380,8 @@ class _trigger_49
 	class Arguments
 	{
 		POSITION="[6885.5239, 8090.2144]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -400,8 +400,8 @@ class _trigger_52
 	class Arguments
 	{
 		POSITION="[12352.392, 7259.4155]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -420,8 +420,8 @@ class _trigger_56
 	class Arguments
 	{
 		POSITION="[12267.043, 7086.6909, 6.721674]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -440,8 +440,8 @@ class _trigger_58
 	class Arguments
 	{
 		POSITION="[12499.284, 7094.917, 15.620382]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -460,8 +460,8 @@ class _trigger_61
 	class Arguments
 	{
 		POSITION="[12392.56, 8487.3535, 3.5483532]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -480,8 +480,8 @@ class _trigger_64
 	class Arguments
 	{
 		POSITION="[13236.584, 6909.2681, 0.10199928]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -500,8 +500,8 @@ class _trigger_67
 	class Arguments
 	{
 		POSITION="[10292.604, 7294.0884, 17.75]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -520,8 +520,8 @@ class _trigger_70
 	class Arguments
 	{
 		POSITION="[7660.1509, 6418.7959, -4.7683716e-006]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -540,8 +540,8 @@ class _trigger_73
 	class Arguments
 	{
 		POSITION="[9348.5732, 5948.7441, 8.5356789]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -560,8 +560,8 @@ class _trigger_76
 	class Arguments
 	{
 		POSITION="[9305.9141, 5226.0352]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -580,8 +580,8 @@ class _trigger_79
 	class Arguments
 	{
 		POSITION="[10764.443, 4986.6172, 0.10199928]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -600,8 +600,8 @@ class _trigger_82
 	class Arguments
 	{
 		POSITION="[10583.896, 4708.0063]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -620,8 +620,8 @@ class _trigger_85
 	class Arguments
 	{
 		POSITION="[11282.022, 5287.4814]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -640,8 +640,8 @@ class _trigger_88
 	class Arguments
 	{
 		POSITION="[11333.451, 5865.9644, 1.9073486e-006]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -660,8 +660,8 @@ class _trigger_91
 	class Arguments
 	{
 		POSITION="[11597.621, 5836.9849]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -680,8 +680,8 @@ class _trigger_94
 	class Arguments
 	{
 		POSITION="[11515.357, 6209.0894, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -700,8 +700,8 @@ class _trigger_97
 	class Arguments
 	{
 		POSITION="[11237.285, 6124.4678, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -720,8 +720,8 @@ class _trigger_103
 	class Arguments
 	{
 		POSITION="[12968.272, 8848.2959, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -740,8 +740,8 @@ class _trigger_105
 	class Arguments
 	{
 		POSITION="[13305.436, 8848.2959, 7.512887]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -760,8 +760,8 @@ class _trigger_107
 	class Arguments
 	{
 		POSITION="[13605.523, 9058.1143, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -780,8 +780,8 @@ class _trigger_109
 	class Arguments
 	{
 		POSITION="[14299.234, 9441.1152, 0.00024795532]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -800,8 +800,8 @@ class _trigger_111
 	class Arguments
 	{
 		POSITION="[14461.982, 8517.3066, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -820,8 +820,8 @@ class _trigger_113
 	class Arguments
 	{
 		POSITION="[16535.064, 9339.3643]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -840,8 +840,8 @@ class _trigger_115
 	class Arguments
 	{
 		POSITION="[14476.567, 10791.867, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -860,8 +860,8 @@ class _trigger_117
 	class Arguments
 	{
 		POSITION="[17759.131, 12396.316, 7.6293945e-006]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -880,8 +880,8 @@ class _trigger_119
 	class Arguments
 	{
 		POSITION="[14118.253, 12510.203]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -900,8 +900,8 @@ class _trigger_121
 	class Arguments
 	{
 		POSITION="[13194.992, 11317.268, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -920,8 +920,8 @@ class _trigger_123
 	class Arguments
 	{
 		POSITION="[17289.807, 14199.624]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -940,8 +940,8 @@ class _trigger_125
 	class Arguments
 	{
 		POSITION="[19173.025, 13964.805]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -960,8 +960,8 @@ class _trigger_127
 	class Arguments
 	{
 		POSITION="[11955.264, 15329.761]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -980,8 +980,8 @@ class _trigger_129
 	class Arguments
 	{
 		POSITION="[12550.743, 14988.896]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1000,8 +1000,8 @@ class _trigger_131
 	class Arguments
 	{
 		POSITION="[7736.0464, 15805.851, 0.00024795532]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1020,8 +1020,8 @@ class _trigger_133
 	class Arguments
 	{
 		POSITION="[8166.4893, 17013.783]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1040,8 +1040,8 @@ class _trigger_135
 	class Arguments
 	{
 		POSITION="[12160.592, 17656.854]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1060,8 +1060,8 @@ class _trigger_137
 	class Arguments
 	{
 		POSITION="[15399.514, 13750.813, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1080,8 +1080,8 @@ class _trigger_139
 	class Arguments
 	{
 		POSITION="[4896.603, 15654.142, -3.0517578e-005]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1100,8 +1100,8 @@ class _trigger_141
 	class Arguments
 	{
 		POSITION="[4469.1465, 15512.637, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1120,8 +1120,8 @@ class _trigger_143
 	class Arguments
 	{
 		POSITION="[14214.354, 11860.975, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1140,8 +1140,8 @@ class _trigger_145
 	class Arguments
 	{
 		POSITION="[13774.11, 11517.231, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1160,8 +1160,8 @@ class _trigger_147
 	class Arguments
 	{
 		POSITION="[17560.428, 9583.8975, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1180,8 +1180,8 @@ class _trigger_149
 	class Arguments
 	{
 		POSITION="[18941.666, 13876.968, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1200,8 +1200,8 @@ class _trigger_152
 	class Arguments
 	{
 		POSITION="[19156.404, 13614.881, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1220,8 +1220,8 @@ class _trigger_154
 	class Arguments
 	{
 		POSITION="[18823.875, 13691.387, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1240,8 +1240,8 @@ class _trigger_157
 	class Arguments
 	{
 		POSITION="[12461.436, 13390.605, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1260,8 +1260,8 @@ class _trigger_160
 	class Arguments
 	{
 		POSITION="[11747.727, 14414.795]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1280,8 +1280,8 @@ class _trigger_163
 	class Arguments
 	{
 		POSITION="[14377.003, 12504.138]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1300,8 +1300,8 @@ class _trigger_166
 	class Arguments
 	{
 		POSITION="[14022.031, 12680.978]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -1320,8 +1320,8 @@ class _trigger_169
 	class Arguments
 	{
 		POSITION="[2886.6123, 2875.6104, -3.8146973e-006]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";

@@ -896,13 +896,20 @@ _trigger_188 = _this;
 #include "custom_configs\chernarus_custom_config.sqf"	//Custom patrol definitions file
 
 //Add your custom markers here
-
+_this = createMarker ["dzaicustomspawntest", [6650.9883, 9411.541, -6.1035156e-005]];
+_this setMarkerShape "ELLIPSE";
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_this setMarkerSize [200, 200];
+_DZAI_customSpawn = _this;
 
 //End of custom markers
 
-//Add your custom triggers here
+//Add your custom spawn definitions here
+//Format: [marker,number of AI to spawn,equip type (0-3)] call DZAI_spawn; Example: [_DZAI_customSpawn,2,1] call DZAI_spawn;
+[_DZAI_customSpawn,2,1] call DZAI_spawn;
 
 
-//End of custom triggers
+//End of custom spawn definitions
 
 diag_log "Chernarus map configuration loaded.";

@@ -43,7 +43,6 @@ ArmaIIholic
 if (isServer) then
 {
 	waitUntil {!isNil "bis_fnc_init"};
-	
 	_grp = _this select 0;
 	_pos = _this select 1;
 	_max_dist = _this select 2;

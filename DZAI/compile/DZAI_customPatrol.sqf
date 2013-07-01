@@ -9,7 +9,7 @@
 	_patrolArray: Global variable containing an array of: 1) Markers indicating each waypoint, 2) Probability to choose a random waypoint in the sequence as the next waypoint, 3) Probability to reverse the order of the given marker array.
 	_debug (optional): Set to "1" to create debug markers for each waypoint created.
 	
-	Last updated: 6/2/2013
+	Last updated: 2:04 AM 6/25/2013
 */
 if (!isServer) exitWith {};
 
@@ -20,7 +20,7 @@ _patrolArray = _this select 1;
 _debug = if ((count _this) > 2) then {_this select 2} else {0};
 
 _wpArray = [];
-_randomFactor = 0.50;
+_randomFactor = 0.00;
 _reversalChance = 0.50;
 if (typeName (_patrolArray select 0) == "ARRAY") then {
 	//If all three parameters are provided, use given _wpArray, _randomFactor, and _reversalChance are given.
@@ -63,7 +63,7 @@ for "_i" from _firstWP to _lastWP step _step do {
 	_markerPos = getMarkerPos (_wpArray select _i);
 	_waypoint = _group addWaypoint [_markerPos,0];
 	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointCompletionRadius 10;
+	_waypoint setWaypointCompletionRadius 40;
 	[_group,(_j+_i)] setWaypointTimeout [0,3,15];
 	[_group,(_j+_i)] setWaypointStatements ["true", _wpStatement];
 	
@@ -83,7 +83,7 @@ for "_i" from _firstWP to _lastWP step _step do {
 
 _wpStart = _group addWaypoint [_pos, 0];
 _wpStart setWaypointType "SAD";
-_wpStart setWaypointCompletionRadius 10;
+_wpStart setWaypointCompletionRadius 40;
 [_group,(count waypoints _group)] setWaypointStatements ["true", "group this setCurrentWaypoint [(group this), (round (random 2) + 1)];"];
 
 _wpEnd = _group addWaypoint [_pos, 0];

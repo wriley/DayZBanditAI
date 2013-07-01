@@ -3,9 +3,11 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 6:16 PM 6/17/2013
+	Last updated: 12:55 PM 6/26/2013
 */
 private ["_startTime"];
+
+if (!isServer) exitWith {};
 
 _startTime = diag_tickTime;
 diag_log "[DZAI] Initializing DZAI addon. Reading dzai_variables.sqf.";
@@ -23,64 +25,7 @@ EAST setFriend [resistance, 1];
 WEST setFriend [EAST, 0];									//West (Player side) is hostile to all.
 WEST setFriend [resistance, 0];
 
-	waituntil {!isnil "bis_fnc_init"};
-	diag_log "[DZAI] Compiling DZAI functions.";
-	// [] call BIS_fnc_help;
-	//Compile general functions.
-	BIS_fnc_selectRandom = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_selectRandom.sqf";	//Altered version
-	fnc_setSkills = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_setSkills.sqf";
-	fnc_spawn_deathFlies = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_spawn_deathFlies.sqf";
-	fnc_unitConsumables = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_unitConsumables.sqf";
-	fnc_unitInventory = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_unitInventory.sqf";
-	fnc_unitTools = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_unitTools.sqf";
-	fnc_unitSelectWeapon = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_unitSelectWeapon.sqf";
-	fnc_unitSelectPistol = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_unitSelectPistol.sqf";
-	if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then { // Optional AI-to-Z hostility
-		ai_fired = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\ai_fired.sqf";	//Calculates weapon noise of AI unit
-		ai_alertzombies = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\ai_alertzombies.sqf"; //AI weapon noise attracts zombie attention
-	};
-	fnc_banditAIKilled = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIKilled.sqf";
-	fnc_banditAIRespawn = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIRespawn.sqf";
-	fnc_selectRandomWeighted = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_selectRandomWeighted.sqf";
-	fnc_createAI = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createAI.sqf";
-	fnc_createAI_NR = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createAI_NR.sqf";
-	fnc_damageAI = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_damageHandlerAI.sqf";
-	fnc_getGradeChances =			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_getGradeChances.sqf";
-	fnc_initTrigger = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_initTrigger.sqf";
-	fnc_BIN_taskPatrol = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\BIN_taskPatrol.sqf";
-	if (DZAI_debugMarkers < 1) then {
-		fnc_aiBrain = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\aiBrain.sqf";
-	} else {
-		fnc_aiBrain = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\aiBrain_debug.sqf";
-	};
-	fnc_DZAI_customPatrol = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\DZAI_customPatrol.sqf";
-	fnc_updateDead = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_updateDead.sqf";
-	//Compile spawn scripts
-	fnc_spawnBandits = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits.sqf";
-	fnc_respawnBandits = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\respawnBandits.sqf";
-	fnc_spawnBandits_bldgs = 		fnc_spawnBandits;
-	fnc_spawnBandits_markers = 		fnc_spawnBandits;
-	fnc_despawnBandits = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\despawnBandits.sqf";
-	fnc_spawnBandits_random_NR = 	compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits_random_NR.sqf";
-	fnc_despawnBandits_NR = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\spawn_functions\despawnBandits_NR.sqf";
-	
-	//Wrapper function for compatibility with old spawnBandits format.
-	fnc_spawnBandits_bldgs = 	{
-		private ["_equipType","_numGroups"];
-		_equipType = if ((count _this) > 4) then {_this select 4} else {1};
-		_numGroups = if ((count _this) > 5) then {_this select 5} else {1};
-		0 = [_this select 0,_this select 1,_this select 2,_this select 3,[],_equipType,_numGroups] call fnc_spawnBandits;
-		true
-	};
-	
-	//Wrapper function for compatibility with old spawnBandits format.
-	fnc_spawnBandits_markers  = 	{
-		private ["_equipType","_numGroups"];
-		_equipType = if ((count _this) > 5) then {_this select 5} else {1};
-		_numGroups = if ((count _this) > 6) then {_this select 6} else {1};
-		0 = [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_equipType,_numGroups] call fnc_spawnBandits;
-		true
-	};
+#include "dzai_functions.sqf"
 
 private["_worldname"];
 _worldname=toLower format ["%1",worldName];
@@ -108,9 +53,9 @@ switch (_worldname) do {
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\chernarus_classnames.sqf";
 		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_chernarus.sqf";
-		DZAI_centerMarker setMarkerPos [7580.2803, 7636.8018];
-		DZAI_centerSize = 6000;
-		DZAI_dynTriggersMax = 16;
+		DZAI_centerMarker setMarkerPos [7130.0073, 7826.3501];
+		DZAI_centerSize = 5500;
+		DZAI_dynTriggersMax = 15;
 	};
 	case "utes":
 	{
@@ -210,9 +155,9 @@ switch (_worldname) do {
 		DZAI_dynTriggersMax = 17;
     };
 	case default {
-		DZAI_centerSize = 5000;
-		DZAI_dynTriggersMax = 20;
-		diag_log "Unrecognized worldname found. Verifying table compatibility.";
+		DZAI_centerSize = 7000;
+		DZAI_dynTriggersMax = 15;
+		diag_log "Unrecognized worldname found.";
 		if (!DZAI_verifyTables) then {DZAI_verifyTables = true;};	//Force table verification for unrecognized maps to help creating new loot config files.
 	};
 };

@@ -27,8 +27,8 @@ class _trigger_0
 	class Arguments
 	{
 		POSITION="[3376.7136, 4402.3555, 0]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -47,8 +47,8 @@ class _trigger_2
 	class Arguments
 	{
 		POSITION="[3561.8384, 3708.8481]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -67,8 +67,8 @@ class _trigger_4
 	class Arguments
 	{
 		POSITION="[3855.0464, 3373.2051]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
@@ -87,8 +87,8 @@ class _trigger_6
 	class Arguments
 	{
 		POSITION="[4355.46, 3207.3979, 0.34515762]";
-		A="500";
-		B="500";
+		A="600";
+		B="600";
 		ACTIVATION_BY="ANY";
 		REPEATING="true";
 		TIMEOUT_MIN="20";
