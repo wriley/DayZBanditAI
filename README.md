@@ -1,4 +1,4 @@
-DZAI 1.1.8 - AI Addon for DayZ
+DZAI 1.1.9 - AI Addon for DayZ
 ============
 
 
@@ -148,5 +148,10 @@ Latest Updates:
 - [NEW] Added function DZAI_createGroup to create groups for AI use. The function creates groups belonging to the East side, then when/if the number of East groups reaches 140, it will switch to Resistance.
 - [REVERTED] spawnBandits and spawnBandits_dynamic are called instead of spawned (to fix null group issue). 
 - [REVERTED] Re-integrated fn_createGroups into spawnBandits and fn_createGroups_dyn into spawnBandits_dynamic.
+
+1.1.9 Update:
+
+- [FIXED] Dynamic triggers should not spawn more AI units if they have not despawned previously created units.
+- [MODIFIED] Dynamic AI minimum/maximum spawn distance from targeted player increased to 150m/350m from 125m/300m.
 
 Note: Information about past updates are archived in changelog.txt
