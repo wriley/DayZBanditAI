@@ -150,7 +150,7 @@ class _trigger_12
 		INTERRUPTABLE="true";
 		TEXT="Cherno1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,150,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,2,150,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -190,7 +190,7 @@ class _trigger_18
 		INTERRUPTABLE="true";
 		TEXT="Elektro2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,150,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,2,150,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -650,7 +650,7 @@ class _trigger_78
 		INTERRUPTABLE="true";
 		TEXT="Stary Sobor";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,3,200,thisTrigger,[],2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,3,225,thisTrigger,[],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1365,7 +1365,7 @@ class _trigger_156
 		INTERRUPTABLE="true";
 		TEXT="Elektro (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,150,thisTrigger,['Elektro1','Elektro2','Elektro3','Elektro4','Elektro5'],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,2,150,thisTrigger,['Elektro1','Elektro2','Elektro3','Elektro4','Elektro5'],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
