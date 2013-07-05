@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 7:32 PM 6/28/2013
+	Last updated: 1:35 AM 7/5/2013
 */
 private["_worldname"];
 
@@ -17,13 +17,23 @@ DZAI_debugLevel = 0;										//Enable or disable event logging to arma2oaserver
 DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI position, locate patrol waypoints, locate dynamically-spawned triggers. (Default: 0)
 DZAI_monitor = true;										//Enable or disable server monitor. Keeps track of number of max/current AI units and dynamically spawned triggers. (Default: true)
 DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
-DZAI_modName = "default";									//If using a non-standard version of a DayZ mod, edit this variable, other leave it as "default". Possible values: "skarolingor" (DayZ Lingor Skaronator Version), "2017" (DayZ 2017 and Namalsk 2017), "epoch" (DayZ Epoch), "civilian (DayZ Civilian).
 DZAI_verifyTables = true;									//Use this if experiencing crashes or errors with DZAI. Set to "true" to have DZAI verify all tables for banned/invalid classnames. If invalid entries are found, they are removed and logged into the RPT log. (Default: true)
 
+/*Enable mod-specific features (Optional) - Selecting one of these options will enable additional features specific to each mod. ie: Items, AI skins, loot rates, etc.
+	Possible options for DZAI_modName:
+	
+	default			Normal setting (default)
+	skarolingor		DayZ Lingor (Skaronator version)
+	2017			DayZ 2017, Namalsk 2017
+	epoch			DayZ Epoch
+	civilian		DayZ Civilian
+	overwatch		DayZ Overwatch
+	
+*/
+DZAI_modName = "default";
+
 //AI Unit Variables						
-DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)
-DZAI_dmgFactors1 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for bullet-type damage done to different body parts of AI units: Structural, Head, Body, Hands, Legs. Example: to make AI take 50% reduced damage to a body part, set the appropriate value to 0.50.
-DZAI_dmgFactors2 =[1.0,1.0,1.0,1.0,1.0];					//Multipliers for non-bullet-type (ie: explosions, collisions) damage done to different body parts: Structural, Head, Body, Hands, Legs.
+DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)			
 DZAI_refreshRate = 15;										//Amount of time in seconds between AI ammo and zombie check. (Default: 15)
 DZAI_zDetectRange = 200;									//Maximum distance for AI to detect zombies. (Default: 200)
 
@@ -49,12 +59,12 @@ DZAI_banAIWeapons = [];										//(Only if DZAI_dynamicWeaponList = true) List 
 //AI loot configuration										(Edible and Medical items, Miscellaneous items, Skin packs)
 DZAI_invmedicals = 1; 										//Number of selections of medical items (Inventory)
 DZAI_invedibles = 1;										//Number of selections of edible items (Inventory)
-DZAI_bpmedicals = 2; 										//Number of selections of medical items (Backpack)
+DZAI_bpmedicals = 1; 										//Number of selections of medical items (Backpack)
 DZAI_bpedibles = 1;											//Number of selections of edible items (Backpack)
-DZAI_numMiscItemS = 3;										//Maximum number of items to select from DZAI_MiscItemS table.
+DZAI_numMiscItemS = 2;										//Maximum number of items to select from DZAI_MiscItemS table.
 DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_MiscItemL table.
 
-//AI loot probabilities
+//AI loot probabilities (gradeChances should add up to 1.00) - [Civilian, Military, MilitarySpecial, HeliCrash]
 DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//equipType = 0 - most AI will have basic pistols or rifles, and occasionally common military weapons.
 DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.
 DZAI_gradeChances2 = [0.30,0.55,0.11,0.04];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
@@ -75,5 +85,7 @@ DZAI_actTrigs = 0;											//Tracks current number of active static triggers.
 DZAI_dynTriggerArray = [];									//List of all generated dynamic triggers.
 DZAI_respawnQueue = [];										//Queue of AI groups that require respawning. Group ID is removed from queue after it is respawned.
 DZAI_respawnActive = false;									//Tracks activity status of respawn queue. Prevents creation of multiple respawn queues.
+DZAI_dmgFactors1 = [0.375,0.563,0.375,0,0.375];
+DZAI_dmgFactors2 = [0.375,0.563,0.375,0,0.375];
 
 diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3. DZAI_dynamicWeaponList: %4. VerifyTables: %5.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_dynamicWeaponList,DZAI_verifyTables];

@@ -87,7 +87,7 @@ DZAI_spawn = {
 	_trigger = createTrigger ["EmptyDetector", getMarkerPos(_spawnMarker)];
 	_trigger setTriggerArea [600, 600, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
-	_trigger setTriggerTimeout [15, 17, 20, true];
+	_trigger setTriggerTimeout [10, 15, 20, true];
 	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigStatements,"0 = [thisTrigger] spawn fnc_despawnBandits;"];
 	//diag_log format ["DEBUG :: %1",_trigStatements];
 	

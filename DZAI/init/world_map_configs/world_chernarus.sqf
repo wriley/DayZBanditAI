@@ -36,7 +36,7 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_15 = _this;
 
-_this = createMarker ["Cherno2", [6786.3315, 2936.3113, 2.2411346e-005]];
+_this = createMarker ["Cherno2", [6834.1162, 3153.759, 2.2411346e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_16 = _this;
@@ -46,12 +46,12 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_17 = _this;
 
-_this = createMarker ["Cherno4", [6776.9277, 3181.4263, 4.8160553e-005]];
+_this = createMarker ["Cherno4", [7288.8408, 2305.3875, 4.8160553e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_18 = _this;
 
-_this = createMarker ["Cherno5", [6571.4468, 2971.314, 1.5258789e-005]];
+_this = createMarker ["Cherno5", [6410.3672, 2921.1934, 1.5258789e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_19 = _this;
@@ -479,7 +479,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "NEAF (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,2,250,thisTrigger,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5'],2] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,250,thisTrigger,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5'],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_56 = _this;
 
 _this = createTrigger ["EmptyDetector", [11130.03, 12335.65, 9.50177]];
@@ -487,7 +487,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "Krasnostav";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [0,2,200,thisTrigger,[],2] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [0,2,200,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_58 = _this;
 
 _this = createTrigger ["EmptyDetector", [8710.1924, 11791.018, -3.0517578e-005]];
@@ -810,7 +810,7 @@ _this setTriggerText "Dolina-Solnichniy";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [0,1,125,thisTrigger,[],0] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_144 = _this;
 
-_this = createTrigger ["EmptyDetector", [6624.6309, 2795.0913, -7.6293945e-006]];
+_this = createTrigger ["EmptyDetector", [6490.1133, 2778.8921, -7.6293945e-006]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
@@ -831,7 +831,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "Cherno (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,1,150,thisTrigger,['Cherno1','Cherno2','Cherno3','Cherno4','Cherno5'],1] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,1,200,thisTrigger,['Cherno1','Cherno2','Cherno3','Cherno4','Cherno5'],1] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_160 = _this;
 
 /*

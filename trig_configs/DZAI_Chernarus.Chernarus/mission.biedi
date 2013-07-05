@@ -1279,7 +1279,7 @@ class _trigger_146
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6624.6309, 2795.0913, -7.6293945e-006]";
+		POSITION="[6490.1133, 2778.8921, -7.6293945e-006]";
 		A="600";
 		B="600";
 		ACTIVATION_BY="ANY";
@@ -1385,7 +1385,7 @@ class _marker_16
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6786.3315, 2936.3113, 2.2411346e-005]";
+		POSITION="[6834.1162, 3153.759, 2.2411346e-005]";
 		NAME="Cherno2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1407,7 +1407,7 @@ class _marker_18
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6776.9277, 3181.4263, 4.8160553e-005]";
+		POSITION="[7288.8408, 2305.3875, 4.8160553e-005]";
 		NAME="Cherno4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1418,7 +1418,7 @@ class _marker_19
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[6571.4468, 2971.314, 1.5258789e-005]";
+		POSITION="[6410.3672, 2921.1934, 1.5258789e-005]";
 		NAME="Cherno5";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1440,7 +1440,7 @@ class _trigger_160
 		INTERRUPTABLE="true";
 		TEXT="Cherno (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,150,thisTrigger,['Cherno1','Cherno2','Cherno3','Cherno4','Cherno5'],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,200,thisTrigger,['Cherno1','Cherno2','Cherno3','Cherno4','Cherno5'],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
