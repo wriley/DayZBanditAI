@@ -1,7 +1,7 @@
 /*
 	Chernarus static trigger configuration 
 	
-	Last updated: 11:44 AM 6/7/2013
+	Last updated: 4:46 PM 7/6/2013
 	
 */
 
@@ -67,7 +67,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "Elektro1";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,1,150,thisTrigger,[],1,2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,1,150,thisTrigger,[],0,2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_16 = _this;
 
 _this = createTrigger ["EmptyDetector", [10476.077, 2412.2297, 9.6632004]];
@@ -523,7 +523,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "Elektro (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,150,thisTrigger,['Elektro1','Elektro2','Elektro3','Elektro4','Elektro5'],1] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,150,thisTrigger,['Elektro1','Elektro2','Elektro3','Elektro4','Elektro5'],0] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_156 = _this;
 
 _this = createTrigger ["EmptyDetector", [6677.4395, 2585.647]];
@@ -533,15 +533,6 @@ _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "Cherno (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,1,200,thisTrigger,['Cherno1','Cherno2','Cherno3','Cherno4','Cherno5'],1] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_160 = _this;
-
-/*
-_this = createTrigger ["EmptyDetector", [4833.9678, 2191.5298]];
-_this setTriggerArea [600, 600, 0, false];
-_this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [20, 25, 30, true];
-_this setTriggerText "Balota Tents (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,1,125,thisTrigger,['BalotaT1','BalotaT2','BalotaT3','BalotaT4','BalotaT5']] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
-_trigger_167 = _this;*/
 
 _this = createTrigger ["EmptyDetector", [4308.2876, 10658.527]];
 _this setTriggerArea [600, 600, 0, false];

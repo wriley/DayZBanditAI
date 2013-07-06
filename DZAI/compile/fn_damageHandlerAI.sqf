@@ -9,33 +9,31 @@ _damage = 		_this select 2;				//Resulting level of damage for the selection. (R
 _dmgSource = 	_this select 3;				//The source unit that caused the damage. 
 _projectile = 	_this select 4;				//Classname of the projectile that caused inflicted the damage. ("" for unknown, such as falling damage.) 
 
-_dmgFactors=DZAI_dmgFactors;    			//Multipliers for damage done to different body parts: Overall Structural, Head, Body, Hands, Legs
-
 if (isNil {_unitAI getVariable "gethit"}) then {_unitAI setVariable ["gethit",[0,0,0,0]]};                            	// Fresh unit starts at full health
 _gethit=_unitAI getVariable "gethit"; 		// Retrieve unit's health statistics
 
 switch (_selection) do {                                                                                           		// Depending on which part of body is damaged
     case "":{                                                                                                         	// Overall structure damage
-        _damage = (damage _unitAI) + _damage * (_dmgFactors select 0)                                             		// Total damage to unit + percentage of incoming damage
+        _damage = (damage _unitAI) + _damage * (DZAI_dmgFactors select 0)                                             		// Total damage to unit + percentage of incoming damage
     };
     
     case "head_hit":{                                                                                                	// damage applied to head
-        _damage = (_gethit select 0) + (_damage - (_gethit select 0))*(_dmgFactors select 1);
+        _damage = (_gethit select 0) + (_damage - (_gethit select 0))*(DZAI_dmgFactors select 1);
 		_gethit set [0,_damage]        // damage dealt to head so far + damage from current shot (minus existing damage) * factor; essentially, damage accumulates with the number of shots you take
     };
     
     case "body":{
-        _damage = (_gethit select 1) + (_damage - (_gethit select 1))*(_dmgFactors select 2);
+        _damage = (_gethit select 1) + (_damage - (_gethit select 1))*(DZAI_dmgFactors select 2);
 		_gethit set [1,_damage]        //As previously
     };    
     
     case "hands":{                                                                                                      // cannot kill a unit on own, only affect aim
-        _damage = (_gethit select 2) + (_damage - (_gethit select 2))*(_dmgFactors select 3);
+        _damage = (_gethit select 2) + (_damage - (_gethit select 2))*(DZAI_dmgFactors select 3);
 		_gethit set [2,_damage]
     };        
     
     case "legs":{                                                                                                      // cannot kill a unit on own, only affect movement
-        _damage = (_gethit select 3) + (_damage - (_gethit select 3))*(_dmgFactors select 4);
+        _damage = (_gethit select 3) + (_damage - (_gethit select 3))*(DZAI_dmgFactors select 4);
 		_gethit set [3,_damage]
     }; 
 };      

@@ -35,6 +35,28 @@ diag_log format["[DZAI] Server is running map %1. Loading static trigger and cla
 //Load DZAI classname tables.
 #include "base_classname_configs\base_classnames.sqf"
 
+//Detect DayZ mod variant being used.
+if (DZAI_modName == "") then {
+	private["_modVariant"];
+	_modVariant = getText (configFile >> "CfgMods" >> "DayZ" >> "action");
+	diag_log format ["DEBUG :: Detected mod variant %1.",_modVariant];
+	switch (_modVariant) do {
+		case "http://www.dayzepoch.com":
+		{
+			DZAI_modName = "epoch";				//DayZ Epoch
+		};
+		case "http://www.dayzoverwatch.com":
+		{
+			DZAI_modName = "overwatch";			//DayZ Overwatch
+		};
+		case "http://www.opendayz.net":
+		{
+			DZAI_modName = "2017";				//DayZ 2017, DayZ Namalsk 2017
+		};
+	};
+};
+
+
 //Build DZAI weapon classname tables from CfgBuildingLoot data if DZAI_dynamicWeapons = true;
 if (DZAI_dynamicWeaponList) then {[DZAI_banAIWeapons] execVM '\z\addons\dayz_server\DZAI\scripts\buildWeaponArrays.sqf';};
 
@@ -72,7 +94,6 @@ switch (_worldname) do {
 		DZAI_centerMarker setMarkerPos [3998.7087, 4120.4692];
 		DZAI_centerSize = 2000;
 		DZAI_dynTriggersMax = 5;
-
 	};
 	case "fallujah":
 	{
@@ -162,7 +183,12 @@ switch (_worldname) do {
 	};
 };
 
+//Initialize AI settings
+if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then {DZAI_zAggro = true;diag_log "[DZAI] AI hostility to zombies enabled.";} else {DZAI_zAggro = false;diag_log "[DZAI] AI hostility to zombies disabled.";};
+if (isNil "DDOPP_taser_handleHit") then {DZAI_taserAI = false;} else {DZAI_taserAI = true;diag_log "[DZAI] DDOPP Taser Mod detected.";};
+
 if (DZAI_verifyTables) then {["DZAI_Rifles0","DZAI_Rifles1","DZAI_Rifles2","DZAI_Rifles3","DZAI_Pistols0","DZAI_Pistols1","DZAI_Pistols2","DZAI_Pistols3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_Edibles","DZAI_Medicals1","DZAI_Medicals2","DZAI_MiscItemS","DZAI_MiscItemL","DZAI_SkinLoot","DZAI_BanditTypes"] execVM "\z\addons\dayz_server\DZAI\scripts\verifyTables.sqf";};
 if (DZAI_dynTriggersMax > 0) then {[DZAI_dynTriggersMax] execVM '\z\addons\dayz_server\DZAI\scripts\spawnTriggers_random.sqf';};
 if (DZAI_monitor) then {[] execVM '\z\addons\dayz_server\DZAI\scripts\dzai_monitor.sqf';};
+diag_log format ["[DZAI] DZAI loaded with settings: Debug Level: %1. DebugMarkers: %2. ModName: %3. DZAI_dynamicWeaponList: %4. VerifyTables: %5.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_dynamicWeaponList,DZAI_verifyTables];
 diag_log format ["[DZAI] DZAI loading completed in %1 seconds.",(diag_tickTime - _startTime)];
