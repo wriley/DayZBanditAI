@@ -1,9 +1,11 @@
 /*
-	Taviana map configuration 
+	Taviana static trigger configuration 
 	
 	Last updated: 11:58 PM 6/6/2013
 	
 */
+
+#include "spawn_markers\markers_tavi.sqf"	//Load manual spawn point definitions file.
 
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
@@ -636,4 +638,4 @@ _trigger_152 = _this;
 
 //End of custom triggers
 
-diag_log "Taviana map configuration loaded.";
+diag_log "Taviana static trigger configuration loaded.";

@@ -1,9 +1,11 @@
 /*
-	Panthera map configuration 
+	Panthera static trigger configuration 
 	
 	Last updated: 11:57 PM 6/6/2013
 	
 */
+
+#include "spawn_markers\markers_panthera2.sqf"	//Load manual spawn point definitions file.
 
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
@@ -419,4 +421,4 @@ _trigger_118 = _this;
 
 //End of custom triggers
 
-diag_log "Panthera map configuration loaded.";
+diag_log "Panthera static trigger configuration loaded.";

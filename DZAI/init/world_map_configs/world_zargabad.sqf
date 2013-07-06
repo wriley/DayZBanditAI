@@ -1,9 +1,11 @@
 /*
-	Zargabad map configuration 
+	Zargabad static trigger configuration 
 	
 	Last updated: 11:44 AM 6/7/2013
 	
 */
+
+#include "spawn_markers\markers_zargabad.sqf"	//Load manual spawn point definitions file.
 
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
@@ -131,4 +133,4 @@ _trigger_27 = _this;
 
 
 //End of custom triggers
-diag_log "Zargabad map configuration loaded.";
+diag_log "Zargabad static trigger configuration loaded.";

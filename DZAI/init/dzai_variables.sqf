@@ -85,7 +85,6 @@ DZAI_actTrigs = 0;											//Tracks current number of active static triggers.
 DZAI_dynTriggerArray = [];									//List of all generated dynamic triggers.
 DZAI_respawnQueue = [];										//Queue of AI groups that require respawning. Group ID is removed from queue after it is respawned.
 DZAI_respawnActive = false;									//Tracks activity status of respawn queue. Prevents creation of multiple respawn queues.
-DZAI_dmgFactors1 = [0.375,0.563,0.375,0,0.375];
-DZAI_dmgFactors2 = [0.375,0.563,0.375,0,0.375];
+DZAI_dmgFactors = [0.375,0.563,0.375,0,0.375];
 
 diag_log format["[DZAI] DZAI Variables loaded. Debug Level: %1. DebugMarkers: %2. ModName: %3. DZAI_dynamicWeaponList: %4. VerifyTables: %5.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_dynamicWeaponList,DZAI_verifyTables];

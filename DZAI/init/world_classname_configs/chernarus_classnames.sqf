@@ -1,14 +1,13 @@
 /*
 	Chernarus Classname Configuration
 	
-	Last updated: 1:13 PM 6/3/2013
+	Last updated: 10:01 PM 7/5/2013
 	
 */
 private ["_newItems"];
 switch (DZAI_modName) do {
 	case "2017":
 	{
-		DZAI_maxPistolMags = 1;
 		DZAI_invmedicals = 0; 										//Number of selections of medical items (Inventory)
 		DZAI_invedibles = 0;										//Number of selections of edible items (Inventory)
 		DZAI_bpmedicals = 0; 										//Number of selections of medical items (Backpack)
@@ -46,7 +45,7 @@ switch (DZAI_modName) do {
 		DZAI_Backpacks1 = ["ice_apo_pack3","ice_apo_pack1"];
 		DZAI_Backpacks2 = ["ice_apo_pack1","ice_apo_pack4","ice_apo_pack2"];
 		DZAI_Backpacks3 = ["ice_apo_pack4","ice_apo_pack2"];
-		DZAI_tempNVGs = false;	//Disable temporary NVG chance for DayZ 2017.
+		if (DZAI_tempNVGs) then {DZAI_tempNVGs = false;};	//Disable temporary NVG chance for DayZ 2017.
 		diag_log "DayZ 2017 classnames loaded.";
 	};
 	case "epoch":
@@ -67,5 +66,11 @@ switch (DZAI_modName) do {
 		_newItems = ["Skin_Policeman_DZ","Skin_Citizen2_DZ","Skin_Citizen3_DZ","Skin_Rocker1_DZ","Skin_Rocker2_DZ","Skin_Rocker3_DZ","Skin_Rocker4_DZ","Skin_Worker1_DZ","Skin_Assistant_DZ","Skin_Pilot_DZ","Skin_Priest_DZ"];
 		for "_i" from 0 to ((count _newItems) - 1) do {DZAI_SkinLoot set [(count DZAI_SkinLoot),(_newItems select _i)];};
 	};
+	case "overwatch":
+	{
+		DZAI_BanditTypes = ["SurvivorW2_DZ","Survivor2_DZ","Sniper1_DZ","Sniper2_DZ","Sniper3_DZ","Sniper4_DZ","Sniper5_DZ","Sniper6_DZ","Soldier1_DZ","Camo1_DZ","Camo2_DZ","Camo3_DZ","Camo4_DZ","Camo5_DZ","Camo6_DZ","Camo7_DZ","Camo8_DZ","Camo9_DZ","Camo10_DZ","Camo11_DZ","Camo12_DZ","Camo13_DZ","Camo14_DZ","Camo15_DZ","Camo16_DZ","Camo17_DZ","Camo18_DZ","Camo19_DZ","Camo20_DZ","Camo21_DZ","Camo22_DZ","Camo23_DZ","Camo24_DZ","BanditW1_DZ","Bandit1_DZ"];
+		DZAI_SkinLoot = [];		//Disable skin loot due to inclusion of "Take Clothes" option in DZ Overwatch.
+		DZAI_skinItemChance = 0;
+};
 	case default {};
 };

@@ -1,9 +1,11 @@
 /*
-	Fallujah map configuration 
+	Fallujah static trigger configuration 
 	
-	Last updated: 11:57 PM 6/6/2013
+	Last updated: 11:08 PM 7/5/2013
 	
 */
+
+#include "spawn_markers\markers_fallujah.sqf"	//Load manual spawn point definitions file.
 
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
@@ -178,4 +180,4 @@ _trigger_41 = _this;
 
 //End of custom triggers
 
-diag_log "Fallujah map configuration loaded.";
+diag_log "Fallujah static trigger configuration loaded.";

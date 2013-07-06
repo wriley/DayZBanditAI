@@ -32,7 +32,8 @@ if (!isPlayer _killer) exitWith {};
 _unitGroup setBehaviour "COMBAT";
 
 _trigger = _victim getVariable "trigger";
-_gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances2];
+_gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
+if (isNil "_gradeChances") then {_gradeChances = DZAI_gradeChances1};
 
 if (DZAI_findKiller) then {0 = [_victim,_killer,_unitGroup] spawn fnc_findKiller;};
 

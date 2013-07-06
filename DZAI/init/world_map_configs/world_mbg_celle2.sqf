@@ -1,33 +1,11 @@
 /*
-	Celle map configuration 
+	Celle static trigger configuration 
 	
 	Last updated: 11:57 PM 6/6/2013
 	
 */
 
-//begin markers
-
-_this = createMarker ["ETHS1", [10451.422, 11695.715, -2.7656555e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_2 = _this;
-
-_this = createMarker ["ETHS2", [10608.365, 11680.685, -9.5367432e-007]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_3 = _this;
-
-_this = createMarker ["ETHS3", [10233.635, 11605.618, 1.4305115e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_4 = _this;
-
-_this = createMarker ["ETHS4", [10768.843, 11588.769, 9.5367432e-007]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_5 = _this;
-
-//end markers
+#include "spawn_markers\markers_mbg_celle2.sqf"	//Load manual spawn point definitions file.
 
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
@@ -410,4 +388,4 @@ _trigger_118 = _this;
 
 //End of custom triggers
 
-diag_log "Celle map configuration loaded.";
+diag_log "Celle static trigger configuration loaded.";

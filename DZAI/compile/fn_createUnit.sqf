@@ -30,13 +30,13 @@ for "_i" from 1 to _totalAI do {
 	[_unit] joinSilent _unitGroup;														// Add AI unit to group
 
 	_unit setVariable ["trigger",_trigger];												// Record the trigger from which the AI unit was spawned
-	if ((count _this) < 4) then {
-		//Dynamic AI
-		_unit addEventHandler ["Killed",{_this spawn fnc_updateDead;}];					// Remove corpse after specified time.
-	} else {
+	if ((count _this) > 4) then {
 		//Static AI
 		_unit addEventHandler ["Killed",{_this spawn fnc_banditAIRespawn;}];			// Respawns AI using the same parameters they were spawned with.
 		_unit setVariable ["unitGroup",_unitGroup];
+	} else {
+		//Dynamic AI
+		_unit addEventHandler ["Killed",{_this spawn fnc_updateDead;}];					// Remove corpse after specified time.
 	};
 
 	if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then {

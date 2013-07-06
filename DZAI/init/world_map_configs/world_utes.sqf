@@ -1,9 +1,11 @@
 /*
-	Utes map configuration 
+	Utes static trigger configuration 
 	
 	Last updated: 11:44 AM 6/7/2013
 	
 */
+
+#include "spawn_markers\markers_utes.sqf"	//Load manual spawn point definitions file.
 
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
@@ -59,4 +61,4 @@ _trigger_6 = _this;
 
 //End of custom triggers
 
-diag_log "Utes map configuration loaded.";
+diag_log "Utes static trigger configuration loaded.";

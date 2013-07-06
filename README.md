@@ -1,4 +1,4 @@
-DZAI 1.1.10 - AI Addon for DayZ
+DZAI 1.1.11 - AI Addon for DayZ
 ============
 
 
@@ -164,5 +164,12 @@ Latest Updates:
 - [MODIFIED] Chernarus: Moved several spawn points for Cherno.
 - [MODIFIED] Chernarus: AI patrols should no longer pass by military/medical tents in Cherno. (Reason: All buildings added in mission.sqm are invisible to AI units).
 - [MODIFIED] Decreased number of medical item loot in AI backpack from 2 to 1. Decreased number of small misc item loot in AI backpack from 3 to 2 (maximum).
+
+1.1.11 Update:
+
+- [UPDATED] Separated static spawn definitions into separate files for ease of editing (triggers, markers).
+- [MODIFIED] Repositioned AI spawn areas for Balota (town) and Balota Airfield to reduce chance of AI encounters near medical tent area.
+- [MODIFIED] Combined AI damage reduction factors for bullet/non-bullet damage.
+- [MODIFIED] Adjusted AI skill ratings (Accuracy, AimingSpeed decreases).
 
 Note: Information about past updates are archived in changelog.txt

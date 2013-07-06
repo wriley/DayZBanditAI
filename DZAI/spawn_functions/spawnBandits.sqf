@@ -11,7 +11,7 @@
 		- A number between 0-1 specifiying probability of reading the marker array in reverse order. (Default: 0.50)
 		- Example: [['marker1','marker2','marker3'],0.50,0.50]
 	
-	Last updated: 12:27 AM 6/25/2013
+	Last updated: 1:27 PM 7/5/2013
 */
 
 private ["_minAI","_addAI","_patrolDist","_trigger","_equipType","_numGroups","_grpArray","_triggerPos","_gradeChances","_totalAI","_spawnPositions","_spawnCount","_positionArray","_spawnType","_locationArray","_startTime"];
@@ -32,9 +32,6 @@ _numGroups = if ((count _this) > 6) then {_this select 6} else {1};		//(Optional
 
 _grpArray = _trigger getVariable ["GroupArray",[]];			
 if (count _grpArray > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits)";};};						
-
-//_totalAI = (DZAI_spawnExtra + _minAI + round(random _addAI));	//Calculate total number of units to spawn per group.
-//if (_totalAI < 1) exitWith {[_trigger] execVM '\z\addons\dayz_server\DZAI\scripts\resetStaticTrigger.sqf'; if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: No units to spawn. Force resetting trigger area (spawnBandits)";};};									
 
 _triggerPos = getPosATL _trigger;
 _gradeChances = [_equipType] call fnc_getGradeChances;
@@ -83,34 +80,36 @@ _totalSpawned = 0;
 for "_j" from 1 to _numGroups do {
 	private ["_unitGroup","_p","_pos","_totalAI"];
 	_totalAI = (_minAI + round(random _addAI));
-	if (_totalAI == 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: No AI to spawn for AI group %1 of %2.",_j,_numGroups]};};
-	
-	_unitGroup = call DZAI_createGroup;
+	if (_totalAI > 0) then {
+		_unitGroup = call DZAI_createGroup;
 
-	diag_log format ["DEBUG :: Created group %1 (fn_createGroups).",_unitGroup];
-	_p = _spawnPositions call BIS_fnc_selectRandom;
-	_pos = [0,0,0];
-	if (_spawnType == 2) then {	
-		_pos = [_p,1,100,2,0,2000,0] call BIS_fnc_findSafePos;
-	} else {
-		_pos = _p;
-	};
+		diag_log format ["DEBUG :: Created group %1 (fn_createGroups).",_unitGroup];
+		_p = _spawnPositions call BIS_fnc_selectRandom;
+		_pos = [0,0,0];
+		if (_spawnType == 2) then {	
+			_pos = [_p,1,100,2,0,2000,0] call BIS_fnc_findSafePos;
+		} else {
+			_pos = _p;
+		};
 
-	//Spawn units
-	[_totalAI,_unitGroup,_pos,_trigger,_gradeChances] call fnc_createUnit;
-	
-	//Update AI count
-	_unitGroup setVariable ["groupSize",_totalAI];
-	DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
-	_totalSpawned = _totalSpawned + _totalAI;
-	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_unitGroup,_totalAI];};
-	
-	if ((typeName _patroldist) == "SCALAR") then {
-		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+		//Spawn units
+		[_totalAI,_unitGroup,_pos,_trigger,_gradeChances] call fnc_createUnit;
+		
+		//Update AI count
+		_unitGroup setVariable ["groupSize",_totalAI];
+		DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
+		_totalSpawned = _totalSpawned + _totalAI;
+		if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_unitGroup,_totalAI];};
+		
+		if ((typeName _patroldist) == "SCALAR") then {
+			0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+		} else {
+			0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
+		};
+		_grpArray set [count _grpArray,_unitGroup];
 	} else {
-		0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
+		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: No AI to spawn for AI group %1 of %2.",_j,_numGroups]};
 	};
-	_grpArray set [count _grpArray,_unitGroup];
 };
 
 if ((count _grpArray) == 0) exitWith {[_trigger] execVM '\z\addons\dayz_server\DZAI\scripts\resetStaticTrigger.sqf'; if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: No units to spawn. Force resetting trigger area (spawnBandits)";};};

@@ -15,9 +15,11 @@ _trigger = _this select 0;							//Get the trigger object
 
 _grpArray = _trigger getVariable ["GroupArray",[]];	//Find the groups spawned by the trigger.
 _isCleaning = _trigger getVariable ["isCleaning",nil];	//Find whether or not the trigger has been marked for cleanup, otherwise assume a cleanup has already happened.
+
 _grpCount = count _grpArray;
-//diag_log format ["DEBUG:: _grpCount is %1. _isCleaning is %2.",_grpCount,_isCleaning];
-if (isNil "_isCleaning") exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Trigger's isCleaning variable is nil. Exiting despawn script.";};};
+
+if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: _grpCount is %1. _isCleaning is %2.",_grpCount,_isCleaning];};
+if ((_grpCount == 0) && (isNil "_isCleaning")) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Trigger's _grpCount is zero and _isCleaning is nil. (Nothing to despawn)";};};
 if ((_grpCount == 0) || (_isCleaning)) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Trigger's group array is empty, or a despawn script is already running. Exiting despawn script.";};};				//Exit script if the trigger hasn't spawned any AI units, or if a despawn script is already running for the trigger.
 
 _trigger setVariable["isCleaning",true,false];		//Mark the trigger as being in a cleanup state so that subsequent requests to despawn for the same trigger will not run.

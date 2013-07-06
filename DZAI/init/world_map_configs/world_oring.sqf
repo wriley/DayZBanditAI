@@ -1,9 +1,11 @@
 /*
-	Oring map configuration 
+	Oring static trigger configuration 
 	
 	Last updated: 11:57 PM 6/6/2013
 	
 */
+
+#include "spawn_markers\markers_oring.sqf"	//Load manual spawn point definitions file.
 
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
@@ -290,4 +292,4 @@ _trigger_65 = _this;
 
 
 //End of custom triggers
-diag_log "Oring map configuration loaded.";
+diag_log "Oring static trigger configuration loaded.";

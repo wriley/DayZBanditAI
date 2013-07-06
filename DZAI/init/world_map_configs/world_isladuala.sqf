@@ -1,9 +1,11 @@
 /*
-	Isladuala map configuration 
+	Isladuala static trigger configuration 
 	
-	Last updated: 11:57 PM 6/6/2013
+	Last updated: 11:08 PM 7/5/2013
 	
 */
+
+#include "spawn_markers\markers_isladuala.sqf"	//Load manual spawn point definitions file.
 
 if (DZAI_verifyTables) then {
 	waitUntil {sleep 0.1; !isNil "DZAI_classnamesVerified"};	//Wait for DZAI to finish verifying classname arrays.
@@ -578,4 +580,4 @@ _trigger_136 = _this;
 
 //End of custom triggers
 
-diag_log "Isladuala map configuration loaded.";
+diag_log "Isladuala static trigger configuration loaded.";

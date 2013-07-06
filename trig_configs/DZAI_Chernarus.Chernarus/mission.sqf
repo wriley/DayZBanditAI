@@ -35,7 +35,7 @@ _this setTriggerText "Komarovo";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [0,1,150,thisTrigger,[],0] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_2 = _this;
 
-_this = createTrigger ["EmptyDetector", [4513.8584, 2402.8191]];
+_this = createTrigger ["EmptyDetector", [4481.4292, 2421.9043]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
@@ -43,12 +43,12 @@ _this setTriggerText "Balota";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [0,1,150,thisTrigger,[],0] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_4 = _this;
 
-_this = createTrigger ["EmptyDetector", [4706.6235, 2495.4143]];
+_this = createTrigger ["EmptyDetector", [4763.1069, 2518.0178]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "Balota AF (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,1,125,thisTrigger,['Balota1','Balota2','Balota3','Balota4','Balota5'],1] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,1,200,thisTrigger,['Balota1','Balota2','Balota3','Balota4','Balota5'],1] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_6 = _this;
 
 _this = createTrigger ["EmptyDetector", [6973.4692, 2596.7183]];
@@ -267,12 +267,12 @@ _this setTriggerText "Stary Sobor";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,3,225,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_78 = _this;
 
-_this = createTrigger ["EmptyDetector", [7026.6396, 7702.1074]];
+_this = createTrigger ["EmptyDetector", [7076.6089, 7683.4829]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "Novy Sobor";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,125,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,175,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_80 = _this;
 
 _this = createTrigger ["EmptyDetector", [8457.4629, 6688.627, 4.7903137]];
@@ -614,31 +614,6 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_31 = _this;
 
-_this = createMarker ["StaryS1", [6373.0518, 7781.6821, 6.1035156e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_40 = _this;
-
-_this = createMarker ["StaryS2", [6308.2407, 7830.8311, -6.1035156e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_41 = _this;
-
-_this = createMarker ["StaryS3", [6269.2197, 7814.1191, 6.1035156e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_42 = _this;
-
-_this = createMarker ["StaryS4", [6348.5562, 7814.686]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_43 = _this;
-
-_this = createMarker ["StaryS5", [6345.4448, 7758.9419, -9.1552734e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_44 = _this;
-
 _this = createMarker ["Skalisty1", [13336.705, 2798.8804, -4.7683716e-007]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
@@ -654,63 +629,30 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_54 = _this;
 
-_this = createMarker ["Balota1", [4642.1001, 2586.9666, 4.7683716e-006]];
+_this = createMarker ["Balota1", [4592.4634, 2724.5557, 4.7683716e-006]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_64 = _this;
 
-_this = createMarker ["Balota2", [5178.4346, 2342.916, 1.7166138e-005]];
+_this = createMarker ["Balota2", [4794.811, 2735.4512, 1.7166138e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_65 = _this;
 
-_this = createMarker ["Balota3", [4949.3154, 2515.5669, -9.5367432e-007]];
+_this = createMarker ["Balota3", [4962.8208, 2648.8101, -9.5367432e-007]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_66 = _this;
 
-_this = createMarker ["Balota4", [4513.353, 2645.3254, -1.9073486e-006]];
+_this = createMarker ["Balota4", [4524.6079, 2708.7559, -1.9073486e-006]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_67 = _this;
 
-_this = createMarker ["Balota5", [4933.9966, 2602.5732]];
+_this = createMarker ["Balota5", [4869.4707, 2702.0361]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_68 = _this;
-
-_this = createTrigger ["EmptyDetector", [4833.9678, 2191.5298]];
-_this setTriggerArea [600, 600, 0, false];
-_this setTriggerActivation ["ANY", "PRESENT", true];
-_this setTriggerTimeout [20, 25, 30, true];
-_this setTriggerText "Balota Tents (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [0,0,125,thisTrigger,['BalotaT1','BalotaT2','BalotaT3','BalotaT4','BalotaT5']] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
-_trigger_167 = _this;
-
-_this = createMarker ["BalotaT1", [4855.1558, 2279.4783, -7.6293945e-006]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_69 = _this;
-
-_this = createMarker ["BalotaT3", [4660.9507, 2256.6995, -3.8146973e-006]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_70 = _this;
-
-_this = createMarker ["BalotaT5", [4983.2534, 2123.833, -1.001358e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_71 = _this;
-
-_this = createMarker ["BalotaT2", [4892.0591, 2157.6487, -2.4318695e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_72 = _this;
-
-_this = createMarker ["BalotaT4", [4993.4189, 2011.345, 2.4318695e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_73 = _this;
 
 _this = createTrigger ["EmptyDetector", [4308.2876, 10658.527]];
 _this setTriggerArea [600, 600, 0, false];
@@ -745,7 +687,7 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_78 = _this;
 
-_this = createTrigger ["EmptyDetector", [12327.898, 9663.9824, 9.5367432e-007]];
+_this = createTrigger ["EmptyDetector", [12294.76, 9564.5117, 9.5367432e-007]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];

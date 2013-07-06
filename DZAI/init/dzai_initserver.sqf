@@ -38,7 +38,7 @@ diag_log format["[DZAI] Server is running map %1. Loading static trigger and cla
 //Build DZAI weapon classname tables from CfgBuildingLoot data if DZAI_dynamicWeapons = true;
 if (DZAI_dynamicWeaponList) then {[DZAI_banAIWeapons] execVM '\z\addons\dayz_server\DZAI\scripts\buildWeaponArrays.sqf';};
 
-//Create reference marker for dynamic triggers and set default values. These values are modified by world_(map_name).sqf
+//Create reference marker for dynamic triggers and set default values. These values are modified on a per-map basis in the switch-case block below.
 _this = createMarker ["DZAI_centerMarker", (getMarkerPos 'center')];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";

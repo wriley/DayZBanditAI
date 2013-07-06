@@ -49,7 +49,7 @@ while {(count DZAI_respawnQueue) > 0} do {
 			_unitGroup = (DZAI_respawnQueue select _i) select 2;
 			_grpArray = _trigger getVariable ["GroupArray",[]];
 			
-			if (!isNull _unitGroup && (_unitGroup in _grpArray)) then {
+			if ((!isNull _unitGroup) && (_unitGroup in _grpArray)) then {
 				private["_maxUnits","_dummy"];
 				_maxUnits = _trigger getVariable "maxUnits";
 				//Delete corpses of dead AI units before respawn.
