@@ -1,4 +1,4 @@
-DZAI 1.1.12 - AI Addon for DayZ
+DZAI 1.1.12.1 - AI Addon for DayZ
 ============
 
 
@@ -94,5 +94,10 @@ Latest Updates:
 - [NEW] AI units can now be stunned with Tasers. (DZAI will detect if Double Doppler's Taser Mod is installed).
 - [UPDATED] DZAI now automatically detects the presence of certain DayZ mods and enables extra settings. Automatically detected mods: DayZ 2017, Namalsk 2017, DayZ Epoch, DayZ Overwatch. NOTE: DayZ Civilian requires manual editing in dzai_variables.sqf to enable extra features.
 - [UPDATED] Removed setting to enable extra features for DayZ Lingor (Skaronator version) since it should be fully supported without user intervention.
+
+1.1.12.1 Hotfix:
+
+- [FIXED] Corrected typo that prevented the skill-setting script from being run, resulting in every AI being spawned with maximum skills.
+- [REMOVED] Removed depreciated script files.
 
 Note: Information about past updates are archived in changelog.txt
