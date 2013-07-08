@@ -21,6 +21,16 @@ _lastBandage = 0;
 _bandages = 2;
 _unitGroup = (group _unit);
 
+if (DZAI_debugLevel > 1) then {
+	0 = [_unit] spawn {
+		private ["_unit"];
+		_unit = _this select 0;
+		sleep 5;
+		diag_log format ["DZAI ExtDebug (Unit Skills): %1, %2, %3, %4, %5, %6, %7, %8, %9, %10.",_unit skill "aimingAccuracy",_unit skill "aimingShake",_unit skill "aimingSpeed",_unit skill "endurance",_unit skill "spotDistance",_unit skill "spotTime",_unit skill "courage",_unit skill "reloadSpeed",_unit skill "commanding",_unit skill "general"];
+		true
+	};
+};
+
 while {alive _unit} do {							//Run script for as long as unit is alive
 	if (DZAI_zombieEnemy && ((leader _unitGroup) == _unit)) then {	//Run only if both zombie hostility and zombie spawns are enabled.
 		_nearbyZeds = (position _unit) nearEntities ["zZombie_Base",DZAI_zDetectRange];
