@@ -1,4 +1,4 @@
-DZAI 1.2.0 - AI Addon for DayZ
+DZAI 1.2.1 - AI Addon for DayZ
 ============
 
 
@@ -106,5 +106,10 @@ Latest Updates:
 - [MODIFIED] Locations of debug markers for dynamic triggers are now refreshed at an interval specified by DZAI_monitorRate.
 - [MODIFIED] Renamed several script files, some added directly into DZAI_functions.sqf
 - [MODIFIED] Maximum dynamic trigger area overlap tolerance increased to 15% from 10%.
+
+1.2.1 Update:
+
+- [UPDATED] Added a check if DZAI is already running to prevent multiple instances of DZAI from starting.
+- [MODIFIED] Adjusted minimum AI helicopter flying height to 90m.
 
 Note: Information about past updates are archived in changelog.txt

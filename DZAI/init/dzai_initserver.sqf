@@ -7,12 +7,13 @@
 */
 private ["_startTime"];
 
-if (!isServer) exitWith {};
-
-_startTime = diag_tickTime;
+if (!isServer || !isNil DZAI_isActive) exitWith {};
+DZAI_isActive = true;
 
 #include "DZAI_version.hpp"
 diag_log format ["Initializing %1 version %2",DZAI_TYPE,DZAI_VERSION];
+
+_startTime = diag_tickTime;
 
 createcenter east;							//Create centers for all sides
 createcenter resistance;
