@@ -3,11 +3,11 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 1:35 AM 7/5/2013
+	Last updated: 10:10 PM 7/14/2013
 */
 private["_worldname"];
 
-if (!isServer) exitWith {};
+diag_log "[DZAI] Reading DZAI variables.";
 
 //Zombie Hostility
 DZAI_zombieEnemy = true;									//Enable or disable AI hostility to zombies. If enabled, AI will attack zombies. (default: true)
@@ -43,24 +43,30 @@ DZAI_refreshRate = 15;										//Amount of time in seconds between AI ammo refr
 DZAI_zDetectRange = 200;									//Maximum distance for AI group leader to detect zombies. Increasing range beyond default may impact server performance. (Default: 200)
 
 //AI Spawning Variables
-DZAI_maxAIUnits = 65535;									//Use only if server performance is suffering beyond tolerable levels, otherwise leave this value alone. Sets limit of total AI spawned by DZAI (0: Disables AI spawning completely).
 DZAI_respawnTime = 300;										//Time to wait before respawning an AI group once all units have been eliminated. (Default: 300)
 DZAI_despawnWait = 120;										//Time to allow spawned AI units to exist in seconds before being despawned when no players are present in a trigger area. (Default: 120)
 
 //Dynamic Trigger Settings
 //DZAI automatically determines the settings for dynamic triggers. Below are settings that can be manually adjusted.
-DZAI_dynManagerRate = 900;									//Frequency of dynamic trigger manager in seconds. The manager periodically relocates a percentage of inactive dynamic triggers (Default: 900)
+DZAI_dynAISpawns = true;									//Enable or disable dynamic AI trigger spawns. If enabled, AI spawn locations will be randomly placed around the map. (Default: true)
 DZAI_dynRemoveDeadWait = 300;								//Time to wait before deleting bodies of AI units spawned from dynamic triggers. (Default: 300)
 DZAI_dynDespawnWait = 120;									//Time to wait before despawning all AI units in dynamic trigger area when no players are present, and delay time before force-despawning trigger area after all spawned units have been killed. (Default: 120)
+
+//AI Helicopter patrol settings
+//IMPORTANT: Before enabling AI helicopter patrols, make sure you have properly edited your server_cleanup.fsm file. Otherwise, the helicopters will explode after spawning.
+DZAI_aiHeliPatrols = false;									//Enable or disable AI helicopter patrols. (Default: false)
+DZAI_maxHeliPatrols = 0;									//Maximum number of active AI helicopters patrols. (Default: 0).
+DZAI_heliTypes = ["UH1H_DZ"];								//Classnames of helicopter types to use. Helicopter types must have at least 2 gunner seats (Default: "UH1H_DZ").
 
 //Extra AI Settings
 DZAI_findKiller = false;									//If enabled, AI group will attempt to track down player responsible for killing a group member. Players with radios will be given text warnings if they are being pursued (Default: false)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3 (applies only during nighttime hours). Temporary NVGs are unlootable and will be removed at death (Default: false).
+DZAI_humanityGain = 0;										//Amount of humanity to reward player for killing an AI unit (Default: 0)
 
 //Dynamic weapon list settings
 DZAI_dynamicWeaponList = true;								//True: Dynamically generate AI weapon list from CfgBuildingLoot. False: Use preset weapon list (DayZ 1.7.6.1). Highly recommended to enable DZAI_verifyTables if this option is set to false. (Default: true).
 DZAI_banAIWeapons = [];										//(Only if DZAI_dynamicWeaponList = true) List of weapons that AI should never use. By default, AI may carry any lootable weapon. Example: DZAI_banAIWeapons = ["M107_DZ","BAF_AS50_scoped"]; will remove the M107 and AS50 from AI weapon tables if dynamic weapon list is enabled.
-//Note: It is recommended to add all melee weapon classnames into this list as AI have issues using melee weapons. All melee weapons and crossbows present in DayZ 1.7.7.1 have been pre-banned. 
+//Note: It is recommended to add all melee weapon classnames into this list as AI have issues using melee weapons. All melee weapons and crossbows present in DayZ 1.7.7.1 have been pre-banned ("Crossbow_DZ","Crossbow","MeleeBaseBallBat","MeleeMachete")
 
 //AI loot amounts settings									(Edible and Medical items, Miscellaneous items, Skin packs)
 DZAI_invmedicals = 1; 										//Number of selections of medical items (Inventory)
@@ -76,13 +82,82 @@ DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//equipType = 1 - most AI will h
 DZAI_gradeChances2 = [0.31,0.56,0.10,0.03];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
 DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//equipType = 3 - All AI will carry at least a military-grade weapon. Many will be carrying high-grade military weapons.
 DZAI_gradeChancesDyn = [0.30,0.60,0.08,0.02];				//Weapongrade chances for AI spawned from dynamic triggers.
-DZAI_chanceMiscItemS = 0.66;								//Chance to add random item from DZAI_MiscItemS table.
-DZAI_chanceMiscItemL = 0.20;								//Chance to add random item from DZAI_MiscItemL table.
+
+//AI skill settings
+DZAI_skill0 = [	
+	//AI skill settings level 0 (Skill, Minimum skill, Maximum bonus amount).
+	["aimingAccuracy",0.15,0.10],
+	["aimingShake",0.40,0.10],
+	["aimingSpeed",0.40,0.10],
+	["endurance",0.40,0.20],
+	["spotDistance",0.30,0.20],
+	["spotTime",0.40,0.20],
+	["courage",0.40,0.20],
+	["reloadSpeed",0.40,0.20],
+	["commanding",0.40,0.20],
+	["general",0.40,0.20]
+];
+DZAI_skill1 = [	
+	//AI skill settings level 1 (Skill, Minimum skill, Maximum bonus amount).
+	["aimingAccuracy",0.20,0.10],
+	["aimingShake",0.50,0.10],
+	["aimingSpeed",0.50,0.10],
+	["endurance",0.55,0.20],
+	["spotDistance",0.45,0.20],
+	["spotTime",0.55,0.20],
+	["courage",0.55,0.20],
+	["reloadSpeed",0.55,0.20],
+	["commanding",0.55,0.20],
+	["general",0.55,0.20]
+];
+DZAI_skill2 = [	
+	//AI skill settings level 2 (Skill, Minimum skill, Maximum bonus amount).
+	["aimingAccuracy",0.30,0.10],
+	["aimingShake",0.60,0.10],
+	["aimingSpeed",0.65,0.10],
+	["endurance",0.70,0.20],
+	["spotDistance",0.60,0.20],
+	["spotTime",0.70,0.20],
+	["courage",0.70,0.20],
+	["reloadSpeed",0.70,0.20],
+	["commanding",0.70,0.20],
+	["general",0.70,0.20]
+];
+DZAI_skill3 = [	
+	//AI skill settings level 3 (Skill, Minimum skill, Maximum bonus amount).
+	["aimingAccuracy",0.40,0.10],
+	["aimingShake",0.70,0.10],
+	["aimingSpeed",0.75,0.10],
+	["endurance",0.80,0.20],
+	["spotDistance",0.75,0.20],
+	["spotTime",0.80,0.20],
+	["courage",0.80,0.20],
+	["reloadSpeed",0.80,0.20],
+	["commanding",0.80,0.20],
+	["general",0.80,0.20]
+];
+DZAI_heliCrewSkills = [	
+	//AI skill settings level 4 (Skill, Minimum skill, Maximum bonus amount).
+	["aimingAccuracy",0.30,0.10],
+	["aimingShake",0.70,0.10],
+	["aimingSpeed",0.70,0.10],
+	["endurance",0.60,0.20],
+	["spotDistance",0.80,0.20],
+	["spotTime",0.80,0.20],
+	["courage",0.80,0.20],
+	["reloadSpeed",0.80,0.20],
+	["commanding",0.80,0.20],
+	["general",0.80,0.20]
+];
+
+//AI loot probability settings
+DZAI_chanceMiscItemS = 0.60;								//Chance to add random item from DZAI_MiscItemS table.
+DZAI_chanceMiscItemL = 0.15;								//Chance to add random item from DZAI_MiscItemL table.
 DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_SkinLoot table.
 
-//NOTHING TO EDIT BEYOND THIS POINT.
+//NOTHING TO EDIT BEYOND THIS POINT
 
-//Internal Use Variables: DO NOT EDIT THESE
+//Internal Use Variables: DO NOT EDIT THESE  - Support will not be given if these variables are edited.
 DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Civilian, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
 DZAI_numAIUnits = 0;										//Tracks current number of currently active AI units, including dead units waiting for respawn.
 DZAI_actDynTrigs = 0;										//Tracks current number of active dynamically-spawned triggers
@@ -92,5 +167,8 @@ DZAI_dynTriggerArray = [];									//List of all generated dynamic triggers.
 DZAI_respawnQueue = [];										//Queue of AI groups that require respawning. Group ID is removed from queue after it is respawned.
 DZAI_respawnActive = false;									//Tracks activity status of respawn queue. Prevents creation of multiple respawn queues.
 DZAI_dmgFactors = [0.375,0.562,0.375,0,0.375];				//AI health settings.
+DZAI_curHeliPatrols = 0;									//Tracks current number of active AI heli patrols.
+DZAI_heliWaypoints = [];									//Current list of randomly-generated AI heli patrol waypoints.
+//DZAI_actHeliGroups = [];									//List of active heli patrol groups
 
 diag_log "[DZAI] DZAI Variables loaded.";

@@ -1,14 +1,56 @@
 /*
-	fnc_unitConsumables
+	fnc_addLoot
 	
-	Description: Generates an assortment of consumable items as loot for AI unit. (Edible, Medical, Misc items, Metal bar currency if Epoch mode is on)
+	Description:
 	
-	Usage: [_unit] call fnc_unitConsumables;
+	Last updated: 11:43 PM 7/10/2013
 	
-	Last updated: 4:36 PM 6/8/2013
 */
-	private ["_unit"];
+
+	//Add pistol
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	private ["_unit","_pistol","_pistols","_weapongrade","_magazine","_currentWeapon","_toolselect","_chance","_tool","_toolsArray","_trigger","_gradeChances"];
 	_unit = _this select 0;
+
+	_trigger = _unit getVariable "trigger";
+	_gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
+	if (isNil "_gradeChances") then {_gradeChances = DZAI_gradeChances1};
+
+	_weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
+	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed by player. Generating loot with weapongrade %1 (fn_banditAIKilled).",_weapongrade];};
+
+	_currentWeapon = currentWeapon _unit;
+	waitUntil {sleep 0.002; !isNil "_currentWeapon"};
+	if ((getNumber (configFile >> "CfgWeapons" >> _currentWeapon >> "type")) != 2) then {
+		switch (_weapongrade) do {
+		  case 0: {
+			_pistols = DZAI_Pistols0;
+		  };
+		  case 1: {
+			_pistols = DZAI_Pistols1;
+		  };
+		  case 2: {
+			_pistols = DZAI_Pistols2;
+		  };
+		  case 3: {
+			_pistols = DZAI_Pistols3;
+		  };
+		  default {
+			_pistols = ["revolver_EP1"];
+		  };
+		};
+		
+		_pistol = _pistols call BIS_fnc_selectRandom;
+		_magazine = getArray (configFile >> "CfgWeapons" >> _pistol >> "magazines") select 0;
+		_unit addMagazine _magazine;	
+		_unit addWeapon _pistol;
+		
+		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated pistol weapon: %1 for AI.",_pistol];};
+	};
+	sleep 0.1;
+	
+	//Add consumables, medical items, and miscellaneous items
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//Add one guaranteed Bandage to inventory
 	_unit addMagazine "ItemBandage";
@@ -88,3 +130,27 @@
 			};
 		};
 	};
+	
+	sleep 0.1;
+	
+	//Add tool items
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	if (_weapongrade < 2) then {
+		_toolsArray = DZAI_tools0;
+	} else {
+		_toolsArray = DZAI_tools1;
+	};
+
+	//diag_log format ["DEBUG :: Counted %1 tools in _toolsArray.",(count _toolsArray)];
+	for "_i" from 0 to ((count _toolsArray) - 1) do {
+		_chance = ((_toolsArray select _i) select 1);
+		//diag_log format ["DEBUG :: %1 chance to add tool.",_chance];
+		if ((random 1) < _chance) then {
+			_tool = ((_toolsArray select _i) select 0);
+			_unit addWeapon _tool;
+			//diag_log format ["DEBUG :: Added tool %1 as loot to AI corpse.",_tool];
+		};
+};
+	
+	

@@ -1,6 +1,36 @@
 DZAI Changelog Archive
-Last updated: 6:07 PM 7/6/2013
+Last updated: 10:09 PM 7/14/2013
 --------------------------------
+
+1.1.10 Update:
+
+- [NEW] AI units now stop to heal when they reach 75% health. Healing process takes 3 seconds to complete and fully heals the unit, including broken legs. Each AI unit can heal up to 2 times with a 60 second cooldown in between.
+- [UPDATED] AI health increased. AI can now take damage equivalent to 12000 units of blood (headshots do 50% additional damage). AI hands modified to be immune from damage (aim cannot be impaired).
+- [UPDATED] Mod-specific features setting in dzai_variables.sqf updated to be more descriptive.
+- [MODIFIED] Only zombies close to AI group leaders will be marked as hostile, instead of any AI unit.
+- [MODIFIED] Changed activation delay for triggers created by DZAI_spawn (custom spawn function) to 10/15/20 seconds from 15/17/20 seconds.
+- [MODIFIED] Chernarus: Moved several spawn points for Cherno.
+- [MODIFIED] Chernarus: AI patrols should no longer pass by military/medical tents in Cherno. (Reason: All buildings added in mission.sqm are invisible to AI units).
+- [MODIFIED] Decreased number of medical item loot in AI backpack from 2 to 1. Decreased number of small misc item loot in AI backpack from 3 to 2 (maximum).
+
+1.1.11 Update:
+
+- [UPDATED] Separated static spawn definitions into separate files for ease of editing (triggers, markers).
+- [MODIFIED] Repositioned AI spawn areas for Balota (town) and Balota Airfield to reduce chance of AI encounters near medical tent area.
+- [MODIFIED] Combined AI damage reduction factors for bullet/non-bullet damage.
+- [MODIFIED] Adjusted AI skill ratings (Accuracy, AimingSpeed decreases).
+
+1.1.12 Update:
+
+- [NEW] AI units can now be stunned with Tasers. (DZAI will detect if Double Doppler's Taser Mod is installed).
+- [UPDATED] DZAI now automatically detects the presence of certain DayZ mods and enables extra settings. Automatically detected mods: DayZ 2017, Namalsk 2017, DayZ Epoch, DayZ Overwatch. NOTE: DayZ Civilian requires manual editing in dzai_variables.sqf to enable extra features.
+- [UPDATED] Removed setting to enable extra features for DayZ Lingor (Skaronator version) since it should be fully supported without user intervention.
+
+1.1.12.1 Hotfix:
+
+- [FIXED] Corrected typo that prevented skill-setting script from properly setting AI skills.
+- [UPDATED] Enabling Extended Debug mode (DZAI_debugLevel = 2) now reports AI unit's skill settings into RPT log on unit creation.
+- [REMOVED] Removed depreciated script files.
 
 1.1.0 Update:
 

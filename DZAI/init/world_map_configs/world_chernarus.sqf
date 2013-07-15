@@ -174,12 +174,12 @@ _this setTriggerText "Khelm";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [0,1,125,thisTrigger,[]] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_50 = _this;
 
-_this = createTrigger ["EmptyDetector", [11988.115, 12497.066]];
+_this = createTrigger ["EmptyDetector", [12101.592, 12710.504]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "NEAF (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,250,thisTrigger,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5'],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,2,250,thisTrigger,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5'],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_56 = _this;
 
 _this = createTrigger ["EmptyDetector", [11130.03, 12335.65, 9.50177]];
@@ -566,13 +566,13 @@ _this setTriggerText "NWAF6 (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [3,2,200,thisTrigger,['NWAF6_1','NWAF6_2','NWAF6_3','NWAF6_4'],3] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_182 = _this;
 
-_this = createTrigger ["EmptyDetector", [4246.9204, 10386.154, 0]];
+_this = createTrigger ["EmptyDetector", [4147.1416, 10313.281, 0]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [15, 17, 20, true];
 _this setTriggerText "NWAF7 (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [3,2,200,thisTrigger,['NWAF7_1','NWAF7_2','NWAF7_3','NWAF7_4'],3] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
-_trigger_185 = _this;
+_trigger_195 = _this;
 
 _this = createTrigger ["EmptyDetector", [5222.3984, 9780.6406, 0]];
 _this setTriggerArea [600, 600, 0, false];

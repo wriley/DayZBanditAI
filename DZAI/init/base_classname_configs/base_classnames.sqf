@@ -48,4 +48,4 @@
 	DZAI_gadgets0 = [["binocular",0.60],["NVGoggles",0.00]];
 	DZAI_gadgets1 = [["binocular",0.60],["NVGoggles",0.05]];
 	
-	diag_log "DZAI default loot tables loaded.";
+	diag_log "[DZAI] Base classname tables loaded.";
