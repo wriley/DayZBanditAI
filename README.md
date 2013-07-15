@@ -17,18 +17,17 @@ Detailed documentation for the DZAI package is coming. Questions? Comments? Send
 Supported and tested maps:
 ============
 - Chernarus
-
+- Namalsk
 
 Supported (untested) maps:
 ============
 No issues have been reported with the following maps, but have not been tested.
-- Celle
+- Celle*
 - Chernarus - DayZ 2017
 - Chernarus - DayZ Epoch
-- DayZ Civilian*
-- Namalsk
+- DayZ Civilian
 - Namalsk - DayZ Epoch
-- Namalsk - DayZ 2017*
+- Namalsk - DayZ 2017
 - Fallujah
 - Isla Duala
 - Isla Duala - DayZ Epoch
@@ -45,11 +44,12 @@ No issues have been reported with the following maps, but have not been tested.
 - Lingor 1.3
 
 Note: Only DayZ maps/mods with publicly-available server files will be supported.
+* Marks maps/mods that are planned to be tested.
 
 Installation Instructions:
 ============
-<b>IMPORTANT</b>: The AI helicopter patrols added in 1.2.0 require edits to your server_cleanup.fsm. Failure to edit this file properly will cause helicopters spawned by DZAI to explode.
-- If you already have DZAI installed on your server, you <b>must first remove it</b>. Delete the DZAI folder inside your mission file and remove the reference to DZAI in your init.sqf. Repack your mission pbo <b>without</b> DZAI.
+<b>IMPORTANT</b>: The AI helicopter patrols added in 1.2.0 require edits to your server_cleanup.fsm. Failure to edit this file properly will cause helicopters spawned by DZAI to explode. Instructions are provided in the Required Edits section below.
+- (Only do this if you have an older version of DZAI installed in your mission file): Delete the DZAI folder inside your mission file and remove the reference to DZAI in your init.sqf. Repack your mission pbo <b>without</b> DZAI.
 - Unpack your <b>dayz_server.pbo</b>
 - Copy the new DZAI folder inside your unpacked dayz_server folder. (You should also see config.cpp in the same level.)
 - Edit your <b>server_monitor.sqf</b>. It is located within \dayz_server\system. 
