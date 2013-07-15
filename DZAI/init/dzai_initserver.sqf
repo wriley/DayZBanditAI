@@ -7,7 +7,7 @@
 */
 private ["_startTime"];
 
-if (!isServer || !isNil DZAI_isActive) exitWith {};
+if (!isServer || !isNil "DZAI_isActive") exitWith {};
 DZAI_isActive = true;
 
 #include "DZAI_version.hpp"
