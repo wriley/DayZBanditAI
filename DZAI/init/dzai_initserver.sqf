@@ -36,7 +36,7 @@ west setFriend [east, 0];
 if (DZAI_modName == "") then {
 	private["_modVariant"];
 	_modVariant = getText (configFile >> "CfgMods" >> "DayZ" >> "action");
-	if (debugLevel > 0) then {diag_log format ["DZAI Debug: Detected mod variant %1.",_modVariant];};
+	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Detected mod variant %1.",_modVariant];};
 	switch (_modVariant) do {
 		case "http://www.dayzepoch.com":
 		{
