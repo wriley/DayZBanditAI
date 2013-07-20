@@ -69,7 +69,6 @@ _totalGroupSize = 0;
 			sleep 0.2;
 		};
 		{deleteVehicle _x} forEach (_x getVariable ["deadUnits",[]]);	//Delete dead units
-		//_x setVariable ["deadUnits",[]];
 		{deleteVehicle _x} forEach (units _x);							//Delete live units
 		_totalGroupSize = _totalGroupSize + (_x getVariable ["groupSize",0]);
 		sleep 0.5;

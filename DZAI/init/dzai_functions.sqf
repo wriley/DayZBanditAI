@@ -1,7 +1,7 @@
 /*
 	DZAI Functions
 	
-	Last Updated: 2:02 PM 7/14/2013
+	Last Updated: 12:51 PM 7/19/2013
 */
 
 waituntil {!isnil "bis_fnc_init"};
@@ -207,11 +207,12 @@ DZAI_randomizeHeliWPs = {
 		_wp = [(getMarkerPos DZAI_centerMarker),(300 + random(DZAI_centerSize)),random(360),false] call SHK_pos;
 		DZAI_heliWaypoints set [_i,_wp];
 		//diag_log format ["DEBUG :: Generated waypoint %1 of %2 for AI helicopter patrol at %3.",_i,(5 max DZAI_dynTriggersMax),_wp];
-		sleep 0.05;
+		sleep 0.01;
 	};
 	true
 };
 
+//Convert seconds to formatted time (days/hours/minutes/seconds)
 DZAI_getUptime = {
 	private ["_iS","_oS","_oM","_oH","_oD"];
 
@@ -223,4 +224,15 @@ DZAI_getUptime = {
 	_oD = floor ((_iS % 2592000)/86400);
 	
 	[_oD,_oH,_oM,_oS]
+};
+
+//Combines two arrays and returns the combined array. Does not add duplicate values. Second array is appended to first array.
+DZAI_append = {
+	{
+		if !(_x in (_this select 0)) then {
+			(_this select 0) set [(count (_this select 0)),_x];
+		};
+	} forEach (_this select 1);
+	
+	(_this select 0)
 };

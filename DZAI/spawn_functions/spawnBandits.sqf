@@ -40,7 +40,7 @@ _locationArray = _trigger getVariable ["locationArray",[]];
 _spawnType = 2;
 if ((count _locationArray) == 0) then {
 	//Debug marker for static triggers (yellow = inactive, orange = active). Refreshes activity state every 15 seconds.
-	if (DZAI_debugMarkers > 0) then {_nul = [_trigger] execVM '\z\addons\dayz_server\DZAI\scripts\debugTrigger.sqf';};
+	if (DZAI_debugMarkers > 1) then {_nul = [_trigger] execVM '\z\addons\dayz_server\DZAI\scripts\debugTrigger.sqf';};
 	//If no spawn points are found (first trigger activation)
 	if ((count _positionArray) == 0) then {
 		private["_nearbldgs"];

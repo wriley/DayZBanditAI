@@ -11,9 +11,6 @@ _modname = toLower format ["%1",DZAI_modName];
 //Removed bandit skins: ["HazmatVest_Black_DZC","HazmatVest_Yellow_DZC","HazmatVest_Olive_DZC","Hazmat_Black_DZC","Hazmat_Red_DZC","Hazmat_Yellow_DZC","Hazmat_Olive_DZC","Skin_HazmatVest_Red_DZC"];
 //Removed skin loot: "Skin_Hazmat_Black_DZC","Skin_Hazmat_Red_DZC","Skin_Hazmat_Yellow_DZC","Skin_Hazmat_Olive_DZC","Skin_HazmatVest_Yellow_DZC","Skin_HazmatVest_Olive_DZC"
 
-//Modify chance of generating skin loot
-DZAI_skinItemChance = 0.15;
-
 //Remove classnames
 DZAI_BanditTypes = DZAI_BanditTypes - ["Camo1_DZ","Sniper1_DZ","Bandit1_DZ"];
 DZAI_Backpacks0 = DZAI_Backpacks0 - ["DZ_Czech_Vest_Puch"];
@@ -25,7 +22,5 @@ for "_i" from 0 to ((count _newItems) - 1) do {DZAI_BanditTypes set [(count DZAI
 
 _newItems = ["FoodCanGriff","FoodCanBadguy","FoodCanBoneboy","FoodCanCorn","FoodCanCurgon","FoodCanDemon","FoodCanFraggleos","FoodCanHerpy","FoodCanOrlok","FoodCanPowell","FoodCanTylers","ItemSodaMtngreen","ItemSodaR4z0r","ItemSodaClays","ItemSodaSmasht","ItemSodaDrwaste","ItemSodaLemonade","ItemSodaLvg","ItemSodaMzly","ItemSodaRabbit"];
 for "_i" from 0 to ((count _newItems) - 1) do {DZAI_Edibles set [(count DZAI_Edibles),(_newItems select _i)];};
-
-DZAI_SkinLoot = ["Skin_Survivor2_DZ","Skin_EuroMan01_DZC","Skin_EuroMan02_DZC","Skin_Cameraman_DZC","Skin_Storm_Trooper1_DZC","Skin_Storm_Trooper2_DZC","Skin_Storm_Trooper3_DZC","Skin_Storm_Trooper4_DZC","Skin_Civ_Soldier_DZC","Skin_Doctor_DZC","Skin_BAF_Officer1_DZC","Skin_BAF_Officer2_DZC","Skin_BAF_Officer3_DZC","Skin_CZ_Officer1_DZC","Skin_CZ_Officer2_DZC","Skin_CZ_Officer3_DZC","Skin_GER_Officer1_DZC","Skin_Sniper1_DZC","Skin_Camo1_DZC","Skin_Camo2_DZC","Skin_Camo3_DZC","Skin_Sniper3_DZC","Skin_Snow_Trooper2_DZC","Skin_Hazmat_Red_DZC","Skin_Storm_Trooper1_DZC","Skin_Soldier1_STD_DZC","Skin_Soldier2_STD_DZC","Skin_Soldier3_STD_DZC","Skin_Soldier1_GL_DZC","Skin_Soldier2_GL_DZC","Skin_Soldier3_GL_DZC","Skin_Soldier1_AT_DZC","Skin_Soldier2_AT_DZC","Skin_Soldier3_AT_DZC","Skin_Soldier1_SL_DZC","Skin_Soldier2_SL_DZC","Skin_Soldier3_SL_DZC","Skin_CIV_Pilot1_DZC","Skin_Soldier1_DZC","Skin_Soldier2_DZC","Skin_Soldier3_DZC","Skin_Soldier2_DZC","Skin_Soldier1_SF_DZC","Skin_Soldier2_SF_DZC","Skin_Soldier3_SF_DZC","Skin_Soldier2_SF_DZC","Skin_Soldier3_SF_DZC","Skin_BAF_Pilot1_DZC","Skin_BAF_Pilot2_DZC","Skin_BAF_Pilot3_DZC","Skin_BAF_Heavy1_DZC","Skin_BAF_Heavy3_DZC","Skin_Soldier3_STD_DZC","Skin_Soldier1_STD_DZC","Skin_Soldier2_STD_DZC","Skin_US_Pilot1_DZC","Skin_US_Heavy1_DZC","Skin_US_Heavy2_DZC","Skin_Snow_Trooper1_DZC","Skin_CZ_Pilot1_DZC","Skin_CZ_Pilot2_DZC","Skin_CZ_Pilot3_DZC","Skin_CZ_Heavy1_DZC","Skin_CZ_Heavy2_DZC","Skin_CZ_Heavy3_DZC"];
 
 diag_log "Celle classnames loaded.";

@@ -15,8 +15,7 @@ DZAI_bpmedicals = 1; 	//Number of selections of medical items (Backpack)
 DZAI_bpedibles = 0;		//Number of selections of edible items (Backpack)
 
 DZAI_BanditTypes = DZAI_BanditTypes + ["CamoWinterW_DZN", "CamoWinter_DZN", "Sniper1W_DZN"];
-DZAI_SkinLoot = DZAI_SkinLoot + ["Skin_Sniper1W_DZN","Skin_CamoWinter_DZN","Skin_CamoWinterW_DZN"];
-DZAI_tempNVGs = false;	//Disable temporary NVG chance for DayZ Namalsk.
+if (DZAI_tempNVGs) then {DZAI_tempNVGs = false};	//Disable temporary NVG chance for DayZ Namalsk.
 
 switch (_modname) do {
 	case "epoch":

@@ -3,7 +3,7 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 12:08 PM 7/12/2013
+	Last updated: 1:41 PM 7/18/2013
 */
 private ["_startTime"];
 
@@ -36,20 +36,16 @@ west setFriend [east, 0];
 //Detect DayZ mod variant being used.
 if (DZAI_modName == "") then {
 	private["_modVariant"];
-	_modVariant = getText (configFile >> "CfgMods" >> "DayZ" >> "action");
+	_modVariant = getText (configFile >> "CfgMods" >> "DayZ" >> "dir");
 	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Detected mod variant %1.",_modVariant];};
 	switch (_modVariant) do {
-		case "http://www.dayzepoch.com":
+		case "@DayZ_Epoch":
 		{
 			DZAI_modName = "epoch";				//DayZ Epoch
 		};
-		case "http://www.dayzoverwatch.com":
+		case "@DayzOverwatch":
 		{
 			DZAI_modName = "overwatch";			//DayZ Overwatch
-		};
-		case "http://www.opendayz.net":
-		{
-			DZAI_modName = "2017";				//DayZ 2017, DayZ Namalsk 2017
 		};
 	};
 };

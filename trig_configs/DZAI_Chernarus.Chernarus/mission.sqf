@@ -259,12 +259,12 @@ _this setTriggerText "Kabanino";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [0,2,125,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_76 = _this;
 
-_this = createTrigger ["EmptyDetector", [6112.3901, 7735.8423]];
+_this = createTrigger ["EmptyDetector", [5996.7192, 7794.5952]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [20, 25, 30, true];
 _this setTriggerText "Stary Sobor";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,3,225,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,2,225,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_78 = _this;
 
 _this = createTrigger ["EmptyDetector", [7076.6089, 7683.4829]];

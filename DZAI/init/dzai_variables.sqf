@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 10:10 PM 7/14/2013
+	Last updated: 1:41 PM 7/18/2013
 */
 private["_worldname"];
 
@@ -14,7 +14,7 @@ DZAI_zombieEnemy = true;									//Enable or disable AI hostility to zombies. If
 
 //DZAI Settings
 DZAI_debugLevel = 0;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 0)
-DZAI_debugMarkers = 0;										//Enable or disable debug markers. Track AI position, locate patrol waypoints, locate dynamically-spawned triggers. 0: Off, 1: On. (Default: 0)
+DZAI_debugMarkers = 0;										//Enable or disable debug markers. 0: Off, 1: Basic markers (Track AI position, locate patrol waypoints, locate dynamically-spawned triggers), 2: Extended markers (Basic markers + Static trigger markers and refreshing dynamic trigger markers) (Default: 0)
 DZAI_monitor = true;										//Enable or disable server monitor. Periodically reports number of max/current AI units and dynamically spawned triggers into RPT log. (Default: true)
 DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
 DZAI_verifyTables = true;									//Enable or disable verification of classname tables used by DZAI. If invalid entries are found, they are removed and logged into the RPT log. Disable ONLY if a previous scan shows no invalid classnames (Default: true).
@@ -23,13 +23,13 @@ DZAI_verifyTables = true;									//Enable or disable verification of classname 
 	Enable mod-specific features (Optional) - Selecting one of these options will enable additional features specific to each mod. ie: Items, AI skins, loot rates, etc.
 	
 	**NOTE** If DZAI_modName is left blank, DZAI will attempt to automatically detect if one of the above mods is active. If the wrong version is being detected, set DZAI_modName to the appropriate value as listed below:
-	**EXCEPTION** DayZ Civilian requires manual activation.
+	**EXCEPTION** Manual activation is required for: DayZ 2017, 2017 Namalsk, DayZ Civilian
 	
 	DZAI_modName value		Enables extra features for...
 	--------------------------------------------------------------------------------------------------------------------
 	(blank)					Automatically detect mod (can be manually specified by editing DZAI_modName)
 	"default"				Force default settings
-	"2017"					DayZ 2017/Namalsk 2017
+	"2017"					DayZ 2017/Namalsk 2017	(Can't be automatically detected, must manually set DZAI_modName = "2017" to enable)
 	"epoch"					DayZ Epoch
 	"civilian"				DayZ Civilian (Can't be automatically detected, must manually set DZAI_modName = "civilian" to enable)
 	"overwatch"				DayZ Overwatch
@@ -75,6 +75,12 @@ DZAI_bpmedicals = 1; 										//Number of selections of medical items (Backpack
 DZAI_bpedibles = 1;											//Number of selections of edible items (Backpack)
 DZAI_numMiscItemS = 2;										//Maximum number of items to select from DZAI_MiscItemS table.
 DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_MiscItemL table.
+
+//AI loot probability settings
+DZAI_chanceMedicals = 0.75;									//Chance to add each medical item.
+DZAI_chanceEdibles = 0.85;									//Chance to add each edible item.
+DZAI_chanceMiscItemS = 0.60;								//Chance to add random item from DZAI_MiscItemS table.
+DZAI_chanceMiscItemL = 0.15;								//Chance to add random item from DZAI_MiscItemL table.
 
 //AI weapon/skill probabilities (gradeChances should add up to 1.00) - [Civilian, Military, MilitarySpecial, HeliCrash] - Note: AI with higher grade weaponry will also have higher skill settings.
 DZAI_gradeChances0 = [0.85,0.15,0.00,0.00];					//equipType = 0 - most AI will have basic pistols or rifles, and occasionally common military weapons.
@@ -138,22 +144,17 @@ DZAI_skill3 = [
 ];
 DZAI_heliCrewSkills = [	
 	//AI skill settings level 4 (Skill, Minimum skill, Maximum bonus amount).
-	["aimingAccuracy",0.30,0.10],
-	["aimingShake",0.70,0.10],
-	["aimingSpeed",0.70,0.10],
+	["aimingAccuracy",0.50,0.10],
+	["aimingShake",0.75,0.10],
+	["aimingSpeed",0.80,0.10],
 	["endurance",0.60,0.20],
-	["spotDistance",0.80,0.20],
-	["spotTime",0.80,0.20],
-	["courage",0.80,0.20],
-	["reloadSpeed",0.80,0.20],
-	["commanding",0.80,0.20],
-	["general",0.80,0.20]
+	["spotDistance",0.90,0.10],
+	["spotTime",0.90,0.10],
+	["courage",0.90,0.10],
+	["reloadSpeed",0.90,0.10],
+	["commanding",0.90,0.10],
+	["general",0.90,0.10]
 ];
-
-//AI loot probability settings
-DZAI_chanceMiscItemS = 0.60;								//Chance to add random item from DZAI_MiscItemS table.
-DZAI_chanceMiscItemL = 0.15;								//Chance to add random item from DZAI_MiscItemL table.
-DZAI_skinItemChance = 0.08;									//Chance to add random item from DZAI_SkinLoot table.
 
 //NOTHING TO EDIT BEYOND THIS POINT
 
@@ -166,7 +167,7 @@ DZAI_actTrigs = 0;											//Tracks current number of active static triggers.
 DZAI_dynTriggerArray = [];									//List of all generated dynamic triggers.
 DZAI_respawnQueue = [];										//Queue of AI groups that require respawning. Group ID is removed from queue after it is respawned.
 DZAI_respawnActive = false;									//Tracks activity status of respawn queue. Prevents creation of multiple respawn queues.
-DZAI_dmgFactors = [0.375,0.562,0.375,0,0.375];				//AI health settings.
+DZAI_dmgFactors = [0.3,0.45,0.3,0,0.3];						//AI health settings.
 DZAI_curHeliPatrols = 0;									//Tracks current number of active AI heli patrols.
 DZAI_heliWaypoints = [];									//Current list of randomly-generated AI heli patrol waypoints.
 //DZAI_actHeliGroups = [];									//List of active heli patrol groups

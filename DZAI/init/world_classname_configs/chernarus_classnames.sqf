@@ -12,7 +12,6 @@ switch (DZAI_modName) do {
 		DZAI_invedibles = 0;										//Number of selections of edible items (Inventory)
 		DZAI_bpmedicals = 0; 										//Number of selections of medical items (Backpack)
 		DZAI_bpedibles = 1;											//Number of selections of edible items (Backpack)
-		DZAI_SkinLoot = [];
 		DZAI_BanditTypes = DZAI_BanditTypes - ["Bandit1_DZ", "BanditW1_DZ", "Camo1_DZ", "Sniper1_DZ"];
 		_newItems = ["Beard_DZ","Dimitry_DZ","Alexej_DZ","Stanislav_DZ","Czech_Norris"];
 		for "_i" from 0 to ((count _newItems) - 1) do {DZAI_BanditTypes set [count DZAI_BanditTypes,_newItems select _i];};
@@ -61,16 +60,10 @@ switch (DZAI_modName) do {
 		for "_i" from 0 to ((count _newItems) - 1) do {DZAI_Backpacks2 set [(count DZAI_Backpacks2),(_newItems select _i)];};
 		_newItems = ["ice_apo_pack4","ice_apo_pack2"];
 		for "_i" from 0 to ((count _newItems) - 1) do {DZAI_Backpacks3 set [(count DZAI_Backpacks3),(_newItems select _i)];};
-		//_newItems = ["Warlord_DZ","Skimask_DZ","Bardak_DZ","Boss_DZ","Euroman2_DZ","Euroman1_DZ","Doctor_DZ","CameraMan_DZ","Profiteer4_DZ","Profiteer3_DZ","Profiteer3_DZ","Profiteer2_DZ","Profiteer1_DZ","Priest_DZ","Pilot_DZ","PMC_Female_DZ","Female_2_DZ","Survivor2_DZ","Sniper1_DZ","Soldier1_DZ","BanditW1_DZ","Bandit1_DZ","SurvivorW2_DZ","Policeman_DZ","Rocker1_DZ","Rocker2_DZ","Rocker3_DZ","Rocker4_DZ","Civilian2_DZ","Civilian3_DZ","Priest_DZ","Pilot_DZ","Villager1_DZ","Villager4_DZ","Villager3_DZ","Villager2_DZ","Worker4_DZ","Worker3_DZ","Worker2_DZ","Worker1_DZ","Assistant_DZ"];
-		//for "_i" from 0 to ((count _newItems) - 1) do {DZAI_BanditTypes set [(count DZAI_BanditTypes),(_newItems select _i)];};
-		_newItems = ["Skin_Policeman_DZ","Skin_Citizen2_DZ","Skin_Citizen3_DZ","Skin_Rocker1_DZ","Skin_Rocker2_DZ","Skin_Rocker3_DZ","Skin_Rocker4_DZ","Skin_Worker1_DZ","Skin_Assistant_DZ","Skin_Pilot_DZ","Skin_Priest_DZ"];
-		for "_i" from 0 to ((count _newItems) - 1) do {DZAI_SkinLoot set [(count DZAI_SkinLoot),(_newItems select _i)];};
 	};
 	case "overwatch":
 	{
-		DZAI_BanditTypes = ["SurvivorW2_DZ","Survivor2_DZ","Sniper1_DZ","Sniper2_DZ","Sniper3_DZ","Sniper4_DZ","Sniper5_DZ","Sniper6_DZ","Soldier1_DZ","Camo1_DZ","Camo2_DZ","Camo3_DZ","Camo4_DZ","Camo5_DZ","Camo6_DZ","Camo7_DZ","Camo8_DZ","Camo9_DZ","Camo10_DZ","Camo11_DZ","Camo12_DZ","Camo13_DZ","Camo14_DZ","Camo15_DZ","Camo16_DZ","Camo17_DZ","Camo18_DZ","Camo19_DZ","Camo20_DZ","Camo21_DZ","Camo22_DZ","Camo23_DZ","Camo24_DZ","BanditW1_DZ","Bandit1_DZ"];
-		DZAI_SkinLoot = [];		//Disable skin loot due to inclusion of "Take Clothes" option in DZ Overwatch.
-		DZAI_skinItemChance = 0;
+		DZAI_BanditTypes = [DZAI_BanditTypes,["SurvivorW2_DZ","Survivor2_DZ","Sniper1_DZ","Sniper2_DZ","Sniper3_DZ","Sniper4_DZ","Sniper5_DZ","Sniper6_DZ","Soldier1_DZ","Camo1_DZ","Camo2_DZ","Camo3_DZ","Camo4_DZ","Camo5_DZ","Camo6_DZ","Camo7_DZ","Camo8_DZ","Camo9_DZ","Camo10_DZ","Camo11_DZ","Camo12_DZ","Camo13_DZ","Camo14_DZ","Camo15_DZ","Camo16_DZ","Camo17_DZ","Camo18_DZ","Camo19_DZ","Camo20_DZ","Camo21_DZ","Camo22_DZ","Camo23_DZ","Camo24_DZ","BanditW1_DZ","Bandit1_DZ"]] call DZAI_append;
 };
 	case default {};
 };

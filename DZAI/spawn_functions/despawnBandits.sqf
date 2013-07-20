@@ -13,8 +13,6 @@ if (!isServer) exitWith {};							//Execute script only on server.
 
 _trigger = _this select 0;							//Get the trigger object
 
-diag_log format ["DEBUG :: Despawn started for trigger %1.",_trigger];
-
 _grpArray = _trigger getVariable ["GroupArray",[]];	//Find the groups spawned by the trigger.
 _isCleaning = _trigger getVariable ["isCleaning",nil];	//Find whether or not the trigger has been marked for cleanup, otherwise assume a cleanup has already happened.
 
@@ -48,7 +46,6 @@ _totalGroupSize = 0;
 		};
 		//Delete dead units
 		{deleteVehicle _x} forEach (_x getVariable ["deadUnits",[]]);
-		//_x setVariable ["deadUnits",[]];
 		//Delete live units
 		{deleteVehicle _x} forEach (units _x);
 		_totalGroupSize = _totalGroupSize + (_x getVariable ["groupSize",0]);
