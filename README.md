@@ -1,4 +1,4 @@
-DZAI 1.2.2 - AI Addon for DayZ
+DZAI 1.2.2.1 - AI Addon for DayZ
 ============
 
 
@@ -124,5 +124,9 @@ Latest Updates:
 - [UPDATED] Chernarus: Changed Stary Sobor AI spawns from 1 min + 3 additional max to 2 min + 2 additional max.
 - [UPDATED] Changed activation delays for all static triggers to 10/15/20 seconds.
 - [UPDATED] Setting debugMarkers = 2 will enable debug markers for static triggers and allow continuous refreshing of dynamic trigger locations. (Setting value to 1 will disable these markers but other debug marker functionalities remain).
+
+1.2.2.1 Hotfix:
+
+- [FIXED] Fixed AI HandleDamage eventhandler functionality with DDOPP Taser Mod. (AI units should have improved durability even with the Taser mod installed).
 
 Note: Information about past updates are archived in changelog.txt
