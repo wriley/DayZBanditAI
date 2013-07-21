@@ -1,4 +1,4 @@
-DZAI 1.2.2.1 - AI Addon for DayZ
+DZAI 1.2.2.2 - AI Addon for DayZ
 ============
 
 
@@ -118,15 +118,20 @@ Latest Updates:
 - [REMOVED] Removed all AI skin loot and related loot tables. (Use Remove Clothes addon instead)
 - [REMOVED] Removed auto-detection for DayZ 2017 and Namalsk 2017 due to possibility of future false-positive detections. All 2017 mods now require manual activation in dzai_variables.sqf.
 - [UPDATED] Added probability checks for adding medical and edible loot. Default settings: 75%/medical, 85%/edible.
-- [UPDATED] Increased AI helicopter crew skills.
-- [UPDATED] Increased AI health. Note: Due to the differences between how AI and player health is calculated, AI units may be more or less durable than player units.
-- [UPDATED] Chernarus: Shifted Stary Sobor AI patrol further away from military tents as AI units can see through the tent walls.
-- [UPDATED] Chernarus: Changed Stary Sobor AI spawns from 1 min + 3 additional max to 2 min + 2 additional max.
-- [UPDATED] Changed activation delays for all static triggers to 10/15/20 seconds.
 - [UPDATED] Setting debugMarkers = 2 will enable debug markers for static triggers and allow continuous refreshing of dynamic trigger locations. (Setting value to 1 will disable these markers but other debug marker functionalities remain).
+- [MODIFIED] Increased AI helicopter crew skills.
+- [MODIFIED] Increased AI health. Note: Due to the differences between how AI and player health is calculated, AI units may be more or less durable than player units.
+- [MODIFIED] Chernarus: Shifted Stary Sobor AI patrol further away from military tents as AI units can see through the tent walls.
+- [MODIFIED] Chernarus: Changed Stary Sobor AI spawns from 1 min + 3 additional max to 2 min + 2 additional max.
+- [MODIFIED] Changed activation delays for all static triggers to 10/15/20 seconds.
 
 1.2.2.1 Hotfix:
 
 - [FIXED] Fixed AI HandleDamage eventhandler functionality with DDOPP Taser Mod. (AI units should have improved durability even with the Taser mod installed).
+
+1.2.2.2 Minor Update:
+
+- [UPDATED] Nearby zeds are revealed to AI groups to help reduce time required to recognize marked zeds as hostile.
+- [MODIFIED] Scaled back AI health increases slightly. (2 DMR body shots to body should kill an AI unit)
 
 Note: Information about past updates are archived in changelog.txt
