@@ -78,7 +78,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Sargento (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,200,['Sargento1','Sargento2','Sargento3','Sargento4','Sargento5'],1] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,200,thisTrigger,['Sargento1','Sargento2','Sargento3','Sargento4','Sargento5'],1] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_20 = _this;
 
 _this = createTrigger ["EmptyDetector", [4705.125, 1870.5652, 0]];
@@ -438,7 +438,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Prison (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,150,['Prison1','Prison2','Prison3','Prison4','Prison5'],3] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,150,thisTrigger,['Prison1','Prison2','Prison3','Prison4','Prison5'],3] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_124 = _this;
 
 _this = createTrigger ["EmptyDetector", [4260.1558, 7507.1646]];
@@ -503,7 +503,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "PresidentePalace (Markers)";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,['Palace1','Palace2','Palace3'],2] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,100,thisTrigger,['Palace1','Palace2','Palace3'],2] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_138 = _this;
 
 _this = createMarker ["Palace1", [6976.9258, 6350.7671, -1.9073486e-006]];

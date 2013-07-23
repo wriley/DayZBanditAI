@@ -197,7 +197,7 @@ class _trigger_20
 		INTERRUPTABLE="true";
 		TEXT="Sargento (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,200,['Sargento1','Sargento2','Sargento3','Sargento4','Sargento5'],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,200,thisTrigger,['Sargento1','Sargento2','Sargento3','Sargento4','Sargento5'],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1097,7 +1097,7 @@ class _trigger_124
 		INTERRUPTABLE="true";
 		TEXT="Prison (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,150,['Prison1','Prison2','Prison3','Prison4','Prison5'],3] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,150,thisTrigger,['Prison1','Prison2','Prison3','Prison4','Prison5'],3] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1252,7 +1252,7 @@ class _trigger_138
 		INTERRUPTABLE="true";
 		TEXT="PresidentePalace (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,100,['Palace1','Palace2','Palace3'],2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,100,thisTrigger,['Palace1','Palace2','Palace3'],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
