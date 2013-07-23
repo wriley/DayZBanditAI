@@ -1,4 +1,4 @@
-DZAI 1.2.2.2 - AI Addon for DayZ
+DZAI 1.2.3 - AI Addon for DayZ
 ============
 
 
@@ -133,5 +133,11 @@ Latest Updates:
 
 - [UPDATED] Nearby zeds are revealed to AI groups to help reduce time required to recognize marked zeds as hostile.
 - [MODIFIED] Scaled back AI health increases slightly. (2 DMR body shots should kill an AI unit)
+
+1.2.3 Update (Changes for Lingor map)
+
+- [NEW] Added new spawn areas and spawn markers for Lingor (Skaronator) and Hunting Grounds.
+- [UPDATED] Reworked all AI spawn areas and spawn markers for Lingor
+- [UPCOMING] Mod-specific support for DayZ Hunting Grounds in the next update.
 
 Note: Information about past updates are archived in changelog.txt
