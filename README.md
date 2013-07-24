@@ -13,11 +13,14 @@ Reminder: The latest stable build of DZAI is always located in the 'master' bran
 
 Detailed documentation for the DZAI package is coming. Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
 
+Features
+============
+
 
 Compatibility
 ============
 
-- DZAI is designed to be compatible with every publicly-available DayZ Mod. At present time no DayZ mod are known to have issues with DZAI.
+- DZAI is designed to be compatible with every publicly-available DayZ Mod. At present time no DayZ mods are known to have issues with DZAI.
 
 
 <b>Partially-supported DayZ Mods:</b>
@@ -59,13 +62,13 @@ In order to use DZAI's AI helicopter patrols, you must first edit your server_cl
 	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
 
 	
-If you <b>do not</b> have the Animated Helicopters addon installed, change the line to this :
+If you <b>do not</b> have the Animated HeliCrash addon installed, change the line to this :
 
 
 	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && (vehicle _x getVariable [""DZAI"",0] != 1)) then {" \n
  
  
-If you <b>do</b> have the Animated Helicopters addon installed, change the line to this:
+If you <b>do</b> have the Animated HeliCrash addon installed, change the line to this:
 
 
 	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
@@ -82,6 +85,5 @@ DZAI 1.3.0 Rolling Changelog:
 - [UPDATED] If BIS_fnc_findSafePos can't find a suitable location to spawn/respawn static AI from building positions, exact positions of the buildings will be used instead.
 - [MODIFIED] Maximum AI bandages increased to 3 from 2 (maximum self-heals).
 - [MODIFIED] Time required for AI self-heal increased to 3.5 seconds from 3 seconds.
-- 
 
 Note: Information about past updates are archived in changelog.txt
