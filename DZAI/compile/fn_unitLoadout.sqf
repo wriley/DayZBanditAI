@@ -11,26 +11,44 @@
 	_unit = _this select 0;
 	_weapongrade = _this select 1;
 
+	if (_unit getVariable ["loadoutDone",false]) exitWith {diag_log "DZAI Error :: Unit already has loadout!";};
 	if (_weapongrade in DZAI_weaponGrades) then {
+		if ((count (weapons _unit)) > 0) then {
+			removeAllWeapons _unit;
+			_unit removeWeapon "ItemMap";
+			_unit removeWeapon "ItemGPS";
+			_unit removeWeapon "ItemCompass";
+			_unit removeWeapon "ItemRadio";    
+		};
+		
 		switch (_weapongrade) do {
-			case 0: {		//Farm / Residential / Supermarket
+			case 0: {
 				if ((random 1) < 0.5) then {
 					_rifles = DZAI_Rifles0;
 				} else {
 					_rifles = DZAI_Pistols0;
 				};
+				_bags = DZAI_Backpacks0;
+				_gadgetsArray = DZAI_gadgets0;
 			};
-			case 1: {		//Military
+			case 1: {
 				_rifles = DZAI_Rifles1;
+				_bags = DZAI_Backpacks1;
+				_gadgetsArray = DZAI_gadgets0;
 			};
-			case 2: {		//Military Special
+			case 2: {
 				_rifles = DZAI_Rifles2;
+				_bags = DZAI_Backpacks2;
+				_gadgetsArray = DZAI_gadgets1;
 			};
-			case 3: {		//HeliCrash
+			case 3: {
 				_rifles = DZAI_Rifles3;
+				_bags = DZAI_Backpacks3;
+				_gadgetsArray = DZAI_gadgets1;
 			};
 		};
 
+		//Add weapon
 		_rifle = _rifles call BIS_fnc_selectRandom;
 		_magazine = getArray (configFile >> "CfgWeapons" >> _rifle >> "magazines") select 0;
 		_unit addMagazine _magazine;
@@ -38,33 +56,11 @@
 		_unit selectweapon _rifle;
 		if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Created weapon %1 for AI with weapongrade %2. (fn_unitSelectWeapon)",_rifle,_weapongrade];};
 		
-		//Generate random backpack based on weapongrade
-		switch (_weapongrade) do {
-			case 0: {		//Beginner backpacks
-				_bags = DZAI_Backpacks0;
-			};
-			case 1: {		//Residential/Supermarket/Military-grade backpacks
-				_bags = DZAI_Backpacks1;
-			  };
-			case 2: {		//Military-Grade Backpacks
-				_bags = DZAI_Backpacks2;
-			};
-			case 3: {		//Coyote Backpack
-				_bags = DZAI_Backpacks3;
-			};
-		};
-
+		//Add backpack
 		_bag = _bags call BIS_fnc_selectRandom;
 		_unit addBackpack _bag;
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Backpack: %1 for AI.",_bag];};
-	
-	
-		if (_weapongrade < 2) then {
-			_gadgetsArray = DZAI_gadgets0;
-		} else {
-			_gadgetsArray = DZAI_gadgets1;
-		};
-		
+
 		//diag_log format ["DEBUG :: Counted %1 tools in _gadgetsArray.",(count _gadgetsArray)];
 		for "_i" from 0 to ((count _gadgetsArray) - 1) do {
 			private["_chance"];
@@ -78,8 +74,8 @@
 		};
 		
 		//If unit has weapongrade 2 or 3 and was not given NVGs, give the unit temporary NVGs which will be removed at death. Set DZAI_tempNVGs to true in variables config to enable temporary NVGs.
-		if (DZAI_tempNVGs && (daytime < 6 || daytime > 20))  then {
-			if (!(_unit hasWeapon "NVGoggles") && (_weapongrade > 1)) then {
+		if (DZAI_tempNVGs) then {
+			if (!(_unit hasWeapon "NVGoggles") && (_weapongrade > 1) && (daytime < 6 || daytime > 20)) then {
 				_unit addWeapon "NVGoggles";
 				_unit setVariable["removeNVG",1,false];
 				if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Generated temporary NVGs for AI.";};
@@ -88,4 +84,4 @@
 	} else {
 		diag_log format ["DZAI Error :: Invalid weapongrade value provided: %1",_weapongrade];
 	};
-	
+	_unit setVariable ["loadoutDone",true];

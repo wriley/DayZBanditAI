@@ -83,6 +83,7 @@ DZAI 1.3.0 Rolling Changelog:
 - [UPDATED] Static and dynamic AI now share a common Killed eventhandler. This eventhandler decides which action to take when the AI unit is killed (respawn or relocate trigger).
 - [UPDATED] AI hands and legs can now be broken in the same way as players. Damage to hands and legs is only applied when sufficient damage has accumulated to cause a fracture.
 - [UPDATED] If BIS_fnc_findSafePos can't find a suitable location to spawn/respawn static AI from building positions, exact positions of the buildings will be used instead.
+- [UPDATED] Added additional checks to unit loadout function to prevent double primary weapon issue and missing backpack issue. (Needs testing).
 - [MODIFIED] Maximum AI bandages increased to 3 from 2 (maximum self-heals).
 - [MODIFIED] Time required for AI self-heal increased to 3.5 seconds from 3 seconds.
 
