@@ -3,12 +3,12 @@
 	
 	Description:
 	
-	Last updated: 6:16 PM 6/17/2013
+	Last updated: 11:24 AM 7/23/2013
 */
 
 private ["_bldgClasses","_weapons","_lootItem","_aiWeaponBanList","_unwantedWeapons","_lootList","_cfgBuildingLoot","_lootListCheck","_startTime"];
 
-if !(isNil "DZAI_weaponsInitialized") exitWith {};
+if (DZAI_weaponsInitialized) exitWith {};
 
 _startTime = diag_tickTime;
 diag_log "[DZAI] Building DZAI weapon arrays using CfgBuildingLoot data.";
@@ -25,7 +25,6 @@ for "_i" from 0 to ((count _unwantedWeapons) - 1) do {
 //diag_log format ["DEBUG :: List of weapons to be removed from DZAI classname tables: %1",_aiWeaponBanList];
 
 //Compatibility with Namalsk's selectable loot table feature.
-_cfgBuildingLoot = "";
 if (isNil "dayzNam_buildingLoot") then {
 	_cfgBuildingLoot = "cfgBuildingLoot";
 } else {
@@ -100,7 +99,7 @@ if ((count DZAI_Rifles3) == 0) then {
 };
 
 //Combine lowest pistol and rifle tiers
-for "_i" from 0 to ((count DZAI_Pistols0) - 1) do {DZAI_Rifles0 set [(count DZAI_Rifles0),(DZAI_Pistols0 select _i)];};
+//for "_i" from 0 to ((count DZAI_Pistols0) - 1) do {DZAI_Rifles0 set [(count DZAI_Rifles0),(DZAI_Pistols0 select _i)];};
 
 if (DZAI_debugLevel > 0) then {
 	//Display finished weapon arrays

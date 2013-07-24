@@ -85,12 +85,12 @@ for "_j" from 1 to _numGroups do {
 		_p = _spawnPositions call BIS_fnc_selectRandom;
 		if (_spawnType == 2) then {	
 			_pos = [_p,1,100,2,0,2000,0] call BIS_fnc_findSafePos;
+			if ((_p distance _pos) > 200) then {_pos = _p};	//In case BIS_fnc_findSafePos can't find a safe pos, then use exact position instead.
 		} else {
 			_pos = _p;
 		};
 
 		//Spawn units
-		//_unitGroup = createGroup (call DZAI_getFreeSide);
 		_unitGroup = [_totalAI,grpNull,_pos,_trigger,_gradeChances] call fnc_createGroup;
 		
 		//Update AI count

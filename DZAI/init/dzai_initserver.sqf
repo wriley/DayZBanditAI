@@ -47,6 +47,19 @@ if (DZAI_modName == "") then {
 		{
 			DZAI_modName = "overwatch";			//DayZ Overwatch
 		};
+		case "@DayZHuntingGrounds":
+		{
+			DZAI_modName = "huntinggrounds";	//DayZ Hunting Grounds
+		};
+		case "DayZLingor":
+		{
+			private["_modCheck"];
+			_modCheck = getText (configFile >> "CfgMods" >> "DayZ" >> "action");
+			if (_modCheck == "http://www.Skaronator.com") then {
+				DZAI_modName = "lingorskaro";
+				if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Detected DayZ Lingor variant %1.",_modCheck];};
+			};
+		};
 	};
 };
 

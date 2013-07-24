@@ -14,15 +14,14 @@
 	Last updated: 8:24 PM 7/10/2013
 	
 */
-private ["_totalAI","_spawnPos","_unitGroup","_trigger","_gradeChances"];
+private ["_totalAI","_spawnPos","_unitGroup","_trigger","_gradeChances","_unitType"];
 if (!isServer) exitWith {};
 
 _totalAI = _this select 0;
-//_unitGroup = _this select 1;
 _unitGroup = if (isNull (_this select 1)) then {createGroup (call DZAI_getFreeSide)} else {_this select 1};
 _spawnPos = _this select 2;
 _trigger = _this select 3;
-_gradeChances = if ((count _this) > 4) then {_this select 4} else {DZAI_gradeChancesDyn};
+_gradeChances = if ((count _this) > 4) then {_unitType = 0; _this select 4} else {_unitType = 1; DZAI_gradeChancesDyn};
 
 for "_i" from 1 to _totalAI do {
 	private ["_type","_unit","_weapongrade"];
@@ -31,27 +30,21 @@ for "_i" from 1 to _totalAI do {
 	[_unit] joinSilent _unitGroup;														// Add AI unit to group
 
 	_unit setVariable ["trigger",_trigger];												// Record the trigger from which the AI unit was spawned
-	if ((count _this) > 4) then {
-		//Static AI
-		_unit addEventHandler ["Killed",{_this spawn fnc_banditAIRespawn;}];			// Respawns AI using the same parameters they were spawned with.
-		_unit setVariable ["unitGroup",_unitGroup];
-	} else {
-		//Dynamic AI
-		_unit addEventHandler ["Killed",{_this spawn fnc_updateDead;}];					// Remove corpse after specified time.
-	};
+	_unit setVariable ["gethit",[0,0,0,0]];												// Set unit health
+	_unit setVariable ["unconscious",false];											// Set unit consciousness
+	_unit setVariable ["unitType",_unitType];											// Set unit type (0: static, 1: dynamic)
 
 	if (DZAI_zAggro) then {
-		_unit addEventHandler ["Fired", {_this spawn ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player. Called only if zombies are enabled, and zombie hostility is enabled.
+		_unit addEventHandler ["Fired", {_this spawn ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player.
 	if (DZAI_taserAI) then {
 		_unit addEventHandler ["HandleDamage",{_this call DDOPP_taser_handleHit;_this call fnc_damageAI;}];
 	} else {
-		_unit addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];};					// Handle incoming damage. Note: AI durability can be modified in dayz_ai_variables.sqf
-	_unit addEventHandler ["Killed",{_this spawn DZAI_deathFlies;_this call fnc_banditAIKilled;[_this,"banditKills"] call local_eventKill;(_this select 0) setDamage 1;}];
+		_unit addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];};
+	_unit addEventHandler ["Killed",{_this call DZAI_unitDeath;[_this,"banditKills"] call local_eventKill;(_this select 0) setDamage 1;}];
 		
 	_unit setVehicleInit "if (isServer) then {[this] spawn fnc_unit_resupply;};";		// Background-running script that automatically reloads ammo when depleted, and sets hostility to nearby zombies
 	_weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
-	[_unit, _weapongrade] call fnc_unitSelectWeapon;									// Add rifle
-	0 = [_unit, _weapongrade] spawn fnc_unitInventory;									// Add backpack and chance of binoculars
+	[_unit, _weapongrade] call fnc_unitLoadout;											// Assign unit loadout
 	0 = [_unit, _weapongrade] spawn DZAI_setSkills;										// Set AI skill
 
 	_unit enableAI "TARGET";

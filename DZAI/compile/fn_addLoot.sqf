@@ -37,6 +37,7 @@
 		  };
 		  default {
 			_pistols = ["revolver_EP1"];
+			diag_log format ["DZAI Error :: Invalid weapongrade value provided: %1.",_weapongrade];
 		  };
 		};
 		

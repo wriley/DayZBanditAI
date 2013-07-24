@@ -10,15 +10,14 @@ diag_log "[DZAI] Compiling DZAI functions.";
 //Compile general functions.
 if (isNil "SHK_pos_getPos") then {call compile preprocessFile "\z\addons\dayz_server\DZAI\SHK_pos\shk_pos_init.sqf";};
 BIS_fnc_selectRandom = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_selectRandom.sqf";	//Altered version
-fnc_unitInventory = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_unitInventory.sqf";
-fnc_unitSelectWeapon = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_unitSelectWeapon.sqf";
+fnc_unitLoadout = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_unitLoadout.sqf";
 fnc_addLoot = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_addLoot.sqf";
 if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then { // Optional Zed-to-AI aggro functions
 	ai_fired = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\ai_fired.sqf";	//Calculates weapon noise of AI unit
 	ai_alertzombies = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\ai_alertzombies.sqf"; //AI weapon noise attracts zombie attention
 };
 fnc_banditAIKilled = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIKilled.sqf";
-fnc_banditAIRespawn = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIRespawn.sqf";
+fnc_staticAIDeath = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_banditAIRespawn.sqf";
 fnc_selectRandomWeighted = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_selectRandomWeighted.sqf";
 fnc_createGroup = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_createGroup.sqf";
 fnc_damageAI = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_damageHandlerAI.sqf";
@@ -30,7 +29,7 @@ if (DZAI_debugMarkers < 1) then {
 	fnc_unit_resupply = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\unit_resupply_debug.sqf";
 };
 fnc_DZAI_customPatrol = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\DZAI_customPatrol.sqf";
-fnc_updateDead = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_updateDead.sqf";
+fnc_dynAIDeath = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_updateDead.sqf";
 if (DZAI_findKiller) then {
 	fnc_findKiller = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_findKiller.sqf";};
 fnc_seekPlayer =				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_seekPlayer.sqf";
@@ -204,7 +203,7 @@ DZAI_randomizeHeliWPs = {
 	if (DZA_debugLevel > 0) then {diag_log "DZAI Debug: Generating waypoints for AI helicopter patrol.";};
 	for "_i" from 0 to ((10 max DZAI_dynTriggersMax) - 1) do {
 		private["_wp"];
-		_wp = [(getMarkerPos DZAI_centerMarker),(300 + random(DZAI_centerSize)),random(360),false] call SHK_pos;
+		_wp = [(getMarkerPos DZAI_centerMarker),(400 + random(DZAI_centerSize)),random(360),false] call SHK_pos;
 		DZAI_heliWaypoints set [_i,_wp];
 		//diag_log format ["DEBUG :: Generated waypoint %1 of %2 for AI helicopter patrol at %3.",_i,(5 max DZAI_dynTriggersMax),_wp];
 		sleep 0.01;
@@ -235,4 +234,49 @@ DZAI_append = {
 	} forEach (_this select 1);
 	
 	(_this select 0)
+};
+
+DZAI_unconscious = {
+	private ["_unit","_anim"];
+	_unit = _this select 0;
+	
+	if ((animationState _unit) in ["amovppnemrunsnonwnondf","amovppnemstpsnonwnondnon","amovppnemstpsraswrfldnon","amovppnemsprslowwrfldf","aidlppnemstpsnonwnondnon0s","aidlppnemstpsnonwnondnon01"]) then {
+		_anim = "adthppnemstpsraswpstdnon_2";
+	} else {
+		_anim = "adthpercmstpslowwrfldnon_4";
+	};
+	_unit switchMove _anim;
+	_nul = [objNull, _unit, rSWITCHMOVE, _anim] call RE;  
+	//diag_log "DEBUG :: AI unit is unconscious.";
+
+	sleep 10;
+
+	_unit switchMove "amovppnemrunsnonwnondf";
+	_nul = [objNull, _unit, rSWITCHMOVE, "amovppnemrunsnonwnondf"] call RE;
+	//diag_log "DEBUG :: AI unit is conscious.";
+	_unit setVariable ["unconscious",false];
+};
+
+DZAI_unitDeath = {
+	private["_victim","_killer","_unitGroup"];
+	_victim = _this select 0;
+	_killer = _this select 1;
+	
+	_unitGroup = (group _victim);
+
+	switch (_victim getVariable "unitType") do {
+		case 0:
+		{
+			[_victim,_unitGroup] spawn fnc_staticAIDeath;
+		};
+		case 1:
+		{
+			[_victim,_unitGroup] spawn fnc_dynAIDeath;
+		};
+	};
+	
+	[_victim,_killer,_unitGroup] call fnc_banditAIKilled;
+	[_victim] spawn DZAI_deathFlies;
+	
+	true
 };

@@ -9,6 +9,8 @@ _damage = 		_this select 2;				//Resulting level of damage for the selection. (R
 _dmgSource = 	_this select 3;				//The source unit that caused the damage. 
 _projectile = 	_this select 4;				//Classname of the projectile that caused inflicted the damage. ("" for unknown, such as falling damage.) 
 
+if (((_damage > 2) || ((_damage > 0.5) && (_selection == "head_hit"))) && !(_unit getVariable ["unconscious",false])) then {_nul = [_unit] spawn DZAI_unconscious; _unit setVariable ["unconscious",true];};
+
 if (isNil {_unit getVariable "gethit"}) then {_unit setVariable ["gethit",[0,0,0,0]]};                            	// Fresh unit starts at full health
 _gethit=_unit getVariable "gethit"; 		// Retrieve unit's health statistics
 
@@ -29,12 +31,14 @@ switch (_selection) do {                                                        
     
     case "hands":{                                                                                                      // cannot kill a unit on own, only affect aim
         _damage = (_gethit select 2) + (_damage - (_gethit select 2))*(DZAI_dmgFactors select 3);
-		_gethit set [2,_damage]
+		_gethit set [2,_damage];
+		if (_damage < 1) then {_damage = 0};	//Break hands only if cumulative damage to hand is > 1
     };        
     
     case "legs":{                                                                                                      // cannot kill a unit on own, only affect movement
         _damage = (_gethit select 3) + (_damage - (_gethit select 3))*(DZAI_dmgFactors select 4);
-		_gethit set [3,_damage]
+		_gethit set [3,_damage];
+		if (_damage < 1) then {_damage = 0};	//Break legs only if cumulative damage to legs is > 1
     }; 
 };      
 

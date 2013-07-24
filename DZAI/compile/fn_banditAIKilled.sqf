@@ -11,6 +11,7 @@
 private["_victim","_killer","_unitGroup","_groupSize"];
 _victim = _this select 0;
 _killer = _this select 1;
+_unitGroup = _this select 2;
 
 //Remove temporary NVGs.
 if ((_victim getVariable["removeNVG",0]) == 1) then {_victim removeWeapon "NVGoggles";}; //Remove temporary NVGs from AI.
@@ -20,7 +21,6 @@ _victim setVariable["bodyName","DZAI Unit",true];
 _victim setVariable["deathType","bled",true];
 
 //Update AI count
-_unitGroup = (group _victim);
 _groupSize = _unitGroup getVariable "groupSize";
 _groupSize = _groupSize - 1;
 DZAI_numAIUnits = DZAI_numAIUnits - 1;

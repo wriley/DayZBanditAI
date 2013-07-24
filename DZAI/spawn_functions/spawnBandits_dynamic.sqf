@@ -104,7 +104,7 @@ _startTime = diag_tickTime;
 _unitGroup = [_totalAI,grpNull,_pos,_trigger] call fnc_createGroup;
 
 //Reveal target player and nearby players to AI.
-{_unitGroup reveal [_x,4]} forEach _nearbyPlayers;
+{_unitGroup reveal [_x,(1.5 + random (2.5))]} forEach _nearbyPlayers;
 
 //Update AI count
 //_unitGroup setVariable ["groupSize",_totalAI];

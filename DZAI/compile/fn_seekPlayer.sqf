@@ -22,7 +22,7 @@ deleteWaypoint [_unitGroup,0];
 //_statement = format ["deleteWaypoint[(group this),0]; 0 = [(group this),%1,%2,%3] spawn fnc_BIN_taskPatrol;",_spawnPos,_patrolDist,DZAI_debugMarkers];
 _waypoint = _unitGroup addWaypoint [_spawnPos,0];
 _waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius 30;
+_waypoint setWaypointCompletionRadius (20 + round (random 20));
 _waypoint setWaypointTimeout [0,5,10];
 _waypoint setWaypointStatements ["true","if ((random 1) < 0.50) then { group this setCurrentWaypoint [(group this), (floor (random (count (waypoints (group this)))))];};"];
 _unitGroup setCurrentWaypoint _waypoint;
