@@ -717,7 +717,7 @@ class _trigger_78
 		INTERRUPTABLE="true";
 		TEXT="Corazon";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,225,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,225,thisTrigger,[],2,2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };

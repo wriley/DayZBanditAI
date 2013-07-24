@@ -1,6 +1,3 @@
-activateAddons [
-];
-
 activateAddons [];
 initAmbientLife;
 
@@ -286,7 +283,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Corazon";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,225,thisTrigger,[],1] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,225,thisTrigger,[],2,2] call fnc_spawnBandits;", "nul = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_78 = _this;
 
 _this = createTrigger ["EmptyDetector", [6808.8735, 4703.7256]];
