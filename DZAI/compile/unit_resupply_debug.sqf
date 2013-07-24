@@ -13,8 +13,6 @@ if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI resupply script
 
 _unit = _this select 0;								//Unit to monitor/reload ammo
 
-if (isNull (unitBackpack _unit)) then {diag_log "DZAI Error :: Unit backpack not found!";};		//Check if backpack is missing
-
 _currentWeapon = currentWeapon _unit;				//Retrieve unit's current weapon
 waitUntil {sleep 0.001; !isNil "_currentWeapon"};
 _weaponMagazine = getArray (configFile >> "CfgWeapons" >> _currentWeapon >> "magazines") select 0;	//Retrieve ammo used by unit's current weapon
@@ -32,13 +30,18 @@ _marker setMarkerColor "ColorRed";
 _marker setMarkerBrush "SolidBorder";
 _marker setMarkerSize [5, 5];
 
-if (DZAI_debugLevel > 1) then {
-	0 = [_unit] spawn {
-		private ["_unit"];
-		_unit = _this select 0;
-		sleep 5;
-		diag_log format ["DZAI ExtDebug (Unit Skills): %1, %2, %3, %4, %5, %6, %7, %8, %9, %10.",_unit skill "aimingAccuracy",_unit skill "aimingShake",_unit skill "aimingSpeed",_unit skill "endurance",_unit skill "spotDistance",_unit skill "spotTime",_unit skill "courage",_unit skill "reloadSpeed",_unit skill "commanding",_unit skill "general"];
-		true
+if (DZAI_debugLevel > 0) then {
+	if (isNull (unitBackpack _unit)) then {
+		diag_log format ["DZAI Error :: Unit backpack not found! Debug info -- Skin: %1. Backpack: %2. WeaponPrimary: %3. WeaponSecondary: %4.",(typeOf _unit),(unitBackpack _unit),(primaryWeapon _unit),(secondaryWeapon _unit)];
+	};		//Check if backpack is missing
+	if (DZAI_debugLevel > 1) then {
+		0 = [_unit] spawn {
+			private ["_unit"];
+			_unit = _this select 0;
+			sleep 5;
+			diag_log format ["DZAI ExtDebug (Unit Skills): %1, %2, %3, %4, %5, %6, %7, %8, %9, %10.",_unit skill "aimingAccuracy",_unit skill "aimingShake",_unit skill "aimingSpeed",_unit skill "endurance",_unit skill "spotDistance",_unit skill "spotTime",_unit skill "courage",_unit skill "reloadSpeed",_unit skill "commanding",_unit skill "general"];
+			true
+		};
 	};
 };
 
