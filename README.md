@@ -21,7 +21,7 @@ Supported DayZ Mods:
 
 Partially-supported DayZ Mods:
 ============
-- Certain maps/mods have partial support because they are unpopular or development has ceased. DZAI is not constantly updated for these maps/mods in particular but they should still be compatible.
+- DZAI is not constantly updated for these maps/mods in particular but they should still be compatible.
 - This list includes the following maps/mods: Fallujah, Isla Duala, Oring, Panthera, Sahrani, Takistan, Taviana, Utes, Zargabad.
 
 
