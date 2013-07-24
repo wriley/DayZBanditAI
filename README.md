@@ -14,20 +14,21 @@ Reminder: The latest stable build of DZAI is always located in the 'master' bran
 Detailed documentation for the DZAI package is coming. Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
 
 
-Supported DayZ Mods:
+Compatibility
 ============
-- DZAI is designed to be compatible with every publicly-available DayZ Mod.
+
+- DZAI is designed to be compatible with every publicly-available DayZ Mod. At present time no DayZ mod are known to have issues with DZAI.
 
 
-Partially-supported DayZ Mods:
-============
+<b>Partially-supported DayZ Mods:</b>
+
 - DZAI is not constantly updated for these maps/mods in particular but they should still be compatible.
 - This list includes the following maps/mods: Fallujah, Isla Duala, Oring, Panthera, Sahrani, Takistan, Taviana, Utes, Zargabad.
 
 
-Unsupported DayZ Mods:
-============
-- At present time no DayZ mod are known to have issues with DZAI. This section will be updated once issues with any DayZ mods are known.
+<b>Unsupported DayZ Mods:</b>
+
+- This section will be updated once issues with any DayZ mods are known.
 
 
 Installation Instructions:
