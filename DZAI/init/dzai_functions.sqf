@@ -236,6 +236,7 @@ DZAI_append = {
 	(_this select 0)
 };
 
+//Knocks an AI unit unconscious for 10 seconds - determines the correct animation to use, and returns unit to standing state after waking.
 DZAI_unconscious = {
 	private ["_unit","_anim"];
 	_unit = _this select 0;
@@ -257,6 +258,7 @@ DZAI_unconscious = {
 	_unit setVariable ["unconscious",false];
 };
 
+//Killed eventhandler script used by both static and dynamic AI.
 DZAI_unitDeath = {
 	private["_victim","_killer","_unitGroup"];
 	_victim = _this select 0;
