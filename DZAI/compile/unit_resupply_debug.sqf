@@ -13,7 +13,7 @@ if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI resupply script
 
 _unit = _this select 0;								//Unit to monitor/reload ammo
 
-if (str (unitBackpack _unit) == "") then {diag_log "DZAI Error :: Unit backpack not found!";};		//Check if backpack is missing
+if (isNull (unitBackpack _unit)) then {diag_log "DZAI Error :: Unit backpack not found!";};		//Check if backpack is missing
 
 _currentWeapon = currentWeapon _unit;				//Retrieve unit's current weapon
 waitUntil {sleep 0.001; !isNil "_currentWeapon"};
