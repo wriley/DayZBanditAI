@@ -7,7 +7,7 @@
 	
 	Last updated: 11:24 AM 7/23/2013
 */
-	private ["_unit","_weapongrade","_rifles","_rifle","_magazine","_bags","_gadgetsArray","_bag","_gadget"];
+	private ["_unit","_weapongrade","_weapons","_weapon","_magazine","_backpacks","_gadgetsArray","_backpack","_gadget"];
 	_unit = _this select 0;
 	_weapongrade = _this select 1;
 
@@ -18,49 +18,49 @@
 			_unit removeWeapon "ItemMap";
 			_unit removeWeapon "ItemGPS";
 			_unit removeWeapon "ItemCompass";
-			_unit removeWeapon "ItemRadio";    
+			_unit removeWeapon "ItemRadio";  
+			_unit removeWeapon "ItemWatch";
 		};
 		
 		switch (_weapongrade) do {
 			case 0: {
 				if ((random 1) < 0.5) then {
-					_rifles = DZAI_Rifles0;
+					_weapons = DZAI_rifles0;
 				} else {
-					_rifles = DZAI_Pistols0;
+					_weapons = DZAI_Pistols0;
 				};
-				_bags = DZAI_Backpacks0;
+				_backpacks = DZAI_Backpacks0;
 				_gadgetsArray = DZAI_gadgets0;
 			};
 			case 1: {
-				_rifles = DZAI_Rifles1;
-				_bags = DZAI_Backpacks1;
+				_weapons = DZAI_rifles1;
+				_backpacks = DZAI_Backpacks1;
 				_gadgetsArray = DZAI_gadgets0;
 			};
 			case 2: {
-				_rifles = DZAI_Rifles2;
-				_bags = DZAI_Backpacks2;
+				_weapons = DZAI_rifles2;
+				_backpacks = DZAI_Backpacks2;
 				_gadgetsArray = DZAI_gadgets1;
 			};
 			case 3: {
-				_rifles = DZAI_Rifles3;
-				_bags = DZAI_Backpacks3;
+				_weapons = DZAI_rifles3;
+				_backpacks = DZAI_Backpacks3;
 				_gadgetsArray = DZAI_gadgets1;
 			};
 		};
 
-		//Add weapon
-		_rifle = _rifles call BIS_fnc_selectRandom;
-		_magazine = getArray (configFile >> "CfgWeapons" >> _rifle >> "magazines") select 0;
-		_unit addMagazine _magazine;
-		_unit addWeapon _rifle;
-		_unit selectweapon _rifle;
-		if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Created weapon %1 for AI with weapongrade %2. (fn_unitSelectWeapon)",_rifle,_weapongrade];};
+		//Select weapon and backpack
+		_weapon = _weapons call BIS_fnc_selectRandom;
+		_backpack = _backpacks call BIS_fnc_selectRandom;
 		
-		//Add backpack
-		_bag = _bags call BIS_fnc_selectRandom;
-		_unit addBackpack _bag;
-		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Backpack: %1 for AI.",_bag];};
-
+		//Add weapon, ammunition, and backpack
+		_magazine = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines") select 0;
+		_unit addMagazine _magazine;
+		_unit addWeapon _weapon;
+		_unit selectWeapon _weapon;
+		_unit addBackpack _backpack;
+		if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Created weapon %1 and backpack %3 for AI with weapongrade %2. (fn_unitSelectWeapon)",_weapon,_weapongrade,_backpack];};
+		
 		//diag_log format ["DEBUG :: Counted %1 tools in _gadgetsArray.",(count _gadgetsArray)];
 		for "_i" from 0 to ((count _gadgetsArray) - 1) do {
 			private["_chance"];

@@ -41,8 +41,19 @@ Installation Instructions:
 - Unpack your <b>dayz_server.pbo</b>
 - Copy the new DZAI folder inside your unpacked dayz_server folder. (You should also see config.cpp in the same level.)
 - Edit your <b>server_monitor.sqf</b>. It is located within \dayz_server\system. 
-- Locate the line that reads: <code>waituntil{isNil "sm_done"}; // prevent server_monitor be called twice (bug during login of the first player)</code> (located near line 200). If this line can't be located, find the one that reads: <code>// # END OF STREAMING #</code> (Located near line 174).
-- Underneath this line, insert the following (If reading this in a text editor, ignore the code tags!): <code>call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";</code>. Refer to the provided example server_monitor.sqf (named server_monitor_example.sqf)
+- Search for the line where server_cleanup.fsm is called, and insert the following after this line:
+
+
+    call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
+
+
+An example is shown here:
+
+    if (isDedicated) then {
+        _id = [] execFSM "\z\addons\dayz_server\system\server_cleanup.fsm";
+        call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
+    };
+
 - Read the section below on other required edits and follow the instructions.
 - Repack your dayz_server.pbo (it should be about 400KB larger).
 - You are now ready to start your server.
@@ -87,5 +98,9 @@ DZAI 1.3.0 Rolling Changelog:
 - [UPDATED] Added additional checks to unit loadout function to prevent double primary weapon issue and missing backpack issue. (Needs testing).
 - [MODIFIED] Maximum AI bandages increased to 3 from 2 (maximum self-heals).
 - [MODIFIED] Time required for AI self-heal increased to 3.5 seconds from 3 seconds.
+
+- [NEW] Server admins can now store their custom settings in DZAI\DZAI_settings_override.sqf for reuse. Copy over the settings from DZAI\init\dzai_variables.sqf that you wish to keep to DZAI_settings_override.sqf. Keep this file when upgrading DZAI to newer versions.
+- [UPDATED] AI loadout script now checks if skin classname includes weapons and other items (Map, GPS, Compass, Radio, Watch). If any items are present, they are removed. This should help server admins who wish to add custom skin classnames.
+- [UPDATED] Updated DZAI installation instructions with a simpler method that should be applicable to most/all DayZ server packages.
 
 Note: Information about past updates are archived in changelog.txt

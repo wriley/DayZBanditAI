@@ -59,7 +59,7 @@ DZAI_maxHeliPatrols = 0;									//Maximum number of active AI helicopters patro
 DZAI_heliTypes = ["UH1H_DZ"];								//Classnames of helicopter types to use. Helicopter types must have at least 2 gunner seats (Default: "UH1H_DZ").
 
 //Extra AI Settings
-DZAI_findKiller = false;									//If enabled, AI group will attempt to track down player responsible for killing a group member. Players with radios will be given text warnings if they are being pursued (Default: false)
+DZAI_findKiller = false;										//If enabled, AI group will attempt to track down player responsible for killing a group member. Players with radios will be given text warnings if they are being pursued (Default: false)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3 (applies only during nighttime hours). Temporary NVGs are unlootable and will be removed at death (Default: false).
 DZAI_humanityGain = 0;										//Amount of humanity to reward player for killing an AI unit (Default: 0)
 
@@ -88,6 +88,9 @@ DZAI_gradeChances1 = [0.55,0.40,0.04,0.01];					//equipType = 1 - most AI will h
 DZAI_gradeChances2 = [0.31,0.56,0.10,0.03];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
 DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//equipType = 3 - All AI will carry at least a military-grade weapon. Many will be carrying high-grade military weapons.
 DZAI_gradeChancesDyn = [0.30,0.60,0.08,0.02];				//Weapongrade chances for AI spawned from dynamic triggers.
+
+//Load custom DZAI settings file.
+call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\DZAI_settings_override.sqf";
 
 //AI skill settings
 DZAI_skill0 = [	

@@ -280,5 +280,7 @@ DZAI_unitDeath = {
 	[_victim,_killer,_unitGroup] call fnc_banditAIKilled;
 	[_victim] spawn DZAI_deathFlies;
 	
+	//diag_log format ["DEBUG :: AI %1 (Group %2) killed by %3",_victim,_unitGroup,_killer];
+	
 	true
 };
