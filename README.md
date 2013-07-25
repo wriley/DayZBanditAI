@@ -99,6 +99,7 @@ DZAI 1.3.0 Rolling Changelog:
 - [MODIFIED] Maximum AI bandages increased to 3 from 2 (maximum self-heals).
 - [MODIFIED] Time required for AI self-heal increased to 3.5 seconds from 3 seconds.
 
+Added 7/25/2013:
 
 - [NEW] Server admins can now store their custom settings in DZAI\DZAI_settings_override.sqf for reuse. Copy over the settings from DZAI\init\dzai_variables.sqf that you wish to keep to DZAI_settings_override.sqf. Keep this file when upgrading DZAI to newer versions.
 - [UPDATED] AI loadout script now checks if skin classname includes weapons and other items (Map, GPS, Compass, Radio, Watch). If any items are present, they are removed. This should help server admins who wish to add custom skin classnames.
