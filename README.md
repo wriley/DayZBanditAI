@@ -44,7 +44,7 @@ Installation Instructions:
 - Search for the line where server_cleanup.fsm is called, and insert the following after this line:
 
 
-    call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
+    <code>call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";</code>
 
 
 An example is shown here:
