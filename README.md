@@ -102,6 +102,7 @@ DZAI 1.3.0 Rolling Changelog:
 Added 7/25/2013:
 
 - [NEW] Server admins can now store their custom settings in DZAI\DZAI_settings_override.sqf for reuse. Copy over the settings from DZAI\init\dzai_variables.sqf that you wish to keep to DZAI_settings_override.sqf. Keep this file when upgrading DZAI to newer versions.
+- [FIXED] DayZ Epoch: Removed player zombie classnames from AI-usable skin tables to solve loadout issues.
 - [UPDATED] AI loadout script now checks if skin classname includes weapons and other items (Map, GPS, Compass, Radio, Watch). If any items are present, they are removed. This should help server admins who wish to add custom skin classnames.
 - [UPDATED] Updated DZAI installation instructions with a simpler method that should be applicable to most/all DayZ server packages.
 
