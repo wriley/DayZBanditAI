@@ -3,7 +3,7 @@
 	
 	Description:
 	
-	Last updated:	7:20 PM 7/13/2013
+	Last updated:	9:40 PM 7/24/2013
 	
 */
 private ["_randomizeCount","_trigger","_isCleaning","_attempts","_newPos","_marker"];
@@ -12,11 +12,11 @@ _randomizeCount = _this select 0;
 
 if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Randomizing %1 dynamic trigger locations... (fnc_randomizeTriggers)",_randomizeCount];};
 for "_i" from 1 to _randomizeCount do {
-private ["_trigger","_isCleaning"];
+private ["_trigger"];
 	if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Selecting a random dynamic trigger to randomize location. (fnc_randomizeTriggers)";};
 	_trigger = DZAI_dynTriggerArray call BIS_fnc_selectRandom;
-	_isCleaning = _trigger getVariable ["isCleaning",false];
-	if ((!triggerActivated _trigger) && (!_isCleaning)) then {
+	//Select only dynamic triggers that haven't spawned any AI and not in cleaning state
+	if ((count (_trigger getVariable ["GroupArray",[]]) == 0) && (!(_trigger getVariable ["isCleaning",false]))) then {
 	private ["_newPos","_attempts"];
 		_attempts = 0;
 		_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;

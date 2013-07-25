@@ -79,6 +79,7 @@ DZAI 1.3.0 Rolling Changelog:
 
 - [NEW] Unconsciousness for AI units: AI units can now be temporarily knocked unconscious when shot. Damage threshold to knock out an AI unit is identical to player units. Unconsciousness time is currently fixed at 10 seconds.
 - [NEW] Added support for DayZ Hunting Grounds. Includes new AI skin models and backpacks.
+- [FIXED] Dynamic triggers with active spawned AI will not have their locations randomized. Previously, a trigger was considered active if a player was present in the area.
 - [UPDATED] AI units spawned with weapongrade = 0 now have a 50% chance of being assigned a pistol or rifle.
 - [UPDATED] Static and dynamic AI now share a common Killed eventhandler. This eventhandler decides which action to take when the AI unit is killed (respawn or relocate trigger).
 - [UPDATED] AI hands and legs can now be broken in the same way as players. Damage to hands and legs is only applied when sufficient damage has accumulated to cause a fracture.
