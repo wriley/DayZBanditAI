@@ -35,7 +35,7 @@ if (_targetPlayer hasWeapon "ItemRadio") then {
 sleep 30;
 
 //Begin hunting phase
-while {(alive _targetPlayer) && !(isNull _targetPlayer) && (_targetPlayer isKindOf "Man") && ((_targetPlayer distance _spawnPos) < 200) && !((_unitGroup getVariable "groupSize") > 0)} do {
+while {(alive _targetPlayer) && !(isNull _targetPlayer) && (_targetPlayer isKindOf "Man") && ((_targetPlayer distance _spawnPos) < 300) && !((_unitGroup getVariable "groupSize") > 0)} do {
 	if !(_unitGroup getVariable ["inPursuit",false]) then {
 		_waypoint setWPPos getPosATL _targetPlayer;
 		_unitGroup setCurrentWaypoint _waypoint;

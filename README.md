@@ -116,5 +116,9 @@ Added 7/26/2013:
 
 - [MODIFIED] Debug markers for ground AI units remain black if unit's weapon or magazine cannot be detected. Once they are detected, the marker turns red (normal case).
 - [MODIFIED] Several variables are now attached to the AI group instead of each individual unit.
+- [MODIFIED] Dynamic AI spawn distance from targeted player increased to 200/300 (min/max) from 150/300 (min/max).
+- [MODIFIED] Dynamic AI spawn amount equation changed to: (number of players) + (random number 0-2), up to a maximum of 6 AI units.
+- [MODIFIED] Dynamic AI pursuit distance increased to 300m from 200m.
+- [MODIFIED] AI helicopter crew units can no longer be knocked unconscious.
 
 Note: Information about past updates are archived in changelog.txt

@@ -52,8 +52,8 @@ if !(surfaceIsWater [_playerPos select 0,_playerPos select 1]) then {
 	_findPlayer = false;
 	//diag_log "DEBUG :: Target player is over water.";
 };
-_minDist = 150;
-_maxDist = (_minDist + random(150));
+_minDist = 200;
+_maxDist = (_minDist + random(100));
 _pos = [_spawnPos,_minDist,_maxDist,10,0,2000,0] call BIS_fnc_findSafePos;
 //If BIS_fnc_findSafePos fails to find a safe location, then force respawn instead.
 if ((_pos distance _spawnPos) > 500) exitWith {
@@ -74,12 +74,9 @@ if ((_pos distance _spawnPos) > 500) exitWith {
 	};
 };
 
-//Calculate number of AI to spawn. Equation: round(2.6 ln (#players) + 2) +/- 1
-if (_playerCount < 7) then {
-	_totalAI = (round(2.6*(ln _playerCount) + 2)) + round(random 1) - round(random 1);				//Calculate number of AI to spawn based on number of players nearby.
-} else {
-	_totalAI = (6 + round(random 1) - round(random 1));												//Set AI upper limit.
-};
+//Calculate number of AI to spawn. Equation: (number of players in 100m radius) + (random number between 0-2). Maximum AI spawned: 6.
+_totalAI = ((_playerCount + floor (random 3)) min 6);
+
 //Reduce number of AI spawned if trigger area intersects another activated trigger to avoid overwhelming AI spawns.
 _nearbyTriggers = ({((_trigger distance _x) < ((triggerArea _trigger) select 0))&&(triggerActivated _x)} count DZAI_dynTriggerArray) - 1;
 if (_nearbyTriggers > 0) then {
