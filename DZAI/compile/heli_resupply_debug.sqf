@@ -17,6 +17,7 @@ _unitGroup = _helicopter getVariable "unitGroup";
 
 //Create debug position markers. Helicopter position: Red, Current waypoint position: Blue.
 _markername = format["Helicopter_%1",_helicopter];
+//diag_log format ["Helicopter marker name is %1.",_markername];
 _marker = createMarker[_markername,(getposATL _helicopter)];
 _marker setMarkerShape "ELLIPSE";
 _marker setMarkerType "Dot";
@@ -26,6 +27,7 @@ _marker setMarkerSize [50, 50];
 
 diag_log format ["Helicopter is part of group %1.",_unitGroup];
 _wpmarkername = format ["HeliWP_%1",_helicopter];
+//diag_log format ["Helicopter waypoint name is %1.",_wpmarkername];
 _wpmarker = createMarker[_wpmarkername,(getWPPos [_unitGroup,0])];
 _wpmarker setMarkerShape "ELLIPSE";
 _wpmarker setMarkerType "Dot";
@@ -63,7 +65,7 @@ while {alive _helicopter} do {
 		_helicopter removeAllEventHandlers "LandedStopped";
 		_helicopter setDamage 1;
 	};
-
+	
 	//Periodically vary the helicopter's altitude
 	if ((random 1) < 0.3) then {
 		_helicopter flyInHeight (90 + (random 40));

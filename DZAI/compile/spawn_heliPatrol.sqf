@@ -57,6 +57,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 		_x addWeapon "NVGoggles";
 		_x addEventHandler ["HandleDamage",{_this call fnc_damageAI;}];
 		_x addEventHandler ["Killed",{[_this,"banditKills"] call local_eventKill;(_this select 0) setDamage 1;(_this select 0) removeWeapon "NVGoggles";}];
+		_x setVariable ["unconscious",true];	//Prevent AI heli crew from being knocked unconscious
 	} forEach (units _unitGroup);
 
 	//Set group behavior and waypoint

@@ -5,7 +5,7 @@
 	
 	Description: Spawns a group of AI units some distance from a dynamically-spawned trigger. These units do not respawn after death.
 	
-	Last updated: 11:37 PM 7/6/2013
+	Last updated: 1:12 AM 7/26/2013
 */
 #include "\z\addons\dayz_server\DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
@@ -52,8 +52,8 @@ if !(surfaceIsWater [_playerPos select 0,_playerPos select 1]) then {
 	_findPlayer = false;
 	//diag_log "DEBUG :: Target player is over water.";
 };
-_minDist = 150;
-_maxDist = (_minDist + random(150));
+_minDist = 200;
+_maxDist = (_minDist + random(100));
 _pos = [_spawnPos,_minDist,_maxDist,10,0,2000,0] call BIS_fnc_findSafePos;
 //If BIS_fnc_findSafePos fails to find a safe location, then force respawn instead.
 if ((_pos distance _spawnPos) > 500) exitWith {
@@ -74,12 +74,9 @@ if ((_pos distance _spawnPos) > 500) exitWith {
 	};
 };
 
-//Calculate number of AI to spawn. Equation: round(2.6 ln (#players) + 2) +/- 1
-if (_playerCount < 7) then {
-	_totalAI = (round(2.6*(ln _playerCount) + 2)) + round(random 1) - round(random 1);				//Calculate number of AI to spawn based on number of players nearby.
-} else {
-	_totalAI = (6 + round(random 1) - round(random 1));												//Set AI upper limit.
-};
+//Calculate number of AI to spawn. Equation: (number of players in 100m radius) + (random number between 0-2). Maximum AI spawned: 6.
+_totalAI = ((_playerCount + floor (random 3)) min 6);
+
 //Reduce number of AI spawned if trigger area intersects another activated trigger to avoid overwhelming AI spawns.
 _nearbyTriggers = ({((_trigger distance _x) < ((triggerArea _trigger) select 0))&&(triggerActivated _x)} count DZAI_dynTriggerArray) - 1;
 if (_nearbyTriggers > 0) then {
@@ -103,8 +100,13 @@ _startTime = diag_tickTime;
 //Spawn units
 _unitGroup = [_totalAI,grpNull,_pos,_trigger] call fnc_createGroup;
 
+//Set group variables
+_unitGroup setVariable ["unitType",1];
+_unitGroup setVariable ["trigger",_trigger];
+_unitGroup allowFleeing 0;
+		
 //Reveal target player and nearby players to AI.
-{_unitGroup reveal [_x,4]} forEach _nearbyPlayers;
+{_unitGroup reveal [_x,(1.5 + random (2.5))]} forEach _nearbyPlayers;
 
 //Update AI count
 //_unitGroup setVariable ["groupSize",_totalAI];

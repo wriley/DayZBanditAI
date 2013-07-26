@@ -1,4 +1,4 @@
-DZAI 1.2.3 - AI Addon for DayZ
+DZAI 1.3.0 - AI Addon for DayZ
 ============
 
 
@@ -13,38 +13,31 @@ Reminder: The latest stable build of DZAI is always located in the 'master' bran
 
 Detailed documentation for the DZAI package is coming. Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
 
-
-Supported and tested maps:
+Features
 ============
-- Chernarus
-- Namalsk
 
-Supported (untested) maps:
+- <b>Static AI Spawns</b> - AI spawn locations have been set up in cities, towns, and military bases for supported DayZ maps. Always be on alert while looting.
+- <b>Dynamic AI Spawns</b> - AI spawn locations are also randomly created around the map. AI can appear anywhere, anytime.
+- <b>AI helicopter patrols</b> - AI helicopters patrol randomly around the map. Tip: Players on foot have the best chance of avoiding detection, but players in vehicles are much more noticeable to AI.
+- <b>AI can use any lootable weapon</b> - DZAI builds a list of AI-usable weapons using DayZ's loot tables. Beware, AI with rarer weapons will be more dangerous.
+- <b>AI health system</b> - AI units can take as much damage as players, and can also be knocked unconscious by heavy damage. Headshots are more likely to knock out an AI unit.
+
+Compatibility
 ============
-No issues have been reported with the following maps, but have not been tested.
-- Celle*
-- Chernarus - DayZ 2017
-- Chernarus - DayZ Epoch
-- DayZ Civilian
-- Namalsk - DayZ Epoch
-- Namalsk - DayZ 2017
-- Fallujah
-- Isla Duala
-- Isla Duala - DayZ Epoch
-- Lingor - Skaronator
-- Lingor - DayZ Epoch
-- Oring
-- Panthera
-- Sahrani
-- Takistan
-- Taviana - DayZ Epoch
-- Utes
-- Zargabad
-- Taviana 2.0
-- Lingor 1.3
 
-Note: Only DayZ maps/mods with publicly-available server files will be supported.
-* Marks maps/mods that are planned to be tested.
+- DZAI is designed to be compatible with every publicly-available DayZ Mod. At present time no DayZ mods are known to have issues with DZAI.
+
+
+<b>Partially-supported DayZ Mods:</b>
+
+- DZAI is not constantly updated for these maps/mods in particular but they should still be compatible.
+- This list includes the following maps/mods: Fallujah, Isla Duala, Oring, Panthera, Sahrani, Takistan, Taviana, Utes, Zargabad.
+
+
+<b>Unsupported DayZ Mods:</b>
+
+- This section will be updated once issues with any DayZ mods are known.
+
 
 Installation Instructions:
 ============
@@ -53,8 +46,19 @@ Installation Instructions:
 - Unpack your <b>dayz_server.pbo</b>
 - Copy the new DZAI folder inside your unpacked dayz_server folder. (You should also see config.cpp in the same level.)
 - Edit your <b>server_monitor.sqf</b>. It is located within \dayz_server\system. 
-- Locate the line that reads: <code>waituntil{isNil "sm_done"}; // prevent server_monitor be called twice (bug during login of the first player)</code> (located near line 200). If this line can't be located, find the one that reads: <code>// # END OF STREAMING #</code> (Located near line 174).
-- Underneath this line, insert the following (If reading this in a text editor, ignore the code tags!): <code>call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";</code>. Refer to the provided example server_monitor.sqf (named server_monitor_example.sqf)
+- Search for the line where server_cleanup.fsm is called, and insert the following after this line:
+
+
+    <code>call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";</code>
+
+
+An example is shown here:
+
+    if (isDedicated) then {
+        _id = [] execFSM "\z\addons\dayz_server\system\server_cleanup.fsm";
+        call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
+    };
+
 - Read the section below on other required edits and follow the instructions.
 - Repack your dayz_server.pbo (it should be about 400KB larger).
 - You are now ready to start your server.
@@ -74,70 +78,40 @@ In order to use DZAI's AI helicopter patrols, you must first edit your server_cl
 	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
 
 	
-If you <b>do not</b> have the Animated Helicopters addon installed, change the line to this :
+If you <b>do not</b> have the Animated HeliCrash addon installed, change the line to this :
 
 
 	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && (vehicle _x getVariable [""DZAI"",0] != 1)) then {" \n
  
  
-If you <b>do</b> have the Animated Helicopters addon installed, change the line to this:
+If you <b>do</b> have the Animated HeliCrash addon installed, change the line to this:
 
 
 	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
 
 	
-Latest Updates:
+DZAI 1.3.0 Changelog:
 ============
 
-1.2.0 Update:
-
-- [NEW] Humanity can now be awarded to players for AI unit kills. Humanity rewarded can be edited in DZAI_variables.sqf.
-- [NEW] Added DZAI Scheduler to manage all scheduled tasks.
-- [NEW] Added prototype version of AI helicopter patrols feature, which can be enabled in DZAI_variables.sqf. Helicopter patrols require edits to server_cleanup.fsm. Instructions have been provided in the Required Edits section. More details on the helicopters feature here: http://opendayz.net/threads/release-dzai-lite-dynamic-ai-package.11116/page-8#post-61128.
-- [NEW] Added debug markers for static triggers. Markers will appear after the trigger's first activation. Color codes: Yellow (inactive), Orange (active), Red (Error).
-- [FIXED] Fixed error that prevented Radio text messages from being displayed to player when dynamic AI have ended their pursuit state.
-- [FIXED] Fixed bug where static triggers would be unable to continue spawning AI units if the calculated number of AI to respawn is zero.
-- [UPDATED] SHK_pos package included with DZAI is now only initialized if it is not already started.
-- [UPDATED] All AI death loot scripts integrated into fnc_addLoot.
-- [UPDATED] Updated DZAI Server Monitor output. Text output is now separated into overall server statistics (uptime, AI count), static AI statistics, dynamic AI statistics.
-- [UPDATED] Chernarus: Repositioned patrol area and spawn points for AI units at NEAF. AI numbers increased to 2 minimum + 2 maximum additional.
-- [UPDATED] Reduced probability of generating Small-type misc items from 66% to 60%.
-- [UPDATED] Reduced probability of generating Large-type misc items from 20% to 15%.
-- [MODIFIED] Locations of debug markers for dynamic triggers are now refreshed at an interval specified by DZAI_monitorRate.
-- [MODIFIED] Renamed several script files, some added directly into DZAI_functions.sqf
-- [MODIFIED] Maximum dynamic trigger area overlap tolerance increased to 15% from 10%.
-
-1.2.1 Update:
-
-- [UPDATED] Added a check if DZAI is already running to prevent multiple instances of DZAI from starting.
-- [MODIFIED] Adjusted minimum AI helicopter flying height to 90m.
-
-1.2.2 Update:
-
-- [FIXED] AI self-healing now heals damage properly.
-- [REMOVED] Removed all AI skin loot and related loot tables. (Use Remove Clothes addon instead)
-- [REMOVED] Removed auto-detection for DayZ 2017 and Namalsk 2017 due to possibility of future false-positive detections. All 2017 mods now require manual activation in dzai_variables.sqf.
-- [UPDATED] Added probability checks for adding medical and edible loot. Default settings: 75%/medical, 85%/edible.
-- [UPDATED] Setting debugMarkers = 2 will enable debug markers for static triggers and allow continuous refreshing of dynamic trigger locations. (Setting value to 1 will disable these markers but other debug marker functionalities remain).
-- [MODIFIED] Increased AI helicopter crew skills.
-- [MODIFIED] Increased AI health. Note: Due to the differences between how AI and player health is calculated, AI units may be more or less durable than player units.
-- [MODIFIED] Chernarus: Shifted Stary Sobor AI patrol further away from military tents as AI units can see through the tent walls.
-- [MODIFIED] Chernarus: Changed Stary Sobor AI spawns from 1 min + 3 additional max to 2 min + 2 additional max.
-- [MODIFIED] Changed activation delays for all static triggers to 10/15/20 seconds.
-
-1.2.2.1 Hotfix:
-
-- [FIXED] Fixed AI HandleDamage eventhandler functionality with DDOPP Taser Mod. (AI units should have improved durability even with the Taser mod installed).
-
-1.2.2.2 Minor Update:
-
-- [UPDATED] Nearby zeds are revealed to AI groups to help reduce time required to recognize marked zeds as hostile.
-- [MODIFIED] Scaled back AI health increases slightly. (2 DMR body shots should kill an AI unit)
-
-1.2.3 Update (Changes for Lingor map)
-
-- [NEW] Added new spawn areas and spawn markers for Lingor (Skaronator) and Hunting Grounds.
-- [UPDATED] Reworked all AI spawn areas and spawn markers for Lingor
-- [UPCOMING] Mod-specific support for DayZ Hunting Grounds in the next update.
+- [NEW] Unconsciousness for AI units: AI units can now be temporarily knocked unconscious when shot. Damage threshold to knock out an AI unit is identical to player units. Unconsciousness time is currently fixed at 10 seconds. (Note: Helicopter AI units cannot be knocked unconscious).
+- [NEW] Added support for DayZ Hunting Grounds. Includes new AI skin models and backpacks.
+- [NEW] Server admins can now store their custom settings in DZAI\DZAI_settings_override.sqf for reuse. Copy over the settings from DZAI\init\dzai_variables.sqf that you wish to keep to DZAI_settings_override.sqf. Keep this file when upgrading DZAI to newer versions.
+- [FIXED] DayZ Epoch: Removed player zombie classnames from AI-usable skin tables to solve loadout issues.
+- [FIXED] Dynamic triggers with active spawned AI will not have their locations randomized. Previously, a trigger was considered active if a player was present in the area.
+- [UPDATED] AI units spawned with weapongrade = 0 now have a 50% chance of being assigned a pistol or rifle.
+- [UPDATED] Static and dynamic AI now share a common Killed eventhandler. This eventhandler decides which action to take when the AI unit is killed (respawn or relocate trigger).
+- [UPDATED] AI hands and legs can now be broken in the same way as players. Damage to hands and legs is only applied when sufficient damage has accumulated to cause a fracture.
+- [UPDATED] If BIS_fnc_findSafePos can't find a suitable location to spawn/respawn static AI from building positions, exact positions of the buildings will be used instead.
+- [UPDATED] Added additional checks to unit loadout function to prevent double primary weapon issue and missing backpack issue. (Needs testing).
+- [UPDATED] AI loadout script now checks if skin classname includes weapons and other items (Map, GPS, Compass, Radio, Watch). If any items are present, they are removed. This should help server admins who wish to add custom skin classnames.
+- [UPDATED] Updated DZAI installation instructions with a simpler method that should be applicable to most/all DayZ server packages.
+- [UPDATED] Respawned AI groups now resume patrolling at a random waypoint instead of starting at the first generated waypoint.
+- [MODIFIED] Maximum AI bandages increased to 3 from 2 (maximum self-heals).
+- [MODIFIED] Time required for AI self-heal increased to 3.5 seconds from 3 seconds.
+- [MODIFIED] Debug markers for ground AI units remain black if unit's weapon or magazine cannot be detected. Once they are detected, the marker turns red (normal case).
+- [MODIFIED] Several variables are now attached to the AI group instead of each individual unit.
+- [MODIFIED] Dynamic AI spawn distance from targeted player increased to 200/300 (min/max) from 150/300 (min/max).
+- [MODIFIED] Dynamic AI spawn amount equation changed to: (number of players) + (random number 0-2), up to a maximum of 6 AI units.
+- [MODIFIED] Dynamic AI pursuit distance increased to 300m from 200m.
 
 Note: Information about past updates are archived in changelog.txt

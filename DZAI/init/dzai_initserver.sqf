@@ -3,7 +3,7 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 1:41 PM 7/18/2013
+	Last updated: 12:04 AM 7/25/2013
 */
 private ["_startTime"];
 
@@ -15,15 +15,6 @@ diag_log format ["Initializing %1 version %2",DZAI_TYPE,DZAI_VERSION];
 
 _startTime = diag_tickTime;
 
-createcenter east;							//Create centers for all sides
-createcenter resistance;
-east setFriend [resistance, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
-east setFriend [west, 0];	
-resistance setFriend [west, 0];								//East (AI) is hostile to West (Player), but friendly to Resistance (AI).
-resistance setFriend [east, 1];	
-west setFriend [resistance, 0];								//West (Player side) is hostile to all.
-west setFriend [east, 0];
-
 //Load DZAI variables
 #include "dzai_variables.sqf"
 
@@ -32,6 +23,15 @@ west setFriend [east, 0];
 
 //Load DZAI classname tables.
 #include "base_classname_configs\base_classnames.sqf"
+
+createcenter east;											//Create centers for all sides
+createcenter resistance;
+east setFriend [resistance, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
+east setFriend [west, 0];	
+resistance setFriend [west, 0];								//East (AI) is hostile to West (Player), but friendly to Resistance (AI).
+resistance setFriend [east, 1];	
+west setFriend [resistance, 0];								//West (Player side) is hostile to all.
+west setFriend [east, 0];
 
 //Detect DayZ mod variant being used.
 if (DZAI_modName == "") then {
@@ -46,6 +46,19 @@ if (DZAI_modName == "") then {
 		case "@DayzOverwatch":
 		{
 			DZAI_modName = "overwatch";			//DayZ Overwatch
+		};
+		case "@DayZHuntingGrounds":
+		{
+			DZAI_modName = "huntinggrounds";	//DayZ Hunting Grounds
+		};
+		case "DayZLingor":
+		{
+			private["_modCheck"];
+			_modCheck = getText (configFile >> "CfgMods" >> "DayZ" >> "action");
+			if (_modCheck == "http://www.Skaronator.com") then {
+				DZAI_modName = "lingorskaro";
+				if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Detected DayZ Lingor variant %1.",_modCheck];};
+			};
 		};
 	};
 };
