@@ -110,5 +110,6 @@ Added 7/25/2013:
 - [FIXED] DayZ Epoch: Removed player zombie classnames from AI-usable skin tables to solve loadout issues.
 - [UPDATED] AI loadout script now checks if skin classname includes weapons and other items (Map, GPS, Compass, Radio, Watch). If any items are present, they are removed. This should help server admins who wish to add custom skin classnames.
 - [UPDATED] Updated DZAI installation instructions with a simpler method that should be applicable to most/all DayZ server packages.
+- [UPDATED] Respawned AI groups now resume patrolling at a random waypoint instead of starting at the first generated waypoint.
 
 Note: Information about past updates are archived in changelog.txt

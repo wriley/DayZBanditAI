@@ -56,13 +56,16 @@ _unitGroup setVariable ["groupSize",_totalAI];
 DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
 if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Created group %1 of size %2.",_unitGroup,_totalAI];};
 
-if ((count (waypoints _unitGroup)) < 2) then {
+if ((count (waypoints _unitGroup)) > 1) then {
+	_unitGroup setCurrentWaypoint ((waypoints _unitGroup) call BIS_fnc_selectRandom);
+} else {
 	if ((typeName _patroldist) == "SCALAR") then {
 		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 	} else {
 		0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
 	};
 };
+
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %2 AI units respawned in %1 seconds (respawnBandits).",diag_tickTime - _startTime,_totalAI];};
 
 if ((_trigger getVariable ["failedRespawns",0]) != 0) then {_trigger setVariable ["failedRespawns",nil];};
