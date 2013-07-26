@@ -112,4 +112,9 @@ Added 7/25/2013:
 - [UPDATED] Updated DZAI installation instructions with a simpler method that should be applicable to most/all DayZ server packages.
 - [UPDATED] Respawned AI groups now resume patrolling at a random waypoint instead of starting at the first generated waypoint.
 
+Added 7/26/2013:
+
+- [MODIFIED] Debug markers for ground AI units remain black if unit's weapon or magazine cannot be detected. Once they are detected, the marker turns red (normal case).
+- [MODIFIED] Several variables are now attached to the AI group instead of each individual unit.
+
 Note: Information about past updates are archived in changelog.txt

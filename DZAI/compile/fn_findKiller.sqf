@@ -13,14 +13,13 @@ _victim = _this select 0;
 _killer = _this select 1;
 _unitGroup = _this select 2;
 
-//_groupKIA = _unitGroup getVariable ["groupKIA",false];
-//if (_groupKIA) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: All units in group are dead. (fn_findKiller)";};};
-
 _groupSize = _unitGroup getVariable ["groupSize",0];
 if (_groupSize == 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: All units in group are dead. (fn_findKiller)";};};
 
 _inPursuit = _unitGroup getVariable ["inPursuit",false];
 if (_inPursuit) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Group is already in pursuit of a target. (fn_findKiller)";};};
+
+_trigger = (group _victim) getVariable "trigger";
 
 //Calculate detection range.
 _detectRange = (350 + (random 100) - (random 100)); //Min: 250, Max: 450
@@ -39,7 +38,7 @@ if (((_victim distance _killer) < _detectRange) && (_killer isKindOf "Man")) the
 	
 	_endTime = (time + 120);
 	//Begin pursuit state.
-	while {(time < _endTime) && (alive _killer) && ((_unitGroup getVariable "groupSize") > 0) && !(isNull _killer) && !(isNull _unitGroup) && ((_victim distance _killer) < _chaseDist) && (_killer isKindOf "Man")} do {
+	while {(time < _endTime) && (alive _killer) && ((_unitGroup getVariable "groupSize") > 0) && !(isNull _killer) && !(isNull _unitGroup) && ((_trigger distance _killer) < _chaseDist) && (_killer isKindOf "Man")} do {
 		_killerPos = getPos _killer;
 		(units _unitGroup) glanceAt _killer;
 		{if (alive _x) then {_x moveTo _killerPos; _x doMove _killerPos; /*diag_log "AI unit in pursuit.";*/};} forEach (units _unitGroup);

@@ -11,7 +11,7 @@
 	_respawnType: 2 (Respawn at a building near the trigger), 3 (Respawn randomly at a randomly selected marker)
 	_gradeChances: weapongrade probabilities to be used for generating equipment
 	
-	Last updated: 8:24 PM 7/10/2013
+	Last updated: 1:12 AM 7/26/2013
 	
 */
 private ["_totalAI","_spawnPos","_unitGroup","_trigger","_gradeChances","_unitType"];
@@ -29,10 +29,8 @@ for "_i" from 1 to _totalAI do {
 	_unit = _unitGroup createUnit [_type, _spawnPos, [], 0, "FORM"];					// Spawn the AI unit
 	[_unit] joinSilent _unitGroup;														// Add AI unit to group
 
-	_unit setVariable ["trigger",_trigger];												// Record the trigger from which the AI unit was spawned
 	_unit setVariable ["gethit",[0,0,0,0]];												// Set unit health
 	_unit setVariable ["unconscious",false];											// Set unit consciousness
-	_unit setVariable ["unitType",_unitType];											// Set unit type (0: static, 1: dynamic)
 
 	if (DZAI_zAggro) then {
 		_unit addEventHandler ["Fired", {_this spawn ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player.
@@ -57,8 +55,8 @@ for "_i" from 1 to _totalAI do {
 };
 
 _unitGroup selectLeader ((units _unitGroup) select 0);
-_unitGroup allowFleeing 0;
 _unitGroup setVariable ["groupSize",_totalAI];
+
 processInitCommands;
 
 _unitGroup

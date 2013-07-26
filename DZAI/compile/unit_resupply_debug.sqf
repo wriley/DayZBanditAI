@@ -13,22 +13,24 @@ if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI resupply script
 
 _unit = _this select 0;								//Unit to monitor/reload ammo
 
+_markername = format["AI_%1",_unit];
+_marker = createMarker[_markername,(getposATL _unit)];
+_marker setMarkerShape "ELLIPSE";
+_marker setMarkerType "Dot";
+_marker setMarkerColor "ColorBlack";
+_marker setMarkerBrush "SolidBorder";
+_marker setMarkerSize [5, 5];
+
 _currentWeapon = currentWeapon _unit;				//Retrieve unit's current weapon
 waitUntil {sleep 0.001; !isNil "_currentWeapon"};
 _weaponMagazine = getArray (configFile >> "CfgWeapons" >> _currentWeapon >> "magazines") select 0;	//Retrieve ammo used by unit's current weapon
 waitUntil {sleep 0.001; !isNil "_weaponMagazine"};
 
+_marker setMarkerColor "ColorRed";
+
 _lastBandage = 0;
 _bandages = 3;
 _unitGroup = (group _unit);
-
-_markername = format["AI_%1",_unit];
-_marker = createMarker[_markername,(getposATL _unit)];
-_marker setMarkerShape "ELLIPSE";
-_marker setMarkerType "Dot";
-_marker setMarkerColor "ColorRed";
-_marker setMarkerBrush "SolidBorder";
-_marker setMarkerSize [5, 5];
 
 if (DZAI_debugLevel > 0) then {
 	if (isNull (unitBackpack _unit)) then {

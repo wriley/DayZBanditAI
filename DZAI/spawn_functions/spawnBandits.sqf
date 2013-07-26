@@ -11,7 +11,7 @@
 		- A number between 0-1 specifiying probability of reading the marker array in reverse order. (Default: 0.50)
 		- Example: [['marker1','marker2','marker3'],0.50,0.50]
 	
-	Last updated: 8:25 PM 7/10/2013
+	Last updated: 1:12 AM 7/26/2013
 */
 
 private ["_minAI","_addAI","_patrolDist","_trigger","_equipType","_numGroups","_grpArray","_triggerPos","_gradeChances","_totalAI","_spawnPositions","_spawnCount","_positionArray","_spawnType","_locationArray","_startTime"];
@@ -92,6 +92,11 @@ for "_j" from 1 to _numGroups do {
 
 		//Spawn units
 		_unitGroup = [_totalAI,grpNull,_pos,_trigger,_gradeChances] call fnc_createGroup;
+		
+		//Set group variables
+		_unitGroup setVariable ["unitType",0];
+		_unitGroup setVariable ["trigger",_trigger];
+		_unitGroup allowFleeing 0;
 		
 		//Update AI count
 		DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;

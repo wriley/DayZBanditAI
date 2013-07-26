@@ -12,7 +12,7 @@
 	private ["_unit","_pistol","_pistols","_weapongrade","_magazine","_currentWeapon","_toolselect","_chance","_tool","_toolsArray","_trigger","_gradeChances"];
 	_unit = _this select 0;
 
-	_trigger = _unit getVariable "trigger";
+	_trigger = (group _unit) getVariable "trigger";
 	_gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
 	if (isNil "_gradeChances") then {_gradeChances = DZAI_gradeChances1};
 

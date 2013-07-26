@@ -13,7 +13,7 @@ private ["_victim","_unitsAlive","_trigger","_unitGroup","_dummy"];
 _victim = _this select 0;
 _unitGroup = _this select 1;
 
-_trigger = _victim getVariable "trigger";
+_trigger = _unitGroup getVariable "trigger";
 
 //Add unit to group's list of dead units.
 _deadUnits = _unitGroup getVariable ["deadUnits",[]];

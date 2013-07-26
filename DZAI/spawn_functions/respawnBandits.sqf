@@ -49,7 +49,7 @@ if (_spawnType == 2) then {
 
 //Respawn the group
 _aiGroup = [_totalAI,_unitGroup,_pos,_trigger,_gradeChances] call fnc_createGroup;
-if (isNull _unitGroup) then {_unitGroup = _aiGroup};
+if (isNull _unitGroup) then {diag_log "DZAI Error :: Respawned group is null group.";_unitGroup = _aiGroup};
 
 //Update AI count
 _unitGroup setVariable ["groupSize",_totalAI];

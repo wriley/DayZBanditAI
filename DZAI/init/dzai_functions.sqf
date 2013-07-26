@@ -215,7 +215,7 @@ DZAI_unitDeath = {
 	
 	_unitGroup = (group _victim);
 
-	switch (_victim getVariable "unitType") do {
+	switch (_unitGroup getVariable "unitType") do {
 		case 0:
 		{
 			[_victim,_unitGroup] spawn fnc_staticAIDeath;

@@ -5,7 +5,7 @@
 	
 	Description: Spawns a group of AI units some distance from a dynamically-spawned trigger. These units do not respawn after death.
 	
-	Last updated: 11:37 PM 7/6/2013
+	Last updated: 1:12 AM 7/26/2013
 */
 #include "\z\addons\dayz_server\DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
@@ -103,6 +103,11 @@ _startTime = diag_tickTime;
 //Spawn units
 _unitGroup = [_totalAI,grpNull,_pos,_trigger] call fnc_createGroup;
 
+//Set group variables
+_unitGroup setVariable ["unitType",1];
+_unitGroup setVariable ["trigger",_trigger];
+_unitGroup allowFleeing 0;
+		
 //Reveal target player and nearby players to AI.
 {_unitGroup reveal [_x,(1.5 + random (2.5))]} forEach _nearbyPlayers;
 

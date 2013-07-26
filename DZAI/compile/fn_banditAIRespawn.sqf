@@ -13,7 +13,7 @@ private ["_victim","_sleepTime","_unitGroup","_trigger","_dummy","_unitsAlive","
 _victim = _this select 0;
 _unitGroup = _this select 1;
 
-_trigger = _victim getVariable "trigger";
+_trigger = _unitGroup getVariable "trigger";
 
 _deadUnits = _unitGroup getVariable ["deadUnits",[]];
 _deadUnits set [(count _deadUnits),_victim];
