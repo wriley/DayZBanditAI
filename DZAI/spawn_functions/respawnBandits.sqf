@@ -52,7 +52,6 @@ _aiGroup = [_totalAI,_unitGroup,_pos,_trigger,_gradeChances] call fnc_createGrou
 if (isNull _unitGroup) then {diag_log "DZAI Error :: Respawned group is null group.";_unitGroup = _aiGroup};
 
 //Update AI count
-_unitGroup setVariable ["groupSize",_totalAI];
 DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
 if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Created group %1 of size %2.",_unitGroup,_totalAI];};
 
