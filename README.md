@@ -27,17 +27,19 @@ Compatibility
 
 - DZAI is designed to be compatible with every publicly-available DayZ Mod. At present time no DayZ mods are known to have issues with DZAI.
 
+<b>Fully-supported DayZ Mods:</b>
+
+- DZAI is constantly updated for compatibility with these DayZ mods: DayZ 1.7.7.1+, DayZ Celle 1.9+, DayZ Epoch 1.0.1.5+, DayZ Hunting Grounds 1.0.1+, DayZ Overwatch 0.2.0+.
+- Note: Namalsk 0.75 is planned to be supported but untested at time of writing.
 
 <b>Partially-supported DayZ Mods:</b>
 
 - DZAI is not constantly updated for these maps/mods in particular but they should still be compatible.
-- This list includes the following maps/mods: Fallujah, Isla Duala, Oring, Panthera, Sahrani, Takistan, Taviana, Utes, Zargabad.
-
+- This list includes the following maps/mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Civilian, DayZ Fallujah, DayZ Isladuala, DayZ Lingor 1.3, DayZ Oring, DayZ Panthera, DayZ Sahrani, DayZ Taviana (all versions), DayZ Utes.
 
 <b>Unsupported DayZ Mods:</b>
 
 - This section will be updated once issues with any DayZ mods are known.
-
 
 Installation Instructions:
 ============
@@ -63,7 +65,7 @@ An example is shown here:
 - Repack your dayz_server.pbo (it should be about 400KB larger).
 - You are now ready to start your server.
 
-Note: DZAI's settings file can be found in DZAI\init\dzai_variables.sqf
+<b>Note:</b> DZAI's settings file can be found in DZAI\init\dzai_variables.sqf. You may store your custom settings changes in DZAI\DZAI_settings_override.sqf. Instructions are provided inside this file.
 
 Required Edits:
 ============
@@ -90,6 +92,9 @@ If you <b>do</b> have the Animated HeliCrash addon installed, change the line to
 	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
 
 	
+<b>Important Note:</b> Certain DayZ mods have the Animated HeliCrash addon pre-installed (Example: DayZ Overwatch). Be sure to check if the DayZ mod you're running includes this addon. 
+	
+
 DZAI 1.3.0 Changelog:
 ============
 
