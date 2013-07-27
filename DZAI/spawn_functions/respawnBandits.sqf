@@ -67,6 +67,6 @@ if ((count (waypoints _unitGroup)) > 1) then {
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %2 AI units respawned in %1 seconds (respawnBandits).",diag_tickTime - _startTime,_totalAI];};
 
-if ((_trigger getVariable ["failedRespawns",0]) != 0) then {_trigger setVariable ["failedRespawns",nil];};
+if ((_trigger getVariable ["failedRespawns",0]) > 0) then {_trigger setVariable ["failedRespawns",nil];};
 
 true
