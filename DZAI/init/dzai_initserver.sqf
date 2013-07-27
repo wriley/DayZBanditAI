@@ -43,7 +43,7 @@ if (DZAI_modName == "") then {
 		{
 			DZAI_modName = "epoch";				//DayZ Epoch
 		};
-		case "@DayzOverwatch":
+		case "DayzOverwatch":
 		{
 			DZAI_modName = "overwatch";			//DayZ Overwatch
 		};
