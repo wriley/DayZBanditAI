@@ -47,6 +47,10 @@ if (DZAI_modName == "") then {
 		{
 			DZAI_modName = "overwatch";			//DayZ Overwatch
 		};
+		case "@DayzOverwatch":
+		{
+			DZAI_modName = "overwatch";			//DayZ Overwatch (Make up your f'in mind, Overwatch guys.)
+		};
 		case "@DayZHuntingGrounds":
 		{
 			DZAI_modName = "huntinggrounds";	//DayZ Hunting Grounds
