@@ -63,7 +63,7 @@ An example is shown here:
 
 - <b>NOTE:</b> Certain DayZ mods such as DayZ Epoch do not have a server_cleanup.fsm reference. In this case, insert the required line before the line that says:
 
-    allowConnection = true;
+    <code>allowConnection = true;</code>
 
 - Read the section below on other required edits and follow the instructions.
 - Repack your dayz_server.pbo (it should be about 400KB larger).
