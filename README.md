@@ -61,6 +61,10 @@ An example is shown here:
         call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
     };
 
+- <b>NOTE:</b> Certain DayZ mods such as DayZ Epoch do not have a server_cleanup.fsm reference. In this case, insert the required line before the line that says:
+
+    allowConnection = true;
+
 - Read the section below on other required edits and follow the instructions.
 - Repack your dayz_server.pbo (it should be about 400KB larger).
 - You are now ready to start your server.
