@@ -107,10 +107,8 @@ DZAI_heliRandomPatrol = {
 			[_unitGroup,0] setWaypointTimeout [30,60,90];
 		};
 	} else {
-		if ((random 1) > 0.20) then {
-			[_unitGroup,0] setWaypointType "MOVE";
-			[_unitGroup,0] setWaypointTimeout [0,5,15];
-		};
+		[_unitGroup,0] setWaypointType "MOVE";
+		[_unitGroup,0] setWaypointTimeout [0,5,15];
 	};
 	_unitGroup setCurrentWaypoint [_unitGroup,0];
 	true
