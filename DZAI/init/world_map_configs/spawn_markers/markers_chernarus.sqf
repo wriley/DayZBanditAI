@@ -257,4 +257,34 @@ _this = createMarker ["NWAF8_4", [5305.8325, 9810.5674, 0.00024414063]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_102 = _this;
+
+_this = createMarker ["Rog3", [11318.306, 4413.0542, 0.00088500977]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_103 = _this;
+
+_this = createMarker ["Rog4", [11104.321, 4311.7319, -0.00015258789]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_104 = _this;
+
+_this = createMarker ["Devils3", [6985.4487, 11838.063, 3.0517578e-005]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_109 = _this;
+
+_this = createMarker ["Devils4", [6789.7358, 11246.682, -0.00012207031]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_111 = _this;
+
+_this = createMarker ["Zub3", [6586.2847, 5411.603, 0]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_112 = _this;
+
+_this = createMarker ["Zub4", [6470.5083, 5692.708, -0.00012207031]];
+_this setMarkerType "Empty";
+_this setMarkerBrush "Solid";
+_marker_113 = _this;
 //End markers

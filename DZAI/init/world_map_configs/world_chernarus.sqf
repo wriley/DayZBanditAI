@@ -259,15 +259,15 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Stary Sobor";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,2,225,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,1,225,thisTrigger,[],2,2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_78 = _this;
 
-_this = createTrigger ["EmptyDetector", [7076.6089, 7683.4829]];
+_this = createTrigger ["EmptyDetector", [7038.3643, 7669.3857]];
 _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Novy Sobor";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,175,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,1,225,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_80 = _this;
 
 _this = createTrigger ["EmptyDetector", [8457.4629, 6688.627, 4.7903137]];
@@ -467,7 +467,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Rog";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,125,thisTrigger,['CastleRog','CastleRog2']] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,2,175,thisTrigger,['CastleRog','CastleRog2','Rog3','Rog4'],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_134 = _this;
 
 _this = createTrigger ["EmptyDetector", [13256.356, 5432.5425, 4.7683716e-006]];
@@ -483,7 +483,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Devil's Castle";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,125,thisTrigger,['DevilsCastle','DevilsCastle2']] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,2,175,thisTrigger,['DevilsCastle','DevilsCastle2','Devils3','Devils4'],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_138 = _this;
 
 _this = createTrigger ["EmptyDetector", [6551.4741, 5595.6704]];
@@ -491,7 +491,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Zub";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,125,thisTrigger,['CastleZub','CastleZub2']] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,2,175,thisTrigger,['CastleZub','CastleZub2','Zub3','Zub4'],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_140 = _this;
 
 _this = createTrigger ["EmptyDetector", [11458.502, 7483.2754, 12.369965]];
@@ -586,14 +586,65 @@ _trigger_188 = _this;
 //Custom waypoint file
 #include "custom_configs\chernarus_custom_config.sqf"	//Custom patrol definitions file
 
-//Add your custom markers here
+/*
+	Custom Marker Requirements:
+	
+	1. Marker shape must be Ellipse (Could be rectangular but the function will consider the marker as elliptical regardless)
+	2. Marker should have identical x and y dimensions. If they are different, the smaller dimension will be used instead.
+		
+	The area covered by the marker will be used as the patrol and spawning area.
+	
+	Example Marker:
+	
+	_this = createMarker ["dzaicustomspawntest", [6650.9883, 9411.541, -6.1035156e-005]];
+	_this setMarkerShape "ELLIPSE";
+	_this setMarkerType "Empty";
+	_this setMarkerBrush "Solid";
+	_this setMarkerSize [200, 200];
+	_marker_15 = _this;
+	
+	Note: This marker will be used in the example further below.
+*/
 
-//End of custom markers
-
-//Add your custom spawn definitions here
-//Format: [marker,number of AI to spawn,equip type (0-3)] call DZAI_spawn; Example: [_DZAI_customSpawn,2,1] call DZAI_spawn;
+//----------------------------Add your custom markers here----------------------------
 
 
-//End of custom spawn definitions
+//----------------------------End of custom markers----------------------------
+
+/*
+	DZAI_spawn format: [marker,number of AI to spawn,equip type (0-3)] call DZAI_spawn;
+	
+	Example: Using the above example marker to create a custom spawn area, an example would be:
+	
+	["dzaicustomspawntest",2,1] call DZAI_spawn; (to use default trigger activation timeout of 9/12/15 seconds [minimum, average, maximum])
+	
+	OR 
+	
+	["dzaicustomspawntest",2,1,[5,10,15]] call DZAI_spawn; (to use specified trigger activation timeouts. Do not forget the extra square brackets needed!)
+	
+	Explanation of DZAI_spawn:
+	
+	[
+		"dzaicustomspawntest",	//This is the marker name to be used as the patrol and spawning area.
+		2, 						//This trigger will spawn a group of 2 AI units.
+		1,						//AI spawned by this trigger will have Equip Type level 1 (see below for explanation of Equip Type)
+		[5,10,15]				//(OPTIONAL) - Custom trigger activation timeouts (minimum, average, maximum)
+	] call DZAI_spawn;
+	
+	Equip Type explanation:
+	
+	0: Approx 40% of maximum AI skill potential - weapon from Farm/Residential loot class.
+	1: Approx 55% of maximum AI skill potential - weapon from Farm/Residential/Military loot class.
+	2: Approx 70% of maximum AI skill potential - weapon from Farm/Residential/Military/MilitarySpecial/HeliCrash loot class
+	3: Approx 80% of maximum AI skill potential - weapon from Military/MilitarySpecial/HeliCrash loot class 
+	
+	Note: This trigger will create 2 respawning AI units with weapons from DayZ's farm, residential, or military loot table.
+	
+*/
+
+//----------------------------Add your custom spawn definitions here----------------------------
+
+
+//----------------------------End of custom spawn definitions----------------------------
 
 diag_log "Chernarus map configuration loaded.";

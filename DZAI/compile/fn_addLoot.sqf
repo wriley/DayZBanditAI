@@ -9,38 +9,23 @@
 
 	//Add pistol
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	private ["_unit","_pistol","_pistols","_weapongrade","_magazine","_currentWeapon","_toolselect","_chance","_tool","_toolsArray","_trigger","_gradeChances"];
+	private ["_unit","_pistol","_pistols","_weapongrade","_magazine","_currentWeapon","_toolselect","_chance","_tool","_toolsArray"];
 	_unit = _this select 0;
+	_weapongrade = _this select 1;
 
-	_trigger = (group _unit) getVariable "trigger";
-	_gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
-	if (isNil "_gradeChances") then {_gradeChances = DZAI_gradeChances1};
-
-	_weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
+	
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed by player. Generating loot with weapongrade %1 (fn_banditAIKilled).",_weapongrade];};
 
 	_currentWeapon = currentWeapon _unit;
 	waitUntil {sleep 0.002; !isNil "_currentWeapon"};
 	if ((getNumber (configFile >> "CfgWeapons" >> _currentWeapon >> "type")) != 2) then {
-		switch (_weapongrade) do {
-		  case 0: {
-			_pistols = DZAI_Pistols0;
-		  };
-		  case 1: {
-			_pistols = DZAI_Pistols1;
-		  };
-		  case 2: {
-			_pistols = DZAI_Pistols2;
-		  };
-		  case 3: {
-			_pistols = DZAI_Pistols3;
-		  };
-		  default {
-			_pistols = ["revolver_EP1"];
-			diag_log format ["DZAI Error :: Invalid weapongrade value provided: %1.",_weapongrade];
-		  };
+		_pistols = switch (_weapongrade) do {
+			case 0: {DZAI_Pistols0};
+			case 1: {DZAI_Pistols1};
+			case 2: {DZAI_Pistols2};
+			case 3: {DZAI_Pistols3};
 		};
-		
+
 		_pistol = _pistols call BIS_fnc_selectRandom;
 		_magazine = getArray (configFile >> "CfgWeapons" >> _pistol >> "magazines") select 0;
 		_unit addMagazine _magazine;	
@@ -48,7 +33,7 @@
 		
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated pistol weapon: %1 for AI.",_pistol];};
 	};
-	sleep 0.05;
+	sleep 0.001;
 	
 	//Add consumables, medical items, and miscellaneous items
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +86,7 @@
 		if ((random 1) < DZAI_chanceMedicals) then {
 			private["_invmedical"];
 			_invmedical = DZAI_Medicals1 call BIS_fnc_selectRandom;
-			_unit addMagazine [_invmedical, 1];
+			_unit addMagazine _invmedical;
 			if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Inventory Medical Item: %1 for AI.",_invmedical];};
 		};
 	};
@@ -111,7 +96,7 @@
 		if ((random 1) < DZAI_chanceEdibles) then{
 			private["_invedible"];
 			_invedible = DZAI_Edibles call BIS_fnc_selectRandom;
-			_unit addMagazine [_invedible, 1];
+			_unit addMagazine _invedible;
 			if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Inventory Edible Item: %1 for AI.",_invedible];};
 		};
 	};
@@ -132,16 +117,12 @@
 		};
 	};
 	
-	sleep 0.05;
+	sleep 0.001;
 	
 	//Add tool items
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	if (_weapongrade < 2) then {
-		_toolsArray = DZAI_tools0;
-	} else {
-		_toolsArray = DZAI_tools1;
-	};
+	_toolsArray = if (_weapongrade < 2) then {DZAI_tools0} else {DZAI_tools1};
 
 	//diag_log format ["DEBUG :: Counted %1 tools in _toolsArray.",(count _toolsArray)];
 	for "_i" from 0 to ((count _toolsArray) - 1) do {

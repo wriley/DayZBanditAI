@@ -3,7 +3,7 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 12:04 AM 7/25/2013
+	Last updated: 4:44 PM 8/2/2013
 */
 private ["_startTime"];
 
@@ -24,7 +24,7 @@ _startTime = diag_tickTime;
 //Load DZAI classname tables.
 #include "base_classname_configs\base_classnames.sqf"
 
-createcenter east;											//Create centers for all sides
+createcenter east;											//Create centers for all AI sides
 createcenter resistance;
 east setFriend [resistance, 1];								//Resistance (AI) is hostile to West (Player), but friendly to East (AI).
 east setFriend [west, 0];	
@@ -49,7 +49,7 @@ if (DZAI_modName == "") then {
 		};
 		case "@DayzOverwatch":
 		{
-			DZAI_modName = "overwatch";			//DayZ Overwatch (Make up your f'in mind, Overwatch guys.)
+			DZAI_modName = "overwatch";			//DayZ Overwatch
 		};
 		case "@DayZHuntingGrounds":
 		{
@@ -61,8 +61,8 @@ if (DZAI_modName == "") then {
 			_modCheck = getText (configFile >> "CfgMods" >> "DayZ" >> "action");
 			if (_modCheck == "http://www.Skaronator.com") then {
 				DZAI_modName = "lingorskaro";
-				if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Detected DayZ Lingor variant %1.",_modCheck];};
 			};
+			if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Detected DayZ Lingor variant %1.",_modCheck];};
 		};
 	};
 };
@@ -198,7 +198,17 @@ switch (_worldname) do {
 };
 
 //Initialize AI settings
-if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then {DZAI_zAggro = true;diag_log "[DZAI] Zombie aggro to AI is enabled.";} else {DZAI_zAggro = false;diag_log "[DZAI] Zombie aggro to AI is disabled.";};
+if (DZAI_zombieEnemy) then {diag_log "[DZAI] AI to zombie hostility is enabled.";
+	if (DZAI_weaponNoise > 0) then {
+		DZAI_zAggro = true;
+		diag_log "[DZAI] Zombie hostility to AI is enabled.";
+	} else {
+		DZAI_zAggro = false;
+		diag_log "[DZAI] Zombie hostility to AI is disabled.";
+	};
+} else {
+	diag_log "[DZAI] AI to zombie hostility is disabled.";
+};
 if (isNil "DDOPP_taser_handleHit") then {DZAI_taserAI = false;} else {DZAI_taserAI = true;diag_log "[DZAI] DDOPP Taser Mod detected.";};
 
 if (DZAI_verifyTables) then {["DZAI_Rifles0","DZAI_Rifles1","DZAI_Rifles2","DZAI_Rifles3","DZAI_Pistols0","DZAI_Pistols1","DZAI_Pistols2","DZAI_Pistols3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_Edibles","DZAI_Medicals1","DZAI_Medicals2","DZAI_MiscItemS","DZAI_MiscItemL","DZAI_SkinLoot","DZAI_BanditTypes","DZAI_heliTypes"] execVM "\z\addons\dayz_server\DZAI\scripts\verifyTables.sqf";};

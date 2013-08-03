@@ -54,12 +54,13 @@ fnc_spawnHeliPatrol	=			compile preprocessFileLineNumbers "\z\addons\dayz_server
 
 //DZAI custom spawns function.
 DZAI_spawn = {
-	private ["_spawnMarker","_patrolRadius","_trigStatements","_trigger","_positionArray","_positions"];
+	private ["_spawnMarker","_patrolRadius","_trigStatements","_trigger","_positionArray","_positions","_timeouts"];
 	
 	_spawnMarker = _this select 0;
+	_timeouts = if ((count _this) > 3) then {_this select 3} else {[9,12,15]};
 
-	_spawnMarker setMarkerAlpha 0;
-	_patrolRadius = ((getMarkerSize _spawnMarker) select 0) min ((getMarkerSize _spawnMarker) select 1);
+	//_spawnMarker setMarkerAlpha 0;
+	_patrolRadius = ((((getMarkerSize _spawnMarker) select 0) min ((getMarkerSize _spawnMarker) select 1)) min 600);
 	_positions = (1 + ceil (_patrolRadius/25));
 	_positionArray = [];
 	for "_i" from 1 to _positions do {
@@ -72,7 +73,8 @@ DZAI_spawn = {
 	_trigger = createTrigger ["EmptyDetector", getMarkerPos(_spawnMarker)];
 	_trigger setTriggerArea [600, 600, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
-	_trigger setTriggerTimeout [9, 12, 15, true];
+	_trigger setTriggerTimeout [_timeouts select 0, _timeouts select 1, _timeouts select 2, true];
+	_trigger setTriggerText _spawnMarker;
 	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigStatements,"0 = [thisTrigger] spawn fnc_despawnBandits;"];
 	//diag_log format ["DEBUG :: %1",_trigStatements];
 	
@@ -81,7 +83,7 @@ DZAI_spawn = {
 	true
 };
 
-//Miscellaneous  functions 
+//Miscellaneous functions 
 //------------------------------------------------------------------------------------------------------------------------
 
 //DZAI group side assignment function. Detects when East side has too many groups, then switches to Resistance side.
@@ -99,6 +101,17 @@ DZAI_heliRandomPatrol = {
 	_unitGroup = _this select 0;
 
 	[_unitGroup,0] setWPPos (DZAI_heliWaypoints call BIS_fnc_selectRandom); 
+	if ((waypointType [_unitGroup,0]) == "MOVE") then {
+		if ((random 1) < 0.25) then {
+			[_unitGroup,0] setWaypointType "SAD";
+			[_unitGroup,0] setWaypointTimeout [30,60,90];
+		};
+	} else {
+		if ((random 1) > 0.20) then {
+			[_unitGroup,0] setWaypointType "MOVE";
+			[_unitGroup,0] setWaypointTimeout [0,5,15];
+		};
+	};
 	_unitGroup setCurrentWaypoint [_unitGroup,0];
 	true
 };
@@ -160,7 +173,7 @@ DZAI_randomizeHeliWPs = {
 	true
 };
 
-//Convert seconds to formatted time (days/hours/minutes/seconds)
+//Convert server uptime in seconds to formatted time (days/hours/minutes/seconds)
 DZAI_getUptime = {
 	private ["_iS","_oS","_oM","_oH","_oD"];
 
@@ -201,8 +214,8 @@ DZAI_unconscious = {
 
 	sleep 10;
 
-	_unit switchMove "amovppnemrunsnonwnondf";
 	_nul = [objNull, _unit, rSWITCHMOVE, "amovppnemrunsnonwnondf"] call RE;
+	_unit switchMove "amovppnemrunsnonwnondf";
 	//diag_log "DEBUG :: AI unit is conscious.";
 	_unit setVariable ["unconscious",false];
 };
@@ -232,4 +245,70 @@ DZAI_unitDeath = {
 	//diag_log format ["DEBUG :: AI %1 (Group %2) killed by %3",_victim,_unitGroup,_killer];
 	
 	true
+};
+
+//Generic function to delete a specified object (or array of objects) after a specified time (seconds).
+DZAI_deleteObject = {
+	private["_obj","_delay"];
+	_obj = _this select 0;
+	_delay = _this select 1;
+	
+	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Deleting object(s) %1 in %2 seconds.",_obj,_delay];};
+	sleep _delay;
+	
+	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Deleting object(s) %1 now.",_obj];};
+	sleep 0.1;
+	
+	if ((typeName _obj) == "ARRAY") then {
+		{deleteVehicle _x} forEach _obj;
+	} else {deleteVehicle _obj};
+};
+
+//If a trigger's calculated totalAI value is zero, then add new group to respawn queue to retry spawn until a nonzero value is found.
+DZAI_retrySpawn = {
+	private ["_trigger","_unitGroup","_dummy","_grpArray"];
+
+	_trigger = _this select 0;
+
+	waitUntil {sleep 0.1; (_trigger getVariable ["initialized",false])};
+
+	//Create placeholder dummy unit.
+	_unitGroup = createGroup (call DZAI_getFreeSide);
+	_dummy = _unitGroup createUnit ["Survivor2_DZ",[0,0,0],[],0,"FORM"];
+	[_dummy] joinSilent _unitGroup;
+	_dummy setVehicleInit "this hideObject true;this allowDamage false;this enableSimulation false;"; processInitCommands;
+	_dummy disableAI "FSM";
+	_dummy disableAI "ANIM";
+	_dummy disableAI "MOVE";
+	_dummy disableAI "TARGET";
+	_dummy disableAI "AUTOTARGET";
+
+	//Initialize group variables.
+	_unitGroup setVariable ["dummyUnit",_dummy];
+	_unitGroup setVariable ["groupSize",0];
+	_unitGroup setVariable ["trigger",_trigger];
+	_unitGroup setVariable ["unitType",0];
+	_unitGroup setVariable ["deadUnits",[]];
+	_unitGroup allowFleeing 0;
+
+	//Add new group to trigger's group array.
+	_grpArray = _trigger getVariable "GroupArray";
+	_grpArray set [(count _grpArray),_unitGroup];
+
+	0 = [(time + DZAI_respawnTime),_trigger,_unitGroup] spawn fnc_respawnHandler;
+
+	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Inserted group %1 into respawn queue. (retryRespawn)",_unitGroup];};
+};
+
+//Refreshes position of debug markers of active static triggers for JIP players. Terminates once trigger is marked inactive.
+DZAI_updateSpawnMarker = {
+	private ["_trigger","_markername","_marker"];
+	_trigger = _this select 0;
+
+	_marker = str (_trigger);
+
+	while {(getMarkerColor _marker) != "ColorGreen"} do {
+		_marker setMarkerPos (getMarkerPos _marker);
+		sleep 30;
+	};
 };

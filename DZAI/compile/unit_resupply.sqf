@@ -5,7 +5,7 @@
 	
 	Description: Handles AI ammo reload and zombie hostility. Called by fnc_createAI upon AI unit creation.
 	
-	Last updated: 10:22 PM 7/20/2013
+	Last updated: 4:44 PM 8/2/2013
 */
 private["_unit","_currentWeapon","_weaponMagazine","_needsReload","_nearbyZeds","_marker","_markername","_lastBandage","_bandages","_unitGroup"];
 if (!isServer) exitWith {};
@@ -14,9 +14,9 @@ if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI resupply script
 _unit = _this select 0;								//Unit to monitor/reload ammo
 
 _currentWeapon = currentWeapon _unit;				//Retrieve unit's current weapon
-waitUntil {sleep 0.001; !isNil "_currentWeapon"};
+waitUntil {sleep 0.1; !isNil "_currentWeapon"};
 _weaponMagazine = getArray (configFile >> "CfgWeapons" >> _currentWeapon >> "magazines") select 0;	//Retrieve ammo used by unit's current weapon
-waitUntil {sleep 0.001; !isNil "_weaponMagazine"};
+waitUntil {sleep 0.1; !isNil "_weaponMagazine"};
 
 _lastBandage = 0;
 _bandages = 3;
@@ -37,13 +37,13 @@ if (DZAI_debugLevel > 0) then {
 	};
 };
 
-while {alive _unit} do {							//Run script for as long as unit is alive
+while {(alive _unit)&&(!(isNull _unit))} do {	
 	if (DZAI_zombieEnemy && ((leader _unitGroup) == _unit)) then {	//Run only if both zombie hostility and zombie spawns are enabled.
 		_nearbyZeds = (position _unit) nearEntities ["zZombie_Base",DZAI_zDetectRange];
 		{
 			if(rating _x > -30000) then {
                 _x addrating -30000;
-				_unitGroup reveal [_x,1.5];
+				//_unitGroup reveal [_x,1.5];
             };
 		} forEach _nearbyZeds;
 	};
@@ -59,7 +59,7 @@ while {alive _unit} do {							//Run script for as long as unit is alive
 		};
 		if (((getDammage _unit) > 0.25)&&(_bandages > 0)) then {
 			if ((time - _lastBandage) > 60) then {
-				if ((random 1) < 0.333) then {
+				if ((random 1) < 0.4) then {
 					sleep 0.5;
 					_bandages = _bandages - 1;
 					_unit disableAI "FSM";
@@ -75,4 +75,4 @@ while {alive _unit} do {							//Run script for as long as unit is alive
 	};
 	sleep DZAI_refreshRate;										//Check again in x seconds.
 };
-if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI killed/despawned, AI resupply script deactivated.";};
+if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI resupply script deactivated.";};

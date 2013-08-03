@@ -57,6 +57,7 @@ DZAI_dynDespawnWait = 120;									//Time to wait before despawning all AI units
 DZAI_aiHeliPatrols = false;									//Enable or disable AI helicopter patrols. (Default: false)
 DZAI_maxHeliPatrols = 0;									//Maximum number of active AI helicopters patrols. (Default: 0).
 DZAI_heliTypes = ["UH1H_DZ"];								//Classnames of helicopter types to use. Helicopter types must have at least 2 gunner seats (Default: "UH1H_DZ").
+DZAI_heliLoot = true;										//Enable or disable loot generation on destroying AI helicopter. Dead crew members will be parachuted out after helicopter is destroyed (Default: true)
 
 //Extra AI Settings
 DZAI_findKiller = false;										//If enabled, AI group will attempt to track down player responsible for killing a group member. Players with radios will be given text warnings if they are being pursued (Default: false)
