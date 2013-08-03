@@ -99,6 +99,8 @@ DZAI 1.4.0 Changelog:
 ============
 
 1. Gameplay Changes
+---
+
 - [NEW] Destroying an AI helicopter now causes three dead AI units to be parachuted out. These units carry military-grade gear. (Items are generated using DZAI's highest-tier loot table). Bodies are deleted 10 minutes after they are generated.
 - [UPDATED] Changes to AI spawning functions now allow AI units to spawn in tighter quarters (ie: between buildings, inside forests, etc).
 - [UPDATED] Collision damage to AI units reduced to 10% to prevent rare cases where AI die after spawning on top of tall objects and die after falling off.
@@ -116,6 +118,8 @@ DZAI 1.4.0 Changelog:
 
 
 2. Under-the-hood Code Changes
+----
+
 - [NEW] Debug text in RPT log now reports name of trigger (ie: Electro1, Cherno1) when reporting static trigger activity.
 - [UPDATED] Debug markers for helicopters now display text indicating helicopter type and AI group.
 - [UPDATED] Updated debug markers for static triggers. Instead of colored circular markers, red/orange/green text will indicate the activity status of the trigger. (Active/Despawning/Inactive). Debug markers for dynamic triggers are unaffected.
