@@ -98,9 +98,6 @@ if ((count DZAI_Rifles3) == 0) then {
 	DZAI_Rifles3 = [] + DZAI_Rifles2;
 };
 
-//Combine lowest pistol and rifle tiers
-//for "_i" from 0 to ((count DZAI_Pistols0) - 1) do {DZAI_Rifles0 set [(count DZAI_Rifles0),(DZAI_Pistols0 select _i)];};
-
 if (DZAI_debugLevel > 0) then {
 	//Display finished weapon arrays
 	diag_log format ["Contents of DZAI_Pistols0: %1",DZAI_Pistols0];

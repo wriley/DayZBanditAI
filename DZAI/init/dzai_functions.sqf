@@ -135,11 +135,9 @@ DZAI_setSkills = {
 
 //Spawns flies on AI corpse
 DZAI_deathFlies = {
-	private["_unit","_position"];
-	_unit = _this select 0;
-	_position = getPosATL _unit;
-	_unit = [_position, 0.1, 1.5] call bis_fnc_flies;
-	true
+	{
+		[(getPosATL _x), 0.1, 1.5] call bis_fnc_flies;
+	} forEach _this;
 };
 
 //Returns probabilities of generating different grades of weapons based on equipType value
@@ -163,7 +161,7 @@ DZAI_randomizeHeliWPs = {
 	if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Generating waypoints for AI helicopter patrol.";};
 	for "_i" from 0 to ((15 max DZAI_dynTriggersMax) - 1) do {
 		private["_wp"];
-		_wp = [(getMarkerPos DZAI_centerMarker),(400 + random(DZAI_centerSize)),random(360),false] call SHK_pos;
+		_wp = [(getMarkerPos DZAI_centerMarker),(400 + random(DZAI_centerSize)),random(360),true] call SHK_pos;
 		DZAI_heliWaypoints set [_i,_wp];
 		//diag_log format ["DEBUG :: Generated waypoint %1 of %2 for AI helicopter patrol at %3.",_i,(5 max DZAI_dynTriggersMax),_wp];
 		sleep 0.01;

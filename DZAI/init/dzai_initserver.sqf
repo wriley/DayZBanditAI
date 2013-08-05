@@ -3,7 +3,7 @@
 	
 	Description: Handles startup process for DZAI. Does not contain any values intended for modification.
 	
-	Last updated: 4:44 PM 8/2/2013
+	Last updated: 10:31 PM 8/4/2013
 */
 private ["_startTime"];
 
@@ -88,6 +88,8 @@ switch (_worldname) do {
 	case "chernarus":
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\chernarus_classnames.sqf";
+		//Spawn serverside buildings that are spawned clientside by DayZ's Town Generator.
+		if (DZAI_buildingPatch) then {_buildings = [] execVM '\z\addons\dayz_server\DZAI\scripts\buildingpatch_chernarus.sqf';};
 		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_chernarus.sqf";
 		DZAI_centerMarker setMarkerPos [7130.0073, 7826.3501];
 		DZAI_centerSize = 5500;

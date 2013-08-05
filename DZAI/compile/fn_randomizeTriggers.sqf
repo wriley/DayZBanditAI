@@ -19,11 +19,11 @@ private ["_trigger"];
 	if ((count (_trigger getVariable ["GroupArray",[]]) == 0) && (!(_trigger getVariable ["isCleaning",false]))) then {
 	private ["_newPos","_attempts"];
 		_attempts = 0;
-		_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),true,[1,500]] call SHK_pos;
+		_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
 		while {(({([_newPos select 0,_newPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)&&(_attempts < 3)} do {
 			sleep 0.5;
 			_attempts = _attempts +1;
-			_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),true,[1,500]] call SHK_pos;
+			_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
 			if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
 		};
 		_trigger setPos _newPos;

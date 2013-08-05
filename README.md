@@ -1,4 +1,4 @@
-DZAI 1.4.0 - AI Addon for DayZ
+DZAI 1.4.1 - AI Addon for DayZ
 ============
 
 
@@ -61,6 +61,7 @@ An example is shown here:
         call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
     };
 
+	
 - <b>NOTE:</b> Certain DayZ mods such as DayZ Epoch do not have a server_cleanup.fsm reference. In this case, insert the required line before the line that says:
 
     <code>allowConnection = true;</code>
@@ -136,3 +137,9 @@ DZAI 1.4.0 Changelog:
 
 
 Note: Information about past updates are archived in changelog.txt
+
+
+DZAI 1.4.1 Changelog:
+============
+
+- [NEW] Chernarus: Added optional patch fix to allow AI units to properly see certain clientside objects spawned by DayZ's Town Generator script (ie: Military/Medical tents at Chernogorsk, Balota, Stary Sobor). Note: Wrecks and roadblocks are still invisible to AI. To enable, set DZAI_buildingPatch = true in dzai_variables.sqf.

@@ -3,7 +3,7 @@
 	
 	Description:
 	
-	Last updated:	3:47 PM 7/10/2013
+	Last updated:	12:15 AM 8/4/2013
 	
 */
 
@@ -42,7 +42,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 
 	//Add eventhandlers and init statement
 	_helicopter addEventHandler ["Killed",{_this spawn fnc_heliDespawn;}];					//Begin despawn process when heli is destroyed.
-	_helicopter addEventHandler ["LandedStopped",{(_this select 0) setDamage 1;}];			//Destroy helicopter if it is forced to land.
+	_helicopter addEventHandler ["LandedStopped",{(_this select 0) setFuel 0;(_this select 0) setDamage 1;}];			//Destroy helicopter if it is forced to land.
 	_helicopter setVehicleInit "if (isServer) then {[this] spawn fnc_heliResupply;};";
 
 	//Assign positions

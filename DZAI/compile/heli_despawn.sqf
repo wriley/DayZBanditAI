@@ -38,7 +38,6 @@ if (DZAI_heliLoot) then {
 			_agent moveInDriver _parachute;
 			_nul = [_agent,_weapongrade] call fnc_unitLoadout;
 			_nul = [_agent,_weapongrade] spawn fnc_addLoot;
-			[_agent] spawn DZAI_deathFlies;
 			_deleteQueue set [count _deleteQueue,_agent];
 			_agent setDamage 1;
 			if (DZAI_debugLevel > 0) then {

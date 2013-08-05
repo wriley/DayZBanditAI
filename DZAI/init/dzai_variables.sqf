@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 1:41 PM 7/18/2013
+	Last updated: 10:31 PM 8/4/2013
 */
 private["_worldname"];
 
@@ -18,6 +18,7 @@ DZAI_debugMarkers = 0;										//Enable or disable debug markers. 0: Off, 1: Ba
 DZAI_monitor = true;										//Enable or disable server monitor. Periodically reports number of max/current AI units and dynamically spawned triggers into RPT log. (Default: true)
 DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
 DZAI_verifyTables = true;									//Enable or disable verification of classname tables used by DZAI. If invalid entries are found, they are removed and logged into the RPT log. Disable ONLY if a previous scan shows no invalid classnames (Default: true).
+DZAI_buildingPatch = false;									//(Chernarus Only): Enable to allow AI units to see objects spawned on client side by DayZ's Town Generator (does not include wrecks and rubbish objects). (Default: false)
 
 /*
 	Enable mod-specific features (Optional) - Selecting one of these options will enable additional features specific to each mod. ie: Items, AI skins, loot rates, etc.
