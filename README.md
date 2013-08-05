@@ -1,4 +1,4 @@
-DZAI 1.4.1 - AI Addon for DayZ
+DZAI 1.4.0 - AI Addon for DayZ
 ============
 
 
@@ -138,8 +138,3 @@ DZAI 1.4.0 Changelog:
 
 Note: Information about past updates are archived in changelog.txt
 
-
-DZAI 1.4.1 Changelog:
-============
-
-- [NEW] Chernarus: Added optional patch fix to allow AI units to properly see certain clientside objects spawned by DayZ's Town Generator script (ie: Military/Medical tents at Chernogorsk, Balota, Stary Sobor). Note: Wrecks and roadblocks are still invisible to AI. To enable, set DZAI_buildingPatch = true in dzai_variables.sqf.

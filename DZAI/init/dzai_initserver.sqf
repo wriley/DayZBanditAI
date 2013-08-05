@@ -89,7 +89,6 @@ switch (_worldname) do {
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\chernarus_classnames.sqf";
 		//Spawn serverside buildings that are spawned clientside by DayZ's Town Generator.
-		if (DZAI_buildingPatch) then {_buildings = [] execVM '\z\addons\dayz_server\DZAI\scripts\buildingpatch_chernarus.sqf';};
 		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_chernarus.sqf";
 		DZAI_centerMarker setMarkerPos [7130.0073, 7826.3501];
 		DZAI_centerSize = 5500;
