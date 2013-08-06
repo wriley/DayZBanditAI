@@ -1,4 +1,4 @@
-DZAI 1.4.0 - AI Addon for DayZ
+DZAI 1.4.1 - AI Addon for DayZ
 ============
 
 
@@ -135,6 +135,11 @@ DZAI 1.4.0 Changelog:
 - [FIXED] Debug markers for individual AI units and helicopters now check if unit/vehicle is both alive and not null. Should prevent cases where markers remain after the unit/vehicle is destroyed or despawned.
 - [FIXED] Fixed rare cases where debug markers for individual AI units and group waypoints were not properly deleted.
 
+
+1.4.1 Update (Re-release):
+
+- [FIXED] Added an optional experimental fix to prevent AI units from shooting/walking through buildings and objects spawned by DayZ's CfgTownGenerator. Enable by setting DZAI_objectPatch = true in dzai_variables.sqf. Enabling this setting may be essential for DayZ Overwatch 0.2.2+.
+<b>Note</b>: Enabling DZAI_objectPatch *may* cause a flood of "Ref to nonnetwork object" errors in your RPT log. This is a harmless warning message but can be annoying as it fills up the RPT log.
 
 Note: Information about past updates are archived in changelog.txt
 
