@@ -150,6 +150,8 @@ DZAI 1.4.0 Changelog:
 - [MODIFIED] Increased chance of generating pistol instead of rifle for AI with weapongrade 0 from 50% to 66%.
 - [MODIFIED] Removed classname blacklist for serverside object fix since it was ineffective at suppressing RPT log warning entries. We will have to wait until BIS releases a patch that suppresses these log warnings.
 - [MODIFIED] Chernarus: Updated Zelenogorsk static spawns from 1 group of 1 (+2 max) units to 2 groups of 1 (+1 max) units.
+- [MODIFIED] Decreased AI accuracy and aimingshake (lock-on time) slightly for all skill tiers.
+- [MODIFIED] Decreased probability of generating each medical item for AI from 75% to 70%.
 
 Note: Information about past updates are archived in changelog.txt
 
