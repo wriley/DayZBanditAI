@@ -3,7 +3,7 @@
 	
 	Description:
 	
-	Last updated: 11:43 PM 7/10/2013
+	Last updated: 2:02 AM 8/7/2013
 	
 */
 
@@ -16,9 +16,7 @@
 	
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: AI killed by player. Generating loot with weapongrade %1 (fn_banditAIKilled).",_weapongrade];};
 
-	_currentWeapon = currentWeapon _unit;
-	waitUntil {sleep 0.002; !isNil "_currentWeapon"};
-	if ((getNumber (configFile >> "CfgWeapons" >> _currentWeapon >> "type")) != 2) then {
+	if (_unit getVariable ["CanGivePistol",true]) then {
 		_pistols = switch (_weapongrade) do {
 			case 0: {DZAI_Pistols0};
 			case 1: {DZAI_Pistols1};
@@ -32,8 +30,8 @@
 		_unit addWeapon _pistol;
 		
 		if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated pistol weapon: %1 for AI.",_pistol];};
+		sleep 0.001;
 	};
-	sleep 0.001;
 	
 	//Add consumables, medical items, and miscellaneous items
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////

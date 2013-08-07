@@ -5,7 +5,7 @@
 	
 	Usage: [_unit, _weapongrade] call fnc_unitLoadout;
 	
-	Last updated: 11:24 AM 7/23/2013
+	Last updated: 2:04 AM 8/7/2013
 */
 	private ["_unit","_weapongrade","_weapons","_weapon","_magazine","_backpacks","_gadgetsArray","_backpack","_gadget"];
 	_unit = _this select 0;
@@ -24,10 +24,11 @@
 		
 		switch (_weapongrade) do {
 			case 0: {
-				if ((random 1) < 0.5) then {
-					_weapons = DZAI_rifles0;
-				} else {
+				if ((random 1) < 0.66) then {
 					_weapons = DZAI_Pistols0;
+					_unit setVariable ["CanGivePistol",false];	//Prevent unit from being assigned a pistol after death.
+				} else {
+					_weapons = DZAI_rifles0;
 				};
 				_backpacks = DZAI_Backpacks0;
 				_gadgetsArray = DZAI_gadgets0;

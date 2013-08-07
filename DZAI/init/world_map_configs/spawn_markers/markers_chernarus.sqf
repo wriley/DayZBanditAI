@@ -83,17 +83,17 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_31 = _this;
 
-_this = createMarker ["Skalisty1", [13336.705, 2798.8804, -4.7683716e-007]];
+_this = createMarker ["Skalisty1", [14160.69, 2707.7178, -4.7683716e-007]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_51 = _this;
 
-_this = createMarker ["Skalisty2", [13372.376, 2706.6409, 7.4863434e-005]];
+_this = createMarker ["Skalisty2", [13310.174, 2752.4612, 7.4863434e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_53 = _this;
 
-_this = createMarker ["Skalisty3", [13701.626, 2938.5356, 0.00012779236]];
+_this = createMarker ["Skalisty3", [13797.646, 3064.9883, 0.00012779236]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_54 = _this;
@@ -168,12 +168,12 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_82 = _this;
 
-_this = createMarker ["DevilsCastle2", [6866.8057, 11549.996, -9.1552734e-005]];
+_this = createMarker ["DevilsCastle2", [7069.1392, 11639.588, -9.1552734e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_84 = _this;
 
-_this = createMarker ["CastleRog2", [11278.462, 4223.6455, 6.1035156e-005]];
+_this = createMarker ["CastleRog2", [11118.082, 4084.0393, 6.1035156e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_85 = _this;

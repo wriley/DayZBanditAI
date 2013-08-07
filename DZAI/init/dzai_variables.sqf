@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 11:03 PM 8/5/2013
+	Last updated: 2:21 AM 8/7/2013
 */
 private["_worldname"];
 
@@ -68,7 +68,7 @@ DZAI_humanityGain = 0;										//Amount of humanity to reward player for killin
 //Dynamic weapon list settings
 DZAI_dynamicWeaponList = true;								//True: Dynamically generate AI weapon list from CfgBuildingLoot. False: Use preset weapon list (DayZ 1.7.6.1). Highly recommended to enable DZAI_verifyTables if this option is set to false. (Default: true).
 DZAI_banAIWeapons = [];										//(Only if DZAI_dynamicWeaponList = true) List of weapons that AI should never use. By default, AI may carry any lootable weapon. Example: DZAI_banAIWeapons = ["M107_DZ","BAF_AS50_scoped"]; will remove the M107 and AS50 from AI weapon tables if dynamic weapon list is enabled.
-//Note: It is recommended to add all melee weapon classnames into this list as AI have issues using melee weapons. All melee weapons and crossbows present in DayZ 1.7.7.1 have been pre-banned ("Crossbow_DZ","Crossbow","MeleeBaseBallBat","MeleeMachete")
+//Note: It is recommended to add all melee weapon classnames into this list as AI have issues using melee weapons. All melee weapons and crossbows present in DayZ 1.7.7.1 have been pre-banned ("Crossbow_DZ","Crossbow","MeleeHatchet","MeleeCrowbar","MeleeMachete","MeleeBaseball","MeleeBaseBallBat","MeleeBaseBallBatBarbed","MeleeBaseBallBatNails")
 
 //AI loot amounts settings									(Edible and Medical items, Miscellaneous items, Skin packs)
 DZAI_invmedicals = 1; 										//Number of selections of medical items (Inventory)
@@ -79,7 +79,7 @@ DZAI_numMiscItemS = 2;										//Maximum number of items to select from DZAI_Mi
 DZAI_numMiscItemL = 1;										//Maximum number of items to select from DZAI_MiscItemL table.
 
 //AI loot probability settings
-DZAI_chanceMedicals = 0.75;									//Chance to add each medical item.
+DZAI_chanceMedicals = 0.70;									//Chance to add each medical item.
 DZAI_chanceEdibles = 0.85;									//Chance to add each edible item.
 DZAI_chanceMiscItemS = 0.60;								//Chance to add random item from DZAI_MiscItemS table.
 DZAI_chanceMiscItemL = 0.15;								//Chance to add random item from DZAI_MiscItemL table.
@@ -94,11 +94,20 @@ DZAI_gradeChancesDyn = [0.30,0.60,0.08,0.02];				//Weapongrade chances for AI sp
 //Load custom DZAI settings file.
 call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\DZAI_settings_override.sqf";
 
-//AI skill settings
+/*
+	AI skill settings
+
+	NOTE: The AI skill levels are not linear 0-3. The skill gap between 1-2 is higher than 0-1 and 2-3.
+	
+	0-1: Low to medium-skilled AI. Most common type of AI encountered. Intended to challenge players.
+	2-3: High-skilled AI. Uncommon/rare type of AI found in places with military loot. Intended to kill players.
+	HeliCrew: Maximum-skilled AI. Skills are intended to be extremely high as helicopters patrol alone and carry high-value loot.
+*/
+
 DZAI_skill0 = [	
 	//AI skill settings level 0 (Skill, Minimum skill, Maximum bonus amount).
 	["aimingAccuracy",0.10,0.10],
-	["aimingShake",0.40,0.10],
+	["aimingShake",0.35,0.10],
 	["aimingSpeed",0.40,0.10],
 	["endurance",0.40,0.20],
 	["spotDistance",0.30,0.20],
@@ -111,7 +120,7 @@ DZAI_skill0 = [
 DZAI_skill1 = [	
 	//AI skill settings level 1 (Skill, Minimum skill, Maximum bonus amount).
 	["aimingAccuracy",0.15,0.10],
-	["aimingShake",0.50,0.10],
+	["aimingShake",0.45,0.10],
 	["aimingSpeed",0.50,0.10],
 	["endurance",0.55,0.20],
 	["spotDistance",0.45,0.20],

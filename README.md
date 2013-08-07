@@ -1,4 +1,4 @@
-DZAI 1.4.1 - AI Addon for DayZ
+DZAI 1.4.2 - AI Addon for DayZ
 ============
 
 
@@ -140,6 +140,16 @@ DZAI 1.4.0 Changelog:
 
 - [FIXED] Added an optional experimental fix to prevent AI units from shooting/walking through buildings and objects spawned by DayZ's CfgTownGenerator. Enable by setting DZAI_objectPatch = true in dzai_variables.sqf. Enabling this setting may be essential for DayZ Overwatch 0.2.2+.
 <b>Note</b>: Enabling DZAI_objectPatch *may* cause a flood of "Ref to nonnetwork object" errors in your RPT log. This is a harmless warning message but can be annoying as it fills up the RPT log.
+
+1.4.2 Update:
+
+- [FIXED] Added fix to prevent second sidearm weapon from being added to AI after death.
+- [UPDATED] Static spawn triggers avoid spawning AI if a player is within 30m of the spawn point. Up to 5 attempts are made to search for a suitable location without players nearby.
+- [UPDATED] Chernarus: Updated default patrol radius for most static AI spawns from 125m to 200m. This should allow player encounters with AI more easy to avoid and less forced.
+- [UPDATED] Updated default AI weapon banlist. The following weapons will not be added to list of AI-usable weapons: ["Crossbow_DZ","Crossbow","MeleeHatchet","MeleeCrowbar","MeleeMachete","MeleeBaseball","MeleeBaseBallBat","MeleeBaseBallBatBarbed","MeleeBaseBallBatNails"
+- [MODIFIED] Increased chance of generating pistol instead of rifle for AI with weapongrade 0 from 50% to 66%.
+- [MODIFIED] Removed classname blacklist for serverside object fix since it was ineffective at suppressing RPT log warning entries. We will have to wait until BIS releases a patch that suppresses these log warnings.
+- [MODIFIED] Chernarus: Updated Zelenogorsk static spawns from 1 group of 1 (+2 max) units to 2 groups of 1 (+1 max) units.
 
 Note: Information about past updates are archived in changelog.txt
 

@@ -1,7 +1,7 @@
 /*
 	DZAI Functions
 	
-	Last Updated: 5:57 PM 7/25/2013
+	Last Updated: 12:36 PM 8/6/2013
 */
 
 waituntil {!isnil "bis_fnc_init"};
@@ -307,4 +307,16 @@ DZAI_updateSpawnMarker = {
 		_marker setMarkerPos (getMarkerPos _marker);
 		sleep 30;
 	};
+};
+
+//Finds a position that does not have a player within 30m.
+DZAI_findSpawnPos = {
+	private ["_spawnPos","_attempts"];
+	_spawnPos = _this select floor (random count _this);
+	_attempts = 0;
+	while {({isPlayer _x} count (_spawnPos nearEntities [["AllVehicles","CAManBase"],30]) > 0)&&(_attempts < ((count _this) min 5))} do {
+		_spawnPos = _this select floor (random count _this);
+		_attempts = _attempts + 1;
+	};
+	_spawnPos
 };

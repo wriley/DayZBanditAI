@@ -84,13 +84,12 @@ private["_worldname"];
 _worldname=toLower format ["%1",worldName];
 diag_log format["[DZAI] Server is running map %1. Loading static trigger and classname configs.",_worldname];
 
-if (DZAI_objPatch) then {_nul = _worldname execVM '\z\addons\dayz_server\DZAI\scripts\buildingpatch_all_blacklist.sqf';};
+if (DZAI_objPatch) then {_nul = _worldname execVM '\z\addons\dayz_server\DZAI\scripts\buildingpatch_all.sqf';};
 
 switch (_worldname) do {
 	case "chernarus":
 	{
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\world_classname_configs\chernarus_classnames.sqf";
-		//Spawn serverside buildings that are spawned clientside by DayZ's Town Generator.
 		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_chernarus.sqf";
 		DZAI_centerMarker setMarkerPos [7130.0073, 7826.3501];
 		DZAI_centerSize = 5500;

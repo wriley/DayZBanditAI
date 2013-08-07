@@ -16,7 +16,7 @@ diag_log "[DZAI] Building DZAI weapon arrays using CfgBuildingLoot data.";
 _bldgClasses = [["Residential","Farm"],["Military"],["MilitarySpecial"],["HeliCrash"]];
 _unwantedWeapons = _this select 0;		//User-specified weapon banlist.
 
-_aiWeaponBanList = ["Crossbow_DZ","Crossbow","MeleeBaseBallBat","MeleeMachete"];
+_aiWeaponBanList = ["Crossbow_DZ","Crossbow","MeleeHatchet","MeleeCrowbar","MeleeMachete","MeleeBaseball","MeleeBaseBallBat","MeleeBaseBallBatBarbed","MeleeBaseBallBatNails"];
 
 //Add user-specified banned weapons to DZAI weapon banlist.
 for "_i" from 0 to ((count _unwantedWeapons) - 1) do {
