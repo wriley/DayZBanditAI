@@ -17,15 +17,7 @@ _trigger = _this select 1;
 _unitArray = _this select 2;
 
 if (surfaceIsWater (getPosATL _trigger)) exitWith {
-	private["_newPos"];
-	_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
-	_attempts = 0;
-	while {(({([_newPos select 0,_newPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)&&(_attempts < 3)} do {
-		_attempts = _attempts +1;
-		_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
-		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
-	};
-	_trigger setPos _newPos;
+	_nul = _trigger call DZAI_relocDynTrigger;
 	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Could not find suitable location to spawn AI units, relocating trigger to position %1. (spawnBandits_dynamic)",_newPos];};
 	if (DZAI_debugMarkers > 0) then {
 		private["_marker"];
@@ -78,7 +70,7 @@ _totalAI = ((_playerCount + floor (random 3)) min 6);
 //Reduce number of AI spawned if trigger area intersects another activated trigger to avoid overwhelming AI spawns.
 _nearbyTriggers = ({((_trigger distance _x) < ((triggerArea _trigger) select 0))&&(triggerActivated _x)} count DZAI_dynTriggerArray) - 1;
 if (_nearbyTriggers > 0) then {
-	_totalAI = round(_totalAI/(_nearbyTriggers + 1));
+	_totalAI = 1;
 	if (DZAI_debugLevel > 0) then {diag_log format ["DEBUG :: Counted %1 other triggers within %2 meters. Number of AI to spawn reduced to %3.",_nearbyTriggers,((triggerArea _trigger) select 0),_totalAI];};
 };
 
@@ -105,7 +97,7 @@ _unitGroup setVariable ["trigger",_trigger];
 _unitGroup allowFleeing 0;
 		
 //Reveal target player and nearby players to AI.
-_revealLevel = (1.5 + random (2.5));
+_revealLevel = (1.0 + random (3.0));
 {_unitGroup reveal [_x,_revealLevel]} forEach _nearbyPlayers;
 
 //Update AI count

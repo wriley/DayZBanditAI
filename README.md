@@ -1,4 +1,4 @@
-DZAI 1.4.2 - AI Addon for DayZ
+DZAI 1.4.3 - AI Addon for DayZ
 ============
 
 
@@ -146,12 +146,23 @@ DZAI 1.4.0 Changelog:
 - [FIXED] Added fix to prevent second sidearm weapon from being added to AI after death.
 - [UPDATED] Static spawn triggers avoid spawning AI if a player is within 30m of the spawn point. Up to 5 attempts are made to search for a suitable location without players nearby.
 - [UPDATED] Chernarus: Updated default patrol radius for most static AI spawns from 125m to 200m. This should allow player encounters with AI more easy to avoid and less forced.
-- [UPDATED] Updated default AI weapon banlist. The following weapons will not be added to list of AI-usable weapons: ["Crossbow_DZ","Crossbow","MeleeHatchet","MeleeCrowbar","MeleeMachete","MeleeBaseball","MeleeBaseBallBat","MeleeBaseBallBatBarbed","MeleeBaseBallBatNails"
+- [UPDATED] Updated default AI weapon banlist. The following weapons will not be added to list of AI-usable weapons: "Crossbow_DZ","Crossbow","MeleeHatchet","MeleeCrowbar","MeleeMachete","MeleeBaseball","MeleeBaseBallBat","MeleeBaseBallBatBarbed","MeleeBaseBallBatNails"
 - [MODIFIED] Increased chance of generating pistol instead of rifle for AI with weapongrade 0 from 50% to 66%.
 - [MODIFIED] Removed classname blacklist for serverside object fix since it was ineffective at suppressing RPT log warning entries. We will have to wait until BIS releases a patch that suppresses these log warnings.
 - [MODIFIED] Chernarus: Updated Zelenogorsk static spawns from 1 group of 1 (+2 max) units to 2 groups of 1 (+1 max) units.
-- [MODIFIED] Decreased AI accuracy and aimingshake (lock-on time) slightly for all skill tiers.
+- [MODIFIED] Decreased AI accuracy and aimingshake (lock-on time increased) slightly for all skill tiers.
 - [MODIFIED] Decreased probability of generating each medical item for AI from 75% to 70%.
 
-Note: Information about past updates are archived in changelog.txt
+1.4.3 Update:
 
+- [MODIFIED] Dynamic triggers that intersect other active dynamic triggers will only spawn 1 AI unit instead of having total AI spawned reduced by a certain amount.
+- [MODIFIED] Increased probability of generating AI unit with weapongrade 0 for equipType 0 and 1, probability decreased accordingly for weapongrade 1.
+- [MODIFIED] AI helicopter waypoint amounts no longer depend on number of dynamic triggers. (Fixed at 15).
+- [MODIFIED] Decreased completion times for AI helicopter waypoints.
+- [MODIFIED] Removed the following small miscellaneous items from AI loot tables: ItemTankTrap, ItemSandbag, ItemWire, Handgrenade_West, 1Rnd_HE_M203.
+- [MODIFIED] Lowered probability of generating Flashlight and Watch for low-tier tools loot table.
+- [MODIFIED] AI units with weapongrade 0 no longer carry medical and miscellaneous items.
+- [MODIFIED] Epoch: AI units with weapongrade no longer have a chance of carrying metal bar currency.
+- [MODIFIED] Small edits to AI patrol script: AI units no longer move together in formation, and are fixed in combat mode Red (do not engage enemies in formation).
+
+Note: Information about past updates are archived in changelog.txt

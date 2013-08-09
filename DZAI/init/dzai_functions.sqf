@@ -1,7 +1,7 @@
 /*
 	DZAI Functions
 	
-	Last Updated: 12:36 PM 8/6/2013
+	Last Updated: 2:14 PM 8/8/2013
 */
 
 waituntil {!isnil "bis_fnc_init"};
@@ -104,11 +104,11 @@ DZAI_heliRandomPatrol = {
 	if ((waypointType [_unitGroup,0]) == "MOVE") then {
 		if ((random 1) < 0.25) then {
 			[_unitGroup,0] setWaypointType "SAD";
-			[_unitGroup,0] setWaypointTimeout [30,60,90];
+			[_unitGroup,0] setWaypointTimeout [20,40,60];
 		};
 	} else {
 		[_unitGroup,0] setWaypointType "MOVE";
-		[_unitGroup,0] setWaypointTimeout [0,5,15];
+		[_unitGroup,0] setWaypointTimeout [0,3,10];
 	};
 	_unitGroup setCurrentWaypoint [_unitGroup,0];
 	true
@@ -159,7 +159,7 @@ DZAI_getGradeChances = {
 //Randomizes AI helicopter waypoint pool
 DZAI_randomizeHeliWPs = {
 	if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Generating waypoints for AI helicopter patrol.";};
-	for "_i" from 0 to ((15 max DZAI_dynTriggersMax) - 1) do {
+	for "_i" from 0 to 15 do {
 		private["_wp"];
 		_wp = [(getMarkerPos DZAI_centerMarker),(400 + random(DZAI_centerSize)),random(360),true] call SHK_pos;
 		DZAI_heliWaypoints set [_i,_wp];
@@ -319,4 +319,19 @@ DZAI_findSpawnPos = {
 		_attempts = _attempts + 1;
 	};
 	_spawnPos
+};
+
+//Relocates a dynamic trigger
+DZAI_relocDynTrigger = {
+	private ["_newPos","_attempts"];
+	_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,300]] call SHK_pos;
+	_attempts = 0;
+	while {(({([_newPos select 0,_newPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)&&(_attempts < 3)} do {
+		_attempts = _attempts +1;
+		_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,300]] call SHK_pos;
+		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
+	};
+	_this setPos _newPos;
+	
+	true
 };

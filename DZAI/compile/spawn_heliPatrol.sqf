@@ -79,7 +79,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 
 	//Set initial waypoint and begin patrol
 	[_unitGroup,0] setWaypointType "MOVE";
-	[_unitGroup,0] setWaypointTimeout [0,5,15];
+	[_unitGroup,0] setWaypointTimeout [0,3,10];
 	[_unitGroup,0] setWaypointCompletionRadius 150;
 	[_unitGroup,0] setWaypointStatements ["true","[(group this)] call DZAI_heliRandomPatrol;"];
 	[_unitGroup] call DZAI_heliRandomPatrol;

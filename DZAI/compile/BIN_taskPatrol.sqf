@@ -51,9 +51,11 @@ if (isServer) then
 
 	//_grp setBehaviour _dzai_behavior;
 	_grp setBehaviour "AWARE";
-	_grp setSpeedMode (["FULL","NORMAL"] call BIS_fnc_selectRandom);
-	_grp setCombatMode (["YELLOW", "RED"] call BIS_fnc_selectRandom);
-	_grp setFormation (["STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "DIAMOND"] call BIS_fnc_selectRandom);
+	//_grp setSpeedMode (["FULL","NORMAL"] call BIS_fnc_selectRandom);
+	_grp setSpeedMode "FULL";
+	//_grp setCombatMode (["YELLOW", "RED"] call BIS_fnc_selectRandom);
+	_grp setCombatMode "RED";
+	//_grp setFormation (["STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "DIAMOND"] call BIS_fnc_selectRandom);
 
 	_center_x = (_pos) select 0;
 	_center_y = (_pos) select 1;
@@ -109,7 +111,7 @@ if (isServer) then
 			// The following code is an extract from Random Building Position Script v1.0 by Tophe of Östgöta Ops
 			//////////////////////////////////////////////////////////////////
 			_bldgpos = [];
-			_bldgs = nearestObjects [[_a,_b,0], ["Building"], 50];
+			_bldgs = nearestObjects [[_a,_b,0], ["HouseBase"], 50];
 			{
 			  private["_i","_y"];
 				_i = 0;
