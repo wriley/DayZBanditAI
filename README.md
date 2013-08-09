@@ -29,13 +29,17 @@ Compatibility
 
 <b>Fully-supported DayZ Mods:</b>
 
-- DZAI is constantly updated for compatibility with these DayZ mods: DayZ 1.7.7.1+, DayZ Celle 1.9+, DayZ Epoch 1.0.1.5+, DayZ Hunting Grounds 1.0.1+, DayZ Overwatch 0.2.1+.
-- Note: Namalsk 0.75 is planned to be supported but untested at time of writing.
+- DZAI is regularly updated for compatibility with these DayZ mods: DayZ 1.7.7.1+, DayZ Overwatch 0.2.2+.
 
 <b>Partially-supported DayZ Mods:</b>
 
-- DZAI is not constantly updated for these maps/mods in particular but they should still be compatible.
-- This list includes the following maps/mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Civilian, DayZ Fallujah, DayZ Isladuala, DayZ Lingor 1.3, DayZ Oring, DayZ Panthera, DayZ Sahrani, DayZ Taviana (all versions), DayZ Utes.
+- DZAI is known to be functional and compatible with these maps/mods but development is not done using these mods. Any issues with these maps/mods will be fixed as they become known.
+- This list includes the following maps/mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Civilian, DayZ Fallujah, DayZ Isladuala, DayZ Lingor 1.3, DayZ Oring, DayZ Panthera, DayZ Sahrani, DayZ Taviana (all versions), DayZ Utes, DayZ Celle, DayZ Namalsk, DayZ Epoch 1.0.1.5+, DayZ Hunting Grounds 1.0.1+.
+
+<b>Unsupported DayZ Mods:</b>
+
+- DZAI does not support DayZ mods that are in their non-public and/or development phase.
+- There is no support for the following DayZ mods: DayZ+, DayZ Invasion 1944, DayZ Thirsk, DayZ Trinity Island.
 
 <b>Known Issues:</b>
 
