@@ -62,7 +62,7 @@ Installation Instructions:
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
 		allowConnection = true;
 	
-6. If you do not wish to use DZAI's AI helicopter patrols, skip to step 7. Otherwise, continue reading.
+5. If you do not wish to use DZAI's AI helicopter patrols, skip to step 6. Otherwise, continue reading.
 	
 	Edit your server_cleanup.fsm (located in \dayz_server\system). Search for this line: 
 
@@ -81,7 +81,7 @@ Installation Instructions:
 		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
 
 
-7. A small edit to your BattlEye filters is needed. Inside your BattlEye folder, edit your addmagazinecargo.txt. Locate the line that reads:
+6. A small edit to your BattlEye filters is needed. Inside your BattlEye folder, edit your addmagazinecargo.txt. Locate the line that reads:
 	
 		"5=ItemRadio"
 		
@@ -91,9 +91,9 @@ Installation Instructions:
 
 	If you cannot find this line, do not make any changes.
 
-8. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_variables.sqf
+7. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_variables.sqf
 
-9. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
+8. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
 
 Note: You may store your custom settings changes in DZAI\DZAI_settings_override.sqf. This file is a convenient way to store and transfer your custom settings when upgrading to a newer version of DZAI. Further instructions are provided inside this file.
 
