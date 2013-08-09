@@ -64,21 +64,21 @@ Installation Instructions:
 	
 6. If you do not wish to use DZAI's AI helicopter patrols, skip to step 7. Otherwise, continue reading.
 	
-Edit your server_cleanup.fsm (located in \dayz_server\system). Search for this line: 
+	Edit your server_cleanup.fsm (located in \dayz_server\system). Search for this line: 
 
-	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
+		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
 
-	
-If you <b>do not</b> have the Animated HeliCrash addon installed, change the line to this :
-
-
-	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && (vehicle _x getVariable [""DZAI"",0] != 1)) then {" \n
- 
- 
-If you <b>do</b> have the Animated HeliCrash addon installed, change the line to this:
+		
+	If you <b>do not</b> have the Animated HeliCrash addon installed, change the line to this :
 
 
-	"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
+		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && (vehicle _x getVariable [""DZAI"",0] != 1)) then {" \n
+	 
+	 
+	If you <b>do</b> have the Animated HeliCrash addon installed, change the line to this:
+
+
+		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
 
 
 7. A small edit to your BattlEye filters is needed. Inside your BattlEye folder, edit your addmagazinecargo.txt. Locate the line that reads:
