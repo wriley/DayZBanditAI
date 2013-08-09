@@ -83,13 +83,13 @@ Installation Instructions:
 
 7. A small edit to your BattlEye filters is needed. Inside your BattlEye folder, edit your addmagazinecargo.txt. Locate the line that reads:
 	
-	"5=ItemRadio"
-	
-Edit it to this:
+		"5=ItemRadio"
+		
+	Edit it to this:
 
-	//"5=ItemRadio"
+		//"5=ItemRadio"
 
-If you cannot find this line, do not make any changes.
+	If you cannot find this line, do not make any changes.
 
 8. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_variables.sqf
 
