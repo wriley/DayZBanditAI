@@ -5,11 +5,11 @@
 	
 	Description: Spawns a group of AI units some distance from a dynamically-spawned trigger. These units do not respawn after death.
 	
-	Last updated: 11:18 PM 7/27/2013
+	Last updated: 4:45 PM 8/10/2013
 */
 #include "\z\addons\dayz_server\DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
-private ["_patrolDist","_trigger","_totalAI","_maxDist","_unitGroup","_pos","_targetPlayer","_unitArray","_playerArray","_playerPos","_minDist","_playerCount","_spawnPosition","_spawnPos","_nearbyTriggers","_findPlayer","_startTime","_nearbyPlayers","_revealLevel"];
+private ["_patrolDist","_trigger","_totalAI","_unitGroup","_pos","_targetPlayer","_unitArray","_playerArray","_playerPos","_playerCount","_spawnPosition","_spawnPos","_nearbyTriggers","_findPlayer","_startTime","_nearbyPlayers","_revealLevel","_baseDist","_distVariance"];
 if (!isServer) exitWith {};
 
 _patrolDist = _this select 0;
@@ -17,7 +17,7 @@ _trigger = _this select 1;
 _unitArray = _this select 2;
 
 if (surfaceIsWater (getPosATL _trigger)) exitWith {
-	_nul = _trigger call DZAI_relocDynTrigger;
+	_newPos = _trigger call DZAI_relocDynTrigger;
 	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Could not find suitable location to spawn AI units, relocating trigger to position %1. (spawnBandits_dynamic)",_newPos];};
 	if (DZAI_debugMarkers > 0) then {
 		private["_marker"];
@@ -86,9 +86,11 @@ if (DZAI_debugMarkers > 0) then {
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Processed dynamic trigger spawn data in %1 seconds (spawnBandits_dynamic).",(diag_tickTime - _startTime)];};
 
 _startTime = diag_tickTime;
+_baseDist = 200;
+_distVariance = 50;
 
 //Spawn units
-_spawnPos = [_spawnPosition,(200 + random (100)),random(360),true] call SHK_pos;
+_spawnPos = [_spawnPosition,(_baseDist + random (_distVariance)),random(360),true] call SHK_pos;
 _unitGroup = [_totalAI,grpNull,_spawnPos,_trigger] call fnc_createGroup;
 
 //Set group variables

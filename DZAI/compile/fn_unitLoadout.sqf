@@ -24,7 +24,7 @@
 		
 		switch (_weapongrade) do {
 			case 0: {
-				if ((random 1) < 0.66) then {
+				if ((random 1) < 0.55) then {
 					_weapons = DZAI_Pistols0;
 					_unit setVariable ["CanGivePistol",false];	//Prevent unit from being assigned a pistol after death.
 				} else {

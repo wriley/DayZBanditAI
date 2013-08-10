@@ -1,7 +1,7 @@
 /*
 	DZAI Functions
 	
-	Last Updated: 2:14 PM 8/8/2013
+	Last Updated: 3:16 PM 8/10/2013
 */
 
 waituntil {!isnil "bis_fnc_init"};
@@ -331,7 +331,7 @@ DZAI_relocDynTrigger = {
 		_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,300]] call SHK_pos;
 		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
 	};
-	_this setPos _newPos;
+	_this setPosATL _newPos;
 	
-	true
+	_newPos
 };

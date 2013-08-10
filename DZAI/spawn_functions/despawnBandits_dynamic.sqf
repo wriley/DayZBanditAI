@@ -80,7 +80,7 @@ if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: _totalGrou
 _trigger setTriggerStatements [DYNTRIG_STATEMENTS_INACTIVE];
 
 //Relocate trigger
-_nul = _trigger call DZAI_relocDynTrigger;
+_newPos = _trigger call DZAI_relocDynTrigger;
 
 if (DZAI_debugMarkers > 0) then {
 	private["_marker"];

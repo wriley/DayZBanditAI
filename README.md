@@ -1,4 +1,4 @@
-DZAI 1.4.3 - AI Addon for DayZ
+DZAI 1.4.4 - AI Addon for DayZ
 ============
 
 
@@ -162,5 +162,15 @@ DZAI 1.4.0 Changelog:
 - [MODIFIED] AI units with weapongrade 0 no longer carry medical and miscellaneous items.
 - [MODIFIED] Epoch: AI units with weapongrade no longer have a chance of carrying metal bar currency.
 - [MODIFIED] Small edits to AI patrol script: AI units no longer move together in formation, and are fixed in combat mode Red (do not engage enemies in formation).
+
+1.4.4 Update:
+
+- [FIXED] Fixed bug where debug markers for dynamic triggers became desynchronized with their assigned trigger.
+- [FIXED] Dynamic AI player-seeking now uses AI group leader is center point for AI patrol if target player logs out during pursuit state.
+- [FIXED] Waypoints are no longer created for a wiped-out dynamic AI group.
+- [MODIFIED] Lowered AI aimingAccuracy for all skill tiers. Large increases to AI aimingShake (lock-on time decrease) and smaller increases to AI aimingSpeed. These changes are intended to increase AI effectiveness in close quarters and decrease effectiveness at long distances.
+- [MODIFIED] Lowered collision damage reduction for AI from 90% to 80%.
+- [MODIFIED] Lowered probability of generating pistol instead of rifle for weapongrade 0 AI units from 66% to 55%.
+- [MODIFIED] Dynamic AI spawn distance from target player modified from 200m-300m to 200m-250m.
 
 Note: Information about past updates are archived in changelog.txt

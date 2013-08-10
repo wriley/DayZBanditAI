@@ -3,10 +3,10 @@
 	
 	Description:
 	
-	Last updated:	9:40 PM 7/24/2013
+	Last updated:	3:15 PM 8/10/2013
 	
 */
-private ["_randomizeCount","_trigger","_isCleaning","_attempts","_newPos","_marker"];
+private ["_randomizeCount","_trigger"];
 
 _randomizeCount = _this select 0;
 
@@ -17,16 +17,8 @@ private ["_trigger"];
 	_trigger = DZAI_dynTriggerArray call BIS_fnc_selectRandom;
 	//Select only dynamic triggers that haven't spawned any AI and not in cleaning state
 	if ((count (_trigger getVariable ["GroupArray",[]]) == 0) && (!(_trigger getVariable ["isCleaning",false]))) then {
-	private ["_newPos","_attempts"];
-		_attempts = 0;
-		_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
-		while {(({([_newPos select 0,_newPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)&&(_attempts < 3)} do {
-			sleep 0.5;
-			_attempts = _attempts +1;
-			_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
-			if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
-		};
-		_trigger setPos _newPos;
+		private ["_newPos"];
+		_newPos = _trigger call DZAI_relocDynTrigger;
 		if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: A dynamic trigger has been relocated to %1. (fnc_randomizeTriggers)",_newPos];};
 		if (DZAI_debugMarkers > 0) then {
 			private["_marker"];

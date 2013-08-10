@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 2:21 AM 8/7/2013
+	Last updated: 2:55 PM 8/10/2013
 */
 private["_worldname"];
 
@@ -107,8 +107,8 @@ call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\DZAI_settings
 DZAI_skill0 = [	
 	//AI skill settings level 0 (Skill, Minimum skill, Maximum bonus amount).
 	["aimingAccuracy",0.10,0.10],
-	["aimingShake",0.35,0.10],
-	["aimingSpeed",0.40,0.10],
+	["aimingShake",0.50,0.10],
+	["aimingSpeed",0.45,0.10],
 	["endurance",0.40,0.20],
 	["spotDistance",0.30,0.20],
 	["spotTime",0.40,0.20],
@@ -119,9 +119,9 @@ DZAI_skill0 = [
 ];
 DZAI_skill1 = [	
 	//AI skill settings level 1 (Skill, Minimum skill, Maximum bonus amount).
-	["aimingAccuracy",0.15,0.10],
-	["aimingShake",0.45,0.10],
-	["aimingSpeed",0.50,0.10],
+	["aimingAccuracy",0.10,0.10],
+	["aimingShake",0.60,0.10],
+	["aimingSpeed",0.55,0.10],
 	["endurance",0.55,0.20],
 	["spotDistance",0.45,0.20],
 	["spotTime",0.55,0.20],
@@ -132,9 +132,9 @@ DZAI_skill1 = [
 ];
 DZAI_skill2 = [	
 	//AI skill settings level 2 (Skill, Minimum skill, Maximum bonus amount).
-	["aimingAccuracy",0.25,0.10],
-	["aimingShake",0.60,0.10],
-	["aimingSpeed",0.65,0.10],
+	["aimingAccuracy",0.20,0.10],
+	["aimingShake",0.75,0.10],
+	["aimingSpeed",0.70,0.10],
 	["endurance",0.70,0.20],
 	["spotDistance",0.60,0.20],
 	["spotTime",0.70,0.20],
@@ -145,9 +145,9 @@ DZAI_skill2 = [
 ];
 DZAI_skill3 = [	
 	//AI skill settings level 3 (Skill, Minimum skill, Maximum bonus amount).
-	["aimingAccuracy",0.35,0.10],
-	["aimingShake",0.70,0.10],
-	["aimingSpeed",0.75,0.10],
+	["aimingAccuracy",0.30,0.10],
+	["aimingShake",0.85,0.10],
+	["aimingSpeed",0.80,0.10],
 	["endurance",0.80,0.20],
 	["spotDistance",0.75,0.20],
 	["spotTime",0.80,0.20],
@@ -158,9 +158,9 @@ DZAI_skill3 = [
 ];
 DZAI_heliCrewSkills = [	
 	//AI skill settings level 4 (Skill, Minimum skill, Maximum bonus amount).
-	["aimingAccuracy",0.50,0.10],
-	["aimingShake",0.75,0.10],
-	["aimingSpeed",0.80,0.10],
+	["aimingAccuracy",0.40,0.10],
+	["aimingShake",0.85,0.10],
+	["aimingSpeed",0.85,0.10],
 	["endurance",0.60,0.20],
 	["spotDistance",0.90,0.10],
 	["spotTime",0.90,0.10],
