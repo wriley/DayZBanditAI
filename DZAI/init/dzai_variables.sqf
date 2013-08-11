@@ -107,7 +107,7 @@ call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\DZAI_settings
 DZAI_skill0 = [	
 	//AI skill settings level 0 (Skill, Minimum skill, Maximum bonus amount).
 	["aimingAccuracy",0.10,0.10],
-	["aimingShake",0.50,0.10],
+	["aimingShake",0.55,0.10],
 	["aimingSpeed",0.45,0.10],
 	["endurance",0.40,0.20],
 	["spotDistance",0.30,0.20],
@@ -120,7 +120,7 @@ DZAI_skill0 = [
 DZAI_skill1 = [	
 	//AI skill settings level 1 (Skill, Minimum skill, Maximum bonus amount).
 	["aimingAccuracy",0.10,0.10],
-	["aimingShake",0.60,0.10],
+	["aimingShake",0.65,0.10],
 	["aimingSpeed",0.55,0.10],
 	["endurance",0.55,0.20],
 	["spotDistance",0.45,0.20],
