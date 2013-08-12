@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 2:55 PM 8/10/2013
+	Last updated: 8:15 PM 8/11/2013
 */
 private["_worldname"];
 
@@ -87,9 +87,9 @@ DZAI_chanceMiscItemL = 0.15;								//Chance to add random item from DZAI_MiscIt
 //AI weapon/skill probabilities (gradeChances should add up to 1.00) - [Civilian, Military, MilitarySpecial, HeliCrash] - Note: AI with higher grade weaponry will also have higher skill settings.
 DZAI_gradeChances0 = [0.90,0.10,0.00,0.00];					//equipType = 0 - most AI will have basic pistols or rifles, and occasionally common military weapons.
 DZAI_gradeChances1 = [0.60,0.35,0.04,0.01];					//equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.
-DZAI_gradeChances2 = [0.30,0.57,0.10,0.03];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
+DZAI_gradeChances2 = [0.20,0.65,0.11,0.04];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
 DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//equipType = 3 - All AI will carry at least a military-grade weapon. Many will be carrying high-grade military weapons.
-DZAI_gradeChancesDyn = [0.30,0.60,0.08,0.02];				//Weapongrade chances for AI spawned from dynamic triggers.
+DZAI_gradeChancesDyn = [0.25,0.65,0.08,0.02];				//Weapongrade chances for AI spawned from dynamic triggers.
 
 //Load custom DZAI settings file.
 call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\DZAI_settings_override.sqf";
