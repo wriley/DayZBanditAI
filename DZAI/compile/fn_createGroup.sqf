@@ -45,7 +45,7 @@ if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Found spaw
 for "_i" from 1 to _totalAI do {
 	private ["_type","_unit","_weapongrade"];
 	_type = DZAI_BanditTypes call BIS_fnc_selectRandom2;									// Select skin of AI unit
-	_unit = _unitGroup createUnit [_type, [0,0,0], [], 0, "FORM"];							// Spawn the AI unit
+	_unit = _unitGroup createUnit [_type, _pos, [], 0, "FORM"];							// Spawn the AI unit
 	_unit setPosATL _pos;
 	[_unit] joinSilent _unitGroup;														// Add AI unit to group
 
