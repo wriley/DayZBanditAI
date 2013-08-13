@@ -46,6 +46,7 @@ for "_i" from 1 to _totalAI do {
 	private ["_type","_unit","_weapongrade"];
 	_type = DZAI_BanditTypes call BIS_fnc_selectRandom2;									// Select skin of AI unit
 	_unit = _unitGroup createUnit [_type, [0,0,0], [], 0, "FORM"];							// Spawn the AI unit
+	_unit setPosATL _pos;
 	[_unit] joinSilent _unitGroup;														// Add AI unit to group
 
 	_unit setVariable ["gethit",[0,0,0,0]];												// Set unit health
@@ -62,7 +63,6 @@ for "_i" from 1 to _totalAI do {
 	_weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
 	[_unit, _weapongrade] call fnc_unitLoadout;											// Assign unit loadout
 	0 = [_unit, _weapongrade] spawn DZAI_setSkills;										// Set AI skill
-	_unit setPosATL _pos;
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Spawned AI Type %1 with weapongrade %2 for group %3 (fnc_createGroup).",_type,_weapongrade,_unitGroup];};
 };
 
