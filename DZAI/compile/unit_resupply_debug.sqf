@@ -14,7 +14,7 @@ if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI resupply script
 _unit = _this select 0;								//Unit to monitor/reload ammo
 
 _markername = format["AI_%1",_unit];
-if ((getMarkerColor _markername) != "") then {deleteMarker _markername};	//Delete the previous marker if it wasn't deleted for some reason.
+if ((getMarkerColor _markername) != "") then {deleteMarker _markername; sleep 1;};	//Delete the previous marker if it wasn't deleted for some reason.
 _marker = createMarker[_markername,(getposATL _unit)];
 _marker setMarkerShape "ELLIPSE";
 _marker setMarkerType "Dot";

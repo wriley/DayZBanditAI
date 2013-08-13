@@ -375,8 +375,6 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [3,2,300
 _trigger_118 = _this;
 //end triggers
 
-//Custom waypoint file
-#include "custom_configs\mbg_celle2_custom_config.sqf"	//Custom patrol definitions file
 
 /*
 	Custom Marker Requirements:

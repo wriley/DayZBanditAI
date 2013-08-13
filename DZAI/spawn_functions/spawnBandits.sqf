@@ -96,7 +96,7 @@ for "_j" from 1 to _numGroups do {
 	_totalAI = (_minAI + round(random _addAI));
 	if (_totalAI > 0) then {
 		//Select spawn location
-		//_spawnPos = _spawnPositions call BIS_fnc_selectRandom;
+		//_spawnPos = _spawnPositions call BIS_fnc_selectRandom2;
 		_spawnPos = _spawnPositions call DZAI_findSpawnPos;
 		
 		//Spawn units
@@ -112,11 +112,8 @@ for "_j" from 1 to _numGroups do {
 		_totalSpawned = _totalSpawned + _totalAI;
 		if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_unitGroup,_totalAI];};
 		
-		if ((typeName _patroldist) == "SCALAR") then {
-			0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
-		} else {
-			0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
-		};
+		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+		
 		_grpArray set [count _grpArray,_unitGroup];
 	} else {
 		//Add a group to respawn queue.

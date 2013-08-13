@@ -14,7 +14,7 @@ if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Randomizing %1 dyna
 for "_i" from 1 to _randomizeCount do {
 private ["_trigger"];
 	if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Selecting a random dynamic trigger to randomize location. (fnc_randomizeTriggers)";};
-	_trigger = DZAI_dynTriggerArray call BIS_fnc_selectRandom;
+	_trigger = DZAI_dynTriggerArray call BIS_fnc_selectRandom2;
 	//Select only dynamic triggers that haven't spawned any AI and not in cleaning state
 	if ((count (_trigger getVariable ["GroupArray",[]]) == 0) && (!(_trigger getVariable ["isCleaning",false]))) then {
 		private ["_newPos"];

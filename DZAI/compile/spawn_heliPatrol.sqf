@@ -15,7 +15,7 @@ if (DZAI_curHeliPatrols >= DZAI_maxHeliPatrols) exitWith {};
 for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	private ["_heliType","_startPos","_helicopter","_unitGroup","_pilot","_gunner1","_gunner2","_banditType"];
 	//_heliType = "UH1H_DZ";
-	_heliType = DZAI_heliTypes call BIS_fnc_selectRandom;
+	_heliType = DZAI_heliTypes call BIS_fnc_selectRandom2;
 	_startPos = [(getMarkerPos DZAI_centerMarker),(300 + random(DZAI_centerSize)),random(360),false] call SHK_pos;
 	//_startPos = [7175.6,9482.49]; test position
 
@@ -24,7 +24,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	//diag_log format ["Created group %1",_unitGroup];
 	
 	//Create helicopter crew
-	_banditType = (DZAI_BanditTypes call BIS_fnc_selectRandom);
+	_banditType = (DZAI_BanditTypes call BIS_fnc_selectRandom2);
 	_pilot = _unitGroup createUnit [_banditType, [0,0,0], [], 1, "NONE"];
 	_gunner1 = _unitGroup createUnit [_banditType, [0,0,0], [], 1, "NONE"];
 	_gunner2 = _unitGroup createUnit [_banditType, [0,0,0], [], 1, "NONE"];

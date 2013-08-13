@@ -51,8 +51,8 @@
 		};
 
 		//Select weapon and backpack
-		_weapon = _weapons call BIS_fnc_selectRandom;
-		_backpack = _backpacks call BIS_fnc_selectRandom;
+		_weapon = _weapons call BIS_fnc_selectRandom2;
+		_backpack = _backpacks call BIS_fnc_selectRandom2;
 		
 		//Add weapon, ammunition, and backpack
 		_magazine = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines") select 0;

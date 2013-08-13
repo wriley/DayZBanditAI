@@ -602,9 +602,6 @@ if ((DZAI_modName == "lingorskaro") || (DZAI_modName == "huntinggrounds")) then 
 };
 //end triggers
 
-//Custom waypoint file
-#include "custom_configs\lingor_custom_config.sqf"	//Custom patrol definitions file
-
 /*
 	Custom Marker Requirements:
 	

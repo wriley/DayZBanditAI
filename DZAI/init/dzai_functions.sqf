@@ -9,7 +9,7 @@ diag_log "[DZAI] Compiling DZAI functions.";
 // [] call BIS_fnc_help;
 //Compile general functions.
 if (isNil "SHK_pos_getPos") then {call compile preprocessFile "\z\addons\dayz_server\DZAI\SHK_pos\shk_pos_init.sqf";};
-BIS_fnc_selectRandom = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_selectRandom.sqf";	//Altered version
+BIS_fnc_selectRandom2 = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_selectRandom.sqf";	//Altered version
 fnc_unitLoadout = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_unitLoadout.sqf";
 fnc_addLoot = 					compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_addLoot.sqf";
 if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then { // Optional Zed-to-AI aggro functions
@@ -28,7 +28,6 @@ if (DZAI_debugMarkers < 1) then {
 } else {
 	fnc_unit_resupply = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\unit_resupply_debug.sqf";
 };
-fnc_DZAI_customPatrol = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\DZAI_customPatrol.sqf";
 fnc_dynAIDeath = 				compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_updateDead.sqf";
 if (DZAI_findKiller) then {
 	fnc_findKiller = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\compile\fn_findKiller.sqf";};
@@ -60,7 +59,7 @@ DZAI_spawn = {
 	_timeouts = if ((count _this) > 3) then {_this select 3} else {[9,12,15]};
 
 	//_spawnMarker setMarkerAlpha 0;
-	_patrolRadius = ((((getMarkerSize _spawnMarker) select 0) min ((getMarkerSize _spawnMarker) select 1)) min 600);
+	_patrolRadius = ((((getMarkerSize _spawnMarker) select 0) min ((getMarkerSize _spawnMarker) select 1)) min 300);
 	_positions = (1 + ceil (_patrolRadius/25));
 	_positionArray = [];
 	for "_i" from 1 to _positions do {
@@ -100,7 +99,7 @@ DZAI_heliRandomPatrol = {
 	private ["_unitGroup"];
 	_unitGroup = _this select 0;
 
-	[_unitGroup,0] setWPPos (DZAI_heliWaypoints call BIS_fnc_selectRandom); 
+	[_unitGroup,0] setWPPos (DZAI_heliWaypoints call BIS_fnc_selectRandom2); 
 	if ((waypointType [_unitGroup,0]) == "MOVE") then {
 		if ((random 1) < 0.25) then {
 			[_unitGroup,0] setWaypointType "SAD";
@@ -314,7 +313,7 @@ DZAI_findSpawnPos = {
 	private ["_spawnPos","_attempts"];
 	_spawnPos = _this select floor (random count _this);
 	_attempts = 0;
-	while {({isPlayer _x} count (_spawnPos nearEntities [["AllVehicles","CAManBase"],30]) > 0)&&(_attempts < ((count _this) min 5))} do {
+	while {({isPlayer _x} count (_spawnPos nearEntities [["AllVehicles","CAManBase"],30]) > 0)&&(_attempts < 5)} do {
 		_spawnPos = _this select floor (random count _this);
 		_attempts = _attempts + 1;
 	};
@@ -323,15 +322,52 @@ DZAI_findSpawnPos = {
 
 //Relocates a dynamic trigger
 DZAI_relocDynTrigger = {
-	private ["_newPos","_attempts"];
-	_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,300]] call SHK_pos;
-	_attempts = 0;
-	while {(({([_newPos select 0,_newPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)&&(_attempts < 3)} do {
-		_attempts = _attempts +1;
-		_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,300]] call SHK_pos;
-		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
-	};
-	_this setPosATL _newPos;
+private ["_newPos","_attempts"];
+_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,300]] call SHK_pos;
+_attempts = 0;
+while {(({([_newPos select 0,_newPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)&&(_attempts < 3)} do {
+_attempts = _attempts +1;
+_newPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,300]] call SHK_pos;
+if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
+};
+_this setPosATL _newPos;
+
+_newPos
+};
+
+/*
+//Creates static spawn trigger (in development)
+DZAI_static_spawn = {
+	private ["_spawnMarker","_minAI","_addAI","_positionArray","_equipType","_numGroups","_patrolRadius","_trigStatements","_trigger"];
 	
-	_newPos
+	if ((count _this) < 3) exitWith {diag_log format ["DZAI Error: DZAI_static_spawn expected at least 3 arguments, found %1.",(count _this)]; false};
+	_spawnMarker = _this select 0;
+	_minAI = _this select 1;
+	_addAI = _this select 2;
+	_positionArray = if ((count _this) > 3) then {_this select 3} else {[]};
+	_equipType = if ((count _this) > 4) then {_this select 4} else {1};
+	_numGroups = if ((count _this) > 5) then {_this select 5} else {1};
+	
+	_patrolRadius = ((((getMarkerSize _spawnMarker) select 0) min ((getMarkerSize _spawnMarker) select 1)) min 300);
+	
+	_trigStatements = format ["0 = [%1,%2,%3,thisTrigger,%4,%5,%6] call fnc_spawnBandits;",_minAI,_addAI,_patrolRadius,_positionArray,_equipType,_numGroups];
+	_trigger = createTrigger ["EmptyDetector", getMarkerPos(_spawnMarker)];
+	_trigger setTriggerArea [600, 600, 0, false];
+	_trigger setTriggerActivation ["ANY", "PRESENT", true];
+	_trigger setTriggerTimeout [10, 15, 20, true];
+	_trigger setTriggerText _spawnMarker;
+	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigStatements,"0 = [thisTrigger] spawn fnc_despawnBandits;"];
+	
+	if ((markerAlpha _spawnMarker) > 0) then {_spawnMarker setMarkerAlpha 0};
+	
+	true
+};
+*/
+
+//Creates a cover of temporary smoke at target location.
+DZAI_smokeCover = {
+	private ["_shell","_shellSpawned"];
+	
+	_shell = ["SmokeShell","SmokeShellGreen","SmokeShellRed"] call BIS_fnc_selectRandom2;
+	_shellSpawned = createVehicle [_shell, _this, [], 0, "NONE"];
 };

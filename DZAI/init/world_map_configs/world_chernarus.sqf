@@ -147,7 +147,7 @@ _this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Berezino1";
-_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [1,2,200,thisTrigger,[],1] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
+_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [2,1,200,thisTrigger,[],1] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_38 = _this;
 
 _this = createTrigger ["EmptyDetector", [12734.678, 9571.3135, -2.6702881e-005]];
@@ -582,9 +582,6 @@ _this setTriggerText "NWAF7 (Markers)";
 _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [3,2,200,thisTrigger,['NWAF7_1','NWAF7_2','NWAF7_3','NWAF7_4'],3] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 _trigger_195 = _this;
 //triggers end
-
-//Custom waypoint file
-#include "custom_configs\chernarus_custom_config.sqf"	//Custom patrol definitions file
 
 /*
 	Custom Marker Requirements:

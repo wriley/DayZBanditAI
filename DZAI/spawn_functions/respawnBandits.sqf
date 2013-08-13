@@ -30,7 +30,7 @@ if (_totalAI == 0) exitWith {
 };
 
 //Select spawn position
-//_spawnPos = _spawnPositions call BIS_fnc_selectRandom;
+//_spawnPos = _spawnPositions call BIS_fnc_selectRandom2;
 _spawnPos = _spawnPositions call DZAI_findSpawnPos;
 
 //Respawn the group
@@ -42,13 +42,9 @@ DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
 if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Created group %1 of size %2.",_unitGroup,_totalAI];};
 
 if ((count (waypoints _unitGroup)) > 1) then {
-	_unitGroup setCurrentWaypoint ((waypoints _unitGroup) call BIS_fnc_selectRandom);
+	_unitGroup setCurrentWaypoint ((waypoints _unitGroup) call BIS_fnc_selectRandom2);
 } else {
-	if ((typeName _patroldist) == "SCALAR") then {
-		0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
-	} else {
-		0 = [_unitGroup,_patrolDist,DZAI_debugMarkers] spawn fnc_DZAI_customPatrol;
-	};
+	0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 };
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: %2 AI units respawned at %3 in %1 seconds (respawnBandits).",diag_tickTime - _startTime,_totalAI,(triggerText _trigger)];};

@@ -167,9 +167,6 @@ _trigger_41 = _this;
 
 //end triggers
 
-//Custom waypoint file
-#include "custom_configs\fallujah_custom_config.sqf"	//Custom patrol definitions file
-
 /*
 	Custom Marker Requirements:
 	

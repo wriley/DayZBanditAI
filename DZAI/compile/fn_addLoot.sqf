@@ -24,7 +24,7 @@
 			case 3: {DZAI_Pistols3};
 		};
 
-		_pistol = _pistols call BIS_fnc_selectRandom;
+		_pistol = _pistols call BIS_fnc_selectRandom2;
 		_magazine = getArray (configFile >> "CfgWeapons" >> _pistol >> "magazines") select 0;
 		_unit addMagazine _magazine;	
 		_unit addWeapon _pistol;
@@ -43,7 +43,7 @@
 	for "_i" from 1 to DZAI_invedibles do {
 		if ((random 1) < DZAI_chanceEdibles) then{
 			private["_invedible"];
-			_invedible = DZAI_Edibles call BIS_fnc_selectRandom;
+			_invedible = DZAI_Edibles call BIS_fnc_selectRandom2;
 			_unit addMagazine _invedible;
 			if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Inventory Edible Item: %1 for AI.",_invedible];};
 		};
@@ -53,7 +53,7 @@
 	for "_i" from 1 to DZAI_bpedibles do {
 		if ((random 1) < DZAI_chanceEdibles) then {
 			private["_bpedible"];
-			_bpedible = DZAI_Edibles call BIS_fnc_selectRandom;
+			_bpedible = DZAI_Edibles call BIS_fnc_selectRandom2;
 			(unitBackpack _unit) addMagazineCargoGlobal [_bpedible, 1];
 			if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Backpack Edible Item: %1 for AI.",_bpedible];};
 		};
@@ -64,7 +64,7 @@
 		for "_i" from 1 to DZAI_numMiscItemS do {
 			if ((random 1) < DZAI_chanceMiscItemS) then {
 				private ["_miscItemS"];
-				_miscItemS = DZAI_MiscItemS call BIS_fnc_selectRandom;
+				_miscItemS = DZAI_MiscItemS call BIS_fnc_selectRandom2;
 				(unitBackpack _unit) addMagazineCargoGlobal [_miscItemS,1];
 				if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Misc Item (Small): %1 for AI.",_miscItemS];};
 			};
@@ -74,7 +74,7 @@
 		for "_i" from 1 to DZAI_numMiscItemL do {
 			if ((random 1) < DZAI_chanceMiscItemL) then {
 				private["_miscItemL"];
-				_miscItemL = DZAI_MiscItemL call BIS_fnc_selectRandom;
+				_miscItemL = DZAI_MiscItemL call BIS_fnc_selectRandom2;
 				(unitBackpack _unit) addMagazineCargoGlobal [_miscItemL,1];
 				if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Misc Item (Large): %1 for AI.",_miscItemL];};
 			};
@@ -84,7 +84,7 @@
 		for "_i" from 1 to DZAI_bpmedicals do {
 			if ((random 1) < DZAI_chanceMedicals) then {
 				private["_bpmedical"];
-				_bpmedical = DZAI_Medicals2 call BIS_fnc_selectRandom;
+				_bpmedical = DZAI_Medicals2 call BIS_fnc_selectRandom2;
 				(unitBackpack _unit) addMagazineCargoGlobal [_bpmedical, 1];
 				if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Backpack Medical Item: %1 for AI.",_bpmedical];};
 			};
@@ -94,7 +94,7 @@
 		for "_i" from 1 to DZAI_invmedicals do {
 			if ((random 1) < DZAI_chanceMedicals) then {
 				private["_invmedical"];
-				_invmedical = DZAI_Medicals1 call BIS_fnc_selectRandom;
+				_invmedical = DZAI_Medicals1 call BIS_fnc_selectRandom2;
 				_unit addMagazine _invmedical;
 				if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Generated Inventory Medical Item: %1 for AI.",_invmedical];};
 			};

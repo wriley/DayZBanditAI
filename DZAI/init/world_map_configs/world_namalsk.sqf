@@ -280,8 +280,6 @@ _trigger_80 = _this;
 
 //End Triggers
 
-//Custom waypoint file
-#include "custom_configs\namalsk_custom_config.sqf"	//Custom patrol definitions file
 
 /*
 	Custom Marker Requirements:

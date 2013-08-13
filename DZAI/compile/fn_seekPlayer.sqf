@@ -6,14 +6,15 @@
 	Last updated: 2:54 PM 8/10/2013
 */
 
-private ["_unitGroup","_spawnPos","_waypoint","_patrolDist","_statement","_targetPlayer","_patrolCenter"];
+private ["_unitGroup","_spawnPos","_waypoint","_patrolDist","_statement","_targetPlayer","_patrolCenter","_smokeCover"];
 
 _unitGroup = _this select 0;
 _spawnPos = _this select 1;
 _patrolDist = _this select 2;
 _targetPlayer = _this select 3;
 
-_unitGroup setBehaviour "COMBAT";//"CARELESS"
+_smokeCover = _spawnPos spawn DZAI_smokeCover;
+_unitGroup setBehaviour "AWARE";//"CARELESS"
 _unitGroup setSpeedMode "FULL";
 _unitGroup setCombatMode "RED";//"BLUE"
 
@@ -22,12 +23,11 @@ deleteWaypoint [_unitGroup,0];
 //_statement = format ["deleteWaypoint[(group this),0]; 0 = [(group this),%1,%2,%3] spawn fnc_BIN_taskPatrol;",_spawnPos,_patrolDist,DZAI_debugMarkers];
 _waypoint = _unitGroup addWaypoint [_spawnPos,0];
 _waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius (20 + round (random 20));
-_waypoint setWaypointTimeout [0,5,10];
+_waypoint setWaypointCompletionRadius (20 + round (random 10));
+_waypoint setWaypointTimeout [5,5,5];
 _waypoint setWaypointStatements ["true","group this setCurrentWaypoint [group this,0]"];
 _unitGroup setCurrentWaypoint _waypoint;
 
-(units _unitGroup) glanceAt _targetPlayer;
 if (_targetPlayer hasWeapon "ItemRadio") then {
 	[nil,_targetPlayer,"loc",rTITLETEXT,"[RADIO] You are being pursued by a group of bandits.","PLAIN DOWN",0] call RE;
 };

@@ -1,4 +1,4 @@
-DZAI 1.4.4 - AI Addon for DayZ
+DZAI 1.4.5 - AI Addon for DayZ
 ============
 
 
@@ -172,5 +172,16 @@ DZAI 1.4.0 Changelog:
 - [MODIFIED] Lowered collision damage reduction for AI from 90% to 80%.
 - [MODIFIED] Lowered probability of generating pistol instead of rifle for weapongrade 0 AI units from 66% to 55%.
 - [MODIFIED] Dynamic AI spawn distance from target player modified from 200m-300m to 200m-250m.
+
+1.4.5 Update:
+
+- [UPDATED] seekPlayer and findKiller AI pursuit modes now explicitly order units to target and fire on target player.
+- [UPDATED] A smoke grenade is now deployed at location where dynamic AI are spawned.
+- [UPDATED] Reworked static AI spawns for Taviana and Panthera. Further fine-tuning may be needed.
+- [UPDATED] Dynamic AI spawns: A maximum of 6 players (including target player) are revealed to nearby dynamic AI. Previously there was no limit.
+- [REMOVED] Removed custom waypoint definitions files.
+- [MODIFIED] Separated modified BIS_fnc_selectRandom into its own function (BIS_fnc_selectRandom2).
+- [MODIFIED] findKiller AI behavior is now enabled by default. Pursuit distance changed from 500-600m to 400-500m.
+- [MODIFIED] Dynamic spawn trigger activation delay changed from 5/7/20 seconds to 5/7/10 seconds (min/average/max).
 
 Note: Information about past updates are archived in changelog.txt

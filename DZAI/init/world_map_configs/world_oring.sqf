@@ -280,8 +280,6 @@ _trigger_65 = _this;
 
 //end of triggers
 
-//Custom waypoint file
-#include "custom_configs\oring_custom_config.sqf"	//Custom patrol definitions file
 
 /*
 	Custom Marker Requirements:

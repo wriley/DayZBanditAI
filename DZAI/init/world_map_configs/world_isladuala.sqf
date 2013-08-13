@@ -567,8 +567,6 @@ _trigger_136 = _this;
 
 //end trigger
 
-//Custom waypoint file
-#include "custom_configs\isladuala_custom_config.sqf"	//Custom patrol definitions file
 
 /*
 	Custom Marker Requirements:

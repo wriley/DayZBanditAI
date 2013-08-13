@@ -25,7 +25,7 @@ _attempts = 0;
 _baseDist = 100;
 
 while {((count _pos) < 1)&&(_attempts < 3)} do {
-	_pos = _spawnPos findEmptyPosition [0.5,_baseDist,"Garbage_container"];
+	_pos = _spawnPos findEmptyPosition [0.5,_baseDist,"Land_Ind_BoardsPack2"];
 	if ((count _pos) > 1) then {
 		_pos = _pos isFlatEmpty [0,0,0.75,5,0,false,ObjNull];
 	};
@@ -44,7 +44,7 @@ if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Found spaw
 
 for "_i" from 1 to _totalAI do {
 	private ["_type","_unit","_weapongrade"];
-	_type = DZAI_BanditTypes call BIS_fnc_selectRandom;									// Select skin of AI unit
+	_type = DZAI_BanditTypes call BIS_fnc_selectRandom2;									// Select skin of AI unit
 	_unit = _unitGroup createUnit [_type, [0,0,0], [], 0, "FORM"];							// Spawn the AI unit
 	[_unit] joinSilent _unitGroup;														// Add AI unit to group
 

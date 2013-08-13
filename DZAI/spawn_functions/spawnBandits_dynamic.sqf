@@ -9,7 +9,7 @@
 */
 #include "\z\addons\dayz_server\DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
-private ["_patrolDist","_trigger","_totalAI","_unitGroup","_pos","_targetPlayer","_unitArray","_playerArray","_playerPos","_playerCount","_spawnPosition","_spawnPos","_nearbyTriggers","_findPlayer","_startTime","_nearbyPlayers","_revealLevel","_baseDist","_distVariance"];
+private ["_patrolDist","_trigger","_totalAI","_unitGroup","_targetPlayer","_unitArray","_playerArray","_playerPos","_playerCount","_spawnPosition","_spawnPos","_nearbyTriggers","_findPlayer","_startTime","_nearbyPlayers","_revealLevel","_baseDist","_distVariance"];
 if (!isServer) exitWith {};
 
 _patrolDist = _this select 0;
@@ -40,12 +40,15 @@ _playerArray = [];
 
 //if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: %1 units within trigger area. %2 are players. (spawnBandits_dynamic)",(count _unitArray),_playerCount];};
 
-_targetPlayer = _playerArray call BIS_fnc_selectRandom;
+_targetPlayer = _playerArray call BIS_fnc_selectRandom2;
 _playerPos = getPosATL _targetPlayer;
 
 //Count number of players close to the targeted player.
 _nearbyPlayers = _playerPos nearEntities [["AllVehicles","CAManBase"],100];
 _playerCount = {isPlayer _x} count _nearbyPlayers;
+if (_playerCount > 6) then {
+	_nearbyPlayers resize 6;
+};
 if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Counted %1 players within 100m of target player (spawnBandits_dynamic)",_playerCount];};
 
 _findPlayer = true;
@@ -97,13 +100,14 @@ _unitGroup = [_totalAI,grpNull,_spawnPos,_trigger] call fnc_createGroup;
 _unitGroup setVariable ["unitType",1];
 _unitGroup setVariable ["trigger",_trigger];
 _unitGroup allowFleeing 0;
-		
+	
 //Reveal target player and nearby players to AI.
-_revealLevel = (1.0 + random (3.0));
+_revealLevel = (1.5 + random (2.5));
 {_unitGroup reveal [_x,_revealLevel]} forEach _nearbyPlayers;
+(units _unitGroup) doTarget _targetPlayer;
+(units _unitGroup) doFire _targetPlayer;
 
 //Update AI count
-//_unitGroup setVariable ["groupSize",_totalAI];
 DZAI_numAIUnits = DZAI_numAIUnits + _totalAI;
 if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_unitGroup,_totalAI];};
 

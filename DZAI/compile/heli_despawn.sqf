@@ -30,7 +30,7 @@ if (DZAI_heliLoot) then {
 	if (!(surfaceIsWater _heliPos)) then {
 		for "_i" from 1 to 3 do {
 			private ["_dropPos","_agentType","_weapongrade","_agent","_parachute"];
-			_agentType = (DZAI_BanditTypes call BIS_fnc_selectRandom);
+			_agentType = (DZAI_BanditTypes call BIS_fnc_selectRandom2);
 			_weapongrade = [DZAI_weaponGrades,DZAI_gradeChances3] call fnc_selectRandomWeighted;
 			_dropPos = [((_heliPos select 0) + (random 10) - (random 10)),((_heliPos select 1) + (random 10) - (random 10)),100];
 			_parachute = createVehicle ["ParachuteWest", _dropPos, [], 0, "FLY"];

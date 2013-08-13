@@ -31,7 +31,7 @@ for "_i" from 1 to _numTriggers do {
 	_trigger = createTrigger ["EmptyDetector",_trigPos];
 	_trigger setTriggerArea [DZAI_dynTriggerRadius, DZAI_dynTriggerRadius, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
-	_trigger setTriggerTimeout [5, 7, 20, true];
+	_trigger setTriggerTimeout [5, 7, 10, true];
 	_trigger setTriggerStatements [DYNTRIG_STATEMENTS_INACTIVE];
 	if (DZAI_debugMarkers > 0) then {
 		private ["_markername","_marker"];

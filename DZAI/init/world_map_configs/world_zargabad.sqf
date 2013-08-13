@@ -121,8 +121,6 @@ _trigger_27 = _this;
 
 //end triggers
 
-//Custom waypoint file
-#include "custom_configs\zargabad_custom_config.sqf"	//Custom patrol definitions file
 
 /*
 	Custom Marker Requirements:

@@ -48,8 +48,6 @@ _trigger_6 = _this;
 
 //end of triggers
 
-//Custom waypoint file
-#include "custom_configs\utes_custom_config.sqf"	//Custom patrol definitions file
 
 /*
 	Custom Marker Requirements:

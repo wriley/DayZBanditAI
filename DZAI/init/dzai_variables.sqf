@@ -61,7 +61,7 @@ DZAI_heliTypes = ["UH1H_DZ"];								//Classnames of helicopter types to use. He
 DZAI_heliLoot = true;										//Enable or disable loot generation on destroying AI helicopter. Dead crew members will be parachuted out after helicopter is destroyed (Default: true)
 
 //Extra AI Settings
-DZAI_findKiller = false;									//If enabled, AI group will attempt to track down player responsible for killing a group member. Players with radios will be given text warnings if they are being pursued (Default: false)
+DZAI_findKiller = true;										//If enabled, AI group will attempt to track down player responsible for killing a group member. Players with radios will be given text warnings if they are being pursued (Default: true)
 DZAI_tempNVGs = false;										//If normal probability check for spawning NVGs fails, then give AI temporary NVGs only if they are spawned with weapongrade 2 or 3 (applies only during nighttime hours). Temporary NVGs are unlootable and will be removed at death (Default: false).
 DZAI_humanityGain = 0;										//Amount of humanity to reward player for killing an AI unit (Default: 0)
 
@@ -89,7 +89,7 @@ DZAI_gradeChances0 = [0.90,0.10,0.00,0.00];					//equipType = 0 - most AI will h
 DZAI_gradeChances1 = [0.60,0.35,0.04,0.01];					//equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.
 DZAI_gradeChances2 = [0.20,0.65,0.11,0.04];					//equipType = 2 - most AI carry military weapons, and occasionally high-grade military weapons.
 DZAI_gradeChances3 = [0.00,0.60,0.33,0.07];					//equipType = 3 - All AI will carry at least a military-grade weapon. Many will be carrying high-grade military weapons.
-DZAI_gradeChancesDyn = [0.25,0.65,0.08,0.02];				//Weapongrade chances for AI spawned from dynamic triggers.
+DZAI_gradeChancesDyn = [0.25,0.60,0.12,0.03];				//Weapongrade chances for AI spawned from dynamic triggers.
 
 //Load custom DZAI settings file.
 call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\DZAI_settings_override.sqf";
@@ -108,7 +108,7 @@ DZAI_skill0 = [
 	//AI skill settings level 0 (Skill, Minimum skill, Maximum bonus amount).
 	["aimingAccuracy",0.10,0.10],
 	["aimingShake",0.55,0.10],
-	["aimingSpeed",0.45,0.10],
+	["aimingSpeed",0.40,0.10],
 	["endurance",0.40,0.20],
 	["spotDistance",0.30,0.20],
 	["spotTime",0.40,0.20],
