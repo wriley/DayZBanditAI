@@ -50,7 +50,7 @@ class _trigger_0
 		INTERRUPTABLE="true";
 		TEXT="Blato";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,250,thisTrigger,[],1,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,250,thisTrigger,[],1,2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -90,7 +90,7 @@ class _trigger_4
 		INTERRUPTABLE="true";
 		TEXT="Seven";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,250,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,250,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -130,7 +130,7 @@ class _trigger_8
 		INTERRUPTABLE="true";
 		TEXT="Topolka";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,175,thisTrigger,[],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -170,7 +170,7 @@ class _trigger_12
 		INTERRUPTABLE="true";
 		TEXT="Branibor1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,275,thisTrigger,[],1,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,275,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -230,7 +230,7 @@ class _trigger_20
 		INTERRUPTABLE="true";
 		TEXT="Mitrovice";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,275,thisTrigger,[],1,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,275,thisTrigger,[],1,2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -250,7 +250,7 @@ class _trigger_22
 		INTERRUPTABLE="true";
 		TEXT="Shtangrad";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,250,thisTrigger,[],1,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,250,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -290,7 +290,7 @@ class _trigger_26
 		INTERRUPTABLE="true";
 		TEXT="Chernovar";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,275,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,275,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -370,7 +370,7 @@ class _trigger_34
 		INTERRUPTABLE="true";
 		TEXT="Krasnoznamensk";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,225,thisTrigger,[],1,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,225,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -390,7 +390,7 @@ class _trigger_36
 		INTERRUPTABLE="true";
 		TEXT="Krasnoznamensk";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,225,thisTrigger,[],1,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,225,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -510,7 +510,7 @@ class _trigger_48
 		INTERRUPTABLE="true";
 		TEXT="Kopech";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -530,7 +530,7 @@ class _trigger_50
 		INTERRUPTABLE="true";
 		TEXT="Byelov";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,225,thisTrigger,[],1,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,225,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -630,7 +630,7 @@ class _trigger_60
 		INTERRUPTABLE="true";
 		TEXT="Slovany";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,250,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,250,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -650,7 +650,7 @@ class _trigger_62
 		INTERRUPTABLE="true";
 		TEXT="Dyelnica";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,250,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,250,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -670,7 +670,7 @@ class _trigger_64
 		INTERRUPTABLE="true";
 		TEXT="Sabina";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,250,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,250,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -730,7 +730,7 @@ class _trigger_70
 		INTERRUPTABLE="true";
 		TEXT="Uyezd";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,250,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,250,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -770,7 +770,7 @@ class _trigger_74
 		INTERRUPTABLE="true";
 		TEXT="Airport Dubovo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,200,thisTrigger,[],2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,200,thisTrigger,[],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -810,7 +810,7 @@ class _trigger_78
 		INTERRUPTABLE="true";
 		TEXT="Dubovo Hotel";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [0,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1110,7 +1110,7 @@ class _trigger_108
 		INTERRUPTABLE="true";
 		TEXT="Krakov";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,2,175,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1150,7 +1150,7 @@ class _trigger_112
 		INTERRUPTABLE="true";
 		TEXT="Ekaterinburg";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,2,200,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,1,200,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1190,7 +1190,7 @@ class _trigger_116
 		INTERRUPTABLE="true";
 		TEXT="Helfenburg";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,2,175,thisTrigger,[],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1230,7 +1230,7 @@ class _trigger_122
 		INTERRUPTABLE="true";
 		TEXT="Dalnogorsk";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [0,2,175,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1370,7 +1370,7 @@ class _trigger_136
 		INTERRUPTABLE="true";
 		TEXT="Church of St Ivan";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,175,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1390,7 +1390,7 @@ class _trigger_138
 		INTERRUPTABLE="true";
 		TEXT="Molotovsk";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1410,7 +1410,7 @@ class _trigger_140
 		INTERRUPTABLE="true";
 		TEXT="Molotovski Zlaiv";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,1,150,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [0,1,150,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1448,9 +1448,9 @@ class _trigger_144
 		TIMEOUT_MID="15";
 		TIMEOUT_MAX="20";
 		INTERRUPTABLE="true";
-		TEXT="DZAI Trigger";
+		TEXT="Treshnyovo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,1,125,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [0,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1490,7 +1490,7 @@ class _trigger_150
 		INTERRUPTABLE="true";
 		TEXT="Jaroslavski Airport";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,250,thisTrigger,[],2,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [1,2,250,thisTrigger,[],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1510,7 +1510,7 @@ class _trigger_152
 		INTERRUPTABLE="true";
 		TEXT="Khotanovsk";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [0,2,175,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [0,1,175,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1530,7 +1530,7 @@ class _trigger_154
 		INTERRUPTABLE="true";
 		TEXT="Branibor2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,275,thisTrigger,[],1,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,275,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1550,7 +1550,7 @@ class _trigger_157
 		INTERRUPTABLE="true";
 		TEXT="Branibor3";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [1,2,275,thisTrigger,[],1,2] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,2,275,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };

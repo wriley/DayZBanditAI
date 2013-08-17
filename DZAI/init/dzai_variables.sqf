@@ -145,7 +145,7 @@ DZAI_skill2 = [
 ];
 DZAI_skill3 = [	
 	//AI skill settings level 3 (Skill, Minimum skill, Maximum bonus amount).
-	["aimingAccuracy",0.30,0.10],
+	["aimingAccuracy",0.25,0.10],
 	["aimingShake",0.85,0.10],
 	["aimingSpeed",0.80,0.10],
 	["endurance",0.80,0.20],

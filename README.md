@@ -1,4 +1,4 @@
-DZAI 1.4.5 - AI Addon for DayZ
+DZAI 1.4.6 - AI Addon for DayZ
 ============
 
 
@@ -183,5 +183,11 @@ DZAI 1.4.0 Changelog:
 - [MODIFIED] Separated modified BIS_fnc_selectRandom into its own function (BIS_fnc_selectRandom2).
 - [MODIFIED] findKiller AI behavior is now enabled by default. Pursuit distance changed from 500-600m to 400-500m.
 - [MODIFIED] Dynamic spawn trigger activation delay changed from 5/7/20 seconds to 5/7/10 seconds (min/average/max).
+
+1.4.6 Update:
+
+- [UPDATED] Reworked static AI spawns for Oring and Isladuala. 
+- [MODIFIED] Further modifications to Taviana spawns.
+- [MODIFIED] Lowered accuracy skill for weapongrade 3 AI.
 
 Note: Information about past updates are archived in changelog.txt
