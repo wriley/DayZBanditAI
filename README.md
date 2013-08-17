@@ -7,11 +7,11 @@ Introduction
 
 DZAI is designed to be a simple, configurable, easy-to-install AI package. This AI package is MP-compatible and works out of the box with any supported DayZ map. Installation instructions are provided below.
 
-DZAI is also available as a "Lite" version. More details can be found here: https://github.com/dayzai/DZAI-Lite
+DZAI is also available as a simpler "Lite" version. More details can be found here: https://github.com/dayzai/DZAI-Lite
 
 Reminder: The latest stable build of DZAI is always located in the 'master' branch. The latest experimental build is located in a separate branch, usually labeled with a version number. These experimental builds have the latest improvements and bugfixes, but may also have new bugs that need to be fixed, so they are not guaranteed to be stable.
 
-Detailed documentation for the DZAI package is coming. Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
+Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
 
 Features
 ============
@@ -25,21 +25,18 @@ Features
 Compatibility
 ============
 
-- DZAI is designed to be compatible with every publicly-available DayZ Mod. At present time no DayZ mods are known to have issues with DZAI.
+- DZAI is designed to be compatible with most publicly-available DayZ Mods. Unsupported mods are listed further below.
+- DZAI does not support any DayZ map or mod that is non-public, in development, or has an AI addon prepackaged.
+- DZAI may or may not function properly with unsupported mods.
 
-<b>Fully-supported DayZ Mods:</b>
+<b>Supported DayZ maps and mods:</b>
 
-- DZAI is regularly updated for compatibility with these DayZ mods: DayZ 1.7.7.1+, DayZ Overwatch 0.2.2+.
+- Supported Maps: Chernarus, Namalsk, Celle, Fallujah, Lingor/Hunting Grounds, Isla Duala, Oring, Panthera, Sahrani, Takistan, Taviana, Utes, Zargabad.
+- Supported Mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Civilian, DayZ Epoch, DayZ Overwatch.
 
-<b>Partially-supported DayZ Mods:</b>
+<b>Unupported DayZ mods:</b>
 
-- DZAI is known to be functional and compatible with these maps/mods but development is not done using these mods. Any issues with these maps/mods will be fixed as they become known.
-- This list includes the following maps/mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Civilian, DayZ Fallujah, DayZ Isladuala, DayZ Lingor 1.3, DayZ Oring, DayZ Panthera, DayZ Sahrani, DayZ Taviana (all versions), DayZ Utes, DayZ Celle, DayZ Namalsk, DayZ Epoch 1.0.1.5+, DayZ Hunting Grounds 1.0.1+.
-
-<b>Unsupported DayZ Mods:</b>
-
-- DZAI does not support DayZ mods that are in their non-public and/or development phase.
-- There is no support for the following DayZ mods: DayZ+, DayZ Invasion 1944, DayZ Thirsk, DayZ Trinity Island.
+- DayZ+, DayZ Epidemic, DayZ Taviana (Tactical_Force version), DayZ Invasion 1944.
 
 <b>Known Issues:</b>
 
