@@ -99,7 +99,7 @@ class _trigger_8
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[10648.018, 9272.71, 0.036804199]";
+		POSITION="[10657.162, 9098.8779, 0.036804199]";
 		A="600";
 		B="600";
 		ACTIVATION_BY="ANY";
@@ -110,7 +110,7 @@ class _trigger_8
 		INTERRUPTABLE="true";
 		TEXT="Paraiso South";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [2,1,175,thisTrigger,[]] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,200,thisTrigger,[]] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -270,7 +270,7 @@ class _trigger_31
 		INTERRUPTABLE="true";
 		TEXT="Chantico";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [1,2,175,thisTrigger,[],0] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,200,thisTrigger,[],0] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -390,7 +390,7 @@ class _trigger_49
 		INTERRUPTABLE="true";
 		TEXT="Estrella";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [0,1,130,thisTrigger,[],0] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [0,1,150,thisTrigger,[],0] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -490,7 +490,7 @@ class _trigger_64
 		INTERRUPTABLE="true";
 		TEXT="Geraldo";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [0,1,125,thisTrigger,[]] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [0,1,175,thisTrigger,[],0] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1330,7 +1330,7 @@ class _trigger_169
 		INTERRUPTABLE="true";
 		TEXT="Rahmadi";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [2,1,150,thisTrigger,[],2] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [1,1,150,thisTrigger,[],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
