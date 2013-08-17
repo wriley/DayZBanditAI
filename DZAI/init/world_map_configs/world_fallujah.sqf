@@ -30,7 +30,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_5 = _this;
 
 _this = createTrigger ["EmptyDetector", [5841.0649, 3274.3418]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Shuhada 3";
@@ -38,7 +38,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_7 = _this;
 
 _this = createTrigger ["EmptyDetector", [4167.9814, 2937.0071]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Shuhada Outskirts";
@@ -46,7 +46,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_10 = _this;
 
 _this = createTrigger ["EmptyDetector", [4231.8408, 3775.5828]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Nazal Old City 3";
@@ -54,7 +54,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_12 = _this;
 
 _this = createTrigger ["EmptyDetector", [5460.3242, 4725.9829]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Industrial Park";
@@ -62,7 +62,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_14 = _this;
 
 _this = createTrigger ["EmptyDetector", [4578.2759, 4623.8286]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Nazal Old City";
@@ -70,7 +70,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_16 = _this;
 
 _this = createTrigger ["EmptyDetector", [3789.0449, 4756.6895]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Muhadisin 2";
@@ -78,7 +78,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_18 = _this;
 
 _this = createTrigger ["EmptyDetector", [6017.7773, 5471.8042]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Al-Fallujah2";
@@ -86,7 +86,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_20 = _this;
 
 _this = createTrigger ["EmptyDetector", [6847.6694, 5847.5957]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Askari";
@@ -94,7 +94,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_22 = _this;
 
 _this = createTrigger ["EmptyDetector", [6149.6079, 6328.2373]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Jeghaifi";
@@ -102,7 +102,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_24 = _this;
 
 _this = createTrigger ["EmptyDetector", [5275.6221, 6394.0518, 0]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Shurta";
@@ -110,7 +110,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_26 = _this;
 
 _this = createTrigger ["EmptyDetector", [5099.4775, 5486.6943, 0]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Al-Fallujah";
@@ -118,7 +118,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_28 = _this;
 
 _this = createTrigger ["EmptyDetector", [4259.4507, 5389.4009]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Muhadisin";
@@ -126,7 +126,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_30 = _this;
 
 _this = createTrigger ["EmptyDetector", [4258.0264, 6241.6333, 0]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Mualimeen";
@@ -134,7 +134,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_32 = _this;
 
 _this = createTrigger ["EmptyDetector", [2743.0493, 6054.9946]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Jolan 1";
@@ -142,7 +142,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_34 = _this;
 
 _this = createTrigger ["EmptyDetector", [3135.6968, 5255.6885, 0]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Jolan 2";
@@ -166,7 +166,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,1,200
 _trigger_41 = _this;
 
 _this = createTrigger ["EmptyDetector", [5693.0415, 9848.7383, 0]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "FOB";
@@ -174,7 +174,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,175
 _trigger_43 = _this;
 
 _this = createTrigger ["EmptyDetector", [8290.915, 5529.1563, 0]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Highway 13 Hotel";
@@ -206,7 +206,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [1,1,200
 _trigger_55 = _this;
 
 _this = createTrigger ["EmptyDetector", [5137.1113, 3965.2295]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Nazal Old City 2";
@@ -214,7 +214,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_58 = _this;
 
 _this = createTrigger ["EmptyDetector", [6320.5513, 4726.0381]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Industrial Park 2";
@@ -222,7 +222,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_61 = _this;
 
 _this = createTrigger ["EmptyDetector", [4948.8364, 3179.9587, 8.0061226]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Shuhada";
@@ -230,7 +230,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_63 = _this;
 
 _this = createTrigger ["EmptyDetector", [5462.3125, 2556.1438]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Shuhada 2";
@@ -238,7 +238,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_65 = _this;
 
 _this = createTrigger ["EmptyDetector", [3560.7349, 5894.3066, 0]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Jolan 3";
@@ -246,7 +246,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_67 = _this;
 
 _this = createTrigger ["EmptyDetector", [5874.2266, 4094.0103]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Industrial Park 3";
@@ -254,7 +254,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_69 = _this;
 
 _this = createTrigger ["EmptyDetector", [4710.873, 2471.1787]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Shuhada Outskirts 2";
@@ -262,7 +262,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_71 = _this;
 
 _this = createTrigger ["EmptyDetector", [3493.2424, 4049.1069]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Nazal Outskirts";
@@ -270,7 +270,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,2,250
 _trigger_73 = _this;
 
 _this = createTrigger ["EmptyDetector", [2466.6702, 4881.7129]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Hospital";
@@ -278,7 +278,7 @@ _this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "nul = [2,1,150
 _trigger_75 = _this;
 
 _this = createTrigger ["EmptyDetector", [6880.3315, 6543.4219, 0]];
-_this setTriggerArea [400, 400, 0, false];
+_this setTriggerArea [600, 600, 0, false];
 _this setTriggerActivation ["ANY", "PRESENT", true];
 _this setTriggerTimeout [10, 15, 20, true];
 _this setTriggerText "Askari 2";
