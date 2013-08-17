@@ -186,7 +186,7 @@ DZAI 1.4.0 Changelog:
 
 1.4.6 Update:
 
-- [UPDATED] Reworked static AI spawns for Oring, Isladuala, Fallujah, Utes, Zargabad. 
+- [UPDATED] Reworked static AI spawns for Oring, Isladuala, Fallujah, Utes, Zargabad, Takistan. 
 - [MODIFIED] Further modifications to Taviana spawns.
 - [MODIFIED] Lowered accuracy skill for weapongrade 3 AI.
 
