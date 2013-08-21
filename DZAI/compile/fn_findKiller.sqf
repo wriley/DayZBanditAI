@@ -17,9 +17,6 @@ if (_groupSize == 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Deb
 _inPursuit = _unitGroup getVariable ["inPursuit",false];
 if (_inPursuit) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Group is already in pursuit of a target. (fn_findKiller)";};};
 
-//Short delay to simulate a response time.
-sleep (3 + floor (random 8));
-
 //Reveal killer to AI group and order units to target and fire.
 _unitGroup reveal [(vehicle _killer),4];
 (units _unitGroup) doTarget (vehicle _killer);

@@ -105,7 +105,6 @@ DZAI 1.5.0 Changelog:
 - [UPDATED] AI helicopters now travel directly to cities, towns, and other locations. This change helps distribute helicopter patrols more evenly around the map.
 - [UPDATED] Disabling dynamic AI spawns now also prevents related settings from being loaded.
 - [UPDATED] Preset static AI spawns can now be disabled in dzai_variables.sqf.
-- [MODIFIED] Added a 3-10 second delay until AI units begin pursuing player responsible for killing a group member.
 - [MODIFIED] AI helicopter flying height changed from 90-130m to 100-140m.
 - [MODIFIED] Increased waypoint completion times for AI helicopter patrols.
 - [MODIFIED] Rebalanced default backpack loot tables.
