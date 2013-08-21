@@ -8,7 +8,7 @@
 		Last updated: 8:57 PM 7/26/2013
 */
 
-private["_victim","_killer","_unitGroup","_groupSize","_victimName"];
+private["_victim","_killer","_unitGroup","_groupSize"];
 _victim = _this select 0;
 _killer = _this select 1;
 _unitGroup = _this select 2;
@@ -17,9 +17,7 @@ _unitGroup = _this select 2;
 if ((_victim getVariable["removeNVG",0]) == 1) then {_victim removeWeapon "NVGoggles";}; //Remove temporary NVGs from AI.
 
 //Set study_body variables.
-_victimName = typeOf _victim;
-_victim setVariable["bodyName",_victimName,true];
-_victim setVariable["deathType","bled",true];
+_victim setVariable ["deathType","bled",true];
 
 //Update AI count
 _groupSize = _unitGroup getVariable "groupSize";

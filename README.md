@@ -1,4 +1,4 @@
-DZAI 1.4.6 - AI Addon for DayZ
+DZAI 1.5.0 - AI Addon for DayZ
 ============
 
 
@@ -94,97 +94,25 @@ Installation Instructions:
 
 Note: You may store your custom settings changes in DZAI\DZAI_settings_override.sqf. This file is a convenient way to store and transfer your custom settings when upgrading to a newer version of DZAI. Further instructions are provided inside this file.
 
-	
-DZAI 1.4.0 Changelog:
+
+DZAI 1.5.0 Changelog:
 ============
 
-1. Gameplay Changes
----
+- [UPDATED] AI groups now have a chance of searching for nearby lootpiles upon completing a waypoint.
+- [UPDATED] Using Study Body on a dead AI unit now shows a randomly generated name.
+- [UPDATED] Dynamic AI now spawn facing targeted player.
+- [UPDATED] DZAI now reads from CfgWorlds config file to retrieve location data.
+- [UPDATED] AI helicopters now travel directly to cities, towns, and other locations. This change helps distribute helicopter patrols more evenly around the map.
+- [UPDATED] Disabling dynamic AI spawns now also prevents related settings from being loaded.
+- [UPDATED] Preset static AI spawns can now be disabled in dzai_variables.sqf.
+- [MODIFIED] Added a 3-10 second delay until AI units begin pursuing player responsible for killing a group member.
+- [MODIFIED] AI helicopter flying height changed from 90-130m to 100-140m.
+- [MODIFIED] Increased waypoint completion times for AI helicopter patrols.
+- [MODIFIED] Rebalanced default backpack loot tables.
+- [MODIFIED] Probability of generating GPS for low-tier loot table increased from 0% to 0.5%, probability increased for high-tier loot table from 10% to 12.5%.
+- [MODIFIED] DZAI will try to avoid spawning AI if a player is within 50m of a chosen spawn point (distance increased from 30m).
+- [MODIFIED] Increased default server monitor reporting interval from 3 minutes to 5 minutes.
+- [MODIFIED] Slight increase in accuracy for helicopter AI gunners.
+- [MODIFIED] Dynamic triggers will now spawn a minimum of 300m away from map center marker to reduce frequency of spawns being concentrated at map center.
 
-- [NEW] Destroying an AI helicopter now causes three dead AI units to be parachuted out. These units carry military-grade gear. (Items are generated using DZAI's highest-tier loot table). Bodies are deleted 10 minutes after they are generated.
-- [UPDATED] Changes to AI spawning functions now allow AI units to spawn in tighter quarters (ie: between buildings, inside forests, etc).
-- [UPDATED] Collision damage to AI units reduced to 10% to prevent rare cases where AI die after spawning on top of tall objects and die after falling off.
-- [UPDATED] Dynamic AI spawn triggers will relocate instead of activating if placed on water.
-- [UPDATED] Zombies around AI group leaders are no longer automatically revealed.
-- [UPDATED] Increased probability of AI to start self-heal process from 33.3% to 40% (check interval is determined by DZAI_refreshRate).
-- [UPDATED] AI helicopters have a 25% chance of entering "Seek and Destroy" mode after reaching a waypoint, where the helicopter will attempt to visually search the area for enemy units (players). S.A.D. mode lasts for 30/60/90 seconds (minimum/average/maximum).
-- [UPDATED] Custom static triggers can now have activation delay manually specified. Simply insert an array containing the minimum/average/maximum activation delay. Further instructions are provided in the map config files. (NOTE: This feature is untested. Please report any problems using the DZAI_spawn function).
-- [UPDATED] Chernarus: Updated AI spawns for Castle Rog, Devil's Castle, Castle Zub. (AI difficulty/weapon grade, spawn points, patrol radii).
-- [UPDATED] Chernarus: Stary Sobor AI spawns changed from 1 group of 2 (+2 max) units of 2 groups of 2 (+1 max) units.
-- [UPDATED] Chernarus: Novy Sobor AI spawns changed from 1 (+2 max) units to 2 (+1 max) units. Patrol radius increased from 175m to 225m.
-- [FIXED] AI patrol waypoints are no longer generated in water.
-- [FIXED] Dynamic AI now properly seeks out targeted player's position beyond the minimum 30 seconds.
-- [FIXED] Fixed bugs associated when static triggers have no minimum amount of AI units to spawn or respawn.
-
-
-2. Under-the-hood Code Changes
-----
-
-- [NEW] Debug text in RPT log now reports name of trigger (ie: Electro1, Cherno1) when reporting static trigger activity.
-- [UPDATED] Debug markers for helicopters now display text indicating helicopter type and AI group.
-- [UPDATED] Updated debug markers for static triggers. Instead of colored circular markers, red/orange/green text will indicate the activity status of the trigger. (Active/Despawning/Inactive). Debug markers for dynamic triggers are unaffected.
-- [UPDATED] DZAI_debugMarkers level 2 will allow debug markers for static triggers to refresh periodically (1 refresh/30 seconds). Inactive static triggers will not have their markers refreshed.
-- [UPDATED] Modified classname verification script to avoid usage of "call compile...".
-- [UPDATED] Reduced building search range for static triggers from 300m to 250, and restricted search criteria to objects of "HouseBase" class instead of "Building".
-- [UPDATED] Static triggers now generate a maximum of 100 building positions per trigger. Previously, no limit existed and the number of generated building positions could reach over 500/trigger in dense areas.
-- [FIXED] Debug markers for individual AI units and helicopters now check if unit/vehicle is both alive and not null. Should prevent cases where markers remain after the unit/vehicle is destroyed or despawned.
-- [FIXED] Fixed rare cases where debug markers for individual AI units and group waypoints were not properly deleted.
-
-
-1.4.1 Update (Re-release):
-
-- [FIXED] Added an optional experimental fix to prevent AI units from shooting/walking through buildings and objects spawned by DayZ's CfgTownGenerator. Enable by setting DZAI_objectPatch = true in dzai_variables.sqf. Enabling this setting may be essential for DayZ Overwatch 0.2.2+.
-<b>Note</b>: Enabling DZAI_objectPatch *may* cause a flood of "Ref to nonnetwork object" errors in your RPT log. This is a harmless warning message but can be annoying as it fills up the RPT log.
-
-1.4.2 Update:
-
-- [FIXED] Added fix to prevent second sidearm weapon from being added to AI after death.
-- [UPDATED] Static spawn triggers avoid spawning AI if a player is within 30m of the spawn point. Up to 5 attempts are made to search for a suitable location without players nearby.
-- [UPDATED] Chernarus: Updated default patrol radius for most static AI spawns from 125m to 200m. This should allow player encounters with AI more easy to avoid and less forced.
-- [UPDATED] Updated default AI weapon banlist. The following weapons will not be added to list of AI-usable weapons: "Crossbow_DZ","Crossbow","MeleeHatchet","MeleeCrowbar","MeleeMachete","MeleeBaseball","MeleeBaseBallBat","MeleeBaseBallBatBarbed","MeleeBaseBallBatNails"
-- [MODIFIED] Increased chance of generating pistol instead of rifle for AI with weapongrade 0 from 50% to 66%.
-- [MODIFIED] Removed classname blacklist for serverside object fix since it was ineffective at suppressing RPT log warning entries. We will have to wait until BIS releases a patch that suppresses these log warnings.
-- [MODIFIED] Chernarus: Updated Zelenogorsk static spawns from 1 group of 1 (+2 max) units to 2 groups of 1 (+1 max) units.
-- [MODIFIED] Decreased AI accuracy and aimingshake (lock-on time increased) slightly for all skill tiers.
-- [MODIFIED] Decreased probability of generating each medical item for AI from 75% to 70%.
-
-1.4.3 Update:
-
-- [MODIFIED] Dynamic triggers that intersect other active dynamic triggers will only spawn 1 AI unit instead of having total AI spawned reduced by a certain amount.
-- [MODIFIED] Increased probability of generating AI unit with weapongrade 0 for equipType 0 and 1, probability decreased accordingly for weapongrade 1.
-- [MODIFIED] AI helicopter waypoint amounts no longer depend on number of dynamic triggers. (Fixed at 15).
-- [MODIFIED] Decreased completion times for AI helicopter waypoints.
-- [MODIFIED] Removed the following small miscellaneous items from AI loot tables: ItemTankTrap, ItemSandbag, ItemWire, Handgrenade_West, 1Rnd_HE_M203.
-- [MODIFIED] Lowered probability of generating Flashlight and Watch for low-tier tools loot table.
-- [MODIFIED] AI units with weapongrade 0 no longer carry medical and miscellaneous items.
-- [MODIFIED] Epoch: AI units with weapongrade no longer have a chance of carrying metal bar currency.
-- [MODIFIED] Small edits to AI patrol script: AI units no longer move together in formation, and are fixed in combat mode Red (do not engage enemies in formation).
-
-1.4.4 Update:
-
-- [FIXED] Fixed bug where debug markers for dynamic triggers became desynchronized with their assigned trigger.
-- [FIXED] Dynamic AI player-seeking now uses AI group leader as center point for AI patrol if target player logs out during pursuit state.
-- [FIXED] Waypoints are no longer created for a wiped-out dynamic AI group.
-- [MODIFIED] Lowered AI aimingAccuracy for all skill tiers. Large increases to AI aimingShake (lock-on time decrease) and smaller increases to AI aimingSpeed. These changes are intended to increase AI effectiveness in close quarters and decrease effectiveness at long distances.
-- [MODIFIED] Lowered collision damage reduction for AI from 90% to 80%.
-- [MODIFIED] Lowered probability of generating pistol instead of rifle for weapongrade 0 AI units from 66% to 55%.
-- [MODIFIED] Dynamic AI spawn distance from target player modified from 200m-300m to 200m-250m.
-
-1.4.5 Update:
-
-- [UPDATED] seekPlayer and findKiller AI pursuit modes now explicitly order units to target and fire on target player.
-- [UPDATED] A smoke grenade is now deployed at location where dynamic AI are spawned.
-- [UPDATED] Reworked static AI spawns for Taviana and Panthera. Further fine-tuning may be needed.
-- [UPDATED] Dynamic AI spawns: A maximum of 6 players (including target player) are revealed to nearby dynamic AI. Previously there was no limit.
-- [REMOVED] Removed custom waypoint definitions files.
-- [MODIFIED] Separated modified BIS_fnc_selectRandom into its own function (BIS_fnc_selectRandom2).
-- [MODIFIED] findKiller AI behavior is now enabled by default. Pursuit distance changed from 500-600m to 400-500m.
-- [MODIFIED] Dynamic spawn trigger activation delay changed from 5/7/20 seconds to 5/7/10 seconds (min/average/max).
-
-1.4.6 Update:
-
-- [UPDATED] Reworked static AI spawns for Oring, Isladuala, Fallujah, Utes, Zargabad, Takistan. 
-- [MODIFIED] Further modifications to Taviana spawns.
-- [MODIFIED] Lowered accuracy skill for weapongrade 3 AI.
-
-Note: Information about past updates are archived in changelog.txt
+Note: Information about past updates are archived in changelog_archive.txt

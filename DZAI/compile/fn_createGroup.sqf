@@ -49,6 +49,7 @@ for "_i" from 1 to _totalAI do {
 	_unit setPosATL _pos;
 	[_unit] joinSilent _unitGroup;														// Add AI unit to group
 
+	_unit setVariable ["bodyName",(name _unit),true];									// Set unit name
 	_unit setVariable ["gethit",[0,0,0,0]];												// Set unit health
 	_unit setVariable ["unconscious",false];											// Set unit consciousness
 

@@ -1,7 +1,7 @@
 private ["_startTime","_generatorStr","_cfgLocation","_locationArray","_config","_spawnServerObj"];
 
 _startTime = diag_tickTime;
-_generatorStr = format ["CfgTownGenerator%1",_this];
+_generatorStr = format ["CfgTownGenerator%1",worldName];
 
 diag_log format ["OBJECT PATCH :: Spawning in serverside objects... Reading from file %1.",_generatorStr];
 

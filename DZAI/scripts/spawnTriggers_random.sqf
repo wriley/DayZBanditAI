@@ -20,7 +20,7 @@ if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawning %1 dynamic 
 
 for "_i" from 1 to _numTriggers do {
 	private ["_trigger","_trigPos","_attempts"];
-	_trigPos = [(getMarkerPos DZAI_centerMarker),random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
+	_trigPos = [(getMarkerPos DZAI_centerMarker),300 + random(DZAI_centerSize),random(360),false,[1,500]] call SHK_pos;
 	_attempts = 0;
 	while {(({([_trigPos select 0,_trigPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)&&(_attempts < 3)} do {
 		sleep 0.5;

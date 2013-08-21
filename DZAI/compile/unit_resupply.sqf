@@ -60,11 +60,10 @@ while {(alive _unit)&&(!(isNull _unit))} do {
 		if (((getDammage _unit) > 0.25)&&(_bandages > 0)) then {
 			if ((time - _lastBandage) > 60) then {
 				if ((random 1) < 0.4) then {
-					sleep 0.5;
 					_bandages = _bandages - 1;
 					_unit disableAI "FSM";
 					_unit playActionNow "Medic";
-					sleep 3.5;
+					sleep 4;
 					_unit enableAI "FSM";
 					_unit setDamage 0;
 					_unit setVariable ["gethit",[0,0,0,0]];

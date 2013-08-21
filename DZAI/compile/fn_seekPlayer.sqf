@@ -13,7 +13,7 @@ _spawnPos = _this select 1;
 _patrolDist = _this select 2;
 _targetPlayer = _this select 3;
 
-_smokeCover = _spawnPos spawn DZAI_smokeCover;
+//_smokeCover = _spawnPos spawn DZAI_smokeCover;
 _unitGroup setBehaviour "AWARE";//"CARELESS"
 _unitGroup setSpeedMode "FULL";
 _unitGroup setCombatMode "RED";//"BLUE"
@@ -23,7 +23,7 @@ deleteWaypoint [_unitGroup,0];
 //_statement = format ["deleteWaypoint[(group this),0]; 0 = [(group this),%1,%2,%3] spawn fnc_BIN_taskPatrol;",_spawnPos,_patrolDist,DZAI_debugMarkers];
 _waypoint = _unitGroup addWaypoint [_spawnPos,0];
 _waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius (20 + round (random 10));
+_waypoint setWaypointCompletionRadius 30;
 _waypoint setWaypointTimeout [5,5,5];
 _waypoint setWaypointStatements ["true","group this setCurrentWaypoint [group this,0]"];
 _unitGroup setCurrentWaypoint _waypoint;
@@ -39,7 +39,9 @@ while {(alive _targetPlayer) && !(isNull _targetPlayer) && (_targetPlayer isKind
 	if !(_unitGroup getVariable ["inPursuit",false]) then {
 		_waypoint setWPPos getPosATL _targetPlayer;
 		_unitGroup setCurrentWaypoint _waypoint;
-		(units _unitGroup) glanceAt _targetPlayer;
+		_unitGroup setFormDir ([(leader _unitGroup),_targetPlayer] call BIS_fnc_dirTo);
+		(units _unitGroup) doTarget _targetPlayer;
+		(units _unitGroup) doFire _targetPlayer;
 		//Warn player of AI bandit presence if they have a radio.
 		if (_targetPlayer hasWeapon "ItemRadio") then {
 			[nil,_targetPlayer,"loc",rTITLETEXT,"[RADIO] You are being pursued by a group of bandits.","PLAIN DOWN",0] call RE;

@@ -7,7 +7,7 @@
 */
 private ["_randomizeCount"];
 
-diag_log "Spawning AI helicopter patrols and dynamic triggers in 30 seconds.";
+diag_log "Starting DZAI Scheduler in 30 seconds.";
 
 sleep 30;
 
@@ -23,12 +23,8 @@ if (DZAI_dynAISpawns) then {
 	_randomizeCount = ceil(0.25*DZAI_dynTriggersMax);
 };
 sleep 3;
-if (DZAI_aiHeliPatrols) then {
-	_helipatrols = [] spawn fnc_spawnHeliPatrol;
-	waitUntil {sleep 1; scriptDone _helipatrols};
-};
 
-diag_log "Starting DZAI Scheduler in 15 minutes.";
+diag_log "DZAI Scheduler will continue tasks in 15 minutes.";
 sleep 900;
 
 while {true} do {
@@ -42,6 +38,6 @@ while {true} do {
 		_helipatrols = [] spawn fnc_spawnHeliPatrol;
 		waitUntil {sleep 1; scriptDone _helipatrols};
 	};
-	if (DZAI_debugLevel > 0) then {diag_log "DZAI Scheduler is returning to sleeping state.";};
+	if (DZAI_debugLevel > 0) then {diag_log "DZAI Scheduler is returning to sleeping state. Resuming in 15 minutes";};
 	sleep 900;
 };
