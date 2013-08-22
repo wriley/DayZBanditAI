@@ -319,7 +319,7 @@ DZAI_relocDynTrigger = {
 	private ["_newPos","_attempts"];
 
 	_attempts = 0;
-	while {_newPos = ["DZAI_centerMarker",false,DZAI_areaBlacklist] call SHK_pos; (_attempts < 3)&&(({([_trigPos select 0,_trigPos select 1] distance _x) < (2*((getMarkerSize "DZAI_centerMarker") select 0) - 2*((getMarkerSize "DZAI_centerMarker") select 1)*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)} do {	
+	while {_newPos = [(getMarkerPos "DZAI_centerMarker"),300 + random((getMarkerSize "DZAI_centerMarker") select 0),random(360),false,[1,300]] call SHK_pos; (_attempts < 3)&&(({([_trigPos select 0,_trigPos select 1] distance _x) < (2*((getMarkerSize "DZAI_centerMarker") select 0) - 2*((getMarkerSize "DZAI_centerMarker") select 1)*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)} do {	
 		_attempts = _attempts +1;
 		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
 	};

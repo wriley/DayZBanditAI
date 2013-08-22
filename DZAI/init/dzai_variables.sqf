@@ -54,7 +54,6 @@ DZAI_despawnWait = 120;										//Time to allow spawned AI units to exist in se
 DZAI_dynAISpawns = true;									//Enable or disable dynamic AI trigger spawns. If enabled, AI spawn locations will be randomly placed around the map. (Default: true)
 DZAI_dynRemoveDeadWait = 300;								//Time to wait before deleting bodies of AI units spawned from dynamic triggers. (Default: 300)
 DZAI_dynDespawnWait = 120;									//Time to wait before despawning all AI units in dynamic trigger area when no players are present, and delay time before force-despawning trigger area after all spawned units have been killed. (Default: 120)
-DZAI_areaBlacklist = [];									//Marker-defined areas to avoid spawning dynamic triggers.
 
 //AI Helicopter patrol settings
 //IMPORTANT: Before enabling AI helicopter patrols, make sure you have properly edited your server_cleanup.fsm file. Otherwise, the helicopters will explode after spawning.
