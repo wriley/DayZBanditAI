@@ -106,7 +106,7 @@ DZAI_heliRandomPatrol = {
 			_tooClose = false;
 		};
 	};
-	_wpSelect = [_wpSelect,300,(random 360),true] call SHK_pos;
+	_wpSelect = [_wpSelect,200+(random 100),(random 360),true] call SHK_pos;
 	[_unitGroup,0] setWPPos _wpSelect; 
 	if ((waypointType [_unitGroup,0]) == "MOVE") then {
 		if ((random 1) < 0.30) then {
@@ -304,34 +304,22 @@ DZAI_updateSpawnMarker = {
 
 //Finds a position that does not have a player within a certain distance.
 DZAI_findSpawnPos = {
-	private ["_spawnPos","_attempts","_posFound"];
+	private ["_spawnPos","_attempts"];
 	
 	_attempts = 0;
-	_posFound = false;
-	
-	while {_attempts = _attempts + 1; (_attempts <= 5)&&(!_posFound)} do {
-		_spawnPos = _this select floor (random count _this);
-		if  (({isPlayer _x} count (_spawnPos nearEntities [["AllVehicles","CAManBase"],50])) == 0) then {
-			_posFound = true;
-		};
+	while {_attempts = _attempts + 1; _spawnPos = _this select floor (random count _this); (_attempts <= 5)&&(({isPlayer _x} count (_spawnPos nearEntities [["AllVehicles","CAManBase"],40])) > 0)} do {
+		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Player found within 40m of chosen spawn position. (attempt %1/5).",_attempts];};
 	};
 	_spawnPos
 };
 
 //Relocates a dynamic trigger
 DZAI_relocDynTrigger = {
-	private ["_newPos","_attempts","_posFound"];
+	private ["_newPos","_attempts"];
 
 	_attempts = 0;
-	_posFound = false;
-	
-	while {_attempts = _attempts +1; (_attempts <= 3)&&(!_posFound)} do {
-		_newPos = [(getMarkerPos DZAI_centerMarker),300 + random(DZAI_centerSize),random(360),false,[1,300]] call SHK_pos;
-		if (({([_newPos select 0,_newPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0) then {
-			if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
-		} else {
-			_posFound = true;
-		};
+	while {_attempts = _attempts +1; _newPos = ["DZAI_centerMarker",false,DZAI_areaBlacklist] call SHK_pos; (_attempts <= 3)&&(({([_trigPos select 0,_trigPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)} do {	
+		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
 	};
 	_this setPosATL _newPos;
 

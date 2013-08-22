@@ -105,13 +105,14 @@ DZAI 1.5.0 Changelog:
 - [UPDATED] AI helicopters now travel directly to cities, towns, and other locations. This change helps distribute helicopter patrols more evenly around the map.
 - [UPDATED] Disabling dynamic AI spawns now also prevents related settings from being loaded.
 - [UPDATED] Preset static AI spawns can now be disabled in dzai_variables.sqf.
+- [UPDATED] Dead AI body cleanup is now performed independently of AI respawn/despawn. Minimum delay before body cleanup is defined by DZAI_cleanupDelay in dzai_variables.sqf (Default: 5 minutes after death). One cleanup cycle is performed every 15 minutes.
 - [MODIFIED] AI helicopter flying height changed from 90-130m to 100-140m.
 - [MODIFIED] Increased waypoint completion times for AI helicopter patrols.
 - [MODIFIED] Rebalanced default backpack loot tables.
 - [MODIFIED] Probability of generating GPS for low-tier loot table increased from 0% to 0.5%, probability increased for high-tier loot table from 10% to 12.5%.
-- [MODIFIED] DZAI will try to avoid spawning AI if a player is within 50m of a chosen spawn point (distance increased from 30m).
+- [MODIFIED] DZAI will try to avoid spawning AI if a player is within 40m of a chosen spawn point (distance increased from 30m).
 - [MODIFIED] Increased default server monitor reporting interval from 3 minutes to 5 minutes.
 - [MODIFIED] Slight increase in accuracy for helicopter AI gunners.
-- [MODIFIED] Dynamic triggers will now spawn a minimum of 300m away from map center marker to reduce frequency of spawns being concentrated at map center.
+- [MODIFIED] Dynamic AI patrol radius decreased from 300m to 250m.
 
 Note: Information about past updates are archived in changelog_archive.txt

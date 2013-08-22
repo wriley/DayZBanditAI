@@ -5,7 +5,7 @@
 		
         Usage: [_unit,_killer] spawn fnc_banditAIKilled;
 		
-		Last updated: 8:57 PM 7/26/2013
+		Last updated: 12:04 AM 8/22/2013
 */
 
 private["_victim","_killer","_unitGroup","_groupSize"];
@@ -18,6 +18,7 @@ if ((_victim getVariable["removeNVG",0]) == 1) then {_victim removeWeapon "NVGog
 
 //Set study_body variables.
 _victim setVariable ["deathType","bled",true];
+_victim setVariable ["DZAI_deathTime",time];
 
 //Update AI count
 _groupSize = _unitGroup getVariable "groupSize";

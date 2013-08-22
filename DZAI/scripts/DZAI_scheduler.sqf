@@ -29,15 +29,36 @@ sleep 900;
 
 while {true} do {
 	if (DZAI_debugLevel > 0) then {diag_log "DZAI Scheduler is now running.";};
+
+	//Randomize some dynamic triggers
 	if (DZAI_dynAISpawns) then {
 		_dynTriggers = [_randomizeCount] spawn fnc_randomizeTriggers;
 		waitUntil {sleep 1; scriptDone _dynTriggers};
 	};
+	
 	sleep 3;
+	
+	//Respawn any destroyed AI helicopters
 	if (DZAI_aiHeliPatrols) then {
 		_helipatrols = [] spawn fnc_spawnHeliPatrol;
 		waitUntil {sleep 1; scriptDone _helipatrols};
 	};
+	
+	sleep 3;
+	
+	//Clean up dead units spawned by DZAI.
+	{
+		private ["_deathTime"];
+		_deathTime = _x getVariable "DZAI_deathTime";
+		if (!isNil "_deathTime") then {
+			if ((time - _deathTime) > DZAI_cleanupDelay) then {
+				deleteVehicle _x;
+			};
+		};
+		sleep 0.005;
+	} forEach allDead;
+	
+	//Wait until next cycle.
 	if (DZAI_debugLevel > 0) then {diag_log "DZAI Scheduler is returning to sleeping state. Resuming in 15 minutes";};
 	sleep 900;
 };

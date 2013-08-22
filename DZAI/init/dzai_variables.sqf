@@ -19,6 +19,7 @@ DZAI_monitor = true;										//Enable or disable server monitor. Periodically r
 DZAI_monitorRate = 300;										//Frequency of server monitor update to RPT log in seconds. (Default: 300)
 DZAI_verifyTables = true;									//Enable or disable verification of classname tables used by DZAI. If invalid entries are found, they are removed and logged into the RPT log. Disable ONLY if a previous scan shows no invalid classnames (Default: true).
 DZAI_objPatch = false;										//(Experimental) Enable to have server spawn in objects/buildings normally spawned clientside by DayZ's CfgTownGenerator. Prevents AI from walking/shooting through clutter and other objects. (Default: false)
+DZAI_cleanupDelay = 300;									//Minimum seconds to pass until a dead AI body can be cleaned up by DZAI's task scheduler. Affects both static and dynamic AI units (Default: 300).
 
 /*
 	Enable mod-specific features (Optional) - Selecting one of these options will enable additional features specific to each mod. ie: Items, AI skins, loot rates, etc.
@@ -53,6 +54,7 @@ DZAI_despawnWait = 120;										//Time to allow spawned AI units to exist in se
 DZAI_dynAISpawns = true;									//Enable or disable dynamic AI trigger spawns. If enabled, AI spawn locations will be randomly placed around the map. (Default: true)
 DZAI_dynRemoveDeadWait = 300;								//Time to wait before deleting bodies of AI units spawned from dynamic triggers. (Default: 300)
 DZAI_dynDespawnWait = 120;									//Time to wait before despawning all AI units in dynamic trigger area when no players are present, and delay time before force-despawning trigger area after all spawned units have been killed. (Default: 120)
+DZAI_areaBlacklist = [];									//Marker-defined areas to avoid spawning dynamic triggers.
 
 //AI Helicopter patrol settings
 //IMPORTANT: Before enabling AI helicopter patrols, make sure you have properly edited your server_cleanup.fsm file. Otherwise, the helicopters will explode after spawning.

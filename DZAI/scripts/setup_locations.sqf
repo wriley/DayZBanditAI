@@ -1,6 +1,6 @@
 /*
-	Generates a list of possible waypoint positions for AI helicopter patrols.
-	Waypoint positions are based on city and village positions found in CfgWorlds.
+	Reads from CfgWorlds config and extracts information about city/town names, positions, and types.
+	
 */
 
 private ["_location","_cfgWorldName","_startTime","_locCount"];
@@ -23,9 +23,9 @@ for "_i" from 0 to ((count _cfgWorldName) -1) do {
 		private ["_placeName","_placePos"];
 		_placeName = getText (_cfgWorldName >> _x >> "name");
 		_placePos = [] + getArray (_cfgWorldName >> _x >> "position");
-		DZAI_locations set [(count DZAI_locations),[_placeName,_placePos,_placeType]];
+		DZAI_locations set [(count DZAI_locations),[_placeName,_placePos,_placeType,objNull]];	//Location Name, Position, Type, Dynamic Trigger object (objNull if none).
 		_locCount = _locCount + 1;
-		//diag_log format ["DEBUG :: Found waypoint position at %1 (%2).",_placeName,_placePos];
+		//diag_log format ["DEBUG :: Found a location at %1 (%2, %3).",_placeName,_placeType,_placePos];
 	};
 } forEach _allPlaces;
 
