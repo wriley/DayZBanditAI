@@ -12,7 +12,7 @@ if (DZAI_curHeliPatrols >= DZAI_maxHeliPatrols) exitWith {};
 for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	private ["_heliType","_startPos","_helicopter","_unitGroup","_pilot","_gunner1","_gunner2","_banditType"];
 	_heliType = DZAI_heliTypes call BIS_fnc_selectRandom2;
-	_startPos = [(getMarkerPos DZAI_centerMarker),(300 + random(DZAI_centerSize)),random(360),false] call SHK_pos;
+	_startPos = [(getMarkerPos "DZAI_centerMarker"),(600 + random((getMarkerSize "DZAI_centerMarker") select 0)),random(360),false] call SHK_pos;
 
 	//Create the patrol group
 	_unitGroup = createGroup (call DZAI_getFreeSide);

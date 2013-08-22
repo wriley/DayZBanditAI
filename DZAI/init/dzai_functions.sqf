@@ -307,7 +307,8 @@ DZAI_findSpawnPos = {
 	private ["_spawnPos","_attempts"];
 	
 	_attempts = 0;
-	while {_attempts = _attempts + 1; _spawnPos = _this select floor (random count _this); (_attempts <= 5)&&(({isPlayer _x} count (_spawnPos nearEntities [["AllVehicles","CAManBase"],40])) > 0)} do {
+	while {_spawnPos = _this select floor (random count _this); (_attempts < 5)&&(({isPlayer _x} count (_spawnPos nearEntities [["AllVehicles","CAManBase"],40])) > 0)} do {
+		_attempts = _attempts + 1;
 		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Player found within 40m of chosen spawn position. (attempt %1/5).",_attempts];};
 	};
 	_spawnPos
@@ -318,7 +319,8 @@ DZAI_relocDynTrigger = {
 	private ["_newPos","_attempts"];
 
 	_attempts = 0;
-	while {_attempts = _attempts +1; _newPos = ["DZAI_centerMarker",false,DZAI_areaBlacklist] call SHK_pos; (_attempts <= 3)&&(({([_trigPos select 0,_trigPos select 1] distance _x) < (2*DZAI_dynTriggerRadius - 2*DZAI_dynTriggerRadius*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)} do {	
+	while {_newPos = ["DZAI_centerMarker",false,DZAI_areaBlacklist] call SHK_pos; (_attempts < 3)&&(({([_trigPos select 0,_trigPos select 1] distance _x) < (2*((getMarkerSize "DZAI_centerMarker") select 0) - 2*((getMarkerSize "DZAI_centerMarker") select 1)*DZAI_dynOverlap)} count DZAI_dynTriggerArray) > 0)} do {	
+		_attempts = _attempts +1;
 		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/3).",_attempts];};
 	};
 	_this setPosATL _newPos;
