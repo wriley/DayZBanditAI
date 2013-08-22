@@ -106,6 +106,7 @@ DZAI 1.5.0 Changelog:
 - [UPDATED] Disabling dynamic AI spawns now also prevents related settings from being loaded.
 - [UPDATED] Preset static AI spawns can now be disabled in dzai_variables.sqf.
 - [UPDATED] Dead AI body cleanup is now performed independently of AI respawn/despawn. Minimum delay before body cleanup is defined by DZAI_cleanupDelay in dzai_variables.sqf (Default: 5 minutes after death). One cleanup cycle is performed every 15 minutes.
+- [UPDATED] Areas of the map can now be blacklisted to prevent dynamic AI spawns from being created. To specify a blacklisted area, create a marker (ellipse or rectangular) covering the area where dynamic spawns should not be created. Add these markers to the custom markers section of the appropriate file in the world_map_configs folder.
 - [MODIFIED] AI helicopter flying height changed from 90-130m to 100-140m.
 - [MODIFIED] Increased waypoint completion times for AI helicopter patrols.
 - [MODIFIED] Rebalanced default backpack loot tables.
