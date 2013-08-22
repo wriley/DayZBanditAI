@@ -17,6 +17,7 @@ _unitGroup = _this select 2;
 if ((_victim getVariable["removeNVG",0]) == 1) then {_victim removeWeapon "NVGoggles";}; //Remove temporary NVGs from AI.
 
 //Set study_body variables.
+_victim setVariable ["bodyName",(_victim getVariable ["bodyName","Unknown"]),true];		//Broadcast the unit's name (was previously a private variable).
 _victim setVariable ["deathType","bled",true];
 _victim setVariable ["DZAI_deathTime",time];
 

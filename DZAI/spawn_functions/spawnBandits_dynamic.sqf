@@ -88,7 +88,7 @@ _baseDist = 200;
 _distVariance = 50;
 
 //Spawn units
-_spawnPos = [_spawnPosition,(_baseDist + random (_distVariance)),random(360),true] call SHK_pos;
+_spawnPos = [_spawnPosition,(_baseDist + random (_distVariance)),random(360),false] call SHK_pos;
 _unitGroup = [_totalAI,grpNull,_spawnPos,_trigger] call fnc_createGroup;
 
 //Set group variables
@@ -99,7 +99,7 @@ _unitGroup allowFleeing 0;
 //Reveal target player and nearby players to AI.
 _unitGroup setFormDir ([(leader _unitGroup),_targetPlayer] call BIS_fnc_dirTo);
 _revealLevel = (1.5 + random (2.5));
-{_unitGroup reveal [_x,(1.5 + random (2.5))]} forEach _nearbyPlayers;
+{_unitGroup reveal [_x,_revealLevel]} forEach _nearbyPlayers;
 (units _unitGroup) doTarget _targetPlayer;
 (units _unitGroup) doFire _targetPlayer;
 
@@ -112,7 +112,7 @@ if (_findPlayer) then {
 	0 = [_unitGroup,_spawnPos,_patrolDist,_targetPlayer] spawn fnc_seekPlayer;
 	//diag_log "DEBUG :: Seeking target player.";
 } else {
-	//Begin patrol immediately.
+	//Begin patrol immediately. Use player's last known position as patrol center.
 	0 = [_unitGroup,_spawnPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 	//diag_log "DEBUG :: Beginning patrol.";
 };
