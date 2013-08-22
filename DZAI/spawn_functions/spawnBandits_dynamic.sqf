@@ -19,14 +19,16 @@ _unitArray = _this select 2;
 if (surfaceIsWater (getPosATL _trigger)) exitWith {
 	_newPos = _trigger call DZAI_relocDynTrigger;
 	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Could not find suitable location to spawn AI units, relocating trigger to position %1. (spawnBandits_dynamic)",_newPos];};
-	if (DZAI_debugMarkers > 0) then {
-		private["_marker"];
-		_marker = format["trigger_%1",_trigger];
-		_marker setMarkerPos _newPos;
-	};
 };
 
 if (count (_trigger getVariable ["GroupArray",[]]) > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_dynamic)";};};	
+
+//Reduce number of AI spawned if trigger area intersects another activated trigger to avoid overwhelming AI spawns.
+_nearbyTriggers = ({((_trigger distance _x) < ((triggerArea _trigger) select 0))&&(triggerActivated _x)} count DZAI_dynTriggerArray) - 1;
+if (_nearbyTriggers > 0) exitWith {
+	_newPos = _trigger call DZAI_relocDynTrigger;
+	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Dynamic trigger intersects with another active trigger, relocating trigger to position %1. (spawnBandits_dynamic)",_newPos];};
+};
 
 _startTime = diag_tickTime;
 
@@ -69,13 +71,6 @@ if !(surfaceIsWater [_playerPos select 0,_playerPos select 1]) then {
 
 //Calculate number of AI to spawn. Equation: (number of players in 100m radius) + (random number between 0-2). Maximum AI spawned: 6.
 _totalAI = ((_playerCount + floor (random 3)) min 6);
-
-//Reduce number of AI spawned if trigger area intersects another activated trigger to avoid overwhelming AI spawns.
-_nearbyTriggers = ({((_trigger distance _x) < ((triggerArea _trigger) select 0))&&(triggerActivated _x)} count DZAI_dynTriggerArray) - 1;
-if (_nearbyTriggers > 0) then {
-	_totalAI = 1;
-	if (DZAI_debugLevel > 0) then {diag_log format ["DEBUG :: Counted %1 other triggers within %2 meters. Number of AI to spawn reduced to %3.",_nearbyTriggers,((triggerArea _trigger) select 0),_totalAI];};
-};
 
 //No more exitWith statements, so trigger is committed to spawning at this point.
 if (DZAI_debugMarkers > 0) then {
