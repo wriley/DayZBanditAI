@@ -16,12 +16,12 @@ _patrolDist = _this select 0;
 _trigger = _this select 1;
 _unitArray = _this select 2;
 
+if (count (_trigger getVariable ["GroupArray",[]]) > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_dynamic)";};};	
+
 if (surfaceIsWater (getPosATL _trigger)) exitWith {
 	_newPos = _trigger call DZAI_relocDynTrigger;
 	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Could not find suitable location to spawn AI units, relocating trigger to position %1. (spawnBandits_dynamic)",_newPos];};
 };
-
-if (count (_trigger getVariable ["GroupArray",[]]) > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_dynamic)";};};	
 
 //Reduce number of AI spawned if trigger area intersects another activated trigger to avoid overwhelming AI spawns.
 _nearbyTriggers = ({((_trigger distance _x) < ((triggerArea _trigger) select 0))&&(triggerActivated _x)} count DZAI_dynTriggerArray) - 1;
@@ -54,7 +54,7 @@ if (_playerCount > 6) then {
 if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Counted %1 players within 100m of target player (spawnBandits_dynamic)",_playerCount];};
 
 _findPlayer = true;
-if !(surfaceIsWater [_playerPos select 0,_playerPos select 1]) then {
+if !(surfaceIsWater _playerPos) then {
 	_trigger setPosATL _playerPos;									
 	_spawnPosition = _playerPos;
 	//Don't hunt player if they are in a vehicle

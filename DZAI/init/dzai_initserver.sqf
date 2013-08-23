@@ -190,7 +190,7 @@ switch (_worldname) do {
 		[] execVM "\z\addons\dayz_server\DZAI\init\world_map_configs\world_oring.sqf";
 		if (DZAI_dynAISpawns) then {
 			"DZAI_centerMarker" setMarkerPos [5191.1069, 5409.1938];
-			"DZAI_centerMarker" setMarkerSize [4750, 4000];
+			"DZAI_centerMarker" setMarkerSize [4750, 4750];
 			DZAI_dynTriggersMax = 15;
 		};
     };

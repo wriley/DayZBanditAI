@@ -142,8 +142,9 @@ DZAI_setSkills = {
 
 //Spawns flies on AI corpse
 DZAI_deathFlies = {
+	private ["_flyObj"];
 	{
-		[(getPosATL _x), 0.1, 1.5] call bis_fnc_flies;
+		_flyObj = [(getPosATL _x), 0.1, 1.5] call bis_fnc_flies;
 	} forEach _this;
 };
 
@@ -319,7 +320,7 @@ DZAI_relocDynTrigger = {
 	private ["_newPos","_attempts"];
 
 	_attempts = 0;
-	while {_newPos = [(getMarkerPos "DZAI_centerMarker"),300 + random((getMarkerSize "DZAI_centerMarker") select 0),random(360),false,[1,300]] call SHK_pos; (_attempts < 5)&&(({([_trigPos select 0,_trigPos select 1] distance _x) < (2*(DZAI_dynTriggerRadius - (DZAI_dynTriggerRadius*DZAI_dynOverlap)))} count DZAI_dynTriggerArray) > 0)} do {	
+	while {_newPos = [(getMarkerPos "DZAI_centerMarker"),300 + random((getMarkerSize "DZAI_centerMarker") select 0),random(360),false,[1,300]] call SHK_pos; (_attempts < 5)&&(({([_newPos select 0,_newPos select 1] distance _x) < (2*(DZAI_dynTriggerRadius - (DZAI_dynTriggerRadius*DZAI_dynOverlap)))} count DZAI_dynTriggerArray) > 0)} do {	
 		_attempts = _attempts +1;
 		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Calculated trigger position intersects with at least 1 other trigger (attempt %1/5).",_attempts];};
 	};
