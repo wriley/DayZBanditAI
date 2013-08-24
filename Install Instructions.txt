@@ -1,5 +1,5 @@
 Installation Instructions for DZAI 1.4.0+
-Last Updated: 2:19 PM 8/9/2013
+Last Updated: 7:57 PM 8/23/2013
 
 What you need:
 ----------------------------------------------------
@@ -51,6 +51,9 @@ If you cannot find this line, do not make any changes.
 8. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_variables.sqf
 
 9. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
+
+Troubleshooting: A number of users have reported issues with entering the game after repacking their dayz_server.pbo. 
+If you encounter this problem, copy the $PBOPREFIX$ file inside the 'extras' folder and paste it inside the dayz_server folder and then repack it into pbo format. This should fix the connection problems.
 
 Note: You may store your custom settings changes in DZAI\DZAI_settings_override.sqf. This file is a convenient way to store and transfer your custom settings when upgrading to a newer version of DZAI. Further instructions are provided inside this file.
 	
