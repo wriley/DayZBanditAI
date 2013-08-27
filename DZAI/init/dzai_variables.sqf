@@ -29,12 +29,13 @@ DZAI_cleanupDelay = 300;									//Minimum seconds to pass until a dead AI body 
 	
 	DZAI_modName value		Enables extra features for...
 	--------------------------------------------------------------------------------------------------------------------
-	(blank)					Automatically detect mod (can be manually specified by editing DZAI_modName)
+	(blank)					Automatically detect mod (can be manually specified by editing DZAI_modName below)
 	"default"				Force default settings
 	"2017"					DayZ 2017/Namalsk 2017	(Can't be automatically detected, must manually set DZAI_modName = "2017" to enable)
-	"epoch"					DayZ Epoch
-	"civilian"				DayZ Civilian (Can't be automatically detected, must manually set DZAI_modName = "civilian" to enable)
-	"overwatch"				DayZ Overwatch
+	"epoch"					DayZ Epoch 				(Automatically detected - no need to edit)
+	"civilian"				DayZ Civilian 			(Can't be automatically detected, must manually set DZAI_modName = "civilian" to enable)
+	"overwatch"				DayZ Overwatch 			(Automatically detected - no need to edit)
+	"huntinggrounds"		DayZ Hunting Grounds 	(Automatically detected - no need to edit)
 	
 */
 DZAI_modName = "";
