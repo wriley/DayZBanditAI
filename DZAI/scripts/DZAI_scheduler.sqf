@@ -3,7 +3,7 @@
 	
 	Description:
 	
-	Last updated: 7:39 PM 7/13/2013
+	Last updated: 2:21 PM 8/27/2013
 */
 private ["_randomizeCount"];
 
@@ -52,6 +52,9 @@ while {true} do {
 		_deathTime = _x getVariable "DZAI_deathTime";
 		if (!isNil "_deathTime") then {
 			if ((time - _deathTime) > DZAI_cleanupDelay) then {
+				private ["_soundFlies"];
+				_soundFlies = _x getVariable "sound_flies";
+				deleteVehicle _soundFlies;
 				deleteVehicle _x;
 			};
 		};

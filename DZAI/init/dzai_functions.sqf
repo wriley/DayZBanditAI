@@ -1,7 +1,7 @@
 /*
 	DZAI Functions
 	
-	Last Updated: 2:40 AM 8/18/2013
+	Last Updated: 2:20 PM 8/27/2013
 */
 
 waituntil {!isnil "bis_fnc_init"};
@@ -142,10 +142,9 @@ DZAI_setSkills = {
 
 //Spawns flies on AI corpse
 DZAI_deathFlies = {
-	private ["_flyObj"];
-	{
-		_flyObj = [(getPosATL _x), 0.1, 1.5] call bis_fnc_flies;
-	} forEach _this;
+	private ["_soundFlies"];
+	_soundFlies = createSoundSource["Sound_Flies",getPosATL _this,[],0];
+	_this setVariable ["sound_flies",_soundFlies];
 };
 
 //Returns probabilities of generating different grades of weapons based on equipType value
@@ -231,7 +230,7 @@ DZAI_unitDeath = {
 	};
 	
 	[_victim,_killer,_unitGroup] call fnc_banditAIKilled;
-	[_victim] spawn DZAI_deathFlies;
+	_victim spawn DZAI_deathFlies;
 	
 	//diag_log format ["DEBUG :: AI %1 (Group %2) killed by %3",_victim,_unitGroup,_killer];
 	

@@ -98,6 +98,7 @@ Note: You may store your custom settings changes in DZAI\DZAI_settings_override.
 DZAI 1.5.0 Changelog:
 ============
 
+- [FIXED] Fixed flies sound cleanup. Fly sounds should now be cleaned up along with dead AI bodies. Note: The "take clothes" addon will interfere with the cleanup if clothes are taken from the AI body.
 - [UPDATED] AI groups now have a chance of searching for nearby lootpiles upon completing a waypoint.
 - [UPDATED] Using Study Body on a dead AI unit now shows a randomly generated name.
 - [UPDATED] Dynamic AI now spawn facing targeted player.
