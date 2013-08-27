@@ -14,7 +14,7 @@ if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI resupply script
 _unit = _this select 0;								//Unit to monitor/reload ammo
 
 _markername = format["AI_%1",_unit];
-if ((getMarkerColor _markername) != "") then {deleteMarker _markername; sleep 1;};	//Delete the previous marker if it wasn't deleted for some reason.
+if ((getMarkerColor _markername) != "") then {deleteMarker _markername; sleep 5;};	//Delete the previous marker if it wasn't deleted for some reason.
 _marker = createMarker[_markername,(getposATL _unit)];
 _marker setMarkerShape "ELLIPSE";
 _marker setMarkerType "Dot";
@@ -70,11 +70,10 @@ while {(alive _unit)&&(!(isNull _unit))} do {													//Run script for as lo
 		if (((getDammage _unit) > 0.25)&&(_bandages > 0)) then {
 			if ((time - _lastBandage) > 60) then {
 				if ((random 1) < 0.4) then {
-					sleep 0.5;
 					_bandages = _bandages - 1;
 					_unit disableAI "FSM";
 					_unit playActionNow "Medic";
-					sleep 3.5;
+					sleep 4;
 					_unit enableAI "FSM";
 					_unit setDamage 0;
 					_unit setVariable ["gethit",[0,0,0,0]];

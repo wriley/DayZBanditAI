@@ -33,17 +33,17 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_7 = _this;
 
-_this = createMarker ["CrashedC1301", [3162.1936, 7469.5649, 0.0001373291]];
+_this = createMarker ["CrashedC1301", [3205.6426, 7425.0835, 0.0001373291]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_10 = _this;
 
-_this = createMarker ["CrashedC1302", [3167.5422, 7548.1377, 0.00011444092]];
+_this = createMarker ["CrashedC1302", [3154.9116, 7593.6294, 0.00011444092]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_11 = _this;
 
-_this = createMarker ["CrashedC1303", [3131.8411, 7508.5405]];
+_this = createMarker ["CrashedC1303", [3087.3816, 7484.2783]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_14 = _this;

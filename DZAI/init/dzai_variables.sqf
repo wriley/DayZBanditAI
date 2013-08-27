@@ -3,7 +3,7 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 8:15 PM 8/11/2013
+	Last updated: 11:44 PM 8/20/2013
 */
 private["_worldname"];
 
@@ -16,9 +16,10 @@ DZAI_zombieEnemy = true;									//Enable or disable AI hostility to zombies. If
 DZAI_debugLevel = 0;										//Enable or disable event logging to arma2oaserver.rpt. Debug level setting. 0: Off, 1: Basic Debug, 2: Extended Debug. (Default: 0)
 DZAI_debugMarkers = 0;										//Enable or disable debug markers. 0: Off, 1: Basic markers (Track AI position, locate patrol waypoints, locate dynamically-spawned triggers), 2: Extended markers (Basic markers + Static trigger markers and refreshing dynamic trigger markers) (Default: 0)
 DZAI_monitor = true;										//Enable or disable server monitor. Periodically reports number of max/current AI units and dynamically spawned triggers into RPT log. (Default: true)
-DZAI_monitorRate = 180;										//Frequency of server monitor update to RPT log in seconds. (Default: 180)
+DZAI_monitorRate = 300;										//Frequency of server monitor update to RPT log in seconds. (Default: 300)
 DZAI_verifyTables = true;									//Enable or disable verification of classname tables used by DZAI. If invalid entries are found, they are removed and logged into the RPT log. Disable ONLY if a previous scan shows no invalid classnames (Default: true).
 DZAI_objPatch = false;										//(Experimental) Enable to have server spawn in objects/buildings normally spawned clientside by DayZ's CfgTownGenerator. Prevents AI from walking/shooting through clutter and other objects. (Default: false)
+DZAI_cleanupDelay = 300;									//Minimum seconds to pass until a dead AI body can be cleaned up by DZAI's task scheduler. Affects both static and dynamic AI units (Default: 300).
 
 /*
 	Enable mod-specific features (Optional) - Selecting one of these options will enable additional features specific to each mod. ie: Items, AI skins, loot rates, etc.
@@ -28,12 +29,13 @@ DZAI_objPatch = false;										//(Experimental) Enable to have server spawn in 
 	
 	DZAI_modName value		Enables extra features for...
 	--------------------------------------------------------------------------------------------------------------------
-	(blank)					Automatically detect mod (can be manually specified by editing DZAI_modName)
+	(blank)					Automatically detect mod (can be manually specified by editing DZAI_modName below)
 	"default"				Force default settings
 	"2017"					DayZ 2017/Namalsk 2017	(Can't be automatically detected, must manually set DZAI_modName = "2017" to enable)
-	"epoch"					DayZ Epoch
-	"civilian"				DayZ Civilian (Can't be automatically detected, must manually set DZAI_modName = "civilian" to enable)
-	"overwatch"				DayZ Overwatch
+	"epoch"					DayZ Epoch 				(Automatically detected - no need to edit)
+	"civilian"				DayZ Civilian 			(Can't be automatically detected, must manually set DZAI_modName = "civilian" to enable)
+	"overwatch"				DayZ Overwatch 			(Automatically detected - no need to edit)
+	"huntinggrounds"		DayZ Hunting Grounds 	(Automatically detected - no need to edit)
 	
 */
 DZAI_modName = "";
@@ -43,11 +45,12 @@ DZAI_weaponNoise = 0.00;									//AI weapon noise multiplier for zombie aggro p
 DZAI_refreshRate = 15;										//Amount of time in seconds between AI ammo refresh and zombie check. Decreasing this value may impact server performance. (Default: 15)
 DZAI_zDetectRange = 200;									//Maximum distance for AI group leader to detect zombies. Increasing range beyond default may impact server performance. (Default: 200)
 
-//AI Spawning Variables
+//AI Spawning Variables (Static AI spawns)
+DZAI_staticAI = true;										//Enable or disable static AI spawns. If enabled, AI spawn points will be generated in cities, towns, and other predefined areas. Does not include custom-defined spawns (Default: true).
 DZAI_respawnTime = 300;										//Time to wait before respawning an AI group once all units have been eliminated. (Default: 300)
 DZAI_despawnWait = 120;										//Time to allow spawned AI units to exist in seconds before being despawned when no players are present in a trigger area. (Default: 120)
 
-//Dynamic Trigger Settings
+//Dynamic Trigger Settings (Dynamic AI spawns)
 //DZAI automatically determines the settings for dynamic triggers. Below are settings that can be manually adjusted.
 DZAI_dynAISpawns = true;									//Enable or disable dynamic AI trigger spawns. If enabled, AI spawn locations will be randomly placed around the map. (Default: true)
 DZAI_dynRemoveDeadWait = 300;								//Time to wait before deleting bodies of AI units spawned from dynamic triggers. (Default: 300)
@@ -67,7 +70,7 @@ DZAI_humanityGain = 0;										//Amount of humanity to reward player for killin
 
 //Dynamic weapon list settings
 DZAI_dynamicWeaponList = true;								//True: Dynamically generate AI weapon list from CfgBuildingLoot. False: Use preset weapon list (DayZ 1.7.6.1). Highly recommended to enable DZAI_verifyTables if this option is set to false. (Default: true).
-DZAI_banAIWeapons = [];										//(Only if DZAI_dynamicWeaponList = true) List of weapons that AI should never use. By default, AI may carry any lootable weapon. Example: DZAI_banAIWeapons = ["M107_DZ","BAF_AS50_scoped"]; will remove the M107 and AS50 from AI weapon tables if dynamic weapon list is enabled.
+DZAI_banAIWeapons = [];										//(Only if DZAI_dynamicWeaponList = true) List of classnames of weapons that AI should never use. By default, AI may carry any lootable weapon. Example: DZAI_banAIWeapons = ["M107_DZ","BAF_AS50_scoped"]; will remove the M107 and AS50 from AI weapon tables if dynamic weapon list is enabled.
 //Note: It is recommended to add all melee weapon classnames into this list as AI have issues using melee weapons. All melee weapons and crossbows present in DayZ 1.7.7.1 have been pre-banned ("Crossbow_DZ","Crossbow","MeleeHatchet","MeleeCrowbar","MeleeMachete","MeleeBaseball","MeleeBaseBallBat","MeleeBaseBallBatBarbed","MeleeBaseBallBatNails")
 
 //AI loot amounts settings									(Edible and Medical items, Miscellaneous items, Skin packs)
@@ -158,7 +161,7 @@ DZAI_skill3 = [
 ];
 DZAI_heliCrewSkills = [	
 	//AI skill settings level 4 (Skill, Minimum skill, Maximum bonus amount).
-	["aimingAccuracy",0.40,0.10],
+	["aimingAccuracy",0.45,0.10],
 	["aimingShake",0.85,0.10],
 	["aimingSpeed",0.85,0.10],
 	["endurance",0.60,0.20],
@@ -183,7 +186,7 @@ DZAI_respawnQueue = [];										//Queue of AI groups that require respawning. G
 DZAI_respawnActive = false;									//Tracks activity status of respawn queue. Prevents creation of multiple respawn queues.
 DZAI_dmgFactors = [0.3375,0.50625,0.3375,1,1];				//AI health settings.
 DZAI_curHeliPatrols = 0;									//Tracks current number of active AI heli patrols.
-DZAI_heliWaypoints = [];									//Current list of randomly-generated AI heli patrol waypoints.
+DZAI_locations = [];										//List of positions for cities, towns, and other locations.
 //DZAI_actHeliGroups = [];									//List of active heli patrol groups
 
 diag_log "[DZAI] DZAI Variables loaded.";

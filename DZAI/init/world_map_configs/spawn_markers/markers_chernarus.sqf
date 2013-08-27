@@ -3,61 +3,11 @@
 	
 	Notes: Markers are used to manually-specify exact locations to use as spawn points. Markers are used for spawn points when there are no/not enough buildings within 300m of trigger center to use as spawn positions.
 	
-	Last updated: 11:05 PM 7/5/2013
+	Last updated: 12:06 AM 8/20/2013
 	
 */
 
 //Begin markers
-_this = createMarker ["Elektro1", [10557.953, 2469.0283, 0.00033473969]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_1 = _this;
-
-_this = createMarker ["Elektro2", [10715.897, 2226.1077, 6.3896179e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_3 = _this;
-
-_this = createMarker ["Elektro3", [10477.38, 2251.7627, 9.5367432e-007]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_5 = _this;
-
-_this = createMarker ["Elektro4", [10142.232, 2200.677, 1.335144e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_6 = _this;
-
-_this = createMarker ["Elektro5", [10248.711, 2316.2119, 2.8610229e-006]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_7 = _this;
-
-_this = createMarker ["Cherno1", [6615.7598, 2630.5085, 3.3378601e-006]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_15 = _this;
-
-_this = createMarker ["Cherno2", [6834.1162, 3153.759, 2.2411346e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_16 = _this;
-
-_this = createMarker ["Cherno3", [6179.6978, 2486.1204, 2.3841858e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_17 = _this;
-
-_this = createMarker ["Cherno4", [7288.8408, 2305.3875, 4.8160553e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_18 = _this;
-
-_this = createMarker ["Cherno5", [6410.3672, 2921.1934, 1.5258789e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_19 = _this;
-
 _this = createMarker ["NEAF1", [11958.352, 13143.257, 3.0517578e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";

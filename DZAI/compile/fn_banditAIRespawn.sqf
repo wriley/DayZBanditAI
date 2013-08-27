@@ -15,10 +15,6 @@ _unitGroup = _this select 1;
 
 _trigger = _unitGroup getVariable "trigger";
 
-_deadUnits = _unitGroup getVariable ["deadUnits",[]];
-_deadUnits set [(count _deadUnits),_victim];
-_unitGroup setVariable ["deadUnits",_deadUnits];
-
 _unitsAlive = {alive _x} count (units _unitGroup);
 //diag_log format ["%1 units alive in group.",_unitsAlive];
 

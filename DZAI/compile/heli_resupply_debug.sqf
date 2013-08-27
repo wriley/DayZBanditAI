@@ -17,7 +17,7 @@ _unitGroup = _helicopter getVariable "unitGroup";
 
 //Create debug position markers. Helicopter position: Red, Current waypoint position: Blue.
 _markername = format["Helicopter_%1",_helicopter];
-if ((getMarkerColor _markername) != "") then {deleteMarker _markername; sleep 1;};	//Delete the previous marker if it wasn't deleted for some reason.
+if ((getMarkerColor _markername) != "") then {deleteMarker _markername; sleep 5;};	//Delete the previous marker if it wasn't deleted for some reason.
 //diag_log format ["Helicopter marker name is %1.",_markername];
 _marker = createMarker[_markername,(getposATL _helicopter)];
 _marker setMarkerText format ["AI %1 %2",(typeOf _helicopter),_unitGroup];
@@ -71,7 +71,7 @@ while {(alive _helicopter)&&(!(isNull _helicopter))} do {
 	
 	//Periodically vary the helicopter's altitude
 	if ((random 1) < 0.3) then {
-		_helicopter flyInHeight (90 + (random 40));
+		_helicopter flyInHeight (100 + (random 40));
 	};
 	
 	//Uncomment to test despawn/respawn process. Destroys helicopter after ~60 seconds of flight
