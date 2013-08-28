@@ -64,7 +64,6 @@ _totalGroupSize = 0;
 		} forEach (waypoints _x);
 		sleep 0.1;
 	};
-	{deleteVehicle _x} forEach (_x getVariable ["deadUnits",[]]);	//Delete dead units
 	{deleteVehicle _x} forEach (units _x);							//Delete live units
 	_totalGroupSize = _totalGroupSize + (_x getVariable ["groupSize",0]);
 	sleep 0.5;

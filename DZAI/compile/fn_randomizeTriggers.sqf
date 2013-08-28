@@ -20,13 +20,6 @@ private ["_trigger"];
 		private ["_newPos"];
 		_newPos = _trigger call DZAI_relocDynTrigger;
 		if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: A dynamic trigger has been relocated to %1. (fnc_randomizeTriggers)",_newPos];};
-		if (DZAI_debugMarkers > 0) then {
-			private["_marker"];
-			_marker = format["trigger_%1",_trigger];
-			_marker setMarkerPos _newPos;
-			_marker setMarkerColor "ColorYellow";			//Reset trigger indicator to Ready.
-			_marker setMarkerAlpha 0.8;
-		};
 	};
 	sleep 1;
 };

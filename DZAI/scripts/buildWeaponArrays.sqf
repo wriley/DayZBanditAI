@@ -8,7 +8,7 @@
 
 private ["_bldgClasses","_weapons","_lootItem","_aiWeaponBanList","_unwantedWeapons","_lootList","_cfgBuildingLoot","_lootListCheck","_startTime"];
 
-if (DZAI_weaponsInitialized) exitWith {};
+if (!isNil "DZAI_weaponsInitialized") exitWith {};
 
 _startTime = diag_tickTime;
 diag_log "[DZAI] Building DZAI weapon arrays using CfgBuildingLoot data.";

@@ -5,7 +5,7 @@
 	
 	Description: Spawns a group of AI units some distance from a dynamically-spawned trigger. These units do not respawn after death.
 	
-	Last updated: 4:45 PM 8/10/2013
+	Last updated: 6:15 PM 8/18/2013
 */
 #include "\z\addons\dayz_server\DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
@@ -16,17 +16,19 @@ _patrolDist = _this select 0;
 _trigger = _this select 1;
 _unitArray = _this select 2;
 
+if (count (_trigger getVariable ["GroupArray",[]]) > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_dynamic)";};};	
+
 if (surfaceIsWater (getPosATL _trigger)) exitWith {
 	_newPos = _trigger call DZAI_relocDynTrigger;
 	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Could not find suitable location to spawn AI units, relocating trigger to position %1. (spawnBandits_dynamic)",_newPos];};
-	if (DZAI_debugMarkers > 0) then {
-		private["_marker"];
-		_marker = format["trigger_%1",_trigger];
-		_marker setMarkerPos _newPos;
-	};
 };
 
-if (count (_trigger getVariable ["GroupArray",[]]) > 0) exitWith {if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Active groups found. Exiting spawn script (spawnBandits_dynamic)";};};	
+//Reduce number of AI spawned if trigger area intersects another activated trigger to avoid overwhelming AI spawns.
+_nearbyTriggers = ({((_trigger distance _x) < ((triggerArea _trigger) select 0))&&(triggerActivated _x)} count DZAI_dynTriggerArray) - 1;
+if (_nearbyTriggers > 0) exitWith {
+	_newPos = _trigger call DZAI_relocDynTrigger;
+	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Dynamic trigger intersects with another active trigger, relocating trigger to position %1. (spawnBandits_dynamic)",_newPos];};
+};
 
 _startTime = diag_tickTime;
 
@@ -52,7 +54,7 @@ if (_playerCount > 6) then {
 if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Counted %1 players within 100m of target player (spawnBandits_dynamic)",_playerCount];};
 
 _findPlayer = true;
-if !(surfaceIsWater [_playerPos select 0,_playerPos select 1]) then {
+if !(surfaceIsWater _playerPos) then {
 	_trigger setPosATL _playerPos;									
 	_spawnPosition = _playerPos;
 	//Don't hunt player if they are in a vehicle
@@ -70,13 +72,6 @@ if !(surfaceIsWater [_playerPos select 0,_playerPos select 1]) then {
 //Calculate number of AI to spawn. Equation: (number of players in 100m radius) + (random number between 0-2). Maximum AI spawned: 6.
 _totalAI = ((_playerCount + floor (random 3)) min 6);
 
-//Reduce number of AI spawned if trigger area intersects another activated trigger to avoid overwhelming AI spawns.
-_nearbyTriggers = ({((_trigger distance _x) < ((triggerArea _trigger) select 0))&&(triggerActivated _x)} count DZAI_dynTriggerArray) - 1;
-if (_nearbyTriggers > 0) then {
-	_totalAI = 1;
-	if (DZAI_debugLevel > 0) then {diag_log format ["DEBUG :: Counted %1 other triggers within %2 meters. Number of AI to spawn reduced to %3.",_nearbyTriggers,((triggerArea _trigger) select 0),_totalAI];};
-};
-
 //No more exitWith statements, so trigger is committed to spawning at this point.
 if (DZAI_debugMarkers > 0) then {
 	private["_marker"];
@@ -93,7 +88,7 @@ _baseDist = 200;
 _distVariance = 50;
 
 //Spawn units
-_spawnPos = [_spawnPosition,(_baseDist + random (_distVariance)),random(360),true] call SHK_pos;
+_spawnPos = [_spawnPosition,(_baseDist + random (_distVariance)),random(360),false] call SHK_pos;
 _unitGroup = [_totalAI,grpNull,_spawnPos,_trigger] call fnc_createGroup;
 
 //Set group variables
@@ -102,6 +97,7 @@ _unitGroup setVariable ["trigger",_trigger];
 _unitGroup allowFleeing 0;
 	
 //Reveal target player and nearby players to AI.
+_unitGroup setFormDir ([(leader _unitGroup),_targetPlayer] call BIS_fnc_dirTo);
 _revealLevel = (1.5 + random (2.5));
 {_unitGroup reveal [_x,_revealLevel]} forEach _nearbyPlayers;
 (units _unitGroup) doTarget _targetPlayer;
@@ -116,7 +112,7 @@ if (_findPlayer) then {
 	0 = [_unitGroup,_spawnPos,_patrolDist,_targetPlayer] spawn fnc_seekPlayer;
 	//diag_log "DEBUG :: Seeking target player.";
 } else {
-	//Begin patrol immediately.
+	//Begin patrol immediately. Use player's last known position as patrol center.
 	0 = [_unitGroup,_spawnPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
 	//diag_log "DEBUG :: Beginning patrol.";
 };

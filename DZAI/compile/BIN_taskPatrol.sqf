@@ -143,7 +143,7 @@ if (isServer) then
 			_wp setWaypointCompletionRadius (5 + _slack);
 			_wp setWaypointTimeout [0, 2, 16];
 			// When completing waypoint have 33% chance to choose a random next wp
-			_wp setWaypointStatements ["true", "if ((random 3) > 2) then { group this setCurrentWaypoint [(group this), (floor (random (count (waypoints (group this)))))];};"];
+			_wp setWaypointStatements ["true", "if ((random 3) > 2) then { group this setCurrentWaypoint [(group this), (floor (random (count (waypoints (group this)))))];} else {_nul = [(group this),100] spawn DZAI_findLootPile;};"];
 			
 			if (_debug > 0) then {
 				_markername = str (_wp);
