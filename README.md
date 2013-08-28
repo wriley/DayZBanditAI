@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 DZAI 1.5.1 - AI Addon for DayZ
-=======
-DZAI 1.5.0 - AI Addon for DayZ
->>>>>>> c7233698a43b2f87bc76fb5dc7abefc9d0d22d8a
 ============
 
 
