@@ -7,8 +7,6 @@ Introduction
 
 DZAI is designed to be a simple, configurable, easy-to-install AI package. This AI package is MP-compatible and works out of the box with any supported DayZ map. Installation instructions are provided below.
 
-DZAI is also available as a simpler "Lite" version. More details can be found here: https://github.com/dayzai/DZAI-Lite
-
 Reminder: The latest stable build of DZAI is always located in the 'master' branch. The latest experimental build is located in a separate branch, usually labeled with a version number. These experimental builds have the latest improvements and bugfixes, but may also have new bugs that need to be fixed, so they are not guaranteed to be stable.
 
 Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
@@ -119,5 +117,13 @@ DZAI 1.5.0 Changelog:
 Removed updates (to be added in a future update):
 
 - [UPDATED] Areas of the map can now be blacklisted to prevent dynamic AI spawns from being created. To specify a blacklisted area, create a marker (ellipse or rectangular) covering the area where dynamic spawns should not be created. Add these markers to the custom markers section of the appropriate file in the world_map_configs folder.
+
+1.5.1 Update:
+
+DZAI Lite has been permanently retired. Users of DZAI Lite should switch to DZAI (full) and disable static AI spawns for identical functionality.
+
+- [UPDATED] Global maximum number of dynamic triggers can now be specified in dzai_variables.sqf. Can be left at default value to use pre-determined settings. Note: Per-map dynamic trigger settings are now stored in files found in the world_map_configs folder.
+- [UPDATED] Updated dzai_variables.sqf formatting for improved readability.
+- [MODIFIED] Changed radio text warnings for findKiller and seekPlayer AI behaviors.
 
 Note: Information about past updates are archived in changelog_archive.txt
