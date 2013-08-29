@@ -29,7 +29,7 @@ Compatibility
 
 <b>Supported DayZ maps and mods:</b>
 
-- Supported Maps: Chernarus, Namalsk, Celle, Fallujah, Lingor/Hunting Grounds, Isla Duala, Oring, Panthera, Sahrani, Takistan, Taviana, Utes, Zargabad.
+- Supported Maps: Chernarus, Namalsk, Celle, Fallujah, Lingor/Hunting Grounds, Isla Duala, Oring, Panthera, Sahrani, Takistan, Taviana, Trinity Island, Utes, Zargabad.
 - Supported Mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Civilian, DayZ Epoch, DayZ Overwatch.
 
 <b>Unupported DayZ mods:</b>
@@ -125,5 +125,11 @@ DZAI Lite has been permanently retired. Users of DZAI Lite should switch to DZAI
 - [UPDATED] Global maximum number of dynamic triggers can now be specified in dzai_variables.sqf. Can be left at default value to use pre-determined settings. Note: Per-map dynamic trigger settings are now stored in files found in the world_map_configs folder.
 - [UPDATED] Updated dzai_variables.sqf formatting for improved readability.
 - [MODIFIED] Changed radio text warnings for findKiller and seekPlayer AI behaviors.
+
+1.5.2 Update:
+
+- [FIXED] Fixed active unit amount counting.
+- [NEW] Added support for DayZ Trinity Island.
+- [NEW] Added DZAI_static_spawn function for easily creating static AI spawn areas. Currently in testing and used for Trinity Island spawns.
 
 Note: Information about past updates are archived in changelog_archive.txt
