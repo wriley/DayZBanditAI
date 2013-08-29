@@ -25,7 +25,7 @@ _unitGroup reveal [(vehicle _killer),4];
 _trigger = (group _victim) getVariable "trigger";
 
 //Calculate detection range.
-_detectRange = 250 + (random 200) //Min: 250, Max: 450
+_detectRange = 250 + (random 200); //Min: 250, Max: 450
 	
 if (((_victim distance _killer) < _detectRange) && (_killer isKindOf "Man")) then {
 	private["_endTime"];
