@@ -1,6 +1,8 @@
-DZAI 1.5.2 - AI Addon for DayZ
+DZAI 1.5.2.1 - AI Addon for DayZ
 ============
 
+<b>Announcement:</b> Further development for DZAI is currently on hold as I have limited time to continue work on this AI package. At this time DZAI has achieved all previously incomplete development goals and has reached 
+a relatively bug-free state, so DZAI will only be updated to solve the most serious bugs and errors. 
 
 Introduction
 ============
@@ -131,5 +133,9 @@ DZAI Lite has been permanently retired. Users of DZAI Lite should switch to DZAI
 - [FIXED] Fixed active unit amount counting.
 - [NEW] Added support for DayZ Trinity Island.
 - [NEW] Added DZAI_static_spawn function for easily creating static AI spawn areas. Currently in testing and used for Trinity Island spawns.
+
+1.5.2.1 Minor Update:
+
+- [FIXED] When preparing to spawn dynamic AI, DZAI will now have a slight tolerance of overlapping trigger areas before considering the trigger as too close and cancelling the spawn altogether.
 
 Note: Information about past updates are archived in changelog_archive.txt
