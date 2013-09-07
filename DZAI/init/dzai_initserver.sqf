@@ -41,8 +41,7 @@ if (DZAI_modName == "") then {
 	switch (_modVariant) do {
 		case "@DayZ_Epoch":
 		{
-			//DZAI_modName = "epoch";				//DayZ Epoch
-			DZAI_modName = "default";				//temporarily disable Epoch features
+			DZAI_modName = "epoch";				//DayZ Epoch
 		};
 		case "DayzOverwatch":
 		{
