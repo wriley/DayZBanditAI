@@ -138,4 +138,8 @@ DZAI Lite has been permanently retired. Users of DZAI Lite should switch to DZAI
 
 - [FIXED] When preparing to spawn dynamic AI, DZAI will now have a slight tolerance of overlapping trigger areas before considering the trigger as too close and cancelling the spawn altogether.
 
+1.5.2.2 Update (for Epoch):
+
+- [FIXED] Removed skin classnames that were responsible for causing server crashes. Thanks to iroker of the OpenDayZ forums.
+
 Note: Information about past updates are archived in changelog_archive.txt
