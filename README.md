@@ -1,4 +1,4 @@
-DZAI 1.5.2.1 - AI Addon for DayZ
+DZAI 1.5.2.2 - AI Addon for DayZ
 ============
 
 <b>Announcement:</b> Further development for DZAI is currently on hold as I have limited time to continue work on this AI package. At this time DZAI has achieved all previously incomplete development goals and has reached 
@@ -28,6 +28,13 @@ Compatibility
 - DZAI is designed to be compatible with most publicly-available DayZ Mods. Unsupported mods are listed further below.
 - DZAI does not support any DayZ map or mod that is non-public, in development, or has an AI addon prepackaged.
 - DZAI may or may not function properly with unsupported mods.
+
+Compatibility with other AI addons:
+============
+
+- DZAI is not tested for compatibility with any other AI addons, therefore any issues that arise from using other AI addons with DZAI are entirely up to the user to solve.
+- If using any addons that include AI, ensure that they do not modify side relations settings.
+- <b>Final Reminder:</b> DZAI is not guaranteed to work in conjunction with other AI mods. Unexpected AI behavior may happen.
 
 <b>Supported DayZ maps and mods:</b>
 
