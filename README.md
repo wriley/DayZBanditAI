@@ -34,6 +34,7 @@ Compatibility with other AI addons:
 
 - DZAI is not tested for compatibility with any other AI addons, therefore any issues that arise from using other AI addons with DZAI are entirely up to the user to solve.
 - If using any addons that include AI, ensure that they do not modify side relations settings.
+- Users have reported that DZAI is compatible the DayZ Misson addon. If using the mission addon, do not include the file(s) that set side relation settings.
 - <b>Final Reminder:</b> DZAI is not guaranteed to work in conjunction with other AI mods. Unexpected AI behavior may happen.
 
 <b>Supported DayZ maps and mods:</b>
