@@ -56,7 +56,8 @@ DZAI_modName = "";
 /*	AI Unit Variables
 --------------------------------------------------------------------------------------------------------------------*/		
 
-//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)		
+//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Enabling this option may impact server performance
+//Note: AI cannot be attacked or damaged by zombies.(Default: 0.00. Player equivalent: 1.00)		
 DZAI_weaponNoise = 0.00;
 
 //Amount of time in seconds between AI ammo refresh and zombie check. Decreasing this value may impact server performance. (Default: 15)											
@@ -97,10 +98,13 @@ DZAI_dynRemoveDeadWait = 300;
 //Time to wait before despawning all AI units in dynamic trigger area when no players are present, and delay time before force-despawning trigger area after all spawned units have been killed. (Default: 120)
 DZAI_dynDespawnWait = 120;
 
+//List of marker-defined areas where dynamic AI spawns should NOT be created. These markers may be of any shape (rectangular or circular).
+//Markers can be defined in /world_map_configs/custom_markers/cust_markers_(mapname).sqf (Default: [])
 DZAI_dynBlacklist = [];									
 
 /*	AI Helicopter patrol settings
 IMPORTANT: Before enabling AI helicopter patrols, make sure you have properly edited your server_cleanup.fsm file. Otherwise, the helicopters will explode after spawning.
+For instructions, consult Step 5 of the Installation Instructions on the DZAI Github page: https://github.com/dayzai/DayZBanditAI
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Enable or disable AI helicopter patrols. (Default: false)
