@@ -1,0 +1,22 @@
+DZAI Terms of Use
+Date Created: 6:38 PM 10/6/2013
+Date Updated: 6:38 PM 10/6/2013
+----------------------------------------
+
+Note: Use of the first person pronouns (ie: "I", "me", "my") refers to the developer of DZAI code.
+
+1. Section for Server Admins and the General Public:
+
+- No permission is required to download and use DZAI. 
+- You are free to make modifications to DZAI code but not redistribute it without permission. 
+- If you want to contribute code to DZAI please do so through Github (https://github.com/dayzai/DayZBanditAI).
+
+2. Section for Mod Developers:
+
+- If you are a developer of a DayZ mod and wish to use DZAI as part of your mod, then please notify me (the developer) in some way to ask for permission. You may ask by opening an Issue Ticket on the Github site (https://github.com/dayzai/DayZBanditAI) or send me a Private Message on the OpenDayZ forums (http://opendayz.net/members/buttface.1178/).
+- It is my intention that the DZAI code always remain open and available to the public as DZAI is built upon publicly-available code and knowledge. Once your mod is fit for release to the general public (beyond closed beta testing), you must do one of the following if modifications have been made to the DZAI code:
+i. Make the most updated version of the modified DZAI files available to the public, either through your own Github repository or through direct download.
+ii. Make the most updated version of the modified DZAI files available through the released server files.
+iii. If you do not want make the modified DZAI files open to the public, then you must make them accessible to me (the developer) in some way, either through your Github repository or direct download.
+
+For questions and clarifications relating to these terms, please contact me through a Private Message on the OpenDayZ forums (http://opendayz.net/members/buttface.1178/).
