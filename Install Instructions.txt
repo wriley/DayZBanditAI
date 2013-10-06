@@ -1,5 +1,5 @@
-Installation Instructions for DZAI 1.4.0+
-Last Updated: 7:57 PM 8/23/2013
+Installation Instructions for DZAI 1.6.0+
+Last Updated: 6:36 PM 10/6/2013
 
 What you need:
 ----------------------------------------------------
@@ -48,7 +48,7 @@ Edit it to this:
 
 If you cannot find this line, do not make any changes.
 
-8. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_variables.sqf
+8. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_config.sqf
 
 9. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
 
