@@ -1,4 +1,4 @@
-DZAI 1.5.2.2 - AI Addon for DayZ
+DZAI 1.6.0 - AI Addon for DayZ
 ============
 
 <b>Announcement:</b> Further development for DZAI is currently on hold as I have limited time to continue work on this AI package. At this time DZAI has achieved all previously incomplete development goals and has reached 
@@ -80,7 +80,7 @@ Installation Instructions:
 		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && (vehicle _x getVariable [""DZAI"",0] != 1)) then {" \n
 	 
 	 
-	If you <b>do</b> have the Animated HeliCrash addon installed, change the line to this:
+	If you <b>do</b> have the Animated HeliCrash addon installed (or unsure if you do), change the line to this:
 
 
 		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
@@ -103,51 +103,26 @@ Installation Instructions:
 Note: You may store your custom settings changes in DZAI\DZAI_settings_override.sqf. This file is a convenient way to store and transfer your custom settings when upgrading to a newer version of DZAI. Further instructions are provided inside this file.
 
 
-DZAI 1.5.0 Changelog:
+DZAI 1.6.0 Changelog:
 ============
 
-- [FIXED] Fixed flies sound cleanup. Fly sounds should now be cleaned up along with dead AI bodies. Note: The "take clothes" addon will interfere with the cleanup if clothes are taken from the AI body.
-- [UPDATED] AI groups now have a chance of searching for nearby lootpiles upon completing a waypoint.
-- [UPDATED] Using Study Body on a dead AI unit now shows a randomly generated name.
-- [UPDATED] Dynamic AI now spawn facing targeted player.
-- [UPDATED] DZAI now reads from CfgWorlds config file to retrieve location data.
-- [UPDATED] AI helicopters now travel directly to cities, towns, and other locations. This change helps distribute helicopter patrols more evenly around the map.
-- [UPDATED] Disabling dynamic AI spawns now also prevents related settings from being loaded.
-- [UPDATED] Preset static AI spawns can now be disabled in dzai_variables.sqf.
-- [UPDATED] Dead AI body cleanup is now performed independently of AI respawn/despawn. Minimum delay before body cleanup is defined by DZAI_cleanupDelay in dzai_variables.sqf (Default: 5 minutes after death). One cleanup cycle is performed every 15 minutes.
-- [MODIFIED] AI helicopter flying height changed from 90-130m to 100-140m.
-- [MODIFIED] Increased waypoint completion times for AI helicopter patrols.
-- [MODIFIED] Rebalanced default backpack loot tables.
-- [MODIFIED] Probability of generating GPS for low-tier loot table increased from 0% to 0.5%, probability increased for high-tier loot table from 10% to 12.5%.
-- [MODIFIED] DZAI will try to avoid spawning AI if a player is within 40m of a chosen spawn point (distance increased from 30m).
-- [MODIFIED] Increased default server monitor reporting interval from 3 minutes to 5 minutes.
-- [MODIFIED] Slight increase in accuracy for helicopter AI gunners.
-- [MODIFIED] Dynamic AI patrol radius decreased from 300m to 250m.
-
-Removed updates (to be added in a future update):
-
-- [UPDATED] Areas of the map can now be blacklisted to prevent dynamic AI spawns from being created. To specify a blacklisted area, create a marker (ellipse or rectangular) covering the area where dynamic spawns should not be created. Add these markers to the custom markers section of the appropriate file in the world_map_configs folder.
-
-1.5.1 Update:
-
-DZAI Lite has been permanently retired. Users of DZAI Lite should switch to DZAI (full) and disable static AI spawns for identical functionality.
-
-- [UPDATED] Global maximum number of dynamic triggers can now be specified in dzai_variables.sqf. Can be left at default value to use pre-determined settings. Note: Per-map dynamic trigger settings are now stored in files found in the world_map_configs folder.
-- [UPDATED] Updated dzai_variables.sqf formatting for improved readability.
-- [MODIFIED] Changed radio text warnings for findKiller and seekPlayer AI behaviors.
-
-1.5.2 Update:
-
-- [FIXED] Fixed active unit amount counting.
-- [NEW] Added support for DayZ Trinity Island.
-- [NEW] Added DZAI_static_spawn function for easily creating static AI spawn areas. Currently in testing and used for Trinity Island spawns.
-
-1.5.2.1 Minor Update:
-
-- [FIXED] When preparing to spawn dynamic AI, DZAI will now have a slight tolerance of overlapping trigger areas before considering the trigger as too close and cancelling the spawn altogether.
-
-1.5.2.2 Update (for Epoch):
-
-- [FIXED] Removed skin classnames that were responsible for causing server crashes. Thanks to iroker of the OpenDayZ forums.
+[NEW] Radio text warnings for AI pursuit will now report direction and distance of pursuing AI group.
+[NEW] Added support for AI plane patrols. To add planes, simply add them to the helicopter classname array (DZAI_heliTypes). Unarmed planes will be given an M240.
+[NEW] DZAI will now auto-detect the number of available gunner seats. This means you can now use helicopters with any number of gunner seats, or no gunners at all.
+[NEW] For new maps that DZAI does not have config files for, DZAI will now automatically generate basic static triggers at every city and town as well as spawn a certain number of dynamic triggers, depending on the number of city/town locations on the map. This is a temporary measure for newly-released maps until proper config files can be made for DZAI.
+[NEW] Re-implemented area blacklist to prevent dynamic AI spawns from being created in marker-specified areas.
+[NEW] DZAI will now autodetect Epoch if an unrecognized map is being used.
+[FIXED] Helicopter patrol spawning script will now wait for helicopter classname table to finish verifying before proceeding to spawn patrols. If all classnames happen to be invalid, DZAI will default to using the UH1H_DZ instead.
+[FIXED] Helicopter spawning script will now check if the vehicle classname is either a Helicopter or Plane type vehicle. If the vehicle is neither, it will spawn a UH1H by default instead.
+[CHANGED] AI findKiller seek range reduced to 350/450 (min/max) from 400/500 (min/max).
+<b>[CHANGED] dzai_variables.sqf has been renamed to dzai_config.sqf for better clarity.</b>
+[CHANGED] Updated file/folder layout for better organization of config files.
+[CHANGED] If a static trigger cannot find suitable building locations to use as spawn points, it will generate a random position within 220m of the trigger position. Previously, the trigger's position was used as a spawn point if no suitable locations were found.
+[CHANGED] Static triggers will now only spawn AI near buildings that can spawn loot or zombies.
+[CHANGED] The number of dead AI units ejected after destroying an AI air patrol now depends on the actual number of units on board. (ie: A UH1H will eject 3 units, a Camel biplane will eject 1 unit).
+[CHANGED] Changed default respawn time for static AI to 10 minutes after the last surviving unit has been killed. (Increased delay from 5 minutes).
+[CHANGED] Halved maximum bonus AI accuracy for ground AI units. This means that the lowest-level AI will no longer have a chance of having the same accuracy rating as the most elite-level AI.
+[CHANGED] Removed bonus AI accuracy for AI helicopter gunners. Accuracy rating is now fixed at 50% of maximum value. Note: Previously, AI gunner accuracy could vary between 45-55% of maximum possible value.
+[REMOVED] Removed ItemTent from AI loot tables.
 
 Note: Information about past updates are archived in changelog_archive.txt
