@@ -593,6 +593,6 @@ if (DZAI_staticAI) then {
 };
 
 #include "custom_markers/cust_markers_isladuala.sqf"
-#include "custom_markers/cust_spawns_isladuala.sqf"
+#include "custom_spawns/cust_spawns_isladuala.sqf"
 
 diag_log "Isladuala static/dynamic trigger configuration loaded.";

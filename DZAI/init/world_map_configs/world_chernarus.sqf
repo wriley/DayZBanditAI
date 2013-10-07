@@ -600,6 +600,6 @@ if (DZAI_staticAI) then {
 };
 
 #include "custom_markers/cust_markers_chernarus.sqf"
-#include "custom_markers/cust_spawns_chernarus.sqf"
+#include "custom_spawns/cust_spawns_chernarus.sqf"
 
 diag_log "Chernarus map configuration loaded.";
