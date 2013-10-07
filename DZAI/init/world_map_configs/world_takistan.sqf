@@ -489,7 +489,7 @@ if (DZAI_staticAI) then {
 //end of triggers
 
 
-#include "custom_markers/cust_markers_takistan.sqf"
-#include "custom_spawns/cust_spawns_takistan.sqf"
+#include "custom_markers\cust_markers_takistan.sqf"
+#include "custom_spawns\cust_spawns_takistan.sqf"
 
 diag_log "Takistan static/dynamic trigger configuration loaded.";

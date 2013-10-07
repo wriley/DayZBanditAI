@@ -295,7 +295,7 @@ if (DZAI_staticAI) then {
 	//end triggers
 };
 
-#include "custom_markers/cust_markers_fallujah.sqf"
-#include "custom_spawns/cust_spawns_fallujah.sqf"
+#include "custom_markers\cust_markers_fallujah.sqf"
+#include "custom_spawns\cust_spawns_fallujah.sqf"
 
 diag_log "Fallujah static/dynamic trigger configuration loaded.";

@@ -610,7 +610,7 @@ if (DZAI_staticAI) then {
 	//end triggers
 };
 
-#include "custom_markers/cust_markers_lingor.sqf"
-#include "custom_spawns/cust_spawns_lingor.sqf"
+#include "custom_markers\cust_markers_lingor.sqf"
+#include "custom_spawns\cust_spawns_lingor.sqf"
 
 diag_log "Lingor static/dynamic trigger configuration loaded.";

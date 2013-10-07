@@ -288,8 +288,8 @@ if (DZAI_staticAI) then {
 	//End Triggers
 };
 
-#include "custom_markers/cust_markers_namalsk.sqf"
-#include "custom_spawns/cust_spawns_namalsk.sqf"
+#include "custom_markers\cust_markers_namalsk.sqf"
+#include "custom_spawns\cust_spawns_namalsk.sqf"
 
 //AI hostility to Bloodsuckers by decreasing their leader's rating (untested). Required because Bloodsuckers will aggro on AI.
 sefik addRating -50000;

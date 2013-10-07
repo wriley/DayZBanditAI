@@ -280,7 +280,7 @@ if (DZAI_staticAI) then {
 	//end of triggers
 };
 
-#include "custom_markers/cust_markers_oring"
-#include "custom_spawns/cust_spawns_oring"
+#include "custom_markers\cust_markers_oring"
+#include "custom_spawns\cust_spawns_oring"
 
 diag_log "Oring static/dynamic trigger configuration loaded.";

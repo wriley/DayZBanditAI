@@ -75,7 +75,7 @@ if (DZAI_staticAI) then {
 	//end of triggers
 };
 
-#include "custom_markers/cust_markers_trinity.sqf"
-#include "custom_spawns/cust_spawns_trinity.sqf"
+#include "custom_markers\cust_markers_trinity.sqf"
+#include "custom_spawns\cust_spawns_trinity.sqf"
 
 diag_log "Trinity Island/dynamic trigger configuration loaded.";
