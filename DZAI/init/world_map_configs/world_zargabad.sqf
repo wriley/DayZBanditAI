@@ -131,7 +131,7 @@ if (DZAI_staticAI) then {
 //end triggers
 };
 
-#include "custom_markers/cust_markers_zargabad"
-#include "custom_markers/cust_spawns_zargabad"
+#include "custom_markers/cust_markers_zargabad.sqf"
+#include "custom_markers/cust_spawns_zargabad.sqf"
 
 diag_log "Zargabad static/dynamic trigger configuration loaded.";

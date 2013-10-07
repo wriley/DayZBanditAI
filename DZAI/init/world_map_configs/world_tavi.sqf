@@ -633,7 +633,7 @@ if (DZAI_staticAI) then {
 	//end of triggers
 };
 
-#include "custom_markers/cust_markers_tavi"
-#include "custom_markers/cust_spawns_tavi"
+#include "custom_markers/cust_markers_tavi.sqf"
+#include "custom_markers/cust_spawns_tavi.sqf"
 
 diag_log "Taviana static/dynamic trigger configuration loaded.";

@@ -544,7 +544,7 @@ if (DZAI_staticAI) then {
 	//end of triggers
 };
 
-#include "custom_markers/cust_markers_sara"
-#include "custom_markers/cust_spawns_sara"
+#include "custom_markers/cust_markers_sara.sqf"
+#include "custom_markers/cust_spawns_sara.sqf"
 
 diag_log "Sahrani static/dynamic trigger configuration loaded.";

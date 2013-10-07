@@ -1,6 +1,6 @@
 DZAI Terms of Use
 Date Created: 6:38 PM 10/6/2013
-Date Updated: 6:38 PM 10/6/2013
+Date Updated: 7:38 PM 10/6/2013
 ----------------------------------------
 
 Note: Use of the first person pronouns (ie: "I", "me", "my") refers to the developer of DZAI code.
@@ -8,7 +8,8 @@ Note: Use of the first person pronouns (ie: "I", "me", "my") refers to the devel
 1. Section for Server Admins and the General Public:
 
 - No permission is required to download and use DZAI. 
-- You are free to make modifications to DZAI code but not redistribute it without permission. 
+- You are free to make modifications to DZAI code but not redistribute modified files without permission. 
+- DZAI may be freely redistributed without modifications.
 - If you want to contribute code to DZAI please do so through Github (https://github.com/dayzai/DayZBanditAI).
 
 2. Section for Mod Developers:
