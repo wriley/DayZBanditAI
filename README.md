@@ -34,7 +34,7 @@ Compatibility with other AI addons:
 
 - DZAI is not tested for compatibility with any other AI addons, therefore any issues that arise from using other AI addons with DZAI are entirely up to the user to solve.
 - If using any addons that include AI, ensure that they do not modify side relations settings.
-- Users have reported that DZAI is compatible the DayZ Misson addon. If using the mission addon, do not include the file(s) that set side relation settings.
+- Users have reported that DZAI is compatible the DayZ Misson addon. If using the mission addon, do not include the file(s) that set side relation settings (ie: factions.sqf).
 - <b>Final Reminder:</b> DZAI is not guaranteed to work in conjunction with other AI mods. Unexpected AI behavior may happen.
 
 <b>Supported DayZ maps and mods:</b>
@@ -85,7 +85,9 @@ Installation Instructions:
 
 		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
 
-
+		
+	You will need to manually enable helicopter patrols by editing dzai_config.sqf and setting DZAI_aiHeliPatrols = true;
+	
 6. A small edit to your BattlEye filters is needed. Inside your BattlEye folder, edit your addmagazinecargo.txt. Locate the line that reads:
 	
 		"5=ItemRadio"
