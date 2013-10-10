@@ -11,5 +11,4 @@ These files contained inside this folder are not required to run DZAI, but can b
 	
 2. PBO Prefix File
 
-	If you encounter problems entering the game after repacking your dayz_server.pbo, copy the $PBOPREFIX$ file into your dayz_server folder and repack the folder into .pbo format. 
-	
+	If you encounter problems entering the game after repacking your dayz_server.pbo, copy the $PBOPREFIX$, $PREFIX$, and PboPrefix.txt files into your dayz_server folder and repack the folder into .pbo format. 
