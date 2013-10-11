@@ -136,15 +136,12 @@ Contribute
 - Anyone can help further the development of DZAI by giving constructive feedback and comprehensive bug reports. 
 - YouTube videos of DZAI in action are also immensely helpful for influencing the design direction of this AI mod.
 - I continue development of DZAI on my spare time, which often isn't very plentiful. If you'd like to support me with a small donation, thank you. I have set up a convenient button below.
-- Donations are highly appreciated but do not ever feel obliged to do so. Constructive feedback is often more than enough!
+- Donations are highly appreciated but please do not ever feel obliged to do so. Constructive feedback is often more than enough!
+
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_donations">
-<input type="hidden" name="business" value="FD599UQ6GGBCN">
-<input type="hidden" name="lc" value="CA">
-<input type="hidden" name="item_name" value="DZAI - DayZ AI">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="9PESMPV4SQFDJ">
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
