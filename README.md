@@ -128,3 +128,13 @@ DZAI 1.6.0 Changelog:
 - [REMOVED] Removed ItemTent from AI loot tables.
 
 Note: Information about past updates are archived in changelog_archive.txt
+
+This is a test button!
+
+<script 
+    data-currency="USD" 
+    data-amount="1.00" 
+    data-quantity="1" 
+    data-name="DZAI Donation" 
+    data-button="donate" src="paypal-button.min.js?merchant=sam.ng.sam@gmail.com"
+></script>
