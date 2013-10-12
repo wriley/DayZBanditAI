@@ -129,9 +129,9 @@ DZAI 1.6.0 Changelog:
 
 1.6.1 Update:
 
-[CHANGED] Reduced maximum bonus spotDistance rating for all AI skill tiers.
-[CHANGED] Reduced minimum spotDistance rating for AI skill tier 3 (max tier).
-[CHANGED] Reduced NWAF AI spawns. There are now fewer groups spawned, and group sizes have been decreased slightly as well.
+- [CHANGED] Reduced maximum bonus spotDistance rating for all AI skill tiers.
+- [CHANGED] Reduced minimum spotDistance rating for AI skill tier 3 (max tier).
+- [CHANGED] Reduced NWAF AI spawns. There are now fewer groups spawned, and group sizes have been decreased slightly as well.
 
 Note: Information about past updates are archived in changelog_archive.txt
 
