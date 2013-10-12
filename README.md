@@ -1,4 +1,4 @@
-DZAI 1.6.0 - AI Addon for DayZ
+DZAI 1.6.1 - AI Addon for DayZ
 ============
 
 <b>Announcement:</b> Further development for DZAI is currently on hold as I have limited time to continue work on this AI package. At this time DZAI has achieved all previously incomplete development goals and has reached 
@@ -127,6 +127,12 @@ DZAI 1.6.0 Changelog:
 - [CHANGED] Removed bonus AI accuracy for AI helicopter gunners. Accuracy rating is now fixed at 50% of maximum value. Note: Previously, AI gunner accuracy could vary between 45-55% of maximum possible value.
 - [REMOVED] Removed ItemTent from AI loot tables.
 
+1.6.1 Update:
+
+[CHANGED] Reduced maximum bonus spotDistance rating for all AI skill tiers.
+[CHANGED] Reduced minimum spotDistance rating for AI skill tier 3 (max tier).
+[CHANGED] Reduced NWAF AI spawns. There are now fewer groups spawned, and group sizes have been decreased slightly as well.
+
 Note: Information about past updates are archived in changelog_archive.txt
 
 
@@ -136,7 +142,6 @@ Contribute
 - Anyone can help further the development of DZAI by giving constructive feedback and comprehensive bug reports. 
 - YouTube videos of DZAI in action are also immensely helpful for influencing the design direction of this AI mod.
 - I continue development of DZAI on my spare time, which often isn't very plentiful. If you'd like to support me with a small donation, thank you. I have set up a convenient button below.
-- Donations are highly appreciated but please do not ever feel obliged to do so. Constructive feedback is often more than enough!
 
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PESMPV4SQFDJ)
