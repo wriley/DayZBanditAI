@@ -67,7 +67,7 @@ Installation Instructions:
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
 		allowConnection = true;
 	
-5. If you do not wish to use DZAI's AI helicopter patrols, skip to step 6. Otherwise, continue reading.
+5. If you do not wish to use DZAI's AI helicopter patrols, skip to step 6. Otherwise, continue reading. <b>Note: This step is not required for DayZ Epoch as of version 1.0.2.4.</b>
 	
 	Edit your server_cleanup.fsm (located in \dayz_server\system). Search for this line: 
 
