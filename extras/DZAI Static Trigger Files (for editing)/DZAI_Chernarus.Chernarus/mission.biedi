@@ -370,7 +370,7 @@ class _trigger_38
 		INTERRUPTABLE="true";
 		TEXT="Berezino1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [1,2,200,thisTrigger,[],1] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,200,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -439,7 +439,7 @@ class _trigger_56
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[12101.592, 12710.504]";
+		POSITION="[12055.516, 12620.125]";
 		A="600";
 		B="600";
 		ACTIVATION_BY="ANY";
@@ -448,9 +448,9 @@ class _trigger_56
 		TIMEOUT_MID="15";
 		TIMEOUT_MAX="20";
 		INTERRUPTABLE="true";
-		TEXT="NEAF (Markers)";
+		TEXT="NEAF";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [2,2,250,thisTrigger,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5'],2] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,2,200,thisTrigger,['NEAF1','NEAF2','NEAF3','NEAF4','NEAF5'],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -530,7 +530,7 @@ class _trigger_66
 		INTERRUPTABLE="true";
 		TEXT="NWAF1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [3,0,175,thisTrigger,[],3,2] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,175,thisTrigger,[],3] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -550,7 +550,7 @@ class _trigger_68
 		INTERRUPTABLE="true";
 		TEXT="NWAF2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [3,1,175,thisTrigger,[],3,2] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,175,thisTrigger,[],3] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -570,7 +570,7 @@ class _trigger_70
 		INTERRUPTABLE="true";
 		TEXT="NWAF3";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [3,1,200,thisTrigger,[],3,2] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,200,thisTrigger,[],3] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -650,7 +650,7 @@ class _trigger_78
 		INTERRUPTABLE="true";
 		TEXT="Stary Sobor";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [2,1,225,thisTrigger,[],2,2] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,0,225,thisTrigger,[],2,2] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -670,7 +670,7 @@ class _trigger_80
 		INTERRUPTABLE="true";
 		TEXT="Novy Sobor";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [2,1,225,thisTrigger,[],2] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,0,225,thisTrigger,[],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1294,61 +1294,6 @@ class _trigger_146
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
-class _marker_1
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[10557.953, 2469.0283, 0.00033473969]";
-		NAME="Elektro1";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_3
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[10715.897, 2226.1077, 6.3896179e-005]";
-		NAME="Elektro2";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_5
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[10477.38, 2251.7627, 9.5367432e-007]";
-		NAME="Elektro3";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_6
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[10142.232, 2200.677, 1.335144e-005]";
-		NAME="Elektro4";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_7
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[10248.711, 2316.2119, 2.8610229e-006]";
-		NAME="Elektro5";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
 class _trigger_156
 {
 	objectType="trigger";
@@ -1363,43 +1308,10 @@ class _trigger_156
 		TIMEOUT_MID="15";
 		TIMEOUT_MAX="20";
 		INTERRUPTABLE="true";
-		TEXT="Elektro (Markers)";
+		TEXT="Elektro3";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [1,2,200,thisTrigger,['Elektro1','Elektro2','Elektro3','Elektro4','Elektro5'],0] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [1,2,200,thisTrigger,[],0] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
-	};
-};
-class _marker_15
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[6615.7598, 2630.5085, 3.3378601e-006]";
-		NAME="Cherno1";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_16
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[6834.1162, 3153.759, 2.2411346e-005]";
-		NAME="Cherno2";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_17
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[6179.6978, 2486.1204, 2.3841858e-005]";
-		NAME="Cherno3";
-		TYPE="Empty";
-		FILL="Solid";
 	};
 };
 class _marker_18
@@ -1409,17 +1321,6 @@ class _marker_18
 	{
 		POSITION="[7288.8408, 2305.3875, 4.8160553e-005]";
 		NAME="Cherno4";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_19
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[6410.3672, 2921.1934, 1.5258789e-005]";
-		NAME="Cherno5";
 		TYPE="Empty";
 		FILL="Solid";
 	};
@@ -1438,7 +1339,7 @@ class _trigger_160
 		TIMEOUT_MID="15";
 		TIMEOUT_MAX="20";
 		INTERRUPTABLE="true";
-		TEXT="Cherno (Markers)";
+		TEXT="Cherno4";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
 		EXP_ACTIV="0 = [2,1,200,thisTrigger,['Cherno1','Cherno2','Cherno3','Cherno4','Cherno5'],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
@@ -1587,81 +1488,6 @@ class _marker_68
 		FILL="Solid";
 	};
 };
-class _trigger_171
-{
-	objectType="trigger";
-	class Arguments
-	{
-		POSITION="[4308.2876, 10658.527]";
-		A="600";
-		B="600";
-		ACTIVATION_BY="ANY";
-		REPEATING="true";
-		TIMEOUT_MIN="10";
-		TIMEOUT_MID="15";
-		TIMEOUT_MAX="20";
-		INTERRUPTABLE="true";
-		TEXT="NWAF4 (Markers)";
-		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [3,2,300,thisTrigger,['NWAF4_1','NWAF4_2','NWAF4_3','NWAF4_4','NWAF4_5'],3] call fnc_spawnBandits;";
-		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
-	};
-};
-class _marker_74
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[4151.8853, 10982.557, -6.1035156e-005]";
-		NAME="NWAF4_1";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_75
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[4555.0425, 10762.921]";
-		NAME="NWAF4_2";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_76
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[4042.3215, 10821.761, 6.1035156e-005]";
-		NAME="NWAF4_3";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_77
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[4440.2842, 10858.174]";
-		NAME="NWAF4_4";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
-class _marker_78
-{
-	objectType="marker";
-	class Arguments
-	{
-		POSITION="[4331.481, 10963.648, 3.0517578e-005]";
-		NAME="NWAF4_5";
-		TYPE="Empty";
-		FILL="Solid";
-	};
-};
 class _trigger_177
 {
 	objectType="trigger";
@@ -1764,7 +1590,7 @@ class _trigger_179
 		INTERRUPTABLE="true";
 		TEXT="NWAF5 (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [3,2,200,thisTrigger,['NWAF5_1','NWAF5_2','NWAF5_3','NWAF5_4'],3] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,200,thisTrigger,['NWAF5_1','NWAF5_2','NWAF5_3','NWAF5_4'],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1817,7 +1643,7 @@ class _trigger_182
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[4117.4473, 11175.042, 0]";
+		POSITION="[4233.6333, 11116.217]";
 		A="600";
 		B="600";
 		ACTIVATION_BY="ANY";
@@ -1828,7 +1654,7 @@ class _trigger_182
 		INTERRUPTABLE="true";
 		TEXT="NWAF6 (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [3,2,200,thisTrigger,['NWAF6_1','NWAF6_2','NWAF6_3','NWAF6_4'],3] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,200,thisTrigger,['NWAF6_1','NWAF6_2','NWAF6_3','NWAF6_4'],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1837,7 +1663,7 @@ class _marker_91
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4186.7158, 11330.71, -3.0517578e-005]";
+		POSITION="[4319.2354, 11151.977, -3.0517578e-005]";
 		NAME="NWAF6_1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1848,7 +1674,7 @@ class _marker_92
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4055.3914, 11332.235, -6.1035156e-005]";
+		POSITION="[4404.3877, 11066.321, -6.1035156e-005]";
 		NAME="NWAF6_2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1859,7 +1685,7 @@ class _marker_93
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[3925.915, 11296.789, -9.1552734e-005]";
+		POSITION="[4124.2104, 11191.318, -9.1552734e-005]";
 		NAME="NWAF6_3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1934,9 +1760,9 @@ class _trigger_188
 		TIMEOUT_MID="15";
 		TIMEOUT_MAX="20";
 		INTERRUPTABLE="true";
-		TEXT="NWAF8 (Markers)";
+		TEXT="NWAF4 (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [3,2,200,thisTrigger,['NWAF8_1','NWAF8_2','NWAF8_3','NWAF8_4'],3] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,200,thisTrigger,['NWAF4_1','NWAF4_2','NWAF4_3','NWAF4_4'],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1946,7 +1772,7 @@ class _marker_99
 	class Arguments
 	{
 		POSITION="[5123.7661, 9896.9561, 0]";
-		NAME="NWAF8_1";
+		NAME="NWAF4_1";
 		TYPE="Empty";
 		FILL="Solid";
 	};
@@ -1957,7 +1783,7 @@ class _marker_100
 	class Arguments
 	{
 		POSITION="[5230.0479, 9855.4219, 3.0517578e-005]";
-		NAME="NWAF8_2";
+		NAME="NWAF4_2";
 		TYPE="Empty";
 		FILL="Solid";
 	};
@@ -1968,7 +1794,7 @@ class _marker_101
 	class Arguments
 	{
 		POSITION="[5218.3945, 9664.8857, 3.0517578e-005]";
-		NAME="NWAF8_3";
+		NAME="NWAF4_3";
 		TYPE="Empty";
 		FILL="Solid";
 	};
@@ -1979,7 +1805,7 @@ class _marker_102
 	class Arguments
 	{
 		POSITION="[5305.8325, 9810.5674, 0.00024414063]";
-		NAME="NWAF8_4";
+		NAME="NWAF4_4";
 		TYPE="Empty";
 		FILL="Solid";
 	};
@@ -2000,7 +1826,7 @@ class _trigger_195
 		INTERRUPTABLE="true";
 		TEXT="NWAF7 (Markers)";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [3,2,200,thisTrigger,['NWAF7_1','NWAF7_2','NWAF7_3','NWAF7_4'],3] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [2,1,200,thisTrigger,['NWAF7_1','NWAF7_2','NWAF7_3','NWAF7_4'],2] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -2068,6 +1894,26 @@ class _marker_113
 		NAME="Zub4";
 		TYPE="Empty";
 		FILL="Solid";
+	};
+};
+class _trigger_197
+{
+	objectType="trigger";
+	class Arguments
+	{
+		POSITION="[13365.159, 12852.25]";
+		A="600";
+		B="600";
+		ACTIVATION_BY="ANY";
+		REPEATING="true";
+		TIMEOUT_MIN="10";
+		TIMEOUT_MID="15";
+		TIMEOUT_MAX="20";
+		INTERRUPTABLE="true";
+		TEXT="Olsha";
+		EXP_COND="{isPlayer _x} count thisList > 0;";
+		EXP_ACTIV="0 = [0,1,200,thisTrigger,[]] call fnc_spawnBandits;";
+		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
 class _postfix_0

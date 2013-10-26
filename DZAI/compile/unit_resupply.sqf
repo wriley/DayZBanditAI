@@ -46,6 +46,9 @@ while {(alive _unit)&&(!(isNull _unit))} do {
 				//_unitGroup reveal [_x,1.5];
             };
 		} forEach _nearbyZeds;
+		if (DZAI_passiveAggro) then {
+			if ((count _nearbyZeds) > 0) then {_nul = [_unit,75,false,(getPosATL _unit)] spawn ai_alertzombies;};
+		};
 	};
 	if !(_unit getVariable ["unconscious",false]) then {
 		_needsReload = true;
@@ -74,4 +77,5 @@ while {(alive _unit)&&(!(isNull _unit))} do {
 	};
 	sleep DZAI_refreshRate;										//Check again in x seconds.
 };
+sleep 0.5;
 if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: AI resupply script deactivated.";};

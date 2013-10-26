@@ -73,30 +73,25 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_68 = _this;
 
-_this = createMarker ["NWAF4_1", [4151.8853, 10982.557, -6.1035156e-005]];
+_this = createMarker ["NWAF4_1", [5123.7661, 9896.9561, 0]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
-_marker_74 = _this;
+_marker_99 = _this;
 
-_this = createMarker ["NWAF4_2", [4555.0425, 10762.921]];
+_this = createMarker ["NWAF4_2", [5230.0479, 9855.4219, 3.0517578e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
-_marker_75 = _this;
+_marker_100 = _this;
 
-_this = createMarker ["NWAF4_3", [4042.3215, 10821.761, 6.1035156e-005]];
+_this = createMarker ["NWAF4_3", [5218.3945, 9664.8857, 3.0517578e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
-_marker_76 = _this;
+_marker_101 = _this;
 
-_this = createMarker ["NWAF4_4", [4440.2842, 10858.174]];
+_this = createMarker ["NWAF4_4", [5305.8325, 9810.5674, 0.00024414063]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
-_marker_77 = _this;
-
-_this = createMarker ["NWAF4_5", [4331.481, 10963.648, 3.0517578e-005]];
-_this setMarkerType "Empty";
-_this setMarkerBrush "Solid";
-_marker_78 = _this;
+_marker_102 = _this;
 
 _this = createMarker ["CastleRog", [11280.589, 4297.4292, -0.00012207031]];
 _this setMarkerType "Empty";
