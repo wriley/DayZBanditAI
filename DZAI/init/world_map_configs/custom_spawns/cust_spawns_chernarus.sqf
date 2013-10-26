@@ -11,7 +11,7 @@
 		"dzaicustomspawntest",	//This is the marker name to be used as the patrol and spawning area.
 		2, 						//This trigger will spawn a group of 2 AI units.
 		1,						//AI spawned by this trigger will have Weapon Grade level 1 (see below for explanation of Weapon Grade)
-		[5,10,15,true]			//(OPTIONAL) - Custom trigger activation timeouts (minimum, average, maximum), and respawn setting. True: AI spawned will respawn. False: AI will not respawn.
+		true					//(OPTIONAL) Respawn setting. True: AI spawned will respawn. False: AI will not respawn. See more here: http://opendayz.net/threads/release-dzai-lite-dynamic-ai-package.11116/page-28#post-79148
 	] call DZAI_spawn;
 	
 	Weapon Grade explanation:
