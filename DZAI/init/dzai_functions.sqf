@@ -59,7 +59,7 @@ fnc_spawnHeliPatrol	=			compile preprocessFileLineNumbers "\z\addons\dayz_server
 
 //DZAI custom spawns function.
 DZAI_spawn = {
-	private ["_spawnMarker","_patrolRadius","_trigStatements","_trigger","_positions","_respawn"];
+	private ["_spawnMarker","_patrolRadius","_trigStatements","_trigger","_respawn","_weapongrade","_totalAI"];
 	
 	_spawnMarker = _this select 0;
 	if ((typeName _spawnMarker) != "STRING") exitWith {diag_log "DZAI Error: Marker string not given!"};
