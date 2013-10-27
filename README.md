@@ -113,7 +113,6 @@ DZAI 1.7.1 Changelog:
 - [NEW] Added a test version of the reworked dynamic AI spawn system. This new dynamic spawn system randomly selects online players and spawns dynamic triggers directly on their position, rather than randomly distributing triggers around the map. More info here: http://opendayz.net/threads/release-dzai-lite-dynamic-ai-package.11116/page-27#post-78863. (Enable the test version by setting DZAI_V2dynSpawns = true).
 - [NEW] Free-for-all mode for all AI units. If enabled, all AI groups will be hostile to each other, but AI in the same group will not be hostile to each other. Note: FFA mode will not include AI units spawned using the custom spawn function (DZAI_spawn) and does not include AI helicopters. Custom-spawn AI and helicopter AI will be hostile to static and dynamic AI and vice-versa.
 - [FIXED] Static triggers will now search for up to 150 buildings capable of spawning loot/zombies within a 250m radius rather than the nearest buildings.
-- [FIXED] AI air vehicles that crash due to non-player related causes will no longer cause dead units (with loot) to be ejected.
 - [FIXED] AI air vehicles will generate loot if destroyed by players using vehicle weapons. Note: Vehicles with multiple gunners such as helicopters may have issues with this.
 - [UPDATED] Updated zed aggro script to a simplified DayZ 1.8.x version.
 - [UPDATED] Radio text messages can now be disabled in dzai_config.sqf by setting DZAI_radioMsgs = false. Default setting is true (enabled).
