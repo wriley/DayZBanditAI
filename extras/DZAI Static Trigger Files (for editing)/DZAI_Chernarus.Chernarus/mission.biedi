@@ -530,7 +530,7 @@ class _trigger_66
 		INTERRUPTABLE="true";
 		TEXT="NWAF1";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [2,1,175,thisTrigger,[],3] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [3,0,175,thisTrigger,[],3] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -550,7 +550,7 @@ class _trigger_68
 		INTERRUPTABLE="true";
 		TEXT="NWAF2";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [2,1,175,thisTrigger,[],3] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [3,0,175,thisTrigger,[],3] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -570,7 +570,7 @@ class _trigger_70
 		INTERRUPTABLE="true";
 		TEXT="NWAF3";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="0 = [2,1,200,thisTrigger,[],3] call fnc_spawnBandits;";
+		EXP_ACTIV="0 = [3,0,200,thisTrigger,[],3] call fnc_spawnBandits;";
 		EXP_DESACTIV="0 = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
@@ -1643,7 +1643,7 @@ class _trigger_182
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[4233.6333, 11116.217]";
+		POSITION="[4103.6729, 10876.167]";
 		A="600";
 		B="600";
 		ACTIVATION_BY="ANY";
@@ -1663,7 +1663,7 @@ class _marker_91
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4319.2354, 11151.977, -3.0517578e-005]";
+		POSITION="[3966.0071, 10825.011, -3.0517578e-005]";
 		NAME="NWAF6_1";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1674,7 +1674,7 @@ class _marker_92
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4404.3877, 11066.321, -6.1035156e-005]";
+		POSITION="[3983.3364, 10706.798, -6.1035156e-005]";
 		NAME="NWAF6_2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1685,7 +1685,7 @@ class _marker_93
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4124.2104, 11191.318, -9.1552734e-005]";
+		POSITION="[3860.4697, 10906.981, -9.1552734e-005]";
 		NAME="NWAF6_3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -1696,7 +1696,7 @@ class _marker_94
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4267.958, 11244.687, -9.1552734e-005]";
+		POSITION="[4042.3828, 10907.524, -9.1552734e-005]";
 		NAME="NWAF6_4";
 		TYPE="Empty";
 		FILL="Solid";

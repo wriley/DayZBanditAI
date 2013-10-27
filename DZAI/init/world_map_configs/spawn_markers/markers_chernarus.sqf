@@ -143,22 +143,22 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_90 = _this;
 
-_this = createMarker ["NWAF6_1", [4186.7158, 11330.71, -3.0517578e-005]];
+_this = createMarker ["NWAF6_1", [3966.0071, 10825.011, -3.0517578e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_91 = _this;
 
-_this = createMarker ["NWAF6_2", [4055.3914, 11332.235, -6.1035156e-005]];
+_this = createMarker ["NWAF6_2", [3983.3364, 10706.798, -6.1035156e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_92 = _this;
 
-_this = createMarker ["NWAF6_3", [3925.915, 11296.789, -9.1552734e-005]];
+_this = createMarker ["NWAF6_3", [3860.4697, 10906.981, -9.1552734e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_93 = _this;
 
-_this = createMarker ["NWAF6_4", [4267.958, 11244.687, -9.1552734e-005]];
+_this = createMarker ["NWAF6_4", [4042.3828, 10907.524, -9.1552734e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_94 = _this;
