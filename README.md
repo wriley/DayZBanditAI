@@ -1,4 +1,4 @@
-DZAI 1.7.1 - AI Addon for DayZ
+DZAI 1.7.1.1 - AI Addon for DayZ
 ============
 
 <b>Announcement:</b> Further development for DZAI is currently on hold as I have limited time to continue work on this AI package. At this time DZAI has achieved all previously incomplete development goals and has reached 
@@ -138,6 +138,11 @@ DZAI 1.7.1 Changelog:
 - [CHANGED] AI health increased very slightly.
 - [CHANGED] Reduced probability of generating pistol weapon instead of rifle for AI with weapongrade 0 from 55% to 45%.
 - [REMOVED] Removed Rocket_DZ and Survivor3_DZ skins from DZAI Epoch config file.
+
+1.7.1.1 Supplemental Update:
+------------------------------
+
+- [CHANGED] Zombies near AI group leader are once again revealed (speeds up target acquisition for zeds).
 
 Note: Information about past updates are archived in changelog_archive.txt
 
