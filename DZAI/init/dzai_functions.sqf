@@ -66,6 +66,7 @@ DZAI_spawn = {
 	_totalAI = if ((typeName (_this select 1)) == "SCALAR") then {_this select 1} else {1};
 	_weapongrade = if ((typeName (_this select 2)) == "SCALAR") then {_this select 2} else {1};
 	_respawn = if ((typeName (_this select 2)) == "BOOL") then {_this select 2} else {true};
+	_useUPS = if ((count _this) > 3) then {_this select 3} else {false};
 
 	_patrolRadius = ((((getMarkerSize _spawnMarker) select 0) min ((getMarkerSize _spawnMarker) select 1)) min 300);
 
@@ -78,8 +79,12 @@ DZAI_spawn = {
 	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigStatements,"0 = [thisTrigger] spawn fnc_despawnBandits;"];
 	_trigger setVariable ["respawn",_respawn];
 	//diag_log format ["DEBUG :: %1",_trigStatements];
+	
 	if ((markerAlpha _spawnMarker) > 0) then {
 		_spawnMarker setMarkerAlpha 0;
+	};
+	if ((markerShape _spawnMarker) == "ELLIPSE") then {
+		_spawnMarker setMarkerShape "RECTANGLE";
 	};
 	
 	diag_log format ["DEBUG :: Created custom spawn area with %1 AI units, weapongrade %2, respawn %3.",_totalAI,_weapongrade,_respawn];

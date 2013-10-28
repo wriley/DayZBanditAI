@@ -47,7 +47,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	//Add helicopter pilot
 	_crewCount = 1;
 	_pilot assignAsDriver _helicopter;
-	_pilot action ["getInPilot",_helicopter];
+	_pilot moveInDriver _helicopter;
 	
 	//Fill all available helicopter gunner seats.
 	_heliTurrets = configFile >> "CfgVehicles" >> _heliType >> "turrets";
@@ -56,7 +56,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 			private["_gunner"];
 			_gunner = _unitGroup createUnit [_banditType, [0,0,0], [], 1, "NONE"];
 			_gunner assignAsGunner _helicopter;
-			_gunner action ["getInTurret",_helicopter,[_i]];
+			_gunner moveInTurret [_helicopter,[_i]];
 			[_gunner] joinSilent _unitGroup;
 			_crewCount = _crewCount + 1;
 			//diag_log format ["DEBUG :: Assigned gunner %1 of %2 to AI %3.",(_i+1),(count _heliTurrets),_heliType];

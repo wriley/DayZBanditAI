@@ -40,7 +40,7 @@ _wpmarker setMarkerSize [100, 100];
 
 //Wait until helicopter has pilot and script has finished finding helicopter's weapons.
 waitUntil {sleep 0.1; (!isNil "_heliWeapons" && !isNull (driver _helicopter))};
-diag_log format ["Helicopter driver is %1.",(driver _helicopter)];
+diag_log format ["Helicopter driver is %1. Crew is %2.",(driver _helicopter),(crew _helicopter)];
 _startTime = time;
 
 if ((count _heliWeapons) > 0) then {

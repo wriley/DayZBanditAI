@@ -114,6 +114,7 @@ DZAI 1.7.1 Changelog:
 - [NEW] Free-for-all mode for all AI units. If enabled, all AI groups will be hostile to each other, but AI in the same group will not be hostile to each other. Note: FFA mode will not include AI units spawned using the custom spawn function (DZAI_spawn) and does not include AI helicopters. Custom-spawn AI and helicopter AI will be hostile to static and dynamic AI and vice-versa.
 - [FIXED] Static triggers will now search for up to 150 buildings capable of spawning loot/zombies within a 250m radius rather than the nearest buildings.
 - [FIXED] AI air vehicles will generate loot if destroyed by players using vehicle weapons. Note: Vehicles with multiple gunners such as helicopters may have issues with this.
+- [FIXED] Fixed issue with AI helicopter spawning script that some users were experiencing.
 - [UPDATED] Updated zed aggro script to a simplified DayZ 1.8.x version.
 - [UPDATED] Radio text messages can now be disabled in dzai_config.sqf by setting DZAI_radioMsgs = false. Default setting is true (enabled).
 - [UPDATED] Dynamic AI will now use trigger position as patrol center point if player logs out or is killed during pursuit state.
@@ -125,7 +126,8 @@ DZAI 1.7.1 Changelog:
 - [CHANGED] Added separate weapongrade probabilities for AI helicopter crew. AI helicopters now have the best chance of generating MilitarySpecial/HeliCrash loot.
 - [CHANGED] Slight reduction in base AI aiming speed rating values.
 - [CHANGED] AI helicopter wreck cleanup delay increased from 10 to 15 minutes.
-- [CHANGED] Chernarus: Further reductions in AI spawns at NWAF. Spawns around the airfield have a reduced equipType value (should allow slightly easier entry to the airfield).
+- [CHANGED] Chernarus: Further reductions and changes in AI spawns at NWAF. Spawns around the airfield have a reduced equipType value (should allow slightly easier entry to the airfield).
+- [CHANGED] Chernarus: Northmost NWAF static spawn location shifted towards the industrial hangars.
 - [CHANGED] If an AI unit is killed by another AI unit, all magazines on the victim are removed.
 - [CHANGED] AI killer-hunting behavior and dynamic AI player-seeking behavior now continues even if the player gets on a bicycle or motorcycle.
 - [CHANGED] Weapongrade value can now be explicitly defined when using the DZAI_spawn custom spawn function (instead of specifying equipType). This value will determine which DayZ loot table to generate AI weapons from. More information can be found in the custom_spawns config files.
@@ -134,6 +136,7 @@ DZAI 1.7.1 Changelog:
 - [CHANGED] Radio text messages now have a 0.5 second fade-in time.
 - [CHANGED] The format for calling the custom spawn function (DZAI_spawn) has changed. To see the updated format, see this link: http://opendayz.net/threads/release-dzai-lite-dynamic-ai-package.11116/page-28#post-79148.
 - [CHANGED] AI health increased very slightly.
+- [CHANGED] Reduced probability of generating pistol weapon instead of rifle for AI with weapongrade 0 from 55% to 45%.
 - [REMOVED] Removed Rocket_DZ and Survivor3_DZ skins from DZAI Epoch config file.
 
 Note: Information about past updates are archived in changelog_archive.txt

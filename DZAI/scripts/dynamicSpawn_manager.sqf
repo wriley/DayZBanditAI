@@ -48,6 +48,7 @@ while {true} do {
 				_noNearbySpawns = if (({(_playerPos distance _x) < (2*(DZAI_dynTriggerRadius - (DZAI_dynTriggerRadius*DZAI_dynOverlap)))} count DZAI_dynTriggerArray) == 0) then {true} else {false};
 				_noNearbyTowns = if ((count nearestLocations [_playerPos,["NameCityCapital","NameCity","NameVillage"],400]) == 0) then {true} else {false};
 				_noPlotpole = if ((count (_playerPos nearObjects ["Plastic_Pole_EP1_DZ",75])) == 0) then {true} else {false};
+				if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Player %1 - isMan: %2, onLand: %3, noNearbySpawns: %4, noNearbyTowns: %5, noPlotpole: %6.",name _player,_isMan,_onLand,_noNearbySpawns,_noNearbyTowns,_noPlotPole]};
 				if (_isMan && _onLand && _noNearbySpawns && _noNearbyTowns && _noPlotpole) then {
 					_timestamps set [_index,time];
 					_trigger = createTrigger ["EmptyDetector",getPosATL _player];
