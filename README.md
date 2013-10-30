@@ -1,4 +1,4 @@
-DZAI 1.7.1.1 - AI Addon for DayZ
+DZAI 1.7.1.2 - AI Addon for DayZ
 ============
 
 <b>Announcement:</b> Further development for DZAI is currently on hold as I have limited time to continue work on this AI package. At this time DZAI has achieved all previously incomplete development goals and has reached 
@@ -143,6 +143,11 @@ DZAI 1.7.1 Changelog:
 ------------------------------
 
 - [CHANGED] Zombies near AI group leader are once again revealed (speeds up target acquisition for zeds).
+
+1.7.1.2 Supplemental Update:
+------------------------------
+
+- [FIXED] Fixed typo that prevented non-respawn option in DZAI_spawn function from working properly. (Thanks to Markk311)
 
 Note: Information about past updates are archived in changelog_archive.txt
 
