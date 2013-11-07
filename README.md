@@ -1,4 +1,4 @@
-DZAI 1.7.1.2 - AI Addon for DayZ
+DZAI 1.7.1.3 - AI Addon for DayZ
 ============
 
 <b>Announcement:</b> Further development for DZAI is currently on hold as I have limited time to continue work on this AI package. At this time DZAI has achieved all previously incomplete development goals and has reached 
@@ -151,6 +151,10 @@ DZAI 1.7.1 Changelog:
 
 Note: Information about past updates are archived in changelog_archive.txt
 
+1.7.1.3 Bugfix:
+------------------------------
+
+- [FIXED] Disabling dynamic AI spawns should not disable DZAI's map reference marker if helicopter patrols are enabled.
 
 Contribute
 ============

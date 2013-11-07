@@ -82,7 +82,7 @@ if (DZAI_objPatch) then {[] execVM '\z\addons\dayz_server\DZAI\scripts\buildingp
 if (DZAI_dynamicWeaponList) then {[DZAI_banAIWeapons] execVM '\z\addons\dayz_server\DZAI\scripts\buildWeaponArrays.sqf';};
 
 //Create reference marker for dynamic triggers and set default values. These values are modified on a per-map basis.
-if (DZAI_dynAISpawns) then {
+if (DZAI_aiHeliPatrols or DZAI_dynAISpawns) then {
 	DZAI_centerMarker = createMarker ["DZAI_centerMarker", (getMarkerPos 'center')];
 	DZAI_centerMarker setMarkerShape "ELLIPSE";
 	DZAI_centerMarker setMarkerType "Empty";
