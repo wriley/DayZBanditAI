@@ -40,7 +40,7 @@ while {true} do {
 
 	//Randomize some dynamic triggers
 	if (DZAI_dynAISpawns && (!DZAI_V2dynSpawns)) then {
-		_dynTriggers = [_randomizeCount] spawn fnc_randomizeTriggers;
+		_dynTriggers = [_randomizeCount] spawn DZAI_randDynTriggers;
 		waitUntil {sleep 1; scriptDone _dynTriggers};
 		sleep 3;
 	};

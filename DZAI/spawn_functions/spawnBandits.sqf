@@ -93,7 +93,7 @@ for "_j" from 1 to _numGroups do {
 		
 		//Spawn units
 		_weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
-		_unitGroup = [_totalAI,grpNull,_spawnPos,_trigger,_weapongrade] call fnc_createGroup;
+		_unitGroup = [_totalAI,grpNull,_spawnPos,_trigger,_weapongrade] call DZAI_setup_AI;
 
 		//Set group variables
 		_unitGroup setVariable ["unitType","static"];
@@ -108,7 +108,7 @@ for "_j" from 1 to _numGroups do {
 			//diag_log format ["DEBUG :: Counted %1 spawn positions.",count _spawnPositions];
 			_nul = [_unitGroup,_spawnPositions] spawn DZAI_bldgPatrol;
 		} else {
-			0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+			0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn DZAI_BIN_taskPatrol;
 		};
 		
 		_grpArray set [count _grpArray,_unitGroup];
@@ -121,6 +121,6 @@ for "_j" from 1 to _numGroups do {
 
 if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned %1 new AI groups (%2 units total) in %3 seconds at %4 (spawnBandits).",_numGroups,_totalSpawned,(diag_tickTime - _startTime),(triggerText _trigger)];};
 
-0 = [_trigger,_grpArray,_patrolDist,_gradeChances,_spawnPositions,[_minAI,_addAI]] call fnc_initTrigger;
+0 = [_trigger,_grpArray,_patrolDist,_gradeChances,_spawnPositions,[_minAI,_addAI]] call DZAI_setTrigVars;
 
 true

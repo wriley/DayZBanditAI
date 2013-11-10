@@ -33,32 +33,36 @@ switch (_selection) do {                                                        
     case "hands":{                                                                                                      // cannot kill a unit on own, only affect aim
         _damage = (_gethit select 2) + (_damage - (_gethit select 2))*(DZAI_dmgFactors select 3);
 		_gethit set [2,_damage];
-		if (_damage < 1) then {_damage = 0};	//Break hands only if cumulative damage to hand is > 1
+		//if (_damage < 1) then {_damage = 0};
     };        
     
     case "legs":{                                                                                                      // cannot kill a unit on own, only affect movement
         _damage = (_gethit select 3) + (_damage - (_gethit select 3))*(DZAI_dmgFactors select 4);
 		_gethit set [3,_damage];
-		if (_damage < 1) then {_damage = 0};	//Break legs only if cumulative damage to legs is > 1
+		//if (_damage < 1) then {_damage = 0};
     }; 
 };      
 
-if (_damage > 1 and _projectile != "") then {
-	//Record deliberate critical damages
-	switch (_selection) do {
-		case "head_hit": {
-			if (!(_unit getVariable["hitRegistered",false])) then {
-				_headShots = _dmgSource getVariable["headShots",0];
-				_dmgSource setVariable["headShots",(_headShots + 1),true];
-				_unit setVariable["hitRegistered",true];
+if (_damage < 1) then {
+	diag_log format ["DEBUG: Unit %1 took %2 blood damage from bullet %3.",_unit,(_damage*12000),_projectile];
+	_damage = 0;
+} else {
+	if (_projectile != "") then {
+		switch (_selection) do {
+			case "head_hit": {
+				if (!(_unit getVariable["hitRegistered",false])) then {
+					_headShots = _dmgSource getVariable["headShots",0];
+					_dmgSource setVariable["headShots",(_headShots + 1),true];
+					_unit setVariable["hitRegistered",true];
+				};
 			};
 		};
-	};
-	if (_projectile isKindOf "Bolt") then {
-		_damageOrg = _dmgSource getVariable["firedDamage",0]; //_unit getVariable["firedSelection",_selection];
-		if (_damageOrg < _damage) then {
-			_dmgSource setVariable["firedHit",[_unit,_selection],true];
-			_dmgSource setVariable["firedDamage",_damage,true];
+		if (_projectile isKindOf "Bolt") then {
+			_damageOrg = _dmgSource getVariable["firedDamage",0]; //_unit getVariable["firedSelection",_selection];
+			if (_damageOrg < _damage) then {
+				_dmgSource setVariable["firedHit",[_unit,_selection],true];
+				_dmgSource setVariable["firedDamage",_damage,true];
+			};
 		};
 	};
 };

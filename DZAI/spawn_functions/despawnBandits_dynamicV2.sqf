@@ -28,7 +28,7 @@ if ((_grpCount == 0) && (isNil "_isCleaning")) exitWith {if (DZAI_debugLevel > 1
 if ((_grpCount == 0) || (_isCleaning)) exitWith {if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Trigger's group array is empty, or a despawn script is already running. Exiting despawn script.";};};				//Exit script if the trigger hasn't spawned any AI units, or if a despawn script is already running for the trigger.
 
 _trigger setVariable["isCleaning",true,false];			//Mark the trigger as being in a cleanup state so that subsequent requests to despawn for the same trigger will not run.
-if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: No players remain in trigger area. Deleting spawned AI in %1 seconds.",_waitTime];};
+if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: No players remain in %1 %2. Deleting spawned AI in %3 seconds.",triggerText _trigger,mapGridPosition _trigger,_waitTime];};
 if (DZAI_debugMarkers > 0) then {
 	private["_marker"];
 	_marker = format["trigger_%1",_trigger];
@@ -51,10 +51,7 @@ if ((triggerActivated _trigger) && (!_forceDespawn)) exitWith {
 {
 	if (DZAI_debugMarkers > 0) then {
 		{
-			private["_markername"];
-			_markername = (str _x);
-			//diag_log format ["DEBUG :: Deleting waypoint marker %1. Waypoint is %2.",_markername,_x];
-			deleteMarker _markername;
+			deleteMarker (str _x);
 		} forEach (waypoints _x);
 		sleep 0.1;
 	};

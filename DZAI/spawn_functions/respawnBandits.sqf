@@ -33,7 +33,7 @@ _spawnPos = if ((count _spawnPositions) > 0) then {_spawnPositions call DZAI_fin
 
 //Respawn the group
 _weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
-_aiGroup = [_totalAI,_unitGroup,_spawnPos,_trigger,_weapongrade] call fnc_createGroup;
+_aiGroup = [_totalAI,_unitGroup,_spawnPos,_trigger,_weapongrade] call DZAI_setup_AI;
 if (isNull _unitGroup) then {diag_log "DZAI Error :: Respawned group was null group. New group reassigned.";_unitGroup = _aiGroup};
 
 //Update AI count
@@ -47,7 +47,7 @@ if ((count (waypoints _unitGroup)) > 1) then {
 			//diag_log format ["DEBUG :: Counted %1 spawn positions.",count _spawnPositions];
 			_nul = [_unitGroup,_spawnPositions] spawn DZAI_bldgPatrol;
 		} else {
-			0 = [_unitGroup,(getPosATL _trigger),_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+			0 = [_unitGroup,(getPosATL _trigger),_patrolDist,DZAI_debugMarkers] spawn DZAI_BIN_taskPatrol;
 		};
 };
 

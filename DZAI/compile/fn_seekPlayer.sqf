@@ -1,5 +1,5 @@
 /*
-	fnc_seekPlayer
+	DZAI_dyn_huntPlayer
 	
 	Description: Used for dynamically spawned AI. Creates a MOVE waypoint directing AI to a random player's position, then uses BIN_taskPatrol to create a circular patrol path around player's position.
 	
@@ -30,7 +30,7 @@ _waypoint setWaypointStatements ["true","group this setCurrentWaypoint [group th
 _unitGroup setCurrentWaypoint _waypoint;
 
 if ((_targetPlayer hasWeapon "ItemRadio")&&DZAI_radioMsgs) then {
-	[nil,_targetPlayer,"loc",rTITLETEXT,"[RADIO] A bandit group is preparing an ambush...","PLAIN DOWN",0.5] call RE;
+	[nil,_targetPlayer,"loc",rTITLETEXT,"[RADIO] A bandit group is preparing an ambush...","PLAIN DOWN",5] call RE;
 };
 
 sleep 15;
@@ -50,8 +50,8 @@ while {(alive _targetPlayer) && !(isNull _targetPlayer) && (((vehicle _targetPla
 		//Warn player of AI bandit presence if they have a radio.
 		if ((_targetPlayer hasWeapon "ItemRadio")&&DZAI_radioMsgs) then {
 			private ["_radioText"];
-			_radioText = format ["[RADIO] You are being followed by a bandit group. (Direction: %1, Distance: %2m)",round([_targetPlayer,(leader _unitGroup)] call BIS_fnc_dirTo),round(_targetPlayer distance (leader _unitGroup))];
-			[nil,_targetPlayer,"loc",rTITLETEXT,_radioText,"PLAIN DOWN",0.5] call RE;
+			_radioText = format ["[RADIO] You are being followed by a bandit group. (Distance: %1m)",round(_targetPlayer distance (leader _unitGroup))];
+			[nil,_targetPlayer,"loc",rTITLETEXT,_radioText,"PLAIN DOWN",5] call RE;
 		};
 	};
 	sleep 30;
@@ -64,11 +64,11 @@ if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Group %1 has exited
 //Begin patrol phase
 _waypoint setWaypointStatements ["true","if ((random 1) < 0.50) then { group this setCurrentWaypoint [(group this), (floor (random (count (waypoints (group this)))))];};"];
 //_patrolCenter = if (!(isNull _targetPlayer)) then {getPosATL _targetPlayer} else {getPosATL (leader _unitGroup)};
-0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn fnc_BIN_taskPatrol;
+0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn DZAI_BIN_taskPatrol;
 
 sleep 5;
 if ((_targetPlayer hasWeapon "ItemRadio") && !(_unitGroup getVariable ["inPursuit",false]) && DZAI_radioMsgs) then {
-	[nil,_targetPlayer,"loc",rTITLETEXT,"[RADIO] You have successfully evaded the pursuing bandits.","PLAIN DOWN",0.5] call RE;
+	[nil,_targetPlayer,"loc",rTITLETEXT,"[RADIO] You have successfully evaded the pursuing bandits.","PLAIN DOWN",5] call RE;
 };
 	
 true

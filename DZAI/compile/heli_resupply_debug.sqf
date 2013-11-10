@@ -43,6 +43,8 @@ waitUntil {sleep 0.1; (!isNil "_heliWeapons" && !isNull (driver _helicopter))};
 diag_log format ["Helicopter driver is %1. Crew is %2.",(driver _helicopter),(crew _helicopter)];
 _startTime = time;
 
+diag_log format ["DEBUG :: Air vehicle %1 has weapons %2.",typeOf _helicopter,_heliWeapons];
+
 if ((count _heliWeapons) > 0) then {
 	//For armed air vehicles
 	while {(alive _helicopter)&&(!(isNull _helicopter))} do {	

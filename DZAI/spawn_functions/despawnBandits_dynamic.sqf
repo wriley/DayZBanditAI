@@ -56,10 +56,7 @@ if ((triggerActivated _trigger) && (!_forceDespawn)) exitWith {
 {
 	if (DZAI_debugMarkers > 0) then {
 		{
-			private["_markername"];
-			_markername = (str _x);
-			//diag_log format ["DEBUG :: Deleting waypoint marker %1. Waypoint is %2.",_markername,_x];
-			deleteMarker _markername;
+			deleteMarker (str _x);
 		} forEach (waypoints _x);
 		sleep 0.1;
 	};

@@ -5,7 +5,7 @@
 		
         Usage: [_unit,_killer] spawn fnc_banditAIKilled;
 		
-		Last updated: 9:08 PM 10/25/2013
+		Last updated: 2:52 AM 11/9/2013
 */
 
 private["_victim","_killer","_unitGroup","_groupSize"];
@@ -17,8 +17,8 @@ _unitGroup = _this select 2;
 if ((_victim getVariable["removeNVG",0]) == 1) then {_victim removeWeapon "NVGoggles";}; //Remove temporary NVGs from AI.
 
 //Set study_body variables.
-_victim setVariable ["bodyName",(_victim getVariable ["bodyName","Unknown"]),true];		//Broadcast the unit's name (was previously a private variable).
-_victim setVariable ["deathType",(["bled","shothead"] call BIS_fnc_selectRandom2),true];
+_victim setVariable ["bodyName",_victim getVariable ["bodyName","unknown"],true];		//Broadcast the unit's name (was previously a private variable).
+_victim setVariable ["deathType",_victim getVariable ["deathType","bled"],true];
 _victim setVariable ["DZAI_deathTime",time];
 
 //Update AI count
@@ -32,14 +32,14 @@ if (isPlayer _killer) then {
 	private ["_trigger","_gradeChances","_weapongrade"];
 
 	_unitGroup setBehaviour "COMBAT";
-	if (DZAI_findKiller) then {0 = [_victim,_killer,_unitGroup] spawn fnc_findKiller;};
+	if (DZAI_findKiller) then {0 = [_victim,_killer,_unitGroup] spawn DZAI_huntKiller;};
 
 	_trigger = _unitGroup getVariable "trigger";
 	_gradeChances = _trigger getVariable ["gradeChances",DZAI_gradeChances1];
 	if (isNil "_gradeChances") then {_gradeChances = DZAI_gradeChances1};
 
 	_weapongrade = [DZAI_weaponGrades,_gradeChances] call fnc_selectRandomWeighted;
-	0 = [_victim,_weapongrade] spawn fnc_addLoot;
+	0 = [_victim,_weapongrade] spawn DZAI_addLoot;
 
 	if (DZAI_humanityGain > 0) then {
 		private ["_humanity"];
@@ -53,3 +53,6 @@ if (isPlayer _killer) then {
 		} forEach (magazines _victim);
 	};
 };
+
+_nul = _victim spawn DZAI_deathFlies;
+_victim enableSimulation false;

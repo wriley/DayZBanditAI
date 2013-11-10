@@ -47,8 +47,8 @@ if (((_victim distance _killer) < _detectRange) && (_killer isKindOf "Man")) the
 		if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: AI group %3 in pursuit state. Time: %1/%2.",time,_endTime,_unitGroup];};
 		if ((_killer hasWeapon "ItemRadio")&&DZAI_radioMsgs) then {
 			private ["_radioText"];
-			_radioText = format ["[RADIO] You are being pursued by a bandit group. (Direction: %1. Distance: %2m)",round([_killer,(leader _unitGroup)] call BIS_fnc_dirTo),round(_killer distance (leader _unitGroup))];
-			[nil,_killer,"loc",rTITLETEXT,_radioText,"PLAIN DOWN",0.5] call RE;
+			_radioText = format ["[RADIO] You are being pursued by a bandit group. (Distance: %1m)",round(_killer distance (leader _unitGroup))];
+			[nil,_killer,"loc",rTITLETEXT,_radioText,"PLAIN DOWN",5] call RE;
 		};
 		sleep 15;
 	};
@@ -61,7 +61,7 @@ if (((_victim distance _killer) < _detectRange) && (_killer isKindOf "Man")) the
 	
 	sleep 5;
 	if ((_killer hasWeapon "ItemRadio")&&DZAI_radioMsgs) then {
-		[nil,_killer,"loc",rTITLETEXT,"[RADIO] The bandits have given up their pursuit.","PLAIN DOWN",0.5] call RE;
+		[nil,_killer,"loc",rTITLETEXT,"[RADIO] You have evaded the bandit pursuit.","PLAIN DOWN",5] call RE;
 	};
 	_unitGroup setBehaviour "AWARE";
 };

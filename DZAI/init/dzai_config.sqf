@@ -3,9 +3,8 @@
 	
 	Description: Contains all configurable settings of DZAI. Contains settings for debugging, customization of AI units, spawning, and loot.
 	
-	Last updated: 6:06 PM 10/12/2013
+	Last updated: 1:02 AM 11/4/2013
 */
-private["_worldname"];
 
 diag_log "[DZAI] Reading DZAI configuration file.";
 
@@ -39,7 +38,7 @@ DZAI_cleanupDelay = 300;
 
 	DZAI_modName value		Enables extra features (ie: Items, AI skins, loot rates, etc.) for...
 	--------------------------------------------------------------------------------------------------------------------
-	(blank)					Automatically detect mod (can be manually specified by editing DZAI_modName below)
+	""						Automatically detect mod (can be manually specified by editing DZAI_modName below)
 	"default"				Force default settings
 	"2017"					DayZ 2017/Namalsk 2017	(Can't be automatically detected, must manually set DZAI_modName = "2017" to enable)
 	"epoch"					DayZ Epoch 				(Automatically detected - no need to edit)
@@ -94,12 +93,13 @@ DZAI_despawnWait = 120;
 /*	Dynamic Trigger Settings (Dynamic AI spawns)
 --------------------------------------------------------------------------------------------------------------------*/		
 
-//Enable or disable dynamic AI trigger spawns. If enabled, AI spawn locations will be randomly placed around the map. (Default: true)									
+//Enable or disable dynamic AI spawns. If enabled, AI spawn locations will be randomly placed around the map. (Default: true)									
 DZAI_dynAISpawns = true;
 
 //Enable or disable V2 dynamic AI spawns. NOTE: V2 dynamic AI spawns are currently in testing and not guaranteed to be bug-free. USE FOR TESTING ONLY. (Default: false)
 //If false: Dynamic triggers are spawned randomly around the map and periodically relocated.
 //If true: With V2 dynamic AI spawns, dynamic triggers are not scattered around the map. Instead, a number of random players are chosen and dynamic triggers are placed directly on their positions.
+//Note: The following settings will have no effect if DZAI_V2dynSpawns is true: DZAI_dynTriggersMax, DZAI_dynBlacklist. DZAI_dynAISpawns must be set true for this option to take effect.
 DZAI_V2dynSpawns = false;
 
 //(Optional) Leave as nil to have DZAI spawn a predetermined number of dynamic triggers. Can be edited to specify max number of dynamic triggers to spawn. (Default: nil)
@@ -116,23 +116,41 @@ DZAI_dynDespawnWait = 120;
 DZAI_dynBlacklist = [];									
 
 
-/*	AI Helicopter patrol settings
-IMPORTANT: Before enabling AI helicopter patrols, make sure you have properly edited your server_cleanup.fsm file. Otherwise, the helicopters will explode after spawning.
+/*	AI Air Vehicle patrol settings
+IMPORTANT: Before enabling AI air vehicle patrols, make sure you have properly edited your server_cleanup.fsm file. Otherwise, the air vehicles will explode after spawning.
 For instructions, consult Step 5 of the Installation Instructions on the DZAI Github page: https://github.com/dayzai/DayZBanditAI
 --------------------------------------------------------------------------------------------------------------------*/		
 
-//Enable or disable AI helicopter patrols. (Default: false)
+//Enable or disable AI air vehicle patrols. (Default: false)
 DZAI_aiHeliPatrols = false;		
 
-//Maximum number of active AI helicopters patrols. (Default: 0).							
+//Maximum number of active AI air vehicle patrols. (Default: 0).							
 DZAI_maxHeliPatrols = 0;
 
-//Classnames of helicopter types to use. Helicopter types must have at least 2 gunner seats (Default: "UH1H_DZ").
-//As of version 1.6.0, plane-type air vehicles can also be added. Planes that are normally unarmed will have an M240 weapon added to the vehicle.									
+//Classnames of air vehicles types to use. Valid vehicle types: Helicopters and Planes (Default: "UH1H_DZ").
+//Air vehicles that are normally unarmed may have weapons added by DZAI (see "DZAI_airWeapons" setting below).								
 DZAI_heliTypes = ["UH1H_DZ"];	
 
-//Enable or disable loot generation on destroying AI helicopter. Dead crew members carrying loot will be parachuted out after helicopter is destroyed (Default: true)							
-DZAI_heliLoot = true;										
+//Specify vehicle weapon for air vehicles that are unarmed by default. DZAI will arm these air vehicles with the specified weapons upon spawning each vehicle.
+//NOTE: These classnames are not verified by DZAI - it is the user's responsibility to make sure they are valid and unbanned.
+//Format: Each row containing a vehicle classname will be equipped with the weapon from the corresponding row in weapon classnames section. Ammo will be automatically assigned.
+DZAI_airWeapons = [
+	[
+		//Air vehicle classnames (Remember: no comma for last entry! Otherwise, separate each string with commas)
+		"AN2_DZ",
+		"AH6X_DZ"
+	]
+	,
+	[
+		//Corresponding weapon classnames (Remember: no comma for last entry! Otherwise, separate each string with commas)
+		"M240_veh",
+		"M134"
+	]
+];
+
+//Selects what action to take when an AI air vehicle is destroyed (Default: 1):
+//0: Do nothing, 1: Dead lootable units are dropped out by parachute, 2: Live, highly-skilled, well-equipped units are dropped out by parachute.
+DZAI_airLootMode = 1;		
 
 
 /*	Extra AI Settings
@@ -147,14 +165,15 @@ DZAI_tempNVGs = false;
 //Amount of humanity to reward player for killing an AI unit (Default: 0)									
 DZAI_humanityGain = 0;										
 
-//If enabled, players with radios will be given text warnings if they are being pursued by AI groups. Text warnings include direction and distance of pursuing AI group (Default: true)
+//If enabled, players with radios will be given text warnings if they are being pursued by AI groups. Text warnings include distance of pursuing AI group (Default: true)
 DZAI_radioMsgs = true;
 
 
 /*	Dynamic weapon list settings
 --------------------------------------------------------------------------------------------------------------------*/
 
-//True: Dynamically generate AI weapon list from CfgBuildingLoot. False: Use preset weapon list (DayZ 1.7.6.1). Highly recommended to enable DZAI_verifyTables if this option is set to false. (Default: true).
+//True: Dynamically generate AI weapon list from CfgBuildingLoot. False: Use preset weapon list located in world_classname_configs/default/default_classnames.sqf. (Default: true).
+//Highly recommended to enable DZAI_verifyTables if this option is set to false. 
 DZAI_dynamicWeaponList = true;
 
 //(Only if DZAI_dynamicWeaponList = true) List of classnames of weapons that AI should never use. By default, AI may carry any lootable weapon. Example: DZAI_banAIWeapons = ["M107_DZ","BAF_AS50_scoped"]; will remove the M107 and AS50 from AI weapon tables if dynamic weapon list is enabled.								
@@ -217,7 +236,7 @@ DZAI_gradeChances2 = [0.20,0.60,0.15,0.05];
 DZAI_gradeChances3 = [0.00,0.50,0.38,0.12];	
 
 //Weapongrade chances for AI spawned from dynamic triggers.				
-DZAI_gradeChancesDyn = [0.25,0.60,0.12,0.03];				
+DZAI_gradeChancesDyn = [0.00,0.88,0.09,0.03];				
 
 //Weapongrade chances for dead AI ejected from destroyed helicopter patrols.					
 DZAI_gradeChancesHeli = [0.00,0.40,0.43,0.17];	
@@ -236,10 +255,10 @@ DZAI_gradeChancesHeli = [0.00,0.40,0.43,0.17];
 DZAI_skill0 = [	
 	["aimingAccuracy",0.10,0.05],
 	["aimingShake",0.55,0.10],
-	["aimingSpeed",0.35,0.10],
+	["aimingSpeed",0.45,0.10],
 	["endurance",0.40,0.20],
 	["spotDistance",0.30,0.15],
-	["spotTime",0.35,0.20],
+	["spotTime",0.40,0.15],
 	["courage",0.40,0.20],
 	["reloadSpeed",0.40,0.20],
 	["commanding",0.40,0.20],
@@ -248,12 +267,12 @@ DZAI_skill0 = [
 
 //AI skill settings level 1 (Skill, Minimum skill, Maximum bonus amount).
 DZAI_skill1 = [	
-	["aimingAccuracy",0.10,0.05],
+	["aimingAccuracy",0.125,0.05],
 	["aimingShake",0.65,0.10],
-	["aimingSpeed",0.50,0.10],
+	["aimingSpeed",0.60,0.10],
 	["endurance",0.55,0.20],
 	["spotDistance",0.45,0.15],
-	["spotTime",0.50,0.20],
+	["spotTime",0.55,0.15],
 	["courage",0.55,0.20],
 	["reloadSpeed",0.55,0.20],
 	["commanding",0.55,0.20],
@@ -264,10 +283,10 @@ DZAI_skill1 = [
 DZAI_skill2 = [	
 	["aimingAccuracy",0.15,0.05],
 	["aimingShake",0.75,0.10],
-	["aimingSpeed",0.65,0.10],
+	["aimingSpeed",0.75,0.10],
 	["endurance",0.70,0.20],
 	["spotDistance",0.60,0.15],
-	["spotTime",0.65,0.20],
+	["spotTime",0.70,0.15],
 	["courage",0.70,0.20],
 	["reloadSpeed",0.70,0.20],
 	["commanding",0.70,0.20],
@@ -278,10 +297,10 @@ DZAI_skill2 = [
 DZAI_skill3 = [	
 	["aimingAccuracy",0.20,0.05],
 	["aimingShake",0.85,0.10],
-	["aimingSpeed",0.75,0.10],
+	["aimingSpeed",0.85,0.10],
 	["endurance",0.80,0.20],
 	["spotDistance",0.70,0.15],
-	["spotTime",0.75,0.20],
+	["spotTime",0.80,0.15],
 	["courage",0.80,0.20],
 	["reloadSpeed",0.80,0.20],
 	["commanding",0.80,0.20],

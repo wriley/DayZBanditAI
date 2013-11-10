@@ -28,7 +28,7 @@ if (!(_trigger getVariable ["respawn",true])) then {
 if (_unitsAlive == 0) then {
 	if (_trigger getVariable ["respawn",true]) then {
 		_unitGroup setBehaviour "AWARE";
-		_dummy = _unitGroup createUnit ["Survivor2_DZ",[0,0,0],[],0,"FORM"];
+		_dummy = _unitGroup createUnit ["Survivor1_DZ",[0,0,0],[],0,"FORM"];
 		[_dummy] joinSilent _unitGroup;
 		_dummy setVehicleInit "this hideObject true;this allowDamage false;this enableSimulation false;"; processInitCommands;
 		_dummy disableAI "FSM";
@@ -41,8 +41,6 @@ if (_unitsAlive == 0) then {
 		
 		0 = [(time + DZAI_respawnTime),_trigger,_unitGroup] spawn fnc_respawnHandler;
 	} else {
-		private ["_grpArray"];
-		_grpArray = _trigger getVariable ["GroupArray",[]];
 		if (DZAI_debugMarkers > 0) then {deleteMarker str(_trigger)};
 		if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Deleting custom-defined AI spawn %1 at %2. (fnc_staticAIDeath)",triggerText _trigger, mapGridPosition _trigger];};
 		{
@@ -56,7 +54,8 @@ if (_unitsAlive == 0) then {
 			};
 			sleep 0.5;
 			deleteGroup _x;
-		} forEach _grpArray;
+		} forEach (_trigger getVariable ["GroupArray",[]]);
+		deleteMarker (_trigger getVariable ["spawnmarker",""]);
 		deleteVehicle _trigger;
 		DZAI_actTrigs = DZAI_actTrigs - 1;
 	};
