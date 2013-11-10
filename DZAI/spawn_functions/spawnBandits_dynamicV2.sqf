@@ -43,9 +43,10 @@ _baseDist = 200;
 _distVariance = 50;
 
 if (_targetPlayer isKindOf "Man") then {
-	_dirVariance = if ((random 1) < 0.85) then {100} else {180};
+	_dirVariance = if ((random 1) < 0.85) then {100} else {157.5};
 } else {
 	_dirVariance = if ((random 1) < 0.85) then {67.5} else {135};
+	_baseDist = _baseDist - 25;
 };
 
 _playerPos = getPosATL _targetPlayer;

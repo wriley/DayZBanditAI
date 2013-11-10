@@ -675,7 +675,7 @@ DZAI_setupLoadout = {
 		
 		switch (_weapongrade) do {
 			case 0: {
-				if ((random 1) < 0.45) then {
+				if ((random 1) < 0.30) then {
 					_weapons = DZAI_Pistols0;
 					_unit setVariable ["CanGivePistol",false];	//Prevent unit from being assigned a pistol after death.
 				} else {

@@ -64,6 +64,7 @@ if ((count _heliWeapons) > 0) then {
 			if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Patrol helicopter pilot killed, helicopter is going down!";};
 			_helicopter removeAllEventHandlers "LandedStopped";
 			_helicopter setFuel 0;
+			_helicopter setVehicleAmmo 0;
 			_helicopter setDamage 1;
 		};
 		

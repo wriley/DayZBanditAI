@@ -40,10 +40,8 @@ _wpmarker setMarkerSize [100, 100];
 
 //Wait until helicopter has pilot and script has finished finding helicopter's weapons.
 waitUntil {sleep 0.1; (!isNil "_heliWeapons" && !isNull (driver _helicopter))};
-diag_log format ["Helicopter driver is %1. Crew is %2.",(driver _helicopter),(crew _helicopter)];
+if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Helicopter %1 driver is %2. Crew is %3. Vehicle weapons: %4.",(typeOf _helicopter),(driver _helicopter),(crew _helicopter),_heliWeapons];};
 _startTime = time;
-
-diag_log format ["DEBUG :: Air vehicle %1 has weapons %2.",typeOf _helicopter,_heliWeapons];
 
 if ((count _heliWeapons) > 0) then {
 	//For armed air vehicles
@@ -106,6 +104,7 @@ if ((count _heliWeapons) > 0) then {
 			if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Patrol helicopter pilot killed, helicopter is going down!";};
 			_helicopter removeAllEventHandlers "LandedStopped";
 			_helicopter setFuel 0;
+			_helicopter setVehicleAmmo 0;
 			_helicopter setDamage 1;
 		};
 		

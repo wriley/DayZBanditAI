@@ -96,11 +96,11 @@ DZAI_despawnWait = 120;
 //Enable or disable dynamic AI spawns. If enabled, AI spawn locations will be randomly placed around the map. (Default: true)									
 DZAI_dynAISpawns = true;
 
-//Enable or disable V2 dynamic AI spawns. NOTE: V2 dynamic AI spawns are currently in testing and not guaranteed to be bug-free. USE FOR TESTING ONLY. (Default: false)
-//If false: Dynamic triggers are spawned randomly around the map and periodically relocated.
-//If true: With V2 dynamic AI spawns, dynamic triggers are not scattered around the map. Instead, a number of random players are chosen and dynamic triggers are placed directly on their positions.
+//Enable or disable V2 dynamic AI spawns. (Default: true)
+//If true: New system - With V2 dynamic AI spawns, dynamic triggers are not scattered around the map. Instead, a number of random players are chosen and dynamic triggers are placed directly on their positions.
+//If false: Old system - Dynamic triggers are spawned randomly around the map and periodically relocated. NOTE: This version of dynamic spawns is scheduled to be removed in DZAI 1.9.0.
 //Note: The following settings will have no effect if DZAI_V2dynSpawns is true: DZAI_dynTriggersMax, DZAI_dynBlacklist. DZAI_dynAISpawns must be set true for this option to take effect.
-DZAI_V2dynSpawns = false;
+DZAI_V2dynSpawns = true;
 
 //(Optional) Leave as nil to have DZAI spawn a predetermined number of dynamic triggers. Can be edited to specify max number of dynamic triggers to spawn. (Default: nil)
 DZAI_dynTriggersMax = nil;
