@@ -78,14 +78,14 @@ while {(alive _unit)&&(!(isNull _unit))} do {													//Run script for as lo
 			if ((_lowblood or _brokenbones) && (time - _lastBandage) > 60) then {
 				if ((random 1) < 0.5) then {
 					_bandages = _bandages - 1;
-					_unit disableAI "TARGET";
+					_unit disableAI "FSM";
 					_unit playActionNow "Medic";
 					if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: AI %1 is healing. Remaining bandages: %2.",_unit,_bandages];};
 					sleep 4;
 					_unit setDamage 0;
 					_unit setVariable ["unithealth",[12000,0,0]];
 					_lastBandage = time;
-					_unit enableAI "TARGET";
+					_unit enableAI "FSM";
 				};
 			};
 		};
