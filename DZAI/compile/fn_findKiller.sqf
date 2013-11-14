@@ -63,5 +63,6 @@ if (((_victim distance _killer) < _detectRange) && (_killer isKindOf "Man")) the
 	if ((_killer hasWeapon "ItemRadio")&&DZAI_radioMsgs) then {
 		[nil,_killer,"loc",rTITLETEXT,"[RADIO] You have evaded the bandit pursuit.","PLAIN DOWN",5] call RE;
 	};
-	_unitGroup setBehaviour "AWARE";
 };
+
+_unitGroup setBehaviour "COMBAT";

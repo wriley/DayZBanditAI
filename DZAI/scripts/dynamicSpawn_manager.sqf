@@ -13,8 +13,8 @@ _timestamps = [];		//Array of timestamps for each corresponding playerUID
 
 _spawnThreshold = 3;	//Current number of dynamic spawns must fall below this number before more can be created.
 _spawnMax = 5;			//Maximum number of players to select each cycle. If number of online players is less than _spawnMax, all online players will be selected.
-_sleepDelay = 540;		//Frequency of each cycle
-_sleepVary = 300;		//Cycle frequency variance.
+_sleepDelay = 480;		//Frequency of each cycle
+_sleepVary = 240;		//Cycle frequency variance.
 
 while {true} do {
 	if ((count DZAI_dynTriggerArray) < _spawnThreshold) then {

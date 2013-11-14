@@ -62,7 +62,6 @@ for "_i" from 1 to _totalAI do {
 		_unit addEventHandler ["HandleDamage",{_this call DDOPP_taser_handleHit;_this call DZAI_AI_handledamage;}];
 	} else {
 		_unit addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage;}];};
-	_unit addEventHandler ["Killed",{[_this,"banditKills"] call local_eventKill;}];
 
 	0 = [_unit, _weapongrade] call DZAI_setupLoadout;									// Assign unit loadout
 	0 = [_unit, _weapongrade] spawn DZAI_setSkills;										// Set AI skill

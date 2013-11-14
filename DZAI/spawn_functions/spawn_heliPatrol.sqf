@@ -10,7 +10,7 @@
 if (DZAI_curHeliPatrols >= DZAI_maxHeliPatrols) exitWith {};
 
 for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
-	private ["_heliType","_startPos","_helicopter","_unitGroup","_pilot","_banditType","_turretCount","_crewCount"];
+	private ["_heliType","_startPos","_helicopter","_unitGroup","_pilot","_banditType","_turretCount","_crewCount","_weapongrade"];
 	_heliType = DZAI_heliTypes call BIS_fnc_selectRandom2;
 	
 	//If chosen classname isn't an air-type vehicle, then use UH1H as default.
@@ -61,7 +61,6 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 			[_gunner] joinSilent _unitGroup;
 			_crewCount = _crewCount + 1;
 			//diag_log format ["DEBUG :: Assigned gunner %1 of %2 to AI %3.",(_i+1),(count _heliTurrets),_heliType];
-			diag_log format ["DEBUG :: Vehicle %1 has weapons %2.",_heliType,(weapons _helicopter)];
 		};
 	} else {
 		if (((count (weapons _helicopter)) < 1) && (_heliType in (DZAI_airWeapons select 0))) then {
@@ -76,9 +75,10 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 			};
 		};
 	};
-	//Add eventhandlers and init statement
+	//Add eventhandlers
 	_helicopter addEventHandler ["Killed",{_this spawn fnc_heliDespawn;}];					//Begin despawn process when heli is destroyed.
-	_helicopter addEventHandler ["LandedStopped",{(_this select 0) setFuel 0;(_this select 0) setDamage 1;}];			//Destroy helicopter if it is forced to land.
+	//_helicopter addEventHandler ["LandedStopped",{(_this select 0) setFuel 0;(_this select 0) setDamage 1;}];			//Destroy helicopter if it is forced to land.
+	_helicopter addEventHandler ["LandedStopped",{_this spawn DZAI_airLanding;}];	//Converts AI crew to ground AI units.
 	_helicopter setVariable ["crewCount",_crewCount];
 	_helicopter setVehicleAmmo 1;
 	[_helicopter] spawn DZAI_autoRearm_heli;
@@ -87,8 +87,9 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 		0 = [_x,"helicrew"] spawn DZAI_setSkills;
 		_x addWeapon "NVGoggles";
 		_x addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage;}];
-		_x addEventHandler ["Killed",{[_this,"banditKills"] call local_eventKill;(_this select 0) setDamage 1;(_this select 0) removeWeapon "NVGoggles";}];
+		_x setVariable ["removeNVG",1];
 		_x setVariable ["unconscious",true];	//Prevent AI heli crew from being knocked unconscious
+		_x setVariable ["DZAI_deathTime",time];
 	} forEach (units _unitGroup);
 
 	//Set group behavior and waypoint
