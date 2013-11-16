@@ -224,7 +224,7 @@ DZAI_chanceMiscItemL = 0.15;
 --------------------------------------------------------------------------------------------------------------------*/
 
 //equipType = 0 - most AI will have basic pistols or rifles, and occasionally common military weapons.
-DZAI_gradeChances0 = [0.90,1.00,0.00,0.00];	
+DZAI_gradeChances0 = [0.90,0.10,0.00,0.00];	
 
 //equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.				
 DZAI_gradeChances1 = [0.60,0.35,0.04,0.01];	
