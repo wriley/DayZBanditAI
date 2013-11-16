@@ -84,7 +84,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	[_helicopter] spawn DZAI_autoRearm_heli;
 
 	{
-		0 = [_x,"helicrew"] spawn DZAI_setSkills;
+		0 = [_x,"helicrew"] call DZAI_setSkills;
 		_x addWeapon "NVGoggles";
 		_x addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage;}];
 		_x setVariable ["removeNVG",1];

@@ -33,6 +33,7 @@ DZAI_actTrigs = 0;											//Tracks current number of active static triggers.
 DZAI_curHeliPatrols = 0;
 DZAI_dynTriggerArray = [];									//List of all generated dynamic triggers.
 DZAI_respawnQueue = [];										//Queue of AI groups that require respawning. Group ID is removed from queue after it is respawned.
+DZAI_respawnPause = -1;
 //DZAI_dmgFactors = [0.33,0.495,0.33,1,1];					//AI health settings.
 
 //Set side relations

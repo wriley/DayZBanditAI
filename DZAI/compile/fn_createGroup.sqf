@@ -52,7 +52,7 @@ for "_i" from 1 to _totalAI do {
 
 	_name = (name _unit);
 	_unit setIdentity _name;	
-	_unit setVariable ["bodyName",_name];												// Set unit body name	// Set unit name
+	_unit setVariable ["bodyName",_name];												// Set unit body name
 	_unit setVariable ["unithealth",[12000,0,0]];										// Set unit health (blood, hands health, legs health)
 	_unit setVariable ["unconscious",false];											// Set unit consciousness
 
@@ -64,7 +64,7 @@ for "_i" from 1 to _totalAI do {
 		_unit addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage;}];};
 
 	0 = [_unit, _weapongrade] call DZAI_setupLoadout;									// Assign unit loadout
-	0 = [_unit, _weapongrade] spawn DZAI_setSkills;										// Set AI skill
+	0 = [_unit, _weapongrade] call DZAI_setSkills;										// Set AI skill
 	0 = [_unit, _weapongrade] spawn DZAI_autoRearm_unit;
 	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Spawned AI Type %1 with weapongrade %2 for group %3 (fnc_createGroup).",_type,_weapongrade,_unitGroup];};
 };
@@ -75,11 +75,12 @@ if (!isNil "_dummy") then {
 	[_dummy] joinSilent grpNull;
 	deleteVehicle _dummy;
 	_unitGroup setVariable ["dummyUnit",nil];
-	if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Deleted 1 dummy AI unit for group %1. (fnc_createGroup)",_unitGroup];};
+	if (DZAI_debugLevel > 1) then {diag_log format["DZAI Extended Debug: Deleted 1 dummy AI unit for group %1. (fnc_createGroup)",_unitGroup];};
 };
 
 _unitGroup selectLeader ((units _unitGroup) select 0);
 _unitGroup setVariable ["trigger",_trigger];
 _unitGroup setVariable ["groupSize",_totalAI];
+_unitGroup setVariable ["findKiller",[false,0]];
 
 _unitGroup

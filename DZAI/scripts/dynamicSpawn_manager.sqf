@@ -49,7 +49,7 @@ while {true} do {
 				_noNearbySpawns = if (({(_playerPos distance _x) < (2*(DZAI_dynTriggerRadius - (DZAI_dynTriggerRadius*DZAI_dynOverlap)))} count DZAI_dynTriggerArray) == 0) then {true} else {false};
 				_noNearbyTowns = if ((count nearestLocations [_playerPos,["NameCityCapital","NameCity","NameVillage"],500]) == 0) then {true} else {false};
 				_notInDebug = if ((_playerPos distance getMarkerpos "respawn_west") > 2000) then {true} else {false};
-				_noPlotpole = if ((count (_playerPos nearObjects ["Plastic_Pole_EP1_DZ",75])) == 0) then {true} else {false};
+				_noPlotpole = if ((count (_playerPos nearObjects ["Plastic_Pole_EP1_DZ",100])) == 0) then {true} else {false};
 				if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Player %1 - isLandUnit: %2, onLand: %3, noNearbySpawns: %4, noNearbyTowns: %5, notInDebug: %6, noPlotpole: %7.",name _player,_isLandUnit,_onLand,_noNearbySpawns,_noNearbyTowns,_notInDebug,_noPlotPole]};
 				if (_isLandUnit && _onLand && _noNearbySpawns && _noNearbyTowns && _noPlotpole && _notInDebug) then {
 					_timestamps set [_index,time];

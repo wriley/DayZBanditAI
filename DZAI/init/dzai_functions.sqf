@@ -79,7 +79,8 @@ fnc_respawnBandits = {
 	#include "\z\addons\dayz_server\DZAI\spawn_functions\respawnBandits.sqf"
 };
 fnc_respawnHandler = {
-	#include "\z\addons\dayz_server\DZAI\spawn_functions\respawnHandler.sqf"
+	//#include "\z\addons\dayz_server\DZAI\spawn_functions\respawnHandler.sqf"
+	#include "\z\addons\dayz_server\DZAI\spawn_functions\respawnHandler2.sqf"
 };
 fnc_despawnBandits = {
 	#include "\z\addons\dayz_server\DZAI\spawn_functions\despawnBandits.sqf"
@@ -179,9 +180,9 @@ DZAI_heliRandomPatrol = {
 	_wpSelect = [_wpSelect,200+(random 100),(random 360),true] call SHK_pos;
 	[_unitGroup,0] setWPPos _wpSelect; 
 	if ((waypointType [_unitGroup,0]) == "MOVE") then {
-		if ((random 1) < 0.30) then {
+		if ((random 1) < 0.25) then {
 			[_unitGroup,0] setWaypointType "SAD";
-			[_unitGroup,0] setWaypointTimeout [20,40,60];
+			[_unitGroup,0] setWaypointTimeout [20,30,40];
 		};
 	} else {
 		[_unitGroup,0] setWaypointType "MOVE";
@@ -206,7 +207,7 @@ DZAI_setSkills = {
 		case default {DZAI_skill2};
 	};
 	{
-		_unit setskill [_x select 0,((_x select 1) + random (_x select 2))];
+		_unit setskill [_x select 0,((_x select 1) + random ((_x select 2)-(_x select 1)))];
 	} foreach _skillArray;
 };
 
@@ -493,7 +494,7 @@ DZAI_findLootPile = {
 	_lootPiles = (getPosATL (leader _unitGroup)) nearObjects ["ReammoBox",_searchRange];
 	if ((count _lootPiles) > 0) then {
 		_lootPos = getPosATL (_lootPiles call BIS_fnc_selectRandom2);
-		if ((behaviour _unitGroup) != "AWARE") then {_unitGroup setBehaviour "AWARE"};
+		if ((behaviour (leader _unitGroup)) != "AWARE") then {_unitGroup setBehaviour "AWARE"};
 		(units _unitGroup) doMove _lootPos;
 		{_x moveTo _lootPos} forEach (units _unitGroup);
 		//diag_log format ["DEBUG :: AI group %1 is investigating a loot pile at %2.",_unitGroup,_lootPos];
@@ -593,7 +594,7 @@ DZAI_airLanding = {
 		_x setVariable ["unithealth",[12000,0,0]];
 		unassignVehicle _x;
 		0 = [_x, _weapongrade] call DZAI_setupLoadout;
-		0 = [_x, _weapongrade] spawn DZAI_setSkills;
+		0 = [_x, _weapongrade] call DZAI_setSkills;
 		0 = [_x, _weapongrade] spawn DZAI_autoRearm_unit;
 	} forEach (units _unitGroup);
 	

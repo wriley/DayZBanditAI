@@ -83,8 +83,8 @@ DZAI_freeForAll = false;
 //Enable or disable static AI spawns. If enabled, AI spawn points will be generated in cities, towns, and other predefined areas. Does not include custom-defined spawns (Default: true).
 DZAI_staticAI = true;
 
-//Time to wait before respawning an AI group once all units have been eliminated. (Default: 600)										
-DZAI_respawnTime = 600;
+//Time to wait before respawning an AI group once all units have been eliminated. (Default: 450)										
+DZAI_respawnTime = 450;
 
 //Time to allow spawned AI units to exist in seconds before being despawned when no players are present in a trigger area. (Default: 120)										
 DZAI_despawnWait = 120;										
@@ -148,9 +148,9 @@ DZAI_airWeapons = [
 	]
 ];
 
-//Selects what action to take when an AI air vehicle is destroyed (Default: 1):
+//Selects what action to take when an AI air vehicle is destroyed (Default: 2):
 //0: Do nothing, 1: Dead lootable units are dropped out by parachute, 2: Live, highly-skilled, well-equipped units are dropped out by parachute.
-DZAI_airLootMode = 1;		
+DZAI_airLootMode = 2;		
 
 
 /*	Extra AI Settings
@@ -224,7 +224,7 @@ DZAI_chanceMiscItemL = 0.15;
 --------------------------------------------------------------------------------------------------------------------*/
 
 //equipType = 0 - most AI will have basic pistols or rifles, and occasionally common military weapons.
-DZAI_gradeChances0 = [0.90,0.10,0.00,0.00];	
+DZAI_gradeChances0 = [0.90,1.00,0.00,0.00];	
 
 //equipType = 1 - most AI will have common rifles, many will have common military weapons. Very rarely, AI will spawn with high-grade military or helicrash weapons.				
 DZAI_gradeChances1 = [0.60,0.35,0.04,0.01];	
@@ -251,74 +251,74 @@ DZAI_gradeChancesHeli = [0.00,0.40,0.43,0.17];
 	HeliCrew: Maximum-skilled AI. Skills are intended to be extremely high as helicopters patrol alone and carry high-value loot.
 */
 
-//AI skill settings level 0 (Skill, Minimum skill, Maximum bonus amount).
+//AI skill settings level 0 (Skill, Minimum skill, Maximum skill).
 DZAI_skill0 = [	
-	["aimingAccuracy",0.10,0.05],
-	["aimingShake",0.55,0.10],
-	["aimingSpeed",0.45,0.10],
-	["endurance",0.40,0.20],
-	["spotDistance",0.30,0.15],
-	["spotTime",0.40,0.15],
-	["courage",0.40,0.20],
-	["reloadSpeed",0.40,0.20],
-	["commanding",0.40,0.20],
-	["general",0.40,0.20]
+	["aimingAccuracy",0.10,0.15],
+	["aimingShake",0.55,0.65],
+	["aimingSpeed",0.55,0.65],
+	["endurance",0.40,0.60],
+	["spotDistance",0.30,0.45],
+	["spotTime",0.50,0.65],
+	["courage",0.40,0.60],
+	["reloadSpeed",0.40,0.60],
+	["commanding",0.40,0.60],
+	["general",0.40,0.60]
 ];
 
-//AI skill settings level 1 (Skill, Minimum skill, Maximum bonus amount).
+//AI skill settings level 1 (Skill, Minimum skill, Maximum skill).
 DZAI_skill1 = [	
-	["aimingAccuracy",0.125,0.05],
-	["aimingShake",0.65,0.10],
-	["aimingSpeed",0.60,0.10],
-	["endurance",0.55,0.20],
-	["spotDistance",0.45,0.15],
-	["spotTime",0.55,0.15],
-	["courage",0.55,0.20],
-	["reloadSpeed",0.55,0.20],
-	["commanding",0.55,0.20],
-	["general",0.55,0.20]
+	["aimingAccuracy",0.125,0.15],
+	["aimingShake",0.65,0.75],
+	["aimingSpeed",0.65,0.75],
+	["endurance",0.55,0.75],
+	["spotDistance",0.45,0.60],
+	["spotTime",0.65,0.80],
+	["courage",0.55,0.75],
+	["reloadSpeed",0.55,0.75],
+	["commanding",0.55,0.75],
+	["general",0.55,0.75]
 ];
 
-//AI skill settings level 2 (Skill, Minimum skill, Maximum bonus amount).
+//AI skill settings level 2 (Skill, Minimum skill, Maximum skill).
 DZAI_skill2 = [	
-	["aimingAccuracy",0.15,0.05],
-	["aimingShake",0.75,0.10],
-	["aimingSpeed",0.75,0.10],
-	["endurance",0.70,0.20],
-	["spotDistance",0.60,0.15],
-	["spotTime",0.70,0.15],
-	["courage",0.70,0.20],
-	["reloadSpeed",0.70,0.20],
-	["commanding",0.70,0.20],
-	["general",0.70,0.20]
+	["aimingAccuracy",0.15,0.20],
+	["aimingShake",0.75,0.85],
+	["aimingSpeed",0.75,0.85],
+	["endurance",0.70,0.90],
+	["spotDistance",0.60,0.75],
+	["spotTime",0.80,0.95],
+	["courage",0.70,0.90],
+	["reloadSpeed",0.70,0.90],
+	["commanding",0.70,0.90],
+	["general",0.70,0.90]
 ];
 
-//AI skill settings level 3 (Skill, Minimum skill, Maximum bonus amount).
+//AI skill settings level 3 (Skill, Minimum skill, Maximum skill).
 DZAI_skill3 = [	
-	["aimingAccuracy",0.20,0.05],
-	["aimingShake",0.85,0.10],
-	["aimingSpeed",0.85,0.10],
-	["endurance",0.80,0.20],
-	["spotDistance",0.70,0.15],
-	["spotTime",0.80,0.15],
-	["courage",0.80,0.20],
-	["reloadSpeed",0.80,0.20],
-	["commanding",0.80,0.20],
-	["general",0.80,0.20]
+	["aimingAccuracy",0.20,0.25],
+	["aimingShake",0.85,0.95],
+	["aimingSpeed",0.85,0.95],
+	["endurance",0.80,1.00],
+	["spotDistance",0.70,0.85],
+	["spotTime",0.90,1.00],
+	["courage",0.80,1.00],
+	["reloadSpeed",0.80,1.00],
+	["commanding",0.80,1.00],
+	["general",0.80,1.00]
 ];
 
-//AI skill settings level 4 (Skill, Minimum skill, Maximum bonus amount).
+//AI skill settings level 4 (Skill, Minimum skill, Maximum skill).
 DZAI_heliCrewSkills = [	
-	["aimingAccuracy",0.50,0.00],
-	["aimingShake",0.85,0.10],
-	["aimingSpeed",0.85,0.10],
-	["endurance",0.60,0.20],
-	["spotDistance",0.90,0.10],
-	["spotTime",0.90,0.10],
-	["courage",0.90,0.10],
-	["reloadSpeed",0.90,0.10],
-	["commanding",0.90,0.10],
-	["general",0.90,0.10]
+	["aimingAccuracy",0.50,0.50],
+	["aimingShake",0.85,0.95],
+	["aimingSpeed",0.85,0.95],
+	["endurance",0.60,0.80],
+	["spotDistance",0.90,1.00],
+	["spotTime",0.90,1.00],
+	["courage",0.90,1.00],
+	["reloadSpeed",0.90,1.00],
+	["commanding",0.90,1.00],
+	["general",0.90,1.00]
 ];
 
 

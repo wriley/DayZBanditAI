@@ -1,8 +1,6 @@
-DZAI 1.7.1.3 - AI Addon for DayZ
+DZAI 1.8.0 - AI Addon for DayZ
 ============
 
-<b>Announcement:</b> Further development for DZAI is currently on hold as I have limited time to continue work on this AI package. At this time DZAI has achieved all previously incomplete development goals and has reached 
-a relatively bug-free state, so DZAI will only be updated to solve the most serious bugs and errors. 
 
 Introduction
 ============
@@ -11,7 +9,7 @@ DZAI is designed to be a simple, configurable, easy-to-install AI package. This 
 
 Reminder: The latest stable build of DZAI is always located in the 'master' branch. The latest experimental build is located in a separate branch, usually labeled with a version number. These experimental builds have the latest improvements and bugfixes, but may also have new bugs that need to be fixed, so they are not guaranteed to be stable.
 
-Questions? Comments? Send me a PM on the Open DayZ forums at: http://opendayz.net/members/buttface.1178/ and I will help if I am able.
+Questions? Comments? Start a thread on the OpenDayZ forums to send your feedback or ask questions: http://opendayz.net/forums/DZAI/.
 
 Features
 ============
@@ -48,8 +46,7 @@ Compatibility with other AI addons:
 
 <b>Known Issues:</b>
 
-- AI are spawned server-side, therefore any buildings or objects spawned client-side only are invisible to AI, meaning they can walk, see, and shoot through these objects. If you use any mods or scripts that add buildings or bases to the map, please make sure the buildings are not spawned client-side.
-- The above issue also applies to clutter (wrecks) and other buildings spawned by DayZ's CfgTownGenerator. DZAI includes an experimental fix for this issue. Enable this fix by setting DZAI_objPatch = true in dzai_config.sqf. This fix takes about 60-90 seconds to run at server start.
+- Buildings spawned by DayZ's CfgTownGenerator are invisible to AI, meaning they can walk, see, and shoot through these objects. DZAI includes an experimental fix for this issue. Enable this fix by setting DZAI_objPatch = true in dzai_config.sqf. This fix takes about 60-90 seconds to run at server start. (This option is especially important for original DayZ and DayZ Overwatch).
 - Some users experience problems entering the game after repacking their dayz_server.pbo. To solve this issue, follow the instructions contained in the readme file in the authentication_fix folder included in this download package.
 
 Installation Instructions:
@@ -144,24 +141,24 @@ DZAI 1.7.1 Changelog:
 
 - [CHANGED] Zombies near AI group leader are once again revealed (speeds up target acquisition for zeds).
 
-1.7.1.2 Supplemental Update:
+1.7.1.2 Bugfix:
 ------------------------------
 
 - [FIXED] Fixed typo that prevented non-respawn option in DZAI_spawn function from working properly. (Thanks to Markk311)
-
-Note: Information about past updates are archived in changelog_archive.txt
 
 1.7.1.3 Bugfix:
 ------------------------------
 
 - [FIXED] Disabling dynamic AI spawns should not disable DZAI's map reference marker if helicopter patrols are enabled.
 
+Note: Information about past updates are archived in changelog_archive.txt
+
 Contribute
 ============
 
 - Anyone can help further the development of DZAI by giving constructive feedback and comprehensive bug reports. 
 - YouTube videos of DZAI in action are also immensely helpful for influencing the design direction of this AI mod.
-- I continue development of DZAI on my spare time, which often isn't very plentiful. If you'd like to support me with a small donation, thank you. I have set up a convenient button below.
+- I continue development of DZAI on my spare time, which often isn't very plentiful. If you enjoy using DZAI and would like to support me with a small donation, thank you.
 
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PESMPV4SQFDJ)
