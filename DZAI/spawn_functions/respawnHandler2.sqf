@@ -3,40 +3,42 @@
 	
 	Description: Creates a queue for AI groups requiring respawn. Terminates when the queue has been processed and cleared. Queue is recreated with the first AI group KIA.
 	
-	Usage: [_respawnTime,_trigger,_unitGroup] spawn fnc_respawnHandler;
+	Usage: [_trigger,_unitGroup] spawn fnc_respawnHandler;
 	
-	Last updated: 1:39 AM 11/15/2013
+	Last updated: 9:21 PM 11/16/2013
 */
 
 #define PROCESSING_WAIT_TIME 5 //Minimum time delay between respawns.
 
-private ["_unitGroup","_respawnTime","_trigger"];
+private ["_unitGroup","_respawnSleep","_trigger","_nextRespawnTime","_fastMode"];
 
-_respawnTime = _this select 0;
-_trigger = _this select 1; //attached variables: _patrolDist, _gradeChances, _spawnPositions, _spawnType, _maxUnits
-_unitGroup = _this select 2;
+_trigger = _this select 0; //attached variables: _patrolDist, _gradeChances, _spawnPositions, _spawnType, _maxUnits
+_unitGroup = _this select 1;
+_fastMode = if ((count _this) > 2) then {_this select 2} else {false};
 
 //Add group to respawn queue.
-DZAI_respawnQueue set [(count DZAI_respawnQueue),[_respawnTime,_trigger,_unitGroup]];
-if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Added Group %1 to respawn queue. Queue position %2. (respawnHandler)",_unitGroup,(count DZAI_respawnQueue)];};
+_respawnSleep = (DZAI_respawnTimeMin + random (DZAI_respawnTimeMax - DZAI_respawnTimeMin));	//Calculate wait time for respawn
+if (_fastMode) then {_respawnSleep = _respawnSleep/2};
+_nextRespawnTime = (time + _respawnSleep);	//Determine time of next respawn
+DZAI_respawnQueue set [(count DZAI_respawnQueue),[time + _respawnSleep,_trigger,_unitGroup]];
+if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Added Group %1 to respawn queue. Queue position %2. Wait Time %3 (respawnHandler)",_unitGroup,(count DZAI_respawnQueue),_respawnSleep];};
 
 if (!isNil "DZAI_respawnActive") exitWith {}; 		//If the first respawn has already occured, no need to modify the initial wait time.
 
-if (DZAI_respawnPause > 0) then {
-	if (_respawnTime < DZAI_respawnPause) then {	//If the newest respawn is scheduled to happen sooner than the next closest respawn, reduce the initial wait time appropriately.
-		DZAI_respawnPause = _respawnTime;
-		diag_log format ["DEBUG :: Modified initial wait time for respawn queue to %1 seconds.",DZAI_respawnPause];
+if (!isNil "DZAI_nextRespawnTime") then {
+	if (_nextRespawnTime < DZAI_nextRespawnTime) then {	//If the newest respawn is scheduled to happen sooner than the next closest respawn, reduce the initial wait time appropriately.
+		DZAI_nextRespawnTime = _nextRespawnTime;		//Time of next spawn
+		diag_log format ["DEBUG :: Decreased time to next respawn to %1 seconds.",_respawnSleep];
 	};
 } else {
-	DZAI_respawnPause = _respawnTime;				//If this respawn is the first one to be scheduled, then it dictates the initial wait time until a subsequent respawn is scheduled before it.
-	diag_log format ["DEBUG :: Initial wait time for respawn queue set to %1 seconds.",DZAI_respawnPause];
+	DZAI_nextRespawnTime = _nextRespawnTime;
+	diag_log format ["DEBUG :: Time to first respawn set to %1 seconds.",_respawnSleep];
 };
 
 if (!isNil "DZAI_queueActive") exitWith {};
 DZAI_queueActive = true;							//The respawn queue is established, so don't create another one until it's finished.
 
-//sleep (DZAI_respawnTime);
-while {time < DZAI_respawnPause} do {				//Check if it's time to process the first respawn (4 checks per minute).
+while {time < DZAI_nextRespawnTime} do {				//Check if it's time to process the first respawn (4 checks per minute).
 	sleep 15;
 };
 
@@ -102,5 +104,5 @@ while {(count DZAI_respawnQueue) > 0} do {
 
 DZAI_queueActive = nil;
 DZAI_respawnActive = nil;
-DZAI_respawnPause = -1;
+DZAI_nextRespawnTime = nil;
 if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Respawn queue is empty. Exiting respawn handler. (respawnHandler)";};

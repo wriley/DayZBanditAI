@@ -369,7 +369,7 @@ DZAI_retrySpawn = {
 	_grpArray = _trigger getVariable "GroupArray";
 	_grpArray set [(count _grpArray),_unitGroup];
 
-	0 = [(time + DZAI_respawnTime),_trigger,_unitGroup] spawn fnc_respawnHandler;
+	0 = [_trigger,_unitGroup,true] spawn fnc_respawnHandler;
 
 	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Inserted group %1 into respawn queue. (retryRespawn)",_unitGroup];};
 };

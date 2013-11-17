@@ -77,20 +77,21 @@ DZAI_zombieEnemy = true;
 DZAI_freeForAll = false;
 
 
-/*	AI Spawning Variables (Static AI spawns)
+/*	AI Spawning Settings (Static AI spawns)
 --------------------------------------------------------------------------------------------------------------------*/	
 
-//Enable or disable static AI spawns. If enabled, AI spawn points will be generated in cities, towns, and other predefined areas. Does not include custom-defined spawns (Default: true).
+//Enable or disable static AI spawns. If enabled, AI spawn points will be generated in cities, towns, and other predefined areas. Does not affect custom-defined spawns (Default: true).
 DZAI_staticAI = true;
 
-//Time to wait before respawning an AI group once all units have been eliminated. (Default: 450)										
-DZAI_respawnTime = 450;
+//Set minimum and maximum wait time in seconds to respawn an AI group. Applies to both static AI and custom spawned AI (Default: Min 300, Max 600).									
+DZAI_respawnTimeMin = 300;
+DZAI_respawnTimeMax = 600;
 
-//Time to allow spawned AI units to exist in seconds before being despawned when no players are present in a trigger area. (Default: 120)										
+//Time to allow spawned AI units to exist in seconds before being despawned when no players are present in a trigger area. Applies to both static AI and custom spawned AI (Default: 120)										
 DZAI_despawnWait = 120;										
 
 
-/*	Dynamic Trigger Settings (Dynamic AI spawns)
+/*	Dynamic AI Spawning Settings
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Enable or disable dynamic AI spawns. If enabled, AI spawn locations will be randomly placed around the map. (Default: true)									
@@ -113,6 +114,7 @@ DZAI_dynDespawnWait = 120;
 
 //List of marker-defined areas where dynamic AI spawns should NOT be created. These markers may be of any shape (rectangular or circular).
 //Markers can be defined in /world_map_configs/custom_markers/cust_markers_(mapname).sqf (Default: [])
+//Note: This has no effect if DZAI_V2dynSpawns is set 'true'.
 DZAI_dynBlacklist = [];									
 
 
