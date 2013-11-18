@@ -76,7 +76,7 @@ while {(alive _unit)&&(!(isNull _unit))} do {													//Run script for as lo
 			_lowblood = ((_health select 0) < 7800);
 			_brokenbones = (((_health select 1) >= 1) or ((_health select 2) >= 1));
 			if ((_lowblood or _brokenbones) && (time - _lastBandage) > 60) then {
-				if ((random 1) < 0.5) then {
+				if ((random 1) < 0.4) then {
 					_bandages = _bandages - 1;
 					_unit disableAI "FSM";
 					_unit playActionNow "Medic";

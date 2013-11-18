@@ -295,6 +295,7 @@ DZAI_unitDeath = {
 	if (_victim getVariable ["deathhandled",false]) exitWith {};
 	_victim setVariable ["deathhandled",true];
 	_victim setDamage 1;
+	_victim removeAllEventHandlers "HandleDamage";
 	
 	_unitGroup = (group _victim);
 	_unitType = _unitGroup getVariable ["unitType",""];
@@ -308,9 +309,10 @@ DZAI_unitDeath = {
 			[_victim,_unitGroup] spawn DZAI_AI_killed_dynamic;
 		};
 		case "air": 
+		{
 			_victim setVariable ["DZAI_deathTime",time];
 			_victim removeWeapon "NVGoggles";
-		{
+			_victim enableSimulation false;
 		};
 		case default {
 			if (DZAI_debugMarkers > 0) then {
