@@ -77,8 +77,8 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	};
 	//Add eventhandlers
 	_helicopter addEventHandler ["Killed",{_this spawn fnc_heliDespawn;}];					//Begin despawn process when heli is destroyed.
-	//_helicopter addEventHandler ["LandedStopped",{(_this select 0) setFuel 0;(_this select 0) setDamage 1;}];			//Destroy helicopter if it is forced to land.
-	_helicopter addEventHandler ["LandedStopped",{_this spawn DZAI_airLanding;}];	//Converts AI crew to ground AI units.
+	//_helicopter addEventHandler ["LandedTouchDown",{(_this select 0) setFuel 0;(_this select 0) setDamage 1;}];			//Destroy helicopter if it is forced to land.
+	_helicopter addEventHandler ["LandedTouchDown",{_this call DZAI_airLanding;}];	//Converts AI crew to ground AI units.
 	_helicopter setVariable ["crewCount",_crewCount];
 	_helicopter setVehicleAmmo 1;
 	[_helicopter] spawn DZAI_autoRearm_heli;
@@ -87,6 +87,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 		0 = [_x,"helicrew"] call DZAI_setSkills;
 		_x addWeapon "NVGoggles";
 		_x addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage;}];
+		_x setVariable ["unithealth",[12000,0,0]];
 		_x setVariable ["removeNVG",1];
 		_x setVariable ["unconscious",true];	//Prevent AI heli crew from being knocked unconscious
 		_x setVariable ["DZAI_deathTime",time];
@@ -97,6 +98,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	_unitGroup setBehaviour "AWARE";
 	_unitGroup setSpeedMode "FULL";
 	_unitGroup setCombatMode "RED";
+	_unitGroup setVariable ["unitType","air"];
 	
 	//AI behavior settings for testing
 	/*

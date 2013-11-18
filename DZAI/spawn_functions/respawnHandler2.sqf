@@ -18,7 +18,7 @@ _fastMode = if ((count _this) > 2) then {_this select 2} else {false};
 
 //Add group to respawn queue.
 _respawnSleep = (DZAI_respawnTimeMin + random (DZAI_respawnTimeMax - DZAI_respawnTimeMin));	//Calculate wait time for respawn
-if (_fastMode) then {_respawnSleep = _respawnSleep/2};
+if (_fastMode) then {_respawnSleep = (_respawnSleep/2) max 60};
 _nextRespawnTime = (time + _respawnSleep);	//Determine time of next respawn
 DZAI_respawnQueue set [(count DZAI_respawnQueue),[time + _respawnSleep,_trigger,_unitGroup]];
 if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Added Group %1 to respawn queue. Queue position %2. Wait Time %3 (respawnHandler)",_unitGroup,(count DZAI_respawnQueue),_respawnSleep];};
@@ -43,6 +43,8 @@ while {time < DZAI_nextRespawnTime} do {				//Check if it's time to process the 
 };
 
 DZAI_respawnActive = true;							//Time to process first respawn. Deny subsequent attempts to modify the initial wait time.
+DZAI_queueActive = nil;
+DZAI_nextRespawnTime = nil;
 
 while {(count DZAI_respawnQueue) > 0} do {
 	private ["_minDelay","_delay"];
@@ -83,6 +85,7 @@ while {(count DZAI_respawnQueue) > 0} do {
 		} else {
 			//Find shortest delay to next group respawn.
 			_delay = ((_timeToRespawn - time) max PROCESSING_WAIT_TIME);
+			diag_log format ["DEBUG :: Comparing new respawn time %1 with previous %2.",_delay,_minDelay];
 			if (_minDelay > 0) then {
 				//If next delay time is smaller than the current minimum delay, use it instead.
 				if (_delay < _minDelay) then {
@@ -102,7 +105,5 @@ while {(count DZAI_respawnQueue) > 0} do {
 	sleep _minDelay;
 };
 
-DZAI_queueActive = nil;
 DZAI_respawnActive = nil;
-DZAI_nextRespawnTime = nil;
 if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Respawn queue is empty. Exiting respawn handler. (respawnHandler)";};

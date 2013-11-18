@@ -121,6 +121,7 @@ For instructions, consult Step 5 of the Installation Instructions on the DZAI Gi
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Enable or disable AI air vehicle patrols. (Default: false)
+//WARNING: If you are unable to edit your server_cleanup.fsm file, do not enable this option! Exception - if you are running DayZ Epoch.
 DZAI_aiHeliPatrols = false;		
 
 //Maximum number of active AI air vehicle patrols. (Default: 0).							

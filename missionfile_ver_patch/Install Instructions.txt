@@ -1,0 +1,34 @@
+Installation Instructions for DZAI 1.7.0+ (mission file version)
+Last Updated: 3:21 PM 10/21/2013
+
+About the Mission File Version of DZAI: Use these instructions to convert the DZAI install package for compatibility with your mission pbo if you are unable to edit your dayz_server.pbo
+
+What you need:
+----------------------------------------------------
+- cpbo (or any other PBO packing program). cpbo can be downloaded as part of the Arma Tools package at http://www.armaholic.com/page.php?id=411.
+- A text editor (Notepad++ is recommended).
+- Access to your mission .pbo.
+- A downloaded copy of DZAI
+
+Basic Installation Guide:
+----------------------------------------------------
+
+1. Unpack your mission pbo. If using cpbo, right click the .pbo file and click "Extract".
+2. Copy the downloaded DZAI folder from the *root directory* of the download package inside your unpacked mission folder. In this folder, you should also see init.sqf, mission.sqm, description.ext.
+3. Copy the DZAI folder from the *missionfile_ver_patch* directory of the download package inside your unpacked mission folder. Replace all files when prompted.
+4. Edit your mission init.sqf with a text editor.
+5. Add this line at the end of your init.sqf:
+
+	if (isServer) then {call compile preprocessFileLineNumbers "DZAI\init\dzai_initserver.sqf";};
+
+6. Optionally, you may edit DZAI's settings in DZAI\init\dzai_config.sqf
+
+7. Repack your mission pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
+
+Note: You may store your custom settings changes in DZAI\DZAI_settings_override.sqf. This file is a convenient way to store and transfer your custom settings when upgrading to a newer version of DZAI. Further instructions are provided inside this file.
+	
+Other Notes:
+----------------------------------------------------
+
+- Because this version of DZAI is for users who have difficulty repacking their dayz_server.pbo (and will not be able to edit their server_cleanup.fsm), it is not possible to have helicopter patrols enabled.
+- Users of DayZ Epoch 1.0.2.4+ will be able to use helicopter patrols since the server_cleanup.fsm edit is not required.

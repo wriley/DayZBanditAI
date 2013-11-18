@@ -81,6 +81,5 @@ if (!isNil "_dummy") then {
 _unitGroup selectLeader ((units _unitGroup) select 0);
 _unitGroup setVariable ["trigger",_trigger];
 _unitGroup setVariable ["groupSize",_totalAI];
-_unitGroup setVariable ["findKiller",[false,0]];
 
 _unitGroup

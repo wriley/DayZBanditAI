@@ -16,7 +16,7 @@ _killer = _this select 1;
 _unitGroup = _helicopter getVariable "unitGroup";
 _crewCount = _helicopter getVariable ["crewCount",1];
 
-_helicopter removeAllEventHandlers "LandedStopped";
+_helicopter removeAllEventHandlers "LandedTouchDown";
 
 {
 	deleteVehicle _x;
