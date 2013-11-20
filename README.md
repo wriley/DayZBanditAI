@@ -74,7 +74,7 @@ Note: You may store your custom settings changes in DZAI\DZAI_settings_override.
 DZAI 1.8.0 Changelog:
 ============
 
-Coming soon
+1.8.0 Update: http://opendayz.net/threads/dzai-1-8-0-update-changelog.15304/#post-83211
 
 
 Contribute
