@@ -23,36 +23,9 @@ Basic Installation Guide:
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
 		allowConnection = true;
 	
-6. If you do not wish to use DZAI's AI helicopter patrols, skip this step. Otherwise, continue reading. Note: This step is not required for DayZ Epoch as of version 1.0.2.4.
-	
-	- Edit your server_cleanup.fsm located in dayz_server\system
-	- Search for this line: 
-	
-		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
-		
-	- If you do not have the Animated HeliCrash addon installed, change the line to this:
-	
-		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && (vehicle _x getVariable [""DZAI"",0] != 1)) then {" \n
-	
-	- If you do have the Animated HeliCrash addon installed, change it to this:
-	
-		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
+5. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_config.sqf
 
-	- You will need to manually enable helicopter patrols by editing dzai_config.sqf and setting DZAI_aiHeliPatrols = true;
-	
-7. A small edit to your BattlEye filters is needed. Inside your BattlEye folder, edit your addmagazinecargo.txt. Locate the line that reads:
-	
-	"5=ItemRadio"
-	
-Edit it to this:
-
-	//"5=ItemRadio"
-
-If you cannot find this line, do not make any changes.
-
-8. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_config.sqf
-
-9. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
+6. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
 
 Troubleshooting: A number of users have reported issues with entering the game after repacking their dayz_server.pbo. 
 If you encounter this problem, copy the $PBOPREFIX$ file inside the 'extras' folder and paste it inside the dayz_server folder and then repack it into pbo format. This should fix the connection problems.
