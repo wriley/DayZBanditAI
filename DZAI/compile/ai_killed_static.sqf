@@ -60,3 +60,6 @@ if (_unitsAlive == 0) then {
 		DZAI_actTrigs = DZAI_actTrigs - 1;
 	};
 };
+
+sleep 3;
+_victim enableSimulation false;

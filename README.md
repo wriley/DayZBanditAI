@@ -64,38 +64,7 @@ Installation Instructions:
 		call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\init\dzai_initserver.sqf";
 		allowConnection = true;
 	
-5. If you do not wish to use DZAI's AI helicopter patrols, skip to step 6. Otherwise, continue reading. <b>Note: This step is not required for DayZ Epoch as of version 1.0.2.4.</b>
-	
-	Edit your server_cleanup.fsm (located in \dayz_server\system). Search for this line: 
-
-		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"") then {" \n
-
-		
-	If you <b>do not</b> have the Animated HeliCrash addon installed, change the line to this :
-
-
-		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && (vehicle _x getVariable [""DZAI"",0] != 1)) then {" \n
-	 
-	 
-	If you <b>do</b> have the Animated HeliCrash addon installed (or unsure if you do), change the line to this:
-
-
-		"  	if(vehicle _x != _x && !(vehicle _x in _safety) && (typeOf vehicle _x) != ""ParachuteWest"" && ((vehicle _x getVariable [""Sarge"",0] != 1) && (vehicle _x getVariable [""DZAI"",0] != 1))) then {" \n
-
-		
-	You will need to manually enable helicopter patrols by editing dzai_config.sqf and setting DZAI_aiHeliPatrols = true;
-	
-6. A small edit to your BattlEye filters is needed. Inside your BattlEye folder, edit your addmagazinecargo.txt. Locate the line that reads:
-	
-		"5=ItemRadio"
-		
-	Edit it to this:
-
-		//"5=ItemRadio"
-
-	If you cannot find this line, do not make any changes.
-
-7. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_config.sqf
+5. Optionally, you may edit DZAI's settings in dayz_server\DZAI\init\dzai_config.sqf
 
 8. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
 

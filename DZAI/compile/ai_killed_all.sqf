@@ -56,4 +56,5 @@ if (isPlayer _killer) then {
 };
 
 _nul = _victim spawn DZAI_deathFlies;
-_victim enableSimulation false;
+
+true

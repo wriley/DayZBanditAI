@@ -31,6 +31,9 @@ DZAI_AI_killed_static = {
 DZAI_AI_killed_dynamic = {
 	#include "\z\addons\dayz_server\DZAI\compile\ai_killed_dynamic.sqf"
 };
+DZAI_unitDeath = {
+	#include "\z\addons\dayz_server\DZAI\compile\ai_death.sqf"
+};
 fnc_selectRandomWeighted = {
 	#include "\z\addons\dayz_server\DZAI\compile\fn_selectRandomWeighted.sqf"
 };
@@ -117,17 +120,19 @@ if (DZAI_debugMarkers < 1) then {
 fnc_spawnHeliPatrol	= { 
 	#include "\z\addons\dayz_server\DZAI\spawn_functions\spawn_heliPatrol.sqf"
 };
+DZAI_airLanding = {
+	#include "\z\addons\dayz_server\DZAI\spawn_functions\heli_airlanding.sqf"
+};
 
 //DZAI custom spawns function.
 DZAI_spawn = {
-	private ["_spawnMarker","_patrolRadius","_trigStatements","_trigger","_respawn","_weapongrade","_totalAI","_useUPS"];
+	private ["_spawnMarker","_patrolRadius","_trigStatements","_trigger","_respawn","_weapongrade","_totalAI"];
 	
 	_spawnMarker = _this select 0;
 	if ((typeName _spawnMarker) != "STRING") exitWith {diag_log "DZAI Error: Marker string not given!"};
 	_totalAI = if ((typeName (_this select 1)) == "SCALAR") then {_this select 1} else {1};
 	_weapongrade = if ((typeName (_this select 2)) == "SCALAR") then {_this select 2} else {1};
 	_respawn = if ((typeName (_this select 3)) == "BOOL") then {_this select 3} else {true};
-	//_useUPS = if ((count _this) > 3) then {_this select 3} else {false};
 
 	_patrolRadius = ((((getMarkerSize _spawnMarker) select 0) min ((getMarkerSize _spawnMarker) select 1)) min 300);
 
@@ -286,54 +291,6 @@ DZAI_unconscious = {
 	_unit setVariable ["unconscious",false];
 };
 
-//Killed eventhandler script used by both static and dynamic AI.
-DZAI_unitDeath = {
-	private["_victim","_killer","_unitGroup","_unitType"];
-	_victim = _this select 0;
-	_killer = _this select 1;
-	
-	if (_victim getVariable ["deathhandled",false]) exitWith {};
-	_victim setVariable ["deathhandled",true];
-	_victim setDamage 1;
-	_victim removeAllEventHandlers "HandleDamage";
-	
-	_unitGroup = (group _victim);
-	_unitType = _unitGroup getVariable ["unitType",""];
-	switch (_unitType) do {
-		case "static":
-		{
-			[_victim,_unitGroup] spawn DZAI_AI_killed_static;
-		};
-		case "dynamic":
-		{
-			[_victim,_unitGroup] spawn DZAI_AI_killed_dynamic;
-		};
-		case "air": 
-		{
-			_victim setVariable ["DZAI_deathTime",time];
-			_victim removeWeapon "NVGoggles";
-			_victim enableSimulation false;
-		};
-		case default {
-			if (DZAI_debugMarkers > 0) then {
-				private ["_unitsAlive"];
-				if (({alive _x} count (units _unitGroup)) == 0) then {
-					{
-						deleteMarker (str _x);
-					} forEach (waypoints _unitGroup);
-				};
-			};
-		};
-	};
-	
-	if (_unitType in ["static","dynamic"]) then {
-		0 = [_victim,_killer,_unitGroup] call DZAI_AI_killed_all;
-	};
-	//diag_log format ["DEBUG :: AI %1 (Group %2) killed by %3",_victim,_unitGroup,_killer];
-	
-	true
-};
-
 //Generic function to delete a specified object (or array of objects) after a specified time (seconds).
 DZAI_deleteObject = {
 	private["_obj","_delay"];
@@ -346,8 +303,12 @@ DZAI_deleteObject = {
 	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Deleting object(s) %1 now.",_obj];};
 	
 	if ((typeName _obj) == "ARRAY") then {
-		{deleteVehicle _x} forEach _obj;
-	} else {deleteVehicle _obj};
+		{
+			deleteVehicle _x;
+		} forEach _obj;
+	} else {
+		deleteVehicle _obj;
+	};
 };
 
 //If a trigger's calculated totalAI value is zero, then add new group to respawn queue to retry spawn until a nonzero value is found.
@@ -588,61 +549,13 @@ DZAI_setTrigVars = {
 	true
 };
 
-DZAI_airLanding = {
-	private ["_helicopter","_trigger","_heliPos","_weapongrade","_unitsAlive","_unitGroup"];
-	_helicopter = _this select 0;
+DZAI_getObjMon = {
+	private ["_objectMonitor"];
+	_objectMonitor = switch (true) do {
+		case (!isNil "dayz_serverObjectMonitor"): {dayz_serverObjectMonitor};
+		case (!isNil "PVDZE_serverObjectMonitor"): {PVDZE_serverObjectMonitor};
+		case default {[]};
+	};
 	
-	_helicopter removeAllEventHandlers "Killed";
-	_helicopter addEventHandler ["GetIn",{
-		if (isPlayer (_this select 2)) then {
-			(_this select 2) action ["getOut",(_this select 0)]; 
-			0 = [nil,(_this select 2),"loc",rTITLETEXT,"Players are not permitted to enter AI vehicles!","PLAIN DOWN",5] call RE;
-		};
-	}];
-	//_helicopter lock true;
-	_unitGroup = _helicopter getVariable ["unitGroup",grpNull];
-	
-	_heliPos = getPosATL _helicopter;
-	
-	_weapongrade = [DZAI_weaponGrades,DZAI_gradeChancesHeli] call fnc_selectRandomWeighted;
-	
-	//Convert helicrew units to ground units
-	{
-		if (alive _x) then {
-			_x setVariable ["unconscious",false];
-			_x setVariable ["unithealth",[12000,0,0]];
-			unassignVehicle _x;
-			0 = [_x, _weapongrade] call DZAI_setupLoadout;
-			0 = [_x, _weapongrade] call DZAI_setSkills;
-			0 = [_x, _weapongrade] spawn DZAI_autoRearm_unit;
-		};
-	} forEach (units _unitGroup);
-
-	{
-		deleteWaypoint _x;
-	} forEach (waypoints _unitGroup);
-	
-	0 = [_unitGroup,_heliPos,100,DZAI_debugMarkers] spawn DZAI_BIN_taskPatrol;
-	_unitsAlive = {alive _x} count (units _unitGroup);
-	_unitGroup allowFleeing 0;
-	
-	//Create area trigger
-	_trigger = createTrigger ["EmptyDetector",_heliPos];
-	_trigger setTriggerArea [600, 600, 0, false];
-	_trigger setTriggerActivation ["ANY", "PRESENT", true];
-	_trigger setTriggerTimeout [15, 15, 15, true];
-	_trigger setTriggerText (format ["HeliLandingArea_%1",mapGridPosition _helicopter]);
-	_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;","","0 = [thisTrigger] spawn fnc_despawnBandits;"];
-	0 = [_trigger,[_unitGroup],100,DZAI_gradeChancesHeli,[],[_unitsAlive,0]] call DZAI_setTrigVars;
-	_trigger setVariable ["respawn",false];
-	_trigger setVariable ["permadelete",true];
-	
-	_unitGroup setVariable ["unitType","static"];
-	_unitGroup setVariable ["trigger",_trigger];
-	_unitGroup setVariable ["groupSize",_unitsAlive];
-	
-	[_helicopter,900] spawn DZAI_deleteObject;
-	DZAI_curHeliPatrols = DZAI_curHeliPatrols - 1;
-	if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: AI helicrew %1 landed at %2.",_unitGroup,mapGridPosition _trigger];};
+	_objectMonitor
 };
-

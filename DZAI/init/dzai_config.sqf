@@ -21,7 +21,7 @@ DZAI_debugMarkers = 0;
 DZAI_monitorRate = 300;
 
 //Enable or disable verification of classname tables used by DZAI. If invalid entries are found, they are removed and logged into the RPT log.
-//If disabled, clients may crash upon looting AI bodies with invalid items. Disable ONLY if a previous scan shows no invalid classnames (Default: true).										
+//If disabled, any invalid classnames will not be removed and clients may crash upon looting AI bodies with invalid items. Disable ONLY if a previous scan shows no invalid classnames (Default: true).										
 DZAI_verifyTables = true;
 
 //Enable to have server spawn in objects/buildings normally spawned clientside by DayZ's CfgTownGenerator. Prevents AI from walking/shooting through clutter and other objects. (Default: false)	
@@ -116,8 +116,7 @@ DZAI_dynBlacklist = [];
 
 
 /*	AI Air Vehicle patrol settings
-IMPORTANT: Before enabling AI air vehicle patrols, make sure you have properly edited your server_cleanup.fsm file. Otherwise, the air vehicles will explode after spawning.
-For instructions, consult Step 5 of the Installation Instructions on the DZAI Github page: https://github.com/dayzai/DayZBanditAI
+//Note: As of DZAI 1.8.0, users of the missionfile version of DZAI are able to use air vehicle patrols without editing the server_cleanup.fsm.
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Enable or disable AI air vehicle patrols. (Default: false)
@@ -210,13 +209,13 @@ DZAI_numMiscItemL = 1;
 DZAI_chanceMedicals = 0.70;	
 
 //Chance to add each edible item.								
-DZAI_chanceEdibles = 0.85;
+DZAI_chanceEdibles = 0.75;
 
 //Chance to add random item from DZAI_MiscItemS table.									
-DZAI_chanceMiscItemS = 0.60;
+DZAI_chanceMiscItemS = 0.50;
 
 //Chance to add random item from DZAI_MiscItemL table.								
-DZAI_chanceMiscItemL = 0.15;								
+DZAI_chanceMiscItemL = 0.10;								
 
 
 /*AI weapon/skill probabilities (gradeChances should add up to 1.00) - [Civilian, Military, MilitarySpecial, HeliCrash] - Note: AI with higher grade weaponry will also have higher skill settings.

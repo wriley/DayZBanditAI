@@ -21,7 +21,7 @@ DZAI_debugMarkers = 0;
 DZAI_monitorRate = 300;
 
 //Enable or disable verification of classname tables used by DZAI. If invalid entries are found, they are removed and logged into the RPT log.
-//If disabled, clients may crash upon looting AI bodies with invalid items. Disable ONLY if a previous scan shows no invalid classnames (Default: true).										
+//If disabled, any invalid classnames will not be removed and clients may crash upon looting AI bodies with invalid items. Disable ONLY if a previous scan shows no invalid classnames (Default: true).											
 DZAI_verifyTables = true;
 
 //Enable to have server spawn in objects/buildings normally spawned clientside by DayZ's CfgTownGenerator. Prevents AI from walking/shooting through clutter and other objects. (Default: false)	
@@ -116,12 +116,10 @@ DZAI_dynBlacklist = [];
 
 
 /*	AI Air Vehicle patrol settings
-IMPORTANT: Before enabling AI air vehicle patrols, make sure you have properly edited your server_cleanup.fsm file. Otherwise, the air vehicles will explode after spawning.
-For instructions, consult Step 5 of the Installation Instructions on the DZAI Github page: https://github.com/dayzai/DayZBanditAI
+//Note: As of DZAI 1.8.0, users of the missionfile version of DZAI are able to use air vehicle patrols without editing the server_cleanup.fsm.
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Enable or disable AI air vehicle patrols. (Default: false)
-//WARNING: If you are unable to edit your server_cleanup.fsm file, do not enable this option! Exception - if you are running DayZ Epoch.
 DZAI_aiHeliPatrols = false;		
 
 //Maximum number of active AI air vehicle patrols. (Default: 0).							
@@ -325,6 +323,6 @@ DZAI_heliCrewSkills = [
 //NOTHING TO EDIT BEYOND THIS POINT
 
 //Load custom DZAI settings file.
-call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZAI\DZAI_settings_override.sqf";
+call compile preprocessFileLineNumbers "DZAI\DZAI_settings_override.sqf";
 
 diag_log "[DZAI] DZAI Variables loaded.";

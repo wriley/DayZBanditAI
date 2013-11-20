@@ -7,7 +7,11 @@
 	
 */
 
+private ["_objectMonitor"];
+
 if (DZAI_curHeliPatrols >= DZAI_maxHeliPatrols) exitWith {};
+
+_objectMonitor = [] call DZAI_getObjMon;
 
 for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	private ["_heliType","_startPos","_helicopter","_unitGroup","_pilot","_banditType","_turretCount","_crewCount","_weapongrade"];
@@ -19,7 +23,6 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	//_startPos = ["DZAI_centerMarker",true] call SHK_pos;
 	
 	//Create the patrol group
-	//_unitGroup = createGroup (call DZAI_getFreeSide);
 	_unitGroup = createGroup resistance;
 	//diag_log format ["Created group %1",_unitGroup];
 	
@@ -40,7 +43,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 		_helicopter setDir _heliDir;
 		_helicopter setVelocity [(sin _heliDir * _heliSpd),(cos _heliDir * _heliSpd), 0];
 	};
-	_helicopter setVariable ["DZAI",1];
+	_objectMonitor set [count _objectMonitor, _helicopter];
 	_helicopter setVariable ["ObjectID",""];
 	_helicopter setVariable ["unitGroup",_unitGroup];
 	if (DZAI_debugLevel > 0) then {diag_log format ["Spawned helicopter type %1 for group %2 at %3.",_heliType,_unitGroup,mapGridPosition _helicopter];};
