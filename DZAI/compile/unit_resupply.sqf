@@ -56,7 +56,7 @@ while {(alive _unit)&&(!(isNull _unit))} do {
 			if (_needsHeal) then {
 				private ["_healTimes"];
 				_bandages = _bandages - 1;
-				_unit disableAI "FSM";
+				_unit disableAI "TARGET"; _unit disableAI "AUTOTARGET"; _unit disableAI "MOVE";
 				_unit playActionNow "Medic";
 				_healTimes = 0;
 				while {(!(_unit getVariable ["unconscious",false]))&&(_healTimes < 3)&&(alive _unit)} do {
@@ -72,7 +72,7 @@ while {(alive _unit)&&(!(isNull _unit))} do {
 					};
 				};
 				
-				_unit enableAI "FSM";
+				_unit enableAI "TARGET"; _unit enableAI "AUTOTARGET"; _unit enableAI "MOVE";
 				_lastBandage = time;
 				_needsHeal = false;
 			} else {
