@@ -121,7 +121,7 @@ fnc_spawnHeliPatrol	= {
 	#include "\z\addons\dayz_server\DZAI\spawn_functions\spawn_heliPatrol.sqf"
 };
 DZAI_airLanding = {
-	#include "\z\addons\dayz_server\DZAI\spawn_functions\heli_airlanding.sqf"
+	#include "\z\addons\dayz_server\DZAI\compile\heli_airlanding.sqf"
 };
 
 //DZAI custom spawns function.
