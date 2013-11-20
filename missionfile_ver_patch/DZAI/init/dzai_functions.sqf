@@ -8,120 +8,120 @@ waituntil {!isnil "bis_fnc_init"};
 diag_log "[DZAI] Compiling DZAI functions.";
 // [] call BIS_fnc_help;
 //Compile general functions.
-if (isNil "SHK_pos_getPos") then {call compile preprocessFile "\z\addons\dayz_server\DZAI\SHK_pos\shk_pos_init.sqf";};
+if (isNil "SHK_pos_getPos") then {call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";};
 BIS_fnc_selectRandom2 = { 
-	#include "\z\addons\dayz_server\DZAI\compile\fn_selectRandom.sqf" 
+	#include "DZAI\compile\fn_selectRandom.sqf" 
 };
 if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then { // Optional Zed-to-AI aggro functions
 	ai_fired = { 
-		#include "\z\addons\dayz_server\DZAI\compile\ai_fired.sqf"
+		#include "DZAI\compile\ai_fired.sqf"
 	};
 };
 if (DZAI_passiveAggro or (DZAI_zombieEnemy && (DZAI_weaponNoise > 0))) then {
 	ai_alertzombies = {
-		#include "\z\addons\dayz_server\DZAI\compile\ai_alertzombies.sqf"
+		#include "DZAI\compile\ai_alertzombies.sqf"
 	};
 };
 DZAI_AI_killed_all = { 
-	#include "\z\addons\dayz_server\DZAI\compile\ai_killed_all.sqf"
+	#include "DZAI\compile\ai_killed_all.sqf"
 };
 DZAI_AI_killed_static = {
-	#include "\z\addons\dayz_server\DZAI\compile\ai_killed_static.sqf"
+	#include "DZAI\compile\ai_killed_static.sqf"
 };
 DZAI_AI_killed_dynamic = {
-	#include "\z\addons\dayz_server\DZAI\compile\ai_killed_dynamic.sqf"
+	#include "DZAI\compile\ai_killed_dynamic.sqf"
 };
 DZAI_unitDeath = {
-	#include "\z\addons\dayz_server\DZAI\compile\ai_death.sqf"
+	#include "DZAI\compile\ai_death.sqf"
 };
 fnc_selectRandomWeighted = {
-	#include "\z\addons\dayz_server\DZAI\compile\fn_selectRandomWeighted.sqf"
+	#include "DZAI\compile\fn_selectRandomWeighted.sqf"
 };
 DZAI_setup_AI = {
-	#include "\z\addons\dayz_server\DZAI\compile\fn_createGroup.sqf"
+	#include "DZAI\compile\fn_createGroup.sqf"
 };
 DZAI_AI_handledamage = {
-	//#include "\z\addons\dayz_server\DZAI\compile\fn_damageHandlerAI.sqf"
-	#include "\z\addons\dayz_server\DZAI\compile\fn_damageHandlerAI2.sqf"
+	//#include "DZAI\compile\fn_damageHandlerAI.sqf"
+	#include "DZAI\compile\fn_damageHandlerAI2.sqf"
 };
 DZAI_BIN_taskPatrol = {
-	#include "\z\addons\dayz_server\DZAI\compile\BIN_taskPatrol.sqf"
+	#include "DZAI\compile\BIN_taskPatrol.sqf"
 };
 if (DZAI_debugMarkers < 1) then {
 	DZAI_autoRearm_unit = {
-		#include "\z\addons\dayz_server\DZAI\compile\unit_resupply.sqf"
+		#include "DZAI\compile\unit_resupply.sqf"
 	};
 } else {
 	DZAI_autoRearm_unit = {
-		#include "\z\addons\dayz_server\DZAI\compile\unit_resupply_debug.sqf"
+		#include "DZAI\compile\unit_resupply_debug.sqf"
 	};
 };
 if (DZAI_findKiller) then {
 	DZAI_huntKiller = {
-		#include "\z\addons\dayz_server\DZAI\compile\fn_findKiller.sqf"
+		#include "DZAI\compile\fn_findKiller.sqf"
 	};
 };
 DZAI_dyn_huntPlayer = {
-	#include "\z\addons\dayz_server\DZAI\compile\fn_seekPlayer.sqf"
+	#include "DZAI\compile\fn_seekPlayer.sqf"
 };
 DZAI_addLoot = {
-	#include "\z\addons\dayz_server\DZAI\compile\ai_generate_loot.sqf"
+	#include "DZAI\compile\ai_generate_loot.sqf"
 };
 DZAI_setupLoadout = {
-	#include "\z\addons\dayz_server\DZAI\compile\ai_setup_loadout.sqf"
+	#include "DZAI\compile\ai_setup_loadout.sqf"
 };
 	
 //Compile spawn scripts
 fnc_spawnBandits = 	{
-	#include "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits.sqf"
+	#include "DZAI\spawn_functions\spawnBandits.sqf"
 };
 fnc_spawnBandits_custom	= {
-	#include "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits_custom.sqf"
+	#include "DZAI\spawn_functions\spawnBandits_custom.sqf"
 };
 fnc_respawnBandits = {
-	#include "\z\addons\dayz_server\DZAI\spawn_functions\respawnBandits.sqf"
+	#include "DZAI\spawn_functions\respawnBandits.sqf"
 };
 fnc_respawnHandler = {
-	//#include "\z\addons\dayz_server\DZAI\spawn_functions\respawnHandler.sqf"
-	#include "\z\addons\dayz_server\DZAI\spawn_functions\respawnHandler2.sqf"
+	//#include "DZAI\spawn_functions\respawnHandler.sqf"
+	#include "DZAI\spawn_functions\respawnHandler2.sqf"
 };
 fnc_despawnBandits = {
-	#include "\z\addons\dayz_server\DZAI\spawn_functions\despawnBandits.sqf"
+	#include "DZAI\spawn_functions\despawnBandits.sqf"
 };
 if !(DZAI_V2dynSpawns) then {
 	fnc_spawnBandits_dynamic = 	{
-		#include "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits_dynamic.sqf"
+		#include "DZAI\spawn_functions\spawnBandits_dynamic.sqf"
 	};
 	fnc_despawnBandits_dynamic = {
-		#include "\z\addons\dayz_server\DZAI\spawn_functions\despawnBandits_dynamic.sqf"
+		#include "DZAI\spawn_functions\despawnBandits_dynamic.sqf"
 	};
 } else {
 	fnc_spawnBandits_dynamic = 	{
-		#include "\z\addons\dayz_server\DZAI\spawn_functions\spawnBandits_dynamicV2.sqf"
+		#include "DZAI\spawn_functions\spawnBandits_dynamicV2.sqf"
 	};
 	fnc_despawnBandits_dynamic = {
-		#include "\z\addons\dayz_server\DZAI\spawn_functions\despawnBandits_dynamicV2.sqf"
+		#include "DZAI\spawn_functions\despawnBandits_dynamicV2.sqf"
 	};
 };
 
 //Helicopter patrol scripts
 fnc_heliDespawn ={ 
-	#include "\z\addons\dayz_server\DZAI\spawn_functions\heli_despawn.sqf"
+	#include "DZAI\spawn_functions\heli_despawn.sqf"
 };
 if (DZAI_debugMarkers < 1) then {
 	DZAI_autoRearm_heli = { 
-		#include "\z\addons\dayz_server\DZAI\compile\heli_resupply.sqf"
+		#include "DZAI\compile\heli_resupply.sqf"
 	};
 } else {
 	DZAI_autoRearm_heli = { 
-		#include "\z\addons\dayz_server\DZAI\compile\heli_resupply_debug.sqf"
+		#include "DZAI\compile\heli_resupply_debug.sqf"
 	};
 };
 fnc_spawnHeliPatrol	= { 
-	#include "\z\addons\dayz_server\DZAI\spawn_functions\spawn_heliPatrol.sqf"
+	#include "DZAI\spawn_functions\spawn_heliPatrol.sqf"
 };
 DZAI_airLanding = {
-	#include "\z\addons\dayz_server\DZAI\compile\heli_airlanding.sqf"
+	#include "DZAI\compile\heli_airlanding.sqf"
 };
 
 //DZAI custom spawns function.

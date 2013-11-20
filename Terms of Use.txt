@@ -1,16 +1,18 @@
 DZAI Terms of Use
 Date Created: 6:38 PM 10/6/2013
-Date Updated: 7:38 PM 10/6/2013
+Date Updated: 5:41 PM 11/16/2013
 ----------------------------------------
 
 Note: Use of the first person pronouns (ie: "I", "me", "my") refers to the developer of DZAI code.
 
-1. Section for Server Admins and the General Public:
+1. Section for Server Admins and the General Public (Applicable to everyone):
 
-- No permission is required to download and use DZAI. 
-- You are free to make modifications to DZAI code but not redistribute modified files without permission. 
-- DZAI may be freely redistributed without modifications.
+- No permission is required to download and use DZAI on your own server. 
+- You are free to make modifications to DZAI code but not redistribute modified files without permission.
+- Support may not be given if modifications are made to DZAI code without direct instruction by the DZAI developer. (Excludes config files intended for user modification).
+- DZAI may be freely redistributed without modifications, either by itself or as part of an addon package.
 - If you want to contribute code to DZAI please do so through Github (https://github.com/dayzai/DayZBanditAI).
+- You may NOT demand monetary compensation in exchange for providing any kind of support for DZAI or in exchange for access to any DZAI code. Compensation must be on a voluntary basis only (ie: a Paypal Donate button is acceptable).
 
 2. Section for Mod Developers:
 

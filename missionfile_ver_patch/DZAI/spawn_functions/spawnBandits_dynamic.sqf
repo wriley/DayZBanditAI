@@ -7,7 +7,7 @@
 	
 	Last updated: 7:47 PM 8/31/2013
 */
-#include "\z\addons\dayz_server\DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
+#include "DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
 private ["_patrolDist","_trigger","_totalAI","_unitGroup","_targetPlayer","_unitArray","_playerArray","_playerPos","_playerCount","_spawnPosition","_spawnPos","_nearbyTriggers","_findPlayer","_startTime","_nearbyPlayers","_revealLevel","_baseDist","_distVariance"];
 if (!isServer) exitWith {};

@@ -60,7 +60,7 @@ if (DZAI_modName == "") then {
 	switch (_modVariant) do {
 		case "@DayZ_Epoch":{
 			DZAI_modName = "epoch"; 
-			_nul = [] execVM '\z\addons\dayz_server\DZAI\scripts\setup_trader_areas.sqf';
+			_nul = [] execVM 'DZAI\scripts\setup_trader_areas.sqf';
 		};
 		case "DayzOverwatch":{DZAI_modName = "overwatch"};
 		case "@DayzOverwatch":{DZAI_modName = "overwatch"};
@@ -75,10 +75,10 @@ if (DZAI_modName == "") then {
 };
 
 //If serverside object patch enabled, then spawn in serverside objects.
-if (DZAI_objPatch) then {[] execVM '\z\addons\dayz_server\DZAI\scripts\buildingpatch_all.sqf';};
+if (DZAI_objPatch) then {[] execVM 'DZAI\scripts\buildingpatch_all.sqf';};
 
 //Build DZAI weapon classname tables from CfgBuildingLoot data if DZAI_dynamicWeapons = true;
-if (DZAI_dynamicWeaponList) then {[DZAI_banAIWeapons] execVM '\z\addons\dayz_server\DZAI\scripts\buildWeaponArrays.sqf';};
+if (DZAI_dynamicWeaponList) then {[DZAI_banAIWeapons] execVM 'DZAI\scripts\buildWeaponArrays.sqf';};
 
 //Create reference marker for dynamic triggers and set default values. These values are modified on a per-map basis.
 if (DZAI_aiHeliPatrols or DZAI_dynAISpawns) then {
@@ -98,20 +98,20 @@ diag_log format["[DZAI] Server is running map %1. Loading static trigger and cla
 //Load map-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
 //Classname files will overwrite basic settings specified in base_classnames.sqf
 if (_worldname in ["chernarus","utes","zargabad","fallujah","takistan","tavi","lingor","namalsk","mbg_celle2","oring","panthera2","isladuala","sara","trinity"]) then {
-	call compile preprocessFileLineNumbers format ["\z\addons\dayz_server\DZAI\init\world_classname_configs\%1_classnames.sqf",_worldname];
-	[] execVM format ["\z\addons\dayz_server\DZAI\init\world_map_configs\world_%1.sqf",_worldname];
+	call compile preprocessFileLineNumbers format ["DZAI\init\world_classname_configs\%1_classnames.sqf",_worldname];
+	[] execVM format ["DZAI\init\world_map_configs\world_%1.sqf",_worldname];
 } else {
 	"DZAI_centerMarker" setMarkerSize [7000, 7000];
 	if (DZAI_modName == "epoch") then {
 		#include "world_classname_configs\epoch\dayz_epoch.sqf"
-		_nul = [] execVM '\z\addons\dayz_server\DZAI\scripts\setup_trader_areas.sqf';
+		_nul = [] execVM 'DZAI\scripts\setup_trader_areas.sqf';
 	};
 	DZAI_newMap = true;
 	diag_log "[DZAI] Unrecognized worldname found. Generating settings for new map...";
 };
 
 //Build map location list. If using an unknown map, DZAI will automatically generate basic static triggers at cities and towns.
-[] execVM '\z\addons\dayz_server\DZAI\scripts\setup_locations.sqf';
+[] execVM 'DZAI\scripts\setup_locations.sqf';
 
 //Initialize AI settings
 if (DZAI_zombieEnemy) then {diag_log "[DZAI] AI to zombie hostility is enabled.";
@@ -119,8 +119,8 @@ if (DZAI_zombieEnemy) then {diag_log "[DZAI] AI to zombie hostility is enabled."
 } else {diag_log "[DZAI] AI to zombie hostility is disabled.";};
 if (isNil "DDOPP_taser_handleHit") then {DZAI_taserAI = false;} else {DZAI_taserAI = true;diag_log "[DZAI] DDOPP Taser Mod detected.";};
 
-if (DZAI_verifyTables) then {["DZAI_Rifles0","DZAI_Rifles1","DZAI_Rifles2","DZAI_Rifles3","DZAI_Pistols0","DZAI_Pistols1","DZAI_Pistols2","DZAI_Pistols3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_Edibles","DZAI_Medicals1","DZAI_Medicals2","DZAI_MiscItemS","DZAI_MiscItemL","DZAI_BanditTypes","DZAI_heliTypes"] execVM "\z\addons\dayz_server\DZAI\scripts\verifyTables.sqf";};
-[] execVM '\z\addons\dayz_server\DZAI\scripts\DZAI_scheduler.sqf';
-if (DZAI_monitorRate > 0) then {[] execVM '\z\addons\dayz_server\DZAI\scripts\DZAI_monitor.sqf';};
+if (DZAI_verifyTables) then {["DZAI_Rifles0","DZAI_Rifles1","DZAI_Rifles2","DZAI_Rifles3","DZAI_Pistols0","DZAI_Pistols1","DZAI_Pistols2","DZAI_Pistols3","DZAI_Backpacks0","DZAI_Backpacks1","DZAI_Backpacks2","DZAI_Backpacks3","DZAI_Edibles","DZAI_Medicals1","DZAI_Medicals2","DZAI_MiscItemS","DZAI_MiscItemL","DZAI_BanditTypes","DZAI_heliTypes"] execVM "DZAI\scripts\verifyTables.sqf";};
+[] execVM 'DZAI\scripts\DZAI_scheduler.sqf';
+if (DZAI_monitorRate > 0) then {[] execVM 'DZAI\scripts\DZAI_monitor.sqf';};
 diag_log format ["[DZAI] DZAI loaded with settings: Debug Level: %1. DebugMarkers: %2. ModName: %3. DZAI_dynamicWeaponList: %4. VerifyTables: %5.",DZAI_debugLevel,DZAI_debugMarkers,DZAI_modName,DZAI_dynamicWeaponList,DZAI_verifyTables];
 diag_log format ["[DZAI] DZAI loading completed in %1 seconds.",(diag_tickTime - _startTime)];

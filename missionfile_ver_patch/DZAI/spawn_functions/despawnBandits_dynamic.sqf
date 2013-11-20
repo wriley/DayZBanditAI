@@ -8,7 +8,7 @@
 	Last updated: 3:26 PM 6/26/2013
 	
 */
-#include "\z\addons\dayz_server\DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
+#include "DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
 private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime","_newPos","_forceDespawn","_attempts","_oldPos"];
 if (!isServer) exitWith {};										//Execute script only on server.
