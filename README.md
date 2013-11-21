@@ -74,8 +74,8 @@ Note: You may store your custom settings changes in DZAI\DZAI_settings_override.
 DZAI 1.8.0 Changelog:
 ============
 
-1.8.0 Update: http://opendayz.net/threads/dzai-1-8-0-update-changelog.15304/#post-83211
-1.8.0.1 Hotfix: http://opendayz.net/threads/dzai-1-8-0-1-hotfix-fix-for-ai-heli-landing.15323/
+- 1.8.0 Update: http://opendayz.net/threads/dzai-1-8-0-update-changelog.15304/#post-83211
+- 1.8.0.1 Hotfix: http://opendayz.net/threads/dzai-1-8-0-1-hotfix-fix-for-ai-heli-landing.15323/
 
 
 Contribute
