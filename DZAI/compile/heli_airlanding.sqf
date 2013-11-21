@@ -5,12 +5,13 @@
 		
         Usage: [_helicopter] call DZAI_airLanding;
 		
-		Last updated: 11:52 PM 11/19/2013
+		Last updated: 12:02 AM 11/21/2013
 */
 
 private ["_helicopter","_trigger","_heliPos","_weapongrade","_unitsAlive","_unitGroup"];
 _helicopter = _this select 0;
 
+_helicopter removeAllEventHandlers "GetOut";
 _helicopter removeAllEventHandlers "Killed";
 _helicopter addEventHandler ["GetIn",{
 	if (isPlayer (_this select 2)) then {
@@ -18,22 +19,25 @@ _helicopter addEventHandler ["GetIn",{
 		0 = [nil,(_this select 2),"loc",rTITLETEXT,"Players are not permitted to enter AI vehicles!","PLAIN DOWN",5] call RE;
 	};
 }];
-//_helicopter lock true;
-_unitGroup = _helicopter getVariable ["unitGroup",grpNull];
 
+_unitGroup = _helicopter getVariable "unitGroup";
+if (isNil _unitGroup) then {_unitGroup = (group (_this select 2))};
 _heliPos = getPosATL _helicopter;
-
 _weapongrade = [DZAI_weaponGrades,DZAI_gradeChancesHeli] call fnc_selectRandomWeighted;
 
 //Convert helicrew units to ground units
 {
 	if (alive _x) then {
-		_x setVariable ["unconscious",false];
-		_x setVariable ["unithealth",[12000,0,0]];
-		unassignVehicle _x;
+		private ["_health"];
 		0 = [_x, _weapongrade] call DZAI_setupLoadout;
 		0 = [_x, _weapongrade] call DZAI_setSkills;
 		0 = [_x, _weapongrade] spawn DZAI_autoRearm_unit;
+		_x setVariable ["unconscious",false];
+		_health = _x getVariable ["unithealth",[12000,0,0]];
+		_health set [1,0];
+		_health set [2,0];
+		if ((getDammage _x) > 0) then {_x setDamage 0};
+		unassignVehicle _x;
 	};
 } forEach (units _unitGroup);
 
@@ -62,4 +66,4 @@ _unitGroup setVariable ["groupSize",_unitsAlive];
 
 [_helicopter,900] spawn DZAI_deleteObject;
 DZAI_curHeliPatrols = DZAI_curHeliPatrols - 1;
-if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: AI helicrew %1 landed at %2.",_unitGroup,mapGridPosition _trigger];};
+if (DZAI_debugLevel > 0) then {diag_log format ["%1: AI helicopter %2 landed at %3.",__FILE__,typeOf _helicopter,mapGridPosition _helicopter];};

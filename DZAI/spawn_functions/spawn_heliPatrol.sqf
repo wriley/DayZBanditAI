@@ -14,7 +14,7 @@ if (DZAI_curHeliPatrols >= DZAI_maxHeliPatrols) exitWith {};
 _objectMonitor = [] call DZAI_getObjMon;
 
 for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
-	private ["_heliType","_startPos","_helicopter","_unitGroup","_pilot","_banditType","_turretCount","_crewCount","_weapongrade"];
+	private ["_heliType","_startPos","_helicopter","_unitGroup","_pilot","_turretCount","_crewCount","_weapongrade"];
 	_heliType = DZAI_heliTypes call BIS_fnc_selectRandom2;
 	
 	//If chosen classname isn't an air-type vehicle, then use UH1H as default.
@@ -27,8 +27,7 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	//diag_log format ["Created group %1",_unitGroup];
 	
 	//Create helicopter crew
-	_banditType = (DZAI_BanditTypes call BIS_fnc_selectRandom2);
-	_pilot = _unitGroup createUnit [_banditType, [0,0,0], [], 1, "NONE"];
+	_pilot = _unitGroup createUnit [(DZAI_BanditTypes call BIS_fnc_selectRandom2), [0,0,0], [], 1, "NONE"];
 	[_pilot] joinSilent _unitGroup;
 		
 	//Create the helicopter and set variables
@@ -52,15 +51,29 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	_crewCount = 1;
 	_pilot assignAsDriver _helicopter;
 	_pilot moveInDriver _helicopter;
+	0 = [_pilot,"helicrew"] call DZAI_setSkills;
+	_pilot setVariable ["unithealth",[12000,0,0]];
+	_pilot setVariable ["removeNVG",1];
+	_pilot setVariable ["unconscious",true];	//Prevent AI heli crew from being knocked unconscious
+	_pilot setVariable ["DZAI_deathTime",time];
+	_pilot addWeapon "NVGoggles";
+	_pilot addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage}];
 	
 	//Fill all available helicopter gunner seats.
 	_heliTurrets = configFile >> "CfgVehicles" >> _heliType >> "turrets";
 	if ((count _heliTurrets) > 0) then {
 		for "_i" from 0 to ((count _heliTurrets) - 1) do {
 			private["_gunner"];
-			_gunner = _unitGroup createUnit [_banditType, [0,0,0], [], 1, "NONE"];
+			_gunner = _unitGroup createUnit [(DZAI_BanditTypes call BIS_fnc_selectRandom2), [0,0,0], [], 1, "NONE"];
 			_gunner assignAsGunner _helicopter;
 			_gunner moveInTurret [_helicopter,[_i]];
+			0 = [_x,"helicrew"] call DZAI_setSkills;
+			_gunner setVariable ["unithealth",[12000,0,0]];
+			_gunner setVariable ["removeNVG",1];
+			_gunner setVariable ["unconscious",true];	//Prevent AI heli crew from being knocked unconscious
+			_gunner setVariable ["DZAI_deathTime",time];
+			_gunner addWeapon "NVGoggles";
+			_gunner addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage}];
 			[_gunner] joinSilent _unitGroup;
 			_crewCount = _crewCount + 1;
 			//diag_log format ["DEBUG :: Assigned gunner %1 of %2 to AI %3.",(_i+1),(count _heliTurrets),_heliType];
@@ -81,20 +94,10 @@ for "_i" from 1 to (DZAI_maxHeliPatrols - DZAI_curHeliPatrols) do {
 	//Add eventhandlers
 	_helicopter addEventHandler ["Killed",{_this spawn fnc_heliDespawn;}];					//Begin despawn process when heli is destroyed.
 	//_helicopter addEventHandler ["LandedTouchDown",{(_this select 0) setFuel 0;(_this select 0) setDamage 1;}];			//Destroy helicopter if it is forced to land.
-	_helicopter addEventHandler ["LandedTouchDown",{_this call DZAI_airLanding;}];	//Converts AI crew to ground AI units.
+	_helicopter addEventHandler ["GetOut",{_this call DZAI_airLanding;}];	//Converts AI crew to ground AI units.
 	_helicopter setVariable ["crewCount",_crewCount];
 	_helicopter setVehicleAmmo 1;
 	[_helicopter] spawn DZAI_autoRearm_heli;
-
-	{
-		0 = [_x,"helicrew"] call DZAI_setSkills;
-		_x addWeapon "NVGoggles";
-		_x addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage;}];
-		_x setVariable ["unithealth",[12000,0,0]];
-		_x setVariable ["removeNVG",1];
-		_x setVariable ["unconscious",true];	//Prevent AI heli crew from being knocked unconscious
-		_x setVariable ["DZAI_deathTime",time];
-	} forEach (units _unitGroup);
 
 	//Set group behavior and waypoint
 	_unitGroup allowFleeing 0;

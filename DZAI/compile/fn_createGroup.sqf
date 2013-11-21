@@ -59,9 +59,9 @@ for "_i" from 1 to _totalAI do {
 	if (DZAI_zAggro) then {
 		_unit addEventHandler ["Fired", {_this spawn ai_fired;}];};						// Unit firing causes zombie aggro in the area, like player.
 	if (DZAI_taserAI) then {
-		_unit addEventHandler ["HandleDamage",{_this call DDOPP_taser_handleHit;_this call DZAI_AI_handledamage;}];
+		_unit addEventHandler ["HandleDamage",{_this call DDOPP_taser_handleHit;_this call DZAI_AI_handledamage}];
 	} else {
-		_unit addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage;}];};
+		_unit addEventHandler ["HandleDamage",{_this call DZAI_AI_handledamage}];};
 
 	0 = [_unit, _weapongrade] call DZAI_setupLoadout;									// Assign unit loadout
 	0 = [_unit, _weapongrade] call DZAI_setSkills;										// Set AI skill
