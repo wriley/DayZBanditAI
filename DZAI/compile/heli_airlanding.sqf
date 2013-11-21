@@ -20,8 +20,7 @@ _helicopter addEventHandler ["GetIn",{
 	};
 }];
 
-_unitGroup = _helicopter getVariable "unitGroup";
-if (isNil _unitGroup) then {_unitGroup = (group (_this select 2))};
+_unitGroup = _helicopter getVariable ["unitGroup",(group (_this select 2))];
 _heliPos = getPosATL _helicopter;
 _weapongrade = [DZAI_weaponGrades,DZAI_gradeChancesHeli] call fnc_selectRandomWeighted;
 
