@@ -17,6 +17,7 @@ _helicopter addEventHandler ["GetIn",{
 	if (isPlayer (_this select 2)) then {
 		(_this select 2) action ["getOut",(_this select 0)]; 
 		0 = [nil,(_this select 2),"loc",rTITLETEXT,"Players are not permitted to enter AI vehicles!","PLAIN DOWN",5] call RE;
+		(_this select 0) setVehicleLock "LOCKED";
 	};
 }];
 
@@ -27,14 +28,11 @@ _weapongrade = [DZAI_weaponGrades,DZAI_gradeChancesHeli] call fnc_selectRandomWe
 //Convert helicrew units to ground units
 {
 	if (alive _x) then {
-		private ["_health"];
 		0 = [_x, _weapongrade] call DZAI_setupLoadout;
 		0 = [_x, _weapongrade] call DZAI_setSkills;
 		0 = [_x, _weapongrade] spawn DZAI_autoRearm_unit;
 		_x setVariable ["unconscious",false];
-		_health = _x getVariable ["unithealth",[12000,0,0]];
-		_health set [1,0];
-		_health set [2,0];
+		_x setVariable ["unithealth",[12000,0,0]];
 		if ((getDammage _x) > 0) then {_x setDamage 0};
 		unassignVehicle _x;
 	};
@@ -44,7 +42,7 @@ _weapongrade = [DZAI_weaponGrades,DZAI_gradeChancesHeli] call fnc_selectRandomWe
 	deleteWaypoint _x;
 } forEach (waypoints _unitGroup);
 
-0 = [_unitGroup,_heliPos,100,DZAI_debugMarkers] spawn DZAI_BIN_taskPatrol;
+0 = [_unitGroup,_heliPos,75,DZAI_debugMarkers] spawn DZAI_BIN_taskPatrol;
 _unitsAlive = {alive _x} count (units _unitGroup);
 _unitGroup allowFleeing 0;
 
@@ -55,7 +53,7 @@ _trigger setTriggerActivation ["ANY", "PRESENT", true];
 _trigger setTriggerTimeout [15, 15, 15, true];
 _trigger setTriggerText (format ["HeliLandingArea_%1",mapGridPosition _helicopter]);
 _trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;","","0 = [thisTrigger] spawn fnc_despawnBandits;"];
-0 = [_trigger,[_unitGroup],100,DZAI_gradeChancesHeli,[],[_unitsAlive,0]] call DZAI_setTrigVars;
+0 = [_trigger,[_unitGroup],75,DZAI_gradeChancesHeli,[],[_unitsAlive,0]] call DZAI_setTrigVars;
 _trigger setVariable ["respawn",false];
 _trigger setVariable ["permadelete",true];
 
@@ -65,4 +63,4 @@ _unitGroup setVariable ["groupSize",_unitsAlive];
 
 [_helicopter,900] spawn DZAI_deleteObject;
 DZAI_curHeliPatrols = DZAI_curHeliPatrols - 1;
-if (DZAI_debugLevel > 0) then {diag_log format ["%1: AI helicopter %2 landed at %3.",__FILE__,typeOf _helicopter,mapGridPosition _helicopter];};
+if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: AI helicopter %1 landed at %2.",typeOf _helicopter,mapGridPosition _helicopter];};

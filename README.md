@@ -1,4 +1,4 @@
-DZAI 1.8.0.1 - AI Addon for DayZ
+DZAI 1.8.1 - AI Addon for DayZ
 ============
 
 
@@ -76,6 +76,7 @@ DZAI 1.8.0 Changelog:
 
 - 1.8.0 Update: http://opendayz.net/threads/dzai-1-8-0-update-changelog.15304/#post-83211
 - 1.8.0.1 Hotfix: http://opendayz.net/threads/dzai-1-8-0-1-hotfix-fix-for-ai-heli-landing.15323/
+- 1.8.1 Update: 
 
 
 Contribute

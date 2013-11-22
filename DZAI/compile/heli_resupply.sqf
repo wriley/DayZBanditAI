@@ -39,16 +39,16 @@ if ((count _heliWeapons) > 0) then {
 		//Destroy helicopter if pilot is killed
 		if ((!alive (driver _helicopter))&&(isEngineOn _helicopter)) exitWith {
 			if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Patrol helicopter pilot killed, helicopter is going down!";};
-			_helicopter removeAllEventHandlers "LandedStopped";
 			_helicopter setFuel 0;
 			_helicopter setVehicleAmmo 0;
 			_helicopter setDamage 1;
 		};
 		
 		//Periodically vary the helicopter's altitude
+		/*
 		if ((random 1) < 0.3) then {
 			_helicopter flyInHeight (_baseHeight + (random 40));
-		};
+		};*/
 	
 		sleep DZAI_refreshRate;
 	};
@@ -63,16 +63,16 @@ if ((count _heliWeapons) > 0) then {
 		//Destroy helicopter if pilot is killed
 		if ((!alive (driver _helicopter))&&(isEngineOn _helicopter)) exitWith {
 			if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Patrol helicopter pilot killed, helicopter is going down!";};
-			_helicopter removeAllEventHandlers "LandedStopped";
 			_helicopter setFuel 0;
 			_helicopter setVehicleAmmo 0;
 			_helicopter setDamage 1;
 		};
 		
 		//Periodically vary the helicopter's altitude
+		/*
 		if ((random 1) < 0.3) then {
 			_helicopter flyInHeight (_baseHeight + (random 40));
-		};
+		};*/
 
 		sleep DZAI_refreshRate;
 	};

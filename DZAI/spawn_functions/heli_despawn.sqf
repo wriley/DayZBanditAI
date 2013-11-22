@@ -69,7 +69,7 @@ if (DZAI_airLootMode > 0) then {
 			_dropTrigger setTriggerActivation ["ANY", "PRESENT", true];
 			_dropTrigger setTriggerTimeout [3, 4, 5, true];
 			_dropTrigger setTriggerText (format ["Paradrop%1",mapGridPosition _helicopter]);
-			_statements = format ["0 = [%1,0,100,thisTrigger,-1,'%2'] call fnc_spawnBandits_custom;",_crewCount,_dropMarker];
+			_statements = format ["0 = [%1,0,75,thisTrigger,-1,'%2'] call fnc_spawnBandits_custom;",_crewCount,_dropMarker];
 			_dropTrigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_statements,"0 = [thisTrigger] spawn fnc_despawnBandits;"];
 			_dropTrigger setVariable ["respawn",false];
 			_dropTrigger setVariable ["spawnmarker",_dropMarker];

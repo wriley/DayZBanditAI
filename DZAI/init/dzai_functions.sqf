@@ -195,6 +195,7 @@ DZAI_heliRandomPatrol = {
 	};
 	[_unitGroup,0] setWaypointCompletionRadius 150;
 	_unitGroup setCurrentWaypoint [_unitGroup,0];
+	(vehicle (leader _unitGroup)) flyInHeight (100 + (random 40));
 };
 
 //Sets skills for unit based on their weapongrade value.
@@ -552,7 +553,7 @@ DZAI_setTrigVars = {
 DZAI_getObjMon = {
 	private ["_objectMonitor"];
 	_objectMonitor = switch (true) do {
-		case (!isNil "dayz_serverObjectMonitor"): {dayz_serverObjectMonitor};
+		case ((!isNil "dayz_serverObjectMonitor")&&(isNil "PVDZE_serverObjectMonitor")): {dayz_serverObjectMonitor};
 		case (!isNil "PVDZE_serverObjectMonitor"): {PVDZE_serverObjectMonitor};
 		case default {[]};
 	};

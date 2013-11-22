@@ -57,7 +57,8 @@ while {true} do {
 					_trigger setTriggerArea [DZAI_dynTriggerRadius, DZAI_dynTriggerRadius, 0, false];
 					_trigger setTriggerActivation ["ANY", "PRESENT", true];
 					_trigger setTriggerTimeout [3, 3, 3, true];
-					_trigger setTriggerText "V2 Dynamic Trigger";
+					_triggerText = format ["Dynamic Trigger (Target: %1)",name _player];
+					_trigger setTriggerText _triggerText;
 					_trigger setVariable ["targetplayer",_player];
 					_trigActStatements = format ["0 = [225,thisTrigger,%1] call fnc_spawnBandits_dynamic;",_spawnChance];
 					_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;",_trigActStatements, "[thisTrigger] spawn fnc_despawnBandits_dynamic;"];

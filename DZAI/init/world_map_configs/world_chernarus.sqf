@@ -237,7 +237,7 @@ if (DZAI_staticAI) then {
 	_this setTriggerStatements ["{isPlayer _x} count thisList > 0;", "0 = [0,2,200,thisTrigger,[],2] call fnc_spawnBandits;", "0 = [thisTrigger] spawn fnc_despawnBandits;"];
 	_trigger_76 = _this;
 
-	_this = createTrigger ["EmptyDetector", [6073.5898, 7763.0264]];
+	_this = createTrigger ["EmptyDetector", [6179.4053, 7786.5435]];
 	_this setTriggerArea [600, 600, 0, false];
 	_this setTriggerActivation ["ANY", "PRESENT", true];
 	_this setTriggerTimeout [10, 15, 20, true];

@@ -67,16 +67,15 @@ if ((count _heliWeapons) > 0) then {
 		//Destroy helicopter if pilot is killed
 		if ((!alive (driver _helicopter))&&(isEngineOn _helicopter)) exitWith {
 			if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Patrol helicopter pilot killed, helicopter is going down!";};
-			_helicopter removeAllEventHandlers "LandedStopped";
 			_helicopter setFuel 0;
 			_helicopter setVehicleAmmo 0;
 			_helicopter setDamage 1;
 		};
 		
 		//Periodically vary the helicopter's altitude (DevNote: Change flying height every x script cycles instead of using chance?)
-		if ((random 1) < 0.3) then {
+		/*if ((random 1) < 0.3) then {
 			_helicopter flyInHeight (_baseHeight + (random 40));
-		};
+		};*/
 		
 		//Uncomment to test despawn/respawn process. Destroys helicopter after ~60 seconds of flight
 		/*
@@ -103,16 +102,16 @@ if ((count _heliWeapons) > 0) then {
 		//Destroy helicopter if pilot is killed
 		if ((!alive (driver _helicopter))&&(isEngineOn _helicopter)) exitWith {
 			if (DZAI_debugLevel > 0) then {diag_log "DZAI Debug: Patrol helicopter pilot killed, helicopter is going down!";};
-			_helicopter removeAllEventHandlers "LandedStopped";
 			_helicopter setFuel 0;
 			_helicopter setVehicleAmmo 0;
 			_helicopter setDamage 1;
 		};
 		
 		//Periodically vary the helicopter's altitude
+		/*
 		if ((random 1) < 0.3) then {
 			_helicopter flyInHeight (_baseHeight + (random 40));
-		};
+		};*/
 		
 		//Uncomment to test despawn/respawn process. Destroys helicopter after ~60 seconds of flight
 		/*

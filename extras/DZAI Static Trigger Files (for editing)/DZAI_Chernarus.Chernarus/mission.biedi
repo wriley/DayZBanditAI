@@ -639,7 +639,7 @@ class _trigger_78
 	objectType="trigger";
 	class Arguments
 	{
-		POSITION="[6073.5898, 7763.0264]";
+		POSITION="[6179.4053, 7786.5435]";
 		A="600";
 		B="600";
 		ACTIVATION_BY="ANY";
