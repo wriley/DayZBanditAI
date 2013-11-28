@@ -10,19 +10,19 @@ private ["_startTime"];
 if (!isServer || !isNil "DZAI_isActive") exitWith {};
 DZAI_isActive = true;
 
-#include "DZAI_version.hpp"
+#include "init\DZAI_version.hpp"
 diag_log format ["Initializing %1 version %2",DZAI_TYPE,DZAI_VERSION];
 
 _startTime = diag_tickTime;
 
 //Load DZAI variables
-#include "dzai_config.sqf"
+#include "init\dzai_config.sqf"
 
 //Load DZAI functions
-#include "dzai_functions.sqf"
+#include "dzai_functions_mf_ver.sqf"
 
 //Load DZAI classname tables
-#include "world_classname_configs\default\default_classnames.sqf"
+#include "init\world_classname_configs\default\default_classnames.sqf"
 
 //Set internal-use variables
 DZAI_weaponGrades = [0,1,2,3];								//All possible weapon grades. A "weapon grade" is a tiered classification of gear. 0: Civilian, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.
@@ -103,7 +103,7 @@ if (_worldname in ["chernarus","utes","zargabad","fallujah","takistan","tavi","l
 } else {
 	"DZAI_centerMarker" setMarkerSize [7000, 7000];
 	if (DZAI_modName == "epoch") then {
-		#include "world_classname_configs\epoch\dayz_epoch.sqf"
+		_nul = [] execVM "DZAI\init\world_classname_configs\epoch\dayz_epoch.sqf";
 		_nul = [] execVM 'DZAI\scripts\setup_trader_areas.sqf';
 	};
 	DZAI_newMap = true;

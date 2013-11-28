@@ -7,7 +7,6 @@
 	
 	Last updated: 7:47 PM 8/31/2013
 */
-#include "DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
 private ["_patrolDist","_trigger","_totalAI","_unitGroup","_targetPlayer","_unitArray","_playerArray","_playerPos","_playerCount","_spawnPosition","_spawnPos","_nearbyTriggers","_findPlayer","_startTime","_nearbyPlayers","_revealLevel","_baseDist","_distVariance"];
 if (!isServer) exitWith {};
@@ -124,6 +123,6 @@ if (DZAI_debugLevel > 0) then {diag_log format["DZAI Debug: Spawned 1 new AI gro
 0 = [_trigger,[_unitGroup]] call DZAI_setTrigVars;
 //diag_log format ["DEBUG :: _trigger %1, groupArray %2, _total AI %3.",_trigger,_grpArray,_totalAI];
 //Prevent player(s) from causing despawn by entering an air vehicle.
-_trigger setTriggerStatements [DYNTRIG_STATEMENTS_ACTIVE];
+_trigger setTriggerStatements ["{isPlayer _x} count thisList > 0;","[225,thisTrigger,thisList] call fnc_spawnBandits_dynamic;", "[thisTrigger] spawn fnc_despawnBandits_dynamic;"];
 
 true

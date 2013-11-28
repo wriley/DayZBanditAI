@@ -10,118 +10,118 @@ diag_log "[DZAI] Compiling DZAI functions.";
 //Compile general functions.
 if (isNil "SHK_pos_getPos") then {call compile preprocessFile "DZAI\SHK_pos\shk_pos_init.sqf";};
 BIS_fnc_selectRandom2 = { 
-	#include "DZAI\compile\fn_selectRandom.sqf" 
+	#include "compile\fn_selectRandom.sqf" 
 };
 if (DZAI_zombieEnemy && (DZAI_weaponNoise > 0)) then { // Optional Zed-to-AI aggro functions
 	ai_fired = { 
-		#include "DZAI\compile\ai_fired.sqf"
+		#include "compile\ai_fired.sqf"
 	};
 };
 if (DZAI_passiveAggro or (DZAI_zombieEnemy && (DZAI_weaponNoise > 0))) then {
 	ai_alertzombies = {
-		#include "DZAI\compile\ai_alertzombies.sqf"
+		#include "compile\ai_alertzombies.sqf"
 	};
 };
 DZAI_AI_killed_all = { 
-	#include "DZAI\compile\ai_killed_all.sqf"
+	#include "compile\ai_killed_all.sqf"
 };
 DZAI_AI_killed_static = {
-	#include "DZAI\compile\ai_killed_static.sqf"
+	#include "compile\ai_killed_static.sqf"
 };
 DZAI_AI_killed_dynamic = {
-	#include "DZAI\compile\ai_killed_dynamic.sqf"
+	#include "compile\ai_killed_dynamic.sqf"
 };
 DZAI_unitDeath = {
-	#include "DZAI\compile\ai_death.sqf"
+	#include "compile\ai_death.sqf"
 };
 fnc_selectRandomWeighted = {
-	#include "DZAI\compile\fn_selectRandomWeighted.sqf"
+	#include "compile\fn_selectRandomWeighted.sqf"
 };
 DZAI_setup_AI = {
-	#include "DZAI\compile\fn_createGroup.sqf"
+	#include "compile\fn_createGroup.sqf"
 };
 DZAI_AI_handledamage = {
-	//#include "DZAI\compile\fn_damageHandlerAI.sqf"
-	#include "DZAI\compile\fn_damageHandlerAI2.sqf"
+	//#include "compile\fn_damageHandlerAI.sqf"
+	#include "compile\fn_damageHandlerAI2.sqf"
 };
 DZAI_BIN_taskPatrol = {
-	#include "DZAI\compile\BIN_taskPatrol.sqf"
+	#include "compile\BIN_taskPatrol.sqf"
 };
 if (DZAI_debugMarkers < 1) then {
 	DZAI_autoRearm_unit = {
-		#include "DZAI\compile\unit_resupply.sqf"
+		#include "compile\unit_resupply.sqf"
 	};
 } else {
 	DZAI_autoRearm_unit = {
-		#include "DZAI\compile\unit_resupply_debug.sqf"
+		#include "compile\unit_resupply_debug.sqf"
 	};
 };
 if (DZAI_findKiller) then {
 	DZAI_huntKiller = {
-		#include "DZAI\compile\fn_findKiller.sqf"
+		#include "compile\fn_findKiller.sqf"
 	};
 };
 DZAI_dyn_huntPlayer = {
-	#include "DZAI\compile\fn_seekPlayer.sqf"
+	#include "compile\fn_seekPlayer.sqf"
 };
 DZAI_addLoot = {
-	#include "DZAI\compile\ai_generate_loot.sqf"
+	#include "compile\ai_generate_loot.sqf"
 };
 DZAI_setupLoadout = {
-	#include "DZAI\compile\ai_setup_loadout.sqf"
+	#include "compile\ai_setup_loadout.sqf"
 };
 	
 //Compile spawn scripts
 fnc_spawnBandits = 	{
-	#include "DZAI\spawn_functions\spawnBandits.sqf"
+	#include "spawn_functions\spawnBandits.sqf"
 };
 fnc_spawnBandits_custom	= {
-	#include "DZAI\spawn_functions\spawnBandits_custom.sqf"
+	#include "spawn_functions\spawnBandits_custom.sqf"
 };
 fnc_respawnBandits = {
-	#include "DZAI\spawn_functions\respawnBandits.sqf"
+	#include "spawn_functions\respawnBandits.sqf"
 };
 fnc_respawnHandler = {
-	//#include "DZAI\spawn_functions\respawnHandler.sqf"
-	#include "DZAI\spawn_functions\respawnHandler2.sqf"
+	//#include "spawn_functions\respawnHandler.sqf"
+	#include "spawn_functions\respawnHandler2.sqf"
 };
 fnc_despawnBandits = {
-	#include "DZAI\spawn_functions\despawnBandits.sqf"
+	#include "spawn_functions\despawnBandits.sqf"
 };
 if !(DZAI_V2dynSpawns) then {
 	fnc_spawnBandits_dynamic = 	{
-		#include "DZAI\spawn_functions\spawnBandits_dynamic.sqf"
+		#include "spawn_functions\spawnBandits_dynamic.sqf"
 	};
 	fnc_despawnBandits_dynamic = {
-		#include "DZAI\spawn_functions\despawnBandits_dynamic.sqf"
+		#include "spawn_functions\despawnBandits_dynamic.sqf"
 	};
 } else {
 	fnc_spawnBandits_dynamic = 	{
-		#include "DZAI\spawn_functions\spawnBandits_dynamicV2.sqf"
+		#include "spawn_functions\spawnBandits_dynamicV2.sqf"
 	};
 	fnc_despawnBandits_dynamic = {
-		#include "DZAI\spawn_functions\despawnBandits_dynamicV2.sqf"
+		#include "spawn_functions\despawnBandits_dynamicV2.sqf"
 	};
 };
 
 //Helicopter patrol scripts
 fnc_heliDespawn ={ 
-	#include "DZAI\spawn_functions\heli_despawn.sqf"
+	#include "spawn_functions\heli_despawn.sqf"
 };
 if (DZAI_debugMarkers < 1) then {
 	DZAI_autoRearm_heli = { 
-		#include "DZAI\compile\heli_resupply.sqf"
+		#include "compile\heli_resupply.sqf"
 	};
 } else {
 	DZAI_autoRearm_heli = { 
-		#include "DZAI\compile\heli_resupply_debug.sqf"
+		#include "compile\heli_resupply_debug.sqf"
 	};
 };
 fnc_spawnHeliPatrol	= { 
-	#include "DZAI\spawn_functions\spawn_heliPatrol.sqf"
+	#include "spawn_functions\spawn_heliPatrol.sqf"
 };
 DZAI_airLanding = {
-	#include "DZAI\compile\heli_airlanding.sqf"
+	#include "compile\heli_airlanding.sqf"
 };
 
 //DZAI custom spawns function.

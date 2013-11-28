@@ -8,7 +8,6 @@
 
 	Last updated: 8:45 PM 6/18/2013
 */
-#include "DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
 private ["_numTriggers"];
 
@@ -31,7 +30,7 @@ for "_i" from 1 to _numTriggers do {
 	_trigger setTriggerArea [DZAI_dynTriggerRadius, DZAI_dynTriggerRadius, 0, false];
 	_trigger setTriggerActivation ["ANY", "PRESENT", true];
 	_trigger setTriggerTimeout [5, 7, 10, true];
-	_trigger setTriggerStatements [DYNTRIG_STATEMENTS_INACTIVE];
+	_trigger setTriggerStatements ["{(isPlayer _x) && !(_x isKindOf 'Air')} count thisList > 0;","[225,thisTrigger,thisList] call fnc_spawnBandits_dynamic;", "[thisTrigger] spawn fnc_despawnBandits_dynamic;"];
 	if (DZAI_debugMarkers > 0) then {
 		private ["_markername","_marker"];
 		_markername = format["trigger_%1",_trigger];

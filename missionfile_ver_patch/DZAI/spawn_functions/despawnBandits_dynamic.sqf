@@ -8,7 +8,6 @@
 	Last updated: 3:26 PM 6/26/2013
 	
 */
-#include "DZAI\init\dyn_trigger_configs\dyn_trigger_defs.hpp"
 
 private ["_trigger","_grpArray","_isCleaning","_grpCount","_waitTime","_newPos","_forceDespawn","_attempts","_oldPos"];
 if (!isServer) exitWith {};										//Execute script only on server.
@@ -68,7 +67,7 @@ if ((triggerActivated _trigger) && (!_forceDespawn)) exitWith {
 } forEach _grpArray;
 
 //Restore original trigger statements
-_trigger setTriggerStatements [DYNTRIG_STATEMENTS_INACTIVE];
+_trigger setTriggerStatements ["{(isPlayer _x) && !(_x isKindOf 'Air')} count thisList > 0;","[225,thisTrigger,thisList] call fnc_spawnBandits_dynamic;", "[thisTrigger] spawn fnc_despawnBandits_dynamic;"];
 _oldPos = mapGridPosition _trigger;
 
 //Relocate trigger
