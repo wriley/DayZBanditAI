@@ -27,8 +27,4 @@ Basic Installation Guide:
 
 Note: You may store your custom settings changes in DZAI\DZAI_settings_override.sqf. This file is a convenient way to store and transfer your custom settings when upgrading to a newer version of DZAI. Further instructions are provided inside this file.
 	
-Other Notes:
-----------------------------------------------------
 
-- Because this version of DZAI is for users who have difficulty repacking their dayz_server.pbo (and will not be able to edit their server_cleanup.fsm), it is not possible to have helicopter patrols enabled.
-- Users of DayZ Epoch 1.0.2.4+ will be able to use helicopter patrols since the server_cleanup.fsm edit is not required.
