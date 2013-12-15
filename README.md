@@ -1,4 +1,4 @@
-DZAI 1.8.1.1 - AI Addon for DayZ
+DZAI 1.8.1.2 - AI Addon for DayZ
 ============
 
 
@@ -78,6 +78,7 @@ Changelog:
 - 1.8.0.1 Hotfix: http://opendayz.net/threads/dzai-1-8-0-1-hotfix-fix-for-ai-heli-landing.15323/
 - 1.8.1 Update: http://opendayz.net/threads/dzai-1-8-1-update.15356/#post-83581
 - 1.8.1.1 Hotfix: Fix for DayZ Epoch 1.0.3 loot table structure change.
+- 1.8.1.2 Hotfix: Fix for undefined variable causing AI helicopter gunners to have maximum skill.
 
 
 Contribute
