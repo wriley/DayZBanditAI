@@ -98,7 +98,7 @@ Note 2: Editing the server_cleanup.fsm is not required for AI vehicle patrols fr
 Changelog:
 ============
 
-1.9.0 Update: 
+1.9.0 Update: http://opendayz.net/threads/dzai-1-9-0-update-changelog.17707/
 
 
 Contribute
