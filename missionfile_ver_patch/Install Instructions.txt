@@ -1,14 +1,21 @@
 Installation Instructions for DZAI 1.7.0+ (mission file version)
-Last Updated: 3:21 PM 10/21/2013
+Last Updated: 6:00 PM 12/17/2013
 
 About the Mission File Version of DZAI: Use these instructions to convert the DZAI install package for compatibility with your mission pbo if you are unable to edit your dayz_server.pbo
 
+Updated to provide instructions using PBO Manager to prevent pbo corruption problems.
+
+
 What you need:
 ----------------------------------------------------
-- cpbo (or any other PBO packing program). cpbo can be downloaded as part of the Arma Tools package at http://www.armaholic.com/page.php?id=411.
+- cpbo* or PBO Manager**.
 - A text editor (Notepad++ is recommended).
 - Access to your mission .pbo.
 - A downloaded copy of DZAI
+
+* cpbo can be downloaded as part of the Arma Tools package here: http://www.armaholic.com/page.php?id=411
+** PBO Manager can be downloaded here: http://www.armaholic.com/page.php?id=16369
+
 
 Basic Installation Guide:
 ----------------------------------------------------
