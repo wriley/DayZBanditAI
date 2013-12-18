@@ -92,6 +92,7 @@ Troubleshooting: A number of users have reported issues with entering the game a
 If you encounter this problem, copy the $PBOPREFIX$ file inside the 'extras' folder and paste it inside the dayz_server folder and then repack it into pbo format. This should fix the connection problems.
 
 Note 1: You may store your custom settings changes in DZAI\DZAI_settings_override.sqf. This file is a convenient way to store and transfer your custom settings when upgrading to a newer version of DZAI. Further instructions are provided inside this file.
+
 Note 2: Editing the server_cleanup.fsm is not required for AI vehicle patrols from DZAI version 1.8.0 onwards.
 
 
