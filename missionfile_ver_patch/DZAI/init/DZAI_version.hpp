@@ -3,4 +3,4 @@
 */
 
 #define DZAI_TYPE "DZAI (Mission File Version)"
-#define DZAI_VERSION "1.9.0"
+#define DZAI_VERSION "1.9.1"

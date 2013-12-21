@@ -26,7 +26,7 @@ Basic Installation Guide:
 4. Edit your mission init.sqf with a text editor.
 5. Add this line at the end of your init.sqf:
 
-	if (isServer) then {call compile preprocessFileLineNumbers "DZAI\dzai_initserver_mf_ver.sqf";};
+	if (isServer) then {call compile preprocessFileLineNumbers "DZAI\dzai_initserver.sqf";};
 
 6. Optionally, you may edit DZAI's settings in DZAI\init\dzai_config.sqf
 
