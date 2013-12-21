@@ -2,11 +2,11 @@
 	For DayZ Epoch only - Spawns server-side plot poles at all trader locations to prevent DZAI from spawning dynamic AI.
 */
 
-_trader_markers = switch (toLower format ["%1",worldName]) do {
+_trader_markers = switch (toLower worldName) do {
 	case "chernarus": {["Tradercitystary","wholesaleSouth","boatTraderEast","BoatDealerSouth","AirVehicles","BanditDen","Klen","BoatDealerEast","TradercityBash","HeroTrader"]};
 	case "takistan": {["tradercitykush","Trader_City_Nur","Trader_City_Garm","Wholesaler","Wholesaler_1","Airplane Dealer","BanditTrader","BlackMarketVendor"]};
 	case "isladuala": {["Trader City Camara","st_3","st_4","st_3_1","st_3_1_1","st_3_1_1_1","st_3_2","st_3_2_1","st_3_2_2","st_3_2_3","st_3_2_3_1"]};
-	case "tavi": {["ArmedChoppers","HighEndWeaponsAmmo","UnarmedChopperF","BoatVendor1","Wholesaler1","HeroVendor","ArmedVehicles","Doctor2","PlaneVendor","VehiclePartsVendors","GeneralSupplies","GeneralSupplies1","Doctor3","BanditWeaponAmmo","Armed Boats","BanditChoppersRepair","GeneralSupplies3","Wholesaler2","RepairShop"]};
+	case "tavi": {["TraderCityLyepestok","TraderCitySabina","TraderCityBilgrad","TraderCityBranibor","BanditVendor","HeroVendor","AircraftDealer","Misc.Vendor","BoatDealer","Wholesaler"]};
 	case "namalsk": {["GerneralPartsSupplies","WholesalerNorth","Doctor","HighEndWeaponsAmmo","HeroVendor","VehicleFriendly","NeutralVendors","WholesalerSouth","LowEndWeaponsAmmo","BoatVendor","Bandit Trader","PlaneVendor"]};
 	case "panthera2": {["AirVehiclesF","WholesalerWest","HeroVehicles","NeutralAirVehicles","Boats","NeutralTraders","NeutralTraderCity2","WholesaleSouth","PlanicaTraders","IslandVehiclePartsVendors"]};
 	case "sara": {["Tradercitycorazol","wholesaleSouth","boatTraderEast","BoatDealerSouth","AirVehicles","BanditDen","Ixel","BoatDealerEast","TradercityBag","HeroTrader"]};
