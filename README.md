@@ -37,15 +37,14 @@ Compatibility with other AI addons:
 
 - Supported Maps: Chernarus, Namalsk, Celle, Fallujah, Lingor/Hunting Grounds, Isla Duala, Oring, Panthera, Sahrani, Takistan, Taviana, Trinity Island, Utes, Zargabad.
 - Supported Mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Civilian, DayZ Epoch, DayZ Overwatch.
-
-<b>Unupported DayZ mods:</b>
-
-- DayZ+, DayZ Epidemic, DayZ Taviana (Tactical_Force version), DayZ Invasion 1944.
+- Note: DZAI is able to run on unrecognized maps by automatically generating static spawns in cities and towns.
 
 <b>Known Issues:</b>
 
 - Buildings spawned by DayZ's CfgTownGenerator are invisible to AI, meaning they can walk, see, and shoot through these objects. DZAI includes an experimental fix for this issue. Enable this fix by setting DZAI_objPatch = true in dzai_config.sqf. This fix takes about 60-90 seconds to run at server start. (This option is especially important for original DayZ and DayZ Overwatch).
-- Some users experience problems entering the game after repacking their dayz_server.pbo. To solve this issue, follow the instructions contained in the readme file in the authentication_fix folder included in this download package.
+- Note: The above doesn't apply to the majority of addons that add buildings to the map.
+- Some users experience problems entering the game after repacking their dayz_server.pbo. To solve this issue, follow the instructions contained in the readme file in the authentication_fix folder included in this download package, or follow the install instructions
+using PBO Manager.
 
 Basic Installation Guide (with cpbo):
 ============
@@ -89,7 +88,8 @@ Basic Installation Guide (with PBO Manager):
 
 
 Troubleshooting: A number of users have reported issues with entering the game after repacking their dayz_server.pbo. 
-If you encounter this problem, copy the $PBOPREFIX$ file inside the 'extras' folder and paste it inside the dayz_server folder and then repack it into pbo format. This should fix the connection problems.
+If you encounter this problem, try following the Basic Installation Guide with PBO Manager and avoiding use of the "Pack into dayz_server.pbo
+right-click option. If that fails to fix the problem, follow the readme instructions in the authentication_fix folder included in the download package.
 
 Note 1: You may store your custom settings changes in DZAI\DZAI_settings_override.sqf. This file is a convenient way to store and transfer your custom settings when upgrading to a newer version of DZAI. Further instructions are provided inside this file.
 
@@ -99,8 +99,8 @@ Note 2: Editing the server_cleanup.fsm is not required for AI vehicle patrols fr
 Changelog:
 ============
 
-1.9.0 Update: http://opendayz.net/threads/dzai-1-9-0-update-changelog.17707/
-1.9.1 Update: http://opendayz.net/threads/dzai-1-9-1-update-changelog.17739/
+- 1.9.0 Update: http://opendayz.net/threads/dzai-1-9-0-update-changelog.17707/
+- 1.9.1 Update: http://opendayz.net/threads/dzai-1-9-1-update-changelog.17739/
 
 
 Contribute
