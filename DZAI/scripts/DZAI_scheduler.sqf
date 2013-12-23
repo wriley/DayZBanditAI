@@ -57,8 +57,6 @@ if (DZAI_monitorRate > 0) then {[] execVM '\z\addons\dayz_server\DZAI\scripts\DZ
 diag_log "DZAI Scheduler will continue tasks in 15 minutes.";
 sleep 900;
 
-_objectMonitor = [] call DZAI_getObjMon;
-
 while {true} do {
 	if (DZAI_debugLevel > 0) then {diag_log "DZAI Scheduler is now running.";};
 
@@ -72,10 +70,6 @@ while {true} do {
 				_soundFlies = _x getVariable "sound_flies";
 				deleteVehicle _soundFlies;
 				deleteVehicle _x;
-			};
-		} else {
-			if ((_vehiclesEnabled)&&(_x in _objectMonitor)) then {
-				_objectMonitor = _objectMonitor - [_x];
 			};
 		};
 		sleep 0.005;
