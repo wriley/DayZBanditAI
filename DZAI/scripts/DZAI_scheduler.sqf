@@ -35,7 +35,7 @@ _nul = [] execVM '\z\addons\dayz_server\DZAI\scripts\setup_locations.sqf';
 sleep 0.1;
 
 if ((count DZAI_dynAreaBlacklist) > 0) then {
-	_nul = [] execVM '\z\addons\dayz_server\DZAI\scripts\setup_blacklist_areas.sqf';
+	_nul = DZAI_dynAreaBlacklist execVM '\z\addons\dayz_server\DZAI\scripts\setup_blacklist_areas.sqf';
 	sleep 0.1;
 };
 
