@@ -35,7 +35,7 @@ _nul = [] execVM 'DZAI\scripts\setup_locations.sqf';
 sleep 0.1;
 
 if ((count DZAI_dynAreaBlacklist) > 0) then {
-	_nul = [] execVM 'DZAI\scripts\setup_blacklist_areas.sqf';
+	_nul = DZAI_dynAreaBlacklist execVM 'DZAI\scripts\setup_blacklist_areas.sqf';
 	sleep 0.1;
 };
 
