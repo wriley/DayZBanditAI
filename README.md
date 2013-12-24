@@ -1,4 +1,4 @@
-DZAI 1.9.1.1 - AI Addon for DayZ
+DZAI 1.9.1.2 - AI Addon for DayZ
 ============
 
 
@@ -25,8 +25,7 @@ Compatibility
 - DZAI does not support any DayZ map or mod that is non-public, in development, or has an AI addon prepackaged.
 - DZAI may or may not function properly with unsupported mods.
 
-Compatibility with other AI addons:
-============
+<b>Compatibility with other AI addons:</b>
 
 - DZAI is not tested for compatibility with any other AI addons, therefore any issues that arise from using other AI addons with DZAI are entirely up to the user to solve.
 - If using any addons that include AI, ensure that they do not modify side relations settings.
@@ -102,6 +101,7 @@ Changelog:
 - 1.9.0 Update: http://opendayz.net/threads/dzai-1-9-0-update-changelog.17707/
 - 1.9.1 Update: http://opendayz.net/threads/dzai-1-9-1-update-changelog.17739/
 - 1.9.1.1 Hotfix: Fixes for blacklist areas, Epoch trader area blacklists, missionfile patch.
+- 1.9.1.2 Hotfix: Includes all undocumented fixes made on 12/24/2013
 
 Contribute
 ============
