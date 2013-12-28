@@ -101,7 +101,7 @@ Changelog:
 - 1.9.0 Update: http://opendayz.net/threads/dzai-1-9-0-update-changelog.17707/
 - 1.9.1 Update: http://opendayz.net/threads/dzai-1-9-1-update-changelog.17739/
 - 1.9.1.1 - 1.9.1.2 Hotfix: http://opendayz.net/threads/1-9-1-1-and-1-9-1-2-hotfix-changes.17757/
-- 1.9.2 Update: 
+- 1.9.2 Update: http://opendayz.net/threads/dzai-1-9-2-update-changelog.17808/
 
 Contribute
 ============
