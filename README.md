@@ -1,4 +1,4 @@
-DZAI 1.9.1.2 - AI Addon for DayZ
+DZAI 1.9.2 - AI Addon for DayZ
 ============
 
 
@@ -100,8 +100,8 @@ Changelog:
 
 - 1.9.0 Update: http://opendayz.net/threads/dzai-1-9-0-update-changelog.17707/
 - 1.9.1 Update: http://opendayz.net/threads/dzai-1-9-1-update-changelog.17739/
-- 1.9.1.1 Hotfix: Fixes for blacklist areas, Epoch trader area blacklists, missionfile patch.
-- 1.9.1.2 Hotfix: Includes all undocumented fixes made on 12/24/2013
+- 1.9.1.1 - 1.9.1.2 Hotfix: http://opendayz.net/threads/1-9-1-1-and-1-9-1-2-hotfix-changes.17757/
+- 1.9.2 Update: 
 
 Contribute
 ============

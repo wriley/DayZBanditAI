@@ -578,7 +578,7 @@ class _trigger_75
 		INTERRUPTABLE="true";
 		TEXT="Vorkuta North";
 		EXP_COND="{isPlayer _x} count thisList > 0;";
-		EXP_ACTIV="nul = [2,0,125,thisTrigger,['Vorkuta1','Vorkuta2','Vorkuta3','Vorkuta4','Vorkuta5'],1] call fnc_spawnBandits;";
+		EXP_ACTIV="nul = [2,0,125,thisTrigger,[],1] call fnc_spawnBandits;";
 		EXP_DESACTIV="nul = [thisTrigger] spawn fnc_despawnBandits;";
 	};
 };
