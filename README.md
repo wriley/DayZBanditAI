@@ -61,7 +61,8 @@ Basic Installation Guide (with cpbo):
 		allowConnection = true;
 	
 5. Optionally, you may edit DZAI's settings in DZAI\init\dzai_config.sqf
-6. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
+6. Optionally, you may install the DZAI client addon to enable additional features. For more information, read the #readme file in the DZAI_Client folder included in the download package.
+7. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
 
 
 Basic Installation Guide (with PBO Manager):
@@ -83,7 +84,8 @@ Basic Installation Guide (with PBO Manager):
 4. Right click the DZAI folder inside the download package and click "Copy".
 5. Double-click your dayz_server.pbo to open the PBO Manager GUI. Inside the GUI, right-click on "dayz_server.pbo" and click "Paste". In the GUI, you should see "DZAI" in the list below "dayz_server.pbo".
 6. Optionally, you may edit DZAI's settings in DZAI\init\dzai_config.sqf
-7. Copy all modified files back into their original locations inside dayz_server.pbo using the PBO Manager GUI.
+7. Optionally, you may install the DZAI client addon to enable additional features. For more information, read the #readme file in the DZAI_Client folder included in the download package.
+8. Copy all modified files back into their original locations inside dayz_server.pbo using the PBO Manager GUI.
 
 
 Troubleshooting: A number of users have reported issues with entering the game after repacking their dayz_server.pbo. 
@@ -102,7 +104,8 @@ Changelog:
 - 1.9.1 Update: http://opendayz.net/threads/dzai-1-9-1-update-changelog.17739/
 - 1.9.1.1 - 1.9.1.2 Hotfix: http://opendayz.net/threads/1-9-1-1-and-1-9-1-2-hotfix-changes.17757/
 - 1.9.2 Update: http://opendayz.net/threads/dzai-1-9-2-update-changelog.17808/
-- 1.9.2.1 Hotfix:
+- 1.9.2.1 Hotfix: http://opendayz.net/threads/1-9-2-1-hotfix-for-certain-static-triggers.17852/
+- 1.9.3 Update: http://opendayz.net/threads/dzai-1-9-3-update-changelog.17940/#post-89965
 
 
 Contribute
