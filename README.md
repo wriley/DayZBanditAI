@@ -1,4 +1,4 @@
-DZAI 1.9.3 - AI Addon for DayZ
+DZAI 1.9.3.1 - AI Addon for DayZ
 ============
 
 
@@ -106,6 +106,7 @@ Changelog:
 - 1.9.2 Update: http://opendayz.net/threads/dzai-1-9-2-update-changelog.17808/
 - 1.9.2.1 Hotfix: http://opendayz.net/threads/1-9-2-1-hotfix-for-certain-static-triggers.17852/
 - 1.9.3 Update: http://opendayz.net/threads/dzai-1-9-3-update-changelog.17940/#post-89965
+- 1.9.3.1 Hotfix: http://opendayz.net/threads/1-9-3-1-hotfix-changelog.17990/
 
 
 Contribute
