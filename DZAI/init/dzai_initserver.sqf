@@ -127,7 +127,7 @@ if (_worldname in ["chernarus","utes","zargabad","fallujah","takistan","tavi","l
 if (DZAI_zombieEnemy) then {diag_log "[DZAI] AI to zombie hostility is enabled.";
 	if (DZAI_weaponNoise > 0) then {DZAI_zAggro = true; diag_log "[DZAI] Zombie aggro to AI is enabled.";} else {DZAI_zAggro = false;diag_log "[DZAI] Zombie aggro to AI is disabled.";};
 } else {diag_log "[DZAI] AI to zombie hostility is disabled.";};
-if (isNil "DDOPP_taser_handleHit") then {DZAI_taserAI = false;} else {DZAI_taserAI = true;diag_log "[DZAI] DDOPP Taser Mod detected.";};
+DZAI_taserAI = (!isNil "DDOPP_taser_handleHit");
 
 //Continue loading required DZAI script files
 [] execVM format ['%1\scripts\DZAI_scheduler.sqf',DZAI_directory];

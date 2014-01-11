@@ -13,6 +13,9 @@ for "_i" from 0 to ((count _areas) -1) do {
 		_sizeX = if ((_areaSize select 0) > 0) then {_areaSize select 0} else {100};
 		_sizeY = if ((_areaSize select 1) > 0) then {_areaSize select 1} else {100};
 		_blacklist = createLocation ["Strategic",getMarkerPos _area,_sizeX,_sizeY];
+		if ((markerShape _area) == "RECTANGLE") then {
+			_blacklist setRectangular true;
+		};
 	};
 	sleep 0.001;
 };
