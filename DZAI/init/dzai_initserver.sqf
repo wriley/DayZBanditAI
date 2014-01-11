@@ -117,7 +117,7 @@ if (_worldname in ["chernarus","utes","zargabad","fallujah","takistan","tavi","l
 } else {
 	"DZAI_centerMarker" setMarkerSize [7000, 7000];
 	if (DZAI_modName == "epoch") then {
-		call compile preprocessFileLineNumbers ["%1\init\world_classname_configs\epoch\dayz_epoch.sqf",DZAI_directory];
+		call compile preprocessFileLineNumbers format ["%1\init\world_classname_configs\epoch\dayz_epoch.sqf",DZAI_directory];
 	};
 	DZAI_newMap = true;
 	diag_log "[DZAI] Unrecognized worldname found. Static AI spawns will be generated automatically if enabled.";
