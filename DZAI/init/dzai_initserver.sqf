@@ -111,7 +111,7 @@ diag_log format["[DZAI] Server is running map %1. Loading static trigger and cla
 
 //Load map-specific configuration file. Config files contain trigger/marker information, addition and removal of items/skins, and/or other variable customizations.
 //Classname files will overwrite basic settings specified in base_classnames.sqf
-if (_worldname in ["chernarus","utes","zargabad","fallujah","takistan","tavi","lingor","namalsk","mbg_celle2","oring","panthera2","isladuala","sara","smd_sahrani_A2","trinity"]) then {
+if (_worldname in ["chernarus","utes","zargabad","fallujah","takistan","tavi","lingor","namalsk","mbg_celle2","oring","panthera2","isladuala","sara","smd_sahrani_a2","trinity"]) then {
 	call compile preprocessFileLineNumbers format ["%1\init\world_classname_configs\%2_classnames.sqf",DZAI_directory,_worldname];
 	[] execVM format ["%1\init\world_map_configs\world_%2.sqf",DZAI_directory,_worldname];
 } else {
@@ -127,7 +127,7 @@ if (_worldname in ["chernarus","utes","zargabad","fallujah","takistan","tavi","l
 if (DZAI_zombieEnemy) then {diag_log "[DZAI] AI to zombie hostility is enabled.";
 	if (DZAI_weaponNoise > 0) then {DZAI_zAggro = true; diag_log "[DZAI] Zombie aggro to AI is enabled.";} else {DZAI_zAggro = false;diag_log "[DZAI] Zombie aggro to AI is disabled.";};
 } else {diag_log "[DZAI] AI to zombie hostility is disabled.";};
-DZAI_taserAI = (!isNil "DDOPP_taser_handleHit");
+if (isNil "DDOPP_taser_handleHit") then {DZAI_taserAI = false;} else {DZAI_taserAI = true;diag_log "[DZAI] DDOPP Taser Mod detected.";};
 
 //Continue loading required DZAI script files
 [] execVM format ['%1\scripts\DZAI_scheduler.sqf',DZAI_directory];
