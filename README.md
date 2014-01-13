@@ -107,7 +107,7 @@ Changelog:
 - 1.9.2.1 Hotfix: http://opendayz.net/threads/1-9-2-1-hotfix-for-certain-static-triggers.17852/
 - 1.9.3 Update: http://opendayz.net/threads/dzai-1-9-3-update-changelog.17940/#post-89965
 - 1.9.3.1 Hotfix: http://opendayz.net/threads/1-9-3-1-hotfix-changelog.17990/
-- 1.9.4 Update: 
+- 1.9.4 Update: http://opendayz.net/threads/1-9-4-update.18076/
 
 
 Contribute
