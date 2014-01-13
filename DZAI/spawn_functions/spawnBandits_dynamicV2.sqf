@@ -56,7 +56,7 @@ if (({isPlayer _x} count (_spawnPos nearEntities [["CAManBase"],100])) > 0) exit
 */
 _totalAI = switch (true) do {
 	case (_spawnChance <= 0.50): {1 + floor(random 2)};
-	case ((_spawnChance > 0.50)&&(_spawnChance <= 0.75)): {1 + floor(random 3)};
+	case ((_spawnChance > 0.50)&&(_spawnChance <= 0.90)): {1 + floor(random 3)};
 	case (_spawnChance > 0.90): {2 + floor(random 2)};
 };
 
