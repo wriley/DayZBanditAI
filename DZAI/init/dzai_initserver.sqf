@@ -14,13 +14,12 @@ _startTime = diag_tickTime;
 
 //Report DZAI version to RPT log
 #include "DZAI_version.hpp"
-#ifdef DZAI_BASEPATH
-	DZAI_directory = DZAI_BASEPATH;
+#ifdef DZAI_MISSIONFILE_INSTALL
+	DZAI_directory = "DZAI";
 #else
-	diag_log "DZAI Error: DZAI_BASEPATH is undefined. Using default base path.";
 	DZAI_directory = "\z\addons\dayz_server\DZAI";
 #endif
-diag_log format ["Initializing %1 version %2 using base path %3.",DZAI_TYPE,DZAI_VERSION,DZAI_BASEPATH];
+diag_log format ["Initializing %1 version %2 using base path %3.",DZAI_TYPE,DZAI_VERSION,DZAI_directory];
 
 
 //Load DZAI variables
