@@ -2,10 +2,10 @@ DZAI Changelog Archive
 
 Description: This file contains a complete history of all past changes and updates to DZAI.
 
-Last updated: 6:11 PM 1/5/2014
+Last updated: 7:48 PM 1/19/2014
 --------------------------------
 
-DZAI 1.9.0 - 1.9.3 Changelogs:
+DZAI 1.9.0 - 1.9.5 Changelogs:
 ============
 
 - 1.9.0 Update: 
@@ -255,6 +255,19 @@ DZAI 1.9.0 - 1.9.3 Changelogs:
     [CHANGED] If a player is found within 100m of calculated dynamic AI spawn position, spawn will be cancelled entirely.
     [CHANGED] Chernarus: Repositioned NEAF static AI patrol path and reduced patrol radius.
     [FIXED] Headshot counting for heavy-damage gunshots. (unconfirmed)
+
+- 1.9.5 Update:
+
+
+    [NEW] Temporary dynamic spawn blacklist areas are created after a dynamic spawn area is cleared. Temporary blacklist areas will last for 15 minutes and cover the previous dynamic spawn area.
+    [NEW] Adjustments to dynamic spawn probability calculations to avoid unfairly high spawning rates if server population is very low.
+        The % chance for each player to be selected for dynamic AI spawns should remain consistent for servers with up to 40 players. (Rate will begin to gradually decrease beyond 40 players)
+        For more information, see this thread: http://opendayz.net/threads/balancing-dynamic-spawn-rates-user-input-wanted.18143/
+    [CHANGED] AI arms can no longer be broken.
+    [CHANGED] AI spawned directly using DZAI_setup_AI function use their initial spawn position as reference point for killer-seeking behavior
+        DISCLAIMER: Use of DZAI_setup_AI function directly is not supported and not guaranteed to perfectly spawn AI. Do this at your own risk. The only fully supported method of spawning AI is use of the DZAI_spawn function.
+    [CHANGED] Changed method of installing mission-file version of DZAI. Simply edit DZAI\init\DZAI_version.hpp and follow the instruction inside.
+    [CHANGED] Moved installation instruction text files into new "Guides" directory.
 
 
 

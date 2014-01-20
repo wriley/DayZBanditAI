@@ -215,7 +215,7 @@ class _marker_87
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4848.9712, 10553.556, 0]";
+		POSITION="[4863.6953, 10688.869]";
 		NAME="NWAF5_2";
 		TYPE="Empty";
 		FILL="Solid";
@@ -226,7 +226,7 @@ class _marker_88
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4629.0986, 10975.196, 0.00012207031]";
+		POSITION="[4676.2095, 10923.367, 0.00012207031]";
 		NAME="NWAF5_3";
 		TYPE="Empty";
 		FILL="Solid";
@@ -237,7 +237,7 @@ class _marker_90
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4895.8159, 10448.596, 9.1552734e-005]";
+		POSITION="[4823.3579, 10614.722, 9.1552734e-005]";
 		NAME="NWAF5_4";
 		TYPE="Empty";
 		FILL="Solid";
@@ -753,12 +753,12 @@ class _marker_146
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[12057.165, 12613.224, 0.056991577]";
+		POSITION="[12076.522, 12637.961, 0.056991577]";
 		NAME="DZAI_NEAF";
 		MARKER_TYPE="ELLIPSE";
 		FILL="Solid";
-		A="200";
-		B="200";
+		A="175";
+		B="175";
 	};
 };
 class _marker_147
@@ -1273,7 +1273,7 @@ class _marker_190
 	objectType="marker";
 	class Arguments
 	{
-		POSITION="[4657.5908, 10772.028]";
+		POSITION="[4616.1626, 10697.177]";
 		NAME="DZAI_NWAF5";
 		MARKER_TYPE="ELLIPSE";
 		FILL="Solid";

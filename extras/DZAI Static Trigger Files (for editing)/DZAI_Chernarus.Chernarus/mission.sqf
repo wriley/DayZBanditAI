@@ -99,17 +99,17 @@ _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_86 = _this;
 
-_this = createMarker ["NWAF5_2", [4848.9712, 10553.556, 0]];
+_this = createMarker ["NWAF5_2", [4863.6953, 10688.869]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_87 = _this;
 
-_this = createMarker ["NWAF5_3", [4629.0986, 10975.196, 0.00012207031]];
+_this = createMarker ["NWAF5_3", [4676.2095, 10923.367, 0.00012207031]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_88 = _this;
 
-_this = createMarker ["NWAF5_4", [4895.8159, 10448.596, 9.1552734e-005]];
+_this = createMarker ["NWAF5_4", [4823.3579, 10614.722, 9.1552734e-005]];
 _this setMarkerType "Empty";
 _this setMarkerBrush "Solid";
 _marker_90 = _this;
@@ -324,7 +324,7 @@ _this setMarkerBrush "Solid";
 _this setMarkerSize [200, 200];
 _marker_138 = _this;
 
-_this = createMarker ["Orlovets", [12163.348, 7298.52]];
+_this = createMarker ["DZAI_Orlovets", [12163.348, 7298.52]];
 _this setMarkerShape "ELLIPSE";
 _this setMarkerType "Flag";
 _this setMarkerBrush "Solid";
@@ -373,11 +373,11 @@ _this setMarkerBrush "Solid";
 _this setMarkerSize [200, 200];
 _marker_145 = _this;
 
-_this = createMarker ["DZAI_NEAF", [12057.165, 12613.224, 0.056991577]];
+_this = createMarker ["DZAI_NEAF", [12076.522, 12637.961, 0.056991577]];
 _this setMarkerShape "ELLIPSE";
 _this setMarkerType "Flag";
 _this setMarkerBrush "Solid";
-_this setMarkerSize [200, 200];
+_this setMarkerSize [175, 175];
 _marker_146 = _this;
 
 _this = createMarker ["DZAI_Krasnostav", [11128.36, 12342.763]];
@@ -597,7 +597,7 @@ _this setMarkerBrush "Solid";
 _this setMarkerSize [225, 225];
 _marker_180 = _this;
 
-_this = createMarker ["DZAI_Kabamino", [5380.0811, 8599.0205]];
+_this = createMarker ["DZAI_Kabanino", [5380.0811, 8599.0205]];
 _this setMarkerShape "ELLIPSE";
 _this setMarkerType "Flag";
 _this setMarkerBrush "Solid";
@@ -653,7 +653,7 @@ _this setMarkerBrush "Solid";
 _this setMarkerSize [200, 200];
 _marker_189 = _this;
 
-_this = createMarker ["DZAI_NWAF5", [4657.5908, 10772.028]];
+_this = createMarker ["DZAI_NWAF5", [4616.1626, 10697.177]];
 _this setMarkerShape "ELLIPSE";
 _this setMarkerType "Flag";
 _this setMarkerBrush "Solid";

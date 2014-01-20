@@ -267,7 +267,7 @@ DZAI_gradeChancesHeli = [0.00,0.00,0.40,0.43,0.17];
 	HeliCrew: Maximum-skilled AI. Skills are intended to be extremely high as helicopters patrol alone and carry high-value loot.
 */
 
-//AI skill settings level 0 (Skill, Minimum skill, Maximum skill).
+//AI skill settings level 0 (Skill, Minimum skill, Maximum skill). Baseline skill level: 0.40
 DZAI_skill0 = [	
 	["aimingAccuracy",0.10,0.125],
 	["aimingShake",0.45,0.55],
@@ -281,7 +281,7 @@ DZAI_skill0 = [
 	["general",0.40,0.60]
 ];
 
-//AI skill settings level 1 (Skill, Minimum skill, Maximum skill).
+//AI skill settings level 1 (Skill, Minimum skill, Maximum skill). Baseline skill level: 0.55
 DZAI_skill1 = [	
 	["aimingAccuracy",0.125,0.15],
 	["aimingShake",0.60,0.70],
@@ -295,7 +295,7 @@ DZAI_skill1 = [
 	["general",0.55,0.75]
 ];
 
-//AI skill settings level 2 (Skill, Minimum skill, Maximum skill).
+//AI skill settings level 2 (Skill, Minimum skill, Maximum skill). Baseline skill level: 0.70
 DZAI_skill2 = [	
 	["aimingAccuracy",0.15,0.20],
 	["aimingShake",0.75,0.85],
@@ -309,7 +309,7 @@ DZAI_skill2 = [
 	["general",0.70,0.90]
 ];
 
-//AI skill settings level 3 (Skill, Minimum skill, Maximum skill).
+//AI skill settings level 3 (Skill, Minimum skill, Maximum skill). Baseline skill level: 0.80
 DZAI_skill3 = [	
 	["aimingAccuracy",0.20,0.25],
 	["aimingShake",0.85,0.95],

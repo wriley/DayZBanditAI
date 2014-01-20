@@ -1,4 +1,4 @@
-DZAI 1.9.4 - AI Addon for DayZ
+DZAI 1.9.5 - AI Addon for DayZ
 ============
 
 
@@ -29,7 +29,7 @@ Compatibility
 
 - DZAI is not tested for compatibility with any other AI addons, therefore any issues that arise from using other AI addons with DZAI are entirely up to the user to solve.
 - If using any addons that include AI, ensure that they do not modify side relations settings.
-- Users have reported that DZAI is compatible the DayZ Misson addon. If using the mission addon, do not include the file(s) that set side relation settings (ie: factions.sqf).
+- Users have reported that DZAI is compatible the DayZ Misson addon. If using the mission addon, do not include the file(s) that set side relation settings (ie: factions.sqf). See here for the current DZAI policy regarding mission addons: http://opendayz.net/threads/dzai-policy-regarding-mission-addons.18157/
 - <b>Final Reminder:</b> DZAI is not guaranteed to work in conjunction with other AI mods. Unexpected AI behavior may happen.
 
 <b>Supported DayZ maps and mods:</b>
@@ -48,7 +48,7 @@ using PBO Manager.
 Basic Installation Guide (with cpbo):
 ============
 
-1. Unpack your dayz_server.pbo. If using cpbo, right click dayz_server.pbo and click "Extract".
+1. Unpack your dayz_server.pbo. Right click dayz_server.pbo and click "Extract".
 2. Copy the downloaded DZAI folder inside your unpacked dayz_server folder.
 3. Inside the unpacked dayz_server folder, locate server_monitor.sqf in dayz_server\system\. Edit server_monitor.sqf with a text editor.
 4. Inside server_monitor.sqf, search for the line that says:
@@ -61,14 +61,13 @@ Basic Installation Guide (with cpbo):
 		allowConnection = true;
 	
 5. Optionally, you may edit DZAI's settings in DZAI\init\dzai_config.sqf
-6. Optionally, you may install the DZAI client addon to enable additional features. For more information, read the #readme file in the DZAI_Client folder included in the download package.
-7. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
+6. Repack your dayz_server.pbo by right-clicking the unpacked folder, then click on "create PBO". If prompted to overwrite, click "Yes".
 
 
 Basic Installation Guide (with PBO Manager):
 ----------------------------------------------------
 
-**Note**: To avoid pbo corruption, do not use the "Pack into dayz_server.pbo" right-click option.
+**Note**: To avoid pbo corruption, do not use the "Pack into dayz_server.pbo" right-click option. Modify files only using PBO Manager's graphical interface.
 
 1. Unpack your dayz_server.pbo. Right click dayz_server.pbo, select "PBO Manager", click on "Extract to dayz_server\"
 2. Inside the unpacked dayz_server folder, locate server_monitor.sqf in dayz_server\system\. Edit server_monitor.sqf with a text editor.
@@ -84,8 +83,7 @@ Basic Installation Guide (with PBO Manager):
 4. Right click the DZAI folder inside the download package and click "Copy".
 5. Double-click your dayz_server.pbo to open the PBO Manager GUI. Inside the GUI, right-click on "dayz_server.pbo" and click "Paste". In the GUI, you should see "DZAI" in the list below "dayz_server.pbo".
 6. Optionally, you may edit DZAI's settings in DZAI\init\dzai_config.sqf
-7. Optionally, you may install the DZAI client addon to enable additional features. For more information, read the #readme file in the DZAI_Client folder included in the download package.
-8. Copy all modified files back into their original locations inside dayz_server.pbo using the PBO Manager GUI.
+7. Copy all modified files back into their original locations inside dayz_server.pbo using the PBO Manager GUI.
 
 
 Troubleshooting: A number of users have reported issues with entering the game after repacking their dayz_server.pbo. 
@@ -108,6 +106,7 @@ Changelog:
 - 1.9.3 Update: http://opendayz.net/threads/dzai-1-9-3-update-changelog.17940/#post-89965
 - 1.9.3.1 Hotfix: http://opendayz.net/threads/1-9-3-1-hotfix-changelog.17990/
 - 1.9.4 Update: http://opendayz.net/threads/1-9-4-update.18076/
+- 1.9.5 Update: http://opendayz.net/threads/dzai-1-9-5-update-changelog.18156/
 
 
 Contribute
