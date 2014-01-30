@@ -1,4 +1,4 @@
-DZAI 1.9.6 - AI Addon for DayZ
+DZAI 1.9.6.1 - AI Addon for DayZ
 ============
 
 
@@ -109,6 +109,8 @@ Changelog:
 - 1.9.5 Update: http://opendayz.net/threads/dzai-1-9-5-update-changelog.18156/
 - 1.9.5.1 Hotfix (for DZAI Scheduler): http://opendayz.net/threads/dzai-hotfixed-for-scheduler-error.18174/#post-91037
 - 1.9.6 Update: http://opendayz.net/threads/dzai-1-9-6-update-rolling-changelog.18207/#post-91399
+- 1.9.6.1 Hotfix: http://opendayz.net/threads/dzai-1-9-6-1-hotfix-changelog.18296/#post-91844
+
 
 Contribute
 ============
