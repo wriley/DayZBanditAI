@@ -19,7 +19,7 @@ if (DZAI_verifyTables) then {
 };
 
 if (DZAI_staticAI) then {
-	if (DZAI_modName = "unleashed") then {
+	if (DZAI_modName == "unleashed") then {
 		//Unleashed-specific spawns
 		_this = createTrigger ["EmptyDetector", [16404.818, 18407.805]];
 		_this setTriggerArea [900, 900, 0, false];
