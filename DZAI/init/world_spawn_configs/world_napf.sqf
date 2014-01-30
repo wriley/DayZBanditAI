@@ -618,7 +618,7 @@ if (DZAI_staticAI) then {
 	};
 };
 
-#include "custom_markers\cust_markers_chernarus.sqf"
-#include "custom_spawns\cust_spawns_chernarus.sqf"
+#include "custom_markers\cust_markers_napf.sqf"
+#include "custom_spawns\cust_spawns_napf.sqf"
 
 diag_log "Napf static spawn configuration loaded.";
