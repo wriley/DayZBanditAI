@@ -5,7 +5,7 @@
 	
 */
 
-#include "spawn_markers\markers_napf.sqf"	//Load manual spawn point definitions file.
+#include "spawn_markers\markers_caribou.sqf"	//Load manual spawn point definitions file.
 
 if ((DZAI_maxHeliPatrols > 0) or {(DZAI_maxLandPatrols > 0)}) then {
 	//"DZAI_centerMarker" setMarkerPos [10240,10240]; //To do: Find proper value
@@ -22,7 +22,7 @@ if (DZAI_staticAI) then {
 	[] execVM format ["%1\scripts\setup_autoStaticSpawns.sqf",DZAI_directory]; //IMPORTANT: REMOVE THIS ENTIRE LINE BEFORE ADDING STATIC SPAWNS HERE
 };
 
-#include "custom_markers\cust_markers_chernarus.sqf"
-#include "custom_spawns\cust_spawns_chernarus.sqf"
+#include "custom_markers\cust_markers_caribou.sqf"
+#include "custom_spawns\cust_spawns_caribou.sqf"
 
 diag_log "Caribou static spawn configuration loaded.";
