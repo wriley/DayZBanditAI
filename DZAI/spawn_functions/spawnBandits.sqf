@@ -118,7 +118,7 @@ for "_j" from 1 to _numGroups do {
 				//diag_log format ["DEBUG :: Counted %1 spawn positions.",count _spawnPositions];
 				_nul = [_unitGroup,_spawnPositions] spawn DZAI_bldgPatrol;
 			} else {
-				0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn DZAI_BIN_taskPatrol;
+				0 = [_unitGroup,_triggerPos,_patrolDist] spawn DZAI_BIN_taskPatrol;
 			};
 			
 			_grpArray set [count _grpArray,_unitGroup];

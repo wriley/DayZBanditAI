@@ -96,7 +96,7 @@ if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Group %1 has exited
 //Begin patrol phase
 _waypoint setWaypointStatements ["true","if ((random 1) < 0.50) then { group this setCurrentWaypoint [(group this), (floor (random (count (waypoints (group this)))))];};"];
 //_patrolCenter = if (!(isNull _targetPlayer)) then {getPosATL _targetPlayer} else {getPosATL (leader _unitGroup)};
-0 = [_unitGroup,_triggerPos,_patrolDist,DZAI_debugMarkers] spawn DZAI_BIN_taskPatrol;
+0 = [_unitGroup,_triggerPos,_patrolDist] spawn DZAI_BIN_taskPatrol;
 _unitGroup setVariable ["seekActive",false];
 
 sleep 5;

@@ -29,7 +29,7 @@ if (DZAI_debugLevel > 0) then {diag_log "DZAI V2 Dynamic Spawn Manager started."
 _playerUIDs = [];		//Array of all collected playerUIDs
 _timestamps = [];		//Array of timestamps for each corresponding playerUID
 //_playerData = [];
-_maxSpawnTime = 3600; //Time required for maximum % spawn probability.
+_maxSpawnTime = 1800; //Time required for maximum % spawn probability.
 //_maxSpawnTime = 1; //FOR DEBUGGING
 
 while {true} do {

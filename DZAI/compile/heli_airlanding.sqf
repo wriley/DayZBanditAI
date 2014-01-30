@@ -47,7 +47,7 @@ _weapongrade = DZAI_heliEquipType call DZAI_getWeapongrade;
 	deleteWaypoint _x;
 } forEach (waypoints _unitGroup);
 
-0 = [_unitGroup,_heliPos,75,DZAI_debugMarkers] spawn DZAI_BIN_taskPatrol;
+0 = [_unitGroup,_heliPos,75] spawn DZAI_BIN_taskPatrol;
 _unitsAlive = {alive _x} count (units _unitGroup);
 DZAI_numAIUnits = DZAI_numAIUnits + _unitsAlive;
 _unitGroup allowFleeing 0;

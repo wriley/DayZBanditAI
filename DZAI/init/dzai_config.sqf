@@ -87,7 +87,7 @@ DZAI_radioMsgs = true;
 DZAI_useRadioAddon = false;
 
 
-/*	AI Spawning Settings (Static AI spawns)
+/*	Static AI Spawning Settings
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Enable or disable static AI spawns. If enabled, AI spawn points will be generated in cities, towns, and other predefined areas. Does not affect custom-defined spawns (Default: true).
