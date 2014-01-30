@@ -41,7 +41,7 @@ if (isNil "dayzNam_buildingLoot") then {
 		//Fix for Trinity Island's Barracks loot table.
 		_bldgClasses set [2,["Barracks"]];
 	};*/
-	if ((!isClass (_lootConfigFile >> _cfgBuildingLoot >> "MilitarySpecial")) && {(isClass _lootConfigFile >> _cfgBuildingLoot >> "Barracks")})) then {
+	if ((!isClass (_lootConfigFile >> _cfgBuildingLoot >> "MilitarySpecial")) && {(isClass _lootConfigFile >> _cfgBuildingLoot >> "Barracks")}) then {
 		_bldgClasses set [2,["Barracks"]];
 	};
 } else {
