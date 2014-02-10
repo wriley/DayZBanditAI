@@ -114,12 +114,13 @@ for "_j" from 1 to _numGroups do {
 			_totalSpawned = _totalSpawned + _totalAI;
 			if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_unitGroup,_totalAI];};
 			
-			if ((count _spawnPositions) >= 100) then {
+			/*if ((count _spawnPositions) >= 100) then {
 				//diag_log format ["DEBUG :: Counted %1 spawn positions.",count _spawnPositions];
 				_nul = [_unitGroup,_spawnPositions] spawn DZAI_bldgPatrol;
 			} else {
 				0 = [_unitGroup,_triggerPos,_patrolDist] spawn DZAI_BIN_taskPatrol;
-			};
+			};*/
+			0 = [_unitGroup,_triggerPos,_patrolDist] spawn DZAI_BIN_taskPatrol;
 			
 			_grpArray set [count _grpArray,_unitGroup];
 		} else {

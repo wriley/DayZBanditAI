@@ -123,3 +123,6 @@ if (DZAI_tempNVGs) then {
 	};
 };
 _unit setVariable ["loadoutDone",true];
+_unit setVariable ["loadout",[_weapon,_magazine]];
+
+true

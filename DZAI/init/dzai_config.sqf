@@ -33,32 +33,30 @@ DZAI_readOverrideFile = true;
 
 /*
 
-	DZAI_modName value		Enables extra features (ie: Items, AI skins, loot rates, etc.) for...
+	DZAI_modName value	|	Enables additional settings for...	|	Automatically detected by DZAI? (If Yes, editing DZAI_modName is not needed)
 	--------------------------------------------------------------------------------------------------------------------
-	""						Automatically detect mod (can be manually specified by editing DZAI_modName below)
-	"default"				Force default settings
-	"2017"					DayZ 2017/Namalsk 2017	(Can't be automatically detected, must manually set DZAI_modName = "2017" to enable)
-	"epoch"					DayZ Epoch 				(Automatically detected - no need to edit)
-	"overwatch"				DayZ Overwatch 			(Automatically detected - no need to edit)
-	"huntinggrounds"		DayZ Hunting Grounds 	(Automatically detected - no need to edit)
+	""						Automatically detect mod 						N/A
+	"default"				Force default settings							N/A
+	"2017"					DayZ 2017/Namalsk 2017						No - Must set DZAI_modName = "2017" to enable additional settings.
+	"epoch"					DayZ Epoch 									Yes - Adds bar currency to AI loot tables, AI skins, Epoch foods, replaces toolbelt items with Epoch versions.
+	"overwatch"				DayZ Overwatch 								Yes - Adds Overwatch skins for AI.
+	"huntinggrounds"		DayZ Hunting Grounds 						Yes - Enables additional static AI spawns for expanded Lingor map, AI skins, and backpacks.
+	"unleashed"				DayZ Unleashed								Yes - Enables Unleashed static AI spawns and AI skins.
 	
 */
 
-//(Optional) In most cases it is unnecessary to edit this setting. If the wrong DayZ mod is being detected, choose the correct one from the list above. 
+//(Optional) In most cases it is unnecessary to edit this setting. If the wrong DayZ mod is being detected (or not being properly detected), choose the correct one from the list above. 
 DZAI_modName = "";
 
 
 /*	AI Unit Settings
 --------------------------------------------------------------------------------------------------------------------*/		
 
-//AI weapon noise multiplier for zombie aggro purposes. No effect if DZAI_zombieEnemy is set to false. Enabling this option may impact server performance as a script is run for each AI bullet fired.
+//Enable or disable zombie attraction to AI weapon sounds. No effect if DZAI_zombieEnemy is set to false. Enabling this option may impact server performance as a script is run for each AI bullet fired.
 //Note: AI cannot be attacked or damaged by zombies.(Default: false)		
 DZAI_weaponNoise = false;
 
-//Passive zombie-to-AI aggro. If enabled, zombies will tend to be attracted to a nearby AI group leader. Less impactful on server performance than setting a value to DZAI_weaponNoise (Default: false).
-DZAI_passiveAggro = false;
-
-//Amount of time in seconds between AI ammo refresh and zombie check. Decreasing this value may impact server performance. (Default: 15)											
+//(Affects AI vehicles only) Sets frequency of vehicle ammo/fuel check. Decreasing this value may impact server performance. (Default: 15)											
 DZAI_refreshRate = 15;	
 
 //Maximum distance for AI group leader to detect zombies. Increasing range beyond default may impact server performance. (Default: 200)							
@@ -83,7 +81,7 @@ DZAI_humanityGain = 0;
 //If enabled, players with radios will be given text warnings if they are being pursued by AI groups. (Default: true)
 DZAI_radioMsgs = true;
 
-//If enabled, send radio messages using client-side DZAI radio addon. If disabled, send radio messages by remote execution method. (Default: false)
+//If enabled, send radio messages using client-side DZAI radio addon (Must be installed first). If disabled, send radio messages by remote execution method. (Default: false)
 DZAI_useRadioAddon = false;
 
 
@@ -106,6 +104,9 @@ DZAI_despawnWait = 120;
 
 //Enable or disable dynamic AI spawns. If enabled, AI spawn locations will be generated for randomly selected players at randomized intervals (Default: true)									
 DZAI_dynAISpawns = true;
+
+//Time (seconds) required to reach maximum spawn probability per player. Lower number = More frequent dynamic spawns, Higher Number = Less frequent. (Recommended range: 1200-2700, Default: 1800)
+DZAI_maxSpawnTime = 1800;
 
 //Array of area blacklist markers. Players within marker areas will not be targeted for dynamic AI spawns (Example: ["BlacklistArea1","BlacklistArea2","BlacklistArea3"])
 //Epoch: DZAI will automatically set up 200m-radius blacklist areas around each trader area.
@@ -266,8 +267,8 @@ DZAI_skill0 = [
 	["aimingShake",0.45,0.55],
 	["aimingSpeed",0.45,0.55],
 	["endurance",0.40,0.50],
-	["spotDistance",0.30,0.45],
-	["spotTime",0.30,0.45],
+	["spotDistance",0.35,0.45],
+	["spotTime",0.35,0.45],
 	["courage",0.40,0.60],
 	["reloadSpeed",0.50,0.60],
 	["commanding",0.40,0.50],
@@ -280,8 +281,8 @@ DZAI_skill1 = [
 	["aimingShake",0.60,0.70],
 	["aimingSpeed",0.60,0.70],
 	["endurance",0.55,0.65],
-	["spotDistance",0.45,0.60],
-	["spotTime",0.45,0.60],
+	["spotDistance",0.50,0.60],
+	["spotTime",0.50,0.60],
 	["courage",0.55,0.75],
 	["reloadSpeed",0.60,0.70],
 	["commanding",0.55,0.65],
@@ -294,8 +295,8 @@ DZAI_skill2 = [
 	["aimingShake",0.75,0.85],
 	["aimingSpeed",0.70,0.80],
 	["endurance",0.70,0.80],
-	["spotDistance",0.60,0.75],
-	["spotTime",0.60,0.75],
+	["spotDistance",0.65,0.75],
+	["spotTime",0.65,0.75],
 	["courage",0.70,0.90],
 	["reloadSpeed",0.70,0.80],
 	["commanding",0.70,0.90],
@@ -308,8 +309,8 @@ DZAI_skill3 = [
 	["aimingShake",0.85,0.95],
 	["aimingSpeed",0.80,0.90],
 	["endurance",0.80,0.90],
-	["spotDistance",0.70,0.85],
-	["spotTime",0.70,0.85],
+	["spotDistance",0.75,0.85],
+	["spotTime",0.75,0.85],
 	["courage",0.80,1.00],
 	["reloadSpeed",0.80,0.90],
 	["commanding",0.80,0.90],
@@ -341,7 +342,7 @@ DZAI_skill9 = nil;
 
 //AI skill settings - AI helicopter crew (Skill, Minimum skill, Maximum skill).
 DZAI_heliCrewSkills = [	
-	["aimingAccuracy",0.40,0.50],
+	["aimingAccuracy",0.30,0.40],
 	["aimingShake",0.80,0.95],
 	["aimingSpeed",0.80,0.95],
 	["endurance",0.60,0.80],

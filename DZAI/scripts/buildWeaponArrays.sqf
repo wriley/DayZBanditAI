@@ -12,8 +12,8 @@ if (!isNil "DZAI_weaponsInitialized") exitWith {};
 
 _startTime = diag_tickTime;
 
-DZAI_useCustomLoot = false;	//to be moved to dzai_config.sqf
-_lootConfigFile = if !((DZAI_useCustomLoot) && {(isClass (missionConfigFile >> "CfgBuildingLoot"))}) then {
+DZAI_customLootTables = false;	//to be moved to dzai_config.sqf
+_lootConfigFile = if !((DZAI_customLootTables) && {(isClass (missionConfigFile >> "CfgBuildingLoot"))}) then {
 	diag_log "[DZAI] Building DZAI weapon arrays using CfgBuildingLoot data.";
 	configFile
 } else {

@@ -16,7 +16,9 @@ if ((_ammo != "")&&(!isNil "_durability")) then {
 				0 = [_unit] call DZAI_heliGetOut; 
 				_nul = _unit spawn {
 					sleep 3;
-					_this setDamage 0.95;
+					_this setVehicleAmmo 0;
+					_this setFuel 0;
+					_this setDamage 1;
 				};
 				_unit removeAllEventHandlers "HandleDamage"; _unit removeAllEventHandlers "GetOut"; _unit removeAllEventHandlers "Killed";
 			};

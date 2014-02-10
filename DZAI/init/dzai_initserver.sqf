@@ -52,6 +52,8 @@ DZAI_heliEquipType = 5;
 DZAI_vehEquipType = 3;
 DZAI_deleteObjectQueue = [];								//Queue of objects marked for deletion
 DZAI_dynLocations = [];										//Queue of temporary dynamic spawn area blacklists
+DZAI_reinforcePlaces = [];
+DZAI_checkedClassnames = [[],[],[]];						//Classnames verified - Weapons/Magazines/Vehicles
 
 //Set side relations
 createcenter east;

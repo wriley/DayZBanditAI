@@ -30,47 +30,43 @@ if !(_forced) then {
 	
 	sleep DZAI_dynDespawnWait;								//Wait some time before deleting units. (amount of time to allow units to exist when the trigger area has no players)
 
-	if (isNull _trigger) exitWith {};
-	
-	if (triggerActivated _trigger) exitWith {
-		if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: A player has entered the trigger area. Cancelling despawn script.";}; //Exit script if trigger has been reactivated since DZAI_dynDespawnWait seconds has passed.
-		_trigger setVariable ["isCleaning",false];	//Allow next despawn request.
-		if (!isNil "DZAI_debugMarkers") then {
-			private["_marker"];
-			_marker = format["trigger_%1",_trigger];
-			_marker setMarkerColor "ColorOrange";
-			_marker setMarkerAlpha 0.9;						//Reset trigger indicator color to Active.
+	if !(isNull _trigger) then {
+		if (triggerActivated _trigger) exitWith {
+			if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: A player has entered the trigger area. Cancelling despawn script.";}; //Exit script if trigger has been reactivated since DZAI_dynDespawnWait seconds has passed.
+			_trigger setVariable ["isCleaning",false];	//Allow next despawn request.
+			if (!isNil "DZAI_debugMarkers") then {
+				private["_marker"];
+				_marker = format["trigger_%1",_trigger];
+				_marker setMarkerColor "ColorOrange";
+				_marker setMarkerAlpha 0.9;						//Reset trigger indicator color to Active.
+			};
 		};
-	};
 
-	{
-		if (!isNil "DZAI_debugMarkers") then {
+		{
+			if (!isNil "DZAI_debugMarkers") then {
+				{
+					deleteMarker (str _x);
+				} forEach (waypoints _x);
+				sleep 0.1;
+			};
+			//DZAI_numAIUnits = DZAI_numAIUnits - (_x getVariable ["GroupSize",0]);	//Update active AI count
+			(DZAI_numAIUnits - (_x getVariable ["groupSize",0])) call DZAI_updateUnitCount;
 			{
-				deleteMarker (str _x);
-			} forEach (waypoints _x);
+				if (alive _x) then {
+					deleteVehicle _x;
+				};
+			} forEach (units _x);							//Delete live units
+			sleep 0.5;
+			deleteGroup _x;													//Delete the group after its units are deleted.
 			sleep 0.1;
-		};
-		DZAI_numAIUnits = DZAI_numAIUnits - (_x getVariable ["GroupSize",0]);	//Update active AI count
-		{
-			if (alive _x) then {
-				deleteVehicle _x;
-			};
-		} forEach (units _x);							//Delete live units
-		sleep 0.5;
-		deleteGroup _x;													//Delete the group after its units are deleted.
-		sleep 0.1;
-	} forEach _grpArray;	
+		} forEach _grpArray;	
+	};
 } else {
-	//Clean up dynamic AI group in 10 seconds if DayZ's group cleanup hasn't done it already.
-	_nul = _grpArray spawn {
-		sleep 10;
+	if (!isNil "DZAI_debugMarkers") then {
 		{
-			if (!isNull _x) then {
-				(units _x) joinSilent grpNull;
-				sleep 0.5;
-				deleteGroup _x;
-			};
-		} forEach _this;
+			deleteMarker (str _x);
+		} forEach (waypoints _x);
+		sleep 0.1;
 	};
 };
 

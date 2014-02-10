@@ -65,6 +65,8 @@ if (_unitsAlive == 0) then {
 	if (isPlayer _killer) then {
 		_unitGroup reveal [vehicle _killer,4];
 		_unitGroup setFormDir ([(leader _unitGroup),_killer] call BIS_fnc_dirTo);
+		(units _unitGroup) doTarget (vehicle _killer);
+		(units _unitGroup) doFire (vehicle _killer);
 		if (DZAI_findKiller) then {_unitGroup setBehaviour "AWARE"; 0 = [_trigger,_killer,_unitGroup,300] spawn DZAI_huntKiller} else {_unitGroup setBehaviour "COMBAT"};
 	};
 };

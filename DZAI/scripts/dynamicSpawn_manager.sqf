@@ -10,7 +10,7 @@ sleep 300;
 if (DZAI_debugLevel > 0) then {diag_log "DZAI V2 Dynamic Spawn Manager started.";};
 
 //Maximum chance to be selected for spawn condition check. Prevents unfairly high probability when few players are online.
-#define CHANCE_CAP 0.4
+#define CHANCE_CAP 0.5
 
 //Maximum number of players to select each cycle. If number of online players is less than SPAWN_MAX, all online players will be selected.
 #define SPAWN_MAX 10 
@@ -23,13 +23,13 @@ if (DZAI_debugLevel > 0) then {diag_log "DZAI V2 Dynamic Spawn Manager started."
 //#define SLEEP_DELAY 60 //FOR DEBUGGING
 
 //Cycle frequency variance.
-#define SLEEP_VARY 240
+#define SLEEP_VARY 120
 //#define SLEEP_VARY 30 //FOR DEBUGGING
 
 _playerUIDs = [];		//Array of all collected playerUIDs
 _timestamps = [];		//Array of timestamps for each corresponding playerUID
 //_playerData = [];
-_maxSpawnTime = 1800; //Time required for maximum % spawn probability.
+_maxSpawnTime = DZAI_maxSpawnTime; //Time required for maximum % spawn probability. (seconds)
 //_maxSpawnTime = 1; //FOR DEBUGGING
 
 while {true} do {
@@ -95,6 +95,10 @@ while {true} do {
 							_marker setMarkerBrush "SOLID";
 							_marker setMarkerSize [600, 600];
 							_marker setMarkerAlpha 0;
+						};
+						if ((DZAI_curHeliPatrols > 0)&&{((count DZAI_reinforcePlaces) < DZAI_curHeliPatrols)}) then {
+							DZAI_reinforcePlaces set [(count DZAI_reinforcePlaces),_playerPos];
+							if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Sending AI helicopter patrol to search for %1.",_playername];};
 						};
 						if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Created dynamic trigger at %1. Target player: %2.",(mapGridPosition _trigger),_playername];};
 						DZAI_dynTriggerArray set [count DZAI_dynTriggerArray,_trigger];

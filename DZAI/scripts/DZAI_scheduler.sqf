@@ -61,8 +61,8 @@ while {true} do {
 		{
 			_deathTime = _x getVariable "DZAI_deathTime";
 			if (!isNil "_deathTime") then {
-				if ((time - _deathTime) > DZAI_cleanupDelay) then {
-					if (({isPlayer _x} count (_x nearEntities [["CAManBase"], 20])) == 0) then {
+				if (time > _deathTime) then {
+					if (({isPlayer _x} count (_x nearEntities ["CAManBase", 20])) == 0) then {
 						_soundFlies = _x getVariable "sound_flies";
 						if (!isNil "_soundFlies") then {
 							detach _soundFlies;
@@ -80,7 +80,7 @@ while {true} do {
 	if ((time - _deleteObjects) >= 300) then {
 		{
 			_deletetime = (_x select 1);
-			if (time >= _deletetime) then {
+			if (time > _deletetime) then {
 				_object = (_x select 0);
 				_object call DZAI_unprotectObject;
 				deleteVehicle _object;
@@ -95,7 +95,7 @@ while {true} do {
 	if ((time - _dynLocations) >= 360) then {
 		{
 			_deletetime = _x getVariable "deletetime";
-			if (time >= _deletetime) then {
+			if (time > _deletetime) then {
 				deleteLocation _x;
 				DZAI_dynLocations set [_forEachIndex,locationNull];
 			};

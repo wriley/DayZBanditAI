@@ -155,7 +155,7 @@ if (isServer) then
 				_marker setMarkerType "Dot";
 				_marker setMarkerColor "ColorBlue";
 				_marker setMarkerBrush "SolidBorder";
-				_marker setMarkerSize [20, 20];
+				_marker setMarkerSize [10, 10];
 			};
 		};
 		sleep 0.5;

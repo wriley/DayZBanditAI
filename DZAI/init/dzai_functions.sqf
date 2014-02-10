@@ -53,8 +53,6 @@ if (isNil "DZAI_debugMarkers") then {
 //Compile zombie aggro functions
 if (DZAI_zombieEnemy && {DZAI_weaponNoise}) then { // Optional Zed-to-AI aggro functions
 	ai_fired = compile preprocessFileLineNumbers format ["%1\compile\ai_fired.sqf",DZAI_directory];
-};
-if (DZAI_zombieEnemy && {(DZAI_passiveAggro || {DZAI_weaponNoise})}) then {
 	ai_alertzombies = compile preprocessFileLineNumbers format ["%1\compile\ai_alertzombies.sqf",DZAI_directory];
 };
 
@@ -76,7 +74,6 @@ if (DZAI_maxHeliPatrols > 0) then {
 
 //Land vehicle patrol scripts
 if (DZAI_maxLandPatrols > 0) then {
-	DZAI_vehDespawn = compile preprocessFileLineNumbers format ["%1\spawn_functions\veh_despawn.sqf",DZAI_directory];
 	if (isNil "DZAI_debugMarkers") then {
 		DZAI_autoRearm_veh = compile preprocessFileLineNumbers format ["%1\compile\veh_autorearm.sqf",DZAI_directory];
 	} else {
@@ -85,6 +82,7 @@ if (DZAI_maxLandPatrols > 0) then {
 	DZAI_spawnVehPatrol	= compile preprocessFileLineNumbers format ["%1\spawn_functions\spawn_vehpatrol.sqf",DZAI_directory];
 	DZAI_vehGetOut = compile preprocessFileLineNumbers format ["%1\compile\veh_getout.sqf",DZAI_directory];
 	DZAI_vHandleDamage = compile preprocessFileLineNumbers format ["%1\compile\veh_handledamage.sqf",DZAI_directory];
+	DZAI_vehDestroyed = compile preprocessFileLineNumbers format ["%1\spawn_functions\veh_destroyed.sqf",DZAI_directory];
 	DZAI_vehPatrol = compile preprocessFileLineNumbers format ["%1\compile\veh_randompatrol.sqf",DZAI_directory];
 };
 
@@ -248,7 +246,7 @@ DZAI_unconscious = {
 	_nul = [objNull, _unit, rSWITCHMOVE, _anim] call RE;  
 	//diag_log "DEBUG :: AI unit is unconscious.";
 
-	_sleep = if (_hit == "head_hit") then {25} else {12.5};
+	_sleep = if (_hit == "head_hit") then {30} else {15};
 	//diag_log format ["DEBUG :: Knocked out AI %1 for %2 seconds.",_unit,_sleep];
 	sleep _sleep;
 
@@ -471,35 +469,47 @@ DZAI_getWeapongrade = {
 };
 
 DZAI_checkClassname = {
-	private ["_classname","_checkType","_result","_config","_banString","_check"];
+	private ["_classname","_checkType","_result","_config","_banString","_check","_configIndex"];
 
 	_classname = _this select 0;
 	_checkType = _this select 1;
 	_result = true;
+	_configIndex = -1;
 
 	switch (toLower _checkType) do {
 		case "weapon": {
-			_config = "CfgWeapons";
-			_banString = "bin\config.bin/CfgWeapons/FakeWeapon";
-		};
-		case "vehicle": {
-			_config = "CfgVehicles";
-			_banString = "bin\config.bin/CfgVehicles/Banned";
+			if !(_classname in DZAI_checkedClassnames) then {
+				_config = "CfgWeapons";
+				_banString = "bin\config.bin/CfgWeapons/FakeWeapon";
+				_configIndex = 0;
+			};
 		};
 		case "magazine": {
-			_config = "CfgMagazines";
-			_banString = "bin\config.bin/CfgMagazines/FakeMagazine";
+			if !(_classname in DZAI_checkedClassnames) then {
+				_config = "CfgMagazines";
+				_banString = "bin\config.bin/CfgMagazines/FakeMagazine";
+				_configIndex = 1;
+			};
+		};
+		case "vehicle": {
+			if !(_classname in DZAI_checkedClassnames) then {
+				_config = "CfgVehicles";
+				_banString = "bin\config.bin/CfgVehicles/Banned";
+				_configIndex = 2;
+			};
 		};
 		case default {
-			_config = "";
-			_banString = "";
+			_result = false;	//If input is invalid, declare classname as invalid
 		};
 	};
 	
-	_check = (str(inheritsFrom (configFile >> _config >> _classname)));
-
-	if ((_check == "") or (_check == _banString)) then {
-		_result = false;
+	if (_configIndex > -1) then {
+		_check = (str(inheritsFrom (configFile >> _config >> _classname)));
+		if ((_check == "") or (_check == _banString)) then {
+			_result = false;
+		} else {
+			(DZAI_checkedClassnames select _configIndex) set [(count (DZAI_checkedClassnames select _configIndex)),_classname]; //Classname considered valid, no need to check it again
+		};
 	};
 	
 	_result
@@ -517,4 +527,28 @@ DZAI_abortDynSpawn = {
 	deleteVehicle _trigger;
 	
 	false
+};
+
+/*DZAI_markerMonitor = {
+	private ["_groupMarkers","_marker"];
+	_unitGroup = _this select 0;
+	_marker = _this select 1;
+	
+	if ((getMarkerColor _marker) != "") then {
+		if (isNil {_unitGroup getVariable "markerslist"}) then {_unitGroup setVariable ["markerslist",[]]};
+		_groupMarkers = _unitGroup getVariable "markerslist";
+		_groupMarkers set [count _groupMarkers,_marker];
+		
+		_groupMarkers
+	};
+};*/
+
+DZAI_updateUnitCount = {
+	if ((typeName _this) == "SCALAR") then {
+		DZAI_numAIUnits = _this;
+		true
+	} else {
+		diag_log "DZAI Error: Tried to update AI count using invalid value type!";
+		false
+	};
 };

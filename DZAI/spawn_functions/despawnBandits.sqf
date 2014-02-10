@@ -52,7 +52,8 @@ if (triggerActivated _trigger) exitWith {			//Exit script if trigger has been re
 		} forEach (waypoints _x);
 		sleep 0.1;
 	};
-	DZAI_numAIUnits = DZAI_numAIUnits - (_x getVariable ["groupSize",0]); //Update active AI count
+	//DZAI_numAIUnits = DZAI_numAIUnits - (_x getVariable ["groupSize",0]); //Update active AI count
+	(DZAI_numAIUnits - (_x getVariable ["groupSize",0])) call DZAI_updateUnitCount;
 	{deleteVehicle _x} forEach (units _x); //Delete live units
 	if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Group %1 has group size %2.",_x,(_x getVariable ["groupSize",0])];};
 	sleep 0.5;
