@@ -34,8 +34,8 @@ Compatibility
 
 <b>Supported DayZ maps and mods:</b>
 
-- Supported Maps: Chernarus, Namalsk, Celle, Fallujah, Lingor/Hunting Grounds, Isla Duala, Oring, Panthera, Sahrani, Takistan, Taviana, Trinity Island, Utes, Zargabad.
-- Supported Mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Civilian, DayZ Epoch, DayZ Overwatch.
+- Supported Maps: Chernarus, Namalsk, Celle, Fallujah, Lingor/Hunting Grounds, Isla Duala, Napf (DayZ Unleashed only), Oring, Panthera, Sahrani, Sauerland, Takistan, Taviana, Trinity Island, Utes, Zargabad.
+- Supported Mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Epoch, DayZ Overwatch, DayZ Unleashed.
 - Note: DZAI is able to run on unrecognized maps by automatically generating static spawns in cities and towns.
 
 <b>Known Issues:</b>
@@ -67,6 +67,7 @@ Basic Installation Guide (with cpbo):
 Basic Installation Guide (with PBO Manager):
 ----------------------------------------------------
 
+**NEW**: A visual installation guide for DZAI is available here: http://opendayz.net/threads/dzai-visual-installation-guide.18447/
 **Note**: To avoid pbo corruption, do not use the "Pack into dayz_server.pbo" right-click option. Modify files only using PBO Manager's graphical interface.
 
 1. Unpack your dayz_server.pbo. Right click dayz_server.pbo, select "PBO Manager", click on "Extract to dayz_server\"
