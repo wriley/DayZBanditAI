@@ -56,7 +56,7 @@ if (_patrolDist > 1) then {
 		} else {
 			0 = [_unitGroup,(getPosATL _trigger),_patrolDist] spawn DZAI_BIN_taskPatrol;
 		};*/
-		_nul = [_unitGroup,_spawnPositions] spawn DZAI_BIN_taskPatrol;
+		_nul = [_unitGroup,(getPosATL _trigger),_patrolDist] spawn DZAI_BIN_taskPatrol;
 	};
 };
 
