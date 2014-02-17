@@ -1,4 +1,4 @@
-DZAI 1.9.7 - AI Addon for DayZ
+DZAI 1.9.8 - AI Addon for DayZ
 ============
 
 
@@ -34,7 +34,7 @@ Compatibility
 
 <b>Supported DayZ maps and mods:</b>
 
-- Supported Maps: Chernarus, Namalsk, Celle, Fallujah, Lingor/Hunting Grounds, Isla Duala, Napf (DayZ Unleashed only), Oring, Panthera, Sahrani, Sauerland, Takistan, Taviana, Trinity Island, Utes, Zargabad.
+- Supported Maps: Chernarus, Namalsk, Celle, Fallujah, Lingor/Hunting Grounds, Isla Duala, Napf, Oring, Panthera, Sahrani, Sauerland, Takistan, Taviana, Trinity Island, Utes, Zargabad.
 - Supported Mods: DayZ 2017, DayZ 2017 Namalsk, DayZ Epoch, DayZ Overwatch, DayZ Unleashed.
 - Note: DZAI is able to run on unrecognized maps by automatically generating static spawns in cities and towns.
 
@@ -113,6 +113,7 @@ Changelog:
 - 1.9.6 Update: http://opendayz.net/threads/dzai-1-9-6-update-rolling-changelog.18207/#post-91399
 - 1.9.6.1 Hotfix: http://opendayz.net/threads/dzai-1-9-6-1-hotfix-changelog.18296/#post-91844
 - 1.9.7 Update: http://opendayz.net/threads/dzai-1-9-7-update-changelog.18395/
+- 1.9.8 Update: http://opendayz.net/threads/dzai-1-9-8-update-changelog.18565/
 
 
 Contribute

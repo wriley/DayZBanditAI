@@ -6,7 +6,6 @@
 */
 
 #include "spawn_markers\markers_trinity.sqf"	//Load manual spawn point definitions file.
-#include "spawn_areas\areas_trinity.sqf"		//Load spawn area definitions file.
 
 if ((DZAI_maxHeliPatrols > 0) or {(DZAI_maxLandPatrols > 0)}) then {
 	"DZAI_centerMarker" setMarkerPos [7183.8403, 7067.4727];
@@ -20,7 +19,9 @@ if (DZAI_verifyTables) then {
 };
 
 if (DZAI_staticAI) then {
-	//marker name, [minimum AI, max additional AI], [markers for manual spawn points] (leave blank to generate spawn points), equipType (optional, required if AI group number is defined), number of AI groups (optional)
+	#include "spawn_areas\areas_trinity.sqf"		//Load spawn area definitions file.
+	
+	//marker name, [minimum AI, max additional AI], [markers for manual spawn points] (leave as empty array to use nearby buildings as spawn points), equipType (optional, required if number of AI groups is defined), number of AI groups (optional)
 	["DZAI_StansfieldAirport",[2,2],[],2] call DZAI_static_spawn;
 	["DZAI_FarmArea",[0,2],[],0] call DZAI_static_spawn;
 	["DZAI_HouseArea1",[0,2],[],0] call DZAI_static_spawn;

@@ -35,7 +35,7 @@ while {((count _pos) < 1) && {(_attempts < 3)}} do {
 };
 
 if ((count _pos) < 1) then {
-	_pos = [_spawnPos,random (125),random(360),false] call SHK_pos;
+	_pos = [_trigger,random (125),random(360),false] call SHK_pos;
 	_attempts = (_attempts + 1);
 };
 

@@ -242,6 +242,7 @@ DZAI_unconscious = {
 	} else {
 		_anim = "adthpercmstpslowwrfldnon_4";
 	};
+	_unit disableAI "FSM";
 	_unit switchMove _anim;
 	_nul = [objNull, _unit, rSWITCHMOVE, _anim] call RE;  
 	//diag_log "DEBUG :: AI unit is unconscious.";
@@ -252,6 +253,7 @@ DZAI_unconscious = {
 
 	if (alive _unit) then {
 		_nul = [objNull, _unit, rSWITCHMOVE, "amovppnemrunsnonwnondf"] call RE;
+		_unit enableAI "FSM";
 		sleep 0.5;
 		_unit switchMove "amovppnemrunsnonwnondf";
 		//diag_log "DEBUG :: AI unit is conscious.";

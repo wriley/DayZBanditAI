@@ -9,7 +9,7 @@
 */
 
 #define CHANCE_LOW 0.50
-#define CHANCE_HIGH 0.90
+#define CHANCE_HIGH 1.00
 
 private ["_patrolDist","_trigger","_totalAI","_unitGroup","_targetPlayer","_playerPos","_playerDir","_playerCount","_spawnPos","_startTime","_baseDist","_distVariance","_dirVariance","_spawnChance","_vehPlayer"];
 if (!isServer) exitWith {};

@@ -65,7 +65,7 @@ while {true} do {
 			if ((!isNull _player) && {((random _chanceAdjust) < 1)}) then {
 				_index = _playerUIDs find (getPlayerUID _player);
 				_lastSpawned = _timestamps select _index;
-				_spawnChance = (((time - _lastSpawned) / _maxSpawnTime) min 0.95);
+				_spawnChance = (0.10 max ((time - _lastSpawned) / _maxSpawnTime));
 				if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Player %1 has %2 probability of generating dynamic spawn.",_playername,_spawnChance];};
 				if ((random 1) < _spawnChance) then {
 					_playerPos = getPosATL _player;

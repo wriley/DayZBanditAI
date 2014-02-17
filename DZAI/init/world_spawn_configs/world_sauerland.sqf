@@ -6,7 +6,6 @@
 */
 
 #include "spawn_markers\markers_sauerland.sqf"	//Load manual spawn point definitions file.
-#include "spawn_areas\areas_sauerland.sqf"		//Load spawn area definitions file.
 
 if ((DZAI_maxHeliPatrols > 0) or {(DZAI_maxLandPatrols > 0)}) then {
 	"DZAI_centerMarker" setMarkerPos [12270.443, 13632.132];
@@ -20,6 +19,8 @@ if (DZAI_verifyTables) then {
 };
 
 if (DZAI_staticAI) then {
+	#include "spawn_areas\areas_sauerland.sqf"		//Load spawn area definitions file.
+	//marker name, [minimum AI, max additional AI], [markers for manual spawn points] (leave as empty array to use nearby buildings as spawn points), equipType (optional, required if number of AI groups is defined), number of AI groups (optional)
 	//AUTO GENERATED
 	['DZAI_Wenden_Airfield',[2,1],[],2] call DZAI_static_spawn;
 	['DZAI_Old_Airfield',[2,1],[],3] call DZAI_static_spawn;

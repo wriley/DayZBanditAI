@@ -108,7 +108,7 @@ while {true} do {
 	if ((DZAI_monitorRate > 0) && {((time - _monitorReport) >= DZAI_monitorRate)}) then {
 		_uptime = [] call DZAI_getUptime;
 		diag_log format ["DZAI Monitor :: Server Uptime - %1 d %2 hr %3 min %4 sec. Active AI Units - %5.",_uptime select 0, _uptime select 1, _uptime select 2, _uptime select 3,DZAI_numAIUnits];
-		diag_log format ["DZAI Monitor :: Static Spawns - %1 active static triggers. %2 groups queued for respawn.",DZAI_actTrigs,(count DZAI_respawnQueue)];
+		if (DZAI_staticAI) then {diag_log format ["DZAI Monitor :: Static Spawns - %1 active static triggers. %2 groups queued for respawn.",DZAI_actTrigs,(count DZAI_respawnQueue)];};
 		if (DZAI_dynAISpawns || {_vehiclesEnabled}) then {diag_log format ["DZAI Monitor :: Dynamic Spawns - %1/%2 (active/total). Air Patrols: %3/%4 (cur/max). Land Patrols: %5/%6.",({triggerActivated _x} count DZAI_dynTriggerArray),(count DZAI_dynTriggerArray),DZAI_curHeliPatrols,DZAI_maxHeliPatrols,DZAI_curLandPatrols,DZAI_maxLandPatrols];};
 		if (_refreshMarkers && {((count DZAI_dynTriggerArray) > 0)}) then {
 			{
