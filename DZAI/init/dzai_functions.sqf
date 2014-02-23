@@ -253,8 +253,8 @@ DZAI_unconscious = {
 
 	if (alive _unit) then {
 		_nul = [objNull, _unit, rSWITCHMOVE, "amovppnemrunsnonwnondf"] call RE;
-		sleep 0.5;
 		_unit switchMove "amovppnemrunsnonwnondf";
+		sleep 1.5;
 		_unit enableAI "FSM";
 		//diag_log "DEBUG :: AI unit is conscious.";
 		_unit setVariable ["unconscious",false];
