@@ -19,13 +19,16 @@ if (DZAI_objPatch) then {
 
 //Build DZAI weapon classname tables from CfgBuildingLoot data if DZAI_dynamicWeapons = true;
 if (DZAI_dynamicWeaponList) then {
-	_weaponlist = [DZAI_banAIWeapons] execVM format ['%1\scripts\buildWeaponArrays.sqf',DZAI_directory];
-	//waitUntil {sleep 0.005; scriptDone _weaponlist};
+	_weaponlist = [DZAI_banAIWeapons] execVM format ['%1\scripts\buildWeaponArrays.sqf',DZAI_directory]; //Overwrite default weapon tables with classnames found in DayZ's loot tables.
+} else {
+	DZAI_weaponsInitialized = true;	//Use default weapon tables defined in global_classnames.sqf
 };
 
 if (DZAI_verifyTables) then {
 	_verify = [] execVM format ["%1\scripts\verifyTables.sqf",DZAI_directory];
-	waitUntil {sleep 0.005; scriptDone _verify};
+	waitUntil {sleep 0.005; scriptDone _verify}; //wait for verification to complete before proceeding
+} else {
+	DZAI_classnamesVerified = true;	//skip classname verification if disabled
 };
 
 //Build map location list. If using an unknown map, DZAI will automatically generate basic static triggers at cities and towns.

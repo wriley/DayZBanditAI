@@ -96,7 +96,7 @@ while {true} do {
 							_marker setMarkerSize [600, 600];
 							_marker setMarkerAlpha 0;
 						};
-						if ((DZAI_curHeliPatrols > 0)&&{((count DZAI_reinforcePlaces) < DZAI_curHeliPatrols)}) then {
+						if (((count DZAI_reinforcePlaces) < DZAI_curHeliPatrols) && {(random 1) < DZAI_heliReinforceChance}) then {
 							DZAI_reinforcePlaces set [(count DZAI_reinforcePlaces),_playerPos];
 							if (DZAI_debugLevel > 1) then {diag_log format ["DZAI Extended Debug: Sending AI helicopter patrol to search for %1.",_playername];};
 						};

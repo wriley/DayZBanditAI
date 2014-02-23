@@ -29,7 +29,7 @@ call compile preprocessFileLineNumbers format ["%1\init\dzai_config.sqf",DZAI_di
 call compile preprocessFileLineNumbers format ["%1\init\dzai_functions.sqf",DZAI_directory];
 
 //Load DZAI classname tables
-call compile preprocessFileLineNumbers format ["%1\init\world_classname_configs\default\default_classnames.sqf",DZAI_directory];
+call compile preprocessFileLineNumbers format ["%1\init\world_classname_configs\global_classnames.sqf",DZAI_directory];
 
 //Set internal-use variables
 DZAI_weaponGrades = [-1,0,1,2,3];							//All possible weapon grades (does not include custom weapon grades). A "weapon grade" is a tiered classification of gear. -1: Civilian (Low-grade), 0: Civilian, 1: Military, 2: MilitarySpecial, 3: Heli Crash. Weapon grade also influences the general skill level of the AI unit.

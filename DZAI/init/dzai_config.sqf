@@ -108,6 +108,9 @@ DZAI_dynAISpawns = true;
 //Time (seconds) required to reach maximum spawn probability per player. Lower number = More frequent dynamic spawns, Higher Number = Less frequent. (Recommended range: 1200-2700, Default: 1800)
 DZAI_maxSpawnTime = 1800;
 
+//Probability to send first available AI helicopter to reinforce dynamic AI group. No effect if DZAI_maxHeliPatrols is set to zero. (Default: 0.75)
+DZAI_heliReinforceChance = 0.75;
+
 //Array of area blacklist markers. Players within marker areas will not be targeted for dynamic AI spawns (Example: ["BlacklistArea1","BlacklistArea2","BlacklistArea3"])
 //Epoch: DZAI will automatically set up 200m-radius blacklist areas around each trader area.
 DZAI_dynAreaBlacklist = [];
@@ -170,9 +173,13 @@ DZAI_vehTypes = ["UAZ_Unarmed_TK_EP1"];
 /*	AI weapon selection settings
 --------------------------------------------------------------------------------------------------------------------*/
 
-//True: Dynamically generate AI weapon list from CfgBuildingLoot (DayZ loot tables). False: Use preset weapon list located in world_classname_configs/default/default_classnames.sqf. (Default: true).
+//True: Dynamically generate AI weapon list from CfgBuildingLoot (DayZ loot tables). False: Use preset weapon list located in world_classname_configs/global_classnames.sqf. (Default: true).
 //Highly recommended to enable DZAI_verifyTables if this option is set to false. 
 DZAI_dynamicWeaponList = true;
+
+//Determines whether DZAI reads from default DayZ loot tables for dynamic AI weapon generation or from user-installed custom loot tables. (Default: false)
+//No effect if DZAI_dynamicWeaponList is 'false'. If DZAI is unable to find custom loot tables installed, default loot tables will be used instead.
+DZAI_customLootTables = false;
 
 //List of classnames of weapons that AI should never use. By default, AI may carry any lootable weapon. (Only if DZAI_dynamicWeaponList = true)  
 //Example: DZAI_banAIWeapons = ["M107_DZ","BAF_AS50_scoped"] will remove the M107 and AS50 from AI weapon tables if dynamic weapon list is enabled.								

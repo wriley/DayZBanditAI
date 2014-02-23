@@ -116,9 +116,9 @@ for "_i" from 0 to ((count _gadgetsArray) - 1) do {
 
 //If unit has weapongrade 2 or 3 and was not given NVGs, give the unit temporary NVGs which will be removed at death. Set DZAI_tempNVGs to true in variables config to enable temporary NVGs.
 if (DZAI_tempNVGs) then {
-	if (!(_unit hasWeapon "NVGoggles") && (_weapongrade > 0) && (daytime < 6 || daytime > 20)) then {
+	if (!(_unit hasWeapon "NVGoggles") && {(_weapongrade > 0)} && {(daytime < 6 || daytime > 20)}) then {
 		_unit addWeapon "NVGoggles";
-		_unit setVariable["removeNVG",1,false];
+		_unit setVariable["removeNVG",1];
 		if (DZAI_debugLevel > 1) then {diag_log "DZAI Extended Debug: Generated temporary NVGs for AI.";};
 	};
 };

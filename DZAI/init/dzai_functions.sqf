@@ -253,9 +253,9 @@ DZAI_unconscious = {
 
 	if (alive _unit) then {
 		_nul = [objNull, _unit, rSWITCHMOVE, "amovppnemrunsnonwnondf"] call RE;
-		_unit enableAI "FSM";
 		sleep 0.5;
 		_unit switchMove "amovppnemrunsnonwnondf";
+		_unit enableAI "FSM";
 		//diag_log "DEBUG :: AI unit is conscious.";
 		_unit setVariable ["unconscious",false];
 	};
@@ -546,7 +546,7 @@ DZAI_abortDynSpawn = {
 };*/
 
 DZAI_updateUnitCount = {
-	if ((typeName _this) == "SCALAR") then {
+	if (((typeName _this) == "SCALAR") && {(_this >= 0)}) then {
 		DZAI_numAIUnits = _this;
 		true
 	} else {

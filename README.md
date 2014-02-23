@@ -1,4 +1,4 @@
-DZAI 1.9.8 - AI Addon for DayZ
+DZAI 1.9.9 - AI Addon for DayZ
 ============
 
 
@@ -105,15 +105,16 @@ Changelog:
 - 1.9.1.1 - 1.9.1.2 Hotfix: http://opendayz.net/threads/1-9-1-1-and-1-9-1-2-hotfix-changes.17757/
 - 1.9.2 Update: http://opendayz.net/threads/dzai-1-9-2-update-changelog.17808/
 - 1.9.2.1 Hotfix: http://opendayz.net/threads/1-9-2-1-hotfix-for-certain-static-triggers.17852/
-- 1.9.3 Update: http://opendayz.net/threads/dzai-1-9-3-update-changelog.17940/#post-89965
+- 1.9.3 Update: http://opendayz.net/threads/dzai-1-9-3-update-changelog.17940/
 - 1.9.3.1 Hotfix: http://opendayz.net/threads/1-9-3-1-hotfix-changelog.17990/
 - 1.9.4 Update: http://opendayz.net/threads/1-9-4-update.18076/
 - 1.9.5 Update: http://opendayz.net/threads/dzai-1-9-5-update-changelog.18156/
-- 1.9.5.1 Hotfix (for DZAI Scheduler): http://opendayz.net/threads/dzai-hotfixed-for-scheduler-error.18174/#post-91037
-- 1.9.6 Update: http://opendayz.net/threads/dzai-1-9-6-update-rolling-changelog.18207/#post-91399
-- 1.9.6.1 Hotfix: http://opendayz.net/threads/dzai-1-9-6-1-hotfix-changelog.18296/#post-91844
+- 1.9.5.1 Hotfix (for DZAI Scheduler): http://opendayz.net/threads/dzai-hotfixed-for-scheduler-error.18174/
+- 1.9.6 Update: http://opendayz.net/threads/dzai-1-9-6-update-rolling-changelog.18207/
+- 1.9.6.1 Hotfix: http://opendayz.net/threads/dzai-1-9-6-1-hotfix-changelog.18296/
 - 1.9.7 Update: http://opendayz.net/threads/dzai-1-9-7-update-changelog.18395/
 - 1.9.8 Update: http://opendayz.net/threads/dzai-1-9-8-update-changelog.18565/
+- 1.9.9 Update: http://opendayz.net/threads/dzai-1-9-9-update-changelog-upcoming.18665/
 
 
 Contribute
