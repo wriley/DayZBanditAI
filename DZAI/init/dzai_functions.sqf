@@ -82,7 +82,7 @@ if (DZAI_maxLandPatrols > 0) then {
 	DZAI_spawnVehPatrol	= compile preprocessFileLineNumbers format ["%1\spawn_functions\spawn_vehpatrol.sqf",DZAI_directory];
 	DZAI_vehGetOut = compile preprocessFileLineNumbers format ["%1\compile\veh_getout.sqf",DZAI_directory];
 	DZAI_vHandleDamage = compile preprocessFileLineNumbers format ["%1\compile\veh_handledamage.sqf",DZAI_directory];
-	DZAI_vehDestroyed = compile preprocessFileLineNumbers format ["%1\spawn_functions\veh_destroyed.sqf",DZAI_directory];
+	DZAI_vehDestroyed = compile preprocessFileLineNumbers format ["%1\compile\veh_destroyed.sqf",DZAI_directory];
 	DZAI_vehPatrol = compile preprocessFileLineNumbers format ["%1\compile\veh_randompatrol.sqf",DZAI_directory];
 };
 
