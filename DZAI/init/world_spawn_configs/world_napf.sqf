@@ -613,7 +613,7 @@ if (DZAI_staticAI) then {
 	} else {
 		//marker name, [minimum AI, max additional AI], [markers for manual spawn points] (leave as empty array to use nearby buildings as spawn points), equipType (optional, required if number of AI groups is defined), number of AI groups (optional)
 		//Auto Generated
-		['DZAI_Lenzburg',[2,1],[],1,2] call DZAI_static_spawn;
+		['DZAI_Lenzburg',[1,1],[],1] call DZAI_static_spawn;
 		['DZAI_Trueb',[2,1],[],0] call DZAI_static_spawn;
 		['DZAI_Seltisberg',[1,2],[],0] call DZAI_static_spawn;
 		['DZAI_Neue_Welt',[1,1],[],0,2] call DZAI_static_spawn;
@@ -666,9 +666,9 @@ if (DZAI_staticAI) then {
 		['DZAI_TruebN',[1,1],[],0] call DZAI_static_spawn;
 		['DZAI_Harbour',[1,1],[],0] call DZAI_static_spawn;
 		['DZAI_Magden',[1,1],[],0] call DZAI_static_spawn;
-		['DZAI_LenzburgW',[2,1],[],1] call DZAI_static_spawn;
-		['DZAI_LenzburgE',[2,1],[],1] call DZAI_static_spawn;
-		['DZAI_LenzburgIndustrial',[1,1],[],0] call DZAI_static_spawn;
+		['DZAI_LenzburgW',[1,1],[],1] call DZAI_static_spawn;
+		['DZAI_LenzburgE',[1,1],[],1] call DZAI_static_spawn;
+		['DZAI_LenzburgIndustrial',[0,2],[],0] call DZAI_static_spawn;
 		['DZAI_LuzernW',[1,1],[],0,2] call DZAI_static_spawn;
 		['DZAI_LuzernS',[1,1],[],0,2] call DZAI_static_spawn;
 		['DZAI_Airport',[2,1],[],3] call DZAI_static_spawn;
