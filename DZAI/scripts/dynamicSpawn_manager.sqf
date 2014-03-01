@@ -56,7 +56,7 @@ while {true} do {
 		
 		if (DZAI_debugLevel > 0) then {diag_log format ["DZAI Debug: Preparing to spawn dynamic triggers using selection probability limit %1, %2 dynamic spawns are possible.",(1/_chanceAdjust),_maxSpawnsPossible];};
 
-		while {((_allPlayers = _allPlayers - [objNull]; _maxSpawnsPossible - _activeDynamicSpawns) > 0) && {(count _allPlayers) > 0}} do {	//_spawns: Have we created enough spawns? _allPlayers: Are there enough players to create spawns for?
+		while {_allPlayers = _allPlayers - [objNull]; (((_maxSpawnsPossible - _activeDynamicSpawns) > 0) && {(count _allPlayers) > 0})} do {	//_spawns: Have we created enough spawns? _allPlayers: Are there enough players to create spawns for?
 			_time = diag_tickTime;
 			_player = _allPlayers call BIS_fnc_selectRandom2;
 			//[_player,"DEBUG :: Selected for dynamic spawn."] call DZAI_radioSend;
